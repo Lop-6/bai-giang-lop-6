@@ -1,0 +1,431 @@
+{
+  "voices": {
+    "F": "en-GB-SoniaNeural",
+    "M": "en-GB-RyanNeural",
+    "VF": "vi-VN-HoaiMyNeural",
+    "VM": "vi-VN-NamMinhNeural"
+  },
+  "items": [
+    {
+      "slug": "voc-activity",
+      "text": "activity",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-art",
+      "text": "art",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-boarding-school",
+      "text": "boarding school",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-calculator",
+      "text": "calculator",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-classmate",
+      "text": "classmate",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-compass",
+      "text": "compass",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-favourite",
+      "text": "favourite",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-help",
+      "text": "help",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-international",
+      "text": "international",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-interview",
+      "text": "interview",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-knock",
+      "text": "knock",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-remember",
+      "text": "remember",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-share",
+      "text": "share",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-smart",
+      "text": "smart",
+      "voice": "F"
+    },
+    {
+      "slug": "voc-swimming-pool",
+      "text": "swimming pool",
+      "voice": "F"
+    },
+    {
+      "slug": "thing-pencil-sharpener",
+      "text": "pencil sharpener",
+      "voice": "F"
+    },
+    {
+      "slug": "thing-school-bag",
+      "text": "school bag",
+      "voice": "F"
+    },
+    {
+      "slug": "thing-rubber",
+      "text": "rubber",
+      "voice": "F"
+    },
+    {
+      "slug": "thing-pencil-case",
+      "text": "pencil case",
+      "voice": "F"
+    },
+    {
+      "slug": "act-school-lunch",
+      "text": "school lunch",
+      "voice": "F"
+    },
+    {
+      "slug": "act-exercise",
+      "text": "exercise",
+      "voice": "F"
+    },
+    {
+      "slug": "act-english",
+      "text": "English",
+      "voice": "F"
+    },
+    {
+      "slug": "act-science",
+      "text": "science",
+      "voice": "F"
+    },
+    {
+      "slug": "act-history",
+      "text": "history",
+      "voice": "F"
+    },
+    {
+      "slug": "act-football",
+      "text": "football",
+      "voice": "F"
+    },
+    {
+      "slug": "act-homework",
+      "text": "homework",
+      "voice": "F"
+    },
+    {
+      "slug": "act-lessons",
+      "text": "lessons",
+      "voice": "F"
+    },
+    {
+      "slug": "act-music",
+      "text": "music",
+      "voice": "F"
+    },
+    {
+      "slug": "pr-carton",
+      "text": "carton",
+      "voice": "F"
+    },
+    {
+      "slug": "pr-class",
+      "text": "class",
+      "voice": "F"
+    },
+    {
+      "slug": "pr-subject",
+      "text": "subject",
+      "voice": "F"
+    },
+    {
+      "slug": "pr-study",
+      "text": "study",
+      "voice": "F"
+    },
+    {
+      "slug": "pr-monday",
+      "text": "Monday",
+      "voice": "F"
+    },
+    {
+      "slug": "prs-1",
+      "text": "My brother has a new compass.",
+      "voice": "F"
+    },
+    {
+      "slug": "prs-2",
+      "text": "Our classroom is large.",
+      "voice": "F"
+    },
+    {
+      "slug": "prs-3",
+      "text": "They look smart on their first day at school.",
+      "voice": "F"
+    },
+    {
+      "slug": "prs-4",
+      "text": "The art lesson starts at nine o'clock.",
+      "voice": "F"
+    },
+    {
+      "slug": "prs-5",
+      "text": "He goes out to have lunch every Sunday.",
+      "voice": "F"
+    },
+    {
+      "slug": "gs-01",
+      "voice": "M",
+      "text": "Hi, Vy.",
+      "ten_viet": [
+        "Vy"
+      ]
+    },
+    {
+      "slug": "gs-02",
+      "voice": "F",
+      "text": "Hi, Phong. Are you ready?",
+      "ten_viet": [
+        "Phong"
+      ]
+    },
+    {
+      "slug": "gs-03",
+      "text": "Just a minute.",
+      "voice": "M"
+    },
+    {
+      "slug": "gs-04",
+      "voice": "F",
+      "text": "Oh, this is Duy, my new friend.",
+      "ten_viet": [
+        "Duy"
+      ]
+    },
+    {
+      "slug": "gs-05",
+      "voice": "M",
+      "text": "Hi, Duy. Nice to meet you.",
+      "ten_viet": [
+        "Duy"
+      ]
+    },
+    {
+      "slug": "gs-06",
+      "voice": "M",
+      "text": "Hi, Phong. I live near here, and we go to the same school!",
+      "ten_viet": [
+        "Phong"
+      ]
+    },
+    {
+      "slug": "gs-07",
+      "text": "Good. Hmm, your school bag looks heavy.",
+      "voice": "M"
+    },
+    {
+      "slug": "gs-08",
+      "text": "Yes! I have new books, and we have new subjects to study.",
+      "voice": "M"
+    },
+    {
+      "slug": "gs-09",
+      "voice": "M",
+      "text": "And a new uniform, Duy! You look smart!",
+      "ten_viet": [
+        "Duy"
+      ]
+    },
+    {
+      "slug": "gs-10",
+      "voice": "M",
+      "text": "Thanks, Phong. We always look smart in our uniforms.",
+      "ten_viet": [
+        "Phong"
+      ]
+    },
+    {
+      "slug": "gs-11",
+      "text": "Let me put on my uniform. Then we can go.",
+      "voice": "M"
+    },
+    {
+      "slug": "gr-01",
+      "text": "We usually go to school by bus.",
+      "voice": "F"
+    },
+    {
+      "slug": "gr-02",
+      "text": "I don't like school lunch very much.",
+      "voice": "F"
+    },
+    {
+      "slug": "gr-03",
+      "text": "Tom usually takes the bus to school.",
+      "voice": "F"
+    },
+    {
+      "slug": "gr-04",
+      "text": "They don't often go to the cinema.",
+      "voice": "F"
+    },
+    {
+      "slug": "gr-05",
+      "text": "We have new subjects for this school year.",
+      "voice": "F"
+    },
+    {
+      "slug": "gr-06",
+      "voice": "F",
+      "text": "Duy cycles to school every day.",
+      "ten_viet": [
+        "Duy"
+      ]
+    },
+    {
+      "slug": "gr-07",
+      "text": "She doesn't have a brother.",
+      "voice": "F"
+    },
+    {
+      "slug": "gr-08",
+      "text": "Where do you live?",
+      "voice": "F"
+    },
+    {
+      "slug": "gr-09",
+      "voice": "F",
+      "text": "Does Vy walk to school with you?",
+      "ten_viet": [
+        "Vy"
+      ]
+    },
+    {
+      "slug": "com-01",
+      "voice": "F",
+      "text": "Phong, this is Duy, my new friend.",
+      "ten_viet": [
+        "Phong",
+        "Duy"
+      ]
+    },
+    {
+      "slug": "com-02",
+      "voice": "M",
+      "text": "Hi, Duy. Nice to meet you.",
+      "ten_viet": [
+        "Duy"
+      ]
+    },
+    {
+      "slug": "com-03",
+      "voice": "M",
+      "text": "Hi, Phong. Nice to meet you, too.",
+      "ten_viet": [
+        "Phong"
+      ]
+    },
+    {
+      "slug": "read-sunrise",
+      "text": "Sunrise is a boarding school in Sydney. Students study and live there. About one thousand two hundred boys and girls go to Sunrise. It has students from all over Australia. They study subjects like maths, science and English.",
+      "voice": "F"
+    },
+    {
+      "slug": "read-anson",
+      "voice": "F",
+      "text": "An Son is a lower secondary school in Bac Ninh. It has only eight classes. There are mountains and green fields around the school. There is a computer room and a library. There is also a school garden and a playground.",
+      "ten_viet": [
+        {
+          "tu": "An Son",
+          "doc": "An Sơn"
+        },
+        {
+          "tu": "Bac Ninh",
+          "doc": "Bắc Ninh"
+        }
+      ]
+    },
+    {
+      "slug": "read-dream",
+      "text": "Dream is an international school. Here students learn English with English-speaking teachers. In the afternoon, they join many interesting clubs. They play sports and games. Some students do paintings in the art club.",
+      "voice": "F"
+    },
+    {
+      "slug": "sp-01",
+      "text": "Which school would you like to go to?",
+      "voice": "F"
+    },
+    {
+      "slug": "sp-02",
+      "text": "I'd like to go to Dream School.",
+      "voice": "M"
+    },
+    {
+      "slug": "sp-03",
+      "text": "Why?",
+      "voice": "F"
+    },
+    {
+      "slug": "sp-04",
+      "text": "Because I'd like to paint in the art club.",
+      "voice": "M"
+    },
+    {
+      "slug": "ten-vy",
+      "text": "Vy",
+      "voice": "VF",
+      "rate": "+0%"
+    },
+    {
+      "slug": "ten-phong",
+      "text": "Phong",
+      "voice": "VM",
+      "rate": "+0%"
+    },
+    {
+      "slug": "ten-duy",
+      "text": "Duy",
+      "voice": "VM",
+      "rate": "+0%"
+    },
+    {
+      "slug": "ten-an-son",
+      "text": "An Sơn",
+      "voice": "VF",
+      "rate": "+0%"
+    },
+    {
+      "slug": "ten-bac-ninh",
+      "text": "Bắc Ninh",
+      "voice": "VF",
+      "rate": "+0%"
+    }
+  ],
+  "giong_ten": {
+    "F": "VF",
+    "M": "VM"
+  }
+}

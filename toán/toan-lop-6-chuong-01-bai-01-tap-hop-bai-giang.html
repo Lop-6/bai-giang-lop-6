@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<!--
+  MẪU TRANG BÀI GIẢNG TOÁN 6 — tương tác, một file, chạy offline.
+
+  CÁCH DÙNG
+  1. Chép file này sang  bài giảng/toán/<slug>-bai-giang.html
+  2. Sửa <title>, <header>, các chip điều hướng.
+  3. Đổ nội dung vào các <section>. GIỮ NGUYÊN toàn bộ CSS và khối <script> engine.
+  4. Xoá hết các khối ví dụ đánh dấu "MẪU —" (chúng chỉ để tra cú pháp).
+  5. Chạy scripts/kiem_tra_bai_giang_toan.py, rồi scripts/chup_anh_trang.py để soi mắt thường.
+
+  KHÔNG sửa CSS/JS cho một bài riêng lẻ. Cần sửa thì sửa chính file mẫu này, để mọi bài
+  giảng Toán về sau đồng nhất. JS riêng của một bài (hình minh hoạ một lần dùng) đặt trong
+  khối <script> cuối trang có ghi chú "JS RIÊNG CỦA BÀI".
+
+  ─────────────────────────── BỘ KHỐI TƯƠNG TÁC (khai báo bằng data-*) ───────────────────────────
+  Mọi hoạt động nằm trong  <div class="act" data-act="tên-ngắn">…</div>  — engine tự đếm tiến độ.
+
+   data-venn     sơ đồ Venn bấm được          <g class="el" data-v="4" data-in="1">
+   data-lab      bàn thử kéo–thả vào/ra tập   data-items / data-answer / data-hint-sai
+   data-t2       công tắc hai cách trình bày  data-t2-btn / data-t2-pane / data-t2-note
+   data-picks    chọn phần tử từ dải số       chứa nhiều data-pick, engine tự thêm nút Kiểm tra
+   data-mcq      chọn một kí hiệu (∈ / ∉ …)   data-options / data-answer / data-fb-sai
+   data-uniq     xếp tập từ một từ (bẫy lặp)  data-word
+   data-collect  gom phần tử thành tập (nháp) data-items="khoá|nhãn"
+   data-strip    dải số ℕ / ℕ*                data-from / data-to  + nút data-strip-set
+   data-numline  trục số (có thể bấm chọn)    data-from / data-to / data-mark / data-answer
+   data-fill     ô điền đáp số                data-answer (nhiều đáp án ngăn bởi "|")
+   data-steps    lời giải hiện dần từng bước  mỗi bước một data-step
+   data-reveal   nút mở khối chữa bài         trỏ tới #id của .reveal
+   data-hint     nút mở gợi ý                 trỏ tới #id của .hint
+
+  Cú pháp đầy đủ + ví dụ: references/bo-khoi-tuong-tac.md
+  Luật số học Việt Nam (dấu ; trong tập hợp, dấu phẩy thập phân): references/kinh-nghiem-svg-va-hoat-anh.md
+-->
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 1. Tập hợp — Bài giảng tương tác Toán 6 (Kết nối tri thức)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
+    --line:#e3e7f0; --brand:#2f6fdb; --brand-soft:#e8f0ff;
+    --warm:#f59e0b; --warm-soft:#fff6e5; --green:#0f9d76; --green-soft:#e6f7f1;
+    --red:#d64545; --red-soft:#fdeceb; --purple:#7c5cd6; --purple-soft:#f1ecff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:120px}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,Arial,sans-serif;
+    font-size:17px; line-height:1.65;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 16px 80px}
+
+  header.top{background:linear-gradient(135deg,#2f6fdb,#6a4fd8); color:#fff; padding:26px 16px 22px}
+  header.top .wrap{padding-bottom:0}
+  header.top h1{margin:0 0 4px; font-size:30px; letter-spacing:.3px}
+  header.top .sub{opacity:.92; font-size:15px; margin:0}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px; border-radius:999px; font-size:13px; margin:8px 6px 0 0}
+
+  .toolbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line)}
+  .toolbar .wrap{padding-top:10px; padding-bottom:10px; display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .chip{display:inline-block; padding:5px 11px; border-radius:999px; font-size:14px;
+    background:#eef1f7; color:#3a4152; text-decoration:none; border:1px solid transparent}
+  .chip:hover{background:var(--brand-soft); border-color:#c8dbff; color:var(--brand)}
+  .spacer{flex:1}
+  .tbtn{font:inherit; font-size:14px; padding:5px 11px; border-radius:999px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--muted)}
+  .tbtn:hover{border-color:#c8dbff; color:var(--brand)}
+  .progress{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+  .progress .track{width:110px; height:7px; border-radius:99px; background:#e7ebf3; overflow:hidden}
+  .progress .track i{display:block; height:100%; width:0; background:var(--green); transition:width .4s}
+
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:20px 0; box-shadow:0 1px 2px rgba(20,30,60,.04)}
+  h2{font-size:22px; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:18px; margin:22px 0 8px; color:#243049}
+  h4{font-size:16px; margin:16px 0 6px; color:#37405a}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 20px; padding:0}
+  li{margin:4px 0}
+  table{border-collapse:collapse; width:100%; margin:10px 0; font-size:16px}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top}
+  th{background:#f2f5fb; font-weight:600}
+
+  /* ----- kí hiệu toán (Unicode, KHÔNG dùng MathJax/KaTeX) ----- */
+  .m{font-family:"Cambria Math","Latin Modern Math","Times New Roman",Georgia,serif; font-size:1.06em}
+  .m i{font-style:italic}
+  .op{color:var(--brand); font-weight:700; padding:0 2px}
+  .op.no{color:var(--red)}
+  .setline{font-family:"Cambria Math","Times New Roman",Georgia,serif; font-size:21px;
+    text-align:center; margin:12px 0; letter-spacing:.3px}
+  .nn{font-weight:700}
+  .frac{display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center;
+    font-size:.92em; line-height:1.15; margin:0 3px}
+  .frac b{border-bottom:1.6px solid currentColor; padding:0 5px; font-weight:400}
+  .frac span{padding:0 5px}
+
+  /* ----- khối nội dung ----- */
+  .box{border-left:5px solid var(--brand); background:#f8faff; border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:14px 0}
+  .box.key{border-left-color:var(--warm); background:var(--warm-soft)}
+  .box.tip{border-left-color:var(--green); background:var(--green-soft)}
+  .box.warn{border-left-color:var(--red); background:var(--red-soft)}
+  .box.quote{border-left-color:var(--purple); background:var(--purple-soft)}
+  .box .label{font-weight:700; display:block; margin-bottom:4px}
+  .box p:first-child{margin-top:0} .box p:last-child{margin-bottom:0}
+  .say-pi{display:flex; gap:10px; align-items:flex-start; background:var(--purple-soft);
+    border:1px solid #ddd2ff; border-radius:12px; padding:10px 14px; margin:12px 0}
+  .say-pi .who{font-weight:700; color:var(--purple); white-space:nowrap}
+  .muted{color:var(--muted)} .small{font-size:15px}
+  .x{color:var(--red); font-weight:700} .ok{color:var(--green); font-weight:700}
+  .hide{display:none !important}
+
+  /* ----- hoạt động ----- */
+  .act{border:1px solid #cddcf7; background:#fbfcff; border-radius:12px; padding:14px 16px; margin:16px 0}
+  .act > h4{margin-top:0; color:var(--brand); display:flex; align-items:center; gap:8px}
+  .act > h4 .tag{font-size:12px; background:var(--brand); color:#fff; border-radius:999px;
+    padding:2px 9px; font-weight:600; letter-spacing:.3px}
+  .act.done{border-color:#b8e5d7; background:#f7fdfb}
+  .act.done > h4 .tag{background:var(--green)}
+  .btn{font:inherit; font-size:15px; cursor:pointer; border-radius:999px; padding:6px 14px;
+    border:1px solid #c8dbff; background:var(--brand-soft); color:var(--brand); margin:3px 4px 3px 0}
+  .btn:hover{background:#d8e6ff}
+  .btn:active{transform:scale(.97)}
+  .btn.go{background:var(--green-soft); border-color:#b8e5d7; color:#0b7a5c; font-weight:600}
+  .btn.go:hover{background:#d2f0e6}
+  .btn.ghost{background:#fff; border-color:var(--line); color:var(--muted)}
+  .btn.ghost:hover{background:#f3f6fc; color:var(--brand)}
+  .fb{margin-top:10px; padding:10px 14px; border-radius:10px; font-size:16px; display:none}
+  .fb.show{display:block}
+  .fb.good{background:var(--green-soft); border:1px solid #b8e5d7; color:#0b6b52}
+  .fb.bad{background:var(--warm-soft); border:1px solid #f3d79a; color:#8a5a06}
+  .reveal{display:none; margin-top:12px; border-top:1px dashed var(--line); padding-top:12px}
+  .reveal.open{display:block; animation:fadein .3s ease}
+  @keyframes fadein{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
+  .hint{display:none; margin-top:8px; padding:9px 13px; border-left:4px solid var(--warm);
+    background:var(--warm-soft); border-radius:0 8px 8px 0; font-size:16px}
+  .hint.open{display:block; animation:fadein .25s ease}
+
+  /* ----- chip số / chữ ----- */
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0}
+  .num{font:inherit; font-size:18px; cursor:pointer; min-width:46px; height:46px; padding:0 8px;
+    border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--ink); transition:.15s}
+  .num:hover{border-color:var(--brand); color:var(--brand)}
+  .num.on{background:var(--brand); border-color:var(--brand); color:#fff; font-weight:700}
+  .let{font:inherit; font-size:20px; font-weight:700; cursor:pointer; width:44px; height:48px;
+    border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--ink); transition:.15s}
+  .let:hover{border-color:var(--brand)}
+  .let.on{background:var(--green); border-color:var(--green); color:#fff}
+  .let.dup{background:var(--red-soft); border-color:var(--red); color:var(--red); animation:shake .3s}
+  @keyframes shake{25%{transform:translateX(-4px)} 75%{transform:translateX(4px)}}
+  .gap{width:18px}
+  .pchip{font:inherit; font-size:15px; cursor:pointer; border-radius:999px; padding:6px 13px;
+    border:1px solid var(--line); background:#fff; margin:3px 4px 3px 0}
+  .pchip:hover{border-color:var(--brand); color:var(--brand)}
+  .pchip.on{background:#1b2440; border-color:#1b2440; color:#fff}
+
+  /* ----- hình SVG ----- */
+  figure{margin:16px 0; text-align:center}
+  figcaption{font-size:14px; color:var(--muted); margin-top:6px}
+  svg{max-width:100%; height:auto}
+  .fig2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:640px){.fig2{grid-template-columns:1fr}}
+  .figcard{border:1px solid var(--line); border-radius:12px; background:#fbfcff; padding:8px}
+  .el{cursor:pointer}
+  .bg{fill:#fff; stroke:var(--line); stroke-width:1.5; transition:.15s}
+  .tx{font:700 21px "Segoe UI",sans-serif; fill:var(--ink); text-anchor:middle; dominant-baseline:central}
+  .el:hover .bg{fill:var(--brand-soft); stroke:var(--brand)}
+  .el.pick .bg{fill:var(--brand); stroke:var(--brand)}
+  .el.pick .tx{fill:#fff}
+  .el:focus{outline:none}
+  .el:focus .bg{stroke:var(--purple); stroke-width:3}
+  .ring-svg{fill:#eef4ff; stroke:var(--brand); stroke-width:2.5}
+  .ring-lbl{font:italic 700 24px Georgia,serif; fill:var(--brand)}
+  .draw{stroke-dasharray:1200; stroke-dashoffset:1200; animation:draw 1.6s ease .2s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .spin{transform-box:view-box; animation:spin var(--dur,12s) linear infinite; animation-delay:var(--del,0s)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .lit{stroke:#fff; stroke-width:3; filter:drop-shadow(0 0 6px #fff)}
+  .float{transform-box:fill-box; transform-origin:50% 100%;
+    animation:sway 3.4s ease-in-out infinite alternate; animation-delay:var(--d,0s)}
+  @keyframes sway{from{transform:rotate(-3.5deg)} to{transform:rotate(3.5deg)}}
+
+  /* ----- bàn thử kéo–thả ----- */
+  .lab{position:relative; height:320px; border:1px solid var(--line); border-radius:12px;
+    background:linear-gradient(#fbfcff,#f4f7fd); margin:12px 0; overflow:hidden; touch-action:none}
+  .lab .ring{position:absolute; left:4%; top:8%; width:58%; height:84%; border:3px dashed var(--brand);
+    border-radius:50%; background:rgba(47,111,219,.06)}
+  .lab .ring b{position:absolute; left:8px; top:4px; font:italic 700 26px Georgia,serif; color:var(--brand)}
+  .lab .outside{position:absolute; right:2%; top:8%; width:32%; height:84%; border:1px dashed var(--line);
+    border-radius:12px; color:var(--muted); font-size:13px; text-align:center; padding-top:6px}
+  .tok{position:absolute; min-width:52px; height:52px; padding:0 6px; margin:0; border-radius:26px;
+    cursor:grab; border:2px solid var(--brand); background:#fff; color:var(--ink);
+    font:700 21px "Segoe UI",sans-serif; transform:translate(-50%,-50%);
+    transition:left .35s cubic-bezier(.2,.9,.3,1.2), top .35s cubic-bezier(.2,.9,.3,1.2), box-shadow .15s;
+    box-shadow:0 2px 5px rgba(30,50,90,.12); user-select:none; touch-action:none; z-index:2}
+  .tok.in{border-color:var(--green); background:var(--green-soft); color:#0b6b52}
+  .tok.drag{cursor:grabbing; transition:none; box-shadow:0 8px 18px rgba(30,50,90,.28); z-index:9}
+  .tok:focus-visible{outline:3px solid var(--purple); outline-offset:2px}
+  .labout{font-family:"Cambria Math","Times New Roman",Georgia,serif; font-size:19px;
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 14px; min-height:52px}
+
+  /* ----- dải số / trục số ----- */
+  .strip{display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin:12px 0}
+  .strip .s{min-width:42px; height:42px; padding:0 6px; border-radius:10px; border:1px solid var(--line);
+    background:#fff; display:flex; align-items:center; justify-content:center; font-size:17px; transition:.25s}
+  .strip .s.on{background:var(--brand); border-color:var(--brand); color:#fff; font-weight:700}
+  .strip .s.off{opacity:.3; text-decoration:line-through}
+  .strip .dots{font-size:22px; color:var(--muted); letter-spacing:2px}
+  .numline{margin:14px 0}
+  .numline .axis{stroke:var(--ink); stroke-width:2}
+  .numline .tick{stroke:var(--muted); stroke-width:1.5}
+  .numline .lbl{font:15px "Segoe UI",sans-serif; fill:var(--muted); text-anchor:middle}
+  .numline .pt{fill:#fff; stroke:var(--brand); stroke-width:2; cursor:pointer; transition:.15s}
+  .numline .pt.on{fill:var(--brand)}
+  .numline .pt.fixed{fill:var(--red); stroke:var(--red); cursor:default}
+
+  /* ----- ô điền, lời giải từng bước ----- */
+  .fillbox{display:inline-flex; align-items:center; gap:6px}
+  .fillbox input{font:inherit; padding:6px 10px; border:1px solid var(--line); border-radius:9px;
+    background:#fff; color:var(--ink); width:120px; text-align:center}
+  .fillbox .mark{font-size:19px; min-width:18px}
+  .step{border-left:4px solid var(--brand-soft); background:#fff; border-radius:0 10px 10px 0;
+    padding:8px 14px; margin:8px 0}
+  input[type=text]{font:inherit; padding:7px 11px; border:1px solid var(--line); border-radius:9px;
+    background:#fff; color:var(--ink); min-width:170px}
+  input[type=range]{width:min(360px,90%)}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .pane{border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#fff}
+  .pane h5{margin:0 0 6px; font-size:16px; color:var(--brand)}
+  .ex{background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:14px 0}
+  .ex .no{font-weight:700; color:var(--brand); margin-right:6px}
+
+  footer{color:var(--muted); font-size:14px; margin-top:26px; padding-top:14px; border-top:1px solid var(--line)}
+  .kbd{font:13px ui-monospace,Consolas,monospace; background:#eef1f7; border:1px solid var(--line);
+    border-radius:6px; padding:1px 6px}
+
+  body.no-motion *{animation:none !important; transition:none !important}
+  @media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+  @media print{
+    .toolbar,.btn,.tbtn{display:none}
+    .reveal,.hint{display:block} section{break-inside:avoid; box-shadow:none}
+  }
+</style>
+
+<!-- CSS RIÊNG CỦA BÀI — chỉ dùng cho hoạt ảnh của hình minh hoạ riêng bài này
+     (cá bơi, bong bóng, quầng sáng…). Thứ gì dùng lại được thì đưa vào CSS chung ở trên. -->
+<style>
+  /* cá bơi trong bình (Hình 1.2) */
+  .fish{transform-box:fill-box; transform-origin:50% 50%; animation:swim var(--sd,8s) ease-in-out infinite;
+    animation-delay:var(--d,0s)}
+  @keyframes swim{
+    0%{transform:translateX(0) scaleX(1)} 44%{transform:translateX(var(--dx,86px)) scaleX(1)}
+    50%{transform:translateX(var(--dx,86px)) scaleX(-1)} 94%{transform:translateX(0) scaleX(-1)}
+    100%{transform:translateX(0) scaleX(1)}}
+  .bub{animation:rise var(--bd,4s) linear infinite; animation-delay:var(--d,0s); opacity:0}
+  @keyframes rise{0%{transform:translateY(0); opacity:0} 15%{opacity:.75}
+    100%{transform:translateY(-78px); opacity:0}}
+  /* quầng sáng Mặt Trời (Bài 1.5) */
+  .sun{animation:glow 2.6s ease-in-out infinite alternate}
+  @keyframes glow{from{opacity:1; r:40} to{opacity:.55; r:56}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>BÀI 1. TẬP HỢP</h1>
+    <p class="sub">Toán 6 · Chương I. Tập hợp các số tự nhiên · Kết nối tri thức với cuộc sống</p>
+    <span class="badge">Bài giảng tương tác</span>
+    <span class="badge">6 hoạt động bấm &amp; kéo được</span>
+    <span class="badge">Bài tập 1.1–1.5 chỉ có gợi ý, không có đáp án</span>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="wrap">
+    <a class="chip" href="#mo-dau">Mở đầu</a>
+    <a class="chip" href="#phan-tu">1. Tập hợp &amp; phần tử</a>
+    <a class="chip" href="#mo-ta">2. Mô tả tập hợp</a>
+    <a class="chip" href="#bai-tap">Bài tập</a>
+    <a class="chip" href="#em-co-biet">Em có biết?</a>
+    <a class="chip" href="#chot-bai">Chốt bài</a>
+    <span class="spacer"></span>
+    <span class="progress" data-progress><span class="track"><i></i></span><span class="txt"></span></span>
+    <button class="tbtn" data-motion aria-pressed="false">Tắt chuyển động</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<noscript>
+  <section class="box warn"><span class="label">Trang này cần bật JavaScript</span>
+  Các hoạt động bấm và kéo sẽ không chạy. Em đọc bản Markdown
+  <b>toan-lop-6-chuong-01-bai-01-tap-hop-bai-giang.md</b> thay thế nhé.</section>
+</noscript>
+
+<!-- ============================ MỞ ĐẦU ============================ -->
+<section id="mo-dau">
+  <h2>Mở đầu — hai bức tranh quen thuộc</h2>
+
+  <div class="fig2">
+    <figure class="figcard">
+      <svg viewBox="0 0 260 210" role="img" aria-label="Lọ hoa hồng, các bông hoa đung đưa nhẹ">
+        <defs><linearGradient id="vase" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#9fd2f7"/><stop offset="1" stop-color="#5aa9e6"/></linearGradient></defs>
+        <g class="float" style="--d:0s">
+          <path d="M70 128 C64 100 62 84 66 62" stroke="#3f9152" stroke-width="3.5" fill="none"/>
+          <path d="M66 96 C54 92 48 84 47 76 C58 77 64 84 66 96Z" fill="#4faa63"/>
+          <circle cx="66" cy="56" r="15" fill="#e0567f"/><circle cx="66" cy="56" r="9" fill="#f07ea0"/>
+          <circle cx="66" cy="56" r="4" fill="#ffd0dd"/>
+        </g>
+        <g class="float" style="--d:.45s">
+          <path d="M100 130 C98 104 98 80 100 48" stroke="#3f9152" stroke-width="3.5" fill="none"/>
+          <path d="M100 92 C112 88 118 80 119 72 C108 73 102 80 100 92Z" fill="#4faa63"/>
+          <circle cx="100" cy="42" r="17" fill="#d4426f"/><circle cx="100" cy="42" r="10" fill="#ec6f95"/>
+          <circle cx="100" cy="42" r="4" fill="#ffd0dd"/>
+        </g>
+        <g class="float" style="--d:.9s">
+          <path d="M130 128 C138 102 142 84 140 60" stroke="#3f9152" stroke-width="3.5" fill="none"/>
+          <path d="M138 98 C150 96 157 88 158 80 C147 80 140 87 138 98Z" fill="#4faa63"/>
+          <circle cx="140" cy="54" r="15" fill="#e0567f"/><circle cx="140" cy="54" r="9" fill="#f07ea0"/>
+          <circle cx="140" cy="54" r="4" fill="#ffd0dd"/>
+        </g>
+        <g class="float" style="--d:1.3s">
+          <path d="M158 130 C170 108 180 94 184 74" stroke="#3f9152" stroke-width="3.5" fill="none"/>
+          <circle cx="186" cy="68" r="13" fill="#c93a64"/><circle cx="186" cy="68" r="7.5" fill="#e8688e"/>
+          <circle cx="186" cy="68" r="3.5" fill="#ffd0dd"/>
+        </g>
+        <g class="float" style="--d:1.7s">
+          <path d="M112 130 C104 112 92 100 78 92" stroke="#3f9152" stroke-width="3" fill="none"/>
+          <circle cx="74" cy="88" r="11" fill="#e97ea0"/><circle cx="74" cy="88" r="5.5" fill="#ffc2d4"/>
+        </g>
+        <path d="M78 126 L182 126 L168 196 Q130 206 92 196 Z" fill="url(#vase)" stroke="#3a86c4" stroke-width="2"/>
+        <path d="M84 148 Q130 160 176 148" stroke="#ffffff" stroke-width="3" fill="none" opacity=".55"/>
+      </svg>
+      <figcaption><b>Hình 1.1.</b> <i>Tập hợp</i> gồm các bông hồng trong lọ hoa.</figcaption>
+    </figure>
+
+    <figure class="figcard">
+      <svg viewBox="0 0 260 210" role="img" aria-label="Bình cá với ba con cá vàng đang bơi">
+        <defs><clipPath id="bowl"><path d="M40 92 Q40 186 130 186 Q220 186 220 92 Q220 58 130 58 Q40 58 40 92Z"/></clipPath></defs>
+        <path d="M40 92 Q40 186 130 186 Q220 186 220 92 Q220 58 130 58 Q40 58 40 92Z" fill="#dff1fb" stroke="#7cc0e8" stroke-width="3"/>
+        <g clip-path="url(#bowl)">
+          <path d="M40 150 Q130 138 220 150 L220 190 L40 190Z" fill="#bfe4f7" opacity=".7"/>
+          <g class="fish" style="--d:0s; --sd:9s; --dx:96px">
+            <ellipse cx="72" cy="104" rx="20" ry="12" fill="#f5a524"/>
+            <path d="M52 104 L36 94 L36 114 Z" fill="#f2922f"/>
+            <circle cx="82" cy="100" r="2.8" fill="#26303f"/>
+          </g>
+          <g class="fish" style="--d:1.2s; --sd:11s; --dx:74px">
+            <ellipse cx="96" cy="146" rx="17" ry="10" fill="#fbbf4c"/>
+            <path d="M79 146 L65 138 L65 155 Z" fill="#f2a63a"/>
+            <circle cx="105" cy="143" r="2.4" fill="#26303f"/>
+          </g>
+          <g class="fish" style="--d:2.4s; --sd:8s; --dx:60px">
+            <ellipse cx="118" cy="78" rx="14" ry="8.5" fill="#ef8f2a"/>
+            <path d="M104 78 L92 71 L92 85 Z" fill="#e07f22"/>
+            <circle cx="125" cy="76" r="2.1" fill="#26303f"/>
+          </g>
+          <circle class="bub" style="--d:0s;--bd:4s" cx="168" cy="170" r="4" fill="#fff" opacity=".8"/>
+          <circle class="bub" style="--d:1.4s;--bd:5s" cx="180" cy="176" r="3" fill="#fff" opacity=".8"/>
+          <circle class="bub" style="--d:2.6s;--bd:4.5s" cx="158" cy="180" r="2.5" fill="#fff" opacity=".8"/>
+          <path d="M196 186 q-8 -34 4 -56 q8 22 -4 56Z" fill="#59b06f" opacity=".75"/>
+          <path d="M206 186 q-4 -26 8 -42 q4 20 -8 42Z" fill="#4c9a61" opacity=".75"/>
+          <ellipse cx="130" cy="188" rx="86" ry="9" fill="#e8d4a8"/>
+        </g>
+      </svg>
+      <figcaption><b>Hình 1.2.</b> <i>Tập hợp</i> gồm ba con cá vàng trong bình.</figcaption>
+    </figure>
+  </div>
+
+  <div class="act" data-act="mo-dau">
+    <h4><span class="tag">SUY NGHĨ</span> Câu hỏi mở đầu</h4>
+    <p>Một lọ hoa hồng và một bình cá vàng — hai thứ chẳng liên quan gì tới nhau. Vậy mà sách
+    lại gọi cả hai bằng <b>cùng một từ</b>. Theo em, từ đó đang chỉ điều gì chung giữa hai bức tranh?</p>
+    <p class="muted small">Em nghĩ khoảng 30 giây, nói thành lời, rồi mới bấm nút.</p>
+    <button class="btn" data-reveal="#rv-modau" data-open="Em nghĩ xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em nghĩ xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-modau">
+      <p>Điểm chung: cả hai đều là <b>một nhóm những vật được gom lại với nhau</b>, và với mỗi
+      vật ta luôn trả lời được câu hỏi <i>"nó có ở trong nhóm này không?"</i>.</p>
+      <p>Bông hồng thứ tư — <b>có</b> trong lọ. Con mèo ngoài sân — <b>không có</b> trong bình cá.
+      Chỉ cần như thế là đã có một <b>tập hợp</b>.</p>
+      <p class="muted">Bài này sẽ giúp em tìm hiểu về tập hợp, <b>một khái niệm cơ bản của Toán học</b>.</p>
+    </div>
+  </div>
+
+  <div class="box tip"><span class="label">Mục tiêu của bài</span>
+    Hết bài, em phải làm được ba việc: <b>chỉ ra</b> đâu là tập hợp và đâu là phần tử,
+    <b>viết</b> được <span class="op">∈</span> / <span class="op no">∉</span> cho đúng,
+    và <b>mô tả</b> một tập hợp bằng <b>hai cách</b>.
+  </div>
+</section>
+
+<!-- ==================== 1. TẬP HỢP VÀ PHẦN TỬ ==================== -->
+<section id="phan-tu">
+  <h2>1. Tập hợp và phần tử của tập hợp</h2>
+
+  <p>SGK nêu bốn ví dụ:</p>
+  <ul>
+    <li>Trên Hình 1.1 ta có tập hợp các bông hồng trong lọ hoa.</li>
+    <li>Trên Hình 1.2 ta có tập hợp các con cá vàng trong bình cá.</li>
+    <li>Hình 1.3 biểu diễn tập hợp gồm các số 4; 1; 9 và 8. Nếu kí hiệu <span class="m"><i>M</i></span>
+        là tập hợp này thì các số 4; 1; 9 và 8 là các <b>phần tử</b> của tập hợp
+        <span class="m"><i>M</i></span>.</li>
+    <li>Gọi <span class="m"><i>B</i></span> là tập hợp các chữ cái viết thường trong tiếng Việt.
+        Khi đó <span class="m"><i>a</i>, <i>b</i>, <i>c</i>, …</span> là những phần tử của tập hợp
+        <span class="m"><i>B</i></span>.</li>
+  </ul>
+
+  <div class="act" data-act="hinh-1-3">
+    <h4><span class="tag">HOẠT ĐỘNG 1</span> Hình 1.3 — bấm vào từng số</h4>
+    <p>Bấm lần lượt vào các số trong hình. Trang sẽ viết ra câu tương ứng.
+    <span class="muted small">(Dùng phím <span class="kbd">Tab</span> và <span class="kbd">Enter</span> cũng được.)</span></p>
+    <figure data-venn data-set="M">
+      <svg viewBox="0 0 420 240" role="group" aria-label="Sơ đồ Venn tập hợp M">
+        <ellipse class="ring-svg draw" cx="170" cy="120" rx="140" ry="98"/>
+        <text class="ring-lbl" x="46" y="48">M</text>
+        <g class="el" data-v="4" data-in="1" tabindex="0" role="button" aria-label="số 4">
+          <circle class="bg" cx="108" cy="86" r="26"/><text class="tx" x="108" y="86">4</text></g>
+        <g class="el" data-v="1" data-in="1" tabindex="0" role="button" aria-label="số 1">
+          <circle class="bg" cx="196" cy="72" r="26"/><text class="tx" x="196" y="72">1</text></g>
+        <g class="el" data-v="9" data-in="1" tabindex="0" role="button" aria-label="số 9">
+          <circle class="bg" cx="118" cy="168" r="26"/><text class="tx" x="118" y="168">9</text></g>
+        <g class="el" data-v="8" data-in="1" tabindex="0" role="button" aria-label="số 8">
+          <circle class="bg" cx="220" cy="158" r="26"/><text class="tx" x="220" y="158">8</text></g>
+        <g class="el" data-v="7" data-in="0" tabindex="0" role="button" aria-label="số 7 nằm ngoài">
+          <circle class="bg" cx="372" cy="120" r="26"/><text class="tx" x="372" y="120">7</text></g>
+      </svg>
+      <figcaption><b>Hình 1.3.</b> Tập hợp <span class="m"><i>M</i></span> — số 7 nằm <b>bên ngoài</b> vòng.</figcaption>
+    </figure>
+    <div class="labout" data-venn-out>Em bấm một số đi…</div>
+  </div>
+
+  <div class="box key"><span class="label">📌 Kiến thức trọng tâm (nguyên văn SGK)</span>
+    <p>Một <b>tập hợp</b> (gọi tắt là <b>tập</b>) bao gồm những đối tượng nhất định.
+    Các đối tượng ấy được gọi là những <b>phần tử</b> của tập hợp.</p>
+    <ul>
+      <li><span class="m"><i>x</i></span> <i>là một phần tử</i> của tập <span class="m"><i>A</i></span>,
+        kí hiệu là <span class="m"><i>x</i> <span class="op">∈</span> <i>A</i></span>
+        (đọc là <i>x thuộc A</i>).</li>
+      <li><span class="m"><i>y</i></span> <i><b>không</b> là phần tử</i> của tập <span class="m"><i>A</i></span>,
+        kí hiệu là <span class="m"><i>y</i> <span class="op no">∉</span> <i>A</i></span>
+        (đọc là <i>y không thuộc A</i>).</li>
+    </ul>
+  </div>
+
+  <p><b>Cô nói lại bằng lời thường:</b> tập hợp là <b>một nhóm đồ</b>, mỗi món trong nhóm là
+  <b>một phần tử</b>. Kí hiệu <span class="op">∈</span> chỉ là cách viết tắt của chữ
+  <i>"nằm trong"</i>. Gạch chéo lên nó — <span class="op no">∉</span> — thành <i>"không nằm trong"</i>.</p>
+
+  <p><b>Chú ý.</b> Khi <span class="m"><i>x</i></span> thuộc <span class="m"><i>A</i></span>,
+  ta còn nói "<span class="m"><i>x</i></span> nằm trong <span class="m"><i>A</i></span>",
+  hay "<span class="m"><i>A</i></span> chứa <span class="m"><i>x</i></span>".</p>
+
+  <div class="say-pi"><span class="who">💬 Pi:</span>
+    <span>Người ta thường đặt tên tập hợp bằng chữ cái in hoa.</span></div>
+  <p class="small muted">Lời của Pi nhỏ thôi nhưng là <b>luật</b>: viết
+  <span class="m"><i>m</i> = {1; 2}</span> là sai quy ước, phải viết
+  <span class="m"><i>M</i> = {1; 2}</span>.</p>
+
+  <h3>Ví dụ (SGK)</h3>
+  <p>Với tập hợp <span class="m"><i>M</i></span> trên Hình 1.3, ta có</p>
+  <p class="setline">4 <span class="op">∈</span> <i>M</i>,&nbsp;&nbsp; 1 <span class="op">∈</span> <i>M</i>,&nbsp;&nbsp;
+     7 <span class="op no">∉</span> <i>M</i>.</p>
+  <p>Đọc thành lời: <i>"4 thuộc M, 1 thuộc M, 7 không thuộc M"</i>. Để ý hai chuyện nhỏ mà quan trọng:</p>
+  <ol>
+    <li>Kí hiệu <span class="op">∈</span> <b>luôn nối một phần tử với một tập hợp</b> — bên trái là đồ,
+      bên phải là nhóm. Không bao giờ viết <span class="m"><i>M</i> <span class="op">∈</span> 4</span>.</li>
+    <li>Số 7 <b>vẫn được vẽ trong hình</b>, nhưng nó nằm <b>ngoài</b> vòng.
+      Có mặt trong hình không có nghĩa là thuộc tập hợp.</li>
+  </ol>
+
+  <div class="act" data-act="ban-thu">
+    <h4><span class="tag">HOẠT ĐỘNG 2</span> Bàn thử — kéo số vào trong hoặc ra ngoài</h4>
+    <p><b>Việc của em:</b> dựng lại đúng Hình 1.3 — đưa 4; 1; 9; 8 vào trong vòng
+    <span class="m"><i>M</i></span> và để số 7 ở ngoài.</p>
+    <p class="muted small">Kéo bằng chuột/ngón tay, hoặc <b>bấm</b> vào số để nó tự nhảy vào – nhảy ra.</p>
+    <div data-lab data-set="M" data-items="4;1;9;8;7" data-answer="4;1;9;8"
+         data-hint-sai='{"7":"Số 7 đang nằm &lt;b&gt;trong&lt;/b&gt; vòng. Em xem lại Hình 1.3: số 7 ở đâu so với vòng M?"}'
+         data-ok="Chính xác! Em vừa dựng lại đúng Hình 1.3 — thứ tự liệt kê không quan trọng, nhóm số bên trong mới quan trọng."></div>
+  </div>
+
+  <h3>Luyện tập 1 (SGK)</h3>
+  <div class="act">
+    <h4><span class="tag">VIẾT VÀO VỞ</span> Luyện tập 1</h4>
+    <p>Gọi <span class="m"><i>B</i></span> là tập hợp các bạn tổ trưởng trong lớp em.
+    Em hãy chỉ ra một bạn <b>thuộc</b> tập <span class="m"><i>B</i></span> và một bạn
+    <b>không thuộc</b> tập <span class="m"><i>B</i></span>.</p>
+    <p class="small">Bài này không có đáp án chung — mỗi lớp một khác. Em điền thử vào đây cho quen kí hiệu:</p>
+    <p class="m" style="font-size:19px">
+      <input type="text" id="lt1a" placeholder="tên một bạn tổ trưởng" aria-label="bạn thuộc B">
+      <span class="op">∈</span> <i>B</i> &nbsp;;&nbsp;
+      <input type="text" id="lt1b" placeholder="tên một bạn không phải tổ trưởng" aria-label="bạn không thuộc B">
+      <span class="op no">∉</span> <i>B</i>
+    </p>
+    <div class="box"><b>❓ Câu hỏi phụ đáng nghĩ:</b> nếu cô đổi đề thành <i>"tập hợp các bạn
+      <b>học giỏi</b> trong lớp em"</i> thì có còn là một tập hợp <b>xác định rõ</b> không? Vì sao?
+      <br><span class="muted small">Gợi ý: thử hỏi "bạn Nam có thuộc tập đó không?" — hai người sẽ
+      trả lời giống nhau hay khác nhau?</span></div>
+  </div>
+</section>
+
+<!-- ==================== 2. MÔ TẢ MỘT TẬP HỢP ==================== -->
+<section id="mo-ta">
+  <h2>2. Mô tả một tập hợp</h2>
+
+  <p>Mô tả một tập hợp là <b>cho biết cách xác định các phần tử</b> của tập hợp đó.
+  Ta thường dùng <b>hai cách</b> sau.</p>
+
+  <div class="box key"><span class="label">📌 Hai cách mô tả (nguyên văn SGK)</span>
+    <p><b>Cách 1.</b> <i>Liệt kê các phần tử của tập hợp</i>, tức là viết các phần tử của tập hợp
+    trong dấu ngoặc { } <i>theo thứ tự tuỳ ý</i> nhưng <i><b>mỗi phần tử chỉ được viết một lần</b></i>.</p>
+    <p><b>Cách 2.</b> <i>Nêu dấu hiệu đặc trưng cho các phần tử của tập hợp.</i></p>
+  </div>
+
+  <div class="act" data-act="hai-cach">
+    <h4><span class="tag">HOẠT ĐỘNG 3</span> Hình 1.4 — cùng một tập <span class="m"><i>P</i></span>, hai cách viết</h4>
+    <figure>
+      <svg viewBox="0 0 420 200" role="img" aria-label="Tập hợp P gồm các số 0 đến 5">
+        <ellipse class="ring-svg draw" cx="210" cy="100" rx="185" ry="82"/>
+        <text class="ring-lbl" x="34" y="36">P</text>
+        <g><circle class="bg" cx="90"  cy="72" r="24"/><text class="tx" x="90"  y="72">0</text></g>
+        <g><circle class="bg" cx="160" cy="58" r="24"/><text class="tx" x="160" y="58">1</text></g>
+        <g><circle class="bg" cx="235" cy="64" r="24"/><text class="tx" x="235" y="64">2</text></g>
+        <g><circle class="bg" cx="310" cy="82" r="24"/><text class="tx" x="310" y="82">3</text></g>
+        <g><circle class="bg" cx="130" cy="140" r="24"/><text class="tx" x="130" y="140">4</text></g>
+        <g><circle class="bg" cx="250" cy="142" r="24"/><text class="tx" x="250" y="142">5</text></g>
+      </svg>
+      <figcaption><b>Hình 1.4.</b> Tập hợp <span class="m"><i>P</i></span>.</figcaption>
+    </figure>
+    <p>Bấm công tắc để đổi cách viết. <b>Nhìn kĩ:</b> chữ đổi, còn nhóm số bên trong vòng
+    <b>không đổi một chút nào</b>.</p>
+    <div data-t2>
+      <button class="btn" data-t2-btn="0">Cách 1 — Liệt kê</button>
+      <button class="btn ghost" data-t2-btn="1">Cách 2 — Dấu hiệu đặc trưng</button>
+      <div class="setline" data-t2-empty><span class="muted small">Bấm một trong hai nút ở trên…</span></div>
+      <div class="setline hide" data-t2-pane="0"><i>P</i> = {0; 1; 2; 3; 4; 5}</div>
+      <div class="setline hide" data-t2-pane="1"><i>P</i> = {<i>n</i> | <i>n</i> là số tự nhiên nhỏ hơn 6}</div>
+      <p class="muted small hide" data-t2-note="0"><b>Cách 1 — liệt kê.</b> Viết từng phần tử,
+        ngăn nhau bởi dấu ";", thứ tự tuỳ ý, mỗi phần tử chỉ một lần.</p>
+      <p class="muted small hide" data-t2-note="1"><b>Cách 2 — dấu hiệu đặc trưng.</b> Không viết
+        số nào cả, chỉ nêu <b>điều kiện</b> để một số được vào tập. Cách này mới viết nổi những
+        tập rất nhiều phần tử.</p>
+    </div>
+  </div>
+
+  <div class="say-pi"><span class="who">💬 Pi:</span>
+    <span>Ta viết các phần tử của một tập hợp cách nhau bởi dấu ";".</span></div>
+
+  <table>
+    <tr><th></th><th>Cách 1 — Liệt kê</th><th>Cách 2 — Dấu hiệu đặc trưng</th></tr>
+    <tr><td>Viết ra</td><td>Từng phần tử một</td><td>Một điều kiện chung</td></tr>
+    <tr><td>Hợp khi</td><td>Ít phần tử</td><td>Nhiều phần tử, hoặc vô số</td></tr>
+    <tr><td>Ví dụ</td><td class="m">{0; 1; 2; 3; 4; 5}</td>
+        <td class="m">{<i>n</i> | <i>n</i> là số tự nhiên nhỏ hơn 6}</td></tr>
+  </table>
+
+  <h3>❓ Câu hỏi (SGK) — cái bẫy kinh điển</h3>
+  <p>Khi mô tả tập hợp <span class="m"><i>L</i></span> các chữ cái trong từ <b>NHA TRANG</b>
+  bằng cách liệt kê các phần tử, bạn Nam viết:</p>
+  <p class="setline"><i>L</i> = {N; H; A; T; R; A; N; G}.</p>
+  <p>Theo em, bạn Nam viết <b>đúng</b> hay <b>sai</b>?</p>
+
+  <div class="act" data-act="nha-trang">
+    <h4><span class="tag">HOẠT ĐỘNG 4</span> Tự xếp tập <span class="m"><i>L</i></span></h4>
+    <p>Bấm lần lượt từng chữ của từ NHA TRANG để đưa vào tập <span class="m"><i>L</i></span>.
+    Bấm hết cả 8 chữ xem chuyện gì xảy ra.</p>
+    <div data-uniq data-word="NHA TRANG" data-name="L"></div>
+    <button class="btn" data-reveal="#rv-nt" data-open="Em trả lời xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em trả lời xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-nt">
+      <p>Bạn Nam viết <b class="x">sai</b>.</p>
+      <p>Từ NHA TRANG có 8 chữ cái, nhưng chữ <b>A</b> xuất hiện 2 lần và chữ <b>N</b> cũng
+      xuất hiện 2 lần. Quy tắc của Cách 1 nói rõ: <i>mỗi phần tử chỉ được viết một lần</i>. Viết đúng là</p>
+      <p class="setline"><i>L</i> = {N; H; A; T; R; G}.</p>
+      <p>Tập <span class="m"><i>L</i></span> có <b>6 phần tử</b>, không phải 8.</p>
+      <p><b>Vì sao lại có quy tắc đó?</b> Vì tập hợp chỉ trả lời câu hỏi <i>"có ở trong nhóm hay không"</i>.
+      Chữ A <b>có</b> trong từ NHA TRANG — thế là xong, viết một lần là đủ.
+      Viết A hai lần không nói thêm được điều gì mới.</p>
+    </div>
+  </div>
+
+  <h3>Chú ý (SGK) — tập ℕ và ℕ<sup>*</sup></h3>
+  <div class="box">
+    <p><b>❶</b> Gọi <b class="nn">ℕ</b> là tập hợp gồm các số tự nhiên 0; 1; 2; 3; … Ta có thể viết
+      <span class="m">ℕ = {0; 1; 2; 3; …}</span>.</p>
+    <p><b>❷</b> Ta viết <span class="m"><i>n</i> <span class="op">∈</span> ℕ</span> có nghĩa
+      <span class="m"><i>n</i></span> là một số tự nhiên. Chẳng hạn, tập <span class="m"><i>P</i></span>
+      các số tự nhiên nhỏ hơn 6 có thể viết là
+      <span class="m">{<i>n</i> | <i>n</i> <span class="op">∈</span> ℕ, <i>n</i> &lt; 6}</span> hoặc
+      <span class="m">{<i>n</i> <span class="op">∈</span> ℕ | <i>n</i> &lt; 6}</span>.</p>
+    <p><b>❸</b> Ta còn dùng kí hiệu <b class="nn">ℕ<sup>*</sup></b> để chỉ tập hợp các số tự nhiên
+      <b>khác 0</b>, nghĩa là <span class="m">ℕ<sup>*</sup> = {1; 2; 3; …}</span>.</p>
+  </div>
+
+  <p>Bấm để so sánh hai tập:</p>
+  <p>
+    <button class="btn" data-strip-set="#strip-n" data-off=""
+            data-note="<b>ℕ</b> = {0; 1; 2; 3; …} — <b>có</b> số 0, và là tập <b>vô hạn</b>.">Xem ℕ</button>
+    <button class="btn ghost" data-strip-set="#strip-n" data-off="0"
+            data-note="<b>ℕ*</b> = {1; 2; 3; …} — số 0 bị gạch đi. Dấu sao <sup>*</sup> chính là chỗ số 0 bị lấy đi.">Xem ℕ*</button>
+  </p>
+  <div id="strip-n" data-strip data-from="0" data-to="8" data-dots="1"></div>
+  <p class="muted small" data-strip-note="#strip-n">ℕ <b>có</b> số 0, ℕ<sup>*</sup> <b>không có</b> số 0.</p>
+
+  <div class="act" data-act="luyen-tap-2">
+    <h4><span class="tag">HOẠT ĐỘNG 5</span> Luyện tập 2 (SGK)</h4>
+    <p>Viết các tập hợp sau bằng cách liệt kê các phần tử của chúng:</p>
+    <p class="setline"><i>A</i> = {<i>x</i> <span class="op">∈</span> ℕ | <i>x</i> &lt; 5};
+       &nbsp;&nbsp; <i>B</i> = {<i>x</i> <span class="op">∈</span> ℕ<sup>*</sup> | <i>x</i> &lt; 5}.</p>
+    <p class="muted small">Cách đọc đề: dòng <span class="m"><i>A</i></span> đọc là <i>"tập hợp các số
+    tự nhiên x sao cho x nhỏ hơn 5"</i>. <b>Em viết vào vở trước</b>, rồi chọn ở đây để tự kiểm.</p>
+    <div data-picks>
+      <div class="two">
+        <div class="pane"><h5>Chọn các phần tử của A</h5>
+          <div data-pick data-name="A" data-items="0;1;2;3;4;5;6" data-answer="0;1;2;3;4"
+               data-hint-thua='{"5":"em chọn cả số 5 — thử kiểm tra xem 5 &lt; 5 có đúng không?","6":"số 6 có nhỏ hơn 5 không?"}'
+               data-hint-thieu='{"0":"còn số 0 thì sao? 0 có phải là số tự nhiên không?"}'></div></div>
+        <div class="pane"><h5>Chọn các phần tử của B</h5>
+          <div data-pick data-name="B" data-items="0;1;2;3;4;5;6" data-answer="1;2;3;4"
+               data-hint-thua='{"0":"ℕ* có chứa số 0 không? Xem lại Chú ý ❸.","5":"điều kiện là x &lt; 5 — số 5 có thoả không?"}'></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="act" data-act="luyen-tap-3">
+    <h4><span class="tag">HOẠT ĐỘNG 6</span> Luyện tập 3 (SGK)</h4>
+    <p>Gọi <span class="m"><i>M</i></span> là tập hợp các số tự nhiên <b>lớn hơn 6</b> và
+    <b>nhỏ hơn 10</b>.</p>
+    <p class="muted small"><b>Gợi ý cấp 1:</b> trước khi trả lời, hãy viết ra giấy xem
+    <span class="m"><i>M</i></span> gồm những số nào đã.<br>
+    <b>Gợi ý cấp 2:</b> "lớn hơn 6" — số 6 có được lấy không? "nhỏ hơn 10" — số 10 có được lấy không?</p>
+
+    <p><b>a)</b> Thay dấu "?" bằng kí hiệu <span class="op">∈</span> hoặc <span class="op no">∉</span>:</p>
+    <p class="m" style="font-size:20px">5 <span data-mcq data-options="∈;∉" data-answer="∉"
+       data-fb-sai="Xem lại số 5: nó có <b>lớn hơn 6</b> không?"></span> <i>M</i></p>
+    <p class="m" style="font-size:20px">9 <span data-mcq data-options="∈;∉" data-answer="∈"
+       data-fb-sai="Xem lại số 9: nó có lớn hơn 6 <b>và</b> nhỏ hơn 10 không?"></span> <i>M</i></p>
+
+    <p><b>b)</b> Mô tả tập hợp <span class="m"><i>M</i></span> bằng <b>hai cách</b>.
+    Em viết vào vở rồi mới bấm đối chiếu.</p>
+    <button class="btn" data-reveal="#rv-lt3" data-open="Em viết xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em viết xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-lt3">
+      <p>Các số tự nhiên lớn hơn 6 và nhỏ hơn 10 là 7; 8; 9.</p>
+      <p><b>a)</b> 5 <span class="op no">∉</span> <i>M</i>; &nbsp; 9 <span class="op">∈</span> <i>M</i>.</p>
+      <p><b>b) Cách 1 (liệt kê):</b></p>
+      <p class="setline"><i>M</i> = {7; 8; 9}</p>
+      <p><b>Cách 2 (dấu hiệu đặc trưng):</b></p>
+      <p class="setline"><i>M</i> = {<i>x</i> <span class="op">∈</span> ℕ | 6 &lt; <i>x</i> &lt; 10}</p>
+      <p>Câu b) là chỗ đáng giá nhất của cả bài: <b>cùng một tập hợp, hai cách viết</b>.
+      Nếu hai dòng em viết ra mà cho ra hai nhóm số khác nhau thì chắc chắn có một dòng sai.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ BÀI TẬP ============================ -->
+<section id="bai-tap">
+  <h2>Bài tập (SGK)</h2>
+  <div class="box warn"><span class="label">Phần này em tự làm vào vở</span>
+    Cô chỉ để lại <b>gợi ý</b>, <b>không có lời giải sẵn</b>. Làm xong em gửi lại bài, cô chữa từng câu.</div>
+
+  <div class="ex">
+    <p><span class="no">1.1.</span> Cho hai tập hợp:
+      <span class="m"><i>A</i> = {a; b; c; x; y}</span> và <span class="m"><i>B</i> = {b; d; y; t; u; v}</span>.
+      Dùng kí hiệu "<span class="op">∈</span>" hoặc "<span class="op no">∉</span>" để trả lời câu hỏi:
+      Mỗi phần tử <span class="m">a, b, x, u</span> thuộc tập hợp nào và <i>không</i> thuộc tập hợp nào?</p>
+    <button class="btn ghost" data-hint="#h11">Gợi ý</button>
+    <div class="hint" id="h11">Mỗi chữ cái phải được soi với <b>cả hai</b> tập, nên mỗi chữ viết được
+      <b>2 dòng</b> — tổng cộng 8 dòng. Có chữ thuộc cả hai tập đấy, em tìm xem là chữ nào.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.2.</span> Cho tập hợp
+      <span class="m"><i>U</i> = {<i>x</i> <span class="op">∈</span> ℕ | <i>x</i> chia hết cho 3}</span>.
+      Trong các số 3; 5; 6; 0; 7, số nào thuộc và số nào không thuộc tập <span class="m"><i>U</i></span>?</p>
+    <button class="btn ghost" data-hint="#h12">Gợi ý</button>
+    <div class="hint" id="h12">Lấy từng số chia cho 3, xem có dư không. Số 0 đừng bỏ qua —
+      thử xem 0 : 3 có dư không.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.3.</span> Bằng cách liệt kê các phần tử, hãy viết các tập hợp sau:</p>
+    <p>a) Tập hợp <span class="m"><i>K</i></span> các số tự nhiên nhỏ hơn 7;<br>
+       b) Tập hợp <span class="m"><i>D</i></span> tên các tháng (dương lịch) có 30 ngày;<br>
+       c) Tập hợp <span class="m"><i>M</i></span> các chữ cái tiếng Việt trong từ "ĐIỆN BIÊN PHỦ".</p>
+    <button class="btn ghost" data-hint="#h13h">Gợi ý</button>
+    <div class="hint" id="h13h">Câu a) nhớ "số tự nhiên" bắt đầu từ mấy. Câu b) đếm bằng nắm tay cho chắc.
+      Câu c) đây chính là <b>bẫy NHA TRANG lần thứ hai</b> — soát kĩ chữ lặp.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.4.</span> Bằng cách nêu dấu hiệu đặc trưng, hãy viết tập hợp
+      <span class="m"><i>A</i></span> các số tự nhiên nhỏ hơn 10.</p>
+    <button class="btn ghost" data-hint="#h14">Gợi ý</button>
+    <div class="hint" id="h14">Chép lại mẫu ở Chú ý ❷ — <span class="m">{<i>n</i>
+      <span class="op">∈</span> ℕ | <i>n</i> &lt; 6}</span> — rồi đổi cho hợp đề.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.5.</span> Hệ Mặt Trời gồm có Mặt Trời ở trung tâm và 8 thiên thể quay quanh
+      Mặt Trời gọi là các hành tinh, đó là Thuỷ tinh, Kim tinh, Trái Đất, Hoả tinh, Mộc tinh,
+      Thổ tinh, Thiên Vương tinh và Hải Vương tinh. Gọi <span class="m"><i>S</i></span> là tập các
+      hành tinh của Hệ Mặt Trời. Hãy viết tập <span class="m"><i>S</i></span> bằng cách liệt kê các
+      phần tử của <span class="m"><i>S</i></span>.</p>
+
+    <figure>
+      <svg id="solar" viewBox="0 0 600 420" role="img" aria-label="Mô hình Hệ Mặt Trời với tám hành tinh quay quanh Mặt Trời">
+        <rect x="0" y="0" width="600" height="420" fill="#0d1430" rx="12"/>
+        <g fill="#ffffff" opacity=".7">
+          <circle cx="40" cy="30" r="1.4"/><circle cx="120" cy="60" r="1"/><circle cx="520" cy="40" r="1.6"/>
+          <circle cx="560" cy="120" r="1.1"/><circle cx="80" cy="360" r="1.3"/><circle cx="470" cy="390" r="1"/>
+          <circle cx="300" cy="20" r="1.2"/><circle cx="200" cy="400" r="1.4"/><circle cx="580" cy="300" r="1.2"/>
+        </g>
+        <g fill="none" stroke="#3b4a80" stroke-width="1" opacity=".75">
+          <circle cx="300" cy="210" r="48"/><circle cx="300" cy="210" r="70"/><circle cx="300" cy="210" r="92"/>
+          <circle cx="300" cy="210" r="112"/><circle cx="300" cy="210" r="136"/><circle cx="300" cy="210" r="160"/>
+          <circle cx="300" cy="210" r="183"/><circle cx="300" cy="210" r="205"/>
+        </g>
+        <defs><radialGradient id="sunGlow"><stop offset="45%" stop-color="#ffcf6b" stop-opacity=".75"/>
+          <stop offset="100%" stop-color="#ffcf6b" stop-opacity="0"/></radialGradient></defs>
+        <circle class="sun" cx="300" cy="210" r="34" fill="url(#sunGlow)"/>
+        <circle cx="300" cy="210" r="24" fill="#ffb627"/>
+        <text x="300" y="272" text-anchor="middle" font-size="13" fill="#ffd894">Mặt Trời</text>
+        <g class="spin" style="--dur:7s; --del:-1.2s; transform-origin:300px 210px"><circle data-p="thuy"  cx="348" cy="210" r="6"  fill="#b7b7c4"/></g>
+        <g class="spin" style="--dur:10s; --del:-4s; transform-origin:300px 210px"><circle data-p="kim"  cx="370" cy="210" r="9"  fill="#e8b96a"/></g>
+        <g class="spin" style="--dur:13s; --del:-8s; transform-origin:300px 210px"><circle data-p="dat"  cx="392" cy="210" r="9.5" fill="#4f9de0"/></g>
+        <g class="spin" style="--dur:16s; --del:-3s; transform-origin:300px 210px"><circle data-p="hoa"  cx="412" cy="210" r="8"  fill="#d1603f"/></g>
+        <g class="spin" style="--dur:21s; --del:-14s; transform-origin:300px 210px"><circle data-p="moc"  cx="436" cy="210" r="15" fill="#d9a066"/></g>
+        <g class="spin" style="--dur:26s; --del:-6s; transform-origin:300px 210px"><circle data-p="tho"  cx="460" cy="210" r="13" fill="#e3cf8f"/></g>
+        <g class="spin" style="--dur:32s; --del:-22s; transform-origin:300px 210px"><circle data-p="thien" cx="483" cy="210" r="11" fill="#8fd3de"/></g>
+        <g class="spin" style="--dur:38s; --del:-11s; transform-origin:300px 210px"><circle data-p="hai"  cx="505" cy="210" r="11" fill="#5d78d6"/></g>
+      </svg>
+      <figcaption>Mô hình Hệ Mặt Trời — Mặt Trời ở trung tâm, 8 hành tinh quay quanh.</figcaption>
+    </figure>
+
+    <p class="small"><b>Chỗ nháp:</b> bấm tên hành tinh để gom lại (rê chuột lên tên sẽ thấy hành tinh
+    đó sáng lên trong hình). Gom xong em <b>vẫn phải tự viết</b> tập <span class="m"><i>S</i></span> vào vở.</p>
+    <div data-collect data-name="S" data-items="thuy|Thuỷ tinh;kim|Kim tinh;dat|Trái Đất;hoa|Hoả tinh;moc|Mộc tinh;tho|Thổ tinh;thien|Thiên Vương tinh;hai|Hải Vương tinh"></div>
+    <button class="btn ghost" data-hint="#h15">Gợi ý</button>
+    <div class="hint" id="h15">Phần tử ở đây <b>không phải là số</b> mà là <b>tên hành tinh</b> —
+      tập hợp chứa được mọi thứ, không riêng gì số. Mặt Trời có phải là một phần tử của
+      <span class="m"><i>S</i></span> không? Đọc kĩ lại đề. Viết xong nhớ đếm lại: tập
+      <span class="m"><i>S</i></span> phải có đúng bao nhiêu phần tử?</div>
+  </div>
+</section>
+
+<!-- ============================ EM CÓ BIẾT ============================ -->
+<section id="em-co-biet">
+  <h2>Em có biết? <span class="muted small" style="font-weight:400">(đọc thêm — không bắt buộc thuộc)</span></h2>
+
+  <h3>Nhà toán học Cantor</h3>
+  <p>Con người biết đến toán học từ hàng nghìn năm trước Công nguyên. Nhưng mãi đến cuối thế kỉ XIX,
+  lí thuyết tập hợp mới được phát triển nhờ các nghiên cứu của nhà toán học Cantor (Căng-to), người Đức.
+  Từ đó lí thuyết tập hợp đã nhanh chóng trở thành nền tảng của Toán học hiện đại.
+  <span class="muted"><i>Georg Cantor (1845 – 1918).</i></span></p>
+
+  <h3>Tập hữu hạn và tập vô hạn</h3>
+  <ul>
+    <li>Tập <span class="m"><i>X</i> = {x; y}</span> có 2 phần tử;</li>
+    <li>Tập <span class="m"><i>Y</i> = {1; 2; 3; …; 50}</span> có 50 phần tử.</li>
+  </ul>
+  <p><span class="m"><i>X</i></span> và <span class="m"><i>Y</i></span> là những tập hợp có một số
+  hữu hạn phần tử — ta gọi chúng là những <i>tập hữu hạn</i>. Tập hợp có vô số phần tử là
+  <i>tập vô hạn</i>. Tập <b class="nn">ℕ</b> là tập vô hạn.</p>
+
+  <h3>Giao của hai tập hợp</h3>
+  <p>Gọi <span class="m"><i>C</i></span> là tập hợp gồm các phần tử <b>chung</b> của hai tập
+  <span class="m"><i>A</i></span> và <span class="m"><i>B</i></span>. Ta gọi tập
+  <span class="m"><i>C</i></span> là <i>giao</i> của hai tập <span class="m"><i>A</i></span> và
+  <span class="m"><i>B</i></span>, kí hiệu <span class="m"><i>C</i> = <i>A</i> ∩ <i>B</i></span>.</p>
+
+  <div class="act">
+    <h4><span class="tag">THỬ CHƠI</span> Kéo thanh trượt cho hai vòng chạm nhau</h4>
+    <figure>
+      <svg viewBox="0 0 520 240" role="img" aria-label="Hai vòng tròn A và B, phần chung được tô màu">
+        <defs><clipPath id="clipB"><circle id="cB2" cx="300" cy="120" r="88"/></clipPath></defs>
+        <circle cx="210" cy="120" r="88" fill="#e8f0ff" stroke="#2f6fdb" stroke-width="2.5"/>
+        <circle id="cB" cx="300" cy="120" r="88" fill="#f1ecff" stroke="#7c5cd6" stroke-width="2.5" fill-opacity=".7"/>
+        <circle cx="210" cy="120" r="88" fill="#0f9d76" fill-opacity=".45" clip-path="url(#clipB)"/>
+        <text x="150" y="42" font-size="24" font-style="italic" font-weight="700" fill="#2f6fdb">A</text>
+        <text id="lblB" x="360" y="42" font-size="24" font-style="italic" font-weight="700" fill="#7c5cd6">B</text>
+        <text id="lblC" x="255" y="128" font-size="22" font-style="italic" font-weight="700"
+              fill="#0b6b52" text-anchor="middle">C</text>
+      </svg>
+    </figure>
+    <p><label for="sl">Dịch vòng <span class="m"><i>B</i></span>: </label>
+      <input type="range" id="sl" min="210" max="400" value="300"></p>
+    <p class="labout" id="giao-out"></p>
+  </div>
+</section>
+
+<!-- ============================ CHỐT BÀI ============================ -->
+<section id="chot-bai">
+  <h2>Chốt bài</h2>
+  <ol>
+    <li><b>Tập hợp</b> là một nhóm những đối tượng nhất định; mỗi đối tượng trong nhóm là
+      một <b>phần tử</b>.</li>
+    <li><b>Hai kí hiệu:</b> <span class="m"><i>x</i> <span class="op">∈</span> <i>A</i></span> (x thuộc A)
+      và <span class="m"><i>y</i> <span class="op no">∉</span> <i>A</i></span> (y không thuộc A).
+      Bên trái là phần tử, bên phải là tập hợp.</li>
+    <li><b>Hai cách mô tả:</b> liệt kê trong { }, hoặc nêu dấu hiệu đặc trưng.
+      Cùng một tập hợp viết được cả hai cách.</li>
+    <li><b>Hai tập cần thuộc tên:</b> <span class="m">ℕ = {0; 1; 2; 3; …}</span> và
+      <span class="m">ℕ<sup>*</sup> = {1; 2; 3; …}</span> — khác nhau đúng số 0.</li>
+  </ol>
+
+  <h3>Bốn lỗi hay gặp nhất ở bài này</h3>
+  <table>
+    <tr><th>Lỗi</th><th>Sai</th><th>Đúng</th></tr>
+    <tr><td>Viết lặp phần tử</td><td class="m x">L = {N; H; A; T; R; A; N; G}</td>
+        <td class="m ok">L = {N; H; A; T; R; G}</td></tr>
+    <tr><td>Ngăn cách bằng dấu phẩy</td><td class="m x">A = {0, 1, 2}</td>
+        <td class="m ok">A = {0; 1; 2}</td></tr>
+    <tr><td>Đặt tên tập bằng chữ thường</td><td class="m x">m = {7; 8; 9}</td>
+        <td class="m ok">M = {7; 8; 9}</td></tr>
+    <tr><td>Lẫn ℕ với ℕ<sup>*</sup></td>
+        <td class="m x">{x ∈ ℕ* | x &lt; 5} = {0; 1; 2; 3; 4}</td>
+        <td class="m ok">{1; 2; 3; 4}</td></tr>
+  </table>
+
+  <div class="box tip"><span class="label">Làm tiếp</span>
+    Bài tập <b>1.1 → 1.5</b> trong SGK. Làm xong gửi lại, cô chữa.
+    Bài sau: <b>Bài 2. Cách ghi số tự nhiên</b>.</div>
+
+  <footer>
+    Bài giảng do agent <b>giao-vien-toan</b> soạn, bám nguyên văn SGK Toán 6
+    <i>Kết nối tri thức với cuộc sống</i> — nguồn:
+    <span class="kbd">kiến thức/toán/toan-lop-6-chuong-01-bai-01-tap-hop.md</span>.<br>
+    Bản đọc/in: <span class="kbd">toan-lop-6-chuong-01-bai-01-tap-hop-bai-giang.md</span>.
+    Các phần "đối chiếu" chỉ mở sau khi em đã tự làm; phần Bài tập 1.1–1.5 cố ý không có đáp án.
+  </footer>
+</section>
+
+</div><!-- /wrap -->
+
+<!-- ================= ENGINE DÙNG CHUNG — KHÔNG SỬA CHO TỪNG BÀI ================= -->
+<script>
+(function(){
+  "use strict";
+  var $  = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function list(s){ return (s||'').split(';').map(function(x){ return x.trim(); }).filter(Boolean); }
+  function json(el,name){
+    var raw = el.getAttribute(name);
+    if(!raw) return {};
+    try{ return JSON.parse(raw); }catch(e){ return {}; }
+  }
+  function el(tag,cls,html){
+    var d = document.createElement(tag);
+    if(cls) d.className = cls;
+    if(html != null) d.innerHTML = html;
+    return d;
+  }
+  function fbBox(host){
+    var f = $('.fb', host);
+    if(!f){ f = el('div','fb'); host.appendChild(f); }
+    return f;
+  }
+  function show(f,cls,html){ f.className = 'fb show ' + cls; f.innerHTML = html; }
+  function setline(name, items){
+    return '<i>' + esc(name) + '</i> = {' + items.map(esc).join('; ') + '}';
+  }
+
+  /* ---------- tắt chuyển động ---------- */
+  var bm = $('[data-motion]');
+  if(bm) bm.addEventListener('click', function(){
+    var off = document.body.classList.toggle('no-motion');
+    bm.textContent = off ? 'Bật chuyển động' : 'Tắt chuyển động';
+    bm.setAttribute('aria-pressed', off ? 'true' : 'false');
+  });
+
+  /* ---------- tiến độ ---------- */
+  var ACTS = $$('[data-act]'), DONE = {}, box = $('[data-progress]');
+  function paint(){
+    if(!box) return;
+    var n = Object.keys(DONE).length, t = ACTS.length || 1;
+    var bar = $('.track i', box), txt = $('.txt', box);
+    if(bar) bar.style.width = Math.round(n / t * 100) + '%';
+    if(txt) txt.textContent = n + '/' + ACTS.length + ' hoạt động';
+  }
+  function done(node){
+    var a = node && node.closest ? node.closest('[data-act]') : null;
+    if(!a) return;
+    var k = a.getAttribute('data-act');
+    if(DONE[k]) return;
+    DONE[k] = true; a.classList.add('done'); paint();
+  }
+  paint();
+
+  /* ---------- nút chữa bài / gợi ý ---------- */
+  $$('[data-reveal]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-reveal'));
+      if(!t) return;
+      var open = t.classList.toggle('open');
+      b.textContent = open ? (b.getAttribute('data-close') || 'Ẩn phần đối chiếu')
+                           : (b.getAttribute('data-open')  || 'Xem đối chiếu');
+      if(open) done(b);
+    });
+  });
+  $$('[data-hint]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-hint'));
+      if(!t) return;
+      b.textContent = t.classList.toggle('open') ? 'Ẩn gợi ý' : 'Gợi ý';
+    });
+  });
+
+  /* ---------- 1. Venn bấm được ---------- */
+  $$('[data-venn]').forEach(function(host){
+    var name = host.getAttribute('data-set') || 'A';
+    var out  = $('[data-venn-out]', host) ||
+               $('[data-venn-out]', host.parentNode) || null;
+    $$('.el', host).forEach(function(g){
+      function tell(){
+        $$('.el', host).forEach(function(o){ o.classList.remove('pick'); });
+        g.classList.add('pick');
+        var v = g.getAttribute('data-v'), inS = g.getAttribute('data-in') === '1';
+        if(out) out.innerHTML = inS
+          ? '<b>' + esc(v) + ' <span class="op">∈</span> <i>' + esc(name) + '</i></b> — đọc là "' +
+            esc(v) + ' thuộc ' + esc(name) + '". Phần tử này nằm <b>trong</b> vòng.'
+          : '<b>' + esc(v) + ' <span class="op no">∉</span> <i>' + esc(name) + '</i></b> — đọc là "' +
+            esc(v) + ' không thuộc ' + esc(name) + '". Nó có trong hình nhưng nằm <b>ngoài</b> vòng.';
+        done(host);
+      }
+      g.addEventListener('click', tell);
+      g.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); tell(); }
+      });
+    });
+  });
+
+  /* ---------- 2. Bàn thử kéo–thả ---------- */
+  var INSIDE  = [[22,26],[44,24],[20,58],[44,62],[33,42],[12,42]];
+  var OUTSIDE = [[80,28],[90,45],[80,62],[90,79],[80,90],[72,45]];
+  $$('[data-lab]').forEach(function(host){
+    var name   = host.getAttribute('data-set') || 'A';
+    var items  = list(host.getAttribute('data-items'));
+    var answer = list(host.getAttribute('data-answer'));
+    var hints  = json(host, 'data-hint-sai');
+    var okMsg  = host.getAttribute('data-ok') || 'Chính xác!';
+
+    var lab = el('div','lab');
+    lab.appendChild(el('div','ring','<b>' + esc(name) + '</b>'));
+    lab.appendChild(el('div','outside','bên ngoài tập ' + esc(name)));
+    var out = el('div','labout');
+    var bar = el('p');
+    var bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Xếp lại từ đầu');
+    if(answer.length) bar.appendChild(bChk);
+    bar.appendChild(bRst);
+    host.appendChild(lab); host.appendChild(out); host.appendChild(bar);
+    var fb = fbBox(host);
+    var toks = [];
+
+    function hit(xp,yp){
+      var dx = (xp - 33) / 29, dy = (yp - 50) / 42;
+      return dx*dx + dy*dy <= 1;
+    }
+    function render(){
+      var ins = toks.filter(function(t){ return t.inSet; }).map(function(t){ return t.v; });
+      out.innerHTML = toks.map(function(t){
+        return t.inSet
+          ? '<b>' + esc(t.v) + ' <span class="op">∈</span> <i>' + esc(name) + '</i></b>'
+          : esc(t.v) + ' <span class="op no">∉</span> <i>' + esc(name) + '</i>';
+      }).join(' &nbsp;·&nbsp; ') + '<br><span style="font-size:17px">Liệt kê: ' +
+        setline(name, ins) + '</span>';
+    }
+    function layout(){
+      var ci = 0, co = 0;
+      toks.forEach(function(t){
+        var p = t.inSet ? INSIDE[ci++ % INSIDE.length] : OUTSIDE[co++ % OUTSIDE.length];
+        t.el.style.left = p[0] + '%'; t.el.style.top = p[1] + '%';
+        t.el.classList.toggle('in', t.inSet);
+        t.el.setAttribute('aria-label', 'phần tử ' + t.v +
+          (t.inSet ? ', đang ở trong tập ' + name : ', đang ở ngoài tập ' + name));
+      });
+      render();
+    }
+    function build(){
+      toks.forEach(function(t){ t.el.remove(); });
+      toks = items.map(function(v){
+        var b = el('button','tok'); b.type = 'button'; b.textContent = v;
+        lab.appendChild(b);
+        var t = { v: v, el: b, inSet: false }, id = null;
+        b.addEventListener('click', function(){
+          if(b.dataset.moved === '1'){ b.dataset.moved = '0'; return; }
+          t.inSet = !t.inSet; layout();
+        });
+        b.addEventListener('pointerdown', function(e){
+          id = e.pointerId; b.setPointerCapture(id);
+          b.classList.add('drag'); b.dataset.moved = '0';
+        });
+        b.addEventListener('pointermove', function(e){
+          if(id === null || !b.classList.contains('drag')) return;
+          var r = lab.getBoundingClientRect();
+          b.style.left = Math.max(3, Math.min(97, (e.clientX - r.left) / r.width  * 100)) + '%';
+          b.style.top  = Math.max(6, Math.min(94, (e.clientY - r.top)  / r.height * 100)) + '%';
+          b.dataset.moved = '1';
+        });
+        function drop(e){
+          if(id === null) return;
+          b.classList.remove('drag');
+          try{ b.releasePointerCapture(id); }catch(err){}
+          id = null;
+          if(b.dataset.moved === '1'){
+            var r = lab.getBoundingClientRect();
+            t.inSet = hit((e.clientX - r.left) / r.width * 100, (e.clientY - r.top) / r.height * 100);
+            layout();
+            setTimeout(function(){ b.dataset.moved = '0'; }, 50);
+          }
+        }
+        b.addEventListener('pointerup', drop);
+        b.addEventListener('pointercancel', drop);
+        return t;
+      });
+      layout();
+      fb.className = 'fb';
+    }
+    build();
+    bRst.addEventListener('click', build);
+    bChk.addEventListener('click', function(){
+      var ins  = toks.filter(function(t){ return t.inSet; }).map(function(t){ return t.v; });
+      var sIns = ins.slice().sort().join('\u0001'), sAns = answer.slice().sort().join('\u0001');
+      if(sIns === sAns){ show(fb,'good', okMsg + ' ' + setline(name, ins)); done(host); return; }
+      if(!ins.length){
+        show(fb,'bad','Vòng <i>' + esc(name) + '</i> đang trống. Em kéo (hoặc bấm) phần tử vào trong vòng nhé.');
+        return;
+      }
+      var thua = ins.filter(function(v){ return answer.indexOf(v) < 0; });
+      if(thua.length){
+        show(fb,'bad', hints[thua[0]] || ('Phần tử «' + esc(thua[0]) +
+          '» đang nằm trong vòng — em kiểm tra lại xem nó có thoả điều kiện của tập <i>' +
+          esc(name) + '</i> không?'));
+        return;
+      }
+      show(fb,'bad','Chưa đủ: trong vòng cần có <b>' + answer.length +
+        '</b> phần tử, em đang để ' + ins.length + '. Thiếu phần tử nào nhỉ?');
+    });
+  });
+
+  /* ---------- 3. Công tắc hai cách trình bày ---------- */
+  $$('[data-t2]').forEach(function(host){
+    var btns = $$('[data-t2-btn]', host);
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        var k = b.getAttribute('data-t2-btn');
+        btns.forEach(function(o){
+          o.className = o === b ? 'btn' : 'btn ghost';
+        });
+        $$('[data-t2-empty]', host).forEach(function(e){ e.classList.add('hide'); });
+        $$('[data-t2-pane],[data-t2-note]', host).forEach(function(p){
+          var pk = p.getAttribute('data-t2-pane') || p.getAttribute('data-t2-note');
+          p.classList.toggle('hide', pk !== k);
+        });
+        done(host);
+      });
+    });
+  });
+
+  /* ---------- 4. Chọn phần tử + kiểm tra ---------- */
+  $$('[data-picks]').forEach(function(group){
+    var picks = $$('[data-pick]', group).map(function(host){
+      var items  = list(host.getAttribute('data-items'));
+      var answer = list(host.getAttribute('data-answer'));
+      var st = { host: host, name: host.getAttribute('data-name') || '?',
+                 answer: answer, sel: [], btns: {},
+                 thua: json(host,'data-hint-thua'), thieu: json(host,'data-hint-thieu') };
+      var wrap = el('div','chips');
+      items.forEach(function(v){
+        var b = el('button','num'); b.type = 'button'; b.textContent = v;
+        b.addEventListener('click', function(){
+          var i = st.sel.indexOf(v);
+          if(i >= 0){ st.sel.splice(i,1); b.classList.remove('on'); }
+          else { st.sel.push(v); b.classList.add('on'); }
+        });
+        st.btns[v] = b; wrap.appendChild(b);
+      });
+      host.appendChild(wrap);
+      return st;
+    });
+    if(!picks.length) return;
+
+    var bar = el('p');
+    var bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Chọn lại');
+    bar.appendChild(bChk); bar.appendChild(bRst);
+    group.appendChild(bar);
+    var fb = fbBox(group);
+
+    bChk.addEventListener('click', function(){
+      var msg = [], allOk = true;
+      picks.forEach(function(p){
+        var ok = p.sel.slice().sort().join('\u0001') === p.answer.slice().sort().join('\u0001');
+        if(ok) return;
+        allOk = false;
+        var thua  = p.sel.filter(function(v){ return p.answer.indexOf(v) < 0; });
+        var thieu = p.answer.filter(function(v){ return p.sel.indexOf(v) < 0; });
+        if(thua.length && p.thua[thua[0]])   msg.push('Tập <i>' + esc(p.name) + '</i>: ' + p.thua[thua[0]]);
+        else if(thieu.length && p.thieu[thieu[0]]) msg.push('Tập <i>' + esc(p.name) + '</i>: ' + p.thieu[thieu[0]]);
+        else if(thua.length)  msg.push('Tập <i>' + esc(p.name) + '</i>: em chọn thừa «' + esc(thua[0]) +
+                                       '» — soát lại điều kiện của tập.');
+        else msg.push('Tập <i>' + esc(p.name) + '</i>: còn thiếu phần tử — đếm lại xem có bao nhiêu số thoả điều kiện.');
+      });
+      if(allOk){
+        show(fb,'good','Đúng rồi: ' + picks.map(function(p){
+          return setline(p.name, p.answer);
+        }).join(' &nbsp;và&nbsp; ') + '.');
+        done(group);
+      } else show(fb,'bad', msg.join('<br>'));
+    });
+    bRst.addEventListener('click', function(){
+      picks.forEach(function(p){
+        p.sel = [];
+        Object.keys(p.btns).forEach(function(k){ p.btns[k].classList.remove('on'); });
+      });
+      fb.className = 'fb';
+    });
+  });
+
+  /* ---------- 5. Chọn một kí hiệu ---------- */
+  $$('[data-act]').forEach(function(act){
+    var qs = $$('[data-mcq]', act);
+    if(!qs.length) return;
+    var fb = null;
+    var states = qs.map(function(host){
+      var opts = list(host.getAttribute('data-options'));
+      var ans  = (host.getAttribute('data-answer') || '').trim();
+      var st = { ok: false, answered: false, host: host };
+      opts.forEach(function(o){
+        var b = el('button','btn'); b.type = 'button'; b.textContent = o;
+        b.addEventListener('click', function(){
+          $$('button', host).forEach(function(x){ if(x !== mark) x.className = 'btn ghost'; });
+          b.className = 'btn';
+          st.ok = (o === ans); st.answered = true;
+          mark.innerHTML = st.ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
+          report();
+        });
+        host.appendChild(b);
+      });
+      var mark = el('span','mark'); mark.style.marginLeft = '6px';
+      host.appendChild(mark);
+      return st;
+    });
+    function report(){
+      if(!fb) fb = fbBox(act);
+      if(states.every(function(s){ return s.ok; })){
+        show(fb,'good','Đúng cả rồi. Em làm tiếp phần sau nhé.');
+        done(act); return;
+      }
+      if(states.every(function(s){ return s.answered; })){
+        var t = states.filter(function(s){ return !s.ok; }).map(function(s){
+          return s.host.getAttribute('data-fb-sai') || 'Có một ô chưa đúng — em đọc lại điều kiện của tập rồi thử lại.';
+        });
+        show(fb,'bad', t.join('<br>'));
+      }
+    }
+  });
+
+  /* ---------- 6. Xếp tập từ một từ (bẫy phần tử lặp) ---------- */
+  $$('[data-uniq]').forEach(function(host){
+    var word = (host.getAttribute('data-word') || '').toUpperCase();
+    var name = host.getAttribute('data-name') || 'L';
+    var chars = word.split('');
+    var uniq = [];
+    chars.forEach(function(c){ if(c !== ' ' && uniq.indexOf(c) < 0) uniq.push(c); });
+
+    var wrap = el('div','chips'), out = el('div','labout');
+    var bar = el('p'), bRst = el('button','btn ghost','Xếp lại từ đầu');
+    bar.appendChild(bRst);
+    host.appendChild(wrap); host.appendChild(out); host.appendChild(bar);
+    var fb = fbBox(host), got = [], dup = 0;
+
+    function draw(){
+      out.innerHTML = setline(name, got) +
+        (got.length ? '<span class="muted" style="font-size:16px"> — đang có ' + got.length + ' phần tử</span>' : '');
+    }
+    function build(){
+      wrap.innerHTML = ''; got = []; dup = 0; fb.className = 'fb';
+      chars.forEach(function(c){
+        if(c === ' '){ wrap.appendChild(el('span','gap')); return; }
+        var b = el('button','let'); b.type = 'button'; b.textContent = c;
+        b.addEventListener('click', function(){
+          if(got.indexOf(c) >= 0){
+            dup++;
+            b.classList.remove('dup'); void b.offsetWidth; b.classList.add('dup');
+            show(fb,'bad','Chữ <b>' + esc(c) + '</b> đã có trong tập <i>' + esc(name) +
+              '</i> rồi! Quy tắc: <b>mỗi phần tử chỉ được viết một lần</b> — nên không thêm nó lần nữa.');
+          } else {
+            got.push(c); b.classList.add('on'); fb.className = 'fb';
+          }
+          draw();
+          if(got.length === uniq.length){
+            show(fb,'good','Xong: <b>' + setline(name, got) + '</b> — <b>' + uniq.length +
+              ' phần tử</b>, trong khi từ có ' + chars.filter(function(x){ return x !== ' '; }).length +
+              ' chữ cái.' + (dup ? ' Em đã bấm trúng chữ lặp ' + dup + ' lần — đó đúng là chỗ hay sai.' : ''));
+            done(host);
+          }
+        });
+        wrap.appendChild(b);
+      });
+      draw();
+    }
+    build();
+    bRst.addEventListener('click', build);
+  });
+
+  /* ---------- 7. Gom phần tử (chỗ nháp) ---------- */
+  $$('[data-collect]').forEach(function(host){
+    var name  = host.getAttribute('data-name') || 'S';
+    var items = list(host.getAttribute('data-items')).map(function(s){
+      var p = s.split('|');
+      return p.length > 1 ? { k: p[0].trim(), t: p[1].trim() } : { k: null, t: p[0].trim() };
+    });
+    var wrap = el('div','chips'), out = el('div','labout');
+    var bar = el('p'), bRst = el('button','btn ghost','Bỏ hết, chọn lại');
+    bar.appendChild(bRst);
+    host.appendChild(wrap); host.appendChild(out); host.appendChild(bar);
+    var got = [];
+    function draw(){
+      out.innerHTML = setline(name, got) +
+        (got.length ? '<span class="muted" style="font-size:16px"> — ' + got.length + ' phần tử</span>' : '');
+    }
+    function build(){
+      wrap.innerHTML = ''; got = [];
+      items.forEach(function(it){
+        var b = el('button','pchip'); b.type = 'button'; b.textContent = it.t;
+        if(it.k){
+          var dots = $$('[data-p="' + it.k + '"]');
+          b.addEventListener('mouseenter', function(){ dots.forEach(function(d){ d.classList.add('lit'); }); });
+          b.addEventListener('mouseleave', function(){ dots.forEach(function(d){ d.classList.remove('lit'); }); });
+        }
+        b.addEventListener('click', function(){
+          var i = got.indexOf(it.t);
+          if(i >= 0){ got.splice(i,1); b.classList.remove('on'); }
+          else { got.push(it.t); b.classList.add('on'); }
+          draw();
+        });
+        wrap.appendChild(b);
+      });
+      draw();
+    }
+    build();
+    bRst.addEventListener('click', build);
+  });
+
+  /* ---------- 8. Dải số ---------- */
+  function drawStrip(host, off){
+    var from = +host.getAttribute('data-from'), to = +host.getAttribute('data-to');
+    var dots = host.getAttribute('data-dots') === '1';
+    host.className = 'strip'; host.innerHTML = '';
+    for(var i = from; i <= to; i++){
+      var d = el('div','s' + (off.indexOf(String(i)) >= 0 ? ' off' : ' on'));
+      d.textContent = i;
+      host.appendChild(d);
+    }
+    if(dots) host.appendChild(el('div','dots','…'));
+  }
+  $$('[data-strip]').forEach(function(h){ drawStrip(h, []); });
+  $$('[data-strip-set]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var sel = b.getAttribute('data-strip-set'), host = $(sel);
+      if(!host) return;
+      drawStrip(host, list(b.getAttribute('data-off')));
+      $$('[data-strip-set="' + sel + '"]').forEach(function(o){
+        o.className = o === b ? 'btn' : 'btn ghost';
+      });
+      var note = $('[data-strip-note="' + sel + '"]');
+      if(note && b.getAttribute('data-note')) note.innerHTML = b.getAttribute('data-note');
+      done(b);
+    });
+  });
+
+  /* ---------- 9. Trục số ---------- */
+  $$('[data-numline]').forEach(function(host){
+    var from = +host.getAttribute('data-from'), to = +host.getAttribute('data-to');
+    var fixed  = list(host.getAttribute('data-mark'));
+    var answer = list(host.getAttribute('data-answer'));
+    var okMsg  = host.getAttribute('data-ok') || 'Đúng rồi.';
+    var n = to - from, W = 640, PAD = 34, step = (W - 2*PAD) / (n || 1), H = 92, Y = 54;
+    var svg = ['<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="trục số từ ' +
+               from + ' đến ' + to + '">'];
+    svg.push('<line class="axis" x1="10" y1="' + Y + '" x2="' + (W-10) + '" y2="' + Y + '"/>');
+    svg.push('<path class="axis" fill="none" d="M' + (W-22) + ' ' + (Y-7) + ' L' + (W-8) + ' ' + Y +
+             ' L' + (W-22) + ' ' + (Y+7) + '"/>');
+    for(var i = 0; i <= n; i++){
+      var x = PAD + i * step, v = from + i;
+      svg.push('<line class="tick" x1="' + x + '" y1="' + (Y-7) + '" x2="' + x + '" y2="' + (Y+7) + '"/>');
+      svg.push('<text class="lbl" x="' + x + '" y="' + (Y+28) + '">' + v + '</text>');
+      var isFixed = fixed.indexOf(String(v)) >= 0;
+      if(isFixed || answer.length)
+        svg.push('<circle class="pt' + (isFixed ? ' fixed' : '') + '" data-v="' + v +
+                 '" cx="' + x + '" cy="' + Y + '" r="8"' +
+                 (isFixed ? '' : ' tabindex="0" role="button" aria-label="điểm ' + v + '"') + '/>');
+    }
+    svg.push('</svg>');
+    host.innerHTML = svg.join('');
+    host.classList.add('numline');
+    if(!answer.length) return;
+
+    var sel = [], bar = el('p');
+    var bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Chọn lại');
+    bar.appendChild(bChk); bar.appendChild(bRst);
+    host.appendChild(bar);
+    var fb = fbBox(host);
+    $$('.pt:not(.fixed)', host).forEach(function(c){
+      function toggle(){
+        var v = c.getAttribute('data-v'), i = sel.indexOf(v);
+        if(i >= 0){ sel.splice(i,1); c.classList.remove('on'); }
+        else { sel.push(v); c.classList.add('on'); }
+      }
+      c.addEventListener('click', toggle);
+      c.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+      });
+    });
+    bChk.addEventListener('click', function(){
+      var a = sel.slice().sort(function(x,y){ return x-y; }).join(';');
+      var b = answer.slice().sort(function(x,y){ return x-y; }).join(';');
+      if(a === b){ show(fb,'good', okMsg); done(host); }
+      else show(fb,'bad','Chưa đúng — em đang chọn ' + (sel.length || 0) +
+        ' điểm. Đọc lại đề rồi soát từng điểm một.');
+    });
+    bRst.addEventListener('click', function(){
+      sel = [];
+      $$('.pt.on', host).forEach(function(c){ c.classList.remove('on'); });
+      fb.className = 'fb';
+    });
+  });
+
+  /* ---------- 10. Ô điền đáp số ---------- */
+  function chuan(s){
+    return String(s).trim().replace(/\s| /g,'').replace(',', '.').toLowerCase();
+  }
+  $$('[data-fill]').forEach(function(host){
+    var answers = (host.getAttribute('data-answer') || '').split('|').map(chuan);
+    var unit = host.getAttribute('data-unit') || '';
+    var box = el('span','fillbox');
+    var inp = document.createElement('input');
+    inp.type = 'text'; inp.setAttribute('aria-label','ô điền đáp số');
+    var mark = el('span','mark');
+    box.appendChild(inp);
+    if(unit) box.appendChild(el('span','muted', esc(unit)));
+    var b = el('button','btn','Kiểm');
+    b.type = 'button';
+    box.appendChild(b); box.appendChild(mark);
+    host.appendChild(box);
+    function check(){
+      var v = chuan(inp.value);
+      if(!v){ mark.innerHTML = ''; return; }
+      var ok = answers.some(function(a){
+        if(a === v) return true;
+        var na = parseFloat(a), nv = parseFloat(v);
+        return !isNaN(na) && !isNaN(nv) && Math.abs(na - nv) < 1e-9;
+      });
+      mark.innerHTML = ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
+      if(ok) done(host);
+    }
+    b.addEventListener('click', check);
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
+  });
+
+  /* ---------- 11. Lời giải hiện dần ---------- */
+  $$('[data-steps]').forEach(function(host){
+    var steps = $$('[data-step]', host);
+    if(!steps.length) return;
+    steps.forEach(function(s){ s.classList.add('hide'); });
+    var i = 0, b = el('button','btn','Hiện bước 1');
+    b.type = 'button';
+    host.insertBefore(b, steps[0]);
+    b.addEventListener('click', function(){
+      if(i >= steps.length) return;
+      steps[i].classList.remove('hide'); i++;
+      if(i >= steps.length){ b.textContent = 'Đã hết các bước'; b.className = 'btn ghost'; done(host); }
+      else b.textContent = 'Hiện bước ' + (i + 1);
+    });
+  });
+})();
+</script>
+
+
+<!-- ================= JS RIÊNG CỦA BÀI — hình "giao hai tập hợp" dùng một lần ============ -->
+<script>
+(function(){
+  var sl = document.getElementById('sl');
+  if(!sl) return;
+  var cB = document.getElementById('cB'), cB2 = document.getElementById('cB2');
+  var lblB = document.getElementById('lblB'), lblC = document.getElementById('lblC');
+  var out = document.getElementById('giao-out');
+  function moveB(){
+    var x = +sl.value;
+    cB.setAttribute('cx', x); cB2.setAttribute('cx', x);
+    lblB.setAttribute('x', x + 60);
+    lblC.setAttribute('x', (210 + x) / 2);
+    var d = x - 210, cham = d < 176;
+    lblC.style.display = cham ? '' : 'none';
+    out.innerHTML = cham
+      ? 'Phần tô xanh là <b><i>C</i> = <i>A</i> ∩ <i>B</i></b> — gồm những phần tử ' +
+        '<b>vừa thuộc <i>A</i> vừa thuộc <i>B</i></b>.' +
+        (d < 40 ? ' Hai vòng gần trùng nhau: hầu hết phần tử đều là phần tử chung.' : '')
+      : 'Hai vòng rời hẳn nhau: <b>không có phần tử chung nào</b>, phần tô xanh biến mất.';
+  }
+  sl.addEventListener('input', moveB);
+  moveB();
+})();
+</script>
+</body>
+</html>

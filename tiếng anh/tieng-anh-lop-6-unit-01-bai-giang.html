@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unit 1. My New School — Bài giảng Tiếng Anh 6 (Global Success)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
+    --line:#e3e7f0; --brand:#2f6fdb; --brand-soft:#e8f0ff;
+    --warm:#f59e0b; --warm-soft:#fff6e5; --green:#0f9d76; --green-soft:#e6f7f1;
+    --red:#d64545; --red-soft:#fdeceb; --purple:#7c5cd6; --purple-soft:#f1ecff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:120px}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,Arial,sans-serif;
+    font-size:17px; line-height:1.65;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:0 16px 80px}
+
+  header.top{
+    background:linear-gradient(135deg,#2f6fdb,#6a4fd8); color:#fff;
+    padding:26px 16px 22px;
+  }
+  header.top .wrap{padding-bottom:0}
+  header.top h1{margin:0 0 4px; font-size:30px; letter-spacing:.3px}
+  header.top .sub{opacity:.92; font-size:15px; margin:0}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px; border-radius:999px; font-size:13px; margin-top:8px}
+
+  .toolbar{
+    position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  }
+  .toolbar .wrap{padding-top:10px; padding-bottom:10px; display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .chip{
+    display:inline-block; padding:5px 11px; border-radius:999px; font-size:14px;
+    background:#eef1f7; color:#3a4152; text-decoration:none; border:1px solid transparent;
+  }
+  .chip:hover{background:var(--brand-soft); border-color:#c8dbff; color:var(--brand)}
+  .spacer{flex:1}
+  .speed{display:flex; align-items:center; gap:6px; font-size:14px; color:var(--muted)}
+  .speed button{
+    font:inherit; font-size:14px; padding:4px 10px; border-radius:8px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--ink);
+  }
+  .speed button.on{background:var(--brand); border-color:var(--brand); color:#fff}
+
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:20px 0; box-shadow:0 1px 2px rgba(20,30,60,.04)}
+  h2{font-size:22px; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:18px; margin:22px 0 8px; color:#243049}
+  h4{font-size:16px; margin:16px 0 6px; color:#37405a}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 20px; padding:0}
+  li{margin:4px 0}
+
+  table{border-collapse:collapse; width:100%; margin:10px 0; font-size:16px}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top}
+  th{background:#f2f5fb; font-weight:600}
+  td.ipa{white-space:nowrap; color:var(--purple); font-family:"Segoe UI",system-ui,sans-serif}
+
+  .say{
+    display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+    font:inherit; font-size:15px; line-height:1.3;
+    background:var(--brand-soft); color:var(--brand); border:1px solid #c8dbff;
+    border-radius:999px; padding:5px 13px 5px 10px; margin:2px 4px 2px 0;
+    transition:background .12s, transform .06s;
+  }
+  .say:hover{background:#d8e6ff}
+  .say:active{transform:scale(.97)}
+  .say::before{content:"▶"; font-size:11px; opacity:.85}
+  .say.playing{background:var(--green); border-color:var(--green); color:#fff}
+  .say.playing::before{content:"■"}
+  .say.mini{font-size:14px; padding:3px 10px 3px 8px}
+  .say.icon{padding:4px 9px; font-size:13px}
+  .say.icon::before{content:"🔊"; font-size:13px}
+  .say.icon.playing::before{content:"■"}
+  .say.line{background:#fff; border-color:var(--line); color:var(--muted)}
+  .say.line:hover{background:var(--brand-soft); color:var(--brand)}
+  .say.line.playing{background:var(--green); border-color:var(--green); color:#fff}
+  .say-all{
+    background:var(--green-soft); border-color:#b8e5d7; color:#0b7a5c; font-weight:600;
+  }
+  .say-all:hover{background:#d2f0e6}
+  .say-all::before{content:"▶▶"; letter-spacing:-2px}
+
+  .box{border-left:5px solid var(--brand); background:#f8faff; border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:12px 0}
+  .box.remember{border-left-color:var(--warm); background:var(--warm-soft)}
+  .box.tip{border-left-color:var(--green); background:var(--green-soft)}
+  .box.warn{border-left-color:var(--red); background:var(--red-soft)}
+  .box.quote{border-left-color:var(--purple); background:var(--purple-soft)}
+  .box p:first-child{margin-top:0}
+  .box p:last-child{margin-bottom:0}
+  .box .label{font-weight:700; display:block; margin-bottom:4px}
+
+  .dlg{margin:6px 0}
+  .dlg .who{display:inline-block; min-width:64px; font-weight:700; color:var(--brand)}
+  .dlg .who.f{color:#c2408f}
+  .dlg .en{}
+  .wordgrid{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
+  .pron2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:12px 0}
+  .pron2 .col{border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#fbfcff}
+  .pron2 .col h4{margin-top:0; font-size:19px; text-align:center;
+    color:#fff; background:var(--brand); border-radius:8px; padding:4px 0}
+  .pron2 .col.b h4{background:var(--purple)}
+  .pron2 .w{display:flex; align-items:center; justify-content:space-between; gap:8px;
+    padding:5px 0; border-bottom:1px dashed var(--line); font-size:18px}
+  .pron2 .w:last-child{border-bottom:none}
+  .pron2 .w b{color:var(--red)}
+  .sentlist{list-style:none; margin:10px 0 0; padding:0}
+  .sentlist li{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-bottom:1px dashed var(--line)}
+  .sentlist li:last-child{border-bottom:none}
+  .sentlist .n{font-weight:700; color:var(--muted); min-width:20px}
+  .sentlist .tx{flex:1}
+  .err{background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:10px 0}
+  .err .h{font-weight:700; color:var(--red); margin-bottom:4px}
+  .x{color:var(--red); font-weight:700}
+  .ok{color:var(--green); font-weight:700}
+  .muted{color:var(--muted)}
+  .small{font-size:15px}
+  .task{background:#fbfcff; border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin:10px 0}
+  footer{color:var(--muted); font-size:14px; margin-top:26px; padding-top:14px; border-top:1px solid var(--line)}
+  #nowplay{
+    position:fixed; left:50%; transform:translateX(-50%); bottom:-70px; z-index:99;
+    background:#12301f; color:#fff; padding:9px 18px; border-radius:999px; font-size:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,.25); transition:bottom .2s; max-width:92vw;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  #nowplay.on{bottom:18px}
+  @media (max-width:640px){
+    body{font-size:16px}
+    .pron2{grid-template-columns:1fr}
+    header.top h1{font-size:24px}
+    section{padding:16px 14px}
+    table{font-size:15px}
+  }
+</style>
+</head>
+<body data-audio-dir="audio-unit-01/">
+
+<header class="top">
+  <div class="wrap">
+    <h1>UNIT 1. MY NEW SCHOOL</h1>
+    <p class="sub">Bài giảng Tiếng Anh 6 — Global Success, tập một, trang 6–15</p>
+    <span class="badge">Bấm vào nút ▶ để nghe phát âm chuẩn</span>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap">
+    <a class="chip" href="#s1">Tổng quan</a>
+    <a class="chip" href="#s2">Hội thoại</a>
+    <a class="chip" href="#s3">Từ vựng</a>
+    <a class="chip" href="#s4">Phát âm</a>
+    <a class="chip" href="#s5">Ngữ pháp</a>
+    <a class="chip" href="#s6">Kĩ năng</a>
+    <a class="chip" href="#s7">Tự luyện</a>
+    <span class="spacer"></span>
+    <span class="speed">
+      Tốc độ:
+      <button id="spd-slow" type="button">Chậm</button>
+      <button id="spd-norm" type="button" class="on">Bình thường</button>
+    </span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="s1">
+  <h2>1. Unit này dạy gì?</h2>
+  <p>Trang 6 sách in sẵn bảng <b>THIS UNIT INCLUDES</b> — đây là mục tiêu chính thức của cả unit:</p>
+  <table>
+    <tr><th style="width:50%">Language</th><th>Skills</th></tr>
+    <tr>
+      <td>
+        <b>Vocabulary</b><br>• School things and activities<br>• Verb (<i>play, do, have, study</i>) + Noun<br>
+        <b>Pronunciation</b><br>Sounds: /ɑː/ and /ʌ/<br>
+        <b>Grammar</b><br>• Present simple<br>• Adverbs of frequency
+      </td>
+      <td>
+        • Reading about schools<br>
+        • Talking about the type of school one would like to go to<br>
+        • Listening about school activities<br>
+        • Writing a paragraph about one's school<br>
+        <b>Everyday English</b><br>Introducing someone
+      </td>
+    </tr>
+  </table>
+  <p>Nói gọn: unit này xoay quanh <b>ngôi trường mới</b> của em — đồ dùng học tập, môn học, hoạt
+  động ở trường; học hai âm <b>/ɑː/</b> và <b>/ʌ/</b>; học <b>thì hiện tại đơn</b> và
+  <b>trạng từ chỉ tần suất</b>; biết <b>giới thiệu người này với người kia</b>.</p>
+
+  <h3>Bố cục 7 phần — đi đúng thứ tự này, đừng nhảy cóc</h3>
+  <table>
+    <tr><th>Phần</th><th style="width:70px">Trang</th><th>Nội dung</th></tr>
+    <tr><td>Getting Started — <i>A special day</i></td><td>6–7</td><td>Hội thoại mở đầu + từ vựng đồ dùng học tập</td></tr>
+    <tr><td>A Closer Look 1</td><td>8</td><td>Vocabulary (Verb + Noun) + Pronunciation /ɑː/ – /ʌ/</td></tr>
+    <tr><td>A Closer Look 2</td><td>9–10</td><td>Grammar: present simple + adverbs of frequency</td></tr>
+    <tr><td>Communication</td><td>11</td><td>Everyday English: <i>Introducing someone</i></td></tr>
+    <tr><td>Skills 1</td><td>12</td><td>Reading về ba ngôi trường + Speaking</td></tr>
+    <tr><td>Skills 2</td><td>13</td><td>Listening + Writing đoạn văn về trường em</td></tr>
+    <tr><td>Looking Back + Project</td><td>14–15</td><td>Ôn tập + dự án <i>Your dream school</i></td></tr>
+  </table>
+</section>
+
+<section id="s2">
+  <h2>2. Getting Started — <i>A special day</i> 🎧 <span class="muted small">(Track 2)</span></h2>
+  <p>Hội thoại giữa <b>Phong, Vy và Duy</b> sáng ngày đầu đi học.
+     Bấm từng dòng để nghe, hoặc nghe liền cả bài:</p>
+
+  <div class="box tip">
+    <span class="label">Tên riêng thì đọc theo tiếng Việt</span>
+    <p>Ba bạn trong bài đều là người Việt, nên tên các bạn <b>đọc đúng như tiếng Việt</b>, không
+    uốn theo tiếng Anh. Người Anh nói tiếng Anh vẫn gọi tên em bằng tiếng Việt như thế:</p>
+    <p>
+      <button class="say mini" data-a="ten-vy" data-lang="vi-VN" data-t="Vy">Vy</button>
+      <button class="say mini" data-a="ten-phong" data-lang="vi-VN" data-t="Phong">Phong</button>
+      <button class="say mini" data-a="ten-duy" data-lang="vi-VN" data-t="Duy">Duy</button>
+    </p>
+    <p class="small">Nghe kĩ để khỏi đọc thành "vai", "đi-u-i" — đó là cách người chưa biết
+    tiếng Việt đoán mò theo mặt chữ.</p>
+  </div>
+
+  <p><button class="say say-all" data-all="#dlg-gs">Nghe cả hội thoại</button></p>
+
+  <div id="dlg-gs">
+    <p class="muted"><i>(Loud knock)</i></p>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Hi, Vy.</span>
+      <button class="say line icon" data-a="gs-01" data-t="Hi, Vy."></button></div>
+    <div class="dlg"><span class="who f">Vy:</span> <span class="en">Hi, Phong. Are you ready?</span>
+      <button class="say line icon" data-a="gs-02" data-t="Hi, Phong. Are you ready?"></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Just a minute.</span>
+      <button class="say line icon" data-a="gs-03" data-t="Just a minute."></button></div>
+    <div class="dlg"><span class="who f">Vy:</span> <span class="en">Oh, <b>this is Duy</b>, my new friend.</span>
+      <button class="say line icon" data-a="gs-04" data-t="Oh, this is Duy, my new friend."></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Hi, Duy. Nice to meet you.</span>
+      <button class="say line icon" data-a="gs-05" data-t="Hi, Duy. Nice to meet you."></button></div>
+    <div class="dlg"><span class="who">Duy:</span> <span class="en">Hi, Phong. I live near here, and we <b>go</b> to the same school!</span>
+      <button class="say line icon" data-a="gs-06" data-t="Hi, Phong. I live near here, and we go to the same school!"></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Good. Hmm, your school bag looks heavy.</span>
+      <button class="say line icon" data-a="gs-07" data-t="Good. Hmm, your school bag looks heavy."></button></div>
+    <div class="dlg"><span class="who">Duy:</span> <span class="en">Yes! I <b>have</b> new books, and we <b>have</b> new subjects to study.</span>
+      <button class="say line icon" data-a="gs-08" data-t="Yes! I have new books, and we have new subjects to study."></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">And a new uniform, Duy! You look smart!</span>
+      <button class="say line icon" data-a="gs-09" data-t="And a new uniform, Duy! You look smart!"></button></div>
+    <div class="dlg"><span class="who">Duy:</span> <span class="en">Thanks, Phong. We <b>always</b> look smart in our uniforms.</span>
+      <button class="say line icon" data-a="gs-10" data-t="Thanks, Phong. We always look smart in our uniforms."></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Let me put on my uniform. Then we can go.</span>
+      <button class="say line icon" data-a="gs-11" data-t="Let me put on my uniform. Then we can go."></button></div>
+  </div>
+
+  <div class="box tip">
+    <span class="label">Cả unit nằm gọn trong ba chỗ in đậm</span>
+    <ul>
+      <li><i>this is Duy, my new friend</i> → mẫu câu <b>giới thiệu người</b> (học kĩ ở Communication)</li>
+      <li><i>I <b>have</b> new books</i> / <i>we <b>go</b> to the same school</i> → <b>hiện tại đơn</b></li>
+      <li><i>We <b>always</b> look smart</i> → <b>trạng từ chỉ tần suất</b></li>
+    </ul>
+  </div>
+
+  <p class="small muted">Sau hội thoại là bài 2 (T/F, 5 câu), bài 3 (điền một từ vào mỗi chỗ trống,
+  5 câu), bài 4 (nối từ với tranh đồ dùng học tập, 🎧 Track 3), bài 5 (nhìn quanh lớp, viết tên
+  đồ vật em thấy).</p>
+</section>
+
+<section id="s3">
+  <h2>3. Từ vựng trọng tâm</h2>
+
+  <h3>a) Glossary Unit 1 <span class="muted small">(trang 70 — phiên âm chính thức của sách)</span></h3>
+  <table>
+    <tr><th style="width:170px">Từ</th><th style="width:60px">Loại</th><th>Phiên âm</th><th>Nghĩa</th></tr>
+    <tr><td><button class="say mini" data-a="voc-activity" data-t="activity">activity</button></td><td>n</td><td class="ipa">/ækˈtɪvəti/</td><td>hoạt động</td></tr>
+    <tr><td><button class="say mini" data-a="voc-art" data-t="art">art</button></td><td>n</td><td class="ipa">/ɑːt/</td><td>nghệ thuật</td></tr>
+    <tr><td><button class="say mini" data-a="voc-boarding-school" data-t="boarding school">boarding school</button></td><td>n</td><td class="ipa">/ˈbɔːdɪŋ skuːl/</td><td>trường nội trú</td></tr>
+    <tr><td><button class="say mini" data-a="voc-calculator" data-t="calculator">calculator</button></td><td>n</td><td class="ipa">/ˈkælkjuleɪtə/</td><td>máy tính</td></tr>
+    <tr><td><button class="say mini" data-a="voc-classmate" data-t="classmate">classmate</button></td><td>n</td><td class="ipa">/ˈklɑːsmeɪt/</td><td>bạn cùng lớp</td></tr>
+    <tr><td><button class="say mini" data-a="voc-compass" data-t="compass">compass</button></td><td>n</td><td class="ipa">/ˈkʌmpəs/</td><td>com-pa</td></tr>
+    <tr><td><button class="say mini" data-a="voc-favourite" data-t="favourite">favourite</button></td><td>adj</td><td class="ipa">/ˈfeɪvərɪt/</td><td>được yêu thích</td></tr>
+    <tr><td><button class="say mini" data-a="voc-help" data-t="help">help</button></td><td>n, v</td><td class="ipa">/help/</td><td>sự giúp đỡ; giúp đỡ</td></tr>
+    <tr><td><button class="say mini" data-a="voc-international" data-t="international">international</button></td><td>adj</td><td class="ipa">/ˌɪntəˈnæʃnəl/</td><td>quốc tế</td></tr>
+    <tr><td><button class="say mini" data-a="voc-interview" data-t="interview">interview</button></td><td>n, v</td><td class="ipa">/ˈɪntəvjuː/</td><td>cuộc phỏng vấn; phỏng vấn</td></tr>
+    <tr><td><button class="say mini" data-a="voc-knock" data-t="knock">knock</button></td><td>v</td><td class="ipa">/nɒk/</td><td>gõ (cửa)</td></tr>
+    <tr><td><button class="say mini" data-a="voc-remember" data-t="remember">remember</button></td><td>v</td><td class="ipa">/rɪˈmembə/</td><td>nhớ, ghi nhớ</td></tr>
+    <tr><td><button class="say mini" data-a="voc-share" data-t="share">share</button></td><td>v</td><td class="ipa">/ʃeə/</td><td>chia sẻ</td></tr>
+    <tr><td><button class="say mini" data-a="voc-smart" data-t="smart">smart</button></td><td>adj</td><td class="ipa">/smɑːt/</td><td>bảnh bao, gọn gàng</td></tr>
+    <tr><td><button class="say mini" data-a="voc-swimming-pool" data-t="swimming pool">swimming pool</button></td><td>n</td><td class="ipa">/ˈswɪmɪŋ puːl/</td><td>bể bơi</td></tr>
+  </table>
+  <div class="box warn">
+    <span class="label">⚠️ Chính tả Anh – Anh</span>
+    <p>Sách dùng <b>favourite</b> (không phải <i>favorite</i>), <b>rubber</b> (không phải
+    <i>eraser</i>), <b>maths</b> (không phải <i>math</i>). Bài kiểm tra chấm theo sách.</p>
+  </div>
+
+  <h3>b) School things — đồ dùng học tập <span class="muted small">(Getting Started, bài 4)</span></h3>
+  <div class="wordgrid">
+    <button class="say" data-a="thing-pencil-sharpener" data-t="pencil sharpener">pencil sharpener</button>
+    <button class="say" data-a="voc-compass" data-t="compass">compass</button>
+    <button class="say" data-a="thing-school-bag" data-t="school bag">school bag</button>
+    <button class="say" data-a="voc-calculator" data-t="calculator">calculator</button>
+    <button class="say" data-a="thing-rubber" data-t="rubber">rubber</button>
+    <button class="say" data-a="thing-pencil-case" data-t="pencil case">pencil case</button>
+  </div>
+  <p class="small"><i>pencil sharpener</i> = cái gọt bút chì · <i>school bag</i> = cặp sách ·
+  <i>rubber</i> = cục tẩy · <i>pencil case</i> = hộp bút. Còn <i>compass</i> và
+  <i>calculator</i> em xem phiên âm ở bảng trên.</p>
+  <p class="muted small">Bài 4 yêu cầu <b>nối từ với tranh</b> — cô không đọc tranh ra cho em.
+  Em nhìn sáu hình đánh số 1–6 trong sách, tự gọi tên từng cái rồi gửi cô đáp án nối.</p>
+
+  <h3>c) School activities và mẫu <b>Verb + Noun</b> <span class="muted small">(A Closer Look 1, bài 1 🎧 Track 4)</span></h3>
+  <div class="wordgrid">
+    <button class="say" data-a="act-school-lunch" data-t="school lunch">school lunch</button>
+    <button class="say" data-a="act-exercise" data-t="exercise">exercise</button>
+    <button class="say" data-a="act-english" data-t="English">English</button>
+    <button class="say" data-a="act-science" data-t="science">science</button>
+    <button class="say" data-a="act-history" data-t="history">history</button>
+    <button class="say" data-a="act-football" data-t="football">football</button>
+    <button class="say" data-a="act-homework" data-t="homework">homework</button>
+    <button class="say" data-a="act-lessons" data-t="lessons">lessons</button>
+    <button class="say" data-a="act-music" data-t="music">music</button>
+  </div>
+  <p class="small"><i>school lunch</i> = bữa trưa ở trường · <i>exercise</i> = (ở đây) sự tập thể dục ·
+  <i>science</i> = môn khoa học · <i>history</i> = môn lịch sử · <i>homework</i> = bài tập về nhà ·
+  <i>lessons</i> = các bài học / tiết học.</p>
+  <div class="box warn">
+    <span class="label">Chỗ học sinh Việt Nam sai nhiều nhất</span>
+    <p>Tiếng Anh <b>ghép động từ với danh từ theo thói quen, không dịch từng chữ từ tiếng Việt</b>.
+    Tiếng Việt nói "làm bài tập", "chơi bóng đá", "học tiếng Anh" — nhưng tiếng Anh bắt em chọn
+    đúng một trong bốn động từ <b>play / do / have / study</b>. Ngay trong hội thoại mở đầu:
+    <i>I <b>have</b> new books</i> — dùng <i>have</i>, không dùng <i>take</i>.</p>
+    <p>Bài 2 trang 8 chính là bài xếp chín từ trên vào bốn cột đó. Em tự xếp rồi gửi cô — cô xếp
+    sẵn thì em không nhớ được đâu.</p>
+  </div>
+</section>
+
+<section id="s4">
+  <h2>4. Phát âm: /ɑː/ và /ʌ/ <span class="muted small">(A Closer Look 1, bài 4 🎧 Track 5)</span></h2>
+  <p>Bấm từng từ để nghe. Nghe <b>đối chiếu theo cặp trái – phải</b> thì tai nhanh phân biệt nhất.</p>
+
+  <div class="pron2">
+    <div class="col a">
+      <h4>1 · /ɑː/ — dài</h4>
+      <div class="w"><span>sm<b>ar</b>t</span><button class="say icon" data-a="voc-smart" data-t="smart"></button></div>
+      <div class="w"><span><b>ar</b>t</span><button class="say icon" data-a="voc-art" data-t="art"></button></div>
+      <div class="w"><span>c<b>ar</b>ton</span><button class="say icon" data-a="pr-carton" data-t="carton"></button></div>
+      <div class="w"><span>cl<b>a</b>ss</span><button class="say icon" data-a="pr-class" data-t="class"></button></div>
+    </div>
+    <div class="col b">
+      <h4>2 · /ʌ/ — ngắn</h4>
+      <div class="w"><span>s<b>u</b>bject</span><button class="say icon" data-a="pr-subject" data-t="subject"></button></div>
+      <div class="w"><span>st<b>u</b>dy</span><button class="say icon" data-a="pr-study" data-t="study"></button></div>
+      <div class="w"><span>M<b>o</b>nday</span><button class="say icon" data-a="pr-monday" data-t="Monday"></button></div>
+      <div class="w"><span>c<b>o</b>mpass</span><button class="say icon" data-a="voc-compass" data-t="compass"></button></div>
+    </div>
+  </div>
+
+  <div class="box tip">
+    <span class="label">Mẹo phân biệt của cô</span>
+    <ul>
+      <li><b>/ɑː/</b> — âm <b>dài</b>, miệng <b>mở to</b>, lưỡi hạ thấp, giống như em đang há
+      miệng cho bác sĩ khám họng: "aaa". Dấu hai chấm <b>ː</b> trong phiên âm nghĩa là <b>dài</b>.</li>
+      <li><b>/ʌ/</b> — âm <b>ngắn</b>, miệng mở vừa phải, dứt khoát, nghe lai giữa "ă" và "â"
+      của tiếng Việt. Bật ra rồi tắt ngay.</li>
+    </ul>
+    <p>So từng cặp cho rõ:
+      <button class="say mini" data-a="voc-art" data-t="art">art /ɑːt/</button> —
+      <button class="say mini" data-a="voc-compass" data-t="compass">compass /ˈkʌmpəs/</button> ·
+      <button class="say mini" data-a="pr-class" data-t="class">class /klɑːs/</button> —
+      <button class="say mini" data-a="pr-study" data-t="study">study /ˈstʌdi/</button>
+    </p>
+  </div>
+
+  <div class="box warn">
+    <span class="label">⚠️ Bẫy chính tả</span>
+    <p>Đừng nhìn mặt chữ mà đoán âm. <i>Monday</i> viết chữ <b>o</b> nhưng đọc /ʌ/;
+    <i>class</i> viết chữ <b>a</b> nhưng đọc /ɑː/. Phải nghe và nhớ theo từng từ, không suy ra
+    từ chữ cái.</p>
+  </div>
+
+  <h3>Bài 5 trang 8 🎧 <span class="muted small">(Track 6)</span> — nghe rồi gạch chân từ có âm /ɑː/ và /ʌ/</h3>
+  <p><button class="say say-all" data-all="#prs">Nghe cả 5 câu</button></p>
+  <ol class="sentlist" id="prs">
+    <li><span class="n">1.</span><span class="tx">My brother has a new compass.</span>
+      <button class="say line icon" data-a="prs-1" data-t="My brother has a new compass."></button></li>
+    <li><span class="n">2.</span><span class="tx">Our classroom is large.</span>
+      <button class="say line icon" data-a="prs-2" data-t="Our classroom is large."></button></li>
+    <li><span class="n">3.</span><span class="tx">They look smart on their first day at school.</span>
+      <button class="say line icon" data-a="prs-3" data-t="They look smart on their first day at school."></button></li>
+    <li><span class="n">4.</span><span class="tx">The art lesson starts at nine o'clock.</span>
+      <button class="say line icon" data-a="prs-4" data-t="The art lesson starts at nine o'clock."></button></li>
+    <li><span class="n">5.</span><span class="tx">He goes out to have lunch every Sunday.</span>
+      <button class="say line icon" data-a="prs-5" data-t="He goes out to have lunch every Sunday."></button></li>
+  </ol>
+  <p class="small">Em đọc to từng câu. Lỗi kinh điển của học sinh mình là <b>nuốt phụ âm cuối</b> —
+  <i>smart</i> phải giữ gọn âm /t/ ở cuối, đừng đọc thành "sờ-ma". Bấm <b>Chậm</b> ở thanh trên
+  cùng rồi nghe lại, em sẽ nghe rõ đuôi từ.</p>
+</section>
+
+<section id="s5">
+  <h2>5. Ngữ pháp <span class="muted small">(A Closer Look 2, trang 9–10)</span></h2>
+
+  <h3>A. THE PRESENT SIMPLE — thì hiện tại đơn</h3>
+  <div class="box remember">
+    <span class="label">📌 Remember! <span class="muted small">— nguyên văn SGK</span></span>
+    <p>We use the present simple to talk about actions or events that often happen, or are fixed.</p>
+    <p>– We usually <b>go</b> to school by bus.
+      <button class="say line icon" data-a="gr-01" data-t="We usually go to school by bus."></button></p>
+    <p>– I <b>don't like</b> school lunch very much.
+      <button class="say line icon" data-a="gr-02" data-t="I don't like school lunch very much."></button></p>
+  </div>
+  <div class="box remember">
+    <span class="label">📌 Remember!</span>
+    <p>The present simple verbs with <i>he / she / it</i> need an <i>s / es</i>.</p>
+  </div>
+
+  <p><b>Giảng bằng tiếng Việt:</b> hiện tại đơn dùng cho việc <b>thường xuyên xảy ra</b> hoặc
+  <b>cố định, luôn đúng</b>. Em đi học mỗi ngày → hiện tại đơn. Trường em nằm ở giữa làng →
+  hiện tại đơn.</p>
+
+  <table>
+    <tr><th style="width:110px"></th><th>I / you / we / they</th><th>he / she / it</th></tr>
+    <tr>
+      <td><b>Khẳng định</b></td>
+      <td>We <b>have</b> new subjects for this school year.
+        <button class="say line icon" data-a="gr-05" data-t="We have new subjects for this school year."></button></td>
+      <td>Duy <b>cycles</b> to school every day.
+        <button class="say line icon" data-a="gr-06" data-t="Duy cycles to school every day."></button></td>
+    </tr>
+    <tr>
+      <td><b>Phủ định</b></td>
+      <td>I <b>don't like</b> school lunch very much.
+        <button class="say line icon" data-a="gr-02" data-t="I don't like school lunch very much."></button></td>
+      <td>She <b>doesn't have</b> a brother.
+        <button class="say line icon" data-a="gr-07" data-t="She doesn't have a brother."></button></td>
+    </tr>
+    <tr>
+      <td><b>Nghi vấn</b></td>
+      <td>Where <b>do you</b> live?
+        <button class="say line icon" data-a="gr-08" data-t="Where do you live?"></button></td>
+      <td><b>Does</b> Vy <b>walk</b> to school with you?
+        <button class="say line icon" data-a="gr-09" data-t="Does Vy walk to school with you?"></button></td>
+    </tr>
+  </table>
+
+  <p><b>Ba điều phải thuộc:</b></p>
+  <ol>
+    <li>Chủ ngữ là <b>he / she / it</b> (hoặc một người/vật số ít như <i>Duy</i>, <i>my mum</i>,
+    <i>Mr Nam</i>) → động từ <b>thêm -s/-es</b>.</li>
+    <li>Phủ định: <b>don't</b> cho I/you/we/they, <b>doesn't</b> cho he/she/it. Sau
+    <i>don't / doesn't</i> động từ <b>về nguyên thể</b>.</li>
+    <li>Nghi vấn: <b>Do … ?</b> / <b>Does … ?</b> Sau <i>Does</i> động từ cũng <b>về nguyên thể</b>.</li>
+  </ol>
+
+  <h4>Quy tắc thêm -s / -es</h4>
+  <p class="muted small">Phần này cô giảng thêm để em viết đúng chính tả, vì khung
+  <i>Remember</i> của sách chỉ nói gọn "need an s / es".</p>
+  <table>
+    <tr><th style="width:240px">Trường hợp</th><th style="width:120px">Cách thêm</th><th>Ví dụ trong Unit 1</th></tr>
+    <tr><td>Đa số động từ</td><td>+ <b>s</b></td><td>cycle → cycles, like → likes, walk → walks, come → comes</td></tr>
+    <tr><td>Tận cùng <b>-ch, -sh, -s, -x, -o</b></td><td>+ <b>es</b></td><td>teach → teaches, go → goes, do → does</td></tr>
+    <tr><td>Tận cùng <b>phụ âm + y</b></td><td>y → <b>ies</b></td><td>study → studies</td></tr>
+    <tr><td>Động từ đặc biệt</td><td></td><td>have → <b>has</b>, be → <b>is</b></td></tr>
+  </table>
+  <p class="small">⚠️ <i>play</i> tận cùng là <b>nguyên âm + y</b> nên vẫn là <i>plays</i>,
+  không phải "plies".</p>
+
+  <h3>B. ADVERBS OF FREQUENCY — trạng từ chỉ tần suất</h3>
+  <div class="box remember">
+    <span class="label">📌 Remember! <span class="muted small">— nguyên văn SGK</span></span>
+    <p>We use adverbs of frequency to show how often something happens.</p>
+    <p>We often use them with the present simple.</p>
+    <p>We usually place the adverb of frequency <b>before the main verb</b>.</p>
+    <p>– Tom <b>usually</b> takes the bus to school.
+      <button class="say line icon" data-a="gr-03" data-t="Tom usually takes the bus to school."></button></p>
+    <p>– They don't <b>often</b> go to the cinema.
+      <button class="say line icon" data-a="gr-04" data-t="They don't often go to the cinema."></button></p>
+  </div>
+  <p>Điều then chốt: <b>trạng từ tần suất đứng TRƯỚC động từ chính</b>. Nhìn ví dụ của sách —
+  <i>Tom <b>usually</b> takes…</i>, chứ không phải "Tom takes usually".</p>
+  <p>Bài 3 trang 10 cho em một hình tam giác ngược 5 mức, trong đó mức 1 là <b>always</b>, mức 4
+  là <b>rarely</b>, còn ba chỗ 2, 3, 5 để trống cho em điền <b>usually, sometimes, never</b>
+  theo đúng mức độ giảm dần. Em tự sắp xếp rồi gửi cô — cứ nghĩ theo nghĩa tiếng Việt: luôn
+  luôn → thường xuyên → thỉnh thoảng → hiếm khi → không bao giờ.</p>
+
+  <h3>C. Ba lỗi học sinh Việt Nam hay mắc ở Unit 1</h3>
+  <div class="err">
+    <div class="h">Lỗi 1 — Quên -s ở ngôi thứ ba</div>
+    <p><span class="x">✗</span> <i>Duy cycle to school every day.</i></p>
+    <p>Vì tiếng Việt động từ không đổi hình, em quen tay bỏ quên. Cách tự kiểm: hỏi "chủ ngữ này
+    thay được bằng <b>he / she / it</b> không?" <i>Duy</i> → <i>he</i> → động từ phải là
+    <b>cycles</b>.</p>
+  </div>
+  <div class="err">
+    <div class="h">Lỗi 2 — Đã có <i>does</i> còn chia động từ</div>
+    <p><span class="x">✗</span> <i>Does she likes English?</i> &nbsp;·&nbsp;
+       <span class="x">✗</span> <i>She doesn't has a brother.</i></p>
+    <p>Quy tắc: <b>một câu chỉ chia một lần</b>. <i>does / doesn't</i> đã mang dấu hiệu ngôi thứ
+    ba rồi, nên động từ đằng sau <b>về nguyên thể</b>:
+    <span class="ok">✓</span> <i>Does she <b>like</b>…?</i> ·
+    <span class="ok">✓</span> <i>She doesn't <b>have</b>…</i></p>
+  </div>
+  <div class="err">
+    <div class="h">Lỗi 3 — Đặt sai vị trí trạng từ tần suất</div>
+    <p><span class="x">✗</span> <i>I get up usually late on Saturdays.</i></p>
+    <p>Sách nói rõ: <i>before the main verb</i>. Đúng là <span class="ok">✓</span>
+    <i>I <b>usually get up</b> late on Saturdays.</i> Câu hỏi cũng vậy — trạng từ đứng sau chủ
+    ngữ, trước động từ chính. Bài 4 trang 10 luyện đúng lỗi này.</p>
+  </div>
+  <p class="small muted"><b>Lỗi phụ hay gặp:</b> dùng <i>not</i> trần —
+  <span class="x">✗</span> <i>My new school <b>not</b> in the centre…</i> Câu này động từ là
+  <b>be</b>, nên phủ định phải là <b>isn't</b>, không phải <i>doesn't</i>.</p>
+</section>
+
+<section id="s6">
+  <h2>6. Communication · Skills 1 · Skills 2</h2>
+
+  <h3>COMMUNICATION <span class="muted small">(trang 11)</span> — Everyday English: <b>Introducing someone</b> 🎧 <span class="muted small">(Track 7)</span></h3>
+  <p><button class="say say-all" data-all="#dlg-com">Nghe cả đoạn</button></p>
+  <div id="dlg-com">
+    <div class="dlg"><span class="who f">Vy:</span> Phong, <b>this is Duy</b>, my new friend.
+      <button class="say line icon" data-a="com-01" data-t="Phong, this is Duy, my new friend."></button></div>
+    <div class="dlg"><span class="who">Phong:</span> Hi, Duy. <b>Nice to meet you.</b>
+      <button class="say line icon" data-a="com-02" data-t="Hi, Duy. Nice to meet you."></button></div>
+    <div class="dlg"><span class="who">Duy:</span> Hi, Phong. <b>Nice to meet you, too.</b>
+      <button class="say line icon" data-a="com-03" data-t="Hi, Phong. Nice to meet you, too."></button></div>
+  </div>
+  <div class="box tip">
+    <p>Ba mẫu này em dùng suốt đời: <b>This is + tên</b> (người giới thiệu nói),
+    <b>Nice to meet you</b> (người được giới thiệu nói), <b>Nice to meet you, too</b> (người kia
+    đáp lại). Nhớ chữ <b>too</b> ở câu đáp — thiếu nó là nghe cụt.</p>
+  </div>
+  <p class="small">Bài 2 thực hành theo nhóm. Bài 3 là bảng 8 câu hỏi, em <b>tick những câu hợp
+  lí để hỏi một người bạn mới</b>. Bài 4 là bài trắc nghiệm vui <i>ARE YOU A GOOD FRIEND AT
+  SCHOOL?</i> với 8 câu Yes/No. Bài 5 phỏng vấn nhau theo nhóm. Ba bài này luyện <b>nói</b> và
+  không có một đáp án đúng duy nhất — nhưng có lựa chọn hợp lí và không hợp lí. Ví dụ hỏi người
+  mới quen <i>How much money do you get?</i> thì khiếm nhã; em cân nhắc kiểu đó.</p>
+
+  <h3>SKILLS 1 <span class="muted small">(trang 12)</span> — Reading + Speaking</h3>
+  <p>Chủ đề: <b>ba ngôi trường</b>. Bấm nút để nghe cô đọc mẫu từng đoạn — nghe rồi đọc theo là
+  cách luyện đọc thành tiếng nhanh nhất.</p>
+  <div class="box quote">
+    <p><b>Sunrise</b> is a boarding school in Sydney. Students study and live there. About 1,200
+    boys and girls go to Sunrise. It has students from all over Australia. They study subjects
+    like maths, science and English.</p>
+    <p><button class="say mini" data-a="read-sunrise" data-t="Sunrise is a boarding school in Sydney. Students study and live there. About one thousand two hundred boys and girls go to Sunrise. It has students from all over Australia. They study subjects like maths, science and English.">Nghe đoạn Sunrise</button></p>
+  </div>
+  <div class="box quote">
+    <p><b>An Son</b> is a lower secondary school in Bac Ninh. It has only 8 classes. There are
+    mountains and green fields around the school. There is a computer room and a library. There
+    is also a school garden and a playground.</p>
+    <p><button class="say mini" data-a="read-anson" data-t="An Son is a lower secondary school in Bac Ninh. It has only eight classes. There are mountains and green fields around the school. There is a computer room and a library. There is also a school garden and a playground.">Nghe đoạn An Son</button>
+    <span class="muted small">— tên trường và tên tỉnh đọc theo tiếng Việt:</span>
+    <button class="say mini" data-a="ten-an-son" data-lang="vi-VN" data-t="An Son">An Son</button>
+    <button class="say mini" data-a="ten-bac-ninh" data-lang="vi-VN" data-t="Bac Ninh">Bac Ninh</button></p>
+    <p class="small muted">Sách in tên riêng Việt Nam <b>không dấu</b> (<i>An Son, Bac Ninh</i>) —
+    đó là quy ước của sách, em cứ viết theo sách, nhưng <b>đọc thì vẫn đọc là "An Sơn",
+    "Bắc Ninh"</b>.</p>
+  </div>
+  <div class="box quote">
+    <p><b>Dream</b> is an international school. Here students learn English with English-speaking
+    teachers. In the afternoon, they join many interesting clubs. They play sports and games.
+    Some students do paintings in the art club.</p>
+    <p><button class="say mini" data-a="read-dream" data-t="Dream is an international school. Here students learn English with English-speaking teachers. In the afternoon, they join many interesting clubs. They play sports and games. Some students do paintings in the art club.">Nghe đoạn Dream</button></p>
+  </div>
+  <p>Bài 1 nối 1–3 với A–C; bài 2 hoàn thành 5 câu; bài 3 trả lời 4 câu hỏi.</p>
+  <div class="box tip">
+    <span class="label">Mẹo đọc hiểu cô dặn</span>
+    <p><b>Đọc lướt tìm ý chính trước</b> (mỗi đoạn nói về trường nào, ở đâu, loại gì),
+    <b>rồi mới đọc kĩ</b> tìm chi tiết. Và mỗi khi trả lời, em phải chỉ được <b>câu nào trong
+    bài</b> cho em biết điều đó.</p>
+  </div>
+
+  <h4>Speaking — bài 4: chọn trường em muốn học và nói lí do</h4>
+  <p><button class="say say-all" data-all="#dlg-sp">Nghe mẫu hội thoại</button></p>
+  <div id="dlg-sp">
+    <div class="dlg"><span class="who f">A:</span> Which school would you like to go to?
+      <button class="say line icon" data-a="sp-01" data-t="Which school would you like to go to?"></button></div>
+    <div class="dlg"><span class="who">B:</span> I'd like to go to Dream School.
+      <button class="say line icon" data-a="sp-02" data-t="I'd like to go to Dream School."></button></div>
+    <div class="dlg"><span class="who f">A:</span> Why?
+      <button class="say line icon" data-a="sp-03" data-t="Why?"></button></div>
+    <div class="dlg"><span class="who">B:</span> Because I'd like to paint in the art club.
+      <button class="say line icon" data-a="sp-04" data-t="Because I'd like to paint in the art club."></button></div>
+  </div>
+  <p class="small">Em cứ bám khung này, thay nội dung của chính em vào.</p>
+
+  <h3>SKILLS 2 <span class="muted small">(trang 13)</span> — Listening + Writing</h3>
+  <div class="box warn">
+    <span class="label">🎧 Về phần Listening — nói thẳng với em</span>
+    <p><b>SGK không in nội dung băng</b>, sách chỉ in đề bài. Cô không có transcript và
+    <b>cô sẽ không dựng lại nội dung băng</b>. Em phải nghe <b>Track 8</b> và <b>Track 9</b>
+    của bộ sách thì mới làm được. Đây là giới hạn của sách, không phải cô giấu.</p>
+  </div>
+  <p>Nhưng có nhiều việc làm được <b>trước khi bấm nút play</b>, và đó mới là chỗ ăn điểm:</p>
+  <ul>
+    <li>Bài 1 bảo em <b>đoán trước đáp án</b> cho hai câu về Janet — học sinh ở Palmer School (Mĩ)
+    có mặc đồng phục không, có học tiếng Việt như ngoại ngữ không — rồi nghe để kiểm chứng.
+    Đoán trước làm tai em "biết phải chờ nghe gì".</li>
+    <li>Bài 2 có 5 câu A/B. Trước khi nghe, em <b>đọc hết 5 câu và gạch chân từ khoá</b>:
+    câu 1 chờ nghe tên <b>môn học</b> (<i>maths</i> hay <i>science</i>), câu 2 chờ dạng
+    <b>khẳng định hay phủ định</b> (<i>is wearing</i> / <i>isn't wearing</i>), câu 3 chờ
+    <b>tên một ngôn ngữ</b>, câu 4 chờ <b>nơi chốn</b>, câu 5 chờ <b>nơi chốn</b>. Biết trước
+    cần nghe loại thông tin nào thì em không bị trôi.</li>
+  </ul>
+  <p>Nghe xong, gửi cô 5 đáp án em chọn, cô cùng em soi lại logic từng câu.</p>
+
+  <h4>Writing — bài 3 và bài 4</h4>
+  <p>Bài 3 cho 5 câu hỏi về trường em (tên trường, ở đâu, bao nhiêu lớp, học sinh làm gì, em
+  thích gì ở trường). Bài 4 bảo em dùng chính các câu trả lời đó viết <b>a paragraph of 40–50
+  words about your school</b>, mở đầu sẵn: <i>My school is ______</i></p>
+  <div class="box tip">
+    <p>Hai điều bắt buộc: <b>đúng 40–50 từ</b> (viết xong phải <b>đếm lại</b>; thiếu thì thêm
+    <b>một ý mới</b> chứ đừng nối dài câu cũ), và <b>dùng hiện tại đơn</b> — vì em đang tả một
+    việc cố định.</p>
+  </div>
+
+  <h3>LOOKING BACK + PROJECT <span class="muted small">(trang 14–15)</span></h3>
+  <p>Phần ôn tập gồm: <b>Vocabulary bài 1</b> (nhìn tranh điền từ, 6 câu) và <b>bài 2</b> (nối
+  cột A với cột B); <b>Grammar bài 3</b> (chia hiện tại đơn, 5 câu), <b>bài 4</b> (điền động từ
+  vào đoạn văn về Hoang), <b>bài 5</b> (đặt trạng từ trong ngoặc vào đúng vị trí).</p>
+  <div class="box warn">
+    <p>⚠️ Em để ý: ở Looking Back, mục Grammar <b>bắt đầu từ bài 3</b>, không phải bài 1. Cô nhắc
+    để em đừng mở nhầm.</p>
+  </div>
+  <p><b>Project: <i>Your dream school</i></b> — làm theo nhóm, thiết kế ngôi trường trong mơ
+  (ở thành phố hay nông thôn? nội trú? quốc tế? có bể bơi, phòng game, nhà kính và nông trại
+  không?), vẽ tranh rồi thuyết trình trước lớp.</p>
+  <p>Học xong Unit, em tự chấm bằng bảng <b>Now I can …</b> ở cuối trang 15 — có 9 dòng, em tick
+  ✓ / ✓✓ / ✓✓✓. Dòng nào chỉ được một ✓ thì quay lại học phần đó.</p>
+</section>
+
+<section id="s7">
+  <h2>7. Bài tự luyện — em làm rồi gửi cô chữa</h2>
+  <p class="muted">Cô không đưa đáp án ở đây đâu nhé. Em làm xong gửi lại, cô soi từng câu.</p>
+
+  <h3>A. Bài trong SGK (làm trước, đúng số hiệu)</h3>
+  <div class="task">
+    <ol>
+      <li><b>A Closer Look 2, bài 1 trang 9</b> — <i>Choose the correct answer A, B, or C.</i>
+      Làm cả 5 câu. Với mỗi câu, em viết thêm <b>một dòng lí do</b> vì sao chọn đáp án đó
+      (ví dụ: "chủ ngữ là <i>Duy</i>, thay được bằng <i>he</i>, nên…"). Cô chấm cả lí do, không
+      chỉ chấm đáp án.</li>
+      <li><b>A Closer Look 2, bài 4 trang 10</b> — <i>Choose the correct answer A or B to
+      complete each sentence.</i> 5 câu, luyện đúng vị trí trạng từ tần suất.</li>
+      <li><b>Looking Back, bài 3 trang 14</b> — <i>Complete the sentences with the present
+      simple.</i> 5 câu chia động từ. Chú ý câu 5 với <i>teach</i> và câu 4 với <i>do</i>.</li>
+      <li><b>Looking Back, bài 5 trang 14</b> — <i>Put the adverb in brackets in the correct
+      place in each sentence.</i> 5 câu. Cô báo trước: câu 3 và câu 5 là hai câu khó nhất vì có
+      <i>do not</i> và có <i>Do you</i> ở đầu.</li>
+    </ol>
+  </div>
+
+  <h3>B. Bài cô ra thêm (viết ra vở)</h3>
+  <div class="task">
+    <ol start="5">
+      <li>Chia động từ trong ngoặc cho đúng:<br>
+        (a) My sister (study) ______ English every evening.<br>
+        (b) We (not have) ______ music on Fridays.<br>
+        (c) ______ your father (go) ______ to work by bus?</li>
+      <li>Sắp xếp lại cho đúng vị trí trạng từ:<br>
+        (a) <i>My brother / his homework / does / always / after dinner.</i><br>
+        (b) <i>I / am / late for school / never.</i></li>
+      <li>Đọc to 5 câu ở <b>A Closer Look 1, bài 5 trang 8</b> (nghe lại ở
+        <a href="#s4">mục 4</a>), rồi viết cho cô biết: trong câu
+        <i>"He goes out to have lunch every Sunday."</i>, từ nào chứa âm <b>/ʌ/</b>?
+        <span class="muted">(Gợi ý: có nhiều hơn một từ.)</span></li>
+      <li>Viết <b>2 câu</b> tự giới thiệu một người bạn của em cho cô, dùng đúng mẫu
+        <i>This is …</i> và <i>Nice to meet you.</i> Em cứ mạnh dạn viết, sai cô sửa — cô chỉ
+        sửa một loại lỗi mỗi lần thôi, không sợ nhé.</li>
+    </ol>
+  </div>
+
+  <p>Riêng bài Listening trang 13: em nghe <b>Track 8 và Track 9</b>, làm bài 1 và bài 2, rồi
+  gửi cô đáp án em nghe được. Cô không có nội dung băng nên không thể làm hộ, nhưng em gửi đáp
+  án thì cô cùng em phân tích được ngay.</p>
+  <p><b>Em bắt đầu từ mục A đi. Làm được câu nào gửi câu ấy, không cần đợi xong hết.</b></p>
+</section>
+
+<footer>
+  <p><b>Về file phát âm:</b> toàn bộ <code>.mp3</code> trong thư mục <code>audio-unit-01/</code>
+  do máy tổng hợp giọng đọc (Microsoft Edge TTS, giọng <b>Anh – Anh</b>:
+  <code>en-GB-SoniaNeural</code> cho nữ, <code>en-GB-RyanNeural</code> cho nam), sinh từ đúng
+  ngữ liệu in trong SGK. Đây là <b>giọng máy để tham chiếu khi luyện đọc</b>, không phải file
+  nghe chính thức của bộ sách — các bài Listening (Track 8, Track 9) vẫn phải dùng đĩa/app của
+  NXB vì SGK không in nội dung băng.</p>
+  <p><b>Tên riêng Việt Nam</b> (<i>Vy, Phong, Duy, An Son, Bac Ninh</i>) được đọc bằng
+  <b>giọng Việt</b> (<code>vi-VN-HoaiMyNeural</code> / <code>vi-VN-NamMinhNeural</code>) rồi ghép
+  vào đúng chỗ trong câu tiếng Anh — vì giọng Anh đọc <i>Vy</i> thành "vai", <i>Duy</i> thành
+  "đi-u-i". Chỗ ghép có một nhịp ngắt rất nhẹ; đó là chủ ý, không phải file lỗi.</p>
+  <p>Nếu trình duyệt không mở được file mp3, trang sẽ tự chuyển sang đọc bằng giọng máy có sẵn
+  của trình duyệt. Nguồn nội dung: <code>kiến thức/tiếng anh/</code> — 7 file Unit 1,
+  Tiếng Anh 6 Global Success, tập một.</p>
+</footer>
+
+</div>
+
+<div id="nowplay"></div>
+
+<script>
+(function(){
+  var DIR = (document.body.dataset.audioDir || '').replace(/\/?$/, '/');
+  var rate = 1;
+  var audio = null, curBtn = null, chain = null;
+  var toast = document.getElementById('nowplay');
+
+  function showToast(t){
+    if(!t){ toast.className=''; return; }
+    toast.textContent = '🔊 ' + t;
+    toast.className = 'on';
+  }
+
+  function clearBtn(){
+    if(curBtn){ curBtn.classList.remove('playing'); curBtn = null; }
+  }
+
+  function hardStop(){
+    if(audio){ audio.pause(); audio.onended = null; audio.onerror = null; audio = null; }
+    if(window.speechSynthesis) window.speechSynthesis.cancel();
+    clearBtn();
+    showToast(null);
+  }
+
+  function labelOf(btn){
+    return btn.dataset.t || btn.textContent.trim() || '…';
+  }
+
+  // Doc bang giong may cua trinh duyet (du phong khi khong mo duoc mp3)
+  function speak(btn, done){
+    var text = btn.dataset.t;
+    if(!window.speechSynthesis || !text){ clearBtn(); showToast(null); if(done) done(); return; }
+    var lang = btn.dataset.lang || 'en-GB';     // data-lang="vi-VN" cho ten rieng Viet
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = lang;
+    u.rate = rate === 1 ? 0.95 : 0.65;
+    var vs = window.speechSynthesis.getVoices() || [];
+    var goc = lang.split('-')[0];
+    var v = vs.filter(function(x){ return x.lang === lang; })[0] ||
+            vs.filter(function(x){ return x.lang.indexOf(goc) === 0; })[0];
+    if(v) u.voice = v;
+    u.onend = function(){ clearBtn(); showToast(null); if(done) done(); };
+    u.onerror = function(){ clearBtn(); showToast(null); if(done) done(); };
+    window.speechSynthesis.speak(u);
+  }
+
+  function play(btn, done){
+    hardStop();
+    curBtn = btn;
+    btn.classList.add('playing');
+    showToast(labelOf(btn));
+
+    var slug = btn.dataset.a;
+    if(!slug){ speak(btn, done); return; }
+
+    audio = new Audio(DIR + slug + '.mp3');
+    audio.playbackRate = rate;
+    if('preservesPitch' in audio) audio.preservesPitch = true;
+    if('mozPreservesPitch' in audio) audio.mozPreservesPitch = true;
+    if('webkitPreservesPitch' in audio) audio.webkitPreservesPitch = true;
+
+    audio.onended = function(){ clearBtn(); showToast(null); if(done) done(); };
+    audio.onerror = function(){ audio = null; speak(btn, done); };
+
+    var p = audio.play();
+    if(p && p.catch) p.catch(function(){ if(audio){ audio = null; } speak(btn, done); });
+  }
+
+  function playChain(list, i){
+    if(i >= list.length){ chain = null; return; }
+    chain = list;
+    play(list[i], function(){
+      if(chain === list) setTimeout(function(){ playChain(list, i + 1); }, 320);
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.say') : null;
+    if(!btn) return;
+    e.preventDefault();
+
+    // dang phat chinh nut nay -> dung lai
+    if(btn.classList.contains('playing')){ chain = null; hardStop(); return; }
+
+    chain = null;
+
+    if(btn.dataset.all){
+      var host = document.querySelector(btn.dataset.all);
+      if(!host) return;
+      var list = Array.prototype.slice.call(host.querySelectorAll('.say'));
+      if(list.length){ hardStop(); playChain(list, 0); }
+      return;
+    }
+    play(btn, null);
+  });
+
+  // Toc do
+  var bNorm = document.getElementById('spd-norm');
+  var bSlow = document.getElementById('spd-slow');
+  function setRate(r){
+    rate = r;
+    bNorm.classList.toggle('on', r === 1);
+    bSlow.classList.toggle('on', r !== 1);
+    if(audio) audio.playbackRate = rate;
+  }
+  bNorm.addEventListener('click', function(){ setRate(1); });
+  bSlow.addEventListener('click', function(){ setRate(0.65); });
+
+  // Esc de dung
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ chain = null; hardStop(); }
+  });
+
+  if(window.speechSynthesis) window.speechSynthesis.getVoices();
+})();
+</script>
+</body>
+</html>

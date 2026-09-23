@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 1. Tôi và các bạn — Bài giảng Ngữ văn 6 (Kết nối tri thức)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
+    --line:#e3e7f0; --brand:#c2410c; --brand-soft:#fff1e8;
+    --blue:#2f6fdb; --blue-soft:#e8f0ff;
+    --warm:#f59e0b; --warm-soft:#fff6e5; --green:#0f9d76; --green-soft:#e6f7f1;
+    --red:#d64545; --red-soft:#fdeceb; --purple:#7c5cd6; --purple-soft:#f1ecff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:120px}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,Arial,sans-serif;
+    font-size:17px; line-height:1.65}
+  .wrap{max-width:920px; margin:0 auto; padding:0 16px 80px}
+  header.top{background:linear-gradient(135deg,#c2410c,#b4235a); color:#fff; padding:26px 16px 22px}
+  header.top .wrap{padding-bottom:0}
+  header.top h1{margin:0 0 4px; font-size:30px; letter-spacing:.3px}
+  header.top .sub{opacity:.92; font-size:15px; margin:0}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px; border-radius:999px; font-size:13px; margin:8px 6px 0 0}
+  .toolbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line)}
+  .toolbar .wrap{padding-top:10px; padding-bottom:10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+  .chip{display:inline-block; padding:4px 10px; border-radius:999px; font-size:13.5px;
+    background:#eef1f7; color:#3a4152; text-decoration:none; border:1px solid transparent}
+  .chip:hover{background:var(--brand-soft); border-color:#fcd3bb; color:var(--brand)}
+  .spacer{flex:1}
+  .tbtn{font:inherit; font-size:13.5px; padding:4px 10px; border-radius:999px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--muted)}
+  .tbtn:hover{border-color:#fcd3bb; color:var(--brand)}
+  .progress{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+  .progress .track{width:110px; height:7px; border-radius:99px; background:#e7ebf3; overflow:hidden}
+  .progress .track i{display:block; height:100%; width:0; background:var(--green); transition:width .4s}
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:20px 0; box-shadow:0 1px 2px rgba(20,30,60,.04)}
+  h2{font-size:22px; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:18.5px; margin:24px 0 8px; color:#243049}
+  h4{font-size:16.5px; margin:16px 0 6px; color:#37405a}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 22px; padding:0}
+  li{margin:4px 0}
+  table{border-collapse:collapse; width:100%; margin:10px 0; font-size:15.5px}
+  th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+  th{background:#f7f3f0; font-weight:600}
+  .tablewrap{overflow-x:auto}
+  .box{border-left:5px solid var(--blue); background:#f8faff; border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:14px 0}
+  .box.key{border-left-color:var(--warm); background:var(--warm-soft)}
+  .box.tip{border-left-color:var(--green); background:var(--green-soft)}
+  .box.warn{border-left-color:var(--red); background:var(--red-soft)}
+  .box.quote{border-left-color:var(--purple); background:var(--purple-soft)}
+  .box .label{font-weight:700; display:block; margin-bottom:4px}
+  .box p:first-child{margin-top:0} .box p:last-child{margin-bottom:0}
+  .muted{color:var(--muted)} .small{font-size:15px}
+  .poem{font-style:italic; line-height:1.8; margin:10px 0 10px 12px}
+  .sgkq{margin:14px 0 4px; font-weight:600}
+  .sgkq .n{display:inline-block; min-width:26px; color:var(--brand)}
+  .steps{margin:4px 0 10px 26px; color:#37405a; font-size:16px}
+  .gm{color:#6b4e16; background:#fffaf0; border:1px dashed #f3d79a; border-radius:8px; padding:6px 10px; margin:6px 0; font-size:16px}
+  .gm b{color:#8a5a06}
+  .btn{font:inherit; font-size:15px; cursor:pointer; border-radius:999px; padding:6px 14px;
+    border:1px solid #fcd3bb; background:var(--brand-soft); color:var(--brand); margin:3px 4px 3px 0}
+  .btn:hover{background:#ffe3d1}
+  .btn:active{transform:scale(.97)}
+  .btn.show-ans{background:var(--green-soft); border-color:#b8e5d7; color:#0b7a5c; font-weight:600}
+  .reveal{display:none; margin-top:12px; border-top:1px dashed var(--line); padding-top:12px}
+  .reveal.open{display:block; animation:fadein .3s ease}
+  .answers{background:#fbfefd; border:1px solid #cdeee2; border-radius:12px; padding:12px 16px; margin-top:16px}
+  .answers > h3{margin-top:0; color:#0b7a5c}
+  @keyframes fadein{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
+  /* ----- câu hỏi tự chấm ----- */
+  .quiz{border:1px solid #cddcf7; background:#fbfcff; border-radius:12px; padding:12px 16px; margin:14px 0}
+  .quiz > h4{margin-top:0; color:var(--blue)}
+  .q{padding:10px 0; border-bottom:1px dashed var(--line)}
+  .q:last-child{border-bottom:0}
+  .q .stem{margin-bottom:6px}
+  .q .src{font-size:14px; color:var(--muted)}
+  .opt{font:inherit; font-size:15px; cursor:pointer; border-radius:10px; padding:5px 12px;
+    border:1px solid #cfd8ea; background:#fff; color:#2b3347; margin:3px 6px 3px 0}
+  .opt:hover{border-color:var(--blue); color:var(--blue)}
+  .opt.right{background:var(--green-soft); border-color:#7fd1b6; color:#0b6b52; font-weight:600}
+  .opt.wrong{background:var(--red-soft); border-color:#f0a8a8; color:#a02b2b; text-decoration:line-through}
+  .q.done .opt{cursor:default}
+  .q input[type=text]{font:inherit; font-size:16px; padding:5px 10px; border-radius:8px; border:1px solid #cfd8ea; width:170px}
+  .q.done input[type=text]{background:var(--green-soft); border-color:#7fd1b6}
+  .fb{margin-top:6px; padding:7px 12px; border-radius:8px; font-size:15.5px; display:none}
+  .fb.show{display:block}
+  .fb.good{background:var(--green-soft); border:1px solid #b8e5d7; color:#0b6b52}
+  .fb.bad{background:var(--warm-soft); border:1px solid #f3d79a; color:#8a5a06}
+  .why{display:none}
+  .score{font-weight:600; color:var(--blue)}
+  footer{color:var(--muted); font-size:14px; text-align:center; margin-top:30px}
+  @media (max-width:600px){ body{font-size:16px} header.top h1{font-size:24px} section{padding:16px 14px} }
+  @media print{
+    .toolbar,.btn,.tbtn{display:none !important}
+    .reveal{display:block !important}
+    body{background:#fff} section{box-shadow:none; break-inside:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Bài 1. Tôi và các bạn</h1>
+    <p class="sub">Bài giảng Ngữ văn 6 — Kết nối tri thức với cuộc sống — Tập một (SGK trang 10 – 37)</p>
+    <span class="badge">Năm học 2026 – 2027</span><span class="badge">Truyện đồng thoại</span><span class="badge">Từ đơn – từ phức</span><span class="badge">Kể lại một trải nghiệm</span>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="wrap">
+    <a class="chip" href="#s0">Giới thiệu</a>
+    <a class="chip" href="#s1">Tri thức</a>
+    <a class="chip" href="#s2">VB1 Dế Mèn</a>
+    <a class="chip" href="#s3">Tiếng Việt 1</a>
+    <a class="chip" href="#s4">VB2 Hoàng tử bé</a>
+    <a class="chip" href="#s5">Tiếng Việt 2</a>
+    <a class="chip" href="#s6">VB3 Bắt nạt</a>
+    <a class="chip" href="#s7">Viết</a>
+    <a class="chip" href="#s8">Nói và nghe</a>
+    <a class="chip" href="#s9">Củng cố</a>
+    <a class="chip" href="#s10">Thực hành đọc</a>
+    <span class="spacer"></span>
+    <span class="progress"><span class="track"><i id="bar"></i></span><span id="scoreTop">0/0</span></span>
+    <button class="tbtn" id="openAll" type="button">Hiện mọi gợi ý</button>
+    <button class="tbtn" id="closeAll" type="button">Ẩn mọi gợi ý</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<div class="box tip">
+  <span class="label">Cách dùng bài giảng này</span>
+  <ul>
+    <li>Đi đúng thứ tự: Tri thức ngữ văn → Văn bản 1 → Thực hành tiếng Việt → Văn bản 2 → Thực hành tiếng Việt → Văn bản 3 → Viết → Nói và nghe → Củng cố, mở rộng → Thực hành đọc.</li>
+    <li>Mỗi phần có <b>câu hỏi gợi mở từng bước</b>. Em tự trả lời vào vở trước, rồi mới bấm nút <b>Hiện gợi ý trả lời</b> ở cuối phần để đối chiếu.</li>
+    <li>Câu hỏi đánh số <b>1., 2., 3.…</b> là câu hỏi của SGK. Câu hỏi đánh dấu <b>(gợi mở)</b> hoặc <b>(luyện thêm)</b> là câu cô thêm vào để giúp em đi từng bước — không phải câu hỏi trong sách.</li>
+    <li>Các hộp <b>📌</b> màu vàng là phần chốt kiến thức của SGK, chép đúng nguyên văn — khi làm bài em dùng đúng những chữ này.</li>
+    <li>Câu hỏi mở (hỏi cảm nhận, ý kiến riêng của em) không có một đáp án duy nhất. Câu trả lời tốt là câu trả lời <b>có dẫn chi tiết trong văn bản</b> làm căn cứ.</li>
+    <li>Các khung màu xanh dương là câu hỏi <b>tự chấm</b>: bấm chọn đáp án, máy báo đúng/sai ngay. Điểm hiện ở thanh trên cùng.</li>
+  </ul>
+</div>
+
+<!-- ============================ 0 ============================ -->
+<section id="s0">
+<h2>0. Giới thiệu bài học và yêu cầu cần đạt</h2>
+<p>Bài học mở đầu bằng một câu ngạn ngữ:</p>
+<div class="box quote">
+  <p><i>– Hạnh phúc đi đâu đấy?</i><br><i>– Đến chỗ có tình bạn!</i></p>
+  <p class="small">(Ngạn ngữ phương Tây)</p>
+</div>
+<p>SGK đặt ra ba câu hỏi lớn cho cả bài: <i>Điều gì khiến chúng ta trở thành bạn của nhau? Tình bạn sẽ thay đổi cuộc sống của chúng ta ra sao? Cần đối xử như thế nào với bạn để bản thân mình hạnh phúc và cũng mang đến niềm vui cho bạn?</i> Em hãy ghi ba câu hỏi này lên đầu trang vở. Học xong bài, quay lại tự trả lời.</p>
+<p><b>Học xong bài này, em cần (theo mục Yêu cầu cần đạt của SGK):</b></p>
+<ul>
+  <li>Nhận biết được một số yếu tố của truyện đồng thoại (cốt truyện, nhân vật, lời người kể chuyện, lời nhân vật) và người kể chuyện ngôi thứ nhất.</li>
+  <li>Nhận biết và phân tích được đặc điểm nhân vật thể hiện qua hình dáng, cử chỉ, hành động, ngôn ngữ, ý nghĩ của nhân vật.</li>
+  <li>Nhận biết được từ đơn và từ phức (từ ghép và từ láy), hiểu được tác dụng của việc sử dụng từ láy trong văn bản.</li>
+  <li>Viết được bài văn kể lại một trải nghiệm của bản thân, biết viết văn bản bảo đảm các bước.</li>
+  <li>Kể được một trải nghiệm đáng nhớ đối với bản thân.</li>
+  <li>Nhân ái, chan hoà, khiêm tốn; trân trọng tình bạn, tôn trọng sự khác biệt.</li>
+</ul>
+</section>
+
+<!-- ============================ 1 ============================ -->
+<section id="s1">
+<h2>1. Tri thức ngữ văn</h2>
+<p>Đây là "bộ dụng cụ" để em đọc cả ba văn bản. Đọc kĩ từng hộp, chép vào vở những chữ in đậm.</p>
+
+<div class="box key"><span class="label">📌 Truyện và truyện đồng thoại</span>
+<ul>
+  <li>Truyện là loại tác phẩm văn học kể lại một câu chuyện, có cốt truyện, nhân vật, không gian, thời gian, hoàn cảnh diễn ra các sự việc.</li>
+  <li>Truyện đồng thoại là truyện viết cho trẻ em, có nhân vật thường là loài vật hoặc đồ vật được nhân cách hoá. Các nhân vật này vừa mang những đặc tính vốn có của loài vật hoặc đồ vật vừa mang đặc điểm của con người.</li>
+</ul></div>
+
+<div class="box key"><span class="label">📌 Cốt truyện</span>
+<p>Cốt truyện là yếu tố quan trọng của truyện kể, gồm các sự kiện chính được sắp xếp theo một trật tự nhất định; có mở đầu, diễn biến và kết thúc.</p></div>
+
+<div class="box key"><span class="label">📌 Nhân vật</span>
+<p>Nhân vật là đối tượng có hình dáng, cử chỉ, hành động, ngôn ngữ, cảm xúc, suy nghĩ,… được nhà văn khắc hoạ trong tác phẩm. Nhân vật thường là con người nhưng cũng có thể là thần tiên, ma quỷ, con vật, đồ vật,…</p></div>
+
+<div class="box key"><span class="label">📌 Người kể chuyện</span>
+<p>Người kể chuyện là nhân vật do nhà văn tạo ra để kể lại câu chuyện. Người kể chuyện có thể trực tiếp xuất hiện trong tác phẩm, xưng "tôi" (người kể chuyện ngôi thứ nhất), kể về những gì mình chứng kiến hoặc tham gia. Người kể chuyện cũng có thể "giấu mình" (người kể chuyện ngôi thứ ba), không tham gia vào câu chuyện nhưng lại có khả năng "biết hết" mọi chuyện.</p></div>
+
+<div class="box key"><span class="label">📌 Lời người kể chuyện và lời nhân vật</span>
+<ul>
+  <li>Lời người kể chuyện đảm nhận việc thuật lại các sự việc trong câu chuyện, bao gồm cả việc thuật lại mọi hoạt động của nhân vật và miêu tả bối cảnh không gian, thời gian của các sự việc, hoạt động ấy.</li>
+  <li>Lời nhân vật là lời nói trực tiếp của nhân vật (đối thoại, độc thoại), có thể được trình bày tách riêng hoặc xen lẫn với lời người kể chuyện.</li>
+</ul></div>
+
+<div class="box key"><span class="label">📌 Từ đơn và từ phức</span>
+<ul>
+  <li>Từ đơn là từ chỉ có một tiếng.</li>
+  <li>Từ phức là từ có hai tiếng trở lên. Những từ phức được tạo nên bằng cách ghép các tiếng, giữa các tiếng có quan hệ với nhau về nghĩa được gọi là từ ghép. Những từ phức mà các tiếng chỉ có quan hệ với nhau về âm (lặp lại âm đầu, vần hoặc lặp lại cả âm đầu và vần) được gọi là từ láy.</li>
+</ul></div>
+
+<div class="box warn"><span class="label">Hai chỗ các bạn lớp 6 hay nhầm</span>
+<ul>
+  <li><b>Người kể chuyện khác tác giả.</b> Tô Hoài là người <i>viết</i> ra truyện; còn người <i>kể</i> chuyện là nhân vật Dế Mèn xưng "tôi" — một nhân vật do nhà văn tạo ra.</li>
+  <li><b>Lời nhân vật thường nằm sau dấu gạch ngang (–) ở đầu dòng hoặc trong dấu ngoặc kép.</b> Phần còn lại, thuật lại sự việc và tả cảnh, là lời người kể chuyện.</li>
+</ul></div>
+
+<div class="quiz">
+  <h4>Kiểm tra nhanh (luyện thêm, tự chấm)</h4>
+  <div class="q" data-ans="1">
+    <div class="stem"><b>K1.</b> Truyện <i>Bài học đường đời đầu tiên</i> được kể bằng người kể chuyện ngôi thứ mấy?</div>
+    <button class="opt" type="button" data-v="1">Ngôi thứ nhất</button><button class="opt" type="button" data-v="3">Ngôi thứ ba</button>
+    <div class="why">Người kể là Dế Mèn, xưng "tôi", kể lại chuyện chính mình tham gia.</div>
+  </div>
+  <div class="q" data-ans="nv">
+    <div class="stem"><b>K2.</b> Câu "– Thưa anh, em cũng muốn khôn nhưng khôn không được." là lời của ai?</div>
+    <button class="opt" type="button" data-v="nk">Lời người kể chuyện</button><button class="opt" type="button" data-v="nv">Lời nhân vật</button>
+    <div class="why">Lời Dế Choắt nói trực tiếp, đặt sau dấu gạch ngang.</div>
+  </div>
+  <div class="q" data-ans="nk">
+    <div class="stem"><b>K3.</b> Câu "Tôi về, không một chút bận tâm." là lời của ai?</div>
+    <button class="opt" type="button" data-v="nk">Lời người kể chuyện</button><button class="opt" type="button" data-v="nv">Lời nhân vật</button>
+    <div class="why">Dế Mèn thuật lại việc mình làm, không phải câu nói ra với ai. Người kể ở đây cũng là một nhân vật, nhưng câu này là lời <i>kể</i>, không phải lời <i>nói</i> trong truyện.</div>
+  </div>
+</div>
+</section>
+
+<!-- ============================ 2 ============================ -->
+<section id="s2">
+<h2>2. Văn bản 1. Bài học đường đời đầu tiên</h2>
+<p class="muted"><i>Trích</i> Dế Mèn phiêu lưu kí, <i>Tô Hoài</i> — SGK trang 12 – 19.</p>
+
+<h3>2.1. Trước khi đọc</h3>
+<p class="sgkq"><span class="n">1.</span>Có thể em đã từng đọc một truyện kể hay xem một bộ phim nói về một niềm vui hay nỗi buồn mà nhân vật đã trải qua. Khi đọc (xem), em đã có suy nghĩ gì?</p>
+<p class="sgkq"><span class="n">2.</span>Chia sẻ với các bạn vài điều em thấy hài lòng hoặc chưa hài lòng khi nghĩ về bản thân.</p>
+<p class="gm"><b>(gợi mở)</b> Với câu 2, em thử viết ra hai cột: "Điều em hài lòng về mình" – "Điều em chưa hài lòng về mình", mỗi cột 2 ý. Giữ tờ giấy này lại — đọc xong truyện, em sẽ thấy Dế Mèn cũng từng "rất hài lòng" về bản thân, và điều đó dẫn tới chuyện gì.</p>
+
+<h3>2.2. Trong khi đọc — dừng lại ở các thẻ chỉ dẫn</h3>
+<p>Văn bản chia làm ba phần (SGK đánh số <b>(1)</b>, <b>(2)</b>, <b>(3)</b>). Đọc đến thẻ nào thì <b>dừng lại</b>, trả lời câu hỏi của thẻ đó rồi mới đọc tiếp.</p>
+<div class="tablewrap"><table>
+<tr><th>Thẻ trong SGK</th><th>Dừng ở đâu</th><th>Câu hỏi gợi mở của cô</th></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Chú ý các chi tiết miêu tả hình dáng, cử chỉ, hành động của nhân vật Dế Mèn.</td><td>Phần (1)</td><td>Gạch chân bằng hai màu: màu 1 cho các bộ phận cơ thể được tả (càng, vuốt, cánh, đầu, răng, râu…); màu 2 cho các việc Dế Mèn làm. Em thấy màu nào nhiều hơn ở đoạn cuối phần (1)?</td></tr>
+<tr><td>🔎 <i>Dự đoán:</i> Em dự đoán thế nào về sự việc sắp được kể?</td><td>Đầu phần (2), sau câu "gã cũng sợ tôi lắm"</td><td>Người kể vừa nói đây là "Câu chuyện ân hận đầu tiên". Một chàng dế "coi thường" một bạn "bẩm sinh yếu đuối" — em đoán chuyện gì sẽ xảy ra? Ghi dự đoán ra lề, lát nữa đối chiếu.</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Chú ý những lời đối thoại giữa Dế Mèn và Dế Choắt.</td><td>Cuộc nói chuyện ở hang Dế Choắt</td><td>Dế Mèn gọi Dế Choắt là gì, tự xưng là gì? Dế Choắt gọi Dế Mèn là gì?</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Lúc rủ Dế Choắt trêu chị Cốc, Dế Mèn có nghĩ đến hậu quả không?</td><td>Phần (3), trước khi Mèn hát</td><td>Tìm câu Dế Mèn tự nói về tính mình ngay trước thẻ này. Rồi tìm câu Dế Mèn "bụng nghĩ" khi chui vào hang.</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Điều gì đã xảy ra với Dế Choắt? Dế Mèn đã làm gì khi chứng kiến điều đó?</td><td>Sau đoạn chị Cốc mổ</td><td>Trong lúc chị Cốc mổ Choắt, Dế Mèn ở đâu, làm gì?</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Chú ý những từ ngữ miêu tả cảm xúc của Dế Mèn.</td><td>Lúc Dế Choắt nằm thoi thóp</td><td>Khoanh tròn mọi từ chỉ cảm xúc của Dế Mèn từ đây đến hết bài.</td></tr>
+</table></div>
+
+<h4>Từ khó nên nhớ (theo chú thích của SGK)</h4>
+<ul class="small">
+  <li><i>Mẫm</i>: béo tròn, đầy đặn.</li>
+  <li><i>Hủn hoẳn</i>: ngắn đến mức khó coi.</li>
+  <li><i>Cà khịa</i>: cố ý gây sự để cãi nhau, đánh nhau.</li>
+  <li><i>Xốc nổi</i>: hăng hái nhưng thiếu chín chắn.</li>
+  <li><i>Trịch thượng</i>: ra vẻ bề trên, khinh thường người khác.</li>
+  <li><i>Ăn xổi ở thì</i>: cách sống tạm bợ cho qua ngày, không tính đến ổn định lâu dài.</li>
+  <li><i>Tắt lửa tối đèn</i>: chỉ tình huống bất trắc, khó khăn, cần sự giúp đỡ của những người xung quanh.</li>
+  <li><i>Tự đắc</i>: tự cho mình là hay, là giỏi.</li>
+  <li><i>Nghịch ranh</i>: trò nghịch ngợm tinh quái đáng lẽ không nên làm hoặc không được phép làm vì có thể gây hại.</li>
+  <li><i>Hối</i>: cảm thấy tiếc và băn khoăn, ăn năn, day dứt vì đã trót làm điều có lỗi.</li>
+</ul>
+
+<h3>2.3. Sau khi đọc</h3>
+<div class="box key"><span class="label">📌 Tác giả, tác phẩm</span>
+<ul>
+  <li><b>Tô Hoài</b> (1920 – 2014) tên khai sinh là Nguyễn Sen, quê ở Hà Nội. Ông là nhà văn có vốn sống rất phong phú; năng lực quan sát và miêu tả tinh tế; lối văn giàu hình ảnh, nhịp điệu; ngôn ngữ chân thực, gần gũi với đời sống. Tô Hoài đóng góp cho nền văn học Việt Nam hiện đại hơn 100 tác phẩm, trong đó có nhiều truyện viết cho thiếu nhi như: <i>Võ sĩ Bọ Ngựa</i>, <i>Dê và Lợn</i>, <i>Đôi ri đá</i>, <i>Dế Mèn phiêu lưu kí</i>, <i>Đảo hoang</i>, <i>Chuyện nỏ thần</i>, <i>Nhà Chử</i>,…</li>
+  <li><i>Dế Mèn phiêu lưu kí</i> là truyện đồng thoại nổi tiếng nhất của Tô Hoài, được trẻ em rất yêu thích. Năm 1941, Tô Hoài xuất bản truyện <i>Con Dế Mèn</i>; sau đó tác giả viết thêm <i>Dế Mèn phiêu lưu kí</i>. Năm 1954, nhà văn gộp hai tác phẩm trên thành <i>Dế Mèn phiêu lưu kí</i>.</li>
+</ul></div>
+<p>Theo chú thích của SGK, đoạn trích được lấy từ chương 1, có tiêu đề: <i>Tôi sống độc lập từ thuở bé – Một sự ngỗ nghịch đáng ân hận suốt đời</i>.</p>
+
+<h4>Trả lời câu hỏi (SGK) — đi từng bước</h4>
+<p class="sgkq"><span class="n">1.</span>Câu chuyện được kể bằng lời của nhân vật nào? Kể theo ngôi thứ mấy?</p>
+<ul class="steps"><li>Bước 1: Tìm đại từ người kể dùng để tự gọi mình trong câu đầu tiên của văn bản.</li><li>Bước 2: Đối chiếu với hộp 📌 <i>Người kể chuyện</i>.</li></ul>
+
+<p class="sgkq"><span class="n">2.</span>Đọc phần một đoạn trích, nêu một số chi tiết miêu tả Dế Mèn khiến em liên tưởng tới đặc điểm của con người. Lối miêu tả này thường được sử dụng ở loại truyện nào?</p>
+<ul class="steps"><li>Bước 1: Đọc lại phần (1). Tìm những việc mà một con dế thật <i>không</i> làm, chỉ con người mới làm (có cảm xúc "hãnh diện", đi đứng "kiểu cách con nhà võ", "cà khịa", "quát"…).</li><li>Bước 2: Đối chiếu với hộp 📌 <i>Truyện và truyện đồng thoại</i>: nhân vật vừa mang đặc tính loài vật, vừa mang đặc điểm con người.</li></ul>
+
+<p class="sgkq"><span class="n">3.</span>Em thích hoặc không thích điều gì trong cách Dế Mèn tự miêu tả và đánh giá về bản thân ở phần một? Vì sao?</p>
+<ul class="steps"><li>Đây là câu hỏi mở. Chọn <b>một</b> điều em thích và <b>một</b> điều em không thích, mỗi điều dẫn <b>một</b> câu trong văn bản.</li><li>Gợi ý nhìn vào: đoạn tả vẻ khoẻ mạnh (đầu phần 1) và đoạn Dế Mèn "tưởng" mình giỏi (cuối phần 1). Chú ý câu người kể tự nhận xét: "Những gã xốc nổi thường lầm cử chỉ ngông cuồng là tài ba."</li></ul>
+
+<p class="sgkq"><span class="n">4.</span>Dế Mèn đã nói gì khi sang thăm nhà Dế Choắt và khi Dế Choắt nhờ giúp đỡ? Những lời nói đó thể hiện thái độ gì của Dế Mèn?</p>
+<ul class="steps"><li>Bước 1: Chép lại hai lời nói của Dế Mèn (lần sang thăm; lần Dế Choắt nhờ đào ngách).</li><li>Bước 2: Chú ý cách xưng hô ("chú mày", "ta"), và các từ tả điệu bộ đi kèm lời nói ("hếch răng lên", "xì một hơi rõ dài", "khinh khỉnh").</li><li>Bước 3: Từ đó gọi tên thái độ.</li></ul>
+
+<p class="sgkq"><span class="n">5.</span>Chứng kiến cái chết của Dế Choắt, Dế Mèn đã có những cảm xúc, suy nghĩ gì? Những cảm xúc, suy nghĩ đó cho thấy sự thay đổi nào ở Dế Mèn?</p>
+<ul class="steps"><li>Bước 1: Dùng các từ em đã khoanh ở thẻ 🔎 cuối cùng.</li><li>Bước 2: So sánh cách Dế Mèn xưng hô với Dế Choắt <b>lúc đầu</b> và <b>lúc Choắt sắp chết</b>. Có gì khác?</li></ul>
+
+<p class="sgkq"><span class="n">6.</span>Theo em, từ những trải nghiệm đáng nhớ, Dế Mèn đã rút ra được bài học gì?</p>
+<ul class="steps"><li>Gợi ý: có hai chỗ trong văn bản nói thẳng ra bài học — một ở đầu phần (2), một là lời khuyên của Dế Choắt trước khi chết. Tìm hai chỗ đó rồi nói lại bằng lời của em.</li></ul>
+
+<p class="sgkq"><span class="n">7.</span>Nêu hình dung của em về nhân vật Dế Choắt. Nếu gặp một người bạn có đặc điểm giống như Dế Choắt, em sẽ đối xử với bạn như thế nào?</p>
+<ul class="steps"><li>Bước 1: Hình dung ngoại hình — đọc đoạn "Cái chàng Dế Choắt, người gầy gò…".</li><li>Bước 2: Hình dung tính nết — chú ý chi tiết trong ngoặc đơn "(thật chỉ vì ốm đau luôn, không làm được)" và cách Choắt nói năng.</li><li>Bước 3: Phần thứ hai là câu hỏi mở: nói một việc <b>cụ thể</b> em sẽ làm, không chỉ nói "em sẽ giúp bạn".</li></ul>
+
+<h3>2.4. Viết kết nối với đọc</h3>
+<div class="box"><p>Viết đoạn văn (khoảng 5 – 7 câu) kể lại một sự việc trong đoạn trích <i>Bài học đường đời đầu tiên</i> bằng lời của một nhân vật do em tự chọn.</p></div>
+<ol>
+  <li><b>Chọn nhân vật kể</b>: Dế Choắt, chị Cốc, hay một nhân vật chỉ được nhắc tới (chị Cào Cào, anh Gọng Vó)…</li>
+  <li><b>Chọn một sự việc</b> (chỉ một): Dế Mèn sang chơi nhà Dế Choắt; Dế Mèn trêu chị Cốc; cái chết của Dế Choắt…</li>
+  <li><b>Đổi ngôi kể</b>: nhân vật em chọn xưng "tôi". Ví dụ nếu em chọn chị Cốc, thì câu "Chị Cốc thoạt nghe tiếng hát từ trong đất văng vẳng lên…" sẽ phải kể lại theo cái nhìn của chị Cốc.</li>
+  <li><b>Giữ đúng sự việc trong truyện</b> — không thêm những việc truyện không kể (ví dụ không để chị Cốc biết người hát là Dế Mèn, vì trong truyện chị Cốc "không trông thấy tôi").</li>
+  <li>Viết thành <b>một đoạn</b>: lùi đầu dòng một lần, viết liền, 5 – 7 câu.</li>
+</ol>
+<p class="gm"><b>Cô làm mẫu một câu mở đoạn thôi, phần còn lại em tự viết:</b> "Tôi là Dế Choắt, cái tên mà anh Dế Mèn hàng xóm đã đặt cho tôi."</p>
+<div class="tablewrap"><table>
+<tr><th>Bảng kiểm đoạn văn</th><th style="width:80px">Đạt?</th></tr>
+<tr><td>Đúng hình thức một đoạn văn, khoảng 5 – 7 câu</td><td></td></tr>
+<tr><td>Người kể là nhân vật em chọn, xưng "tôi" nhất quán từ đầu đến cuối</td><td></td></tr>
+<tr><td>Kể đúng <b>một</b> sự việc có trong đoạn trích, không bịa thêm</td><td></td></tr>
+<tr><td>Có ít nhất một câu nói lên cảm xúc hoặc suy nghĩ của nhân vật kể</td><td></td></tr>
+<tr><td>Không mắc lỗi chính tả, dấu câu</td><td></td></tr>
+</table></div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Văn bản 1</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-vb1">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-vb1">
+<h4>Trong khi đọc</h4>
+<ul>
+  <li>Thẻ hình dáng – hành động: hình dáng: "Đôi càng tôi mẫm bóng", "Những cái vuốt ở chân, ở khoeo cứ cứng dần và nhọn hoắt", "Đầu tôi to ra và nổi từng tảng, rất bướng", "Hai cái răng đen nhánh", "Sợi râu tôi dài và uốn cong"…; hành động: "đạp phanh phách vào các ngọn cỏ", "trịnh trọng và khoan thai đưa cả hai chân lên vuốt râu", "Dám cà khịa với tất cả mọi bà con trong xóm", "quát mấy chị Cào Cào", "ngứa chân đá một cái, ghẹo anh Gọng Vó". Cuối phần (1), hành động gây sự với mọi người nhiều dần lên.</li>
+  <li>Thẻ đối thoại: Dế Mèn gọi Dế Choắt là "chú mày", "chú mình", tự xưng "ta"; Dế Choắt gọi Dế Mèn là "anh", tự xưng "em", mở đầu bằng "Thưa anh".</li>
+  <li>Thẻ hậu quả: <b>không</b>. Ngay trước thẻ, Dế Mèn tự nói "Tính tôi hay nghịch ranh. Chẳng bận đến tôi, tôi cũng nghĩ mưu trêu chị Cốc." Khi chui vào hang, Mèn chỉ "Bụng nghĩ thú vị" rằng chị Cốc "không chui nổi vào tổ tao đâu!" — chỉ nghĩ đến chuyện mình an toàn, không nghĩ đến Dế Choắt.</li>
+  <li>Thẻ chuyện xảy ra với Dế Choắt: chị Cốc tưởng Choắt hát, mổ trúng hai mỏ, Choắt "quẹo xương sống lăn ra kêu váng". Dế Mèn thì "Núp tận đáy đất mà tôi cũng khiếp, nằm im thít", đợi chị Cốc đi rồi "mới mon men bò lên".</li>
+  <li>Thẻ cảm xúc: "hốt hoảng", "Tôi hối lắm. Tôi hối hận lắm!", "Tôi thương lắm. Vừa thương vừa ăn năn tội mình", "đứng lặng giờ lâu".</li>
+</ul>
+<h4>Trả lời câu hỏi</h4>
+<ol>
+  <li>Câu chuyện được kể bằng lời của <b>Dế Mèn</b>. Dế Mèn xưng "tôi" ("Bởi tôi ăn uống điều độ…"), kể chuyện chính mình tham gia → <b>người kể chuyện ngôi thứ nhất</b>.</li>
+  <li>Một số chi tiết gợi đặc điểm con người: "tôi đã trở thành một chàng dế thanh niên cường tráng"; "Đôi cánh tôi … bây giờ thành cái áo dài kín xuống tận chấm đuôi"; "Tôi lấy làm hãnh diện với bà con về cặp râu ấy lắm"; "Cứ chốc chốc tôi lại trịnh trọng và khoan thai đưa cả hai chân lên vuốt râu"; "Tôi đi đứng oai vệ… Cho ra kiểu cách con nhà võ"; "Dám cà khịa với tất cả mọi bà con trong xóm". Lối miêu tả vừa giữ đặc tính loài dế (càng, vuốt, râu, cánh) vừa cho nhân vật cảm xúc, tính cách như người → thường dùng trong <b>truyện đồng thoại</b>.</li>
+  <li>Câu mở — không có đáp án duy nhất. Một câu trả lời có căn cứ, ví dụ: <i>Em thích cách Dế Mèn tả mình rất cụ thể, như "Những ngọn cỏ gãy rạp, y như có nhát dao vừa lia qua", đọc là hình dung được Dế Mèn khoẻ. Em không thích việc Dế Mèn tự cho là giỏi chỉ vì mọi người nhịn mình: "Ấy vậy, tôi cho là tôi giỏi", trong khi thật ra "có lẽ họ nể hơn là sợ".</i> Chú ý: chính người kể (Dế Mèn lúc đã lớn khôn) cũng tự chê mình ở câu "Những gã xốc nổi thường lầm cử chỉ ngông cuồng là tài ba."</li>
+  <li><ul>
+    <li>Khi sang thăm: "Sao chú mày sinh sống cẩu thả quá như thế! Nhà cửa đâu mà tuềnh toàng…", "Chú mày có lớn mà chẳng có khôn." Người kể thừa nhận: "Ngẫm ra thì tôi chỉ nói lấy sướng miệng tôi."</li>
+    <li>Khi Dế Choắt nhờ đào ngách: Dế Mèn "hếch răng lên, xì một hơi rõ dài", "với điệu bộ khinh khỉnh" mắng: "Hức! Thông ngách sang nhà ta? Dễ nghe nhỉ! Chú mày hôi như cú mèo thế này, ta nào chịu được. Thôi, im cái điệu hát mưa dầm sùi sụt ấy đi. Đào tổ nông thì cho chết!"</li>
+    <li>Thái độ: <b>coi thường, trịch thượng, khinh khỉnh</b> với bạn yếu; <b>ích kỉ, không chịu giúp đỡ</b>. Sau đó "Tôi về, không một chút bận tâm."</li>
+  </ul></li>
+  <li><ul>
+    <li>Cảm xúc, suy nghĩ: "hốt hoảng quỳ xuống, nâng đầu Choắt lên"; "Tôi hối lắm. Tôi hối hận lắm! Anh mà chết là chỉ tại cái tội ngông cuồng dại dột của tôi."; "Tôi thương lắm. Vừa thương vừa ăn năn tội mình."; nghĩ "Giá tôi không trêu chị Cốc thì đâu đến nỗi Choắt việc gì"; chôn Choắt, "đắp thành nấm mộ to", "đứng lặng giờ lâu".</li>
+    <li>Sự thay đổi: từ kiêu căng, coi thường bạn sang <b>biết nhận lỗi, biết hối hận, biết thương bạn</b>. Bằng chứng rõ nhất là cách xưng hô: lúc đầu "ta" – "chú mày", lúc này Dế Mèn xưng "tôi" và gọi Dế Choắt là "anh".</li>
+  </ul></li>
+  <li>Bài học: không được hung hăng, kiêu căng, hống hách; làm gì cũng phải suy nghĩ trước. Bằng chứng: đầu phần (2): "hung hăng, hống hách láo chỉ tổ đem thân mà trả nợ những cử chỉ ngu dại của mình thôi" và "nếu đã trót không suy tính, lỡ xảy ra những việc dại dột, dù về sau có hối cũng không thể làm lại được"; lời Dế Choắt: "ở đời mà có thói hung hăng bậy bạ, có óc mà không biết nghĩ, sớm muộn rồi cũng mang vạ vào mình đấy." Em có thể nói thêm bằng lời mình: phải biết thương và giúp đỡ người yếu hơn.</li>
+  <li><ul>
+    <li>Hình dung: ngoại hình ốm yếu — "người gầy gò và dài lêu nghêu", "cánh chỉ ngắn củn đến giữa lưng", "Râu ria gì mà cụt có một mẩu", đang "lên cơn hen". Tính nết: nhút nhát, nhún nhường ("Thưa anh", "Song anh có cho phép nói em mới dám nói…"); sống tạm bợ nhưng "thật chỉ vì ốm đau luôn, không làm được"; cuối cùng không oán trách mà còn khuyên Dế Mèn → hiền lành, biết tha thứ.</li>
+    <li>Phần đối xử: câu mở. Câu trả lời tốt nêu việc làm cụ thể (ví dụ: giúp bạn làm việc nặng, không đặt biệt danh chế giễu như Dế Mèn đã đặt tên "Dế Choắt", bênh bạn khi bạn bị bắt nạt).</li>
+  </ul></li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- ============================ 3 ============================ -->
+<section id="s3">
+<h2>3. Thực hành tiếng Việt (trang 20)</h2>
+
+<h3>3.1. Từ đơn và từ phức</h3>
+<div class="box key"><span class="label">📌 Nhận biết từ đơn và từ phức</span>
+<ul>
+  <li>Quan sát những từ sau đây để nhận biết từ đơn và từ phức: <i>tôi, dế, đi, nhọn hoắt, cá đuôi cờ, ngơ ngác, lêu nghêu, bè bè</i>.</li>
+  <li>Có thể thấy, trong những từ này, các từ <i>tôi, dế, đi</i> là từ đơn vì mỗi từ chỉ có một tiếng.</li>
+  <li><i>Nhọn hoắt, cá đuôi cờ, ngơ ngác, lêu nghêu, bè bè</i> là những từ phức vì mỗi từ gồm có hai hoặc nhiều hơn hai tiếng. Trong những từ phức trên đây, các từ <i>nhọn hoắt</i>, <i>cá đuôi cờ</i> là từ ghép vì các tiếng có quan hệ với nhau về nghĩa. Các từ <i>ngơ ngác</i>, <i>lêu nghêu</i>, <i>bè bè</i> là từ láy vì giữa các tiếng chỉ có quan hệ với nhau về âm: lặp lại âm đầu (<i>ngơ ngác</i>), lặp lại vần (<i>lêu nghêu</i>), lặp lại cả âm đầu và vần (<i>bè bè</i>).</li>
+</ul></div>
+
+<div class="box tip"><span class="label">Cách làm ba bước khi gặp một từ</span>
+<ol>
+  <li>Đếm số tiếng → một tiếng: <b>từ đơn</b>; từ hai tiếng trở lên: <b>từ phức</b>.</li>
+  <li>Với từ phức: các tiếng có <b>giống nhau về âm</b> (âm đầu, vần, hoặc cả hai) không?</li>
+  <li>Nếu các tiếng quan hệ <b>về nghĩa</b> (ghép các tiếng lại) → <b>từ ghép</b>; nếu các tiếng chỉ quan hệ <b>về âm</b> → <b>từ láy</b>.</li>
+</ol></div>
+
+<p class="sgkq"><span class="n">1.</span>Kẻ bảng dưới đây vào vở và điền các từ in đậm trong đoạn văn sau vào ô phù hợp:</p>
+<div class="box quote"><p><i>Đôi cánh <b>tôi</b>, trước kia ngắn <b>hủn hoẳn</b> bây giờ thành cái áo dài kín xuống tận chấm đuôi. Mỗi khi tôi vũ lên, đã <b>nghe</b> tiếng <b>phành phạch giòn giã</b>. Lúc tôi đi bách bộ thì cả <b>người</b> tôi <b>rung rinh</b> một màu nâu <b>bóng mỡ</b> soi gương được và rất <b>ưa nhìn</b>.</i></p></div>
+<table><tr><th>Từ đơn</th><th>Từ ghép</th><th>Từ láy</th></tr><tr><td>&nbsp;</td><td></td><td></td></tr></table>
+<p class="gm"><b>(gợi mở)</b> Có 9 từ in đậm. Đếm tiếng trước: từ nào một tiếng? Với các từ hai tiếng, đọc to lên nghe xem cặp nào "vang" giống nhau ở đầu.</p>
+
+<p class="sgkq"><span class="n">2.</span>Trong <i>Bài học đường đời đầu tiên</i> có những từ láy mô phỏng âm thanh như: <i>véo von</i>, <i>hừ hừ</i>. Hãy tìm thêm những từ láy khác thuộc loại này ở trong văn bản.</p>
+<p class="gm"><b>(gợi mở)</b> Tìm ở những chỗ có tiếng động: Dế Mèn đạp cỏ, Dế Mèn vỗ cánh, Dế Mèn nhai, anh Cò lội bùn, tiếng hát từ trong đất vọng lên.</p>
+
+<p class="sgkq"><span class="n">3.</span>Tìm và nêu tác dụng của từ láy trong các câu sau:</p>
+<ul><li><i>Thỉnh thoảng, muốn thử sự lợi hại của những chiếc vuốt, tôi co cẳng lên, đạp phanh phách vào các ngọn cỏ.</i></li><li><i>Hai cái răng đen nhánh lúc nào cũng nhai ngoàm ngoạp như hai lưỡi liềm máy làm việc.</i></li></ul>
+<p class="gm"><b>(gợi mở)</b> Thử bỏ từ láy đi: "tôi co cẳng lên, đạp vào các ngọn cỏ"; "lúc nào cũng nhai". Câu văn mất đi điều gì? Người đọc còn "nghe" thấy gì không?</p>
+
+<h3>3.2. Nghĩa của từ ngữ</h3>
+<p class="sgkq"><span class="n">4.</span>Từ ngữ trong <i>Bài học đường đời đầu tiên</i> được dùng rất sáng tạo. Một số từ ngữ được dùng theo nghĩa khác với nghĩa thông thường, chẳng hạn <i>nghèo</i> trong <i>nghèo sức</i>, <i>mưa dầm sùi sụt</i> trong <i>điệu hát mưa dầm sùi sụt</i>. Hãy giải thích nghĩa thông thường của <i>nghèo</i>, <i>mưa dầm sùi sụt</i> và nghĩa trong văn bản của những từ ngữ này.</p>
+<p class="gm"><b>(gợi mở)</b> Bước 1: Ngoài đời, người ta nói "nhà nghèo" là nói thiếu cái gì? Bước 2: Đọc lại câu của Dế Choắt: "em nghèo sức quá". Choắt thiếu cái gì? Bước 3: Với <i>mưa dầm sùi sụt</i>, nghĩ xem cơn mưa ấy kéo dài hay chóng tạnh, vui hay buồn — rồi xem Dế Mèn đang gọi cái gì của Dế Choắt là "điệu hát mưa dầm sùi sụt".</p>
+
+<p class="sgkq"><span class="n">5.</span>Đặt câu với mỗi thành ngữ sau: <i>ăn xổi ở thì</i>, <i>tắt lửa tối đèn</i>, <i>hôi như cú mèo</i>.</p>
+<p class="gm"><b>(gợi mở)</b> Trước khi đặt câu, đọc lại nghĩa trong chú thích SGK (mục <i>Từ khó nên nhớ</i> ở phần Văn bản 1). <i>Hôi như cú mèo</i> không có chú thích — em đoán nghĩa qua câu Dế Mèn nói: "Chú mày hôi như cú mèo thế này, ta nào chịu được." Chú ý: đây là cách nói chê bai, nặng lời, không nên dùng để nói về bạn bè.</p>
+
+<h3>3.3. Biện pháp tu từ</h3>
+<div class="box"><span class="label">Ghi nhớ từ tiểu học (SGK Bài 1 không in lại định nghĩa)</span>
+<p>So sánh là đối chiếu sự vật, sự việc này với sự vật, sự việc khác có nét giống nhau, thường có <b>từ so sánh</b> như <i>như, y như, như là, tựa…</i> Một câu so sánh thường có: <b>vế được so sánh – từ so sánh – vế dùng để so sánh</b>.</p></div>
+<p class="sgkq"><span class="n">6.</span>Trong đoạn trích <i>Bài học đường đời đầu tiên</i> có những hình ảnh so sánh thú vị, sinh động. Hãy tìm một số câu văn có sử dụng biện pháp tu từ so sánh trong văn bản này và chỉ ra tác dụng của biện pháp tu từ đó.</p>
+<p class="gm"><b>(gợi mở)</b> Bước 1: Dò văn bản tìm chữ <i>như</i>. Bước 2: Với mỗi câu, kẻ ba cột: <i>cái gì được so sánh – từ so sánh – so sánh với cái gì</i>. Bước 3: Hỏi: nhờ hình ảnh so sánh, em <b>hình dung</b> ra điều gì rõ hơn?</p>
+
+<h3>3.4. Luyện thêm — tự chấm</h3>
+<div class="quiz">
+  <h4>A. Xếp từ vào loại: từ đơn / từ ghép / từ láy</h4>
+  <p class="small muted">Các từ đều lấy từ văn bản của Bài 1. Bấm vào loại đúng.</p>
+  <div class="q" data-ans="don"><div class="stem"><b>A1.</b> <i>tôi</i> <span class="src">— "Bởi tôi ăn uống điều độ…"</span></div>
+    <button class="opt" type="button" data-v="don">Từ đơn</button><button class="opt" type="button" data-v="ghep">Từ ghép</button><button class="opt" type="button" data-v="lay">Từ láy</button>
+    <div class="why">Chỉ có một tiếng.</div></div>
+  <div class="q" data-ans="don"><div class="stem"><b>A2.</b> <i>hang</i> <span class="src">— "Bên hàng xóm tôi có cái hang của Dế Choắt."</span></div>
+    <button class="opt" type="button" data-v="don">Từ đơn</button><button class="opt" type="button" data-v="ghep">Từ ghép</button><button class="opt" type="button" data-v="lay">Từ láy</button>
+    <div class="why">Chỉ có một tiếng.</div></div>
+  <div class="q" data-ans="ghep"><div class="stem"><b>A3.</b> <i>hùng dũng</i> <span class="src">— "Sợi râu tôi dài và uốn cong một vẻ rất đỗi hùng dũng."</span></div>
+    <button class="opt" type="button" data-v="don">Từ đơn</button><button class="opt" type="button" data-v="ghep">Từ ghép</button><button class="opt" type="button" data-v="lay">Từ láy</button>
+    <div class="why">Chú thích SGK: <i>hùng</i>: có sức mạnh; <i>dũng</i>: can đảm, mạnh bạo — cả hai tiếng đều có nghĩa.</div></div>
+  <div class="q" data-ans="ghep"><div class="stem"><b>A4.</b> <i>nhà cửa</i> <span class="src">— "Nhà cửa đâu mà tuềnh toàng."</span></div>
+    <button class="opt" type="button" data-v="don">Từ đơn</button><button class="opt" type="button" data-v="ghep">Từ ghép</button><button class="opt" type="button" data-v="lay">Từ láy</button>
+    <div class="why"><i>nhà</i> và <i>cửa</i> đều có nghĩa, ghép lại theo quan hệ về nghĩa.</div></div>
+  <div class="q" data-ans="ghep"><div class="stem"><b>A5.</b> <i>lúa mì</i> <span class="src">— "…cánh đồng lúa mì đằng kia?" (Văn bản 2)</span></div>
+    <button class="opt" type="button" data-v="don">Từ đơn</button><button class="opt" type="button" data-v="ghep">Từ ghép</button><button class="opt" type="button" data-v="lay">Từ láy</button>
+    <div class="why">Hai tiếng quan hệ về nghĩa (một loại lúa), không lặp âm.</div></div>
+  <div class="q" data-ans="lay"><div class="stem"><b>A6.</b> <i>xơ xác</i> <span class="src">— "…ở các bãi sông xơ xác tận đâu…"</span></div>
+    <button class="opt" type="button" data-v="don">Từ đơn</button><button class="opt" type="button" data-v="ghep">Từ ghép</button><button class="opt" type="button" data-v="lay">Từ láy</button>
+    <div class="why">Lặp lại âm đầu <i>x</i>.</div></div>
+  <div class="q" data-ans="lay"><div class="stem"><b>A7.</b> <i>loanh quanh</i> <span class="src">— "Rồi Dế Choắt loanh quanh, băn khoăn."</span></div>
+    <button class="opt" type="button" data-v="don">Từ đơn</button><button class="opt" type="button" data-v="ghep">Từ ghép</button><button class="opt" type="button" data-v="lay">Từ láy</button>
+    <div class="why">Lặp lại vần <i>anh</i>.</div></div>
+  <div class="q" data-ans="lay"><div class="stem"><b>A8.</b> <i>bì bõm</i> <span class="src">— "…ngày ngày bì bõm lội bùn…"</span></div>
+    <button class="opt" type="button" data-v="don">Từ đơn</button><button class="opt" type="button" data-v="ghep">Từ ghép</button><button class="opt" type="button" data-v="lay">Từ láy</button>
+    <div class="why">Lặp lại âm đầu <i>b</i>.</div></div>
+</div>
+
+<div class="quiz">
+  <h4>B. Từ láy này lặp lại gì?</h4>
+  <div class="q" data-ans="ca"><div class="stem"><b>B1.</b> <i>rầm rầm</i> <span class="src">— "Rầm rầm. Rầm rầm. Rầm rầm." (Thực hành đọc)</span></div>
+    <button class="opt" type="button" data-v="dau">Âm đầu</button><button class="opt" type="button" data-v="van">Vần</button><button class="opt" type="button" data-v="ca">Cả âm đầu và vần</button>
+    <div class="why">Hai tiếng giống hệt nhau: lặp cả âm đầu và vần.</div></div>
+  <div class="q" data-ans="van"><div class="stem"><b>B2.</b> <i>lắp bắp</i> <span class="src">— "– Ừ! – Tôi lắp bắp." (Thực hành đọc)</span></div>
+    <button class="opt" type="button" data-v="dau">Âm đầu</button><button class="opt" type="button" data-v="van">Vần</button><button class="opt" type="button" data-v="ca">Cả âm đầu và vần</button>
+    <div class="why">Lặp vần <i>ắp</i>; âm đầu khác nhau (<i>l</i> – <i>b</i>).</div></div>
+  <div class="q" data-ans="dau"><div class="stem"><b>B3.</b> <i>gầy gò</i> <span class="src">— "…người gầy gò và dài lêu nghêu…"</span></div>
+    <button class="opt" type="button" data-v="dau">Âm đầu</button><button class="opt" type="button" data-v="van">Vần</button><button class="opt" type="button" data-v="ca">Cả âm đầu và vần</button>
+    <div class="why">Lặp âm đầu <i>g</i>; vần khác nhau.</div></div>
+  <div class="q" data-ans="van"><div class="stem"><b>B4.</b> <i>lom khom</i> <span class="src">— "Dáng người: đứng thẳng, không nghiêng hay lom khom." (Nói và nghe)</span></div>
+    <button class="opt" type="button" data-v="dau">Âm đầu</button><button class="opt" type="button" data-v="van">Vần</button><button class="opt" type="button" data-v="ca">Cả âm đầu và vần</button>
+    <div class="why">Lặp vần <i>om</i>.</div></div>
+  <div class="q" data-ans="dau"><div class="stem"><b>B5.</b> <i>véo von</i> <span class="src">— "…tôi cất giọng véo von"</span></div>
+    <button class="opt" type="button" data-v="dau">Âm đầu</button><button class="opt" type="button" data-v="van">Vần</button><button class="opt" type="button" data-v="ca">Cả âm đầu và vần</button>
+    <div class="why">Lặp âm đầu <i>v</i>.</div></div>
+</div>
+
+<div class="quiz">
+  <h4>C. So sánh và nghĩa của từ</h4>
+  <div class="q" data-ans="b"><div class="stem"><b>C1.</b> Câu nào có dùng biện pháp so sánh?</div>
+    <button class="opt" type="button" data-v="a">(a) "Tôi đi đứng oai vệ."</button><button class="opt" type="button" data-v="b">(b) "Mỏ Cốc như cái dùi sắt, chọc xuyên cả đất."</button><button class="opt" type="button" data-v="c">(c) "Choắt không dậy được nữa, nằm thoi thóp."</button>
+    <div class="why"><i>mỏ Cốc</i> – <i>như</i> – <i>cái dùi sắt</i>: mỏ cứng, nhọn, rất nguy hiểm.</div></div>
+  <div class="q fill" data-ans="như"><div class="stem"><b>C2.</b> Điền từ so sánh: "Hai cái răng đen nhánh lúc nào cũng nhai ngoàm ngoạp ___ hai lưỡi liềm máy làm việc."</div>
+    <input type="text" aria-label="Điền từ so sánh" placeholder="gõ một từ"> <button class="btn" type="button" data-check>Kiểm tra</button>
+    <div class="why">Từ so sánh là <i>như</i>.</div></div>
+  <div class="q" data-ans="b"><div class="stem"><b>C3.</b> Câu "Cái chàng Dế Choắt, người gầy gò và dài lêu nghêu như một gã nghiện thuốc phiện" giúp người đọc hình dung rõ điều gì?</div>
+    <button class="opt" type="button" data-v="a">(a) Dế Choắt rất khoẻ</button><button class="opt" type="button" data-v="b">(b) Dế Choắt gầy yếu, ốm o</button><button class="opt" type="button" data-v="c">(c) Dế Choắt rất chăm chỉ</button>
+    <div class="why">Hình ảnh so sánh nhấn mạnh vẻ gầy gò, ốm yếu của Dế Choắt.</div></div>
+  <div class="q" data-ans="b"><div class="stem"><b>C4.</b> <i>Nghèo</i> trong "em nghèo sức quá" có nghĩa là:</div>
+    <button class="opt" type="button" data-v="a">(a) thiếu tiền bạc, của cải</button><button class="opt" type="button" data-v="b">(b) thiếu sức, yếu sức</button><button class="opt" type="button" data-v="c">(c) không có nhà cửa</button>
+    <div class="why">Nghĩa thông thường của <i>nghèo</i> là thiếu tiền bạc; trong văn bản, <i>nghèo sức</i> là thiếu sức, sức khoẻ yếu.</div></div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Thực hành tiếng Việt (trang 20)</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-tv1">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-tv1">
+<p><b>1.</b></p>
+<table><tr><th>Từ đơn</th><th>Từ ghép</th><th>Từ láy</th></tr>
+<tr><td>tôi, nghe, người</td><td>bóng mỡ, ưa nhìn</td><td>hủn hoẳn, phành phạch, giòn giã, rung rinh</td></tr></table>
+<p><i>Tự kiểm tra lại:</i> đủ 9 từ (3 + 2 + 4 = 9). <i>Bóng mỡ</i>: <i>bóng</i> và <i>mỡ</i> đều có nghĩa, ghép lại chỉ màu bóng như có mỡ → ghép. <i>Ưa nhìn</i>: <i>ưa</i> (thích) + <i>nhìn</i> → ghép. <i>Hủn hoẳn</i> (lặp âm đầu <i>h</i>), <i>phành phạch</i> (lặp âm đầu <i>ph</i>), <i>giòn giã</i> (lặp âm đầu <i>gi</i>), <i>rung rinh</i> (lặp âm đầu <i>r</i>) → láy. Chú ý: <i>giòn</i> có nghĩa riêng nhưng <i>giã</i> ở đây không mang nghĩa, hai tiếng gắn với nhau vì giống âm đầu → láy.</p>
+<p><b>2.</b> Từ láy mô phỏng âm thanh trong văn bản: <i>phanh phách</i> (đạp phanh phách vào các ngọn cỏ), <i>phành phạch</i> (tiếng phành phạch giòn giã), <i>ngoàm ngoạp</i> (nhai ngoàm ngoạp), <i>bì bõm</i> (bì bõm lội bùn). Có thể kể thêm <i>văng vẳng</i> (tiếng hát từ trong đất văng vẳng lên — gợi âm thanh vọng từ xa lại).</p>
+<p><b>3.</b></p>
+<ul>
+  <li>Câu 1: từ láy <i>phanh phách</i> — gợi âm thanh mạnh, dứt khoát, liên tiếp khi Dế Mèn đạp vào cỏ → cho thấy đôi càng rất khoẻ và vẻ hăng hái, thích thử sức của Dế Mèn.</li>
+  <li>Câu 2: từ láy <i>ngoàm ngoạp</i> — gợi tiếng nhai và động tác nhai liên tục, mạnh → cho thấy hàm răng khoẻ; đi cùng hình ảnh "như hai lưỡi liềm máy làm việc" càng làm nổi bật sức mạnh của Dế Mèn.</li>
+  <li>Tác dụng chung: làm câu văn sinh động, người đọc như <b>nghe thấy</b> âm thanh và <b>hình dung</b> rõ vẻ cường tráng của nhân vật.</li>
+</ul>
+<p><b>4.</b></p>
+<ul>
+  <li><i>Nghèo</i> — nghĩa thông thường: thiếu thốn tiền bạc, của cải. Trong "em nghèo sức quá": thiếu sức, sức khoẻ yếu.</li>
+  <li><i>Mưa dầm sùi sụt</i> — nghĩa thông thường: mưa kéo dài nhiều ngày, rả rích không dứt, gợi cảm giác buồn. Trong "điệu hát mưa dầm sùi sụt": Dế Mèn chê lời than thở của Dế Choắt là kể lể dai dẳng, buồn rầu, nghe chán tai — cho thấy Dế Mèn không muốn nghe bạn.</li>
+</ul>
+<p><b>5.</b> <i>Câu tham khảo — em nên tự đặt câu khác, miễn là dùng đúng nghĩa:</i></p>
+<ul>
+  <li>Anh ấy sống kiểu <i>ăn xổi ở thì</i>, chẳng bao giờ tính chuyện lâu dài.</li>
+  <li>Hàng xóm với nhau, lúc <i>tắt lửa tối đèn</i> phải biết giúp đỡ nhau.</li>
+  <li>Đôi giày để trong cặp cả tuần, bốc mùi <i>hôi như cú mèo</i>.</li>
+</ul>
+<p><i>Tự kiểm tra:</i> mỗi câu dùng thành ngữ đúng nghĩa trong chú thích (sống tạm bợ / lúc khó khăn cần giúp đỡ / rất hôi).</p>
+<p><b>6.</b> Một số câu so sánh (chép từ văn bản):</p>
+<div class="tablewrap"><table>
+<tr><th>Câu văn</th><th>Được so sánh</th><th>Từ so sánh</th><th>So sánh với</th><th>Tác dụng</th></tr>
+<tr><td>"Những ngọn cỏ gãy rạp, y như có nhát dao vừa lia qua."</td><td>cỏ gãy rạp</td><td>y như</td><td>nhát dao vừa lia qua</td><td>cho thấy cú đạp mạnh, sắc; vuốt Dế Mèn lợi hại</td></tr>
+<tr><td>"Hai cái răng đen nhánh lúc nào cũng nhai ngoàm ngoạp như hai lưỡi liềm máy làm việc."</td><td>hai cái răng</td><td>như</td><td>hai lưỡi liềm máy</td><td>răng khoẻ, hoạt động liên tục như máy</td></tr>
+<tr><td>"Cái chàng Dế Choắt, người gầy gò và dài lêu nghêu như một gã nghiện thuốc phiện."</td><td>người Dế Choắt</td><td>như</td><td>gã nghiện thuốc phiện</td><td>nhấn mạnh vẻ gầy gò, ốm yếu</td></tr>
+<tr><td>"Đã thanh niên rồi mà cánh chỉ ngắn củn đến giữa lưng, hở cả mạng sườn như người cởi trần mặc áo gi-lê."</td><td>cánh Dế Choắt</td><td>như</td><td>người cởi trần mặc áo gi-lê</td><td>cánh ngắn, trông khó coi, gợi cười</td></tr>
+<tr><td>"Chú mày hôi như cú mèo thế này, ta nào chịu được."</td><td>Dế Choắt</td><td>như</td><td>cú mèo</td><td>cho thấy lời chê bai nặng nề, khinh miệt của Dế Mèn</td></tr>
+<tr><td>"Mỏ Cốc như cái dùi sắt, chọc xuyên cả đất."</td><td>mỏ Cốc</td><td>như</td><td>cái dùi sắt</td><td>mỏ cứng, nhọn, rất nguy hiểm → cú mổ chết người</td></tr>
+</table></div>
+<p>Tác dụng chung: làm hình ảnh cụ thể, sinh động, dễ hình dung; góp phần khắc hoạ đặc điểm từng nhân vật.</p>
+<p><b>Luyện thêm:</b> A1 từ đơn; A2 từ đơn; A3 từ ghép; A4 từ ghép; A5 từ ghép; A6 từ láy (lặp âm đầu <i>x</i>); A7 từ láy (lặp vần <i>anh</i>); A8 từ láy (lặp âm đầu <i>b</i>). — B1 cả âm đầu và vần; B2 vần; B3 âm đầu; B4 vần; B5 âm đầu. — C1 (b); C2 <i>như</i>; C3 (b); C4 (b).</p>
+</div>
+</div>
+</section>
+
+<!-- ============================ 4 ============================ -->
+<section id="s4">
+<h2>4. Văn bản 2. Nếu cậu muốn có một người bạn…</h2>
+<p class="muted"><i>Trích</i> Hoàng tử bé, <i>Ăng-toan đơ Xanh-tơ Ê-xu-pe-ri</i> — SGK trang 21 – 25.</p>
+
+<h3>4.1. Trước khi đọc</h3>
+<p class="sgkq"><span class="n">1.</span>Hãy ghi lại một số từ miêu tả cảm xúc của em khi nghĩ về một người bạn thân. Điều gì khiến các em trở thành đôi bạn thân?</p>
+<p class="sgkq"><span class="n">2.</span>Em và người bạn thân ấy đã làm quen với nhau như thế nào?</p>
+<p class="gm"><b>(gợi mở)</b> Với câu 2, em nhớ lại: hai bạn thân nhau ngay hôm đầu, hay phải qua một thời gian? Giữ câu trả lời này — lát nữa em sẽ so với cách con cáo muốn làm bạn với hoàng tử bé.</p>
+<div class="box"><span class="label">Đọc chú thích trước khi đọc văn bản</span>
+<p>Chú thích ⁽³⁾ của SGK cho biết hoàn cảnh: <i>"Khi vừa đến Trái Đất, hoàng tử bé nhìn thấy một vườn hoa hồng và nhận ra rằng ở hành tinh của mình, cậu chỉ có "một bông hoa tầm thường". Phát hiện này khiến cậu buồn bã, thất vọng, nằm dài trên cỏ và khóc. Đúng lúc đó thì con cáo xuất hiện."</i></p></div>
+
+<h3>4.2. Trong khi đọc — dừng lại ở các thẻ chỉ dẫn</h3>
+<div class="tablewrap"><table>
+<tr><th>Thẻ trong SGK</th><th>Câu hỏi gợi mở của cô</th></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Những lời đối thoại giữa hoàng tử bé và cáo.</td><td>Văn bản gần như toàn là lời nhân vật. Mỗi lời thoại, em xác định: ai nói? (Nhìn phần sau dấu gạch ngang thứ hai: "– con cáo nói", "– Hoàng tử bé hỏi".)</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Chú ý từ "cảm hoá" mỗi khi nó xuất hiện.</td><td>Đánh số nhỏ bên cạnh mỗi lần gặp từ <i>cảm hoá</i>. Hoàng tử bé hỏi "Cảm hoá nghĩa là gì?" mấy lần thì cáo mới trả lời?</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Cảm nhận khác nhau của cáo về tiếng những bước chân và về cánh đồng lúa mì.</td><td>Kẻ hai cột "Trước khi được cảm hoá" – "Nếu được cảm hoá". Điền: bước chân, cánh đồng lúa mì.</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Cáo đã chỉ cho hoàng tử bé cách "cảm hoá" mình như thế nào?</td><td>Cáo bảo cần có đức tính gì? Ngày đầu ngồi thế nào, mỗi ngày sau thì sao?</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Điều gì khiến những bông hồng trên Trái Đất và bông hồng của hoàng tử bé khác hẳn nhau?</td><td>Những bông hồng trong vườn có đẹp không? Vậy chúng "chưa là gì cả" vì thiếu điều gì?</td></tr>
+<tr><td>🔎 <i>Theo dõi:</i> Hoàng tử bé đã nhắc lại lời nói nào của cáo?</td><td>Gạch chân mỗi câu có cụm "lặp lại, để cho nhớ".</td></tr>
+</table></div>
+<p class="small"><b>Từ khó (theo chú thích SGK):</b> <i>Cảm hoá</i>: dùng tình cảm tốt đẹp làm cho một đối tượng nào đó cảm phục mà nghe theo, làm theo, chuyển biến theo hướng tích cực. — <i>Cốt lõi</i>: cái chính và quan trọng nhất. — <i>Mắt trần</i>: con mắt thường, ở đây chỉ cái nhìn chưa có sự gắn kết, thấu hiểu.</p>
+
+<h3>4.3. Sau khi đọc</h3>
+<div class="box key"><span class="label">📌 Tác giả, tác phẩm</span>
+<ul>
+  <li><b>Ăng-toan đơ Xanh-tơ Ê-xu-pe-ri</b> (1900 – 1944) là nhà văn lớn người Pháp. Ông là phi công và từng tham gia chiến đấu trong Chiến tranh thế giới thứ hai. Hầu hết các tác phẩm của ông lấy đề tài, cảm hứng từ những chuyến bay và cuộc sống của người phi công. Ngòi bút của Xanh-tơ Ê-xu-pe-ri đậm chất trữ tình, trong trẻo, giàu cảm hứng lãng mạn. Cùng với kiệt tác <i>Hoàng tử bé</i>, ông còn để lại một số tác phẩm xuất sắc như: <i>Bay đêm</i>, <i>Cõi người ta</i>, <i>Phi công thời chiến</i>,…</li>
+  <li><i>Hoàng tử bé</i> là tác phẩm nổi tiếng nhất của Ăng-toan đơ Xanh-tơ Ê-xu-pe-ri.</li>
+</ul></div>
+
+<h4>Trả lời câu hỏi (SGK) — đi từng bước</h4>
+<p class="sgkq"><span class="n">1.</span>Hoàng tử bé đến từ đâu và gặp cáo trong hoàn cảnh nào?</p>
+<ul class="steps"><li>Tìm đoạn cáo hỏi "Trên một hành tinh khác?". Đọc lại chú thích ⁽³⁾ ở trên cho phần hoàn cảnh. Chú ý thêm lời hoàng tử bé: "Mình buồn quá…".</li></ul>
+<p class="sgkq"><span class="n">2.</span>Từ <i>cảm hoá</i> xuất hiện bao nhiêu lần trong đoạn trích? Qua những lời giải thích của cáo, em hiểu <i>cảm hoá</i> nghĩa là gì?</p>
+<ul class="steps"><li>Bước 1: Đếm theo số em đã đánh (chỉ đếm trong lời văn của đoạn trích, không đếm các thẻ chỉ dẫn 🔎 ở lề).</li><li>Bước 2: Gom các câu cáo giải thích: "làm cho gần gũi hơn…"; điều gì xảy ra "nếu bạn cảm hoá mình"; cảm hoá cần gì ("Cần phải rất kiên nhẫn"); sau khi cảm hoá thì phải thế nào ("trách nhiệm").</li></ul>
+<p class="sgkq"><span class="n">3.</span>Điều gì ở hoàng tử bé khiến cáo thiết tha mong được kết bạn với cậu?</p>
+<ul class="steps"><li>Nhìn vào lời cáo kể về cuộc sống của mình ("thật đơn điệu") và chi tiết về mái tóc của hoàng tử bé.</li></ul>
+<p class="sgkq"><span class="n">4.</span>Nếu được hoàng tử bé "cảm hoá", cuộc sống của cáo sẽ thay đổi như thế nào? Qua đó, em cảm nhận được ý nghĩa gì của tình bạn?</p>
+<ul class="steps"><li>Dùng bảng hai cột em đã kẻ ở thẻ 🔎 thứ ba. Phần ý nghĩa tình bạn: nói bằng lời của em, một hai câu.</li></ul>
+<p class="sgkq"><span class="n">5.</span>Khi chia tay hoàng tử bé, cáo đã có những cảm xúc gì? Những cảm xúc ấy có khiến cáo hối tiếc về việc kết bạn với hoàng tử bé không?</p>
+<ul class="steps"><li>Tìm câu cáo nói khi "gần đến lúc phải ra đi", và câu cáo trả lời "Vậy thì bạn chẳng được gì cả."</li></ul>
+<p class="sgkq"><span class="n">6.</span>Hoàng tử bé đã nhắc lại những lời nói nào của cáo "để cho nhớ"? Nêu cảm nhận của em về ý nghĩa của một trong những lời nói đó.</p>
+<ul class="steps"><li>Bước 1: Liệt kê các câu em đã gạch chân. Bước 2: Chọn <b>một</b> câu, giải thích bằng một ví dụ trong đời em.</li></ul>
+<p class="sgkq"><span class="n">7.</span>Cáo đã chia sẻ với hoàng tử bé nhiều bài học về tình bạn. Em thấy bài học nào gần gũi và có ý nghĩa nhất với chính mình?</p>
+<ul class="steps"><li>Câu mở. Nêu bài học + dẫn câu của cáo + kể một chuyện nhỏ của em.</li></ul>
+<p class="sgkq"><span class="n">8.</span>Theo em, nhân vật cáo có phải là một nhân vật của truyện đồng thoại không? Vì sao?</p>
+<ul class="steps"><li>Mở lại hộp 📌 <i>Truyện và truyện đồng thoại</i>. Tìm trong văn bản: (1) những gì cáo làm giống một con cáo thật; (2) những gì cáo làm giống con người.</li></ul>
+
+<h3>4.4. Viết kết nối với đọc</h3>
+<div class="box"><p>Tưởng tượng và viết đoạn văn (khoảng 5 – 7 câu) miêu tả cảm xúc của nhân vật cáo sau khi từ biệt hoàng tử bé.</p></div>
+<ol>
+  <li>Xác định thời điểm: <b>sau khi</b> hoàng tử bé đã đi.</li>
+  <li>Tìm "chỗ dựa" trong văn bản để tưởng tượng không bị lạc: cáo đã nói "Mình sẽ khóc mất", "Mình được chứ… bởi vì còn có màu lúa mì", và cáo từng nói bước chân của bạn "như là tiếng nhạc", lúa mì "sẽ làm mình nhớ đến bạn", "mình sẽ thấy thích tiếng gió trên đồng lúa mì".</li>
+  <li>Chọn: kể bằng lời cáo (xưng "mình"/"tôi") hay bằng lời người kể giấu mình? Chọn một và giữ nhất quán.</li>
+  <li>Cảm xúc có thể <b>thay đổi</b> trong đoạn: buồn lúc đầu → dịu lại khi nhìn đồng lúa mì. Dùng từ ngữ chỉ cảm xúc cụ thể.</li>
+  <li>Viết thành một đoạn, 5 – 7 câu.</li>
+</ol>
+<p class="gm"><b>Cô làm mẫu một câu thôi:</b> "Bóng hoàng tử bé khuất sau đồi, cáo vẫn ngồi yên dưới gốc táo, nghe gió thổi qua cánh đồng lúa mì."</p>
+<p class="small"><b>Bảng kiểm:</b> một đoạn, 5 – 7 câu □ — cảm xúc của cáo là trọng tâm □ — có ít nhất một chi tiết lấy từ văn bản (lúa mì, bước chân, bông hồng…) □ — ngôi kể nhất quán □ — không lỗi chính tả □</p>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Văn bản 2</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-vb2">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-vb2">
+<h4>Trong khi đọc</h4>
+<ul>
+  <li>Thẻ "cảm hoá": hoàng tử bé hỏi "Cảm hoá nghĩa là gì?" <b>ba lần</b> thì cáo mới trả lời "Nó có nghĩa là "làm cho gần gũi hơn…"."</li>
+  <li>Thẻ bước chân – lúa mì: trước: "Những bước chân khác chỉ khiến mình trốn vào lòng đất"; "Những đồng lúa mì chẳng gợi nhớ gì cho mình cả. Mà như vậy thì buồn quá!". Nếu được cảm hoá: "bước chân của bạn sẽ gọi mình ra khỏi hang, như là tiếng nhạc"; "Lúa mì vàng óng ả sẽ làm mình nhớ đến bạn. Và mình sẽ thấy thích tiếng gió trên đồng lúa mì…".</li>
+  <li>Thẻ cách cảm hoá: "Cần phải rất kiên nhẫn"; "Trước tiên bạn ngồi xa mình một chút… Nhưng mỗi ngày, bạn có thể ngồi xích lại gần hơn…".</li>
+  <li>Thẻ bông hồng: những bông hồng trong vườn "chưa là gì cả" vì "Chẳng ai cảm hoá các bạn và các bạn chẳng cảm hoá ai". Bông hồng của hoàng tử bé là bông hoa cậu đã chăm sóc, yêu thương.</li>
+</ul>
+<h4>Trả lời câu hỏi</h4>
+<ol>
+  <li>Hoàng tử bé đến từ <b>một hành tinh khác</b> ("Ồ! Không phải trên Trái Đất" – "Trên một hành tinh khác?" – "Đúng vậy."). Hoàn cảnh: vừa đến Trái Đất, thấy vườn hoa hồng, cậu nhận ra bông hoa của mình chỉ là "một bông hoa tầm thường", nên buồn bã, nằm dài trên cỏ và khóc; đúng lúc đó cáo xuất hiện. Trong văn bản, cậu nói với cáo: "Mình buồn quá…".</li>
+  <li><ul>
+    <li>Số lần: đếm trong lời văn của đoạn trích (không tính các thẻ chỉ dẫn 🔎 ở lề và phần chú thích), từ <i>cảm hoá</i> xuất hiện <b>16 lần</b>. <i>Lưu ý: nếu em đếm cả hai thẻ 🔎 có chữ "cảm hoá" thì sẽ ra 18 — hãy nói rõ em đếm theo cách nào.</i></li>
+    <li>Nghĩa: theo lời cáo, <i>cảm hoá</i> là "làm cho gần gũi hơn…"; khi cảm hoá nhau thì "tụi mình sẽ cần đến nhau", mỗi bên "sẽ là duy nhất trên đời" với bên kia. Muốn cảm hoá phải "rất kiên nhẫn", dành thời gian ("Chính thời gian mà bạn bỏ ra cho bông hồng của bạn…"), và sau đó "có trách nhiệm mãi mãi với những gì bạn đã cảm hoá". → Nói gọn: <i>cảm hoá</i> là kiên nhẫn dành thời gian, tình cảm để làm cho nhau gần gũi, gắn bó, trở thành duy nhất với nhau.</li>
+  </ul></li>
+  <li><ul>
+    <li>Cuộc sống của cáo "thật đơn điệu": "Mình săn gà, con người săn mình. Mọi con gà đều giống nhau, mọi con người đều giống nhau. Cho nên mình hơi chán."</li>
+    <li>Hoàng tử bé khác những con người đi săn: cậu đi tìm <b>bạn bè</b> ("Không, mình đi tìm bạn bè"), lịch sự, thân thiện ("Bạn dễ thương quá…", "Lại đây chơi với mình đi").</li>
+    <li>Cậu có "mái tóc vàng óng" — nếu thành bạn, màu lúa mì sẽ làm cáo nhớ đến cậu.</li>
+  </ul></li>
+  <li><ul>
+    <li>Thay đổi: "xem như đời mình đã được chiếu sáng"; tiếng bước chân của bạn "như là tiếng nhạc" gọi cáo ra khỏi hang, thay vì bước chân khiến cáo "trốn vào lòng đất"; cánh đồng lúa mì vốn vô nghĩa sẽ gợi nhớ bạn, cáo "sẽ thấy thích tiếng gió trên đồng lúa mì".</li>
+    <li>Ý nghĩa tình bạn (câu mở, ví dụ): tình bạn làm cuộc sống bớt buồn chán, làm những thứ bình thường trở nên có ý nghĩa và đáng yêu.</li>
+  </ul></li>
+  <li><ul>
+    <li>Cảm xúc: buồn, xúc động — "A!… Mình sẽ khóc mất."</li>
+    <li>Không hối tiếc. Khi hoàng tử bé nói "Vậy thì bạn chẳng được gì cả", cáo đáp: "Mình được chứ… bởi vì còn có màu lúa mì." Cáo còn tặng bạn "một bí mật làm quà".</li>
+  </ul></li>
+  <li><ul>
+    <li>Ba lời được nhắc lại "để cho nhớ": "Điều cốt lõi vô hình trong mắt trần"; "Chính thời gian mà mình bỏ ra cho bông hồng của mình…"; "Mình có trách nhiệm với bông hồng của mình…".</li>
+    <li>Cảm nhận: câu mở. Ví dụ với câu 1: điều quan trọng nhất ở một người bạn (tấm lòng, sự quan tâm) không nhìn thấy bằng mắt thường mà phải cảm nhận bằng trái tim — đúng như cáo nói "người ta chỉ thấy rõ với trái tim".</li>
+  </ul></li>
+  <li>Câu mở. Câu trả lời tốt nêu rõ bài học, dẫn đúng câu của cáo và gắn với trải nghiệm thật của em (ví dụ: bài học về sự kiên nhẫn khi làm quen một bạn mới).</li>
+  <li><b>Có.</b> Cáo là con vật được nhân cách hoá, đúng đặc điểm nhân vật truyện đồng thoại:
+    <ul>
+      <li>Mang đặc tính loài cáo: sống trong hang ("gọi mình ra khỏi hang", "trốn vào lòng đất"), săn gà ("Mình săn gà"), bị người đi săn ("con người săn mình"), không ăn bánh mì.</li>
+      <li>Mang đặc điểm con người: biết nói, biết chào hỏi, suy nghĩ về cuộc sống, buồn chán, mong có bạn, biết khóc, biết khuyên bạn những điều sâu sắc.</li>
+    </ul></li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- ============================ 5 ============================ -->
+<section id="s5">
+<h2>5. Thực hành tiếng Việt (trang 26)</h2>
+
+<h3>5.1. Nghĩa của từ ngữ</h3>
+<p class="sgkq"><span class="n">1.</span><i>Hoá</i> trong <i>cảm hoá</i> là yếu tố thường đi sau một yếu tố khác, có nghĩa là "trở thành, làm cho trở thành hay làm cho có tính chất mà trước đó chưa có". Hãy tìm một số từ có yếu tố <i>hoá</i> được dùng theo cách như vậy và giải thích nghĩa của những từ đó.</p>
+<p class="gm"><b>(gợi mở)</b> Mẹo: tìm từ có dạng <b>"…hoá"</b> mà bỏ <i>hoá</i> đi, phần còn lại là một tính chất (đơn giản, hiện đại, đa dạng…). Khi giải thích, dùng khuôn: "<i>… hoá</i>: làm cho trở nên …". Cẩn thận với những từ <i>hoá</i> đứng <b>trước</b> (như <i>hoá đơn</i>, <i>hoá trang</i>) — đó không phải cách dùng đề bài hỏi.</p>
+<p class="sgkq"><span class="n">2.</span>Hãy đặt một câu với mỗi từ sau: <i>đơn điệu</i>, <i>kiên nhẫn</i>, <i>cốt lõi</i>.</p>
+<p class="gm"><b>(gợi mở)</b> Xem lại cách các từ này được dùng trong văn bản: "Cuộc sống của mình thật đơn điệu", "Cần phải rất kiên nhẫn", "Điều cốt lõi vô hình trong mắt trần" (chú thích: <i>cốt lõi</i>: cái chính và quan trọng nhất).</p>
+
+<h3>5.2. Biện pháp tu từ</h3>
+<p class="sgkq"><span class="n">3.</span>Chỉ ra và nêu tác dụng của biện pháp tu từ so sánh trong đoạn văn sau:</p>
+<div class="box quote"><p><i>Mình sẽ biết thêm một tiếng chân khác hẳn mọi bước chân khác. Những bước chân khác chỉ khiến mình trốn vào lòng đất. Còn bước chân của bạn sẽ gọi mình ra khỏi hang, như là tiếng nhạc.</i></p></div>
+<p class="gm"><b>(gợi mở)</b> Bước 1: Tìm từ so sánh. Bước 2: Cái gì được ví với <i>tiếng nhạc</i>? Bước 3: Tiếng nhạc thường khiến người nghe cảm thấy thế nào? Đặt cạnh câu "Những bước chân khác chỉ khiến mình trốn vào lòng đất" — hai câu khác nhau ra sao?</p>
+<p class="sgkq"><span class="n">4*.</span>Trong văn bản <i>Nếu cậu muốn có một người bạn…</i>, nhiều lời thoại của nhân vật được lặp lại, chẳng hạn: "<i>Cảm hoá</i>" nghĩa là gì?, <i>cảm hoá mình đi</i>,… Hãy tìm thêm những lời thoại được lặp lại trong văn bản này và cho biết tác dụng của chúng.</p>
+<p class="gm"><b>(gợi mở)</b> Tìm ở đoạn chia tay (từ "Khi gần đến lúc phải ra đi" đến hết). Có câu nào cáo nói hai lần liền? Câu nào kết thúc bằng "lặp lại, để cho nhớ"? Cụm từ nào về "duy nhất" xuất hiện nhiều lần?</p>
+
+<h3>5.3. Từ ghép và từ láy</h3>
+<p class="sgkq"><span class="n">5.</span>Viết đoạn văn (khoảng 5 – 7 câu) trình bày cảm nhận của em về nhân vật hoàng tử bé hoặc nhân vật cáo, trong đoạn văn có sử dụng ít nhất 2 từ ghép và 2 từ láy.</p>
+<ol>
+  <li>Chọn nhân vật. Viết ra <b>hai</b> đặc điểm em cảm nhận được, mỗi đặc điểm kèm <b>một</b> chi tiết trong văn bản.</li>
+  <li>Câu đầu nêu cảm nhận chung; các câu giữa nêu đặc điểm + chi tiết; câu cuối nói nhân vật để lại cho em điều gì.</li>
+  <li>Viết xong, <b>gạch một gạch</b> dưới từ ghép, <b>gạch hai gạch</b> dưới từ láy. Đếm: đủ 2 + 2 chưa? Kiểm tra lại từng từ bằng "cách làm ba bước" ở mục 3.1.</li>
+  <li>Kiểm tra: một đoạn, 5 – 7 câu.</li>
+</ol>
+<p class="small"><i>Gợi ý vốn từ (em tự chọn, không bắt buộc):</i> từ láy — <i>buồn bã, thiết tha, lặng lẽ, nhẹ nhàng</i>; từ ghép — <i>tình bạn, trách nhiệm, bông hồng, lúa mì, hành tinh</i>. Cẩn thận: <i>kiên nhẫn</i>, <i>đơn điệu</i> là <b>từ ghép</b>, không phải từ láy (hai tiếng không lặp lại âm đầu hay vần).</p>
+
+<h3>5.4. Luyện thêm — tự chấm</h3>
+<div class="quiz">
+  <div class="q" data-ans="b"><div class="stem"><b>D1.</b> Trong câu "Còn bước chân của bạn sẽ gọi mình ra khỏi hang, như là tiếng nhạc", cái gì được so sánh với <i>tiếng nhạc</i>?</div>
+    <button class="opt" type="button" data-v="a">(a) tiếng gió trên đồng lúa mì</button><button class="opt" type="button" data-v="b">(b) bước chân của bạn (hoàng tử bé)</button><button class="opt" type="button" data-v="c">(c) những bước chân khác</button>
+    <div class="why"><i>bước chân của bạn</i> – <i>như là</i> – <i>tiếng nhạc</i>. Những bước chân khác thì chỉ khiến cáo "trốn vào lòng đất".</div></div>
+  <div class="q fill" data-ans="gần gũi"><div class="stem"><b>D2.</b> Điền vào chỗ trống lời cáo giải thích: <i>Cảm hoá</i> "Nó có nghĩa là "làm cho ___ hơn…"."</div>
+    <input type="text" aria-label="Điền từ còn thiếu" placeholder="gõ từ còn thiếu"> <button class="btn" type="button" data-check>Kiểm tra</button>
+    <div class="why">"làm cho gần gũi hơn…"</div></div>
+  <div class="q" data-ans="c"><div class="stem"><b>D3.</b> Từ nào có yếu tố <i>hoá</i> được dùng theo nghĩa "làm cho trở thành, làm cho có tính chất mà trước đó chưa có"?</div>
+    <button class="opt" type="button" data-v="a">(a) hoá đơn</button><button class="opt" type="button" data-v="b">(b) hoá trang</button><button class="opt" type="button" data-v="c">(c) hiện đại hoá</button>
+    <div class="why"><i>hiện đại hoá</i>: làm cho trở nên hiện đại — <i>hoá</i> đứng sau, giống <i>cảm hoá</i>.</div></div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Thực hành tiếng Việt (trang 26)</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-tv2">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-tv2">
+<p><b>1.</b> Một số từ (tham khảo):</p>
+<ul>
+  <li><i>đơn giản hoá</i>: làm cho trở nên đơn giản (ví dụ: đơn giản hoá bài toán).</li>
+  <li><i>hiện đại hoá</i>: làm cho trở nên hiện đại.</li>
+  <li><i>đa dạng hoá</i>: làm cho trở nên đa dạng, nhiều loại.</li>
+  <li><i>tự động hoá</i>: làm cho máy móc tự hoạt động, thay cho sức người.</li>
+  <li><i>thuần hoá</i> (chính chú thích SGK có nhắc đến khi nói về cách dịch từ <i>cảm hoá</i>): làm cho con vật hoang trở nên thuần, quen sống với người.</li>
+</ul>
+<p><i>Tự kiểm tra lại:</i> mỗi từ đều có <i>hoá</i> đứng <b>sau</b>, và giải thích được bằng khuôn "làm cho trở nên…".</p>
+<p><b>2.</b> <i>Câu tham khảo — em tự đặt câu khác:</i></p>
+<ul>
+  <li>Ngày nghỉ hè nào cũng chỉ ở nhà xem ti vi thì thật <b>đơn điệu</b>.</li>
+  <li>Nhờ <b>kiên nhẫn</b> tập mỗi ngày, cuối cùng em cũng đi được xe đạp.</li>
+  <li>Điều <b>cốt lõi</b> trong tình bạn là sự chân thành.</li>
+</ul>
+<p><b>3.</b></p>
+<ul>
+  <li>Biện pháp so sánh: <i>bước chân của bạn</i> (vế được so sánh) – <i>như là</i> (từ so sánh) – <i>tiếng nhạc</i> (vế dùng để so sánh).</li>
+  <li>Tác dụng: bước chân của người bạn đã "cảm hoá" mình trở nên êm ái, vui tai, đáng mong chờ như tiếng nhạc — trái ngược với "những bước chân khác chỉ khiến mình trốn vào lòng đất". Hình ảnh so sánh cho thấy tình bạn làm thay đổi hẳn cảm nhận của cáo: từ sợ hãi, trốn tránh sang vui mừng, háo hức.</li>
+</ul>
+<p><b>4*.</b> Một số lời thoại được lặp lại:</p>
+<ul>
+  <li>"– Tất nhiên rồi – con cáo nói." (hai lần liền)</li>
+  <li>"– Hoàng tử bé lặp lại, để cho nhớ." (ba lần, với ba lời: "Điều cốt lõi vô hình trong mắt trần", "Chính thời gian mà mình bỏ ra cho bông hồng của mình…", "Mình có trách nhiệm với bông hồng của mình…")</li>
+  <li>"duy nhất trên đời" ("bạn đối với mình sẽ là duy nhất trên đời. Mình đối với bạn sẽ là duy nhất trên đời…", "bông hoa của bạn là duy nhất trên đời", "bây giờ bạn ấy trở thành duy nhất trên đời")</li>
+  <li>"– Vĩnh biệt" (hoàng tử bé nói, cáo đáp lại)</li>
+</ul>
+<p>Tác dụng: nhấn mạnh những điều quan trọng nhất về tình bạn (cảm hoá, sự duy nhất, thời gian, trách nhiệm); cho thấy hoàng tử bé rất muốn hiểu và ghi nhớ lời bạn; lời "Tất nhiên rồi" lặp lại cho thấy cáo chấp nhận nỗi buồn chia tay một cách bình thản; giúp người đọc nhớ lâu những bài học ấy.</p>
+<p><b>5.</b> Không có đoạn mẫu — đây là bài viết của em. Đối chiếu với bốn bước ở trên. Nhớ: <i>kiên nhẫn</i>, <i>đơn điệu</i> là từ ghép chứ không phải từ láy (hai tiếng không lặp lại âm đầu hay vần).</p>
+<p><b>Luyện thêm:</b> D1 (b); D2 <i>gần gũi</i>; D3 (c).</p>
+</div>
+</div>
+</section>
+
+<!-- ============================ 6 ============================ -->
+<section id="s6">
+<h2>6. Văn bản 3. Bắt nạt</h2>
+<p class="muted"><i>Nguyễn Thế Hoàng Linh</i> — SGK trang 27.</p>
+<div class="box warn"><span class="label">Ghi chú của cô</span><p>Văn bản này trong kho kiến thức không có mục <i>Trước khi đọc</i> và không có thẻ chỉ dẫn 🔎. Phần khởi động dưới đây là câu hỏi cô thêm, không phải câu hỏi SGK.</p></div>
+
+<h3>6.1. Khởi động (gợi mở)</h3>
+<ul>
+  <li>Em đã bao giờ thấy một bạn bị trêu chọc, bị bắt nạt chưa? Lúc đó em đã làm gì?</li>
+  <li>Theo em, nói chuyện "bắt nạt" thì một bài thơ nên nghiêm khắc hay vui vẻ? Đọc xong bài, xem tác giả chọn cách nào.</li>
+</ul>
+
+<h3>6.2. Đọc văn bản</h3>
+<p>Tác giả: theo chú thích SGK, <i>Nguyễn Thế Hoàng Linh sinh năm 1982 tại Hà Nội. Thơ Nguyễn Thế Hoàng Linh viết cho trẻ em rất hồn nhiên, ngộ nghĩnh, trong trẻo, tươi vui.</i></p>
+<p>Bài thơ có 8 khổ, mỗi khổ 4 dòng, mỗi dòng 5 tiếng. Em đọc to cả bài, giọng vui, như đang nói chuyện với bạn.</p>
+<p class="small"><b>Từ khó (chú thích SGK):</b> <i>Híp-hóp</i>: một điệu nhảy hiện đại, linh hoạt, tự do, được giới trẻ yêu thích. — <i>Mù tạt</i>: gia vị được chế biến từ hạt của cây họ cải, có vị cay nồng.</p>
+<h4>Câu hỏi gợi mở trong khi đọc</h4>
+<ul>
+  <li>Ai đang nói trong bài thơ? Tìm từ nhân vật dùng để tự xưng (ở hai khổ cuối).</li>
+  <li>Khổ 2 và khổ 3: nhân vật khuyên các bạn làm những việc gì <b>thay cho</b> bắt nạt?</li>
+  <li>Khổ 4: các bạn nhút nhát được ví với con vật gì?</li>
+  <li>Khổ 5 và khổ 6: đếm xem có bao nhiêu dòng mở đầu giống nhau.</li>
+</ul>
+
+<h3>6.3. Sau khi đọc — trả lời câu hỏi (SGK)</h3>
+<p class="sgkq"><span class="n">1.</span>Nhân vật "tớ" trong bài thơ thể hiện thái độ như thế nào với các bạn bắt nạt và các bạn bị bắt nạt?</p>
+<ul class="steps"><li>Kẻ hai cột: "với bạn bắt nạt" – "với bạn bị bắt nạt". Mỗi cột ghi ít nhất một câu thơ làm bằng chứng. Chú ý lời gọi "bạn ơi" ở khổ 1 và hai khổ cuối.</li></ul>
+<p class="sgkq"><span class="n">2.</span>Cụm từ <i>đừng bắt nạt</i> xuất hiện bao nhiêu lần trong bài thơ? Theo em, việc lặp lại cụm từ này có tác dụng gì?</p>
+<ul class="steps"><li>Đếm cả dòng ở khổ 1 lẫn các dòng ở khổ 5, 6. Để nói tác dụng: đọc to một mạch khổ 5 và 6, nghe xem lời khuyên mạnh lên hay yếu đi? Những đối tượng được nhắc đến rộng dần ra thế nào?</li></ul>
+<p class="sgkq"><span class="n">3*.</span>Bài thơ nói chuyện bắt nạt mà vẫn ẩn chứa ý vị hài hước. Hãy chỉ ra một số biểu hiện của ý vị hài hước đó.</p>
+<ul class="steps"><li>Tìm những chỗ khiến em bật cười: lời khuyên "lạ", đối tượng "lạ" (ai lại đi bắt nạt cái cây?), lí do "lạ" ở cuối khổ 6 và khổ 8.</li></ul>
+<p class="sgkq"><span class="n">4.</span>Mỗi chúng ta có thể từng bị bắt nạt, chứng kiến cảnh bắt nạt hoặc từng bắt nạt người khác. Hãy cho biết em đã làm gì khi ở vào một trong các tình huống trên. Bài thơ có thể khiến em thay đổi cách ứng xử trước chuyện bắt nạt như thế nào?</p>
+<ul class="steps"><li>Câu mở, cần trung thực. Kể một tình huống thật + nói một việc cụ thể em sẽ làm khác đi.</li></ul>
+
+<div class="quiz">
+  <div class="q fill" data-ans="7|bảy"><div class="stem"><b>E1 (luyện thêm).</b> Cụm từ <i>đừng bắt nạt</i> xuất hiện bao nhiêu lần trong bài thơ? (gõ một số)</div>
+    <input type="text" aria-label="Số lần" placeholder="gõ số"> <button class="btn" type="button" data-check>Kiểm tra</button>
+    <div class="why">7 lần: 1 lần ở khổ 1 ("Đừng bắt nạt, bạn ơi") và 6 lần ở khổ 5, 6.</div></div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Văn bản 3</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-vb3">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-vb3">
+<p><b>Trong khi đọc:</b> nhân vật tự xưng "tớ" ("Thì đến gặp tớ ngay", "Cứ đến bắt nạt tớ"); việc làm thay cho bắt nạt: "học hát", "Nhảy híp-hóp", "ăn mù tạt", "Đối diện thử thách"; bạn nhút nhát "giống thỏ non"; có 6 dòng bắt đầu bằng "Đừng bắt nạt" ở khổ 5 và khổ 6.</p>
+<ol>
+  <li><ul>
+    <li>Với bạn bắt nạt: không mắng mỏ mà <b>khuyên nhủ nhẹ nhàng, thân thiện</b> ("Đừng bắt nạt, bạn ơi"), nhưng thẳng thắn chê việc bắt nạt ("Bắt nạt là xấu lắm", "Vì bắt nạt rất hôi!"), gợi ý việc có ích hơn ("Tại sao không học hát / Nhảy híp-hóp cho hay?").</li>
+    <li>Với bạn bị bắt nạt: <b>thương yêu, bênh vực</b> — thấy bạn nhút nhát "Trông đáng yêu đấy chứ", và dám đứng ra nhận thay: "Bảo nếu cần bắt nạt / Thì đến gặp tớ ngay", "Cứ đến bắt nạt tớ".</li>
+  </ul></li>
+  <li><ul>
+    <li>Cụm từ <i>đừng bắt nạt</i> xuất hiện <b>7 lần</b>: 1 lần ở khổ 1 ("Đừng bắt nạt, bạn ơi") và 6 lần ở khổ 5, 6.</li>
+    <li>Tác dụng: nhấn mạnh lời khuyên, thái độ phản đối việc bắt nạt; mở rộng đối tượng không được bắt nạt — từ người lớn, trẻ con, nước khác đến mèo, chó, cái cây, rồi "ai cả"; tạo nhịp đều, dễ đọc, dễ nhớ.</li>
+  </ul></li>
+  <li>Một số biểu hiện hài hước:
+    <ul>
+      <li>Lời khuyên bất ngờ: "Sao không ăn mù tạt / Đối diện thử thách đi?", "Thử kẻ yếu làm gì / Sao không trêu mù tạt?" — muốn thử sức thì đi "trêu" món cay nồng!</li>
+      <li>Đối tượng bất ngờ: "Đừng bắt nạt cái cây".</li>
+      <li>Lí do ngộ nghĩnh: "Vì bắt nạt dễ lây", "Vì bắt nạt rất hôi!".</li>
+      <li>Lời mời "Cứ đến bắt nạt tớ / Bị bắt nạt quen rồi" — vừa buồn cười vừa cho thấy "tớ" dũng cảm, không sợ.</li>
+      <li>Câu bỏ lửng "Sao không yêu, lại còn…?".</li>
+    </ul></li>
+  <li>Câu mở. Câu trả lời tốt: kể một tình huống cụ thể, trung thực; nêu một cách ứng xử cụ thể (nói với thầy cô, đứng về phía bạn bị bắt nạt, rủ bạn bắt nạt làm việc khác như bài thơ gợi ý…).</li>
+</ol>
+</div>
+</div>
+</section>
+
+<!-- ============================ 7 ============================ -->
+<section id="s7">
+<h2>7. Viết: Viết bài văn kể lại một trải nghiệm của em</h2>
+<p class="muted">SGK trang 28 – 32. Dế Mèn đã kể lại một trải nghiệm đáng nhớ của mình. Còn em?</p>
+<div class="box key"><span class="label">📌 Yêu cầu đối với bài văn kể lại một trải nghiệm:</span>
+<ul>
+  <li>Được kể từ người kể chuyện ngôi thứ nhất.</li>
+  <li>Giới thiệu được trải nghiệm đáng nhớ.</li>
+  <li>Tập trung vào sự việc đã xảy ra.</li>
+  <li>Thể hiện được cảm xúc của người viết trước sự việc được kể.</li>
+</ul></div>
+
+<h3>7.1. Phân tích bài viết tham khảo <i>Người bạn nhỏ</i></h3>
+<p>Đọc bài <i>Người bạn nhỏ</i> trong SGK (bài làm của học sinh). Lời ghi bên lề của SGK chỉ ra bài viết đã làm gì ở từng đoạn:</p>
+<div class="tablewrap"><table>
+<tr><th>Đoạn trong bài</th><th>SGK ghi chú bên lề</th><th>Em tìm bằng chứng (gợi mở)</th></tr>
+<tr><td>Đoạn 1: "Câu chuyện xảy ra đã hơn một năm rồi…"</td><td><i>Người kể chuyện ngôi thứ nhất (xưng "tôi"). Giới thiệu câu chuyện.</i></td><td>Tìm từ xưng hô của người kể. Câu nào cho biết đây là chuyện "đáng nhớ"?</td></tr>
+<tr><td>Đoạn 2 – 4: chuyển nhà, chuột cắn, bà gửi mèo Mun, Mun mất tích</td><td><i>Tập trung vào sự việc đã xảy ra.</i></td><td>Thời gian nào, ở đâu, những ai? Sự việc nào nối tiếp sự việc nào?</td></tr>
+<tr><td>Đoạn 5: "Đó là lần đầu tiên chúng tôi trải nghiệm nỗi buồn mất một người bạn…"</td><td><i>Nêu cảm xúc của người viết trước sự việc được kể.</i></td><td>Cảm xúc được nêu là gì? Chỉ ở đoạn cuối mới có cảm xúc, hay đoạn giữa cũng có?</td></tr>
+</table></div>
+<button class="btn show-ans" type="button" data-toggle="ans-thamkhao">Hiện gợi ý</button>
+<div class="reveal" id="ans-thamkhao">
+<p>Người kể xưng "tôi" (và "chúng tôi"); câu "trải nghiệm cùng người bạn nhỏ ấy là câu chuyện đáng nhớ với cả ba mẹ con tôi" giới thiệu tính đáng nhớ; thời gian "khi tôi vào lớp 5 và Bông lên lớp 3", không gian là ngôi nhà mới; sự việc: chuột cắn chân → bà gửi mèo Mun → Mun giữ nhà → Mun mất tích → bà gửi mèo Vằn. Cảm xúc có cả ở đoạn giữa ("Bông khóc, tôi cũng khóc vì nhớ Mun") và đoạn cuối ("chẳng ai quên được Mun, người bạn nhỏ – vệ sĩ đầu tiên của chúng tôi").</p>
+</div>
+
+<h3>7.2. Thực hành viết theo các bước</h3>
+<p><b>Mục đích viết:</b> Kể lại một trải nghiệm cá nhân để chia sẻ với người đọc. <b>Người đọc:</b> Thầy cô, bạn bè, người thân và những người quan tâm đến trải nghiệm mà em chia sẻ.</p>
+
+<h4>Bước 1 — Trước khi viết</h4>
+<p><i>a. Lựa chọn đề tài.</i> Liệt kê ra giấy 3 – 5 sự việc đáng nhớ. SGK gợi ý ba nhóm:</p>
+<ul>
+  <li>Một trải nghiệm vui vẻ, hạnh phúc (một lần kết bạn, chuyến đi có ý nghĩa, bữa tiệc sinh nhật, một thành tích hay chiến thắng, một lần em giúp đỡ người khác hay được người khác giúp đỡ,…).</li>
+  <li>Một trải nghiệm buồn, tiếc nuối (chia tay một người bạn, hiểu lầm một người, một lần mắc lỗi,…).</li>
+  <li>Một trải nghiệm khiến em thay đổi, tự hoàn thiện mình (một hành trình khám phá, một lần thất bại,…).</li>
+</ul>
+<p class="gm"><b>(gợi mở)</b> Chọn chuyện nào em <b>nhớ rõ chi tiết nhất</b> — nhớ được ai nói câu gì, lúc đó em cảm thấy gì. Chuyện không cần "to tát"; bài <i>Người bạn nhỏ</i> chỉ kể chuyện một chú mèo.</p>
+<p><i>b. Tìm ý</i> — trả lời vào vở năm câu hỏi của SGK:</p>
+<table>
+<tr><th>Câu hỏi</th><th style="width:40%">Ý của em</th></tr>
+<tr><td>Câu chuyện xảy ra khi nào? Ở đâu?</td><td></td></tr>
+<tr><td>Những ai có liên quan đến câu chuyện? Họ đã nói và làm gì?</td><td></td></tr>
+<tr><td>Điều gì đã xảy ra?</td><td></td></tr>
+<tr><td>Vì sao câu chuyện lại xảy ra như vậy?</td><td></td></tr>
+<tr><td>Em có cảm xúc gì khi câu chuyện diễn ra và khi kể lại câu chuyện?</td><td></td></tr>
+</table>
+<p><i>c. Lập dàn ý</i> (khung của SGK — em điền ý của mình vào):</p>
+<ul>
+  <li><b>Mở bài:</b> Giới thiệu câu chuyện.</li>
+  <li><b>Thân bài:</b> Kể lại diễn biến của câu chuyện.
+    <ul>
+      <li>Giới thiệu thời gian, không gian xảy ra câu chuyện và những nhân vật có liên quan.</li>
+      <li>Kể lại các sự việc trong câu chuyện. <i>(Gợi ý của cô: đánh số sự việc 1, 2, 3… theo thứ tự xảy ra; đánh dấu sự việc quan trọng nhất để kể kĩ nhất.)</i></li>
+    </ul></li>
+  <li><b>Kết bài:</b> Nêu kết thúc của câu chuyện và cảm xúc của người viết.</li>
+</ul>
+
+<h4>Bước 2 — Viết bài</h4>
+<p>Bám sát dàn ý. Lưu ý của SGK:</p>
+<ul>
+  <li>Nhất quán về ngôi kể: dùng người kể chuyện ngôi thứ nhất (xưng "tôi" hoặc "em") để chia sẻ trải nghiệm.</li>
+  <li>Sử dụng các yếu tố của truyện như cốt truyện, nhân vật,…</li>
+</ul>
+<p class="gm"><b>Cô làm mẫu một câu mở bài thôi</b> (kiểu mở bài giống bài tham khảo: nói về thời điểm và lí do đáng nhớ), phần còn lại em viết: "Đã hai năm trôi qua, nhưng mỗi lần đi ngang cổng trường cũ, tôi lại nhớ đến buổi chiều hôm ấy."</p>
+
+<h4>Bước 3 — Chỉnh sửa bài viết (bảng kiểm của SGK)</h4>
+<div class="tablewrap"><table>
+<tr><th>Yêu cầu</th><th>Gợi ý chỉnh sửa</th><th style="width:90px">Tự đánh giá</th></tr>
+<tr><td>Giới thiệu được trải nghiệm.</td><td>Nếu chưa giới thiệu được trải nghiệm, hãy viết một hoặc vài câu giới thiệu câu chuyện em định kể.</td><td></td></tr>
+<tr><td>Sử dụng nhất quán từ ngữ xưng hô.</td><td>Đánh dấu những từ ngữ chỉ người kể chuyện trong bài viết. Nếu chưa nhất quán, cần sửa lại.</td><td></td></tr>
+<tr><td>Tập trung vào sự việc đã xảy ra.</td><td>Bổ sung các thông tin cần thiết để người đọc hiểu được câu chuyện (nếu còn thiếu); lược bớt các chi tiết thừa, dài dòng, không tập trung vào câu chuyện.</td><td></td></tr>
+<tr><td>Thể hiện cảm xúc trước sự việc được kể.</td><td>Đánh dấu những từ ngữ thể hiện cảm xúc trước sự việc được kể. Nếu chưa có hoặc chưa đủ thì cần bổ sung.</td><td></td></tr>
+<tr><td>Bảo đảm yêu cầu về chính tả và diễn đạt.</td><td>Rà soát lỗi chính tả và diễn đạt (dùng từ, đặt câu,…). Chỉnh sửa nếu phát hiện lỗi.</td><td></td></tr>
+</table></div>
+
+<div class="box warn"><span class="label">Những lỗi hay gặp ở bài này</span>
+<ul>
+  <li>Kể chuyện của người khác hoặc chuyện tưởng tượng — đề yêu cầu trải nghiệm <b>của em</b>.</li>
+  <li>Đang xưng "tôi" giữa chừng chuyển sang "em" (hoặc ngược lại) — dùng bút đánh dấu mọi từ xưng hô để soát.</li>
+  <li>Kể lan man cả ngày, sự việc chính chỉ có hai câu — sự việc quan trọng nhất phải được kể kĩ nhất.</li>
+  <li>Chỉ kể việc, không có câu nào nói em cảm thấy gì.</li>
+  <li>Không chia mở bài – thân bài – kết bài.</li>
+</ul></div>
+</section>
+
+<!-- ============================ 8 ============================ -->
+<section id="s8">
+<h2>8. Nói và nghe: Kể lại một trải nghiệm của em</h2>
+<p class="muted">SGK trang 32 – 33.</p>
+<p><b>Mục đích nói:</b> Nói về một trải nghiệm cá nhân để chia sẻ với người nghe. <b>Người nghe:</b> Thầy cô, bạn bè, người thân và những người quan tâm đến trải nghiệm của em.</p>
+
+<h3>8.1. Trước khi nói</h3>
+<ul>
+  <li><b>Chuẩn bị nội dung:</b> đọc lại nhiều lần bài viết ở phần Viết để nắm chắc những nội dung quan trọng.</li>
+  <li><i>(gợi ý của cô)</i> <b>Nói khác đọc thuộc lòng.</b> Chuyển bài viết thành 5 – 6 gạch đầu dòng ngắn (mỗi dòng một sự việc) để nhìn khi nói, thay vì học thuộc cả bài.</li>
+  <li><b>Tập luyện</b> (chọn một hoặc kết hợp): tập trình bày một mình trước gương; tập trình bày trước nhóm bạn hoặc người thân và lắng nghe góp ý.</li>
+</ul>
+
+<h3>8.2. Trình bày bài nói</h3>
+<ul>
+  <li>Tự tin và thoải mái. Chú ý chào hỏi khi bắt đầu và cảm ơn khi kết thúc bài nói.</li>
+  <li>Bám sát mục đích chia sẻ trải nghiệm để thống nhất trong cách dùng từ ngữ xưng hô và tập trung vào diễn biến câu chuyện.</li>
+  <li>Điều chỉnh giọng nói, tốc độ nói và sử dụng cử chỉ, điệu bộ phù hợp:</li>
+</ul>
+<div class="tablewrap"><table>
+<tr><th>Điều chỉnh giọng nói và tốc độ nói</th><th>Sử dụng cử chỉ, điệu bộ</th></tr>
+<tr><td>Âm lượng: to hay nhỏ.</td><td>Ánh mắt: luôn có sự kết nối với người nghe.</td></tr>
+<tr><td>Tốc độ: nhanh hay chậm.</td><td>Gương mặt: vui, buồn, tươi cười, ngạc nhiên, hài hước,… phù hợp với nội dung câu chuyện.</td></tr>
+<tr><td>Cao độ: cách lên giọng, xuống giọng.</td><td>Cử chỉ: giơ tay lên, đưa tay xuống, đặt tay lên ngực,… phù hợp với nội dung câu chuyện; không nên cử động nhiều nhưng cũng không nên đứng bất động.</td></tr>
+<tr><td>Sắc thái biểu cảm: vui hay buồn, sôi nổi hay suy tư,…</td><td>Dáng người: đứng thẳng, không nghiêng hay lom khom.</td></tr>
+</table></div>
+
+<h3>8.3. Sau khi nói</h3>
+<div class="tablewrap"><table>
+<tr><th>Người nghe</th><th>Người nói</th></tr>
+<tr><td>Trao đổi về bài nói với tinh thần xây dựng và tôn trọng. Có thể trao đổi: điều hấp dẫn, thú vị của câu chuyện; những sự việc, chi tiết còn chưa rõ trong bài nói.</td><td>Lắng nghe, phản hồi ý kiến với tinh thần cầu thị: tiếp thu những ý kiến góp ý mà em cho là xác đáng; giải thích thêm về những sự việc, chi tiết mà người nghe còn chưa rõ.</td></tr>
+</table></div>
+
+<h4>Phiếu nghe bạn kể (gợi ý của cô, dựa trên các lưu ý của SGK)</h4>
+<table>
+<tr><th>Tiêu chí</th><th style="width:60px">Có</th><th style="width:60px">Chưa</th></tr>
+<tr><td>Bạn chào khi bắt đầu, cảm ơn khi kết thúc</td><td></td><td></td></tr>
+<tr><td>Bạn xưng hô nhất quán (luôn "tôi" hoặc luôn "em")</td><td></td><td></td></tr>
+<tr><td>Câu chuyện có diễn biến rõ ràng, em theo dõi được</td><td></td><td></td></tr>
+<tr><td>Bạn nói lên cảm xúc của mình</td><td></td><td></td></tr>
+<tr><td>Giọng nói, tốc độ vừa phải; ánh mắt nhìn người nghe</td><td></td><td></td></tr>
+<tr><td>Một điều em thấy thú vị: …………</td><td></td><td></td></tr>
+<tr><td>Một chi tiết em muốn hỏi thêm: …………</td><td></td><td></td></tr>
+</table>
+</section>
+
+<!-- ============================ 9 ============================ -->
+<section id="s9">
+<h2>9. Củng cố, mở rộng</h2>
+<p class="muted">SGK trang 33 – 34.</p>
+<p class="sgkq"><span class="n">1.</span>Giới thiệu một truyện đồng thoại mà em yêu thích và thực hiện các yêu cầu sau:</p>
+<p>a. Xác định người kể chuyện.</p>
+<p>b. Chỉ ra một số đặc điểm giúp em nhận biết được tác phẩm đó là truyện đồng thoại.</p>
+<p>c. Chọn một nhân vật yêu thích. Liệt kê một số chi tiết tiêu biểu được tác giả miêu tả để khắc hoạ nhân vật đó (kẻ bảng vào vở theo mẫu):</p>
+<table>
+<tr><th>Ngoại hình</th><th>Hành động và suy nghĩ</th></tr>
+<tr><td>…………………</td><td>…………………</td></tr>
+<tr><th>Lời nói</th><th>Mối quan hệ với các nhân vật khác</th></tr>
+<tr><td>…………………</td><td>…………………</td></tr>
+</table>
+<p>d. Từ bảng đã hoàn thành, hãy nêu cảm nhận của em về nhân vật.</p>
+<div class="gm"><b>(gợi mở)</b>
+<ul>
+  <li>Nếu chưa biết chọn truyện nào, em có thể đọc trọn <i>Dế Mèn phiêu lưu kí</i> (Tô Hoài) hoặc <i>Tôi là Bê-tô</i> (Nguyễn Nhật Ánh) — hai tác phẩm có đoạn trích ngay trong bài này.</li>
+  <li>Câu a: người kể xưng "tôi" (ngôi thứ nhất) hay giấu mình (ngôi thứ ba)?</li>
+  <li>Câu b: dùng đúng hai ý trong hộp 📌 <i>Truyện đồng thoại</i>: truyện viết cho trẻ em; nhân vật là loài vật/đồ vật vừa mang đặc tính vốn có vừa mang đặc điểm con người. Tìm ví dụ cụ thể trong truyện em chọn.</li>
+  <li>Câu c: mỗi ô ít nhất một chi tiết <b>chép từ truyện</b>, không ghi nhận xét chung chung.</li>
+  <li>Câu d: cảm nhận phải dựa vào các chi tiết em vừa điền.</li>
+</ul>
+<p><i>Ví dụ cách điền một ô với Dế Mèn (để em hiểu cách làm, không phải để chép):</i> Ô "Ngoại hình": "Đôi càng tôi mẫm bóng", "Sợi râu tôi dài và uốn cong một vẻ rất đỗi hùng dũng".</p>
+</div>
+<p class="sgkq"><span class="n">2.</span>Trong đoạn trích <i>Bài học đường đời đầu tiên</i>, nhờ Dế Choắt, Dế Mèn đã rút ra được bài học cho mình. Trong đoạn trích <i>Nếu cậu muốn có một người bạn…</i>, cáo bày tỏ nếu được kết bạn với hoàng tử bé, cuộc đời cáo sẽ như được chiếu sáng. Hãy kể về một thay đổi tích cực của bản thân mà em có được nhờ tình bạn.</p>
+<p class="gm"><b>(gợi mở)</b> Trước khi có người bạn đó, em thế nào? Người bạn đã nói/làm gì? Sau đó em thay đổi ra sao? Kể bằng ngôi thứ nhất, có sự việc cụ thể — đây cũng là một dịp luyện lại cách kể trải nghiệm ở phần Viết.</p>
+</section>
+
+<!-- ============================ 10 ============================ -->
+<section id="s10">
+<h2>10. Thực hành đọc: Những người bạn</h2>
+<p class="muted"><i>Trích</i> Tôi là Bê-tô, <i>Nguyễn Nhật Ánh</i> — SGK trang 34 – 37.</p>
+<p>Theo chú thích SGK: <i>Tôi là Bê-tô</i> kể về cuộc sống của chú chó Bê-tô cùng hai bạn Bi-nô và Lai-ca. Chủ của Bê-tô và Bi-nô là chị Ni, còn Lai-ca sống ở nhà của bà cố chị Ni. Đoạn trích kể về tình cảm yêu mến, gắn bó Bê-tô dành cho Lai-ca và Bi-nô.</p>
+<div class="box"><span class="label">SGK dặn: khi đọc, em cần chú ý những vấn đề sau</span>
+<ul>
+  <li>Người kể chuyện, ngôi kể và nhân vật trong truyện đồng thoại.</li>
+  <li>Lời đối thoại, cử chỉ, hành động của hai nhân vật Lai-ca và Bi-nô.</li>
+  <li>Cảm nhận, suy nghĩ của nhân vật "tôi" (Bê-tô) về hai người bạn.</li>
+  <li>Thông điệp về tình bạn mà em nhận được từ văn bản.</li>
+</ul></div>
+<h4>Câu hỏi gợi mở theo bốn điểm trên <span class="muted small">(câu hỏi của cô, SGK không in câu hỏi cho phần này)</span></h4>
+<ol>
+  <li>Ai kể chuyện? Kể theo ngôi thứ mấy? Chi tiết nào cho biết các nhân vật là loài chó, và chi tiết nào cho thấy chúng suy nghĩ, trò chuyện như người?</li>
+  <li>Lai-ca đã bày cho Bê-tô những trò gì? Bi-nô thì bày cho Bê-tô điều gì? Hai bạn khác nhau thế nào?</li>
+  <li>Tìm câu cho thấy Bê-tô vẫn quý Lai-ca dù bị mắng vì Lai-ca. Tìm câu Bê-tô nói về điều Bi-nô mang lại cho mình.</li>
+  <li>Trong cảnh nghe mưa dưới mái tôn, tiếng mưa được so sánh với những gì? (Luyện lại biện pháp so sánh.)</li>
+  <li>Em rút ra thông điệp gì về tình bạn? Viết một câu.</li>
+</ol>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Thực hành đọc</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-td">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-td">
+<ol>
+  <li>Người kể là <b>Bê-tô</b>, một chú chó, xưng "tôi" → ngôi thứ nhất. Đặc tính loài chó: nhai giày, nhằn dép, gặm xà phòng; "đuôi cụp vào giữa hai chân"; Bi-nô "gãi mõm vào tai tôi", có "bộ lông dày và ấm"; Bê-tô tự nói "bọn cún chúng tôi". Đặc điểm con người: biết suy nghĩ, trò chuyện ("– Mày sao thế? Sợ à?"), cảm nhận "cuộc đời bỗng dưng đáng sống biết bao" → đúng đặc điểm truyện đồng thoại.</li>
+  <li>Lai-ca: xúi nhai giày, dép, "đánh cắp cục xà phòng", bày "trò nhảy chồm chồm trong giờ ăn" → <b>nghịch ngợm, hấp dẫn</b>. Bi-nô: "mở ra cho tôi những kích thước mới của cuộc sống bằng bản liệt kê dài dằng dặc của nó về những cái thú ở đời" — dẫn Bê-tô đi nghe mưa dưới mái tôn, dạy rằng "<i>Được sợ hãi</i>, đúng là một cái thú" → <b>thông thái</b>. Bê-tô nhận xét: "Một đứa bạn như Lai-ca là một đứa bạn hấp dẫn. Nhưng một đứa bạn thông thái cũng hấp dẫn không kém."</li>
+  <li>Về Lai-ca: "sau tất cả những phiền toái mà Lai-ca gián tiếp gây ra cho tôi, tôi vẫn giữ nguyên những thiện cảm mà tôi đã trót dành cho hắn", "tôi vẫn không tìm thấy lí do gì để không yêu những mảnh vỡ đó". Về Bi-nô: "Thằng Bi-nô đến, bổ sung cho tôi một cách nhìn khác về bạn bè."</li>
+  <li>"Nghe như có hàng ngàn con ngựa phi ngay trên đầu. Nghe như ông trời đứng rải đá từ trên cao. Nghe như ai đó đang thét gào giận dữ. Cuối cùng là nghe như mái nhà sắp sập xuống và đè bẹp chúng tôi." Khi mưa nhỏ dần: "nghe như tiếng vó ngựa đang rời đi". Tác dụng: người đọc như nghe thấy tiếng mưa to dần, dữ dội, và hiểu vì sao Bê-tô sợ.</li>
+  <li>Câu mở. Ví dụ: mỗi người bạn mang đến cho ta một điều khác nhau; bạn tốt giúp ta nhìn cuộc sống mới mẻ hơn; ta vẫn có thể yêu quý bạn cả khi bạn chưa hoàn hảo.</li>
+</ol>
+</div>
+</div>
+
+<div class="box tip"><p><b>Hết Bài 1.</b> Quay lại ba câu hỏi lớn ở mục 0 và tự trả lời, mỗi câu dẫn một chi tiết trong ba văn bản em đã học.</p>
+<p>Điểm câu hỏi tự chấm của em: <span class="score" id="scoreEnd">0/0</span> <button class="btn" type="button" id="resetQuiz">Làm lại các câu tự chấm</button></p></div>
+</section>
+
+<footer>Bài giảng soạn theo SGK Ngữ văn 6 – Kết nối tri thức với cuộc sống, Tập một, Bài 1 (trang 10 – 37). Nguồn: kho <i>kiến thức/ngữ văn/</i> của dự án.</footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var qs = Array.prototype.slice.call(document.querySelectorAll(".q"));
+  var total = qs.length;
+
+  function norm(s){
+    return (s || "").normalize("NFC").toLowerCase().replace(/[.,!?;:"'“”…]/g, "").replace(/\s+/g, " ").trim();
+  }
+  function updateScore(){
+    var ok = document.querySelectorAll(".q.done").length;
+    var txt = ok + "/" + total + " đúng";
+    document.getElementById("scoreTop").textContent = txt;
+    document.getElementById("scoreEnd").textContent = txt;
+    document.getElementById("bar").style.width = (total ? (100 * ok / total) : 0) + "%";
+  }
+  function feedback(q, good, extra){
+    var fb = q.querySelector(".fb");
+    if(!fb){ fb = document.createElement("div"); fb.className = "fb"; q.appendChild(fb); }
+    fb.className = "fb show " + (good ? "good" : "bad");
+    fb.innerHTML = extra;
+  }
+  function whyText(q){
+    var w = q.querySelector(".why");
+    return w ? w.innerHTML : "";
+  }
+
+  qs.forEach(function(q){
+    var ans = q.getAttribute("data-ans");
+    if(q.classList.contains("fill")){
+      var input = q.querySelector("input");
+      var btn = q.querySelector("[data-check]");
+      var accepted = ans.split("|").map(norm);
+      var check = function(){
+        if(q.classList.contains("done")) return;
+        var v = norm(input.value);
+        if(!v){ feedback(q, false, "Em chưa gõ gì cả."); return; }
+        if(accepted.indexOf(v) >= 0){
+          q.classList.add("done"); input.readOnly = true;
+          feedback(q, true, "Đúng rồi. " + whyText(q));
+          updateScore();
+        } else {
+          feedback(q, false, "Chưa đúng. Em mở lại văn bản, tìm đúng câu đó rồi thử lại nhé.");
+        }
+      };
+      btn.addEventListener("click", check);
+      input.addEventListener("keydown", function(e){ if(e.key === "Enter"){ check(); } });
+    } else {
+      var opts = Array.prototype.slice.call(q.querySelectorAll(".opt"));
+      opts.forEach(function(o){
+        o.addEventListener("click", function(){
+          if(q.classList.contains("done")) return;
+          if(o.getAttribute("data-v") === ans){
+            o.classList.add("right"); q.classList.add("done");
+            feedback(q, true, "Đúng rồi. " + whyText(q));
+            updateScore();
+          } else {
+            o.classList.add("wrong");
+            feedback(q, false, "Chưa đúng. Em xem lại cách làm ở trên rồi chọn lại nhé.");
+          }
+        });
+      });
+    }
+  });
+
+  document.getElementById("resetQuiz").addEventListener("click", function(){
+    qs.forEach(function(q){
+      q.classList.remove("done");
+      Array.prototype.forEach.call(q.querySelectorAll(".opt"), function(o){ o.classList.remove("right", "wrong"); });
+      var input = q.querySelector("input");
+      if(input){ input.value = ""; input.readOnly = false; }
+      var fb = q.querySelector(".fb");
+      if(fb){ fb.className = "fb"; fb.innerHTML = ""; }
+    });
+    updateScore();
+  });
+
+  /* nút Hiện/Ẩn gợi ý */
+  var toggles = Array.prototype.slice.call(document.querySelectorAll("[data-toggle]"));
+  function setOpen(btn, open){
+    var box = document.getElementById(btn.getAttribute("data-toggle"));
+    if(!box) return;
+    box.classList.toggle("open", open);
+    var base = btn.getAttribute("data-label") || btn.textContent.replace(/^(Hiện|Ẩn) /, "");
+    btn.setAttribute("data-label", base);
+    btn.textContent = (open ? "Ẩn " : "Hiện ") + base;
+  }
+  toggles.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var box = document.getElementById(btn.getAttribute("data-toggle"));
+      setOpen(btn, !(box && box.classList.contains("open")));
+    });
+  });
+  document.getElementById("openAll").addEventListener("click", function(){ toggles.forEach(function(b){ setOpen(b, true); }); });
+  document.getElementById("closeAll").addEventListener("click", function(){ toggles.forEach(function(b){ setOpen(b, false); }); });
+
+  updateScore();
+})();
+</script>
+</body>
+</html>

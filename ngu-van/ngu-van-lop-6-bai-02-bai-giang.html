@@ -1,0 +1,1930 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 2. Gõ cửa trái tim — Bài giảng Ngữ văn 6 (Kết nối tri thức)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
+    --line:#e3e7f0; --brand:#c2410c; --brand-soft:#fff1e8;
+    --blue:#2f6fdb; --blue-soft:#e8f0ff;
+    --warm:#f59e0b; --warm-soft:#fff6e5; --green:#0f9d76; --green-soft:#e6f7f1;
+    --red:#d64545; --red-soft:#fdeceb; --purple:#7c5cd6; --purple-soft:#f1ecff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:120px}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,Arial,sans-serif;
+    font-size:17px; line-height:1.65}
+  .wrap{max-width:920px; margin:0 auto; padding:0 16px 80px}
+  header.top{background:linear-gradient(135deg,#c2410c,#b4235a); color:#fff; padding:26px 16px 22px}
+  header.top .wrap{padding-bottom:0}
+  header.top h1{margin:0 0 4px; font-size:30px; letter-spacing:.3px}
+  header.top .sub{opacity:.92; font-size:15px; margin:0}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px; border-radius:999px; font-size:13px; margin:8px 6px 0 0}
+  .toolbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line)}
+  .toolbar .wrap{padding-top:10px; padding-bottom:10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+  .toolbar .chips{display:flex; flex-wrap:wrap; gap:6px; align-items:center; flex:1 1 auto}
+  .chip{display:inline-block; padding:4px 10px; border-radius:999px; font-size:13.5px;
+    background:#eef1f7; color:#3a4152; text-decoration:none; border:1px solid transparent}
+  .chip:hover{background:var(--brand-soft); border-color:#fcd3bb; color:var(--brand)}
+  .chip.xong{background:#fff6d6; border-color:#f7d57a; color:#8a5a06}
+  .chip.xong::after{content:" ⭐"}
+  .spacer{flex:1}
+  .tbtn{font:inherit; font-size:13.5px; padding:4px 10px; border-radius:999px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--muted)}
+  .tbtn:hover{border-color:#fcd3bb; color:var(--brand)}
+  .progress{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+  .progress .track{width:110px; height:7px; border-radius:99px; background:#e7ebf3; overflow:hidden}
+  .progress .track i{display:block; height:100%; width:0; background:var(--green); transition:width .4s}
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:20px 0; box-shadow:0 1px 2px rgba(20,30,60,.04)}
+  h2{font-size:22px; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:18.5px; margin:24px 0 8px; color:#243049}
+  h4{font-size:16.5px; margin:16px 0 6px; color:#37405a}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 22px; padding:0}
+  li{margin:4px 0}
+  table{border-collapse:collapse; width:100%; margin:10px 0; font-size:15.5px}
+  th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+  th{background:#f7f3f0; font-weight:600}
+  .tablewrap{overflow-x:auto}
+  .box{border-left:5px solid var(--blue); background:#f8faff; border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:14px 0}
+  .box.key{border-left-color:var(--warm); background:var(--warm-soft)}
+  .box.tip{border-left-color:var(--green); background:var(--green-soft)}
+  .box.warn{border-left-color:var(--red); background:var(--red-soft)}
+  .box.quote{border-left-color:var(--purple); background:var(--purple-soft)}
+  .box .label{font-weight:700; display:block; margin-bottom:4px}
+  .box p:first-child{margin-top:0} .box p:last-child{margin-bottom:0}
+  .muted{color:var(--muted)} .small{font-size:15px}
+  .poem{font-style:italic; line-height:1.8; margin:10px 0 10px 12px}
+  .sgkq{margin:14px 0 4px; font-weight:600}
+  .sgkq .n{display:inline-block; min-width:26px; color:var(--brand)}
+  .steps{margin:4px 0 10px 26px; color:#37405a; font-size:16px}
+  .gm{color:#6b4e16; background:#fffaf0; border:1px dashed #f3d79a; border-radius:8px; padding:6px 10px; margin:6px 0; font-size:16px}
+  .gm b{color:#8a5a06}
+  .btn{font:inherit; font-size:15px; cursor:pointer; border-radius:999px; padding:6px 14px;
+    border:1px solid #fcd3bb; background:var(--brand-soft); color:var(--brand); margin:3px 4px 3px 0}
+  .btn:hover{background:#ffe3d1}
+  .btn:active{transform:scale(.97)}
+  .btn:disabled{opacity:.7; cursor:default}
+  .btn.nho{font-size:13px; padding:3px 10px}
+  .btn.show-ans{background:var(--green-soft); border-color:#b8e5d7; color:#0b7a5c; font-weight:600}
+  .reveal{display:none; margin-top:12px; border-top:1px dashed var(--line); padding-top:12px}
+  .reveal.open{display:block; animation:fadein .3s ease}
+  .answers{background:#fbfefd; border:1px solid #cdeee2; border-radius:12px; padding:12px 16px; margin-top:16px}
+  .answers > h3{margin-top:0; color:#0b7a5c}
+  @keyframes fadein{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
+  @keyframes pop{0%{transform:scale(.9)} 60%{transform:scale(1.04)} 100%{transform:none}}
+  @keyframes lat{from{transform:perspective(600px) rotateY(90deg)} to{transform:none}}
+  button:focus-visible,a:focus-visible,[role=button]:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--blue); outline-offset:2px}
+  /* ----- câu hỏi tự chấm ----- */
+  .quiz{border:1px solid #cddcf7; background:#fbfcff; border-radius:12px; padding:12px 16px; margin:14px 0}
+  .quiz > h4{margin-top:0; color:var(--blue)}
+  .q{padding:10px 0; border-bottom:1px dashed var(--line)}
+  .q:last-child{border-bottom:0}
+  .q .stem{margin-bottom:6px}
+  .q .src{font-size:14px; color:var(--muted)}
+  .opt{font:inherit; font-size:15px; cursor:pointer; border-radius:10px; padding:5px 12px;
+    border:1px solid #cfd8ea; background:#fff; color:#2b3347; margin:3px 6px 3px 0}
+  .opt:hover{border-color:var(--blue); color:var(--blue)}
+  .opt.right{background:var(--green-soft); border-color:#7fd1b6; color:#0b6b52; font-weight:600}
+  .opt.wrong{background:var(--red-soft); border-color:#f0a8a8; color:#a02b2b; text-decoration:line-through}
+  .q.done .opt{cursor:default}
+  .q input[type=text]{font:inherit; font-size:16px; padding:5px 10px; border-radius:8px; border:1px solid #cfd8ea; width:170px; max-width:100%}
+  .q.done input[type=text]{background:var(--green-soft); border-color:#7fd1b6}
+  .fb{margin-top:6px; padding:7px 12px; border-radius:8px; font-size:15.5px; display:none}
+  .fb.show{display:block}
+  .fb.good{background:var(--green-soft); border:1px solid #b8e5d7; color:#0b6b52}
+  .fb.bad{background:var(--warm-soft); border:1px solid #f3d79a; color:#8a5a06}
+  .why{display:none}
+  .score{font-weight:600; color:var(--blue)}
+  .vua-xong{animation:pop .45s ease}
+  footer{color:var(--muted); font-size:14px; text-align:center; margin-top:30px}
+
+  /* ===================== KHỐI SINH ĐỘNG (bản 2) ===================== */
+  /* --- Hành trình các chặng --- */
+  .hanhtrinh{background:linear-gradient(135deg,#fff7ed,#fdf2f8); border:1px solid #fbd5c0; border-radius:14px; padding:14px 16px; margin:18px 0}
+  .ht-dau{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px}
+  .ht-ten{font-weight:700; color:var(--brand); font-size:17px}
+  .ht-dem{font-size:14px; color:var(--muted); font-weight:600}
+  /* bản đồ xuống hàng (không cuộn ngang): em luôn thấy đủ các chặng và đích */
+  .ht-duong{display:flex; flex-wrap:wrap; row-gap:12px; overflow:hidden; padding:12px 2px 6px; margin:0 -4px}
+  .tram{flex:1 1 72px; min-width:72px; max-width:120px; text-align:center; text-decoration:none; color:#3a4152; position:relative; font-size:12.5px; line-height:1.3; padding:0 2px}
+  .tram::before{content:""; position:absolute; top:22px; right:50%; width:100%; height:4px; background:#f3d2bf; z-index:0}
+  .tram:first-child::before{display:none}
+  .tram .o{position:relative; z-index:1; display:flex; align-items:center; justify-content:center; width:46px; height:46px; margin:0 auto 5px; border-radius:50%; background:#fff; border:3px solid #f3d2bf; font-size:21px}
+  .tram:hover .o{border-color:var(--brand)}
+  .tram .sao{position:absolute; top:-6px; left:calc(50% + 10px); z-index:2; font-size:16px; display:none}
+  .tram.xong .o{border-color:var(--warm); background:#fff6d6; box-shadow:0 0 0 4px rgba(245,158,11,.18)}
+  .tram.xong::before{background:var(--warm)}
+  .tram.xong .sao{display:block; animation:pop .5s}
+  .huy-hieu{display:none; margin-top:8px; padding:8px 12px; border-radius:10px; background:#fff6d6; border:1px dashed var(--warm); font-weight:700; color:#8a5a06}
+  .huy-hieu.hien{display:block; animation:pop .6s}
+  .huy-hieu-cuoi{font-size:18px; text-align:center; padding:14px 12px; margin:10px 0}
+  .huy-hieu-cuoi .khen{display:block; font-weight:400; font-size:15.5px; margin-top:4px; color:#6b4e16}
+  /* nút xoá: kín đáo, phải bấm hai lần mới xoá (chống chạm nhầm) */
+  #resetQuiz{background:#fff; border-color:var(--line); color:var(--muted); font-size:13.5px; padding:4px 12px}
+  #resetQuiz:hover{border-color:#f0a8a8; color:var(--red)}
+  .xac-nhan,#resetQuiz.xac-nhan{background:var(--red-soft) !important; border-color:#f0a8a8 !important; color:#a02b2b !important; font-weight:600}
+  .dong-lam-lai{margin-top:14px; text-align:right}
+  .ht-chu{font-size:13px; color:var(--muted); margin:6px 0 0}
+  /* mục tiêu chặng: KHÔNG dùng flex (flex biến mỗi <i>, <b> thành một cột riêng, vỡ chữ ở màn hẹp) */
+  .muctieu{position:relative; background:#fff7ed; border:1px solid #fbd5c0; border-radius:10px; padding:8px 12px 8px 40px; margin:0 0 14px; font-size:15.5px}
+  .muctieu::before{content:"🎯"; position:absolute; left:12px; top:7px; font-size:18px; line-height:1.4}
+  .chang-cuoi{margin-top:20px; padding:10px 14px; border-radius:10px; background:#f7f8fc; border:1px dashed #d9deea; font-size:15px; display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center}
+  .chang-cuoi .cc-chu{flex:1 1 220px}
+  .chang-cuoi a{color:var(--brand); font-weight:600; text-decoration:none; white-space:nowrap}
+  .chang-cuoi.xong{background:#fff6d6; border:1px solid #f7d57a; color:#8a5a06}
+  /* --- Nhân vật dẫn dắt + dừng lại nghĩ --- */
+  .dan{display:flex; gap:10px; align-items:flex-start; margin:14px 0}
+  .dan .av{flex:0 0 46px; height:46px; border-radius:50%; background:var(--brand-soft); display:flex; align-items:center; justify-content:center; font-size:25px; border:2px solid #fcd3bb}
+  .dan .loi{position:relative; flex:1; background:#fff; border:1px solid #fcd3bb; border-radius:14px; padding:8px 14px; font-size:16px}
+  .dan .loi::before{content:""; position:absolute; left:-9px; top:14px; border-style:solid; border-width:8px 9px 8px 0; border-color:transparent #fcd3bb transparent transparent}
+  .dan .loi > b:first-child{color:var(--brand)}
+  .dan.ban .av{background:var(--blue-soft); border-color:#bcd0f5}
+  .dan.ban .loi{border-color:#bcd0f5}
+  .dan.ban .loi::before{border-right-color:#bcd0f5}
+  .dan.ban .loi > b:first-child{color:var(--blue)}
+  .dung{border:2px dashed #c9b8f3; background:#faf7ff; border-radius:12px; padding:10px 14px; margin:14px 0}
+  .dung::before{content:"⏸️ Dừng lại nghĩ một chút"; display:block; font-weight:700; color:var(--purple); font-size:15px; margin-bottom:2px}
+  .dung p:last-of-type{margin-bottom:4px}
+  /* --- Thẻ lật --- */
+  .thelat{display:grid; grid-template-columns:repeat(auto-fill,minmax(165px,1fr)); gap:10px; margin:12px 0}
+  .the{font:inherit; cursor:pointer; min-height:100px; border-radius:14px; border:2px solid #cfd8ea; background:#fff; padding:10px 12px; text-align:center; color:#2b3347;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; box-shadow:0 3px 0 #dfe5f1}
+  .the:hover{border-color:var(--purple)}
+  .the .mt{font-weight:700; font-size:17px}
+  .the .mt::after{content:"👆 bấm để lật"; display:block; font-weight:400; font-size:12px; color:var(--muted); margin-top:3px}
+  .the .ms{display:none; font-size:14.5px; line-height:1.45}
+  .the.lat{background:var(--purple-soft); border-color:#c9b8f3; box-shadow:0 3px 0 #ddd2f7; animation:lat .35s ease}
+  .the.lat .mt{font-size:13.5px; color:var(--purple)}
+  .the.lat .mt::after{display:none}
+  .the.lat .ms{display:block}
+  /* --- Khung chung các khối tự chấm mới --- */
+  .ghep,.xep,.nhom,.tosang{border:1px solid #cddcf7; background:#fbfcff; border-radius:12px; padding:12px 16px; margin:14px 0}
+  .ghep > h4,.xep > h4,.nhom > h4,.tosang > h4{margin-top:0; color:var(--blue)}
+  .hd{font-size:14px; color:var(--muted); margin:2px 0 8px}
+  .hd::before{content:"🖱️ "}
+  .done > .hd{display:none}
+  .ghep.done,.xep.done,.nhom.done,.tosang.done{border-color:#9fdcc6; background:#f6fdfa}
+  /* ghép cặp */
+  .cots{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .cot{display:flex; flex-direction:column; gap:8px}
+  .cot > button{font:inherit; font-size:15px; line-height:1.4; text-align:left; cursor:pointer; border-radius:10px; border:2px solid #cfd8ea; background:#fff; color:#2b3347;
+    padding:7px 10px 7px 36px; position:relative; min-height:44px}
+  .cot > button::before{content:attr(data-so); position:absolute; left:8px; top:50%; transform:translateY(-50%); width:21px; height:21px; border-radius:50%;
+    background:#eef1f7; color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center}
+  .cot > button.chon{border-color:var(--blue); box-shadow:0 0 0 3px rgba(47,111,219,.2)}
+  .cot > button.chon::before{background:var(--blue); content:"?"}
+  .cot > button[data-mau="0"]{border-color:#f59e0b} .cot > button[data-mau="0"]::before{background:#f59e0b}
+  .cot > button[data-mau="1"]{border-color:#7c5cd6} .cot > button[data-mau="1"]::before{background:#7c5cd6}
+  .cot > button[data-mau="2"]{border-color:#0f9d76} .cot > button[data-mau="2"]::before{background:#0f9d76}
+  .cot > button[data-mau="3"]{border-color:#d63f7a} .cot > button[data-mau="3"]::before{background:#d63f7a}
+  .cot > button[data-mau="4"]{border-color:#2f6fdb} .cot > button[data-mau="4"]::before{background:#2f6fdb}
+  .cot > button[data-mau="5"]{border-color:#8a6d1f} .cot > button[data-mau="5"]::before{background:#8a6d1f}
+  .ghep.done .cot > button{cursor:default; background:var(--green-soft)}
+  /* sắp xếp */
+  .xep ol,.xep ul{list-style:none; margin:8px 0; padding:0; counter-reset:xep}
+  .xep li{counter-increment:xep; display:flex; align-items:center; gap:8px; background:#fff; border:2px solid #cfd8ea; border-radius:10px; padding:6px 8px; margin:6px 0}
+  .xep li::before{content:counter(xep); flex:0 0 26px; height:26px; border-radius:50%; background:var(--blue-soft); color:var(--blue); font-weight:700; font-size:14px;
+    display:flex; align-items:center; justify-content:center}
+  .xep li .nd{flex:1; font-size:15.5px; line-height:1.45}
+  .xep .dk{display:flex; gap:4px; flex:0 0 auto}
+  .xep .dk button{font:inherit; font-size:14px; width:40px; height:38px; border-radius:8px; border:1px solid #cfd8ea; background:#f7f9fd; color:#3a4152; cursor:pointer}
+  .xep .dk button:hover{border-color:var(--blue); color:var(--blue)}
+  .xep li.moi{animation:pop .3s ease}
+  .xep.done li{border-color:#7fd1b6; background:var(--green-soft)}
+  .xep.done li::before{background:#bcebd9; color:#0b6b52}
+  .xep.done .dk{display:none}
+  /* phân loại vào nhóm */
+  .khay-o{border-radius:10px; background:#f3f5fa; border:1px dashed #cfd8ea; padding:8px}
+  .nhom-o{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; min-height:36px}
+  .ngans{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-top:10px}
+  .ngan{border:2px dashed #bcd0f5; border-radius:12px; background:#fff; padding:8px; min-height:92px; cursor:pointer}
+  .ngan-dau{font:inherit; font-size:15px; font-weight:700; width:100%; border:0; background:var(--blue-soft); color:var(--blue); border-radius:8px; padding:6px 8px; cursor:pointer}
+  .khay-o .ngan-dau{background:#e7ebf3; color:#5c6577; font-weight:600}
+  .nhom.co-chon .ngan{border-color:var(--blue); background:#f7faff}
+  .nhom.co-chon .ngan-dau{box-shadow:0 0 0 2px rgba(47,111,219,.25)}
+  .the-nhom{font:inherit; font-size:15px; border-radius:999px; border:2px solid #cfd8ea; background:#fff; color:#2b3347; padding:4px 12px; cursor:pointer}
+  .the-nhom.chon{border-color:var(--blue); background:var(--blue-soft); transform:translateY(-2px); box-shadow:0 3px 0 #bcd0f5}
+  .the-nhom.moi{animation:pop .3s ease}
+  .nhom.done .the-nhom{border-color:#7fd1b6; background:var(--green-soft); cursor:default}
+  .nhom.done .ngan{cursor:default}
+  .nhom.done .khay-o{display:none}
+  .nguon{display:none}
+  /* tô sáng trong đoạn trích */
+  .tosang .doan{background:#fff; border-left:5px solid var(--purple); border-radius:0 10px 10px 0; padding:10px 14px; line-height:2}
+  /* vùng chạm >= 36 px, không ngắt giữa cụm */
+  .tosang .t{display:inline-block; white-space:nowrap; line-height:1.5; padding:5px 5px; margin:2px 1px; min-height:36px;
+    border-bottom:2px dotted #b9a7e6; border-radius:6px; cursor:pointer}
+  .tosang .t:hover{background:#f3eeff}
+  .tosang .t.chon{background:#fde68a; border-bottom:2px solid var(--warm)}
+  .tosang.done .t{cursor:default}
+  .tosang.done .t.chon{background:#bbf0da; border-bottom-color:var(--green)}
+  /* tô sáng theo CÂU (đoạn văn dài): .doan.theo-cau — cụm được xuống dòng tự nhiên */
+  .tosang .doan.theo-cau .t{display:inline; white-space:normal; min-height:0; padding:3px 2px; margin:0; line-height:2.1;
+    -webkit-box-decoration-break:clone; box-decoration-break:clone}
+  /* ghi chép của em: dự đoán, nhật kí cảm xúc */
+  .ghichep{border:1px solid #f3d79a; background:#fffcf3; border-radius:12px; padding:12px 16px; margin:14px 0}
+  .ghichep .hoi{font-weight:600; margin:0 0 6px}
+  .ghichep textarea{display:block; width:100%; min-height:84px; font:inherit; font-size:16px; line-height:1.5; padding:8px 10px; border-radius:10px; border:1px solid #e6cf9b; background:#fff; resize:vertical}
+  .ghi-dong{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; margin-top:4px}
+  .luu-tt{font-size:13px; color:var(--muted)}
+  .camxuc{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 8px}
+  .camxuc button{font:inherit; font-size:14.5px; border-radius:999px; border:1px solid #e6cf9b; background:#fff; color:#3a4152; padding:4px 11px; cursor:pointer}
+  .camxuc button[aria-pressed="true"]{background:#fde68a; border-color:var(--warm); font-weight:700; color:#6b4e16}
+  .xemlai{border:1px dashed #c9b8f3; background:#faf7ff; border-radius:12px; padding:10px 14px; margin:14px 0}
+  .xemlai .noi{display:none; margin-top:6px}
+  .xemlai.mo .noi{display:block; animation:fadein .3s ease}
+  .xemlai .box.quote{white-space:pre-wrap; margin:6px 0}
+  /* thông báo nhỏ */
+  .toast{position:fixed; left:50%; bottom:22px; transform:translate(-50%,24px); background:#1f2430; color:#fff; padding:10px 18px; border-radius:999px;
+    font-size:15px; opacity:0; pointer-events:none; transition:opacity .3s, transform .3s; z-index:99; max-width:92vw; text-align:center; box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .toast.hien{opacity:1; transform:translate(-50%,0)}
+
+  @media (max-width:600px){
+    body{font-size:16px} header.top h1{font-size:24px} section{padding:16px 14px}
+    /* điện thoại: hàng 1 = điểm + sao (luôn thấy), hàng 2 = chip cuộn ngang */
+    .toolbar .wrap{flex-direction:column; flex-wrap:nowrap; align-items:stretch; gap:6px; padding:8px 10px}
+    .toolbar .progress{order:-1; flex:0 0 auto}
+    .toolbar .progress .track{flex:1 1 auto; width:auto; min-width:60px}
+    .toolbar .chips{flex-wrap:nowrap; overflow-x:auto; flex:0 0 auto; min-width:0; max-width:100%; padding-bottom:2px}
+    .toolbar .chips > *{flex:0 0 auto}
+    .spacer{display:none}
+    .cots{gap:8px}
+    .cot > button{font-size:14.5px; padding-left:32px}
+    .ghep,.xep,.nhom,.tosang,.ghichep,.quiz{padding:10px 12px}
+    .thelat{grid-template-columns:repeat(auto-fill,minmax(125px,1fr)); gap:8px}
+    .the{min-height:88px; padding:8px}
+    .ngans{grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px}
+    .xep .dk button{width:36px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important} html{scroll-behavior:auto}
+  }
+  @media print{
+    .toolbar,.btn,.tbtn,.hanhtrinh,.chang-cuoi,.toast,.hd,.xep .dk,.luu-tt{display:none !important}
+    .reveal{display:block !important}
+    body{background:#fff} section{box-shadow:none; break-inside:auto}
+    .the{min-height:0; box-shadow:none; break-inside:avoid}
+    .the .ms{display:block !important} .the .mt::after{display:none !important}
+    .xemlai .noi{display:block !important}
+    .ghep,.xep,.nhom,.tosang,.ghichep,.xemlai,.dan,.dung,.muctieu,.q{break-inside:avoid}
+    .ngan{min-height:80px}
+    .ghichep textarea{border:1px solid #999; min-height:110px}
+    /* bản in = phiếu bài tập làm bằng bút: ghép cặp đánh 1, 2, 3… / a, b, c…; bỏ phần chỉ để bấm */
+    .cots > .cot:first-child{counter-reset:ghepT} .cots > .cot:last-child{counter-reset:ghepP}
+    .cots > .cot:first-child > button{counter-increment:ghepT} .cots > .cot:last-child > button{counter-increment:ghepP}
+    .cots > .cot > button::before{background:#fff !important; color:#333 !important; border:1px solid #888}
+    .cots > .cot:first-child > button::before{content:counter(ghepT) !important}
+    .cots > .cot:last-child > button::before{content:counter(ghepP, lower-alpha) !important}
+    .cot > button{border-color:#bbb !important}
+    .khay-o .ngan-dau,.camxuc,.ghi-dong,.huy-hieu-cuoi,.dong-lam-lai{display:none !important}
+  }
+</style>
+</head>
+
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Bài 2. Gõ cửa trái tim</h1>
+    <p class="sub">Bài giảng Ngữ văn 6 — Kết nối tri thức với cuộc sống — Tập một (SGK trang 38 – 58)</p>
+    <span class="badge">Năm học 2026 – 2027</span><span class="badge">Thơ có yếu tố tự sự, miêu tả</span><span class="badge">Ẩn dụ · nhân hoá · điệp ngữ</span><span class="badge">Đoạn văn cảm xúc về bài thơ</span>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="wrap">
+    <a class="chip" href="#s0">Giới thiệu</a>
+    <a class="chip" href="#s1">Tri thức</a>
+    <a class="chip" href="#s2">VB1 Chuyện cổ tích</a>
+    <a class="chip" href="#s3">Tiếng Việt 1</a>
+    <a class="chip" href="#s4">VB2 Mây và sóng</a>
+    <a class="chip" href="#s5">Tiếng Việt 2</a>
+    <a class="chip" href="#s6">VB3 Bức tranh</a>
+    <a class="chip" href="#s7">Viết</a>
+    <a class="chip" href="#s8">Nói và nghe</a>
+    <a class="chip" href="#s9">Củng cố</a>
+    <a class="chip" href="#s10">Thực hành đọc</a>
+    <span class="spacer"></span>
+    <span class="progress"><span class="track"><i id="bar"></i></span><span id="scoreTop">0/0</span></span>
+    <button class="tbtn" id="openAll" type="button">Hiện mọi gợi ý</button>
+    <button class="tbtn" id="closeAll" type="button">Ẩn mọi gợi ý</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<div class="box tip">
+  <span class="label">Cách dùng bài giảng này</span>
+  <ul>
+    <li>Gặp câu hỏi, em <b>tự trả lời vào vở trước</b>, rồi mới bấm <b>Hiện gợi ý trả lời</b> để đối chiếu.</li>
+    <li>Khung <b>màu xanh dương</b> là bài tự chấm: làm xong bấm <i>Kiểm tra</i>, máy báo ngay.</li>
+    <li>Xong mỗi chặng em được một ⭐. Đủ 11 sao là nhận huy hiệu 🏅.</li>
+  </ul>
+  <button class="btn nho" type="button" data-toggle="cach-dung-them">Hiện thêm cách dùng</button>
+  <div class="reveal" id="cach-dung-them">
+  <ul>
+    <li>Đi đúng thứ tự: Tri thức ngữ văn → Văn bản 1 → Thực hành tiếng Việt → Văn bản 2 → Thực hành tiếng Việt → Văn bản 3 → Viết → Nói và nghe → Củng cố, mở rộng → Thực hành đọc.</li>
+    <li>Câu hỏi đánh số <b>1., 2., 3.…</b> là câu hỏi của SGK. Câu đánh dấu <b>(gợi mở)</b> hoặc <b>(luyện thêm)</b> là câu cô thêm vào để giúp em đi từng bước.</li>
+    <li>Các hộp <b>📌</b> màu vàng là phần chốt kiến thức của SGK, chép đúng nguyên văn — khi làm bài em dùng đúng những chữ này.</li>
+    <li>Câu hỏi mở (hỏi cảm nhận, ý kiến riêng) không có một đáp án duy nhất. Câu trả lời tốt là câu <b>có dẫn chi tiết trong văn bản</b>.</li>
+    <li>Ô <b>ghi chép</b> màu kem chỉ để em nghĩ và ghi lại — không chấm điểm. Chữ em gõ và tiến độ tự lưu trên máy này.</li>
+  </ul>
+  </div>
+</div>
+
+<div class="hanhtrinh" id="hanhTrinh" data-ten="🗺️ Hành trình Bài 2: Gõ cửa trái tim" data-huy-hieu="🏅 Người gõ cửa trái tim" data-loi-khen="Em đã đi qua ba bài thơ và một truyện ngắn, tìm được bằng chứng cho tình yêu thương trong từng trang, và gọi đúng tên so sánh, nhân hoá, điệp ngữ, ẩn dụ."></div>
+
+<!-- ============================ 0 ============================ -->
+<section id="s0" data-chang="🚪|Khởi hành">
+<h2>0. Giới thiệu bài học và yêu cầu cần đạt</h2>
+<p class="muctieu">Sau chặng này, em biết Bài 2 có những văn bản nào, em cần học được gì, và em mang theo một câu hỏi lớn suốt cả bài.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Chào em! Bài 1 mình nói về bạn bè, Bài 2 mình đi về nhà — về mẹ, bà, bố, anh chị em. Mình sẽ đọc ba bài thơ và một truyện ngắn, xem các nhà văn "gõ cửa trái tim" người đọc bằng cách nào.</div></div>
+
+<p>Bài học mở đầu bằng hai câu ca dao:</p>
+<div class="box quote"><p class="poem">Công cha như núi Thái Sơn<br>Nghĩa mẹ như nước trong nguồn chảy ra.</p><p class="small muted">(Ca dao Việt Nam)</p></div>
+
+<p>Câu hỏi lớn của cả bài (SGK): <b>"Vậy mỗi chúng ta cần làm gì để gia đình thực sự là nơi tràn ngập hạnh phúc, yêu thương?"</b></p>
+
+<div class="ghichep" data-luu="cau-hoi-lon">
+  <p class="hoi">🏠 Nhà em có một việc nhỏ nào khiến cả nhà vui không? Ghi một dòng vào đây (hoặc lên đầu trang vở). Học xong Bài 2, em quay lại xem mình muốn thêm gì.</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<p><b>Ba câu đố của Bài 2</b> — em đoán thử trước, rồi lật thẻ xem đáp án nằm ở chặng nào:</p>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">🌱 Trong một bài thơ, ai được sinh ra trước cả mặt trời?</span><span class="ms">Em sẽ biết ở chặng 2: <i>Chuyện cổ tích về loài người</i>.</span></button>
+  <button class="the" type="button"><span class="mt">☁️ Một em bé được mời lên mây chơi với bình minh vàng, vầng trăng bạc, nhưng từ chối. Vì sao nhỉ?</span><span class="ms">Em sẽ biết ở chặng 4: <i>Mây và sóng</i>.</span></button>
+  <button class="the" type="button"><span class="mt">🎨 Cô em gái mê vẽ đem đi thi một bức tranh làm anh trai sững người. Tranh vẽ gì?</span><span class="ms">Em sẽ biết ở chặng 6: <i>Bức tranh của em gái tôi</i>.</span></button>
+</div>
+
+<p>Bài có ba văn bản đọc: <i>Chuyện cổ tích về loài người</i> (Xuân Quỳnh), <i>Mây và sóng</i> (Ta-go), <i>Bức tranh của em gái tôi</i> (Tạ Duy Anh), và bài thực hành đọc <i>Những cánh buồm</i> (Hoàng Trung Thông).</p>
+
+<button class="btn nho" type="button" data-toggle="yccd">Hiện Yêu cầu cần đạt (dành cho bố mẹ, thầy cô)</button>
+<div class="reveal" id="yccd">
+<p><b>Học xong bài này, em cần (theo mục Yêu cầu cần đạt của SGK):</b></p>
+<ul>
+<li>Nhận biết và bước đầu nhận xét được nét độc đáo của bài thơ thể hiện qua từ ngữ, hình ảnh, biện pháp tu từ; nêu được tác dụng của các yếu tố tự sự và miêu tả trong thơ.</li>
+<li>Nhận biết được ẩn dụ và hiểu được tác dụng của việc sử dụng ẩn dụ.</li>
+<li>Viết được đoạn văn ghi lại cảm xúc về một bài thơ có yếu tố tự sự và miêu tả.</li>
+<li>Trình bày được ý kiến về một vấn đề trong đời sống.</li>
+<li>Nhân ái, yêu gia đình, yêu vẻ đẹp của thiên nhiên và cuộc sống.</li>
+</ul>
+</div>
+</section>
+
+<!-- ============================ 1 ============================ -->
+<section id="s1" data-chang="📘|Tri thức">
+<h2>1. Tri thức ngữ văn</h2>
+<p class="muctieu">Sau chặng này, em nói được ba đặc điểm của thơ, và phân biệt được ẩn dụ với so sánh.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Bài 1 em đọc truyện, Bài 2 em đọc thơ. Trước khi đọc, mình cần biết một bài thơ khác truyện ở chỗ nào.</div></div>
+
+<div class="box key"><span class="label">📌 Một số đặc điểm của thơ</span>
+<ul>
+<li>Mỗi bài thơ thường được sáng tác theo một thể thơ nhất định với những đặc điểm riêng về số tiếng trong mỗi dòng, số dòng trong mỗi bài,…</li>
+<li>Ngôn ngữ thơ cô đọng, giàu nhạc điệu và hình ảnh, sử dụng nhiều biện pháp tu từ (so sánh, ẩn dụ, điệp ngữ,…).</li>
+<li>Nội dung chủ yếu của thơ là tình cảm, cảm xúc của nhà thơ trước cuộc sống. Thơ có thể có yếu tố tự sự (kể lại một sự việc, câu chuyện) và miêu tả (tái hiện những đặc điểm nổi bật của đối tượng) nhưng những yếu tố ấy chỉ là phương tiện để nhà thơ bộc lộ tình cảm, cảm xúc.</li>
+</ul></div>
+
+<div class="box key"><span class="label">📌 Ẩn dụ</span>
+<p>Ẩn dụ là biện pháp tu từ gọi tên sự vật, hiện tượng này bằng tên sự vật, hiện tượng khác có nét tương đồng với nó, nhằm tăng khả năng gợi hình, gợi cảm cho sự diễn đạt.</p></div>
+
+<p><b>Tự kiểm tra trí nhớ:</b> nhìn tên trên thẻ, em nói to điều mình nhớ, rồi mới lật thẻ ra so với chữ của SGK.</p>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">Thể thơ</span><span class="ms">những đặc điểm riêng về số tiếng trong mỗi dòng, số dòng trong mỗi bài,…</span></button>
+  <button class="the" type="button"><span class="mt">Ngôn ngữ thơ</span><span class="ms">cô đọng, giàu nhạc điệu và hình ảnh, sử dụng nhiều biện pháp tu từ (so sánh, ẩn dụ, điệp ngữ,…).</span></button>
+  <button class="the" type="button"><span class="mt">Nội dung chủ yếu của thơ</span><span class="ms">tình cảm, cảm xúc của nhà thơ trước cuộc sống.</span></button>
+  <button class="the" type="button"><span class="mt">Yếu tố tự sự</span><span class="ms">kể lại một sự việc, câu chuyện</span></button>
+  <button class="the" type="button"><span class="mt">Yếu tố miêu tả</span><span class="ms">tái hiện những đặc điểm nổi bật của đối tượng</span></button>
+  <button class="the" type="button"><span class="mt">Ẩn dụ</span><span class="ms">gọi tên sự vật, hiện tượng này bằng tên sự vật, hiện tượng khác có nét tương đồng với nó</span></button>
+</div>
+
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Tớ tưởng câu thơ nào có hình ảnh đẹp đẹp cũng là so sánh hết!</div></div>
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Thế em tìm giúp cô xem trong câu ấy có từ so sánh (<i>như, bằng, là…</i>) không? Nếu không có, mà một sự vật lại bị gọi bằng tên của sự vật khác, thì em đọc lại hộp 📌 <i>Ẩn dụ</i> nhé.</div></div>
+
+<div class="box warn"><span class="label">Hai chỗ các bạn lớp 6 hay nhầm</span>
+<ul>
+<li><b>Gọi mọi cách nói hình ảnh là so sánh.</b> Câu so sánh có <b>từ so sánh</b> (<i>như, bằng, là, tựa…</i>) và có đủ hai vế. Ẩn dụ thì <b>giấu</b> sự vật được nói tới đi, chỉ còn tên của sự vật kia. Ví dụ <i>Mặt trời của mẹ</i> là ẩn dụ vì không có từ so sánh, và phải hiểu <i>mặt trời</i> ở đây là em bé.</li>
+<li><b>Tưởng thơ có kể chuyện thì là truyện.</b> Thơ vẫn có thể kể một câu chuyện, tả một cảnh, nhưng kể và tả là để nhà thơ bày tỏ tình cảm. Truyện thì cốt truyện và nhân vật là chính.</li>
+</ul></div>
+
+<div class="quiz">
+  <h4>Kiểm tra nhanh (luyện thêm — tự chấm)</h4>
+  <div class="q" data-ans="b"><div class="stem"><b>K1.</b> Theo Tri thức ngữ văn, nội dung chủ yếu của thơ là gì?</div>
+    <button class="opt" type="button" data-v="a">(a) Kể lại một câu chuyện có đầu có cuối</button><button class="opt" type="button" data-v="b">(b) Tình cảm, cảm xúc của nhà thơ trước cuộc sống</button><button class="opt" type="button" data-v="c">(c) Tả thật kĩ một cảnh vật</button>
+    <div class="why">Đúng chữ của SGK: nội dung chủ yếu của thơ là tình cảm, cảm xúc của nhà thơ trước cuộc sống.</div></div>
+  <div class="q" data-ans="b"><div class="stem"><b>K2.</b> Trong thơ, yếu tố tự sự và miêu tả là:</div>
+    <button class="opt" type="button" data-v="a">(a) Nội dung chính của bài thơ</button><button class="opt" type="button" data-v="b">(b) Phương tiện để nhà thơ bộc lộ tình cảm, cảm xúc</button><button class="opt" type="button" data-v="c">(c) Những thứ thơ không bao giờ có</button>
+    <div class="why">SGK viết: những yếu tố ấy "chỉ là phương tiện để nhà thơ bộc lộ tình cảm, cảm xúc". Kể và tả là để nói lên tình cảm.</div></div>
+</div>
+
+<div class="nhom" data-nhom="ss:So sánh|ad:Ẩn dụ|kh:Không dùng hai biện pháp này">
+  <h4>K3. Xếp các dòng thơ vào đúng nhóm (luyện thêm)</h4>
+  <p class="small muted">Mẹo: tìm từ so sánh trước. Không có từ so sánh thì hỏi: có sự vật nào bị gọi bằng tên sự vật khác không?</p>
+  <div class="nguon"><span data-vao="ss">Cây cao bằng gang tay</span><span data-vao="ad">Mặt trời của mẹ, em nằm trên lưng</span><span data-vao="kh">Chim bấy giờ sinh ra</span><span data-vao="ss">Tiếng hót trong bằng nước</span><span data-vao="kh">Hai cha con bước đi trên cát</span><span data-vao="ss">Cái bảng bằng cái chiếu</span></div>
+  <div class="why">Em đã phân biệt được nhờ tìm từ so sánh trước: ba dòng có <i>bằng</i> là so sánh; <i>mặt trời</i> được dùng để gọi em bé nên là ẩn dụ (ở chặng 5 em sẽ gặp lại ví dụ này trong hộp 📌 của SGK); hai dòng còn lại nói thẳng. Tự kiểm tra: 3 + 1 + 2 = 6.</div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Tri thức ngữ văn</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-tri-thuc">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-tri-thuc">
+<ul>
+<li><b>K1. (b)</b> — đúng chữ của SGK: "Nội dung chủ yếu của thơ là tình cảm, cảm xúc của nhà thơ trước cuộc sống."</li>
+<li><b>K2. (b)</b> — SGK: yếu tố tự sự và miêu tả "chỉ là phương tiện để nhà thơ bộc lộ tình cảm, cảm xúc".</li>
+<li><b>K3.</b> So sánh (3): <i>Cây cao bằng gang tay</i>, <i>Tiếng hót trong bằng nước</i>, <i>Cái bảng bằng cái chiếu</i> — đều có từ so sánh <i>bằng</i>. Ẩn dụ (1): <i>Mặt trời của mẹ, em nằm trên lưng</i> — <i>mặt trời</i> được dùng để gọi em bé (SGK phân tích ở hộp 📌 <i>Nhận biết ẩn dụ</i>, trang 47). Không dùng hai biện pháp này (2): <i>Chim bấy giờ sinh ra</i>, <i>Hai cha con bước đi trên cát</i>. Tự kiểm tra: 3 + 1 + 2 = 6 dòng.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 2 ============================ -->
+<section id="s2" data-chang="🌱|Chuyện cổ tích">
+<h2>2. Văn bản 1. <i>Chuyện cổ tích về loài người</i> (Xuân Quỳnh)</h2>
+<p class="muctieu">Sau chặng này, em kể được theo thứ tự những gì "sinh ra" trong bài thơ, và chỉ ra được mỗi người thân đã dành cho trẻ con điều gì.</p>
+<p class="small muted">SGK trang 40 – 43.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Bài thơ này kể lại chuyện trái đất ra đời — nhưng theo một cách rất lạ. Em đọc chậm, dừng lại ở mỗi thẻ 🔎 như đang đi qua từng trạm nhé.</div></div>
+
+<h3>2.1. Trước khi đọc</h3>
+<p class="sgkq"><span class="n">1.</span>Nêu tên một truyện kể về nguồn gốc loài người trong kho tàng văn học dân gian Việt Nam hoặc văn học nước ngoài mà em biết. Trong truyện kể đó, sự ra đời của loài người có điều gì kì lạ?</p>
+<p class="gm"><b>(gợi mở)</b> Nghĩ về một truyện bà hay mẹ từng kể, hoặc một truyện em đọc trong sách thiếu nhi. Chỉ cần nêu tên truyện và <b>một</b> chi tiết kì lạ.</p>
+<p class="sgkq"><span class="n">2.</span>Đọc một bài thơ hoặc đoạn thơ viết về tình cảm gia đình mà em biết.</p>
+<p class="gm"><b>(gợi mở)</b> Bài hát ru, bài thơ học ở tiểu học, câu ca dao ở đầu Bài 2 đều được.</p>
+
+<div class="ghichep" data-luu="du-doan-vb1">
+  <p class="hoi">🔮 Nhan đề là <i>Chuyện cổ tích về loài người</i>. Em đoán trong bài thơ, <b>ai</b> được sinh ra trước nhất trên trái đất?</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<h3>2.2. Trong khi đọc — dừng lại ở các thẻ chỉ dẫn</h3>
+<p>SGK đặt <b>8 thẻ 🔎</b> bên lề bài thơ. Em sẽ gặp từng thẻ ngay dưới khổ thơ của nó: đọc xong khổ nào thì dừng lại, trả lời thẻ ấy rồi mới đọc tiếp.</p>
+
+<h4>Khổ 1</h4>
+<p class="poem">Trời sinh ra trước nhất<br>Chỉ toàn là trẻ con<br>Trên trái đất trụi trần<br>Không dáng cây ngọn cỏ<br>Mặt trời cũng chưa có<br>Chỉ toàn là bóng đêm<br>Không khí chỉ màu đen<br>Chưa có màu sắc khác</p>
+
+<div class="quiz">
+  <h4>🔎 Theo dõi: Số lượng tiếng trong một dòng thơ. (luyện thêm — tự chấm)</h4>
+  <div class="q fill" data-ans="5|năm|5 tiếng|năm tiếng" data-sai="Em vỗ tay một cái cho mỗi tiếng khi đọc: Trời – sinh – ra – trước – nhất. Rồi thử thêm hai dòng nữa."><div class="stem"><b>V1.</b> Đếm số tiếng trong dòng <i>Trời sinh ra trước nhất</i>, rồi thử vài dòng khác. Mỗi dòng thơ trong bài có mấy tiếng?</div>
+    <input type="text" aria-label="Số tiếng mỗi dòng" placeholder="gõ một số"> <button class="btn" type="button" data-check>Kiểm tra</button>
+    <div class="why">Mỗi dòng 5 tiếng — cô đã đếm cả 76 dòng của bài, dòng nào cũng vậy. Đây là một căn cứ để trả lời câu hỏi 1 ở phần Sau khi đọc.</div></div>
+</div>
+
+<div class="dung" data-giay="30"><p>🔎 <i>Hình dung:</i> Hình ảnh trái đất khi trẻ con được sinh ra. Gạch chân các chữ <i>không, chưa, chỉ</i>: trái đất lúc ấy <b>thiếu</b> những gì?</p></div>
+
+<h4>Khổ 2</h4>
+<p class="small muted">Khổ này dài 28 dòng, cô chia làm hai lần đọc cho em dễ theo dõi.</p>
+<p class="poem">Mắt trẻ con sáng lắm<br>Nhưng chưa thấy gì đâu!<br>Mặt trời mới nhô cao<br>Cho trẻ con nhìn rõ<br>Màu xanh bắt đầu cỏ<br>Màu xanh bắt đầu cây<br>Cây cao bằng gang tay<br>Lá cỏ bằng sợi tóc<br>Cái hoa bằng cái cúc<br>Màu đỏ làm ra hoa<br>Chim bấy giờ sinh ra<br>Cho trẻ nghe tiếng hót<br>Tiếng hót trong bằng nước<br>Tiếng hót cao bằng mây</p>
+
+<div class="dung"><p>Đọc đến đây, trái đất đã có thêm những gì? Mỗi thứ xuất hiện <b>để làm gì</b>? Em đọc tiếp nửa sau nhé.</p></div>
+
+<p class="small muted">Khổ 2 — đọc tiếp:</p>
+<p class="poem">Những làn gió thơ ngây<br>Truyền âm thanh đi khắp<br>Muốn trẻ con được tắm<br>Sông bắt đầu làm sông<br>Sông cần đến mênh mông<br>Biển có từ thuở đó<br>Biển thì sinh ý nghĩ<br>Biển sinh cá sinh tôm<br>Biển sinh những cánh buồm<br>Cho trẻ con đi khắp<br>Đám mây cho bóng rợp<br>Trời nắng mây theo che<br>Khi trẻ con tập đi<br>Đường có từ ngày đó</p>
+
+<div class="dung"><p>🔎 <i>Hình dung:</i> Sự thay đổi của trái đất sau khi trẻ con được sinh ra qua miêu tả của nhà thơ. Những chữ <i>Cho trẻ…</i>, <i>Muốn trẻ…</i>, <i>Khi trẻ…</i> lặp đi lặp lại. Vậy mọi thứ trên trái đất sinh ra là <b>vì ai</b>?</p></div>
+
+<div class="ghep" data-ghep data-sai="Em tìm lại từng sự vật trong khổ 2, rồi đọc dòng đứng ngay sau hoặc ngay trước nó.">
+  <h4>V2. Ghép mỗi sự vật với dòng thơ đi kèm nó trong khổ 2 (luyện thêm)</h4>
+  <div class="cot">
+    <button type="button" data-cap="a">Mặt trời</button>
+    <button type="button" data-cap="b">Chim</button>
+    <button type="button" data-cap="c">Sông</button>
+    <button type="button" data-cap="d">Biển (sinh những cánh buồm)</button>
+    <button type="button" data-cap="f">Đường</button>
+  </div>
+  <div class="cot">
+    <button type="button" data-cap="a">Cho trẻ con nhìn rõ</button>
+    <button type="button" data-cap="b">Cho trẻ nghe tiếng hót</button>
+    <button type="button" data-cap="c">Muốn trẻ con được tắm</button>
+    <button type="button" data-cap="d">Cho trẻ con đi khắp</button>
+    <button type="button" data-cap="f">Khi trẻ con tập đi</button>
+  </div>
+  <div class="why">Em đã tìm ra bằng chứng cho câu hỏi 2: dòng thơ đi kèm sự vật nào cũng nhắc đến <b>trẻ con</b> — mọi thứ sinh ra là vì trẻ con.</div>
+</div>
+
+<h4>Khổ 3</h4>
+<p class="poem">Nhưng còn cần cho trẻ<br>Tình yêu và lời ru<br>Cho nên mẹ sinh ra<br>Để bế bồng chăm sóc<br>Mẹ mang về tiếng hát<br>Từ cái bống cái bang<br>Từ cái hoa rất thơm<br>Từ cánh cò rất trắng<br>Từ vị gừng rất đắng<br>Từ vết lấm chưa khô<br>Từ đầu nguồn cơn mưa<br>Từ bãi sông cát vắng…</p>
+<p class="small muted"><i>Tranh trong SGK trang 41 vẽ:</i> người mẹ tóc đen dài, áo hồng, cúi xuống hôn lên trán đứa con nhỏ quấn khăn hồng; xung quanh là lá xanh, hoa hướng dương vàng, phía sau là dòng sông và bầy chim hải âu.</p>
+
+<div class="dung" data-giay="30"><p>🔎 <i>Theo dõi:</i> Các nhân vật, sự việc được kể trong bài thơ — đến đây, những ai đã xuất hiện?<br>🔎 <i>Hình dung:</i> Sự chăm sóc, yêu thương của mẹ dành cho con — mẹ sinh ra để làm gì? Tiếng hát của mẹ được mang về từ những đâu?</p></div>
+
+<h4>Khổ 4</h4>
+<p class="poem">Biết trẻ con khao khát<br>Chuyện ngày xưa, ngày sau<br>Không hiểu là từ đâu<br>Mà bà về ở đó<br>Kể cho bao chuyện cổ:<br>Chuyện con cóc, nàng tiên<br>Chuyện cô Tấm ở hiền<br>Thằng Lý Thông ở ác…<br>Mái tóc bà thì bạc<br>Con mắt bà thì vui<br>Bà kể đến suốt đời<br>Cũng không sao hết chuyện.</p>
+
+<div class="dung"><p>🔎 <i>Hình dung:</i> Hình ảnh bà và thế giới trong những câu chuyện cổ bà kể. Bà kể những chuyện nào? Mái tóc bà, con mắt bà được tả thế nào?</p></div>
+
+<h4>Khổ 5</h4>
+<p class="poem">Muốn cho trẻ hiểu biết<br>Thế là bố sinh ra<br>Bố bảo cho biết ngoan<br>Bố dạy cho biết nghĩ<br>Rộng lắm là mặt bể<br>Dài là con đường đi<br>Núi thì xanh và xa<br>Hình tròn là trái đất…</p>
+<p class="small muted"><i>Tranh trong SGK trang 42 vẽ:</i> người bố áo vàng dắt tay cô con gái đi trên con đường đất uốn lượn giữa bãi cỏ xanh, phía xa là biển và dãy núi.</p>
+
+<div class="dung"><p>🔎 <i>Hình dung:</i> Sự yêu thương, chăm sóc mà bố dành cho con. Tìm hai dòng bắt đầu bằng chữ <i>Bố</i>: bố dạy con những gì?</p></div>
+
+<h4>Khổ 6</h4>
+<p class="poem">Chữ bắt đầu có trước<br>Rồi có ghế có bàn<br>Rồi có lớp có trường<br>Và sinh ra thầy giáo…<br>Cái bảng bằng cái chiếu<br>Cục phấn từ đá ra<br>Thầy viết chữ thật to:<br>"Chuyện loài người" trước nhất.</p>
+<p class="small muted">(Xuân Quỳnh, <i>Lời ru trên mặt đất</i>, NXB Tác phẩm mới, Hà Nội, 1978, tr. 49 – 52)</p>
+
+<div class="dung"><p>🔎 <i>Hình dung:</i> Khung cảnh mái trường thân yêu. Cái bảng, cục phấn được tả thế nào? Thầy viết chữ gì đầu tiên?</p></div>
+
+<div class="xep" data-xep data-sai="Em lướt lại từ khổ 1 đến khổ 6: mỗi khổ mở đầu bằng một người hoặc một thứ mới xuất hiện.">
+  <h4>V3. 🔎 Theo dõi: xếp các nhân vật, sự việc theo đúng thứ tự xuất hiện trong bài thơ (luyện thêm)</h4>
+  <ol>
+    <li>Trẻ con được sinh ra trước nhất</li>
+    <li>Mặt trời nhô cao cho trẻ nhìn rõ</li>
+    <li>Mẹ sinh ra để bế bồng chăm sóc</li>
+    <li>Bà về kể chuyện cổ</li>
+    <li>Bố dạy trẻ biết ngoan, biết nghĩ</li>
+    <li>Có lớp, có trường và thầy giáo</li>
+  </ol>
+  <div class="why">Em đã nắm được mạch kể của bài thơ: trẻ con trước nhất, rồi thiên nhiên, rồi lần lượt mẹ, bà, bố, thầy giáo — ai cũng sinh ra vì trẻ con.</div>
+</div>
+
+<h3>2.3. Sau khi đọc</h3>
+<div class="xemlai" data-xem-lai="du-doan-vb1"><p>Đọc xong rồi. Em đã đoán ai được sinh ra trước nhất? Đoán trúng không? Điều gì làm em bất ngờ?</p></div>
+
+<div class="box key"><span class="label">📌 Tác giả</span>
+<p><b>Xuân Quỳnh</b> (1942 – 1988) quê ở Hà Nội. Truyện và thơ viết cho thiếu nhi của bà tràn đầy tình yêu thương, trìu mến, có hình thức giản dị, ngôn ngữ trong trẻo, phù hợp với cách cảm, cách nghĩ của trẻ em. Phần lớn những tác phẩm ấy đã được tập hợp trong các cuốn: <i>Lời ru trên mặt đất</i>, <i>Bầu trời trong quả trứng</i>, <i>Bến tàu trong thành phố</i>,…</p></div>
+
+<p><b>Trả lời câu hỏi (SGK) — đi từng bước</b></p>
+<p class="sgkq"><span class="n">1.</span>Em hãy nêu những căn cứ để xác định <i>Chuyện cổ tích về loài người</i> là một bài thơ.</p>
+<ol class="steps"><li>Mở khối 📌 <i>Một số đặc điểm của thơ</i>. Có ba ý: thể thơ (số tiếng, số dòng), ngôn ngữ, nội dung.</li><li>Với mỗi ý, tìm một bằng chứng trong bài: số tiếng mỗi dòng (bài V1), bài chia khổ, có vần không (đọc to hai dòng liền nhau ở khổ 2, nghe tiếng cuối của chúng có vần với nhau không — tìm hai cặp), có biện pháp tu từ nào.</li></ol>
+<p class="sgkq"><span class="n">2.</span>Trong tưởng tượng của nhà thơ, thế giới đã biến đổi ra sao sau khi trẻ con ra đời?</p>
+<p class="gm"><b>(gợi mở)</b> So sánh khổ 1 (trái đất <i>lúc trước</i>) với khổ 2 (trái đất <i>lúc sau</i>). Kẻ hai cột "Trước" – "Sau". Dùng lại bài ghép V2: mọi thứ sinh ra để làm gì?</p>
+<p class="sgkq"><span class="n">3.</span>Món quà tình cảm nào mà theo nhà thơ, chỉ có mẹ mới đem đến được cho trẻ?</p>
+<p class="gm"><b>(gợi mở)</b> Đọc hai dòng đầu khổ 3. Chữ <i>Nhưng còn cần</i> cho biết: có mặt trời, cây, chim, biển… rồi mà trẻ vẫn còn thiếu một thứ. Thứ đó là gì?</p>
+
+<div class="dung" data-giay="45"><p>Mặt trời, sông, biển cho trẻ con rất nhiều thứ. Vì sao nhà thơ vẫn nói trẻ <i>còn cần</i> mẹ? Em nghĩ xem có thứ gì thiên nhiên không cho được.</p></div>
+
+<p class="sgkq"><span class="n">4.</span>Bà đã kể cho trẻ nghe những câu chuyện gì? Hãy nêu những điều bà muốn gửi gắm trong những câu chuyện đó.</p>
+<ol class="steps"><li>Chép tên các chuyện bà kể (khổ 4).</li><li>Chú ý hai chữ <i>ở hiền</i> và <i>ở ác</i> đặt cạnh nhau. Bà muốn trẻ yêu ai, ghét ai?</li></ol>
+<p class="sgkq"><span class="n">5.</span>Theo cách nhìn của nhà thơ, điều bố dành cho trẻ có gì khác so với điều bà và mẹ dành cho trẻ?</p>
+<p class="gm"><b>(gợi mở)</b> Mẹ cho <i>tình yêu và lời ru</i>, bà cho <i>chuyện cổ</i>. Bố thì sao? Đọc dòng đầu khổ 5: <i>Muốn cho trẻ…</i> điều gì? Bốn dòng cuối khổ 5 là những điều bố dạy về <b>cái gì</b>: tình cảm hay thế giới xung quanh?</p>
+
+<div class="ghep" data-ghep data-sai="Mỗi người thân có một khổ riêng: em tìm dòng thơ trong đúng khổ của người ấy.">
+  <h4>V4. Mỗi người thân mang đến cho trẻ điều gì? Ghép người với dòng thơ (luyện thêm)</h4>
+  <div class="cot">
+    <button type="button" data-cap="a">Mẹ</button>
+    <button type="button" data-cap="b">Bà</button>
+    <button type="button" data-cap="c">Bố</button>
+    <button type="button" data-cap="d">Thầy giáo</button>
+  </div>
+  <div class="cot">
+    <button type="button" data-cap="a">Tình yêu và lời ru</button>
+    <button type="button" data-cap="b">Kể cho bao chuyện cổ</button>
+    <button type="button" data-cap="c">Muốn cho trẻ hiểu biết</button>
+    <button type="button" data-cap="d">Thầy viết chữ thật to</button>
+  </div>
+  <div class="why">Em đã thấy mỗi người thân sinh ra vì trẻ con, và mỗi người mang đến một món quà riêng: mẹ cho tình yêu và lời ru, bà cho chuyện cổ, bố cho hiểu biết, thầy cho chữ. Đây là bằng chứng cho câu 3, 4, 5.</div>
+</div>
+<p class="sgkq"><span class="n">6.</span>Trong khổ thơ cuối, em thấy hình ảnh trường lớp và thầy giáo hiện lên như thế nào?</p>
+<p class="gm"><b>(gợi mở)</b> Cái bảng được so với cái gì? Cục phấn từ đâu ra? Đó là cách nhìn của người lớn hay của trẻ con? Thầy viết chữ gì <i>trước nhất</i> — chữ ấy trùng với chữ nào trong nhan đề?</p>
+
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Nhan đề có chữ "cổ tích", vậy bài này là truyện cổ tích hả cô?</div></div>
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Em thử dùng câu hỏi 1 để kiểm tra: bài này chia khổ, đếm tiếng, có vần — thế là truyện hay thơ? Rồi nghĩ xem vì sao nhà thơ vẫn muốn gọi nó là "chuyện cổ tích".</div></div>
+
+<p class="sgkq"><span class="n">7.</span>Nhan đề <i>Chuyện cổ tích về loài người</i> gợi cho em suy nghĩ gì?</p>
+<p class="gm"><b>(gợi mở)</b> Câu hỏi mở. Em thử trả lời hai ý: vì sao nhà thơ gọi đây là "chuyện cổ tích"? Chuyện này nói về nguồn gốc của ai, và cái gì quý nhất trong chuyện?</p>
+<p class="sgkq"><span class="n">8.</span>Câu chuyện về nguồn gốc loài người qua lời thơ của tác giả Xuân Quỳnh có gì khác so với những câu chuyện về nguồn gốc loài người mà em đã biết? Sự khác biệt ấy có ý nghĩa như thế nào?</p>
+<p class="gm"><b>(gợi mở)</b> Dùng truyện em nêu ở câu 1 <i>Trước khi đọc</i>. Trong truyện ấy, ai được sinh ra trước? Trong bài thơ, ai được sinh ra trước nhất, và mọi thứ khác sinh ra để làm gì?</p>
+
+<div class="ghichep" data-luu="nhat-ki-vb1" data-cam-xuc="🥰 Thương yêu|😊 Vui|😮 Ngạc nhiên|🙏 Biết ơn|🤔 Suy nghĩ|😢 Xúc động">
+  <p class="hoi">💭 Khổ thơ nào em thích nhất? Em thấy thế nào khi đọc khổ ấy? (Ghi lại — em sẽ dùng cho phần Viết kết nối với đọc ngay dưới đây.)</p>
+  <textarea rows="3"></textarea>
+</div>
+
+<h3>2.4. Viết kết nối với đọc</h3>
+<p class="sgkq"><span class="n">✎</span>Viết đoạn văn (khoảng 5 – 7 câu) thể hiện cảm xúc của em về một đoạn thơ mà em yêu thích trong bài thơ <i>Chuyện cổ tích về loài người</i>.</p>
+<ol class="steps">
+<li><b>Chọn một đoạn thơ</b> (một khổ, hoặc vài dòng liền nhau) — đoạn em đã ghi ở nhật kí cảm xúc.</li>
+<li><b>Chép đúng</b> đoạn thơ ấy ra nháp, đối chiếu từng chữ với SGK.</li>
+<li><b>Tìm hai chi tiết</b> trong đoạn làm em xúc động hoặc thích thú, và hỏi: nhà thơ kể/tả điều gì? Có biện pháp tu từ nào (so sánh, điệp ngữ)?</li>
+<li><b>Nói cảm xúc của em</b> — vui, thương, biết ơn… — và vì sao.</li>
+<li>Viết thành <b>một đoạn</b>: lùi đầu dòng một lần, viết liền, 5 – 7 câu, câu đầu nêu tên bài thơ, tác giả và đoạn thơ em chọn.</li>
+</ol>
+<div class="tablewrap"><table>
+<tr><th>Bảng kiểm đoạn văn</th><th>Đạt?</th></tr>
+<tr><td>Đúng hình thức một đoạn văn, khoảng 5 – 7 câu</td><td></td></tr>
+<tr><td>Nêu tên bài thơ, tác giả và đoạn thơ em chọn</td><td></td></tr>
+<tr><td>Dẫn ít nhất một dòng thơ, chép đúng từng chữ</td><td></td></tr>
+<tr><td>Có câu nói rõ cảm xúc của em và vì sao em có cảm xúc ấy</td><td></td></tr>
+<tr><td>Không mắc lỗi chính tả, dấu câu</td><td></td></tr>
+</table></div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Văn bản 1</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-vb1">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-vb1">
+<p><b>Trong khi đọc</b></p>
+<ul>
+<li>Thẻ số tiếng: mỗi dòng <b>5 tiếng</b> (cả 76 dòng).</li>
+<li>Thẻ trái đất lúc đầu: "Trên trái đất trụi trần / Không dáng cây ngọn cỏ", "Mặt trời cũng chưa có", "Không khí chỉ màu đen" — thiếu ánh sáng, cây cỏ, màu sắc; chỉ có trẻ con.</li>
+<li>Thẻ sự thay đổi: lần lượt có mặt trời, màu xanh của cỏ cây, hoa đỏ, chim, gió, sông, biển, cá tôm, cánh buồm, mây, đường — và mỗi thứ đều <b>vì trẻ con</b> ("Cho trẻ con nhìn rõ", "Cho trẻ nghe tiếng hót", "Muốn trẻ con được tắm", "Khi trẻ con tập đi").</li>
+<li>Thẻ nhân vật: trẻ con, mẹ; tiếp theo là bà, bố, thầy giáo.</li>
+<li>Thẻ mẹ: mẹ sinh ra "Để bế bồng chăm sóc", mang về tiếng hát từ cái bống cái bang, cái hoa, cánh cò, vị gừng, vết lấm, cơn mưa, bãi sông.</li>
+<li>Thẻ bà: bà kể "Chuyện con cóc, nàng tiên / Chuyện cô Tấm ở hiền / Thằng Lý Thông ở ác…"; "Mái tóc bà thì bạc / Con mắt bà thì vui".</li>
+<li>Thẻ bố: "Bố bảo cho biết ngoan / Bố dạy cho biết nghĩ".</li>
+<li>Thẻ mái trường: "Cái bảng bằng cái chiếu / Cục phấn từ đá ra"; thầy viết "Chuyện loài người" trước nhất.</li>
+</ul>
+<p><b>Trả lời câu hỏi</b></p>
+<p><b>1.</b> Căn cứ: <b>thể thơ</b> — mỗi dòng đều 5 tiếng, bài chia thành 6 khổ; <b>có vần</b> — ví dụ <i>mây</i> – <i>ngây</i> ("Tiếng hót cao bằng mây / Những làn gió thơ ngây"), <i>sông</i> – <i>mông</i> ("Sông bắt đầu làm sông / Sông cần đến mênh mông"); <b>ngôn ngữ cô đọng, giàu hình ảnh, có biện pháp tu từ</b> — so sánh ("Cây cao bằng gang tay"), điệp ngữ (chữ <i>Từ</i> ở khổ 3); <b>nội dung là tình cảm</b> — tình yêu thương dành cho trẻ con. Bài có kể (mọi thứ lần lượt "sinh ra") và tả (cây, hoa, chim, bà, bố, lớp học), nhưng kể và tả để nói lên tình yêu ấy.</p>
+<p><b>2.</b> Trước khi trẻ con ra đời trái đất "trụi trần", chỉ "màu đen". Sau đó trái đất có ánh sáng, màu sắc, âm thanh: mặt trời "nhô cao", "Màu xanh bắt đầu cỏ / Màu xanh bắt đầu cây", "Màu đỏ làm ra hoa", chim hót, gió, sông, biển, mây, đường. Thế giới trở nên đẹp và đủ đầy, và mọi thứ đều có <b>vì trẻ con, cho trẻ con</b>.</p>
+<p><b>3.</b> <b>Tình yêu và lời ru</b>: "Nhưng còn cần cho trẻ / Tình yêu và lời ru / Cho nên mẹ sinh ra". Lời ru của mẹ gom lại những gì gần gũi nhất của cuộc sống (cái bống cái bang, cánh cò, vị gừng, bãi sông cát vắng…).</p>
+<p><b>4.</b> Bà kể chuyện cổ tích: "Chuyện con cóc, nàng tiên / Chuyện cô Tấm ở hiền / Thằng Lý Thông ở ác…". Điều bà gửi gắm (có nhiều cách nói, miễn dựa vào chi tiết): người hiền như cô Tấm được yêu mến, kẻ ác như Lý Thông bị chê ghét → bà dạy trẻ <b>biết phân biệt tốt – xấu, yêu cái thiện</b>; bà cho trẻ thế giới "ngày xưa, ngày sau" mà trẻ "khao khát". Bà kể "đến suốt đời / Cũng không sao hết chuyện" — tình thương của bà không bao giờ hết.</p>
+<p><b>5.</b> Mẹ và bà chăm lo <b>tâm hồn, tình cảm</b> (lời ru, chuyện cổ). Bố lo cho trẻ <b>hiểu biết</b>: "Muốn cho trẻ hiểu biết / Thế là bố sinh ra"; bố dạy trẻ "biết ngoan", "biết nghĩ", và dạy về thế giới rộng lớn: mặt bể rộng, con đường dài, núi xanh và xa, trái đất hình tròn.</p>
+<p><b>6.</b> Trường lớp hiện lên qua <b>đôi mắt trẻ con</b>: cái bảng to "bằng cái chiếu", cục phấn "từ đá ra" — ngộ nghĩnh, gần gũi. Thầy giáo được "sinh ra" sau chữ, bàn ghế, lớp, trường — người mang đến chữ và hiểu biết. Thầy viết "Chuyện loài người" trước nhất — bài học đầu tiên là câu chuyện về chính con người.</p>
+<p><b>7.</b> Câu mở. Câu trả lời tốt nói được: đây là một câu chuyện tưởng tượng giống "cổ tích" (mọi thứ lần lượt sinh ra rất kì diệu), nhưng điều nhà thơ muốn nói là tình yêu thương — trẻ con được cả thế giới, mẹ, bà, bố, thầy yêu thương, chăm sóc. Em nên dẫn một chi tiết làm căn cứ.</p>
+<p><b>8.</b> Câu mở ở phần so sánh (tuỳ truyện em đã biết). Điểm khác nổi bật: trong bài thơ, <b>trẻ con được sinh ra trước nhất</b>, mọi thứ khác sinh ra sau và <b>vì trẻ con</b>. Ý nghĩa: trẻ em là quý giá nhất, cần được yêu thương, chăm sóc, dạy dỗ; cả thế giới tồn tại để trẻ em lớn lên.</p>
+<p><b>Viết kết nối với đọc:</b> không có đáp án chung. Đọc lại bảng kiểm. Đoạn văn tốt có dẫn đúng dòng thơ, có nói rõ <i>vì sao</i> em thích, không chỉ khen chung chung.</p>
+</div>
+</div>
+</section>
+
+<!-- ============================ 3 ============================ -->
+<section id="s3" data-chang="🔤|Tiếng Việt 1">
+<h2>3. Thực hành tiếng Việt (trang 43 – 44)</h2>
+<p class="muctieu">Sau chặng này, em giải thích được nghĩa của từ nhô, tìm được từ đảo trật tự các tiếng mà vẫn cùng nghĩa, và chỉ ra được so sánh, nhân hoá, điệp ngữ trong bài thơ của Xuân Quỳnh.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Chặng này mình soi kĩ từng chữ của Xuân Quỳnh. Một chữ nhỏ như <i>nhô</i> cũng có lí do để được chọn.</div></div>
+
+<h3>3.1. Nghĩa của từ ngữ</h3>
+<p class="sgkq"><span class="n">1.</span>Đọc đoạn thơ sau và thực hiện các yêu cầu:</p>
+<div class="box quote"><p class="poem">Mắt trẻ con sáng lắm<br>Nhưng chưa thấy gì đâu!<br>Mặt trời mới nhô cao<br>Cho trẻ con nhìn rõ.</p></div>
+<p>a. Giải thích nghĩa của từ <i>nhô</i>.</p>
+<p>b. Trong đoạn thơ trên, có thể dùng từ <i>lên</i> để thay thế cho từ <i>nhô</i> được không? Hãy chỉ ra sự tinh tế của nhà thơ trong việc sử dụng từ <i>nhô</i>.</p>
+
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Thay <i>nhô</i> bằng <i>lên</i> thì câu vẫn đủ 5 tiếng, nghĩa cũng thế thôi mà?</div></div>
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Em đọc to hai lần, một lần <i>Mặt trời mới nhô cao</i>, một lần với <i>lên</i>. Câu nào cho em <b>nhìn thấy</b> mặt trời đang làm gì?</div></div>
+<p class="gm"><b>(gợi mở)</b> Câu a: SGK không chú thích từ này. Em hình dung một vật từ dưới thấp <b>ló ra</b> dần — một mầm cây, một cái đầu sau bức tường.</p>
+
+<p class="sgkq"><span class="n">2.</span>Trong bài thơ có các từ như <i>trụi trần</i>, <i>bế bồng</i>,… Trong tiếng Việt cũng có những từ như <i>trần trụi</i>, <i>bồng bế</i>,… Tìm thêm ở trong và ngoài văn bản những từ có thể đảo trật tự các thành tố để có từ khác đồng nghĩa.</p>
+<p class="gm"><b>(gợi mở)</b> Lấy một từ hai tiếng, đổi chỗ hai tiếng rồi đọc to: có thành một từ quen thuộc, nghĩa gần như cũ không? Thử với các từ nói về tình cảm trong nhà, rồi lật lại bài thơ và phần giới thiệu Bài 2 mà tìm.</p>
+<div class="ghichep" data-luu="tv1-dao-tu">
+  <p class="hoi">🔁 Các từ em tự tìm được (ghi cả hai cách: từ gốc – từ đã đảo):</p>
+  <textarea rows="2"></textarea>
+</div>
+<p class="small muted">Tìm xong rồi mới làm bài xếp nhóm dưới đây để kiểm tra cách thử của em.</p>
+
+<div class="nhom" data-nhom="dao:Đảo hai tiếng vẫn được từ cùng nghĩa|khong:Đảo hai tiếng thì không thành từ cùng nghĩa">
+  <h4>Thử đảo từng từ (luyện thêm — tự chấm)</h4>
+  <p class="small muted">Với mỗi thẻ, em đọc to từ đó khi đã đổi chỗ hai tiếng. Có thành một từ quen thuộc, cùng nghĩa không?</p>
+  <div class="nguon"><span data-vao="dao">trụi trần</span><span data-vao="khong">mặt trời</span><span data-vao="dao">bế bồng</span><span data-vao="khong">cánh buồm</span><span data-vao="dao">thương yêu</span><span data-vao="khong">lời ru</span><span data-vao="dao">nhớ thương</span><span data-vao="khong">bãi sông</span></div>
+  <div class="why">Em đã thử đảo thật từng từ: <i>trần trụi, bồng bế, yêu thương, thương nhớ</i> đều là từ cùng nghĩa; còn <i>trời mặt, buồm cánh, ru lời, sông bãi</i> không thành từ. Tự kiểm tra: 4 + 4 = 8.</div>
+</div>
+
+<h3>3.2. Biện pháp tu từ</h3>
+<div class="box"><span class="label">Ghi nhớ từ tiểu học (SGK Bài 2 không in lại định nghĩa ba biện pháp này)</span>
+<ul>
+<li><b>So sánh</b> (em đã ôn ở Bài 1): đối chiếu sự vật này với sự vật khác có nét giống nhau, thường có từ so sánh như <i>như, là, bằng, tựa…</i></li>
+<li><b>Nhân hoá:</b> gọi hoặc tả con vật, cây cối, đồ vật… bằng những từ ngữ vốn dùng để gọi hoặc tả con người.</li>
+<li><b>Điệp ngữ:</b> lặp lại một từ ngữ (có khi cả một câu) để nhấn mạnh ý, tạo nhịp cho câu thơ, câu văn.</li>
+</ul></div>
+
+<p class="sgkq"><span class="n">3.</span>Hãy chỉ ra những dòng thơ có sử dụng biện pháp tu từ so sánh trong khổ hai của bài thơ. Nêu tác dụng của biện pháp tu từ so sánh đó trong việc thể hiện nội dung khổ thơ.</p>
+<p class="gm"><b>(gợi mở)</b> Dò khổ hai tìm từ so sánh. Rồi hỏi: cây chỉ cao <b>bằng gang tay</b>, hoa chỉ to <b>bằng cái cúc</b> — thế giới ấy lớn hay nhỏ? Vừa vặn với ai?</p>
+
+<div class="tosang" data-tosang>
+  <h4>C1. Bấm vào những DÒNG thơ có dùng so sánh (luyện thêm — đoạn giữa khổ hai)</h4>
+  <div class="doan"><p><span class="t" data-dung>Cây cao bằng gang tay</span><br><span class="t" data-dung>Lá cỏ bằng sợi tóc</span><br><span class="t" data-dung>Cái hoa bằng cái cúc</span><br><span class="t">Màu đỏ làm ra hoa</span><br><span class="t">Chim bấy giờ sinh ra</span><br><span class="t">Cho trẻ nghe tiếng hót</span><br><span class="t" data-dung>Tiếng hót trong bằng nước</span><br><span class="t" data-dung>Tiếng hót cao bằng mây</span><br><span class="t">Những làn gió thơ ngây</span></p></div>
+  <div class="why">Em đã tìm đúng cả năm dòng so sánh nhờ dò từ so sánh. Bốn dòng còn lại không so sánh sự vật này với sự vật khác.</div>
+</div>
+
+<div class="ghep" data-ghep data-sai="Em đọc lại năm dòng ở bài C1: thứ đứng sau chữ bằng chính là cái được đem ra so sánh.">
+  <h4>C2. Mỗi sự vật được so sánh với cái gì? Ghép cho đúng (luyện thêm)</h4>
+  <div class="cot">
+    <button type="button" data-cap="a">Cây cao…</button>
+    <button type="button" data-cap="b">Lá cỏ…</button>
+    <button type="button" data-cap="c">Cái hoa…</button>
+    <button type="button" data-cap="d">Tiếng hót trong…</button>
+    <button type="button" data-cap="e">Tiếng hót cao…</button>
+  </div>
+  <div class="cot">
+    <button type="button" data-cap="a">…bằng gang tay</button>
+    <button type="button" data-cap="b">…bằng sợi tóc</button>
+    <button type="button" data-cap="c">…bằng cái cúc</button>
+    <button type="button" data-cap="d">…bằng nước</button>
+    <button type="button" data-cap="e">…bằng mây</button>
+  </div>
+  <div class="why">Em để ý nhé: cây, lá, hoa được so với gang tay, sợi tóc, cái cúc — toàn những thứ <b>nhỏ bé, gần gũi</b> với trẻ con; còn tiếng chim được so với nước (trong) và mây (cao). Đó là chìa khoá để em nói tác dụng của so sánh ở câu 3.</div>
+</div>
+
+<p class="sgkq"><span class="n">4.</span>Nhà thơ đã sử dụng biện pháp tu từ gì trong dòng thơ <i>Những làn gió thơ ngây</i>? Nêu tác dụng của biện pháp tu từ ấy.</p>
+<p class="gm"><b>(gợi mở)</b> Từ <i>thơ ngây</i> thường dùng để tả ai? Có từ so sánh nào trong dòng này không?</p>
+<div class="quiz">
+  <div class="q" data-ans="nh"><div class="stem"><b>C3.</b> Dòng <i>Những làn gió thơ ngây</i> dùng biện pháp tu từ nào? (luyện thêm)</div>
+    <button class="opt" type="button" data-v="ss">So sánh</button><button class="opt" type="button" data-v="nh">Nhân hoá</button><button class="opt" type="button" data-v="dn">Điệp ngữ</button>
+    <div class="why">Nhân hoá: <i>thơ ngây</i> vốn là từ tả trẻ con, được dùng để tả làn gió. Dòng thơ không có từ so sánh, cũng không có từ nào lặp lại.</div></div>
+</div>
+
+<p class="sgkq"><span class="n">5.</span>Hãy ghi lại những dòng thơ sử dụng biện pháp tu từ điệp ngữ và nêu tác dụng của việc sử dụng biện pháp tu từ đó trong đoạn thơ từ <i>Nhưng còn cần cho trẻ</i> đến <i>Từ bãi sông cát vắng</i>.</p>
+<p class="gm"><b>(gợi mở)</b> Nhìn <b>chữ đầu</b> của mỗi dòng trong đoạn thơ dưới đây. Rồi nhìn chữ thứ tư của vài dòng liền nhau. Đọc to một mạch — nghe có giống nhịp một lời ru không?</p>
+<div class="tosang" data-tosang data-sai="Em chỉ bấm vào chữ đứng ĐẦU dòng, và chỉ chữ nào lặp lại ở nhiều dòng liền nhau.">
+  <h4>C4. Bấm vào chữ được lặp lại ở ĐẦU các dòng thơ (điệp ngữ) (luyện thêm)</h4>
+  <div class="doan"><p>Nhưng còn cần cho trẻ<br>Tình yêu và lời ru<br>Cho nên mẹ sinh ra<br>Để bế bồng chăm sóc<br><span class="t">Mẹ</span> mang về tiếng hát<br><span class="t" data-dung>Từ</span> <span class="t">cái</span> bống <span class="t">cái</span> bang<br><span class="t" data-dung>Từ</span> <span class="t">cái</span> hoa <span class="t">rất</span> thơm<br><span class="t" data-dung>Từ</span> cánh cò <span class="t">rất</span> trắng<br><span class="t" data-dung>Từ</span> vị gừng <span class="t">rất</span> đắng<br><span class="t" data-dung>Từ</span> vết lấm chưa khô<br><span class="t" data-dung>Từ</span> đầu nguồn cơn mưa<br><span class="t" data-dung>Từ</span> bãi sông cát vắng…</p></div>
+  <div class="why">Em đã tô đủ bảy chữ <i>Từ</i> đứng đầu bảy dòng liền nhau — đó là điệp ngữ. Chữ <i>rất</i> cũng lặp lại, nhưng ở giữa dòng; em có thể nêu thêm nó khi trả lời câu 5.</div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Thực hành tiếng Việt (trang 43 – 44)</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-tv1">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-tv1">
+<p><b>1.</b> a. <i>Nhô</i>: (lời cô giải thích, SGK không chú thích) một phần của vật trồi lên, ló ra, cao hơn chỗ xung quanh. <i>Mặt trời mới nhô cao</i>: mặt trời vừa ló lên khỏi đường chân trời.<br>b. Thay <i>lên</i> thì dòng thơ vẫn đủ 5 tiếng và vẫn hiểu được, nhưng <b>mất hình ảnh</b>. <i>Lên</i> chỉ nói hướng đi. <i>Nhô</i> cho thấy mặt trời <b>từ từ ló ra</b>, như một em bé tò mò thò đầu nhìn — hợp với khung cảnh thế giới lần đầu có ánh sáng "Cho trẻ con nhìn rõ".</p>
+<p><b>2.</b> <i>trụi trần – trần trụi</i>, <i>bế bồng – bồng bế</i> (trong bài); <i>thương yêu – yêu thương</i> (phần giới thiệu Bài 2: "mái ấm thương yêu", "tràn ngập hạnh phúc, yêu thương"); ngoài văn bản: <i>nhớ thương – thương nhớ</i>, <i>chờ đợi – đợi chờ</i>, <i>vui mừng – mừng vui</i>, <i>đấu tranh – tranh đấu</i>… Em có thể tìm từ khác, miễn đảo hai tiếng mà vẫn là một từ có nghĩa gần như cũ.</p>
+<p><b>3.</b> Năm dòng có so sánh, đều dùng từ <b>bằng</b>: "Cây cao bằng gang tay", "Lá cỏ bằng sợi tóc", "Cái hoa bằng cái cúc", "Tiếng hót trong bằng nước", "Tiếng hót cao bằng mây". Tác dụng: cây, lá, hoa được so với những thứ nhỏ, gần gũi → thế giới hiện lên <b>nhỏ xinh, vừa vặn với trẻ con</b>, như trẻ con nhìn thấy; tiếng chim so với nước, với mây → tiếng hót <b>trong trẻo, cao vút</b>. Cả khổ thơ cho thấy thế giới mới ra đời thật tươi đẹp và dành cho trẻ con. (Khổ cuối còn một dòng so sánh nữa: "Cái bảng bằng cái chiếu" — nhưng câu hỏi chỉ hỏi khổ hai.)</p>
+<p><b>4.</b> <b>Nhân hoá</b>: <i>thơ ngây</i> vốn là từ tả trẻ con, ở đây dùng cho làn gió. Tác dụng: làn gió hiện lên hồn nhiên, trong sáng như một người bạn nhỏ của trẻ con, làm cho thế giới trong bài thơ gần gũi, dễ thương.</p>
+<p><b>5.</b> Điệp ngữ <b>"Từ"</b> đứng đầu <b>7 dòng</b> liên tiếp: "Từ cái bống cái bang / Từ cái hoa rất thơm / Từ cánh cò rất trắng / Từ vị gừng rất đắng / Từ vết lấm chưa khô / Từ đầu nguồn cơn mưa / Từ bãi sông cát vắng…". Từ <b>"rất"</b> cũng được lặp lại ở 3 dòng (<i>rất thơm, rất trắng, rất đắng</i>). Tác dụng: nhấn mạnh tiếng hát của mẹ được mang về <b>từ rất nhiều nơi</b>, từ những điều gần gũi, thơm, đắng, vui, vất vả của cuộc sống; tạo nhịp đều đặn, êm như lời ru.</p>
+</div>
+</div>
+</section>
+
+<!-- ============================ 4 ============================ -->
+<section id="s4" data-chang="☁️|Mây và sóng">
+<h2>4. Văn bản 2. <i>Mây và sóng</i> (Ra-bin-đơ-ra-nát Ta-go)</h2>
+<p class="muctieu">Sau chặng này, em kể lại được câu chuyện trong bài thơ theo đúng thứ tự, và nói được vì sao em bé không đi theo những người "trên mây", "trong sóng".</p>
+<p class="small muted">SGK trang 44 – 46.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Bài thơ này là lời một em bé kể cho mẹ nghe về hai lần được rủ đi chơi. Em đọc chậm, như chính em đang kể cho mẹ em nghe.</div></div>
+
+<h3>4.1. Trước khi đọc</h3>
+<p class="sgkq"><span class="n">?</span>Hãy tưởng tượng một lần em được mẹ cho phép đến nhà bạn chơi. Trò chơi đang vui và em rất muốn chơi tiếp thì đến giờ mẹ dặn phải trở về nhà. Khi ấy, em sẽ làm gì?</p>
+<p class="gm"><b>(gợi mở)</b> Trả lời thật lòng, không cần "ngoan". Em sẽ về ngay, xin thêm năm phút, hay…?</p>
+<div class="ghichep" data-luu="du-doan-vb2">
+  <p class="hoi">🔮 Bài thơ kể chuyện một em bé được mời đi chơi rất xa, lên tận mây, ra tận biển. Em đoán em bé có đi không? Vì sao em đoán thế?</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<h3>4.2. Trong khi đọc</h3>
+<div class="tablewrap"><table>
+<tr><th>Thẻ trong SGK</th><th>Dừng ở đâu</th><th>Câu hỏi gợi mở của cô</th></tr>
+<tr><td>🔎 <i>Hình dung:</i> Cảnh em bé trò chuyện với những người "trên mây" và "trong sóng".</td><td>Hết đoạn mây</td><td>Ai gọi, gọi đi đâu, hứa hẹn gì? Em bé trả lời ra sao?</td></tr>
+<tr><td>🔎 <i>Hình dung:</i> Niềm vui của em bé trong trò chơi với mẹ.</td><td>Hết bài</td><td>Trong trò chơi, con là gì, mẹ là gì? Con làm gì với mẹ?</td></tr>
+</table></div>
+
+<h4>Đoạn mây</h4>
+<p class="poem">Mẹ ơi, trên mây có người gọi con:<br>"Bọn tớ chơi từ khi thức dậy cho đến lúc chiều tà.<br>Bọn tớ chơi với bình minh vàng, bọn tớ chơi với vầng trăng bạc".<br>Con hỏi: "Nhưng làm thế nào mình lên đó được?".<br>Họ đáp: "Hãy đến nơi tận cùng trái đất, đưa tay lên trời, cậu sẽ được nhấc bổng lên tận tầng mây".<br>"Mẹ mình đang đợi ở nhà" – con bảo – "Làm sao có thể rời mẹ mà đến được?".<br>Thế là họ mỉm cười bay đi.<br>Nhưng con biết có trò chơi thú vị hơn, mẹ ạ.<br>Con là mây và mẹ sẽ là trăng.<br>Hai bàn tay con ôm lấy mẹ, và mái nhà ta sẽ là bầu trời xanh thẳm.</p>
+
+<div class="dung" data-giay="30"><p>🔎 <i>Hình dung:</i> Lời mời thật hấp dẫn. Vì sao em bé vẫn không đi? Tìm câu em bé nói ra lí do.</p></div>
+
+<h4>Đoạn sóng</h4>
+<p class="poem">Trong sóng có người gọi con:<br>"Bọn tớ ca hát từ sáng sớm cho đến hoàng hôn.<br>Bọn tớ ngao du nơi này nơi nọ mà không biết từng đến nơi nao".<br>Con hỏi: "Nhưng làm thế nào mình ra ngoài đó được?".<br>Họ nói: "Hãy đến rìa biển cả, nhắm nghiền mắt lại, cậu sẽ được làn sóng nâng đi".<br>Con bảo: "Buổi chiều mẹ luôn muốn mình ở nhà, làm sao có thể rời mẹ mà đi được?".<br>Thế là họ mỉm cười, nhảy múa lướt qua.<br>Nhưng con biết trò chơi khác hay hơn.<br>Con là sóng và mẹ sẽ là bến bờ kì lạ,<br>Con lăn, lăn, lăn mãi rồi sẽ cười vang vỡ tan vào lòng mẹ.<br>Và không ai trên thế gian này biết mẹ con ta ở chốn nào.</p>
+<p class="small muted">(Nguyễn Khắc Phi <i>dịch</i> (có tham khảo bản dịch của Đào Xuân Quý trong <i>Thơ Ta-go</i>, NXB Văn hoá – Thông tin, Hà Nội, 2000, tr. 137 – 138), <i>Ngữ văn 9</i>, tập hai, NXB Giáo dục Việt Nam, 2011, tr. 86 – 87)</p>
+<p class="small muted"><i>Tranh trong SGK trang 44 vẽ:</i> những đám mây trắng có mắt đang mỉm cười; phía dưới là những con sóng xanh có mắt, ngọn sóng bạc đầu cuộn lên.</p>
+
+<div class="xep" data-xep>
+  <h4>M1. Xếp đúng thứ tự câu chuyện em bé kể (luyện thêm)</h4>
+  <ol>
+    <li>Người trên mây gọi em bé đi chơi</li>
+    <li>Em bé hỏi làm thế nào lên được tầng mây</li>
+    <li>Em bé nhớ mẹ đợi ở nhà nên không đi</li>
+    <li>Em bé nghĩ ra trò chơi: con là mây, mẹ là trăng</li>
+    <li>Người trong sóng rủ em bé đi ngao du</li>
+    <li>Em bé nghĩ ra trò chơi: con là sóng, mẹ là bến bờ</li>
+  </ol>
+  <div class="why">Em đã thấy hai đoạn của bài thơ đi theo cùng một cách kể: được mời → hỏi → từ chối vì mẹ → nghĩ ra trò chơi với mẹ. Kể lặp lại như vậy mà vẫn đổi hình ảnh (mây → sóng).</div>
+</div>
+
+<div class="nhom" data-nhom="moi:Lời mời gọi|tu:Lời từ chối|choi:Trò chơi em bé nghĩ ra" data-sai="Em hỏi từng thẻ: ai nói câu này, và nói để làm gì — rủ đi, không đi, hay bày trò chơi với mẹ?">
+  <h4>M2. 🔎 Hình dung: mỗi câu này là lời mời, lời từ chối hay trò chơi em bé nghĩ ra? (luyện thêm)</h4>
+  <div class="nguon"><span data-vao="moi">Bọn tớ chơi với bình minh vàng, bọn tớ chơi với vầng trăng bạc</span><span data-vao="tu">Làm sao có thể rời mẹ mà đến được?</span><span data-vao="choi">Con là mây và mẹ sẽ là trăng.</span><span data-vao="moi">Hãy đến nơi tận cùng trái đất, đưa tay lên trời, cậu sẽ được nhấc bổng lên tận tầng mây</span><span data-vao="choi">Con là sóng và mẹ sẽ là bến bờ kì lạ,</span><span data-vao="tu">Mẹ mình đang đợi ở nhà</span></div>
+  <div class="why">Em đã thấy cả câu chuyện đi theo ba bước: được mời gọi → từ chối vì mẹ → nghĩ ra trò chơi được ở bên mẹ. Để ý: trò chơi nào em bé nghĩ ra cũng có mẹ ở ngay cạnh con. Tự kiểm tra: 2 + 2 + 2 = 6.</div>
+</div>
+
+<h3>4.3. Sau khi đọc</h3>
+<div class="xemlai" data-xem-lai="du-doan-vb2"><p>Đọc xong rồi. Em đã đoán em bé có đi không? Em bé đã chọn điều gì thay cho chuyến đi?</p></div>
+
+<div class="box key"><span class="label">📌 Tác giả, tác phẩm</span>
+<ul>
+<li><b>Ra-bin-đơ-ra-nát Ta-go</b> (1861 – 1941) là danh nhân văn hoá, nhà thơ hiện đại lớn nhất của Ấn Độ. Ông để lại một gia tài nghệ thuật đồ sộ, trong đó nổi tiếng nhất là các tác phẩm thơ ca. Thơ R. Ta-go chan chứa tình yêu đất nước, con người, cuộc sống,… Những tình cảm ấy được thể hiện một cách độc đáo qua những hình ảnh tưởng tượng huyền ảo lay động lòng người. Các tập thơ tiêu biểu của R. Ta-go: <i>Thơ Dâng</i>, <i>Người làm vườn</i>, <i>Những con chim bay lạc</i>, <i>Mùa hái quả</i>,…</li>
+<li>Bài thơ <i>Mây và sóng</i> được in trong tập <i>Trăng non</i> – tập thơ R. Ta-go viết cho trẻ thơ. Ban đầu, tập thơ được viết bằng tiếng Ben-gan (Bengal) có tên là <i>Trẻ thơ</i>, về sau, ông dịch ra tiếng Anh và đổi thành <i>Trăng non</i>.</li>
+</ul></div>
+
+<p><b>Trả lời câu hỏi (SGK) — đi từng bước</b></p>
+<p class="sgkq"><span class="n">1.</span>Đọc bài thơ <i>Mây và sóng</i>, ta như được nghe kể một câu chuyện. Theo em, ai đang kể chuyện với ai và kể về điều gì?</p>
+<p class="gm"><b>(gợi mở)</b> Nhìn hai chữ đầu bài thơ: em bé đang <b>nói với ai</b>? Em bé xưng là gì? Kể về điều gì: dùng bài M1 em vừa xếp.</p>
+<p class="sgkq"><span class="n">2.</span>Qua lời trò chuyện của những người "trên mây" và "trong sóng", em thấy thế giới của họ hiện lên như thế nào?</p>
+<p class="gm"><b>(gợi mở)</b> Chép lại hai lời của "bọn tớ" ở mỗi đoạn. Họ chơi với gì, chơi đến bao giờ, đi đến đâu?</p>
+<p class="sgkq"><span class="n">3.</span>Câu hỏi: "Nhưng làm thế nào mình lên đó được?", "Nhưng làm thế nào mình ra ngoài đó được?" thể hiện tâm trạng gì của em bé?</p>
+<p class="gm"><b>(gợi mở)</b> Nếu em bé không muốn đi, em bé có hỏi <i>làm thế nào</i> không? Câu hỏi ấy cho thấy em bé đang thấy thế nào?</p>
+
+<div class="dung" data-giay="30"><p>Em bé rất muốn đi — vậy mà cuối cùng không đi. Nếu là em, điều gì giữ chân em ở lại?</p></div>
+
+<p class="sgkq"><span class="n">4.</span>Vì sao em bé từ chối lời mời gọi của những người "trên mây" và "trong sóng"?</p>
+<p class="gm"><b>(gợi mở)</b> Tìm hai câu em bé trả lời. Cả hai câu đều nhắc đến ai?</p>
+<p class="sgkq"><span class="n">5.</span>Em bé đã sáng tạo ra những trò chơi gì? Em cảm nhận được gì về tình cảm mẹ con được thể hiện qua những trò chơi ấy?</p>
+<p class="gm"><b>(gợi mở)</b> Phần đầu: dùng bài xếp nhóm M2. Phần sau là câu hỏi mở: trong trò chơi, con và mẹ ở <b>gần nhau</b> hay xa nhau? Con làm gì với mẹ?</p>
+<p class="sgkq"><span class="n">6.</span>Văn bản <i>Mây và sóng</i> có hình thức khác với văn bản <i>Chuyện cổ tích về loài người</i> (số tiếng trong các dòng không bằng nhau, không vần,…). Vì sao nó vẫn được coi là văn bản thơ?</p>
+<p class="gm"><b>(gợi mở)</b> Mở lại khối 📌 <i>Một số đặc điểm của thơ</i>. Bỏ qua ý về số tiếng. Còn hai ý kia (ngôn ngữ, nội dung) — bài <i>Mây và sóng</i> có không? Tìm bằng chứng.</p>
+
+<div class="ghichep" data-luu="nhat-ki-vb2" data-cam-xuc="🥰 Thương mẹ|😊 Vui|😮 Ngạc nhiên|🤔 Phân vân|😢 Xúc động">
+  <p class="hoi">💭 Nếu là em bé, lúc được mời lên mây, em có muốn đi không? Câu thơ nào làm em thấy thương mẹ nhất?</p>
+  <textarea rows="3"></textarea>
+</div>
+
+<h3>4.4. Viết kết nối với đọc</h3>
+<p class="sgkq"><span class="n">✎</span>Hãy tưởng tượng em là người đang trò chuyện với mây và sóng. Viết đoạn văn (khoảng 5 – 7 câu) về cuộc trò chuyện ấy.</p>
+<ol class="steps">
+<li><b>Em là ai trong cuộc trò chuyện?</b> Em xưng <i>tôi</i> hoặc <i>em</i>, và mây, sóng gọi em thế nào?</li>
+<li><b>Mây, sóng mời em làm gì?</b> Em có thể giữ lời mời trong bài thơ hoặc nghĩ lời mời mới, nhưng phải hợp với mây (bay trên trời) và sóng (ngao du trên biển).</li>
+<li><b>Em trả lời thế nào, vì sao?</b> Đây là phần quan trọng nhất — nó cho thấy tình cảm của em.</li>
+<li>Nếu có lời nói trực tiếp, đặt trong <b>dấu ngoặc kép</b> như bài thơ (xem câu 4, trang 47).</li>
+<li>Viết thành một đoạn, 5 – 7 câu.</li>
+</ol>
+<p class="gm"><b>(gợi mở)</b> Cô làm mẫu một câu mở đoạn thôi, phần còn lại em tự viết: <i>Chiều hôm ấy, khi em đang ngồi bên cửa sổ, một đám mây trắng sà xuống thật thấp và gọi tên em.</i></p>
+<div class="tablewrap"><table>
+<tr><th>Bảng kiểm đoạn văn</th><th>Đạt?</th></tr>
+<tr><td>Một đoạn văn, khoảng 5 – 7 câu</td><td></td></tr>
+<tr><td>Có lời của mây (hoặc sóng) và lời của em</td><td></td></tr>
+<tr><td>Lời nói trực tiếp đặt trong dấu ngoặc kép</td><td></td></tr>
+<tr><td>Câu trả lời của em nói rõ lí do, thể hiện tình cảm của em</td><td></td></tr>
+<tr><td>Không mắc lỗi chính tả, dấu câu</td><td></td></tr>
+</table></div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Văn bản 2</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-vb2">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-vb2">
+<p><b>1.</b> <b>Em bé kể với mẹ</b> ("Mẹ ơi, trên mây có người gọi con"; em bé xưng <i>con</i>). Em bé kể chuyện những người "trên mây" và "trong sóng" rủ em đi chơi, em từ chối vì mẹ, rồi nghĩ ra những trò chơi với mẹ còn hay hơn.</p>
+<p><b>2.</b> Thế giới <b>vui, đẹp, tự do</b>: "Bọn tớ chơi từ khi thức dậy cho đến lúc chiều tà", "Bọn tớ chơi với bình minh vàng, bọn tớ chơi với vầng trăng bạc"; "Bọn tớ ca hát từ sáng sớm cho đến hoàng hôn", "Bọn tớ ngao du nơi này nơi nọ mà không biết từng đến nơi nao". Chơi suốt ngày, được đi khắp nơi — rất hấp dẫn với một em bé.</p>
+<p><b>3.</b> Em bé <b>háo hức, tò mò, rất muốn đi</b> — muốn biết cách để lên được đó, ra được đó. (Bài tham khảo ở phần Viết cũng gọi đây là "câu hỏi háo hức".)</p>
+<p><b>4.</b> Vì <b>thương mẹ, không muốn mẹ phải chờ, không muốn rời mẹ</b>: "Mẹ mình đang đợi ở nhà" – "Làm sao có thể rời mẹ mà đến được?"; "Buổi chiều mẹ luôn muốn mình ở nhà, làm sao có thể rời mẹ mà đi được?". Tình yêu mẹ thắng được sức hấp dẫn của thế giới "trên mây", "trong sóng".</p>
+<p><b>5.</b> Trò chơi: con là <b>mây</b>, mẹ là <b>trăng</b>, "Hai bàn tay con ôm lấy mẹ, và mái nhà ta sẽ là bầu trời xanh thẳm"; con là <b>sóng</b>, mẹ là <b>bến bờ kì lạ</b>, "Con lăn, lăn, lăn mãi rồi sẽ cười vang vỡ tan vào lòng mẹ". Cảm nhận (câu mở): trong cả hai trò chơi, con luôn <b>ở trong vòng tay mẹ</b>; em bé vừa được chơi như mây, như sóng, vừa không phải xa mẹ. Câu cuối "không ai trên thế gian này biết mẹ con ta ở chốn nào" cho thấy thế giới của hai mẹ con là riêng, là bí mật, hạnh phúc.</p>
+<p><b>6.</b> Vẫn là thơ vì: <b>ngôn ngữ giàu hình ảnh</b> (mây, sóng, trăng, bến bờ, bầu trời xanh thẳm) và có <b>biện pháp tu từ</b> (ẩn dụ: "mây", "sóng" — những người "trên mây", "trong sóng", như SGK gọi ở câu 1 trang 47; điệp ngữ: "lăn, lăn, lăn"); <b>nội dung chủ yếu là tình cảm</b> — tình yêu mẹ của em bé. Hai đoạn được kể theo cùng một cách, lặp lại cùng kiểu câu (… có người gọi con; Con hỏi; Thế là họ mỉm cười; Nhưng con biết…) tạo nên nhịp điệu cho bài thơ. (Lưu ý: em đang đọc <b>bản dịch</b> tiếng Việt, nên số tiếng, vần của bản gốc không còn giữ được.)</p>
+<p><b>Viết kết nối với đọc:</b> không có đáp án chung. Đoạn văn tốt có cả lời mời, lời trả lời, và lí do của em — lí do ấy phải cho thấy em yêu ai, nghĩ gì.</p>
+</div>
+</div>
+</section>
+
+<!-- ============================ 5 ============================ -->
+<section id="s5" data-chang="✨|Tiếng Việt 2">
+<h2>5. Thực hành tiếng Việt (trang 47)</h2>
+<p class="muctieu">Sau chặng này, em nhận biết được ẩn dụ và nói được tác dụng của nó, chỉ ra được điệp ngữ, dấu câu đánh dấu lời nói trực tiếp và nghĩa của đại từ bọn tớ trong Mây và sóng.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Hôm nay em gặp ẩn dụ lần đầu. Mình học từ hai ví dụ của SGK trước, rồi mới đi tìm ẩn dụ trong <i>Mây và sóng</i>.</div></div>
+
+<h3>5.1. Biện pháp tu từ — ẩn dụ và điệp ngữ</h3>
+<div class="box key"><span class="label">📌 Nhận biết ẩn dụ</span>
+<p>Đọc những dòng thơ sau và chú ý các từ được in đậm:</p>
+<p class="poem"><b>Mặt trời</b> của bắp thì nằm trên đồi<br><b>Mặt trời</b> của mẹ, em nằm trên lưng.</p>
+<p class="small">(Nguyễn Khoa Điềm, <i>Khúc hát ru những em bé lớn trên lưng mẹ</i>)</p>
+<p class="poem">Cha lại dắt con đi trên cát mịn<br>Ánh nắng <b>chảy</b> đầy vai.</p>
+<p class="small">(Hoàng Trung Thông, <i>Những cánh buồm</i>)</p>
+<p>Từ <b>mặt trời</b> trong dòng thơ <i><b>Mặt trời</b> của mẹ, em nằm trên lưng</i> được dùng để chỉ em bé đã nói lên tình yêu con tha thiết của người mẹ. Con cũng giống như mặt trời toả sáng trong cuộc đời mẹ. Từ <b>chảy</b> trong dòng thơ <i>Ánh nắng <b>chảy</b> đầy vai</i> vốn chỉ sự vận động của chất lỏng, được Hoàng Trung Thông dùng với ánh nắng, giúp người đọc cảm nhận được ánh nắng vàng rực tràn trề trên vai hai cha con và lan toả khắp không gian.</p></div>
+
+<div class="box tip"><span class="label">Cách nhận ra một ẩn dụ — ba câu hỏi (gợi ý của cô, dựa trên hộp 📌)</span>
+<ol><li>Từ này <b>nghĩa thường ngày</b> chỉ cái gì? (<i>mặt trời</i> = vầng sáng trên trời)</li><li>Trong câu thơ, nó <b>thật ra</b> chỉ cái gì? (em bé)</li><li>Hai cái ấy <b>giống nhau</b> ở điểm nào? (con toả sáng trong cuộc đời mẹ, như mặt trời) — và <b>không có</b> từ so sánh.</li></ol></div>
+
+<p class="sgkq"><span class="n">1.</span>Trong bài thơ <i>Mây và sóng</i>, "mây" và "sóng" là những hình ảnh ẩn dụ. Hai hình ảnh ấy có thể gợi cho em liên tưởng tới những đối tượng nào?</p>
+<p class="gm"><b>(gợi mở)</b> Dùng ba câu hỏi trên. Những người "trên mây", "trong sóng" mời em bé điều gì? Ngoài đời, những gì cũng mời gọi trẻ con như thế?</p>
+
+<p class="sgkq"><span class="n">2.</span>Xác định biện pháp tu từ được sử dụng trong hình ảnh "bình minh vàng", "vầng trăng bạc" và nêu tác dụng của biện pháp tu từ đó.</p>
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Tớ đoán "bình minh vàng" là so sánh, vì bình minh giống vàng mà!</div></div>
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Em tìm giúp cô từ so sánh trong cụm <i>bình minh vàng</i> nhé. Nếu không tìm thấy, em dùng ba câu hỏi ở hộp xanh: <i>vàng</i> nghĩa thường ngày là gì?</div></div>
+<div class="quiz">
+  <div class="q" data-ans="ad"><div class="stem"><b>D1.</b> Hình ảnh <i>bình minh vàng</i>, <i>vầng trăng bạc</i> dùng biện pháp tu từ nào? (luyện thêm)</div>
+    <button class="opt" type="button" data-v="ss">So sánh</button><button class="opt" type="button" data-v="ad">Ẩn dụ</button><button class="opt" type="button" data-v="dn">Điệp ngữ</button>
+    <div class="why">Ẩn dụ: <i>vàng</i>, <i>bạc</i> vốn là tên hai thứ kim loại quý, được dùng để gọi màu ánh bình minh, ánh trăng, dựa trên nét giống nhau về màu sắc, ánh sáng. Không có từ so sánh nào.</div></div>
+</div>
+
+<p class="sgkq"><span class="n">3.</span>Xác định và nêu tác dụng của biện pháp tu từ điệp ngữ trong đoạn thơ sau:</p>
+<div class="box quote"><p class="poem">Nhưng con biết trò chơi khác hay hơn.<br>Con là sóng và mẹ sẽ là bến bờ kì lạ,<br>Con lăn, lăn, lăn mãi rồi sẽ cười vang vỡ tan vào lòng mẹ.<br>Và không ai trên thế gian này biết mẹ con ta ở chốn nào.</p></div>
+<p class="gm"><b>(gợi mở)</b> Từ nào được nhắc lại <b>liền nhau</b>? Đọc to dòng ấy — em hình dung con sóng đang làm gì?</p>
+<div class="tosang" data-tosang>
+  <h4>D2. Bấm vào từng lần xuất hiện của từ được nhắc lại liền nhau (điệp ngữ) (luyện thêm)</h4>
+  <div class="doan"><p>Con là <span class="t">sóng</span> và mẹ sẽ là <span class="t">bến bờ kì lạ</span>,<br>Con <span class="t" data-dung>lăn</span>, <span class="t" data-dung>lăn</span>, <span class="t" data-dung>lăn</span> mãi rồi sẽ <span class="t">cười vang</span> <span class="t">vỡ tan</span> vào lòng mẹ.</p></div>
+  <div class="why">Em đã tô đủ ba chữ <i>lăn</i> đứng liền nhau. Đọc liền ba chữ, em như thấy con sóng cuộn mãi không ngừng vào lòng mẹ.</div>
+</div>
+
+<h3>5.2. Dấu câu</h3>
+<p class="sgkq"><span class="n">4.</span>Trong bài thơ <i>Mây và sóng</i> có nhiều đoạn dẫn lời nói trực tiếp của các nhân vật. Hãy cho biết dấu câu nào được dùng để đánh dấu những lời nói trực tiếp đó.</p>
+<p class="gm"><b>(gợi mở)</b> Nhìn dòng <i>Con hỏi: …</i> ở đoạn mây. Lời em bé hỏi được đặt giữa cặp dấu gì? Dấu nào đứng ngay trước cặp dấu ấy?</p>
+<div class="quiz">
+  <div class="q" data-ans="nk"><div class="stem"><b>D3.</b> Lời nói trực tiếp của các nhân vật trong <i>Mây và sóng</i> được đánh dấu bằng dấu câu nào? (luyện thêm) <span class="src">— "Mẹ mình đang đợi ở nhà" – con bảo – "Làm sao có thể rời mẹ mà đến được?".</span></div>
+    <button class="opt" type="button" data-v="nd">Dấu ngoặc đơn</button><button class="opt" type="button" data-v="nk">Dấu ngoặc kép</button><button class="opt" type="button" data-v="ct">Dấu chấm than</button>
+    <div class="why">Dấu ngoặc kép, thường đứng sau dấu hai chấm (Con hỏi: "…"; Họ đáp: "…").</div></div>
+</div>
+
+<div class="nhom" data-nhom="ho:Lời những người “trên mây”, “trong sóng”|be:Lời em bé">
+  <h4>D4. Ai nói câu này? Xếp mỗi lời nói trực tiếp vào đúng nhóm (luyện thêm)</h4>
+  <p class="small muted">Mẹo: để ý cách xưng hô trong câu — ai xưng <i>bọn tớ</i>, gọi người kia là <i>cậu</i>; ai tự xưng <i>mình</i>?</p>
+  <div class="nguon"><span data-vao="ho">Bọn tớ chơi từ khi thức dậy cho đến lúc chiều tà.</span><span data-vao="be">Nhưng làm thế nào mình lên đó được?</span><span data-vao="ho">Hãy đến rìa biển cả, nhắm nghiền mắt lại, cậu sẽ được làn sóng nâng đi</span><span data-vao="be">Nhưng làm thế nào mình ra ngoài đó được?</span><span data-vao="ho">Bọn tớ ngao du nơi này nơi nọ mà không biết từng đến nơi nao</span><span data-vao="be">Buổi chiều mẹ luôn muốn mình ở nhà, làm sao có thể rời mẹ mà đi được?</span></div>
+  <div class="why">Em đã dựa vào từ xưng hô để nhận ra người nói: những người kia xưng <i>bọn tớ</i>, gọi em bé là <i>cậu</i>; em bé tự xưng <i>mình</i>. Tự kiểm tra: 3 + 3 = 6.</div>
+</div>
+
+<h3>5.3. Đại từ</h3>
+<div class="box"><span class="label">Ghi nhớ từ tiểu học</span>
+<p><b>Đại từ xưng hô</b> là từ người nói dùng để tự xưng hoặc để gọi người khác (<i>tôi, tớ, mình, chúng tôi, chúng ta, bạn, cậu…</i>).</p></div>
+<p class="sgkq"><span class="n">5.</span><i>Bọn tớ</i> trong những lời nói trực tiếp ở bài <i>Mây và sóng</i> dùng để chỉ những ai?</p>
+<p class="gm"><b>(gợi mở)</b> <i>Bọn tớ</i> xuất hiện ở câu ngay sau "trên mây có người gọi con" và "Trong sóng có người gọi con". Ai đang nói những câu ấy?</p>
+<div class="quiz">
+  <div class="q" data-ans="b"><div class="stem"><b>D5.</b> <i>Bọn tớ</i> trong <i>Mây và sóng</i> chỉ những ai? (luyện thêm) <span class="src">— "Bọn tớ chơi với bình minh vàng, bọn tớ chơi với vầng trăng bạc".</span></div>
+    <button class="opt" type="button" data-v="a">(a) Em bé và mẹ</button><button class="opt" type="button" data-v="b">(b) Những người "trên mây" và những người "trong sóng"</button><button class="opt" type="button" data-v="c">(c) Em bé và những người "trên mây"</button>
+    <div class="why">Những người "trên mây" (đoạn đầu) và những người "trong sóng" (đoạn sau) — những người đang rủ em bé. <i>Bọn tớ</i> không gồm em bé.</div></div>
+</div>
+
+<p class="sgkq"><span class="n">6.</span>Trong tiếng Việt, ngoài <i>bọn tớ</i> còn có một số đại từ nhân xưng khác cũng thuộc ngôi thứ nhất số nhiều như <i>chúng ta</i>, <i>chúng tôi</i>, <i>bọn mình</i>, <i>chúng tớ</i>,… Có thể dùng một từ nào trong số đó để thay cho <i>bọn tớ</i> trong bản dịch không? Vì sao?</p>
+<p class="gm"><b>(gợi mở)</b> Thử thay từng từ vào câu <i>Bọn tớ chơi với bình minh vàng</i> rồi đọc to. Hỏi hai câu: (1) <i>Chúng ta</i> có tính cả <b>em bé</b> (người nghe) vào không — mà em bé đâu có ở trên mây? (2) Từ nào nghe giống <b>trẻ con rủ nhau đi chơi</b>, từ nào nghe như người lớn nói?</p>
+<div class="dung" data-giay="45"><p>Em đọc to lần lượt: <i>Chúng tôi chơi với bình minh vàng</i> — <i>Chúng ta chơi với bình minh vàng</i> — <i>Bọn tớ chơi với bình minh vàng</i>. Câu nào nghe giống lời rủ rê tinh nghịch nhất?</p></div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Thực hành tiếng Việt (trang 47)</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-tv2">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-tv2">
+<p><b>1.</b> Câu hỏi có nhiều cách trả lời, miễn có lí do. "Mây", "sóng" (những người trên mây, trong sóng) có thể gợi liên tưởng tới: <b>những thú vui, trò chơi hấp dẫn</b> ở bên ngoài; <b>những lời rủ rê, cám dỗ</b> có thể kéo trẻ con rời xa mẹ, xa gia đình; <b>những miền đất xa lạ, kì thú</b> mà trẻ con muốn khám phá. Nét tương đồng: mây, sóng bay đi, trôi đi khắp nơi, đẹp và cuốn hút, nhưng không ở yên một chỗ.</p>
+<p><b>2.</b> <b>Ẩn dụ.</b> <i>Vàng</i> và <i>bạc</i> vốn là tên hai thứ kim loại quý, sáng lấp lánh. Nhà thơ dùng <i>vàng</i> để gọi màu ánh bình minh, <i>bạc</i> để gọi màu ánh trăng — dựa trên nét giống nhau về màu sắc, ánh sáng. Tác dụng: gợi vẻ đẹp <b>rực rỡ, lung linh, quý giá</b> của thế giới trên mây, làm lời mời thêm hấp dẫn.</p>
+<p><b>3.</b> Điệp ngữ <b>"lăn, lăn, lăn"</b> (từ <i>lăn</i> lặp lại ba lần liền). Tác dụng: gợi những con sóng cuộn mãi không ngừng, niềm vui tinh nghịch không dứt của em bé; nhấn mạnh con muốn <b>mãi mãi</b> được quấn quýt, được "vỡ tan vào lòng mẹ". (Em cũng có thể nêu: kiểu câu <i>Con là … và mẹ sẽ là …</i> được lặp lại từ đoạn mây sang đoạn sóng.)</p>
+<p><b>4.</b> <b>Dấu ngoặc kép</b>, thường đi sau <b>dấu hai chấm</b>. Ở câu "Mẹ mình đang đợi ở nhà" – con bảo – "Làm sao có thể rời mẹ mà đến được?", lời người kể (<i>con bảo</i>) xen giữa hai phần lời nói trực tiếp và được ngăn bằng hai dấu gạch ngang.</p>
+<p><b>5.</b> <i>Bọn tớ</i> chỉ <b>những người "trên mây"</b> (đoạn đầu) và <b>những người "trong sóng"</b> (đoạn sau) — những người đang rủ em bé đi chơi. <i>Bọn tớ</i> không gồm em bé.</p>
+<p><b>6.</b> Câu hỏi có thể trả lời theo nhiều hướng, cần có lí do. Một hướng: không nên dùng <i>chúng ta</i> hay <i>bọn mình</i> (có thể hiểu là gồm cả em bé), vì những người trên mây, trong sóng đang nói về <b>riêng nhóm họ</b>. <i>Chúng tôi</i> đúng nghĩa nhưng nghe <b>trang trọng, xa cách</b>. <i>Chúng tớ</i> gần với <i>bọn tớ</i> nhất, có thể dùng được; nhưng <i>bọn tớ</i> nghe <b>thân mật, tinh nghịch, hồn nhiên</b> hơn — đúng giọng những người bạn đang rủ rê, hợp với thế giới trẻ thơ của bài thơ.</p>
+</div>
+</div>
+</section>
+
+<!-- ============================ 6 ============================ -->
+<section id="s6" data-chang="🎨|Bức tranh">
+<h2>6. Văn bản 3. <i>Bức tranh của em gái tôi</i> (Tạ Duy Anh)</h2>
+<p class="muctieu">Sau chặng này, em chỉ ra được người kể chuyện, kể lại được những thay đổi trong lòng người anh, và tìm được chi tiết làm bằng chứng cho mỗi thay đổi.</p>
+<p class="small muted">SGK trang 48 – 51.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Đây là một truyện ngắn, kể về một người anh và cô em gái mê vẽ. Truyện có một kết thúc bất ngờ — em đọc lần lượt từng phần, đừng nhảy xuống cuối trước nhé!</div></div>
+
+
+<h3>6.1. Khởi động (gợi mở)</h3>
+<p class="gm"><b>(gợi mở)</b> Em đã bao giờ thấy <b>khó chịu</b> khi anh chị em hay bạn thân được khen nhiều hơn mình chưa? Lúc đó em đã làm gì?</p>
+<div class="ghichep" data-luu="du-doan-vb3">
+  <p class="hoi">🔮 Nhan đề là <i>Bức tranh của em gái tôi</i>. Em đoán cô em gái sẽ vẽ gì?</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<h3>6.2. Đọc văn bản</h3>
+<p>Theo chú thích SGK: <i>Tạ Duy Anh sinh năm 1959 tại Hà Nội. Truyện viết cho thiếu nhi của Tạ Duy Anh trong sáng, đậm chất thơ và giàu ý nghĩa nhân văn.</i></p>
+
+<p><b>Từ khó — lật thẻ trước khi đọc</b> (mặt sau là chú thích của SGK):</p>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">lục lọi</span><span class="ms">tìm kĩ lưỡng, tỉ mỉ mọi chỗ, mọi nơi.</span></button>
+  <button class="the" type="button"><span class="mt">nhọ nồi</span><span class="ms">bụi đen bám ở đáy và xung quanh nồi, chảo,… khi người ta đun nấu bằng củi, than, rơm rạ,…</span></button>
+  <button class="the" type="button"><span class="mt">bại lộ</span><span class="ms">vỡ lở, không giấu giếm được nữa. Ở đây ý nói việc vẽ tranh của bé Mèo được mọi người phát hiện ra.</span></button>
+  <button class="the" type="button"><span class="mt">mừng quýnh</span><span class="ms">mừng quá đến mức cuống quýt.</span></button>
+  <button class="the" type="button"><span class="mt">thiên tài</span><span class="ms">tài năng nổi bật, hơn hẳn mọi người, dường như là được trời phú cho.</span></button>
+  <button class="the" type="button"><span class="mt">thẩm định</span><span class="ms">xem xét nhằm đánh giá để xác định, quyết định.</span></button>
+  <button class="the" type="button"><span class="mt">xét nét</span><span class="ms">để ý từng cái quá nhỏ nhặt để đánh giá, nhận xét con người. Ở đây có nghĩa là chú ý, quan sát rất kĩ.</span></button>
+  <button class="the" type="button"><span class="mt">nhập tâm</span><span class="ms">nhớ rất rõ, rất kĩ, như khắc sâu trong lòng.</span></button>
+  <button class="the" type="button"><span class="mt">sững</span><span class="ms">ở vào trạng thái bất động, đờ người ra trong giây lát, do chịu một tác động tinh thần mạnh đột ngột. Ở đây là trạng thái của người anh khi thấy hình ảnh của mình trong tranh em gái vẽ.</span></button>
+  <button class="the" type="button"><span class="mt">thôi miên</span><span class="ms">tác động vào tâm lí của một người nào đó, gây ra trạng thái tựa như ngủ, làm cho dễ dàng chịu sự điều khiển của mình. Ở đây chỉ trạng thái bất ngờ đến lặng người của người anh trai khi nhìn thấy mình trong bức tranh của em gái.</span></button>
+</div>
+
+<p>Truyện được chép đủ dưới đây, cô chia làm <b>bốn phần</b>. Hết mỗi phần có một chỗ dừng lại nghĩ.</p>
+
+<h4>Phần 1. Cô em gái bí mật</h4>
+<div class="box quote">
+<p class="small muted"><i>Bức tranh của em gái tôi</i> — Tạ Duy Anh</p>
+<p>Em gái tôi tên là Kiều Phương, nhưng tôi quen gọi nó là Mèo bởi vì mặt nó luôn bị chính nó bôi bẩn. Nó vui vẻ chấp nhận cái tên tôi tặng cho và hơn thế, còn dùng để xưng hô với bạn bè. Mèo rất hay lục lọi các đồ vật với một sự thích thú đến khó chịu.</p>
+<p>– Này, em không để chúng nó yên được à?</p>
+<p>Nó vênh mặt:</p>
+<p>– Mèo mà lại! Em không phá là được…</p>
+<p>Một hôm tôi bắt gặp nó nhào một thứ bột gì đó đen sì, trông rất sợ, thỉnh thoảng lại bôi ra cổ tay. Trời ạ, thì ra nó chế thuốc vẽ. Thảo nào các đít xoong chảo bị nó cạo trắng cả. Tôi quyết định bí mật theo dõi em gái tôi. Sau khi có vẻ đã hài lòng, nó lôi trong túi ra ba bốn lọ nhỏ, cái màu đỏ, cái màu vàng, cái màu xanh lục,… đều do nó tự chế. Nó đưa mắt canh chừng rồi lại nhét tất cả vào túi sau khi cho màu đen nhọ nồi vào một cái lọ còn bỏ không.</p>
+<p>Xong, nó vui vẻ chạy đi làm những việc bố mẹ tôi phân công, vừa làm vừa hát, có vẻ vui lắm.</p>
+</div>
+<p class="small muted"><i>Tranh trong SGK trang 48 vẽ:</i> cô bé tóc buộc hai bên, áo cam, ngồi bệt trên nền nhà lát gạch men xanh, trước mặt là tờ giấy vẽ, các lọ màu, bút lông vương vãi; một chú mèo vằn nằm bên cạnh.</p>
+<div class="dung"><p>Ai đang kể? Người kể gọi em gái bằng tên gì, và vì sao? Mèo làm màu vẽ từ những thứ gì?</p></div>
+
+<h4>Phần 2. Bí mật bị phát hiện</h4>
+<div class="box quote">
+<p>Nhưng mọi bí mật của Mèo cuối cùng cũng bị bại lộ. Hôm đó, chú Tiến Lê – hoạ sĩ, bạn thân của bố tôi – đưa theo bé Quỳnh đến chơi. Vớ được bạn gái nó mừng quýnh lên. Hai đứa lôi nhau ra vườn. Tại đây Mèo đưa toàn bộ những bức tranh nó vẽ giấu ra cho bé Quỳnh xem. Chỉ thấy bé Quỳnh thỉnh thoảng lại reo lên khe khẽ. Lát sau bé Quỳnh chạy vào thì thầm gì đó với chú Tiến Lê khiến chú phải xin phép bố tôi theo bé Quỳnh ra vườn. Lúc đó, tôi đang mải mê với chiếc diều nên không biết có chuyện gì xảy ra. Chỉ thấy từ ngoài vườn trở vào, mặt chú Tiến Lê rạng rỡ lắm:</p>
+<p>– Anh chị có phúc lớn rồi. Anh có biết con gái anh là một thiên tài hội hoạ không?</p>
+<p>Chú trải sáu bức tranh do Mèo vẽ ra trước mặt bố tôi. Đến lượt bố tôi ngây người ra như không tin vào mắt mình.</p>
+<p>– Con gái tôi vẽ đây ư? Chả lẽ lại đúng là nó, cái con Mèo hay lục lọi ấy?</p>
+<p>Và ông không kìm được, ôm thốc Mèo lên:</p>
+<p>– Ôi, con đã cho bố một bất ngờ quá lớn.</p>
+<p>Mẹ tôi vừa về, kịp nghe và kịp chứng kiến tất cả, cũng không kìm được xúc động. Theo chú Tiến Lê thì những bức tranh của Mèo rất độc đáo, có thể đem đóng khung treo ở bất cứ phòng tranh nào. Bố mẹ tôi rất tin vào thẩm định của chú Tiến Lê. Chú còn hứa sẽ giúp em gái tôi để nó phát huy tài năng.</p>
+</div>
+<div class="dung" data-giay="20"><p>Cả nhà vui mừng. Em đoán người anh — lúc ấy đang mải mê với chiếc diều — sẽ cảm thấy thế nào?</p></div>
+
+<h4>Phần 3. Người anh</h4>
+<div class="box quote">
+<p>Kể từ hôm đó, mặc dù mọi chuyện vẫn như cũ trong căn nhà của chúng tôi, nhưng tôi luôn luôn cảm thấy mình bất tài nên bị đẩy ra ngoài. Những lúc ngồi bên bàn học, tôi chỉ muốn gục đầu xuống khóc.</p>
+<p>Tôi chẳng tìm thấy ở tôi một năng khiếu gì. Và không hiểu vì sao tôi không thể thân với Mèo như trước kia được nữa. Chỉ cần một lỗi nhỏ ở nó là tôi gắt um lên.</p>
+<p>Tôi quyết định làm một việc mà tôi vẫn coi khinh: xem trộm những bức tranh của Mèo. Dường như mọi thứ có trong ngôi nhà của chúng tôi đều được nó đưa vào tranh. Mặc dù nó vẽ bằng những nét to tướng, nhưng ngay cả cái bát múc cám lợn sứt một miếng, cũng trở nên ngộ nghĩnh. Con mèo vằn vào tranh nó, to hơn cả con hổ nhưng nét mặt lại vô cùng dễ mến. Có cảm tưởng nó biết mọi việc chúng tôi làm và lơ đi vì không chấp trẻ con.</p>
+<p>Gấp lại những bức tranh của Mèo, tôi lén trút ra một tiếng thở dài…</p>
+<p>Bố mẹ tôi hào hứng mua sắm cho em gái tôi tất cả những gì cần cho công việc vẽ. Chú Tiến Lê tặng "đồng nghiệp" hẳn một hộp màu ngoại xịn. Chỉ có mặt Mèo là không thay đổi. Lúc nào cũng lem nhem, bị tôi quát thì xịu xuống, miệng dẩu ra. Tôi từng thấy nó rất ngộ với vẻ mặt ấy. Nhưng đấy là trước kia. Bây giờ tôi cảm thấy nó như chọc tức tôi…</p>
+</div>
+<div class="dung" data-giay="30"><p>Cả nhà vui mừng, sao người anh lại muốn khóc? Em đặt mình vào chỗ người anh: nếu là em, em có thấy như vậy không?</p></div>
+
+<div class="dung"><p>🔮 Sắp đến trại thi vẽ. Chú Tiến Lê dặn Mèo: hãy vẽ cái gì thân thuộc nhất. Em còn giữ dự đoán lúc đầu về bức tranh không, hay muốn đổi? Đọc tiếp phần cuối để biết.</p></div>
+
+<h4>Phần 4. Trại thi vẽ và phòng tranh</h4>
+<div class="box quote">
+<p>Rồi cả nhà – trừ tôi – vui như tết khi bé Phương, qua giới thiệu của chú Tiến Lê, được mời tham gia trại thi vẽ Quốc tế. Luật của cuộc thi là thí sinh phải vẽ một bức tranh theo đề tài tự chọn ngay trước mắt ban giám khảo. Trước khi đi thi, nó có vẻ cứ hay xét nét tôi, khiến tôi rất khó chịu. Nó nhập tâm lời dạy của chú Tiến Lê: "Cháu hãy vẽ cái gì thân thuộc nhất với cháu". Một tuần sau em gái tôi trở về trong vòng tay dang sẵn của cả bố và mẹ tôi: Bức tranh của nó được trao giải nhất. Nó lao vào ôm cổ tôi, nhưng tôi viện cớ đang dở việc đẩy nhẹ nó ra. Tuy thế nó vẫn kịp thì thầm vào tai tôi: "Em muốn cả anh cũng đi nhận giải".</p>
+<p>Trong gian phòng lớn tràn ngập ánh sáng, những bức tranh của thí sinh treo kín bốn bức tường. Bố, mẹ tôi kéo tôi chen qua đám đông để xem bức tranh của Kiều Phương đã được đóng khung, lồng kính. Trong tranh, một chú bé đang ngồi nhìn ra ngoài cửa sổ, nơi bầu trời trong xanh. Mặt chú bé như toả ra một ánh sáng rất lạ. Toát lên từ cặp mắt, tư thế ngồi của chú không chỉ sự suy tư mà còn rất mơ mộng nữa. Mẹ hồi hộp thì thầm vào tai tôi:</p>
+<p>– Con có nhận ra con không?</p>
+<p>Tôi giật sững người. Chẳng hiểu sao tôi phải bám chặt lấy tay mẹ. Thoạt tiên là sự ngỡ ngàng, rồi đến hãnh diện, sau đó là xấu hổ. Dưới mắt em tôi, tôi hoàn hảo đến thế kia ư? Tôi nhìn như thôi miên vào dòng chữ đề trên bức tranh: "Anh trai tôi". Vậy mà dưới mắt tôi thì…</p>
+<p>– Con đã nhận ra con chưa? – Mẹ vẫn rất hồi hộp.</p>
+<p>Tôi không trả lời mẹ vì tôi muốn khóc quá. Bởi vì nếu nói được với mẹ, tôi sẽ nói rằng: "Không phải con đâu. Đấy là tâm hồn và lòng nhân hậu của em gái con đấy".</p>
+<p class="small muted">(Tạ Duy Anh, <i>Bản nhạc con đà điểu</i>, NXB Kim Đồng, Hà Nội, 2016, tr. 45 – 50)</p>
+</div>
+<p class="small muted"><i>Tranh trong SGK trang 50 vẽ:</i> trong phòng trưng bày tranh, bố mẹ và hai đứa trẻ đứng trong đám đông; một người đang chỉ tay lên bức tranh đóng khung có đèn rọi, trong tranh là hình một cậu bé.</p>
+<div class="dung" data-giay="30"><p>Câu bỏ lửng: <i>Vậy mà dưới mắt tôi thì…</i> Người anh định nói tiếp điều gì mà không nói ra?</p></div>
+
+<div class="xep" data-xep data-sai="Em lướt lại bốn phần của truyện: mỗi thẻ nằm ở phần nào?">
+  <h4>B1. Xếp các sự việc theo đúng trình tự của truyện (luyện thêm)</h4>
+  <ol>
+    <li>Người anh phát hiện Mèo bí mật tự chế màu vẽ</li>
+    <li>Chú Tiến Lê xem tranh, khen Mèo là thiên tài hội hoạ</li>
+    <li>Người anh thấy mình bất tài, hay gắt với em</li>
+    <li>Người anh xem trộm tranh của em rồi thở dài</li>
+    <li>Mèo được giải nhất trại thi vẽ Quốc tế</li>
+    <li>Người anh đứng trước bức tranh em vẽ chính mình</li>
+  </ol>
+  <div class="why">Em đã nắm được cốt truyện: từ lúc tài năng của em gái được phát hiện, lòng người anh thay đổi dần — cho tới khoảnh khắc đứng trước bức tranh.</div>
+</div>
+
+<h3>6.3. Sau khi đọc — trả lời câu hỏi (SGK)</h3>
+<div class="xemlai" data-xem-lai="du-doan-vb3"><p>Em đã đoán cô em gái vẽ gì? Em có đoán ra là vẽ người anh không?</p></div>
+
+<p class="sgkq"><span class="n">1.</span>Trong truyện ngắn <i>Bức tranh của em gái tôi</i>, người kể chuyện là ai, xuất hiện ở ngôi thứ mấy?</p>
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Truyện của chú Tạ Duy Anh thì chắc chú Tạ Duy Anh là người xưng "tôi" rồi!</div></div>
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Nhớ lại Bài 1 nhé: Tô Hoài viết truyện, nhưng ai kể? Ở đây em đọc câu đầu tiên: người xưng "tôi" có em gái tên là gì? Người ấy ở trong truyện hay ở ngoài truyện?</div></div>
+<div class="quiz">
+  <div class="q" data-ans="b"><div class="stem"><b>B2.</b> Người kể chuyện trong <i>Bức tranh của em gái tôi</i> là ai, ở ngôi thứ mấy? (luyện thêm) <span class="src">— "Em gái tôi tên là Kiều Phương, nhưng tôi quen gọi nó là Mèo…"</span></div>
+    <button class="opt" type="button" data-v="a">(a) Tác giả Tạ Duy Anh, ngôi thứ ba</button><button class="opt" type="button" data-v="b">(b) Người anh trai của Kiều Phương, ngôi thứ nhất</button><button class="opt" type="button" data-v="c">(c) Kiều Phương, ngôi thứ nhất</button>
+    <div class="why">Người kể là người anh — một nhân vật trong truyện, xưng "tôi", kể chuyện mình chứng kiến và tham gia → ngôi thứ nhất. Tạ Duy Anh là tác giả, người viết ra truyện.</div></div>
+</div>
+
+<p class="sgkq"><span class="n">2.</span>Em thích nhất đặc điểm gì của nhân vật Mèo – Kiều Phương? Vì sao?</p>
+<p class="gm"><b>(gợi mở)</b> Câu hỏi mở. Chọn <b>một</b> đặc điểm (hồn nhiên, say mê vẽ, tài năng, tấm lòng với anh…) và dẫn <b>một</b> chi tiết trong truyện làm bằng chứng.</p>
+<p class="sgkq"><span class="n">3.</span>Em có nhận xét gì về cảm xúc, thái độ, hành động của nhân vật "tôi" trước khi xem bức chân dung của mình do em gái vẽ?</p>
+<p class="gm"><b>(gợi mở)</b> Đọc lại phần 3 và đầu phần 4 (đến trước cảnh ở phòng tranh): người anh <b>cảm thấy</b> gì, <b>đối xử</b> với em thế nào, <b>làm</b> việc gì lén lút?</p>
+<p class="sgkq"><span class="n">4.</span>Nhân vật "tôi" đã thay đổi ra sao sau khi xem bức chân dung của mình do em gái vẽ? Vì sao có sự thay đổi ấy?</p>
+<ol class="steps"><li>Đọc lại cuối phần 4. Gạch dưới các từ gọi tên cảm xúc, theo đúng thứ tự người anh trải qua.</li><li><i>Vì sao:</i> em gái vẽ anh thế nào? Còn anh đã đối xử với em thế nào?</li></ol>
+
+<div class="nhom" data-nhom="truoc:Trước khi đứng trước bức tranh ở phòng thi|khi:Khi đứng trước bức tranh">
+  <h4>B3. Chi tiết này xảy ra lúc nào? Xếp vào đúng nhóm (luyện thêm)</h4>
+  <p class="small muted">Cẩn thận: có hai thẻ đều nói đến chuyện muốn khóc. Em đọc lại truyện để biết mỗi thẻ nằm ở phần nào.</p>
+  <div class="nguon"><span data-vao="truoc">tôi chỉ muốn gục đầu xuống khóc</span><span data-vao="khi">Tôi giật sững người</span><span data-vao="truoc">tôi gắt um lên</span><span data-vao="truoc">xem trộm những bức tranh của Mèo</span><span data-vao="khi">bám chặt lấy tay mẹ</span><span data-vao="truoc">lén trút ra một tiếng thở dài</span><span data-vao="khi">tôi muốn khóc quá</span><span data-vao="truoc">đẩy nhẹ nó ra</span></div>
+  <div class="why">Em đã đọc kĩ để phân biệt hai lần "muốn khóc": lúc trước là khóc vì tủi thân, thấy mình bất tài; lúc sau là muốn khóc vì xúc động và xấu hổ. Tự kiểm tra: 5 + 3 = 8.</div>
+</div>
+
+<p class="sgkq"><span class="n">5.</span>Từ các văn bản <i>Chuyện cổ tích về loài người</i>, <i>Mây và sóng</i>, <i>Bức tranh của em gái tôi</i>, em nhận thấy điều quan trọng nhất có thể gắn kết các thành viên trong gia đình là gì?</p>
+<p class="gm"><b>(gợi mở)</b> Câu hỏi mở. Mỗi văn bản chọn <b>một</b> chi tiết cho thấy người trong nhà yêu thương nhau. Ba chi tiết ấy giống nhau ở điểm gì?</p>
+
+<div class="ghichep" data-luu="nhat-ki-vb3" data-cam-xuc="😳 Xấu hổ|🥲 Xúc động|🤗 Thương em|🤔 Suy nghĩ|😮 Bất ngờ">
+  <p class="hoi">💭 Đọc câu Mèo thì thầm "Em muốn cả anh cũng đi nhận giải", em cảm thấy thế nào? Nếu là người anh, em sẽ nói gì với em gái?</p>
+  <textarea rows="3"></textarea>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Văn bản 3</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-vb3">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-vb3">
+<p><b>1.</b> Người kể chuyện là <b>người anh trai của Kiều Phương</b>, xưng "tôi" ("Em gái tôi tên là Kiều Phương") → <b>ngôi thứ nhất</b>. Người kể không phải tác giả Tạ Duy Anh.</p>
+<p><b>2.</b> Câu mở. Ví dụ các hướng có căn cứ: <b>hồn nhiên, vô tư</b> — "Nó vui vẻ chấp nhận cái tên tôi tặng cho và hơn thế, còn dùng để xưng hô với bạn bè"; <b>say mê, sáng tạo</b> — tự chế màu vẽ, "cái màu đỏ, cái màu vàng, cái màu xanh lục,… đều do nó tự chế"; <b>tài năng</b> — chú Tiến Lê nói những bức tranh của Mèo "rất độc đáo", tranh được giải nhất; <b>nhân hậu, yêu anh</b> — vẽ anh là cái thân thuộc nhất với mình, bị anh đẩy ra vẫn thì thầm "Em muốn cả anh cũng đi nhận giải".</p>
+<p><b>3.</b> Trước khi xem bức tranh, người anh <b>tự ti, buồn, ghen tị và khó chịu với em</b>: "tôi luôn luôn cảm thấy mình bất tài nên bị đẩy ra ngoài", "tôi chỉ muốn gục đầu xuống khóc"; "Chỉ cần một lỗi nhỏ ở nó là tôi gắt um lên"; lén "xem trộm những bức tranh của Mèo" rồi "lén trút ra một tiếng thở dài"; thấy vẻ mặt em "như chọc tức tôi"; khi em về ôm cổ thì "viện cớ đang dở việc đẩy nhẹ nó ra". Nhận xét: đó là những cảm xúc có thật, dễ hiểu ở một người anh thấy mình thua kém; nhưng người anh đã <b>đối xử chưa đúng</b> với em gái.</p>
+<p><b>4.</b> Thay đổi: "Tôi giật sững người", "Thoạt tiên là sự ngỡ ngàng, rồi đến hãnh diện, sau đó là xấu hổ", "tôi muốn khóc quá". Người anh nhận ra lỗi của mình và thấy em gái đáng quý: "Đấy là tâm hồn và lòng nhân hậu của em gái con đấy". Vì sao: em gái vẽ anh thật đẹp — "Mặt chú bé như toả ra một ánh sáng rất lạ", "không chỉ sự suy tư mà còn rất mơ mộng nữa" — trong khi anh đã ghen tị, gắt gỏng với em. Tấm lòng trong sáng, bao dung của em làm người anh <b>thức tỉnh</b>.</p>
+<p><b>5.</b> Câu mở. Một hướng: điều quan trọng nhất là <b>tình yêu thương, sự quan tâm và thấu hiểu nhau</b>. Căn cứ: mọi thứ sinh ra vì trẻ con, mẹ, bà, bố yêu thương chăm sóc trẻ (<i>Chuyện cổ tích về loài người</i>); em bé không nỡ rời mẹ (<i>Mây và sóng</i>); tấm lòng nhân hậu của em gái làm người anh thay đổi (<i>Bức tranh của em gái tôi</i>). Em có thể nói theo cách khác (sự sẻ chia, lòng bao dung…), miễn dẫn được chi tiết.</p>
+</div>
+</div>
+</section>
+
+<!-- ============================ 7 ============================ -->
+<section id="s7" data-chang="✍️|Viết đoạn văn">
+<h2>7. Viết: Viết đoạn văn ghi lại cảm xúc về một bài thơ có yếu tố tự sự và miêu tả</h2>
+<p class="muctieu">Sau chặng này, em biết một đoạn văn cảm xúc về bài thơ cần có những gì, lập được dàn ý cho đoạn văn của mình và tự soát bằng bảng kiểm.</p>
+<p class="small muted">SGK trang 52 – 54.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Em đã đọc hai bài thơ vừa kể chuyện vừa tả cảnh. Giờ đến lượt em nói ra cảm xúc của mình — trong <b>một</b> đoạn văn.</div></div>
+
+<div class="box key"><span class="label">📌 Yêu cầu đối với đoạn văn ghi lại cảm xúc về một bài thơ có yếu tố tự sự và miêu tả</span>
+<ul>
+<li>Giới thiệu nhan đề bài thơ và tên tác giả.</li>
+<li>Thể hiện được cảm xúc chung về bài thơ.</li>
+<li>Nêu các chi tiết mang tính tự sự và miêu tả trong bài thơ; đánh giá ý nghĩa của chúng trong việc thể hiện tình cảm, cảm xúc của nhà thơ.</li>
+<li>Chỉ ra được nét độc đáo trong cách tự sự và miêu tả của nhà thơ.</li>
+</ul></div>
+
+<h3>7.1. Phân tích bài viết tham khảo <i>Cảm xúc khi đọc bài thơ Mây và sóng của Ta-go</i></h3>
+<p>Bài tham khảo của SGK (trang 52 – 53) được chép đủ trong khung W1 ngay dưới. Đây là <b>một đoạn văn</b> — chỉ lùi đầu dòng một lần. Em đọc một lượt trước, rồi mới làm W1.</p>
+<div class="tosang" data-tosang data-sai="Câu giới thiệu phải có tên bài thơ và tên nhà thơ; câu khái quát thường mở đầu bằng một từ ngữ báo hiệu nói gọn lại cả bài.">
+  <h4>W1. Bấm vào HAI câu: câu giới thiệu nhan đề bài thơ và tên tác giả, và câu khái quát lại cảm xúc chung (luyện thêm)</h4>
+  <p class="small muted"><b>Cảm xúc khi đọc bài thơ <i>Mây và sóng</i> của Ta-go</b> (Nhóm biên soạn) — chép từ SGK</p>
+  <div class="doan theo-cau"><p><span class="t" data-dung>Nhan đề bài thơ là <i>Mây và sóng</i> nhưng nhà thơ Ta-go không đưa người đọc lãng du tới những xứ sở thần tiên xa xôi, mà dẫn chúng ta về giữa cuộc đời bình dị để cảm nhận và xúc động trước tình mẹ con thiêng liêng bất diệt.</span> <span class="t">Đi theo câu chuyện được nhà thơ kể bằng giọng chậm rãi, êm ái với những chi tiết thật đắt, người đọc đồng cảm với tình yêu mẹ tha thiết, mong muốn luôn được ở bên mẹ của em bé bởi đó cũng là tình cảm của mỗi người chúng ta dành cho mẹ của mình.</span> <span class="t">Em bé được mời gọi đến những xứ sở tuyệt vời "trên mây" và "trong sóng" – những thế giới xa rộng bao la, đầy hấp dẫn.</span> <span class="t">Khát khao được khám phá những thế giới kì diệu, em bé thốt lên thành câu hỏi háo hức: "Nhưng làm thế nào mình lên đó được?", "Nhưng làm thế nào mình ra ngoài đó được?".</span> <span class="t">Khi em nhớ rằng "Mẹ mình đang đợi ở nhà", "mẹ luôn muốn mình ở nhà", em bé đã từ chối bằng câu hỏi có tính khẳng định: "Làm sao có thể rời mẹ mà đến được?", "làm sao có thể rời mẹ mà đi được?".</span> <span class="t">Yêu thế giới thiên nhiên kì diệu, yêu mẹ, để làm mẹ vui, em bé đã sáng tạo ra những trò chơi còn vui hơn, thú vị hơn trò chơi của những người "trên mây" và "trong sóng": con là mây, là sóng tinh nghịch, phiêu du khắp chốn; mẹ là trăng dịu hiền toả sáng, là bờ biển bao dung ôm ấp che chở suốt đời con; và mái nhà – tổ ấm đầu đời – là bầu trời xanh dịu mát, bình yên vĩnh cửu.</span> <span class="t">Qua những lời thoại và chi tiết được nhà thơ kể tuần tự, vừa lặp lại, vừa biến hoá, độc giả từng bước một có cảm nhận thấm thía hơn về chiều sâu của tình cảm mà một người con đã dành cho mẹ của mình.</span> <span class="t" data-dung>Nói chung, bài thơ đã kể một câu chuyện thật cảm động về tình mẹ con, về niềm hạnh phúc ngọt ngào khi được sống trong vòng tay êm ấm yêu thương của mẹ.</span></p></div>
+  <div class="why">Em đã tìm đúng hai "cái khung" của đoạn văn: câu đầu giới thiệu nhan đề <i>Mây và sóng</i> và tên Ta-go; câu cuối mở bằng <i>Nói chung</i> để khái quát lại cảm xúc. Đoạn văn của em cũng cần mở và khép như vậy.</div>
+</div>
+
+<p>Bên lề bài, SGK ghi năm việc bài viết đã làm. Em tìm bằng chứng cho từng việc trong đoạn văn trên:</p>
+<div class="tablewrap"><table>
+<tr><th>SGK ghi bên lề năm việc bài viết đã làm</th><th>Em tìm bằng chứng trong bài tham khảo (gợi mở)</th></tr>
+<tr><td><i>Giới thiệu nhan đề bài thơ và tên tác giả.</i></td><td>Tên bài thơ và tên tác giả xuất hiện ở câu nào?</td></tr>
+<tr><td><i>Thể hiện cảm xúc chung về bài thơ.</i></td><td>Người viết cảm thấy gì? Tìm từ chỉ cảm xúc.</td></tr>
+<tr><td><i>Nêu các chi tiết mang tính tự sự và miêu tả trong bài thơ và đánh giá ý nghĩa của chúng.</i></td><td>Người viết dẫn những câu thơ nào? Có đặt trong ngoặc kép không?</td></tr>
+<tr><td><i>Chỉ ra nét độc đáo trong cách tự sự và miêu tả của nhà thơ.</i></td><td>Nét độc đáo được gọi tên bằng những chữ nào?</td></tr>
+<tr><td><i>Khái quát lại cảm xúc chung của người viết về bài thơ trong hình thức kể chuyện độc đáo của nó.</i></td><td>Câu nào mở đầu bằng hai chữ báo hiệu một câu khái quát?</td></tr>
+</table></div>
+
+<h3>7.2. Thực hành viết theo các bước</h3>
+<p><b>Mục đích viết:</b> Chia sẻ cảm xúc về một bài thơ có yếu tố tự sự và miêu tả. <b>Người đọc:</b> Thầy cô, bạn bè và những ai quan tâm, mong muốn tìm hiểu, cảm nhận cái hay, cái đẹp của bài thơ.</p>
+
+<h4>Bước 1 — Trước khi viết</h4>
+<p><i>a. Lựa chọn bài thơ.</i> Bài thơ phải có yếu tố kể chuyện và có chi tiết miêu tả. SGK gợi ý: <i>Chuyện cổ tích về loài người</i>, <i>Mây và sóng</i>. Nếu em đã viết đoạn <i>Viết kết nối với đọc</i> ở Văn bản 1, em có thể phát triển tiếp từ đó.</p>
+<div class="ghichep" data-luu="viet-chon-bai">
+  <p class="hoi">📝 Bài thơ em chọn là gì? Chi tiết kể chuyện hoặc miêu tả nào em muốn viết nhất?</p>
+  <textarea rows="2"></textarea>
+</div>
+<p><i>b. Tìm ý</i> — trả lời vào vở các câu hỏi của SGK:</p>
+<div class="tablewrap"><table>
+<tr><th>Câu hỏi</th><th>Ý của em</th></tr>
+<tr><td>Bài thơ gợi lên câu chuyện gì?</td><td></td></tr>
+<tr><td>Đâu là các chi tiết tự sự và miêu tả nổi bật?</td><td></td></tr>
+<tr><td>Các chi tiết ấy sống động, thú vị như thế nào?</td><td></td></tr>
+<tr><td>Chúng đã góp phần thể hiện ấn tượng điều nhà thơ muốn bày tỏ ra sao?</td><td></td></tr>
+</table></div>
+<p><i>c. Lập dàn ý</i> (khung của SGK — em điền ý của mình vào):</p>
+<ul>
+<li><b>Mở đoạn:</b> Giới thiệu tác giả và bài thơ; nêu khái quát ấn tượng, cảm xúc về bài thơ.</li>
+<li><b>Thân đoạn:</b>
+  <ul><li>Nêu ấn tượng, cảm xúc của em về câu chuyện được kể và các chi tiết miêu tả có trong bài thơ.</li><li>Làm rõ nghệ thuật kể chuyện và miêu tả của tác giả.</li><li>Đánh giá tác dụng của việc kể lại câu chuyện kết hợp với các chi tiết miêu tả trong bài thơ.</li></ul></li>
+<li><b>Kết đoạn:</b> Nêu khái quát điều em tâm đắc về bài thơ (trong đó có nói tới đặc điểm nghệ thuật riêng của bài thơ đã được phân tích ở trên).</li>
+</ul>
+
+<div class="xep" data-xep>
+  <h4>W2. Gấp dàn ý lại và thử nhớ: xếp 5 phần của đoạn văn theo đúng thứ tự (luyện thêm)</h4>
+  <ol>
+    <li>Giới thiệu tác giả, bài thơ và ấn tượng chung</li>
+    <li>Nêu cảm xúc về câu chuyện và chi tiết miêu tả</li>
+    <li>Làm rõ nghệ thuật kể chuyện, miêu tả của tác giả</li>
+    <li>Đánh giá tác dụng của kể chuyện kết hợp miêu tả</li>
+    <li>Nêu điều em tâm đắc nhất về bài thơ</li>
+  </ol>
+  <div class="why">Em đã nhớ đúng khung dàn ý của SGK: mở đoạn (1) → thân đoạn (2, 3, 4) → kết đoạn (5).</div>
+</div>
+
+<h4>Bước 2 — Viết bài</h4>
+<p>Lưu ý của SGK:</p>
+<ul>
+<li>Bám sát dàn ý để viết đoạn.</li>
+<li>Thể hiện được cảm xúc chân thành của em về nội dung và hình thức trữ tình độc đáo của bài thơ.</li>
+<li>Trình bày đúng hình thức của đoạn văn: viết lùi đầu dòng từ đầu tiên của đoạn văn và chữ cái đầu của từ đó phải viết hoa; kết thúc đoạn văn bằng một dấu chấm câu. Các câu trong đoạn cần tập trung vào chủ đề chung, giữa các câu có sự liên kết. Đoạn văn khoảng 7 – 10 câu.</li>
+</ul>
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Hay là tớ chép bài tham khảo rồi đổi vài chữ cho nhanh?</div></div>
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Bài tham khảo là cảm xúc của người khác. Em học <b>cách làm</b> của nó — giới thiệu, cảm xúc chung, dẫn chi tiết, nét độc đáo, khái quát — nhưng chi tiết em chọn và cảm xúc em nói phải là <b>của em</b>. Cô không làm mẫu câu nào ở phần này.</div></div>
+
+<h4>Bước 3 — Chỉnh sửa bài viết (bảng của SGK)</h4>
+<div class="tablewrap"><table>
+<tr><th>Yêu cầu</th><th>Gợi ý chỉnh sửa</th><th>Tự đánh giá</th></tr>
+<tr><td>Giới thiệu được nhan đề bài thơ, tên tác giả (nếu có) và cảm nhận chung của người viết.</td><td>Nếu còn thiếu so với yêu cầu, hãy bổ sung.</td><td></td></tr>
+<tr><td>Nêu được cảm xúc và ý kiến đánh giá về nét đặc sắc của bài thơ có sử dụng yếu tố tự sự và miêu tả.</td><td>Sử dụng lại các câu hỏi ở mục tìm ý để biết được nội dung đoạn văn của em còn thiếu ý gì. Hãy bổ sung nếu có câu hỏi bị bỏ quên, chưa được trả lời.</td><td></td></tr>
+<tr><td>Bảo đảm yêu cầu về chính tả và diễn đạt.</td><td>Rà soát lỗi chính tả và diễn đạt (dùng từ, đặt câu, sử dụng từ ngữ liên kết câu,…). Chỉnh sửa nếu phát hiện lỗi.</td><td></td></tr>
+</table></div>
+
+<div class="box warn"><span class="label">Những lỗi hay gặp ở bài này</span>
+<ul>
+<li><b>Kể lại bài thơ</b> từ đầu đến cuối mà không có câu nào nói em cảm thấy gì.</li>
+<li><b>Khen chung chung</b> (kiểu <i>bài thơ rất hay, rất cảm động</i>) mà không dẫn dòng thơ nào.</li>
+<li><b>Chép sai dòng thơ</b> — luôn đối chiếu từng chữ với SGK.</li>
+<li><b>Viết thành nhiều đoạn</b> — đề yêu cầu <i>một</i> đoạn văn, chỉ lùi đầu dòng một lần.</li>
+<li><b>Thiếu hoặc thừa câu</b> — đếm lại, đoạn văn khoảng 7 – 10 câu.</li>
+</ul></div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Viết</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-viet">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-viet">
+<ul>
+<li><b>Phân tích bài tham khảo:</b> câu đầu nêu nhan đề <i>Mây và sóng</i> và tên Ta-go; câu thứ hai nói người đọc "đồng cảm với tình yêu mẹ tha thiết" (cảm xúc chung); phần giữa dẫn đúng các câu thơ trong ngoặc kép ("Nhưng làm thế nào mình lên đó được?", "Mẹ mình đang đợi ở nhà"…) và giải thích ý nghĩa; nét độc đáo được gọi là "kể tuần tự, vừa lặp lại, vừa biến hoá"; câu kết mở đầu bằng <i>Nói chung</i> — dấu hiệu của câu khái quát.</li>
+<li>Đoạn văn của em: không có đáp án chung — đối chiếu với bảng chỉnh sửa của SGK ở Bước 3.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 8 ============================ -->
+<section id="s8" data-chang="🗣️|Nói và nghe">
+<h2>8. Nói và nghe: Trình bày ý kiến về một vấn đề trong đời sống gia đình</h2>
+<p class="muctieu">Sau chặng này, em chọn được một vấn đề gia đình để nói, sắp được ý chính và biết tránh những lỗi hay gặp khi trình bày.</p>
+<p class="small muted">SGK trang 55 – 56.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Nhà nào cũng có chuyện vui, chuyện chưa vui. Chặng này em chọn một chuyện nhà em thật sự có, và nói ý kiến của mình như đang tâm sự với bạn.</div></div>
+
+<p><b>Mục đích nói:</b> Chia sẻ ý kiến của em về một vấn đề trong đời sống gia đình. <b>Người nghe:</b> Thầy cô, bạn bè, người thân và những ai quan tâm đến vấn đề em nói.</p>
+
+<h3>8.1. Trước khi nói</h3>
+<p><b>a. Chuẩn bị nội dung nói</b> (theo SGK)</p>
+<p>Dựa vào chính trải nghiệm của em để chọn một đề tài phù hợp. SGK gợi ý: quan hệ giữa các thành viên trong gia đình; việc chăm sóc, lắng nghe, thấu hiểu của cha mẹ đối với con cái; thái độ cư xử của con cái đối với cha mẹ; những việc cần làm để gia đình trở thành một tổ ấm yêu thương; sự tôn trọng sở thích và mong muốn của từng người,…</p>
+<p class="gm"><b>(gợi mở)</b> Chọn vấn đề <b>nhà em thật sự có</b>, dù nhỏ: anh chị em tranh nhau cái điều khiển ti vi, bố mẹ bận không có thời gian nói chuyện, em muốn được chọn môn năng khiếu mình thích… Vấn đề càng gần, em nói càng thật.</p>
+
+<div class="ghichep" data-luu="noi-de-tai">
+  <p class="hoi">🗂️ Phiếu chuẩn bị (gợi ý của cô): (1) Vấn đề em muốn nói và một ví dụ cụ thể; (2) Nó tác động thế nào đến mọi người trong nhà; (3) Em mong muốn gì, em đã hoặc sẽ làm gì.</p>
+  <textarea rows="4"></textarea>
+</div>
+
+<p>Để phiếu thêm đầy đủ, SGK còn dặn:</p>
+<ul>
+<li>Có thể đọc lại các văn bản đã học trong bài để có thêm ý tưởng: hình ảnh em bé và sự chăm sóc của người thân trong <i>Chuyện cổ tích về loài người</i>, tình cảm gắn bó của con đối với mẹ trong <i>Mây và sóng</i>, tình yêu thương của anh chị em trong <i>Bức tranh của em gái tôi</i>,…</li>
+<li>Tìm thêm thông tin từ sách báo, phương tiện nghe nhìn; chuẩn bị tranh ảnh, bài hát về gia đình (nếu có).</li>
+<li>Ghi ra giấy những ý chính và sắp xếp theo trật tự phù hợp. SGK gợi ý: nêu vấn đề và các biểu hiện cụ thể của vấn đề; nêu tác động của vấn đề đối với các thành viên trong gia đình; trình bày mong muốn của em và cách em đã làm để giải quyết vấn đề;…</li>
+</ul>
+
+<p><b>b. Tập luyện:</b> tập một mình hoặc trình bày trước bạn bè, người thân và nhờ họ góp ý. Chọn cách nói tự nhiên, gần gũi, gần với kiểu tâm tình, chia sẻ, giãi bày.</p>
+
+<h3>8.2. Trình bày bài nói (theo SGK)</h3>
+<p>Em đoán trước câu trả lời, rồi lật thẻ xem SGK dặn gì:</p>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">Mở đầu: cần làm người nghe cảm thấy gì?</span><span class="ms">cho người nghe cảm nhận được điều em sắp nói là điều em đã thực sự quan tâm, có nhiều cảm xúc và suy nghĩ.</span></button>
+  <button class="the" type="button"><span class="mt">Nội dung chính: nên tránh gì, tập trung vào gì?</span><span class="ms">không sa vào việc liệt kê bằng chứng hay kể chuyện; tập trung nêu được nội dung cốt lõi, mang tính tiêu biểu cho vấn đề đang bàn.</span></button>
+  <button class="the" type="button"><span class="mt">Kết thúc: nhấn mạnh điều gì?</span><span class="ms">nhấn mạnh vào cách ứng xử thích hợp mà em đã lựa chọn.</span></button>
+</div>
+<p>Trong khi nói, tập trung vào vấn đề đã chọn; liên hệ trải nghiệm của bản thân để bài nói thêm sinh động; có thể dùng tranh ảnh, bài hát.</p>
+
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Tớ viết hết ra giấy rồi học thuộc, đứng lên đọc là được chứ ạ?</div></div>
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Em đọc lại lời dặn ở mục <i>Tập luyện</i>: SGK muốn em nói theo kiểu nào? Em thử làm bài ghép dưới đây để tự tìm cách sửa nhé.</div></div>
+
+<div class="ghep" data-ghep>
+  <h4>N1. Ghép mỗi lỗi hay gặp với cách sửa (chữ của SGK) (luyện thêm)</h4>
+  <div class="cot">
+    <button type="button" data-cap="a">Kể lể một chuyện dài hoặc đọc một loạt ví dụ</button>
+    <button type="button" data-cap="b">Đọc thuộc lòng như đọc bài văn</button>
+    <button type="button" data-cap="c">Mở đầu hờ hững, người nghe không thấy em quan tâm</button>
+    <button type="button" data-cap="d">Kết thúc lửng lơ, chưa nói em sẽ làm gì</button>
+    <button type="button" data-cap="e">Nghe bạn góp ý là cãi lại ngay</button>
+  </div>
+  <div class="cot">
+    <button type="button" data-cap="a">nội dung cốt lõi, mang tính tiêu biểu</button>
+    <button type="button" data-cap="b">tự nhiên, gần gũi, kiểu tâm tình, chia sẻ, giãi bày</button>
+    <button type="button" data-cap="c">điều em đã thực sự quan tâm</button>
+    <button type="button" data-cap="d">cách ứng xử thích hợp mà em đã lựa chọn</button>
+    <button type="button" data-cap="e">tinh thần cầu thị</button>
+  </div>
+  <div class="why">Em đã nối mỗi lỗi với đúng lời dặn của SGK. Đủ câu của SGK: (1) tập trung nêu được nội dung cốt lõi, mang tính tiêu biểu cho vấn đề đang bàn; (2) chọn cách nói tự nhiên, gần gũi, gần với kiểu tâm tình, chia sẻ, giãi bày; (3) cho người nghe cảm nhận được điều em sắp nói là điều em đã thực sự quan tâm; (4) nhấn mạnh vào cách ứng xử thích hợp mà em đã lựa chọn; (5) phản hồi những nhận xét, góp ý của người nghe với tinh thần cầu thị. Trước khi nói, em đọc lại năm câu này một lượt.</div>
+</div>
+
+<h3>8.3. Sau khi nói</h3>
+<div class="tablewrap"><table>
+<tr><th>Người nghe</th><th>Người nói</th></tr>
+<tr><td>Thể hiện sự chia sẻ và nêu nhận xét về phần trình bày của bạn với thái độ chân thành, tôn trọng. Có thể trao đổi về: nội dung bài nói (đã trình bày được ý kiến về vấn đề trong đời sống gia đình hay chưa?); cách trình bày (ngữ điệu, cách diễn đạt, cách tương tác với người nghe như thế nào?).</td><td>Phản hồi những nhận xét, góp ý của người nghe với tinh thần cầu thị: tiếp thu những ý kiến góp ý mà em cho là xác đáng; trao đổi về những điều người nghe cần nắm rõ thêm.</td></tr>
+</table></div>
+
+<p><b>Phiếu nghe bạn trình bày</b> (gợi ý của cô, dựa trên các lưu ý của SGK)</p>
+<div class="tablewrap"><table>
+<tr><th>Tiêu chí</th><th>Có</th><th>Chưa</th></tr>
+<tr><td>Bạn nêu rõ vấn đề gia đình mà bạn quan tâm</td><td></td><td></td></tr>
+<tr><td>Bạn có ví dụ cụ thể, nhưng không kể lể dài dòng</td><td></td><td></td></tr>
+<tr><td>Bạn nói được vấn đề ấy ảnh hưởng đến mọi người trong nhà thế nào</td><td></td><td></td></tr>
+<tr><td>Phần kết nói rõ cách ứng xử bạn chọn</td><td></td><td></td></tr>
+<tr><td>Giọng nói tự nhiên, như đang tâm tình; có nhìn người nghe</td><td></td><td></td></tr>
+<tr><td>Một ý em đồng tình / muốn hỏi thêm: …………</td><td></td><td></td></tr>
+</table></div>
+</section>
+
+<!-- ============================ 9 ============================ -->
+<section id="s9" data-chang="🧩|Củng cố">
+<h2>9. Củng cố, mở rộng</h2>
+<p class="muctieu">Sau chặng này, em hệ thống lại được các bài thơ của Bài 2 trong một bảng và chọn được cách thể hiện lại một bài thơ theo ý thích.</p>
+<p class="small muted">SGK trang 56.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Mình gom tất cả lại vào một bảng. Bảng này là "bản đồ" để em ôn thi phần thơ của Bài 2.</div></div>
+
+<div class="ghep" data-ghep>
+  <h4>G1. Khởi động: ghép tác giả với tác phẩm (luyện thêm)</h4>
+  <div class="cot">
+    <button type="button" data-cap="a">Xuân Quỳnh</button>
+    <button type="button" data-cap="b">Ra-bin-đơ-ra-nát Ta-go</button>
+    <button type="button" data-cap="c">Tạ Duy Anh</button>
+    <button type="button" data-cap="d">Hoàng Trung Thông</button>
+  </div>
+  <div class="cot">
+    <button type="button" data-cap="a">Chuyện cổ tích về loài người</button>
+    <button type="button" data-cap="b">Mây và sóng</button>
+    <button type="button" data-cap="c">Bức tranh của em gái tôi</button>
+    <button type="button" data-cap="d">Những cánh buồm</button>
+  </div>
+  <div class="why">Em đã nhớ đúng bốn tác giả của Bài 2 (bài của Hoàng Trung Thông em đã gặp ở hộp 📌 trang 47, và sẽ đọc trọn ở chặng cuối).</div>
+</div>
+
+<p class="sgkq"><span class="n">1.</span>Hãy kẻ bảng vào vở theo mẫu sau và điền thông tin về đặc điểm của các bài thơ đã học trong bài <i>Gõ cửa trái tim</i>:</p>
+<div class="tablewrap"><table>
+<tr><th rowspan="2">Nhan đề bài thơ</th><th rowspan="2">Nội dung chính</th><th colspan="3">Đặc điểm nghệ thuật</th></tr>
+<tr><th>Hình ảnh</th><th>Biện pháp tu từ</th><th>Yếu tố tự sự, miêu tả</th></tr>
+<tr><td></td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<ul class="gm">
+<li><b>(gợi mở)</b> Bài thơ nào em đã học trong bài? <i>Chuyện cổ tích về loài người</i>, <i>Mây và sóng</i>, và bài thực hành đọc <i>Những cánh buồm</i> (em có thể điền sau khi học xong chặng 10).</li>
+<li>Cột <i>Biện pháp tu từ</i>: dùng kết quả hai tiết Thực hành tiếng Việt (so sánh, nhân hoá, điệp ngữ, ẩn dụ) — ghi cả <b>một ví dụ</b> cho mỗi biện pháp.</li>
+<li>Cột <i>Yếu tố tự sự, miêu tả</i>: bài thơ kể chuyện gì? tả cái gì?</li>
+<li><i>Ví dụ cách điền một ô (để em hiểu cách làm, không phải để chép):</i> ô <i>Biện pháp tu từ</i> của <i>Chuyện cổ tích về loài người</i>: so sánh — "Cây cao bằng gang tay".</li>
+</ul>
+
+<p class="sgkq"><span class="n">2.</span>Hãy diễn tả nội dung một bài thơ đã được học trong bài <i>Gõ cửa trái tim</i> bằng một hình thức nghệ thuật mà em thích (tranh, truyện tranh, nhạc, kịch bản hoạt cảnh,…).</p>
+<p class="gm"><b>(gợi mở)</b> Chọn hình thức em làm được trong một buổi. Vẽ tranh: chọn <b>một</b> khổ thơ và vẽ đúng những chi tiết khổ ấy có. Truyện tranh <i>Mây và sóng</i>: mỗi ô tranh một sự việc — dùng lại bài xếp thứ tự M1.</p>
+<div class="ghichep" data-luu="cung-co-san-pham">
+  <p class="hoi">🎭 Em chọn bài thơ nào, thể hiện bằng hình thức gì? Em định vẽ / kể / diễn những chi tiết nào?</p>
+  <textarea rows="3"></textarea>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Củng cố, mở rộng</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-cung-co">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-cung-co">
+<ul>
+<li>Câu 1 là việc tổng hợp của em; câu trả lời tốt có <b>ví dụ cụ thể</b> trong mỗi ô. Kiểm lại với các mục <i>Gợi ý trả lời</i> của từng văn bản và từng tiết Thực hành tiếng Việt.</li>
+<li>Câu 2 không có đáp án; sản phẩm tốt thể hiện <b>đúng</b> nội dung bài thơ (không thêm chi tiết bài thơ không có; nếu em thêm thì nói rõ là em tưởng tượng thêm).</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 10 ============================ -->
+<section id="s10" data-chang="⛵|Những cánh buồm">
+<h2>10. Thực hành đọc: <i>Những cánh buồm</i> (Hoàng Trung Thông)</h2>
+<p class="muctieu">Sau chặng này, em tự đọc được một bài thơ mới: kể lại cuộc trò chuyện của hai cha con, và chỉ ra được ẩn dụ, điệp ngữ trong bài.</p>
+<p class="small muted">SGK trang 57 – 58.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩‍🏫</span><div class="loi"><b>Cô:</b> Chặng cuối, em tự đọc một mình. Em mang theo "đồ nghề" của cả Bài 2: đọc chậm, tìm chi tiết kể và tả, soi ẩn dụ, điệp ngữ.</div></div>
+
+<p>Theo chú thích SGK: <i>Hoàng Trung Thông (1925 – 1993) quê ở Nghệ An, là một trong những nhà thơ tiêu biểu của nền thơ cách mạng Việt Nam.</i></p>
+<div class="box"><span class="label">SGK dặn: khi đọc, em cần chú ý những vấn đề sau</span>
+<ul>
+<li>Hình ảnh hai cha con và cuộc trò chuyện của họ.</li>
+<li>Ý nghĩa của hình ảnh những cánh buồm trên biển buổi sớm mai sau trận mưa đêm.</li>
+<li>Những nét đặc sắc về nghệ thuật của bài thơ: biện pháp tu từ ẩn dụ, điệp ngữ; cách dùng từ ngữ giàu hình ảnh và cảm xúc,…</li>
+</ul></div>
+
+<p class="poem">Hai cha con bước đi trên cát<br>Ánh mặt trời rực rỡ biển xanh.<br>Bóng cha dài lênh khênh<br>Bóng con tròn chắc nịch.</p>
+<p class="poem">Sau trận mưa đêm rả rích<br>Cát càng mịn, biển càng trong.<br>Cha dắt con đi dưới ánh mai hồng,<br>Nghe con bước lòng vui phơi phới.<br>Con bỗng lắc tay cha khẽ hỏi:<br>Cha ơi!<br>Sao xa kia chỉ thấy nước thấy trời<br>Không thấy nhà, không thấy cây, không thấy người ở đó?</p>
+<div class="dung" data-giay="20"><p>Nếu em đứng trên bãi biển nhìn ra xa, em có thắc mắc giống cậu bé không? Em đoán cha sẽ trả lời thế nào?</p></div>
+<p class="poem">Cha mỉm cười xoa đầu con nhỏ:<br>Theo cánh buồm đi mãi đến nơi xa<br>Sẽ có cây có cửa có nhà,<br>Vẫn là đất nước của ta,<br>Nhưng nơi đó cha chưa hề đi đến.</p>
+<p class="poem">Cha lại dắt con đi trên cát mịn<br>Ánh nắng chảy đầy vai,<br>Cha trầm ngâm nhìn mãi cuối chân trời.<br>Con lại trỏ cánh buồm xa nói khẽ:<br>Cha mượn cho con buồm trắng nhé,<br>Để con đi…</p>
+<p class="poem">Lời của con hay tiếng sóng thầm thì<br>Hay tiếng của lòng cha từ một thời xa thẳm?<br>Lần đầu tiên trước biển khơi vô tận<br>Cha gặp lại mình trong tiếng ước mơ con.</p>
+<p class="small muted">(Hoàng Trung Thông, <i>Những cánh buồm</i>, NXB Tác phẩm mới, Hà Nội, 1976, tr. 321 – 322). <i>Tranh trong SGK trang 58 vẽ:</i> trên bãi cát, người cha dắt tay cậu con trai; cậu bé ngẩng mặt, giơ tay chỉ về phía biển, nơi có ba chiếc thuyền buồm xanh, đỏ, vàng đang ra khơi.</p>
+
+<div class="xep" data-xep>
+  <h4>T1. Xếp đúng thứ tự cuộc dạo chơi và trò chuyện của hai cha con (luyện thêm)</h4>
+  <ol>
+    <li>Hai cha con đi trên cát sau trận mưa đêm</li>
+    <li>Con hỏi sao xa kia chỉ thấy nước, thấy trời</li>
+    <li>Cha kể: theo cánh buồm sẽ đến nơi có cây, có nhà</li>
+    <li>Con xin cha mượn cho cánh buồm trắng</li>
+    <li>Cha gặp lại mình trong ước mơ của con</li>
+  </ol>
+  <div class="why">Em đã tự nắm được mạch bài thơ: đi dạo → con hỏi → cha đáp → con ước → cha nhớ lại mình.</div>
+</div>
+
+<p><b>Câu hỏi gợi mở theo ba điểm trên</b> <span class="muted">(câu hỏi của cô — SGK không in câu hỏi cho phần này)</span></p>
+<p class="gm"><b>(gợi mở)</b> 👣 Bóng cha và bóng con được tả bằng những từ nào? Hai cha con đi dạo trong khung cảnh thế nào (thời gian, thời tiết, bãi cát, mặt biển)?</p>
+<p class="gm"><b>(gợi mở)</b> 💬 Con hỏi cha điều gì? Cha trả lời thế nào? Rồi con xin cha điều gì?</p>
+<p class="gm"><b>(gợi mở)</b> 🔍 Tìm một dòng thơ có điệp ngữ. Rồi ôn lại ẩn dụ bằng ví dụ quen: dòng nào trong bài SGK đã chọn làm ví dụ ở hộp 📌 <i>Nhận biết ẩn dụ</i> (trang 47)?</p>
+
+<div class="tosang" data-tosang>
+  <h4>T2. Ôn lại ví dụ của SGK: bấm vào từ được dùng theo lối ẩn dụ (luyện thêm)</h4>
+  <div class="doan"><p>Cha lại <span class="t">dắt</span> con đi trên <span class="t">cát mịn</span><br><span class="t">Ánh nắng</span> <span class="t" data-dung>chảy</span> <span class="t">đầy vai</span>,</p></div>
+  <div class="why"><i>Chảy</i> vốn chỉ sự vận động của chất lỏng, được dùng với ánh nắng — em đã nhận lại được ví dụ hộp 📌 trang 47 phân tích ngay trong bài thơ mới.</div>
+</div>
+
+<div class="tosang" data-tosang>
+  <h4>T3. Bấm vào cụm từ được lặp lại trong dòng thơ này (điệp ngữ) (luyện thêm)</h4>
+  <div class="doan"><p><span class="t" data-dung>Không thấy</span> <span class="t">nhà</span>, <span class="t" data-dung>không thấy</span> <span class="t">cây</span>, <span class="t" data-dung>không thấy</span> <span class="t">người</span> ở đó?</p></div>
+  <div class="why">Em đã tìm đủ ba cụm <i>không thấy</i>. Lặp lại ba lần, cụm từ nhấn mạnh sự trống vắng ở nơi xa làm cậu bé thắc mắc.</div>
+</div>
+
+<div class="dung" data-giay="45"><p>⛵ Còn một hình ảnh em phải <b>tự</b> soi: <i>cánh buồm</i>. Con nói: "Cha mượn cho con buồm trắng nhé, / Để con đi…". Theo em, cánh buồm trong bài thơ gợi đến điều gì? Ghi ý của em vào vở — câu này không có một đáp án duy nhất.</p></div>
+<p class="gm"><b>(gợi mở)</b> 🌊 Khổ cuối: vì sao cha "gặp lại mình trong tiếng ước mơ con"?</p>
+
+<div class="ghichep" data-luu="nhat-ki-doc" data-cam-xuc="🌅 Háo hức|🤔 Suy nghĩ|🥰 Thương cha|😊 Vui|✨ Mơ ước">
+  <p class="hoi">💭 Nếu được mượn một cánh buồm, em muốn đi đến đâu? Em sẽ kể với ai trong nhà điều ước ấy?</p>
+  <textarea rows="3"></textarea>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Thực hành đọc</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-doc">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-doc">
+<p><b>👣 Bóng cha, bóng con:</b> "Bóng cha dài lênh khênh / Bóng con tròn chắc nịch" — hai từ <i>lênh khênh</i>, <i>chắc nịch</i> gợi dáng cha cao gầy, con nhỏ tròn, khoẻ mạnh. Khung cảnh: buổi sáng ("ánh mai hồng"), sau "trận mưa đêm rả rích", "Cát càng mịn, biển càng trong", "Ánh mặt trời rực rỡ biển xanh" — trong trẻo, tươi sáng.</p>
+<p><b>💬 Cuộc trò chuyện:</b> Con hỏi: "Sao xa kia chỉ thấy nước thấy trời / Không thấy nhà, không thấy cây, không thấy người ở đó?". Cha trả lời: theo cánh buồm đi mãi sẽ có cây, có cửa, có nhà, "Vẫn là đất nước của ta", nhưng là nơi cha "chưa hề đi đến". Con xin: "Cha mượn cho con buồm trắng nhé, / Để con đi…".</p>
+
+<p><b>🔍 Điệp ngữ, ẩn dụ:</b> <b>Ẩn dụ</b> (ôn lại): <i>chảy</i> trong "Ánh nắng chảy đầy vai" (SGK phân tích ở hộp 📌 trang 47). <b>Điệp ngữ:</b> "Không thấy nhà, không thấy cây, không thấy người ở đó?" — <i>không thấy</i> lặp lại ba lần, nhấn mạnh sự trống vắng nơi xa. (Dòng trên cũng lặp <i>thấy</i>: "chỉ thấy nước thấy trời"; khổ 3 lặp <i>có</i>: "Sẽ có cây có cửa có nhà".)</p>
+<p><b>⛵ Cánh buồm:</b> Câu mở, cần căn cứ. Một hướng: cánh buồm gợi <b>ước mơ đi xa, khám phá</b> những miền đất mới của con; con muốn đi đến nơi mà cả cha cũng chưa từng đến.</p>
+<p><b>🌊 Khổ cuối:</b> Câu mở. Một hướng: ước mơ đi xa của con giống ước mơ của cha <b>ngày còn nhỏ</b> ("tiếng của lòng cha từ một thời xa thẳm"); nghe con ước, cha nhớ lại chính mình và mong con sẽ đi tiếp những nơi cha chưa đến.</p>
+</div>
+</div>
+
+<div class="box tip"><p><b>Hết Bài 2.</b> Quay lại câu hỏi lớn ở chặng 0 — mỗi chúng ta cần làm gì để gia đình thực sự là nơi tràn ngập hạnh phúc, yêu thương? — và tự trả lời, dẫn một chi tiết trong một văn bản em đã học.</p>
+<div class="xemlai" data-xem-lai="cau-hoi-lon" data-nhan="🏠 Mở lại dòng em ghi ở chặng 0"><p>Dòng em ghi lúc bắt đầu Bài 2, giờ em muốn thêm gì?</p></div>
+<p>Điểm câu hỏi tự chấm của em: <span class="score" id="scoreEnd">0/0</span> <button class="btn" type="button" id="resetQuiz">Làm lại từ đầu (câu tự chấm và sao)</button></p></div>
+</section>
+
+<footer>Bài giảng soạn theo SGK Ngữ văn 6 – Kết nối tri thức với cuộc sống, Tập một, Bài 2 <i>Gõ cửa trái tim</i> (trang 38 – 58). Các đoạn trích chép đúng nguyên văn SGK; lời dẫn, câu gợi mở và câu luyện thêm là của cô.</footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  /* ================= tiện ích ================= */
+  function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function tao(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
+  function nut(cls, html){ var b = tao("button", cls, html); b.type = "button"; return b; }
+  function tron(a){ for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function khacGoc(a, goc){ return a.some(function(x, i){ return x !== goc[i]; }); }
+  function tronKhacGoc(goc){
+    if(goc.length < 2) return goc.slice();
+    for(var k = 0; k < 30; k++){ var b = tron(goc.slice()); if(khacGoc(b, goc)) return b; }
+    return goc.slice(1).concat(goc[0]);
+  }
+  function nhay(e){ e.classList.remove("moi"); void e.offsetWidth; e.classList.add("moi"); }
+  function norm(s){
+    return (s || "").normalize("NFC").toLowerCase().replace(/[.,!?;:"'“”…]/g, "").replace(/\s+/g, " ").trim();
+  }
+  function daXong(u){ return u.el.classList.contains("done"); }
+  /* nút phải bấm hai lần mới chạy (xoá điểm, xoá ghi chép): chống chạm nhầm trên điện thoại */
+  function haiLan(b, chuHoi, fn){
+    var goc = null, hen = null;
+    function tra(){ if(goc != null){ b.innerHTML = goc; goc = null; } b.classList.remove("xac-nhan"); clearTimeout(hen); }
+    b.addEventListener("click", function(){
+      if(goc == null){ goc = b.innerHTML; b.textContent = chuHoi; b.classList.add("xac-nhan"); hen = setTimeout(tra, 4000); return; }
+      tra(); fn();
+    });
+  }
+  /* thanh công cụ: gom chip + nút gợi ý vào một dải riêng (điện thoại: dải này cuộn ngang, điểm luôn thấy) */
+  (function(){
+    var w = document.querySelector(".toolbar .wrap"); if(!w) return;
+    var dai = tao("div", "chips"), cac = $$(".toolbar .chip, .toolbar .tbtn");
+    if(!cac.length) return;
+    w.insertBefore(dai, cac[0]); cac.forEach(function(e){ dai.appendChild(e); });
+  })();
+
+  /* ================= lưu tiến độ trên máy (localStorage) ================= */
+  var KHOA = "nv6:" + location.pathname;
+  var kho = {};
+  try{ kho = JSON.parse(localStorage.getItem(KHOA) || "{}") || {}; }catch(e){ kho = {}; }
+  kho.ghi = kho.ghi || {}; kho.cx = kho.cx || {}; kho.sao = kho.sao || {};
+  function ghiKho(){ try{ localStorage.setItem(KHOA, JSON.stringify(kho)); }catch(e){} }
+
+  /* ================= thông báo nhỏ ================= */
+  var dangNap = false;
+  var toastEl = tao("div", "toast"); toastEl.setAttribute("role", "status"); toastEl.setAttribute("aria-live", "polite");
+  document.body.appendChild(toastEl);
+  var toastHen = null;
+  function bao(msg){
+    if(dangNap) return;
+    toastEl.textContent = msg; toastEl.classList.add("hien");
+    clearTimeout(toastHen); toastHen = setTimeout(function(){ toastEl.classList.remove("hien"); }, 2800);
+  }
+
+  /* ================= sổ các khối tự chấm ================= */
+  var units = [];
+  function feedback(root, good, html){
+    var fb = root.querySelector(".fb");
+    if(!fb){ fb = tao("div", "fb"); root.appendChild(fb); }
+    fb.className = "fb show " + (good ? "good" : "bad");
+    fb.innerHTML = html;
+  }
+  function whyText(root){ var w = root.querySelector(".why"); return w ? w.innerHTML : ""; }
+  /* lời báo khi làm sai: câu chung + lời nhắc riêng của khối (data-sai, KHÔNG chứa đáp án) */
+  function baoSai(root, trangThai, khuyen, conMot){
+    var rieng = (root.getAttribute("data-sai") || "").trim();
+    feedback(root, false, (conMot ? "Gần rồi! " : "") + trangThai + " " + (rieng ? "💡 " + rieng : khuyen));
+  }
+  function dangKy(root, loai, giai, veLai){
+    root.setAttribute("data-cham", loai);
+    units.push({el: root, loai: loai, solve: giai, reset: function(){
+      root.classList.remove("done", "vua-xong");
+      var fb = root.querySelector(".fb"); if(fb){ fb.className = "fb"; fb.innerHTML = ""; }
+      veLai();
+    }});
+  }
+  function xong(root){
+    root.classList.add("done");
+    feedback(root, true, "Đúng rồi. " + whyText(root));
+    if(dangNap) return;
+    root.classList.remove("vua-xong"); void root.offsetWidth; root.classList.add("vua-xong");
+    luu(); updateScore(); capNhatChang(true);
+  }
+  function luu(){
+    kho.tong = units.length; kho.done = [];
+    units.forEach(function(u, i){ if(daXong(u)) kho.done.push(i); });
+    ghiKho();
+  }
+  function updateScore(){
+    var ok = units.filter(daXong).length, total = units.length;
+    var txt = ok + "/" + total + " đúng";
+    document.getElementById("scoreTop").textContent = txt;
+    document.getElementById("scoreEnd").textContent = txt;
+    document.getElementById("bar").style.width = (total ? (100 * ok / total) : 0) + "%";
+  }
+
+  /* ---- 1. trắc nghiệm và điền từ (div.q) ---- */
+  $$(".q").forEach(function(q){
+    var ans = q.getAttribute("data-ans") || "";
+    if(q.classList.contains("fill")){
+      var input = q.querySelector("input");
+      var btn = q.querySelector("[data-check]");
+      var accepted = ans.split("|").map(norm);
+      var check = function(){
+        if(q.classList.contains("done")) return;
+        var v = norm(input.value);
+        if(!v){ feedback(q, false, "Em chưa gõ gì cả."); return; }
+        if(accepted.indexOf(v) >= 0){ input.readOnly = true; xong(q); }
+        else baoSai(q, "Chưa đúng.", "Em mở lại văn bản, tìm đúng câu đó rồi thử lại nhé.");
+      };
+      btn.addEventListener("click", check);
+      input.addEventListener("keydown", function(e){ if(e.key === "Enter"){ check(); } });
+      dangKy(q, "dien", function(){ input.value = ans.split("|")[0]; input.readOnly = true; xong(q); },
+        function(){ input.value = ""; input.readOnly = false; });
+    } else {
+      var opts = $$(".opt", q);
+      opts.forEach(function(o){
+        o.addEventListener("click", function(){
+          if(q.classList.contains("done")) return;
+          if(o.getAttribute("data-v") === ans){ o.classList.add("right"); xong(q); }
+          else {
+            o.classList.add("wrong");
+            baoSai(q, "Chưa đúng.", "Em xem lại cách làm ở trên rồi chọn lại nhé.");
+          }
+        });
+      });
+      dangKy(q, "chon", function(){
+        opts.forEach(function(o){ o.classList.remove("wrong"); if(o.getAttribute("data-v") === ans) o.classList.add("right"); });
+        xong(q);
+      }, function(){ opts.forEach(function(o){ o.classList.remove("right", "wrong"); }); });
+    }
+  });
+
+  /* nút Kiểm tra + dòng hướng dẫn cho các khối mới */
+  function nutKiemTra(root, fn){
+    var b = nut("btn", "Kiểm tra"); b.setAttribute("data-kiem", "");
+    var w = root.querySelector(".why");
+    root.insertBefore(b, w || null);
+    b.addEventListener("click", function(){ if(!root.classList.contains("done")) fn(); });
+    return b;
+  }
+  function huongDan(root, truoc, chu){ root.insertBefore(tao("p", "hd", chu), truoc); }
+
+  /* ---- 2. ghép cặp [data-ghep] ---- */
+  $$("[data-ghep]").forEach(function(root){
+    var cots = $$(".cot", root);
+    if(cots.length !== 2) return;
+    var L = $$("[data-cap]", cots[0]), R = $$("[data-cap]", cots[1]);
+    var khung = tao("div", "cots");
+    root.insertBefore(khung, cots[0]); khung.appendChild(cots[0]); khung.appendChild(cots[1]);
+    function capCua(b){ return b.getAttribute("data-cap"); }
+    var tot = R.slice();
+    for(var k = 0; k < 30; k++){
+      tot = tron(R.slice());
+      var trung = tot.filter(function(r, i){ return L[i] && capCua(L[i]) === capCua(r); }).length;
+      if(R.length < 2 || trung < Math.max(1, Math.floor(R.length / 3))) break;
+    }
+    tot.forEach(function(r){ cots[1].appendChild(r); });
+    huongDan(root, khung, "Bấm một ô bên trái, rồi bấm ô bên phải hợp với nó. Bấm lại một ô đã ghép để gỡ ra. Ghép hết rồi bấm Kiểm tra.");
+    var cap = [], chon = null;
+    function ve(){
+      L.concat(R).forEach(function(b){
+        b.removeAttribute("data-so"); b.removeAttribute("data-mau");
+        b.classList.toggle("chon", b === chon); b.setAttribute("aria-pressed", b === chon ? "true" : "false");
+      });
+      cap.forEach(function(p, i){ p.forEach(function(b){ b.setAttribute("data-so", i + 1); b.setAttribute("data-mau", i % 6); }); });
+    }
+    function go(b){ cap = cap.filter(function(p){ return p[0] !== b && p[1] !== b; }); }
+    L.concat(R).forEach(function(b){
+      if(b.tagName === "BUTTON") b.type = "button";
+      b.addEventListener("click", function(){
+        if(root.classList.contains("done")) return;
+        var trai = L.indexOf(b) >= 0;
+        if(chon && (L.indexOf(chon) >= 0) !== trai){
+          var l = trai ? b : chon, r = trai ? chon : b;
+          go(l); go(r); cap.push([l, r]); chon = null;
+        } else if(chon === b){ chon = null; }
+        else { go(b); chon = b; }
+        ve();
+      });
+    });
+    nutKiemTra(root, function(){
+      if(cap.length < L.length){ feedback(root, false, "Em còn " + (L.length - cap.length) + " ô bên trái chưa ghép."); return; }
+      var sai = cap.filter(function(p){ return capCua(p[0]) !== capCua(p[1]); }).length;
+      if(!sai) xong(root);
+      else baoSai(root, "Có " + sai + " cặp chưa đúng.", "Em đọc lại từng cặp, gỡ cặp mình còn phân vân rồi ghép lại nhé.", sai === 1);
+    });
+    dangKy(root, "ghep", function(){
+      cap = L.map(function(l){ return [l, R.filter(function(r){ return capCua(r) === capCua(l); })[0]]; });
+      chon = null; ve(); xong(root);
+    }, function(){ cap = []; chon = null; ve(); });
+    ve();
+  });
+
+  /* ---- 3. sắp xếp thứ tự [data-xep] ---- */
+  $$("[data-xep]").forEach(function(root){
+    var ds = root.querySelector("ol, ul");
+    if(!ds) return;
+    var items = $$("li", ds).filter(function(li){ return li.parentNode === ds; });
+    items.forEach(function(li, k){
+      li.setAttribute("data-i", k);
+      var nd = tao("span", "nd"); while(li.firstChild) nd.appendChild(li.firstChild);
+      var dk = tao("span", "dk");
+      var len = nut("", "▲"), xuong = nut("", "▼");
+      len.setAttribute("aria-label", "Đưa lên trên"); xuong.setAttribute("aria-label", "Đưa xuống dưới");
+      dk.appendChild(len); dk.appendChild(xuong); li.appendChild(nd); li.appendChild(dk);
+      len.addEventListener("click", function(){
+        if(root.classList.contains("done")) return;
+        var p = li.previousElementSibling; if(p){ ds.insertBefore(li, p); nhay(li); len.focus(); }
+      });
+      xuong.addEventListener("click", function(){
+        if(root.classList.contains("done")) return;
+        var n = li.nextElementSibling; if(n){ ds.insertBefore(n, li); nhay(li); xuong.focus(); }
+      });
+    });
+    function tronLai(){ tronKhacGoc(items).forEach(function(li){ ds.appendChild(li); }); }
+    tronLai();
+    huongDan(root, ds, "Bấm ▲ ▼ để đưa từng thẻ lên hoặc xuống cho đúng thứ tự, rồi bấm Kiểm tra.");
+    nutKiemTra(root, function(){
+      var hien = $$("li", ds).filter(function(li){ return li.parentNode === ds; });
+      var sai = hien.filter(function(li, pos){ return +li.getAttribute("data-i") !== pos; }).length;
+      if(!sai) xong(root);
+      else baoSai(root, "Chưa đúng thứ tự — còn " + sai + " thẻ đứng chưa đúng chỗ.", "Em đọc lại, xem việc nào xảy ra trước rồi đổi chỗ nhé.", sai <= 2);
+    });
+    dangKy(root, "xep", function(){ items.forEach(function(li){ ds.appendChild(li); }); xong(root); }, tronLai);
+  });
+
+  /* ---- 4. phân loại vào nhóm [data-nhom] ---- */
+  $$("[data-nhom]").forEach(function(root){
+    var nhom = (root.getAttribute("data-nhom") || "").split("|").map(function(s){
+      var i = s.indexOf(":"); return {k: s.slice(0, i).trim(), ten: s.slice(i + 1).trim()};
+    }).filter(function(g){ return g.k; });
+    var goc = $$("[data-vao]", root);
+    var the = goc.map(function(s){
+      var b = nut("the-nhom", s.innerHTML); b.setAttribute("data-vao", s.getAttribute("data-vao"));
+      s.parentNode.removeChild(s); return b;
+    });
+    $$(".nguon", root).forEach(function(n){ n.parentNode.removeChild(n); });
+    var chon = null;
+    function boChon(){ if(chon){ chon.classList.remove("chon"); chon.setAttribute("aria-pressed", "false"); } chon = null; root.classList.remove("co-chon"); }
+    function dat(o){
+      if(root.classList.contains("done") || !chon) return;
+      var b = chon; boChon(); o.appendChild(b); nhay(b); b.focus();
+    }
+    function oNhan(ten, lop){
+      var khung = tao("div", lop), dau = nut("ngan-dau", ten), o = tao("div", "nhom-o");
+      khung.appendChild(dau); khung.appendChild(o);
+      dau.addEventListener("click", function(){ dat(o); });
+      khung.addEventListener("click", function(e){ if(e.target === khung || e.target === o) dat(o); });
+      return {khung: khung, o: o};
+    }
+    var khay = oNhan("🧺 Thẻ chưa xếp (bấm vào đây để trả thẻ về)", "khay-o");
+    var ngans = tao("div", "ngans"), ngan = {};
+    nhom.forEach(function(g){ var x = oNhan(g.ten, "ngan"); x.o.setAttribute("data-k", g.k); ngan[g.k] = x.o; ngans.appendChild(x.khung); });
+    var w = root.querySelector(".why");
+    root.insertBefore(khay.khung, w || null); root.insertBefore(ngans, w || null);
+    huongDan(root, khay.khung, "Bấm một thẻ để nhấc lên, rồi bấm vào tên nhóm em muốn đặt thẻ vào. Xếp hết rồi bấm Kiểm tra.");
+    the.forEach(function(b){
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function(){
+        if(root.classList.contains("done")) return;
+        if(chon === b){ boChon(); return; }
+        boChon(); chon = b; b.classList.add("chon"); b.setAttribute("aria-pressed", "true"); root.classList.add("co-chon");
+      });
+    });
+    function veLai(){ boChon(); tron(the.slice()).forEach(function(b){ khay.o.appendChild(b); }); }
+    veLai();
+    nutKiemTra(root, function(){
+      var con = khay.o.children.length;
+      if(con){ feedback(root, false, "Còn " + con + " thẻ chưa xếp vào nhóm nào."); return; }
+      var sai = the.filter(function(b){ return b.parentNode.getAttribute("data-k") !== b.getAttribute("data-vao"); }).length;
+      if(!sai){ boChon(); xong(root); }
+      else baoSai(root, "Có " + sai + " thẻ đặt chưa đúng nhóm.", "Em xem lại cách nhận biết ở trên rồi chuyển thẻ nhé.", sai === 1);
+    });
+    dangKy(root, "nhom", function(){
+      boChon(); the.forEach(function(b){ var o = ngan[b.getAttribute("data-vao")]; if(o) o.appendChild(b); }); xong(root);
+    }, veLai);
+  });
+
+  /* ---- 5. tô sáng trong đoạn trích [data-tosang] ---- */
+  $$("[data-tosang]").forEach(function(root){
+    var ts = $$(".t", root);
+    function dat(t, on){ t.classList.toggle("chon", on); t.setAttribute("aria-pressed", on ? "true" : "false"); }
+    ts.forEach(function(t){
+      t.setAttribute("role", "button"); t.setAttribute("tabindex", "0"); t.setAttribute("aria-pressed", "false");
+      var bam = function(){ if(!root.classList.contains("done")) dat(t, !t.classList.contains("chon")); };
+      t.addEventListener("click", bam);
+      t.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); bam(); } });
+    });
+    var doan = root.querySelector(".doan") || (ts[0] && ts[0].parentNode);
+    if(doan && doan.parentNode === root) huongDan(root, doan, "Bấm vào từ, cụm từ có gạch chấm để tô sáng; bấm lần nữa để bỏ. Chọn xong bấm Kiểm tra.");
+    nutKiemTra(root, function(){
+      var thua = ts.filter(function(t){ return t.classList.contains("chon") && !t.hasAttribute("data-dung"); }).length;
+      var thieu = ts.filter(function(t){ return !t.classList.contains("chon") && t.hasAttribute("data-dung"); }).length;
+      if(!thua && !thieu){ xong(root); return; }
+      var y = [];
+      if(thua) y.push("em đang tô thừa " + thua + " chỗ");
+      if(thieu) y.push("còn " + thieu + " chỗ em chưa tô");
+      baoSai(root, "Chưa đúng: " + y.join(", ") + ".", "Em đọc lại yêu cầu và đoạn trích rồi thử lại nhé.", thua + thieu === 1);
+    });
+    dangKy(root, "tosang", function(){ ts.forEach(function(t){ dat(t, t.hasAttribute("data-dung")); }); xong(root); },
+      function(){ ts.forEach(function(t){ dat(t, false); }); });
+  });
+
+  /* ---- 6. thẻ lật (không chấm) ---- */
+  $$(".thelat .the").forEach(function(b){
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function(){
+      var on = !b.classList.contains("lat");
+      b.classList.toggle("lat", on); b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  });
+
+  /* ---- 7. ghi chép của em: dự đoán, nhật kí cảm xúc (không chấm) ---- */
+  var xemLai = {};
+  function veXemLai(k){ (xemLai[k] || []).forEach(function(f){ f(); }); }
+  $$("[data-luu]").forEach(function(root){
+    var k = root.getAttribute("data-luu");
+    var ta = root.querySelector("textarea");
+    if(!ta){ ta = tao("textarea"); ta.rows = 3; root.appendChild(ta); }
+    if(!ta.getAttribute("aria-label")){ var h = root.querySelector(".hoi"); ta.setAttribute("aria-label", h ? h.textContent.trim() : "Ô ghi chép của em"); }
+    if(!ta.placeholder) ta.placeholder = "Em gõ vào đây…";
+    ta.value = kho.ghi[k] || "";
+    var cx = null;
+    if(root.hasAttribute("data-cam-xuc")){
+      var ds = (root.getAttribute("data-cam-xuc") || "😊 Vui|🥺 Thương|😮 Bất ngờ|🤔 Suy nghĩ|🥰 Xúc động|❓ Muốn hỏi thêm").split("|");
+      cx = tao("div", "camxuc"); cx.setAttribute("role", "group"); cx.setAttribute("aria-label", "Chọn cảm xúc của em");
+      ds.forEach(function(s){
+        s = s.trim(); if(!s) return;
+        var b = nut("", s); b.setAttribute("data-cx", s);
+        b.addEventListener("click", function(){ kho.cx[k] = (kho.cx[k] === s) ? "" : s; veCx(); ghiKho(); tt(); veXemLai(k); });
+        cx.appendChild(b);
+      });
+      root.insertBefore(cx, ta);
+    }
+    function veCx(){ if(cx) $$("button", cx).forEach(function(x){ x.setAttribute("aria-pressed", x.getAttribute("data-cx") === kho.cx[k] ? "true" : "false"); }); }
+    var dong = tao("div", "ghi-dong"), trangThai = tao("span", "luu-tt"), xoa = nut("btn nho", "Xoá ghi chép");
+    dong.appendChild(trangThai); dong.appendChild(xoa); root.appendChild(dong);
+    function tt(){ trangThai.textContent = (ta.value.trim() || kho.cx[k]) ? "✓ Đã lưu trên máy này" : "Không chấm điểm — chữ em gõ tự lưu trên máy này."; }
+    ta.addEventListener("input", function(){ kho.ghi[k] = ta.value; ghiKho(); tt(); veXemLai(k); });
+    haiLan(xoa, "Bấm lần nữa để xoá", function(){ ta.value = ""; kho.ghi[k] = ""; kho.cx[k] = ""; veCx(); ghiKho(); tt(); veXemLai(k); });
+    veCx(); tt();
+  });
+  $$("[data-xem-lai]").forEach(function(root){
+    var k = root.getAttribute("data-xem-lai");
+    var b = nut("btn", root.getAttribute("data-nhan") || "🔮 Mở lại điều em đã ghi lúc trước");
+    var noi = tao("div", "noi");
+    root.appendChild(b); root.appendChild(noi);
+    function ve(){
+      noi.innerHTML = "";
+      var t = (kho.ghi[k] || "").trim(), c = kho.cx[k] || "";
+      if(!t && !c){ noi.appendChild(tao("p", "muted small", "Em chưa ghi gì ở ô đó. Không sao — em thử nhớ lại lúc đầu mình nghĩ thế nào nhé.")); return; }
+      if(c){ var p = tao("p"); p.textContent = "Cảm xúc em đã chọn: " + c; noi.appendChild(p); }
+      if(t){ var q = tao("div", "box quote"); q.textContent = t; noi.appendChild(q); }
+    }
+    (xemLai[k] = xemLai[k] || []).push(ve); ve();
+    b.addEventListener("click", function(){ root.classList.toggle("mo"); ve(); });
+  });
+
+  /* ---- 8. dừng lại nghĩ: nút đếm ngược ---- */
+  $$(".dung[data-giay]").forEach(function(root){
+    var s = parseInt(root.getAttribute("data-giay"), 10) || 30;
+    var b = nut("btn", "⏳ Cho em " + s + " giây suy nghĩ"); root.appendChild(b);
+    var chay = null;
+    b.addEventListener("click", function(){
+      if(chay) return;
+      var con = s; b.disabled = true; b.textContent = "⏳ Còn " + con + " giây… em nghĩ đi nhé";
+      chay = setInterval(function(){
+        con--;
+        if(con <= 0){ clearInterval(chay); chay = null; b.disabled = false; b.textContent = "✍️ Hết giờ! Ghi ý của em vào vở nhé (bấm để nghĩ thêm)"; }
+        else b.textContent = "⏳ Còn " + con + " giây… em nghĩ đi nhé";
+      }, 1000);
+    });
+  });
+
+  /* ================= hành trình các chặng ================= */
+  var map = document.getElementById("hanhTrinh");
+  /* số chặng = số ở đầu h2 của section ("0. Giới thiệu…" → chặng 0), để bản đồ, dòng cuối chặng
+     và tiêu đề mục dùng CÙNG một số; h2 không có số thì đếm từ 1 */
+  function soCua(sec, idx){ var h = sec.querySelector("h2"), m = h && /^\s*(\d+)\s*\./.exec(h.textContent); return m ? +m[1] : idx + 1; }
+  var changs = $$("section[data-chang]").map(function(sec, idx){
+    var raw = sec.getAttribute("data-chang"), i = raw.indexOf("|");
+    var c = {sec: sec, id: sec.id, so: soCua(sec, idx),
+      icon: i >= 0 ? raw.slice(0, i).trim() : "⭐", ten: i >= 0 ? raw.slice(i + 1).trim() : raw.trim()};
+    c.units = units.filter(function(u){ return sec.contains(u.el); });
+    c.chip = document.querySelector('.chip[href="#' + sec.id + '"]');
+    var cuoi = tao("div", "chang-cuoi"); c.cuoi = cuoi; c.txt = tao("span", "cc-chu"); cuoi.appendChild(c.txt);
+    if(!c.units.length){
+      c.nutXong = nut("btn", "✅ Em đã học xong chặng này");
+      c.nutXong.addEventListener("click", function(){ kho.sao[c.id] = 1; ghiKho(); capNhatChang(true); });
+      cuoi.appendChild(c.nutXong);
+    }
+    sec.appendChild(cuoi);
+    return c;
+  });
+  changs.forEach(function(c, idx){
+    var sau = changs[idx + 1];
+    if(sau && sau.id){ var a = tao("a"); a.textContent = "Sang chặng " + sau.so + ": " + sau.icon + " " + sau.ten + " →"; a.href = "#" + sau.id; c.cuoi.appendChild(a); }
+  });
+  var dem = null, huy = null, huyCuoi = null, saoTop = null;
+  if(map && changs.length){
+    var dau = tao("div", "ht-dau");
+    dau.appendChild(tao("span", "ht-ten")).textContent = map.getAttribute("data-ten") || "🗺️ Hành trình của em";
+    dem = dau.appendChild(tao("span", "ht-dem"));
+    map.appendChild(dau);
+    var duong = tao("div", "ht-duong");
+    changs.forEach(function(c){
+      var a = tao("a", "tram"); a.href = "#" + c.id;
+      a.appendChild(tao("span", "o")).textContent = c.icon;
+      a.appendChild(tao("span", "sao", "⭐")).setAttribute("aria-hidden", "true");
+      a.appendChild(tao("span", "ten")).textContent = c.so + ". " + c.ten;
+      duong.appendChild(a); c.tram = a;
+    });
+    map.appendChild(duong);
+    huy = map.appendChild(tao("div", "huy-hieu"));
+    huy.textContent = (map.getAttribute("data-huy-hieu") || "🏅 Huy hiệu hoàn thành bài học") + " — em đã đi hết hành trình!";
+    map.appendChild(tao("p", "ht-chu", "Mỗi chặng xong em được một ⭐. Tiến độ tự lưu trên máy này; muốn làm lại thì bấm nút <i>Làm lại từ đầu</i> ở cuối trang."));
+    var pr = document.querySelector(".progress");
+    if(pr){ saoTop = tao("span", ""); saoTop.id = "saoTop"; pr.appendChild(saoTop); }
+    /* huy hiệu ngay tại cuối trang (chỗ em vừa làm xong), kèm lời khen theo chủ điểm: data-loi-khen */
+    var se = document.getElementById("scoreEnd"), khoiDiem = se && se.parentNode;
+    if(khoiDiem){
+      huyCuoi = tao("div", "huy-hieu huy-hieu-cuoi");
+      huyCuoi.textContent = map.getAttribute("data-huy-hieu") || "🏅 Huy hiệu hoàn thành bài học";
+      var lk = (map.getAttribute("data-loi-khen") || "").trim();
+      if(lk) huyCuoi.appendChild(tao("span", "khen")).textContent = lk;
+      khoiDiem.parentNode.insertBefore(huyCuoi, khoiDiem);
+    }
+  }
+  function capNhatChang(coBao){
+    if(!changs.length) return;
+    var truoc = changs.filter(function(c){ return kho.sao[c.id]; }).length;
+    changs.forEach(function(c){
+      if(c.units.length && c.units.every(daXong) && !kho.sao[c.id]){
+        kho.sao[c.id] = 1; ghiKho();
+        if(coBao) bao("⭐ Em hoàn thành chặng " + c.so + ": " + c.ten + "!");
+      }
+      var x = !!kho.sao[c.id], lam = c.units.filter(daXong).length;
+      if(c.tram){ c.tram.classList.toggle("xong", x); c.tram.setAttribute("aria-label", "Chặng " + c.so + ": " + c.ten + (x ? " — đã xong" : "")); }
+      if(c.chip) c.chip.classList.toggle("xong", x);
+      c.cuoi.classList.toggle("xong", x);
+      c.txt.textContent = x ? "⭐ Em đã hoàn thành chặng " + c.so + " — " + c.ten + "!"
+        : (c.units.length ? "🎯 Chặng " + c.so + ": em đã làm đúng " + lam + "/" + c.units.length + " câu tự chấm. Làm đúng hết để nhận ⭐."
+                          : "🎯 Chặng " + c.so + ": đọc kĩ, trả lời vào vở, rồi bấm nút bên cạnh để nhận ⭐.");
+      if(c.nutXong) c.nutXong.hidden = x;
+    });
+    var n = changs.filter(function(c){ return kho.sao[c.id]; }).length;
+    if(dem) dem.textContent = "⭐ " + n + "/" + changs.length + " chặng";
+    if(saoTop) saoTop.textContent = "⭐ " + n + "/" + changs.length;
+    if(huy) huy.classList.toggle("hien", n === changs.length);
+    if(huyCuoi) huyCuoi.classList.toggle("hien", n === changs.length);
+    if(coBao && n === changs.length && truoc < n && map) setTimeout(function(){ bao(map.getAttribute("data-huy-hieu") || "🏅 Em đã đi hết hành trình!"); }, 1200);
+  }
+
+  /* ================= nạp lại tiến độ, làm lại ================= */
+  function napLai(){
+    if(kho.tong !== units.length){ kho.done = []; if(kho.tong != null) kho.sao = {}; return; }
+    dangNap = true;
+    (kho.done || []).forEach(function(i){ var u = units[i]; if(u && !daXong(u)) u.solve(); });
+    dangNap = false;
+  }
+  function xoaGiaoDien(){ units.forEach(function(u){ u.reset(); }); updateScore(); }
+  /* nút Làm lại: tách khỏi dòng điểm (xuống dòng riêng, căn phải) và phải bấm hai lần */
+  (function(){
+    var rs = document.getElementById("resetQuiz");
+    var cha = rs.parentNode;
+    if(cha && !cha.classList.contains("dong-lam-lai")){
+      var dong = tao("p", "dong-lam-lai"); cha.parentNode.insertBefore(dong, cha.nextSibling); dong.appendChild(rs);
+    }
+    haiLan(rs, "Bấm lần nữa để xoá hết điểm và sao", function(){
+      xoaGiaoDien(); kho.done = []; kho.sao = {}; kho.tong = units.length; ghiKho(); capNhatChang(false);
+      bao("Đã làm lại từ đầu. Cố lên nhé! 💪");
+    });
+  })();
+
+  /* ================= nút Hiện/Ẩn gợi ý ================= */
+  var toggles = $$("[data-toggle]");
+  function setOpen(btn, open){
+    var box = document.getElementById(btn.getAttribute("data-toggle"));
+    if(!box) return;
+    box.classList.toggle("open", open);
+    var base = btn.getAttribute("data-label") || btn.textContent.replace(/^(Hiện|Ẩn) /, "");
+    btn.setAttribute("data-label", base);
+    btn.textContent = (open ? "Ẩn " : "Hiện ") + base;
+  }
+  toggles.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var box = document.getElementById(btn.getAttribute("data-toggle"));
+      setOpen(btn, !(box && box.classList.contains("open")));
+    });
+  });
+  document.getElementById("openAll").addEventListener("click", function(){ toggles.forEach(function(b){ setOpen(b, true); }); });
+  document.getElementById("closeAll").addEventListener("click", function(){ toggles.forEach(function(b){ setOpen(b, false); }); });
+
+  napLai(); updateScore(); capNhatChang(false);
+
+  /* cửa cho script kiểm thử (thu_tu_cham.py, chup_anh_trang.py) — học sinh không dùng */
+  window.NV6 = {
+    units: units, khoa: KHOA, kho: function(){ return kho; },
+    xoaGiaoDien: xoaGiaoDien,
+    napLai: function(){ napLai(); updateScore(); capNhatChang(false); },
+    giaiHet: function(){
+      dangNap = true; units.forEach(function(u){ if(!daXong(u)) u.solve(); }); dangNap = false;
+      changs.forEach(function(c){ kho.sao[c.id] = 1; }); luu(); updateScore(); capNhatChang(false);
+    }
+  };
+})();
+</script>
+</body>
+</html>

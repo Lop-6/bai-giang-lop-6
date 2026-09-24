@@ -116,6 +116,8 @@
   .num{font:inherit; font-size:18px; cursor:pointer; min-width:46px; height:46px; padding:0 8px;
     border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--ink); transition:.15s}
   .num{white-space:nowrap}
+  /* data-pick data-dai: mục là câu diễn đạt dài → cho xuống dòng (màn hẹp không bị cắt chữ) — rút từ Bài 5 */
+  [data-pick][data-dai] .num{white-space:normal; height:auto; min-height:46px; text-align:left; line-height:1.35; padding:6px 10px}
   .num:hover{border-color:var(--brand); color:var(--brand)}
   .num.on{background:var(--brand); border-color:var(--brand); color:#fff; font-weight:700}
   .let{font:inherit; font-size:20px; font-weight:700; cursor:pointer; width:44px; height:48px;
@@ -197,6 +199,12 @@
   .fillbox .mark{font-size:19px; min-width:18px}
   .fillbox input[type=text]{min-width:0}
   .fillbox.gon{gap:3px} .fillbox.gon input[type=text]{width:92px; padding:5px 6px}
+  /* ô đúng: nền xanh lá (khớp hộp mã màu "đã tìm đúng"); ô sai: viền cam; khoá sau 3 lần sai: dòng nhắc (rút từ Bài 6) */
+  .fillbox input.dat{background:var(--green-soft); border-color:var(--green)}
+  .fillbox input.sai-o{border-color:var(--warm)}
+  .fillbox input:disabled{opacity:.6}
+  .khoa-nhac{display:block; font:600 13px "Segoe UI",sans-serif; color:#8a5a06}
+  .khoa-nhac:empty{display:none}
   .step{border-left:4px solid var(--brand-soft); background:#fff; border-radius:0 10px 10px 0;
     padding:8px 14px; margin:8px 0}
   input[type=text]{font:inherit; padding:7px 11px; border:1px solid var(--line); border-radius:9px;
@@ -371,6 +379,103 @@
   .gc-kq{display:inline-flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:center}
   .gc-kq input{font:inherit; width:120px; padding:5px 8px; border:1px solid var(--line); border-radius:9px; text-align:center; min-width:0}
   @media(max-width:560px){ .gc-the{min-width:54px; font-size:21px; padding:0 6px} .gc-loi{font-size:18px} }
+
+  /* ----- đặt tính cột dọc (data-dattinh — rút từ Bài 4, thêm nhân / chia cho Bài 5) -----
+     Màu (bài ghi đè trong CSS riêng, bọc #id hoặc .dt): --dt-nho = chữ số nhớ / nhãn "+1" (mặc định xanh mòng két — trung tính,
+     không trùng cam của "số hạng / thừa số thứ nhất / cơ số" ở Bài 4 – 6) · --dt-nho-nen · --dt-kq = chữ số kết quả ·
+     --dt-sc = số chia, --dt-th = thương (phép chia; mặc định không tô) */
+  .dt{--dt-nho:#0e7490; --dt-nho-nen:#e0f7fa; --dt-kq:#334155; margin:10px 0; text-align:center}
+  .dt > .fb{text-align:left}
+  .dt-bang{display:inline-grid; gap:0 2px; align-items:end; margin:4px auto; font:700 30px "Cambria Math","Times New Roman",serif}
+  .dt-bang .o{width:38px; height:44px; display:flex; align-items:center; justify-content:center; border-radius:6px; position:relative; box-sizing:border-box}
+  .dt-bang .h{font:600 11px "Segoe UI",sans-serif; color:var(--muted); height:26px; line-height:1.1; text-align:center; align-items:flex-end}
+  .dt-bang .dau{color:var(--muted)}
+  .dt-bang .dau.giua{transform:translateY(-50%)}
+  .dt-bang .nho{height:22px; font:700 15px "Segoe UI",sans-serif; color:var(--dt-nho)}
+  .dt-bang .nho span{animation:dt-roi .5s ease both}
+  @keyframes dt-roi{from{transform:translateY(-16px); opacity:0} to{transform:none; opacity:1}}
+  .dt-bang .gach{grid-column:1 / -1; height:0; border-top:3px solid var(--ink); margin:2px 0 4px}
+  .dt-bang .cot-on,.dt-phai .cot-on{background:#fff3c4}
+  .dt-bang .kq,.dt-phai .kq{color:var(--dt-kq)}
+  .dt-bang .kq span,.dt-phai .kq span{animation:pop .35s ease both}
+  /* trừ có nhớ: chữ số ở dưới được THÊM 1 → ô tô nền cam nhạt + nhãn "+1" góc trên bên phải */
+  .dt-bang .o.nhot{background:var(--dt-nho-nen); box-shadow:inset 0 0 0 2px var(--dt-nho)}
+  .dt-bang .o.nhot::after{content:"+1"; position:absolute; right:-9px; top:-7px; z-index:2; font:800 12px "Segoe UI",sans-serif; color:#fff;
+    background:var(--dt-nho); border-radius:6px; padding:1px 3px; line-height:1.1; animation:dt-roi .5s ease both}
+  .dt-bang .o.soi{outline:3px dashed var(--warm); outline-offset:-3px}
+  .dt-bang .o.trong{color:transparent}
+  .dt-bang input,.dt-phai input{font:700 26px "Cambria Math","Times New Roman",serif; width:36px; height:40px; text-align:center; padding:0;
+    border:2px dashed #a9bde6; border-radius:8px; background:#f5f8ff; min-width:0; box-sizing:border-box}
+  .dt-bang input.dung,.dt-phai input.dung{border:2px solid var(--green); background:var(--green-soft); color:#0b6b52}
+  .dt-bang input.sai,.dt-phai input.sai{border-color:var(--warm); background:var(--warm-soft); animation:shake .3s}
+  .dt-bang .hang-b{transition:transform .35s ease}
+  .dt-loi{font-size:15.5px; text-align:left; display:inline-block; margin:4px auto; min-height:22px}
+  .dt-loi div{animation:dropin .35s ease both}
+  .dt-dk{margin:6px 0}
+  .dt-lech{font-size:15.5px; margin:4px 0}
+  /* nhân: bấm ô bắt đầu của tích riêng thứ hai trở đi */
+  .dt-bang button.dt-cot{font:inherit; padding:0; margin:0; border:2px dashed #a9bde6; background:#f5f8ff; cursor:pointer}
+  .dt-bang button.dt-cot:hover,.dt-bang button.dt-cot:focus{border-color:var(--brand); background:var(--brand-soft); outline:none}
+  .dt-bang button.dt-cot.sai{border-color:var(--warm); background:var(--warm-soft); animation:shake .3s}
+  /* chia kiểu Việt Nam: số bị chia | số chia, thương dưới số chia; gạch dưới tích (.gd); chữ số vừa hạ (.ha) rơi xuống */
+  .dt-chia{display:inline-flex; align-items:flex-start; text-align:left; margin:4px auto}
+  .dt-chia .dt-bang{margin:0}
+  .dt-bang .o.gd{box-shadow:inset 0 -3px 0 var(--ink); border-radius:0}
+  .dt-bang .o.gd.nhot{box-shadow:inset 0 0 0 2px var(--dt-nho), inset 0 -3px 0 var(--ink)}
+  .dt-bang .ha{animation:dt-ha .5s ease both}
+  @keyframes dt-ha{from{transform:translateY(-36px); opacity:.2} to{transform:none; opacity:1}}
+  .dt-bang .o.soi-ha{outline:3px dashed var(--dt-nho); outline-offset:-3px}
+  .dt-phai{display:flex; flex-direction:column; border-left:3px solid var(--ink); margin-left:4px; font:700 30px "Cambria Math","Times New Roman",serif}
+  .dt-phai .o{height:44px; min-width:38px; display:flex; align-items:center; justify-content:center; border-radius:6px; box-sizing:border-box}
+  .dt-phai .sc{padding:0 12px; border-bottom:3px solid var(--ink); border-radius:0; white-space:nowrap; color:var(--dt-sc, inherit)}
+  .dt-phai .th .kq{color:var(--dt-th, var(--dt-kq))}
+  .dt-phai .th{display:flex; gap:0 2px; padding:0 6px; min-height:44px}
+  .dt-phai .th .o{width:38px; min-width:0}
+  /* bảng tĩnh trước / sau: đặt lệch cột ↔ thẳng cột (<span class="dt-tinh"> … <span class="cot">) */
+  .dt-tinh{display:inline-block; font:700 28px "Cambria Math","Times New Roman",serif; line-height:1.25; text-align:right; margin:4px 10px}
+  .dt-tinh .g{border-top:3px solid var(--ink); display:block}
+  .dt-tinh .sai{color:var(--red)} .dt-tinh .dung{color:#0b6b52}
+  .dt-tinh .cot{display:inline-block; width:22px; text-align:center}
+  .dt-tinh .lech{background:var(--red-soft); border-radius:4px}
+  .dt-tinh .thang{background:#e8f5e9; border-radius:4px}
+  @media(max-width:560px){
+    .dt-bang,.dt-phai{font-size:24px} .dt-bang .o{width:30px; height:38px} .dt-phai .o{height:38px} .dt-phai .th .o{width:30px}
+    .dt-bang input,.dt-phai input{width:30px; height:36px; font-size:22px}
+  }
+
+  /* ----- tìm số chưa biết bằng sơ đồ đoạn thẳng (data-timx — rút từ Bài 4, thêm nhân / chia) -----
+     Màu (bài ghi đè trong CSS riêng bọc #id hoặc .tx): --tx-ca cả thanh · --tx-p1 / --tx-p1-nen phần thứ nhất · --tx-p2 / --tx-p2-nen phần
+     thứ hai · --tx-an số chưa biết (viền đứt) · --tx-tim chữ của số vừa tìm được (ô đổi sang nét liền, nền xanh lá) */
+  .tx{--tx-ca:#334155; --tx-ca-nen:#e2e8f0; --tx-p1:#c2410c; --tx-p1-nen:#fed7c3; --tx-p2:#7c4a1e; --tx-p2-nen:#ecd9c0; --tx-an:#64748b; --tx-tim:#0b6b52}
+  .tx-cau{border:1px solid var(--line); border-radius:12px; padding:10px 12px; margin:10px 0; background:#fff}
+  .tx-cau h5{margin:0 0 4px; font-size:16px; color:var(--brand)}
+  .tx-cau .de{font:700 24px "Cambria Math","Times New Roman",serif; text-align:center; margin:4px 0}
+  .tx-cau .chon{text-align:center; margin:6px 0}
+  .tx-cau .chon .btn{font-family:"Cambria Math","Times New Roman",serif; font-size:19px}
+  .tx-cau .chon .btn.sai{background:var(--red-soft); border-color:var(--red); color:var(--red); animation:shake .3s}
+  .tx-cau .chon .btn.dung{background:var(--green-soft); border-color:var(--green); color:#0b6b52}
+  .tx-cau .dien{text-align:center; margin:6px 0; font-size:18px}
+  .tx-cau .dien input{font:inherit; width:110px; text-align:center; padding:5px 8px; border:1px solid var(--line); border-radius:9px; min-width:0}
+  .tx-cau.xong{border-color:#b8e5d7; background:#f7fdfb}
+  .tx-hinh{display:block; width:100%; max-width:640px; margin:6px auto}
+  .tx-o{stroke-width:2.5}
+  .tx-o.p1{fill:var(--tx-p1-nen); stroke:var(--tx-p1)} .tx-o.p2{fill:var(--tx-p2-nen); stroke:var(--tx-p2)} .tx-o.ca{fill:var(--tx-ca-nen); stroke:var(--tx-ca)}
+  .tx-o.an{fill:#fff; stroke:var(--tx-an); stroke-dasharray:7 5}
+  .tx-chu{font:700 17px "Cambria Math","Times New Roman",serif; text-anchor:middle; dominant-baseline:central}
+  .tx-chu.p1{fill:var(--tx-p1)} .tx-chu.p2{fill:var(--tx-p2)} .tx-chu.ca{fill:var(--tx-ca)} .tx-chu.an{fill:var(--tx-an)}
+  .tx-chu.nho{font:600 13px "Segoe UI",sans-serif; fill:#5c6577}
+  .tx-chu.trai{text-anchor:start}
+  .tx-ngoac{fill:none; stroke-width:3; stroke:var(--tx-ca)}
+  .tx-ngoac.an{stroke:var(--tx-an); stroke-dasharray:7 5}
+  .tx-x{animation:tx-khop .6s ease both}
+  @keyframes tx-khop{0%{opacity:.2} 100%{opacity:1}}
+  .tx-o-x{transition:fill .5s, stroke .5s}
+  .tx-cau.xong .tx-o-x{fill:var(--green-soft); stroke:var(--green); stroke-dasharray:none}
+  .tx-cau.xong .tx-x{fill:var(--tx-tim)}
+  .tx-cau.xong .tx-ngoac-x{stroke:var(--green); stroke-dasharray:none}
+  .tx-cau .tx-hinh-sau{margin-top:4px}
+  @media(max-width:640px){ .tx-hinh .tx-chu{font-size:27px} .tx-hinh .tx-chu.nho{font-size:22px} }
+  @media(max-width:560px){ .tx-cau .de{font-size:21px} }
 
   /* ----- công tắc giữ pane cũ (data-t2-giu): pane đã xem mờ đi, pane đang chọn rõ ----- */
   [data-t2] .t2-cu{opacity:.7}
@@ -807,7 +912,7 @@
     <div class="fb fb-dien"></div>
   </div>
 
-  <div class="act" data-act="hd3" data-can-het>
+  <div class="act" data-act="hd3" data-can-het data-mo-sau="#rv-hd3-mo">
     <h4><span class="tag">HOẠT ĐỘNG 2</span> HĐ3 — điểm <i>n</i> ở phía nào của điểm 7?</h4>
     <p><b>HĐ3.</b> Cho <i>n</i> là một số tự nhiên nhỏ hơn 7. Theo em, điểm <i>n</i> nằm bên trái hay bên phải điểm 7?</p>
     <p class="muted small">Đừng đoán vội. <b>Bấm chọn trên tia số tất cả các điểm <i>n</i> có thể có</b> (điểm 7 tô <b class="c-xet">vàng</b> —
@@ -823,11 +928,13 @@
               data-fb-sai="Nhìn lại các điểm em vừa chọn trên tia số: chúng nằm về phía nào của điểm 7 (tô vàng)?"></span> điểm 7.</p>
       <div class="fb fb-mcq"></div>
     </div>
+    <div class="hide" id="rv-hd3-mo">
     <button class="btn" data-reveal="#rv-hd3" data-open="Em trả lời xong HĐ3 — xem đối chiếu"
             data-close="Ẩn phần đối chiếu">Em trả lời xong HĐ3 — xem đối chiếu</button>
     <div class="reveal" id="rv-hd3">
       <p><i>n</i> có thể là 0; 1; 2; 3; 4; 5; 6 — điểm nào trong số đó cũng nằm <b class="c-nho">bên trái</b> điểm 7.
       Vậy: <b>n &lt; 7 thì điểm n nằm bên trái điểm 7.</b></p>
+    </div>
     </div>
   </div>
 
@@ -995,11 +1102,12 @@
     còn ý nghĩa gì, vì hàng trăm đã phân thắng thua rồi.</p>
   </div>
 
-  <div class="act" data-act="luyen-tap">
+  <div class="act" data-act="luyen-tap" data-mo-sau="#rv-lt-mo">
     <h4><span class="tag">HOẠT ĐỘNG 5</span> Luyện tập — so sánh <i>m</i> và <i>n</i></h4>
     <p class="muted small">Bây giờ đến lượt em làm "máy so sánh": ba bước, trang chỉ mở bước sau khi em làm đúng bước trước.</p>
     <div data-compare data-a="12036001" data-b="12035987" data-ten-a="m" data-ten-b="n" data-tia="1"
          data-ok="Giỏi! Em đã so sánh đúng cách: từ trái sang, hàng khác nhau đầu tiên quyết định — và đọc được thứ tự trên tia số."></div>
+    <div class="hide" id="rv-lt-mo">
     <button class="btn" data-reveal="#rv-lt" data-open="Em làm xong rồi — xem đối chiếu"
             data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
     <div class="reveal" id="rv-lt">
@@ -1008,10 +1116,11 @@
       <p class="setline"><i class="c-lon">m</i> &gt; <i class="c-nho">n</i> &nbsp;(hay 12&nbsp;036&nbsp;001 &gt; 12&nbsp;035&nbsp;987).</p>
       <p>b) Vì <i>n</i> &lt; <i>m</i> nên trên tia số nằm ngang, điểm <i>n</i> nằm bên trái điểm <i>m</i>: <b>điểm <i class="c-nho">n</i> nằm trước</b>.</p>
     </div>
+    </div>
   </div>
 
   <h3>Vận dụng (SGK)</h3>
-  <div class="act" data-act="van-dung" data-can-het>
+  <div class="act" data-act="van-dung" data-can-het data-mo-sau="#rv-vd-mo">
     <h4><span class="tag">HOẠT ĐỘNG 6</span> Tiền bán hàng sáng – chiều – tối</h4>
     <p>Theo dõi kết quả bán hàng trong ngày của một cửa hàng, người ta nhận thấy:</p>
     <p>Số tiền thu được vào buổi sáng nhiều hơn vào buổi chiều;<br>Số tiền thu được vào buổi tối ít hơn vào buổi chiều.</p>
@@ -1085,6 +1194,7 @@
     <button class="btn ghost" data-hint="#h-vd">Gợi ý</button>
     <div class="hint" id="h-vd">Muốn "bắc cầu" thì hai dữ kiện phải viết <b>cùng một chiều</b> (cùng dấu &lt;). «Sáng &gt; Chiều» đọc từ phải sang
       trái thì thành «Chiều … Sáng» — dấu nào? Ghép với «Tối &lt; Chiều»: buổi nào đứng đầu dãy, buổi nào đứng cuối? Trên tia số, bên trái là ít hơn.</div>
+    <div class="hide" id="rv-vd-mo">
     <button class="btn" data-reveal="#rv-vd" data-open="Em làm xong rồi — xem đối chiếu"
             data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
     <div class="reveal" id="rv-vd">
@@ -1099,6 +1209,7 @@
         <text x="120" y="24" class="rv-t" fill="var(--nho)">t (tối)</text><text x="260" y="24" class="rv-t" fill="#7a5b00">c (chiều)</text><text x="400" y="24" class="rv-t" fill="var(--lon)">s (sáng)</text>
         <text x="120" y="72" class="rv-t2">t &lt; c</text><text x="330" y="72" class="rv-t2">c &lt; s</text>
       </svg>
+    </div>
     </div>
   </div>
 
@@ -1166,7 +1277,7 @@
   </div>
 
   <h3>❓ Câu hỏi (SGK)</h3>
-  <div class="act" data-act="cau-hoi">
+  <div class="act" data-act="cau-hoi" data-mo-sau="#rv-ch-mo">
     <h4><span class="tag">HOẠT ĐỘNG 8</span> Số nào thuộc <i>A</i>, số nào thuộc <i>B</i>?</h4>
     <p>Trong các số 3; 5; 8; 9, số nào thuộc tập hợp <span class="m"><i>A</i> = {<i>x</i> ∈ ℕ | <i>x</i> ≥ 5}</span>, số nào thuộc tập hợp
     <span class="m"><i>B</i> = {<i>x</i> ∈ ℕ | <i>x</i> ≤ 5}</span>?</p>
@@ -1183,6 +1294,7 @@
                data-hint-thieu='{"5":"Còn số 5: 5 ≤ 5 có đúng không? Kí hiệu ≤ có cho phép «bằng» không?","3":"Còn số 3: 3 có nhỏ hơn 5 không?"}'></div></div>
       </div>
     </div>
+    <div class="hide" id="rv-ch-mo">
     <button class="btn" data-reveal="#rv-ch" data-open="Em làm xong rồi — xem đối chiếu"
             data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
     <div class="reveal" id="rv-ch">
@@ -1205,6 +1317,7 @@
       <p class="muted small">Dải <b class="c-lon">xanh rêu</b> là tập <i>A</i>, dải <b class="c-nho">chàm</b> là tập <i>B</i>. Hai dải chồng lên nhau
       <b>đúng một điểm</b> — điểm <b class="c-xet">5</b>, nhờ phần «hoặc bằng» của cả hai kí hiệu.</p>
     </div>
+    </div>
   </div>
 
   <h3>Hai điều kiện cùng lúc <span class="muted small">(cô soạn thêm, không có trong SGK — chuẩn bị cho Bài tập 1.15)</span></h3>
@@ -1214,7 +1327,7 @@
     <b>cả hai</b> điều kiện cùng lúc: <span class="m"><i>x</i> ≥ 3</span> <b>và</b> <span class="m"><i>x</i> &lt; 7</span> — mỗi đầu một "hàng rào",
     đọc kĩ dấu ở từng đầu xem có lấy số ở đầu đó không.
   </div>
-  <div class="act" data-act="hai-dieu-kien">
+  <div class="act" data-act="hai-dieu-kien" data-mo-sau="#rv-2dk-mo">
     <h4><span class="tag">HOẠT ĐỘNG 9</span> Bấm các điểm <i>x</i> thoả mãn 3 ≤ <i>x</i> &lt; 7</h4>
     <p>Trên tia số, bấm chọn tất cả các điểm <i>x</i> (<i>x</i> là số tự nhiên) thoả mãn <span class="m">3 ≤ <i>x</i> &lt; 7</span>, rồi viết vào vở
     tập hợp <span class="m">{<i>x</i> ∈ ℕ | 3 ≤ <i>x</i> &lt; 7}</span> bằng cách liệt kê.</p>
@@ -1223,6 +1336,7 @@
          data-hint-thieu='{"3":"Còn sót một điểm ở đầu bên trái: «3 ≤ x» có cho phép «bằng» không? Số 3 có được lấy không?","4":"Còn sót một điểm ở giữa — soát lần lượt từ 3 đến 6.","5":"Còn sót một điểm ở giữa — soát lần lượt từ 3 đến 6.","6":"Còn sót một điểm — 6 có nhỏ hơn 7 không?"}'
          data-hint-thieu-nhieu="Còn sót nhiều điểm — &lt;i&gt;x&lt;/i&gt; phải thoả &lt;b&gt;cả hai&lt;/b&gt;: &lt;i&gt;x&lt;/i&gt; ≥ 3 &lt;b&gt;và&lt;/b&gt; &lt;i&gt;x&lt;/i&gt; &lt; 7. Soát lần lượt từng số từ 0 đến 10."
          data-ok="Đúng rồi! Lấy cả 3 (vì dấu ≤ có «bằng»), không lấy 7 (vì chỉ «nhỏ hơn»). Giờ em viết tập hợp vào vở."></div>
+    <div class="hide" id="rv-2dk-mo">
     <button class="btn" data-reveal="#rv-2dk" data-open="Em viết xong rồi — xem đối chiếu"
             data-close="Ẩn phần đối chiếu">Em viết xong rồi — xem đối chiếu</button>
     <div class="reveal" id="rv-2dk">
@@ -1239,6 +1353,7 @@
       </svg>
       <p class="muted small">Hai "hàng rào": hàng rào trái đứng <b>trước</b> điểm 3 (vì có «bằng», 3 ở bên trong); hàng rào phải đứng <b>trước</b>
       điểm 7 (vì chỉ «nhỏ hơn», 7 ở bên ngoài). Điểm 7 không được tô.</p>
+    </div>
     </div>
   </div>
 </section>
@@ -1423,11 +1538,43 @@
     if(txt) txt.textContent = n + '/' + ACTS.length + ' hoạt động';
   }
   var WIDGET_CHAM = '[data-venn],[data-lab],[data-picks],[data-mcq],[data-uniq],[data-numline][data-answer],' +
-    '[data-fill],[data-abacus][data-answer],[data-expand],[data-match],[data-placetable][data-ask],[data-placetable][data-ask-gt],[data-compare]:not([data-demo]),[data-gomcap]:not([data-demo]),[data-custom]';
-  /* Mở các khối data-mo-sau="#id" (vd. câu hỏi tiếp theo) khi widget chứa thuộc tính này làm đúng */
+    '[data-fill],[data-abacus][data-answer],[data-expand],[data-match],[data-placetable][data-ask],[data-placetable][data-ask-gt],[data-compare]:not([data-demo]),[data-gomcap]:not([data-demo]),[data-dattinh]:not([data-demo]),[data-timx],[data-custom]';
+  /* Mở các khối data-mo-sau="#id" (vd. câu hỏi tiếp theo) khi widget chứa thuộc tính này làm đúng.
+     Nhận nhiều selector: data-mo-sau="#hinh,#kttt" (khung Kiến thức trọng tâm NGOÀI .act cũng mở được).
+     data-an-sau="#id" (cùng chỗ đặt): lúc ấy ẩn khối đó đi (dòng giữ chỗ "khung này mở khi em làm xong…"). Rút từ Bài 5, 6. */
   function moSau(w){
-    var s = w && w.getAttribute ? w.getAttribute('data-mo-sau') : '';
+    if(!w || !w.getAttribute) return;
+    var s = w.getAttribute('data-mo-sau'), an = w.getAttribute('data-an-sau');
     if(s) $$(s).forEach(function(t){ t.classList.remove('hide'); t.classList.add('mo-ra'); });
+    if(an) $$(an).forEach(function(t){ t.classList.add('hide'); });
+  }
+  /* ---------- nhóm ô điền (rút từ Bài 4 – 7) ----------
+     data-fill chỉ gọi done() khi MỌI ô điền của CẢ hoạt động đúng → không nối được các bước ① → ② → ③ trong một hoạt động.
+     • data-mo-khi="#id" trên một khối bất kì: MỌI ô điền và khối đặt tính chấm (data-dattinh không demo) trong khối đúng
+       thì mở #id (nhận nhiều selector) và phát sự kiện "t6-nhom-xong" (nổi bọt) trên khối — JS riêng nghe để khen / tô màu.
+     • Toan6.khiDienDung([ô...], fn): như trên cho một danh sách ô bất kì (fn chạy một lần). */
+  var NHOM_W = '[data-fill],[data-dattinh]:not([data-demo])';
+  var THEO_DOI = [];
+  function daXongW(w){ return !!(w._ok || w._xong); }
+  function khiDienDung(hosts, fn){
+    hosts = (hosts || []).filter(Boolean);
+    if(hosts.length) THEO_DOI.push({ hosts: hosts, fn: fn, xong: false });
+  }
+  function soatNhom(w){
+    if(!w || !w.closest) return;
+    for(var k = w.closest('[data-mo-khi]'); k; k = k.parentElement && k.parentElement.closest('[data-mo-khi]')){
+      if(k._nhomXong) continue;
+      var ws = $$(NHOM_W, k);
+      if(ws.length && ws.every(daXongW)){
+        k._nhomXong = true;
+        var t = k.getAttribute('data-mo-khi');
+        if(t) moSau({ getAttribute: function(n){ return n === 'data-mo-sau' ? t : null; } });
+        try{ k.dispatchEvent(new CustomEvent('t6-nhom-xong', { bubbles: true })); }catch(e){}
+      }
+    }
+    THEO_DOI.forEach(function(d){
+      if(!d.xong && d.hosts.indexOf(w) >= 0 && d.hosts.every(daXongW)){ d.xong = true; try{ d.fn(); }catch(e){ if(window.console) console.error(e); } }
+    });
   }
   function done(node){
     if(!node || !node.closest) return;
@@ -1436,7 +1583,7 @@
     if(w.matches && w.matches('[data-act]')) $$('[data-mcq]', w).forEach(function(q){ q._xong = true; });
     w._xong = true;
     /* data-mo-sau trên chính .act nghĩa là "xong CẢ hoạt động" → mở ở cuối hàm, không mở khi nhóm mcq vừa đúng */
-    if(!(w.matches && w.matches('[data-act]'))) moSau(w);
+    if(!(w.matches && w.matches('[data-act]'))){ moSau(w); soatNhom(w); }
     try{ w.dispatchEvent(new CustomEvent('t6-xong', { bubbles: true })); }catch(e){}
     var a = node.closest('[data-act]');
     if(!a) return;
@@ -1448,6 +1595,13 @@
     DONE[k] = true; a.classList.add('done'); paint();
     /* móc "sau khi xong cả hoạt động": hình giải thích mở ra lúc này (class done đã gắn) */
     moSau(a);
+    /* data-ok-act: lời khen tổng kết của CẢ hoạt động (không dùng data-ok của ô điền — ô điền đúng hết mà mcq chưa làm
+       thì data-ok của ô điền đã hiện). Hiện ở .fb-xong đặt sẵn, không có thì một ô phản hồi mới cuối hoạt động (Bài 7) */
+    var okA = a.getAttribute('data-ok-act');
+    if(okA){
+      var fx = $('.fb-xong', a) || (function(){ var d = el('div', 'fb fb-xong'); a.appendChild(d); return d; })();
+      show(fx, 'good', okA);
+    }
     try{ a.dispatchEvent(new CustomEvent('t6-act-xong', { bubbles: true })); }catch(e){}
   }
   paint();
@@ -1656,28 +1810,50 @@
     bar.appendChild(bChk); bar.appendChild(bRst);
     group.appendChild(bar);
     var fb = fbBox(group);
+    /* data-chon-lai-sau="N" (tuỳ chọn, trên data-picks): từ lần Kiểm tra sai thứ N, trang xoá hết lựa chọn (giữ câu gỡ) —
+       không cho qua bằng cách bấm Kiểm tra liên tục rồi sửa từng mục theo câu gỡ (rút từ Bài 5) */
+    var CHON_LAI = +(group.getAttribute('data-chon-lai-sau') || 0), soSai = 0;
 
     bChk.addEventListener('click', function(){
-      var msg = [], allOk = true;
+      var msg = [], allOk = true, chiTiet = [];
       picks.forEach(function(p){
         var ok = p.sel.slice().sort().join('\u0001') === p.answer.slice().sort().join('\u0001');
-        if(ok) return;
-        allOk = false;
         var thua  = p.sel.filter(function(v){ return p.answer.indexOf(v) < 0; });
         var thieu = p.answer.filter(function(v){ return p.sel.indexOf(v) < 0; });
+        chiTiet.push({ ten: p.nhan || p.name, thua: thua, thieu: thieu, ok: ok });
+        if(ok) return;
+        allOk = false;
         /* data-nhan: nhãn thay cho "Tập X" khi khối chọn không phải một tập hợp (vd. "Câu a") */
         var nh = p.nhan ? '<b>' + esc(p.nhan) + '</b>' : 'Tập <i>' + esc(p.name) + '</i>';
-        if(thua.length && p.thua[thua[0]])   msg.push(nh + ': ' + p.thua[thua[0]]);
+        /* chống làm mò (Bài 5): chọn NHIỀU HƠN số mục đúng mà có từ HAI mục thừa trở lên (chọn hết rồi bấm Kiểm tra) thì
+           không nêu câu gỡ của mục nào; chỉ thừa một mục (lỗi kinh điển, vd. số 0 trong ℕ*) thì vẫn gỡ đúng mục ấy */
+        if(p.sel.length > p.answer.length && thua.length >= 2) msg.push(nh + ': em chọn <b>nhiều quá</b> — có những mục không thoả điều kiện. ' +
+                                                       'Soát lại <b>từng</b> mục rồi bỏ bớt.');
+        else if(thua.length && p.thua[thua[0]])   msg.push(nh + ': ' + p.thua[thua[0]]);
         else if(thieu.length && p.thieu[thieu[0]]) msg.push(nh + ': ' + p.thieu[thieu[0]]);
         else if(thua.length)  msg.push(nh + ': em chọn thừa «' + esc(thua[0]) + '» — soát lại điều kiện.');
         else msg.push(nh + ': còn thiếu — đếm lại xem có bao nhiêu cái thoả điều kiện.');
       });
+      /* sự kiện "t6-pick-kiem" sau mỗi lần Kiểm tra (detail.ok, detail.cac = [{ten, thua, thieu, ok}]):
+         JS riêng vẽ hình của mục chọn nhầm mà không phải tự theo dõi .num.on (Bài 5, 7) */
+      try{ group.dispatchEvent(new CustomEvent('t6-pick-kiem', { bubbles: true, detail: { ok: allOk, cac: chiTiet } })); }catch(e){}
       if(allOk){
         show(fb,'good', group.getAttribute('data-ok') || ('Đúng rồi: ' + picks.map(function(p){
           return setline(p.name, p.answer);
         }).join(' &nbsp;và&nbsp; ') + '.'));
         done(group);
-      } else show(fb,'bad', msg.join('<br>'));
+      } else {
+        soSai++;
+        var them = '';
+        if(CHON_LAI && soSai >= CHON_LAI){
+          them = '<br><b>Cô đã xoá các lựa chọn</b> — em soát lại <b>từng</b> mục rồi chọn lại từ đầu.';
+          /* xoá SAU khi mọi trình nghe click khác (JS riêng đọc .num.on để vẽ hình) đã chạy */
+          setTimeout(function(){ picks.forEach(function(p){
+            p.sel = []; Object.keys(p.btns).forEach(function(k){ p.btns[k].classList.remove('on'); });
+          }); }, 0);
+        }
+        show(fb,'bad', msg.join('<br>') + them);
+      }
     });
     bRst.addEventListener('click', function(){
       picks.forEach(function(p){
@@ -1688,44 +1864,82 @@
     });
   });
 
-  /* ---------- 5. Chọn một kí hiệu ---------- */
+  /* ---------- 5. Chọn một kí hiệu ----------
+     Phản hồi (sửa theo Bài 5, 6, 7):
+     • Câu nào chọn SAI thì hiện NGAY câu gỡ của chính câu đó (không chờ trả lời hết — câu sau đang ẩn bằng data-mo-sau thì
+       em không bao giờ trả lời hết được), rồi khoá các nút 2 giây (data-khoa="0" trên câu để tắt).
+     • data-fb-lua-chon='{"lựa chọn sai":"câu gỡ riêng"}': câu gỡ cho TỪNG lựa chọn; không có khoá thì dùng data-fb-sai.
+     • Chỗ hiện câu gỡ của một câu: data-fb-o="#id" → ô .fb-cau / .fb-mcq* đặt NGAY SAU đoạn chứa câu → .fb-mcq của hoạt
+       động → hoạt động nhiều câu: ô mới ngay dưới đoạn chứa câu; một câu: ô phản hồi đầu tiên của hoạt động.
+     • Đúng hết: "Đúng cả rồi" chỉ khi CẢ hoạt động xong; còn widget khác (data-can-het) thì "Đúng câu này rồi — làm tiếp". */
+  function boTrangThai(f){ f.className = f.className.replace(/\s*\b(show|bad|good)\b/g, ''); f.innerHTML = ''; }
   $$('[data-act]').forEach(function(act){
     var qs = $$('[data-mcq]', act);
     if(!qs.length) return;
-    var fb = null;
+    var chung = null;
+    function oChung(){ if(!chung) chung = $('.fb-mcq', act) || fbBox(act); return chung; }
+    function oCau(host){
+      var s = host.getAttribute('data-fb-o'), o = s ? $(s) : null;
+      if(o) return o;
+      var p = host.closest('p,li,td') || host, sau = p.nextElementSibling;
+      if(sau && sau.classList.contains('fb') && /(^|\s)(fb-cau|fb-mcq\S*)(\s|$)/.test(sau.className)) return sau;
+      if($('.fb-mcq', act) || qs.length === 1) return oChung();
+      if(!p._fbCau){ p._fbCau = el('div', 'fb fb-cau'); p.parentNode.insertBefore(p._fbCau, p.nextSibling); }
+      return p._fbCau;
+    }
     var states = qs.map(function(host){
       var opts = list(host.getAttribute('data-options'));
       var ans  = (host.getAttribute('data-answer') || '').trim();
-      var st = { ok: false, answered: false, host: host };
+      var bang = json(host, 'data-fb-lua-chon');
+      var khoa = host.getAttribute('data-khoa') !== '0';
+      var st = { ok: false, answered: false, host: host, chon: '', bang: bang };
+      var nut = [];
       opts.forEach(function(o){
         var b = el('button','btn'); b.type = 'button'; b.textContent = o;
         b.addEventListener('click', function(){
-          $$('button', host).forEach(function(x){ if(x !== mark) x.className = 'btn ghost'; });
+          if(b.disabled) return;
+          nut.forEach(function(x){ x.className = 'btn ghost'; });
           b.className = 'btn';
-          st.ok = (o === ans); st.answered = true;
+          st.ok = (o === ans); st.answered = true; st.chon = o;
           mark.innerHTML = st.ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
           if(st.ok) moSau(host);   /* data-mo-sau riêng từng câu: mở bước kế tiếp khi câu NÀY đúng */
-          report();
+          report(st);
+          if(!st.ok && khoa){
+            nut.forEach(function(x){ x.disabled = true; });
+            setTimeout(function(){ nut.forEach(function(x){ x.disabled = false; }); }, 2000);
+          }
         });
-        host.appendChild(b);
+        nut.push(b); host.appendChild(b);
       });
       var mark = el('span','mark'); mark.style.marginLeft = '6px';
       host.appendChild(mark);
+      st.khoa = khoa;
       return st;
     });
-    function report(){
-      /* phần tử .fb-mcq đặt sẵn trong hoạt động = chỗ hiện phản hồi của các câu data-mcq
-         (hoạt động có thêm widget khác thì đặt, để không ghi đè phản hồi của widget kia) */
-      if(!fb) fb = $('.fb-mcq', act) || fbBox(act);
+    function loiCua(s){
+      return s.bang[s.chon] || s.host.getAttribute('data-fb-sai') || 'Chưa đúng — em đọc lại câu hỏi rồi thử lại nhé.';
+    }
+    function report(vua){
+      /* ô phản hồi của từng câu: gom các câu cùng ô, hiện câu gỡ của những câu đang sai */
+      var cacO = [];
+      states.forEach(function(s){ var o = oCau(s.host); if(cacO.indexOf(o) < 0) cacO.push(o); });
+      cacO.forEach(function(o){
+        var sai = states.filter(function(s){ return s.answered && !s.ok && oCau(s.host) === o; });
+        if(sai.length){
+          var h = sai.map(loiCua).join('<br>');
+          if(vua && !vua.ok && vua.khoa && sai.indexOf(vua) >= 0)
+            h += '<br><span class="small">Các nút tạm khoá 2 giây — em đọc kĩ câu gỡ rồi chọn lại.</span>';
+          show(o, 'bad', h); o._cuaMcq = o.innerHTML;
+        } else if(o._cuaMcq && o.innerHTML === o._cuaMcq){ boTrangThai(o); o._cuaMcq = ''; }
+      });
       if(states.every(function(s){ return s.ok; })){
-        show(fb,'good','Đúng cả rồi. Em làm tiếp phần sau nhé.');
-        done(act); return;
-      }
-      if(states.every(function(s){ return s.answered; })){
-        var t = states.filter(function(s){ return !s.ok; }).map(function(s){
-          return s.host.getAttribute('data-fb-sai') || 'Có một ô chưa đúng — em đọc lại điều kiện của tập rồi thử lại.';
-        });
-        show(fb,'bad', t.join('<br>'));
+        /* hoạt động có widget khác chưa xong (data-can-het) thì chưa được nói "đúng cả rồi" */
+        var conViec = act.hasAttribute('data-can-het') && !act.classList.contains('done') &&
+          !$$(WIDGET_CHAM, act).every(function(x){ return x.matches('[data-mcq]') || x._xong || x._ok; });
+        var o = oChung();
+        show(o, 'good', conViec ? 'Đúng câu này rồi — em làm tiếp phần bên dưới nhé.' : 'Đúng cả rồi. Em làm tiếp phần sau nhé.');
+        o._cuaMcq = o.innerHTML;
+        done(act);
       }
     }
   });
@@ -1915,9 +2129,12 @@
     });
   });
 
-  /* ---------- 10. Ô điền đáp số ---------- */
+  /* ---------- 10. Ô điền đáp số ----------
+     Sửa theo Bài 5, 6, 7: ô thường (có nút Kiểm) cũng chấm khi rời ô · ô đúng nền xanh lá (class "dat") · sai 3 giá trị khác
+     nhau thì khoá ô 3 giây kèm câu "tính ra giấy rồi gõ lại" (ý 31) · data-fb-o="#id" = ô phản hồi riêng của ô điền ·
+     nhiều ô dùng chung .fb-dien thì câu gỡ của các ô đang sai được gộp, không ô nào ghi đè ô nào. */
   function chuan(s){
-    return String(s).trim().replace(/\s| /g,'').replace(',', '.').toLowerCase();
+    return String(s).trim().replace(/\s| /g,'').replace(',', '.').toLowerCase();
   }
   $$('[data-fill]').forEach(function(host){
     var answers = (host.getAttribute('data-answer') || '').split('|').map(chuan);
@@ -1932,8 +2149,10 @@
     var gon = host.getAttribute('data-gon') === '1';
     var b = el('button','btn','Kiểm');
     b.type = 'button';
-    if(gon){ box.classList.add('gon'); inp.addEventListener('change', function(){ check(); }); }
+    if(gon) box.classList.add('gon');
     else box.appendChild(b);
+    /* rời ô (change) thì chấm luôn — cả ô thường: trộn ô gọn với ô thường, em tưởng ô thường đã được chấm */
+    inp.addEventListener('change', function(){ check(); });
     box.appendChild(mark);
     host.appendChild(box);
     /* data-hint-sai='{"giá trị sai":"câu hỏi gỡ"}' — khoá viết như học sinh gõ, được chuẩn hoá giống đáp án */
@@ -1941,13 +2160,22 @@
     Object.keys(hs).forEach(function(k){ hsC[chuan(k)] = hs[k]; });
     var hfb = null;
     function hienFb(cls, html){
+      /* data-fb-o="#id": ô phản hồi riêng của ô điền này */
+      var rieng = host.getAttribute('data-fb-o') ? $(host.getAttribute('data-fb-o')) : null;
+      if(rieng){ if(html) show(rieng, cls, html); else boTrangThai(rieng); return; }
       /* hoạt động có đặt sẵn <div class="fb fb-dien"> thì mọi ô điền trong đó dùng CHUNG ô phản hồi ấy
-         (bảng nhiều ô: câu gỡ không làm vỡ ô bảng); không có thì tạo ô phản hồi ngay dưới dòng chứa ô điền */
+         (bảng nhiều ô: câu gỡ không làm vỡ ô bảng): câu gỡ của MỌI ô đang sai được gộp lại (không ghi đè nhau);
+         không có thì tạo ô phản hồi ngay dưới dòng chứa ô điền */
       var act = host.closest('[data-act]'), chung = act ? act._fbDien || $('.fb-dien', act) : null;
       if(chung){
         act._fbDien = chung;
-        if(html){ show(chung, cls, html); chung._cua = host; }
-        else if(chung._cua === host) chung.className = 'fb fb-dien';
+        var ds = chung._ds || (chung._ds = []), i = ds.map(function(x){ return x.h; }).indexOf(host);
+        if(i >= 0) ds.splice(i, 1);
+        if(html && cls === 'bad') ds.push({ h: host, t: html });
+        var bad = ds.map(function(x){ return x.t; });
+        if(bad.length) show(chung, 'bad', bad.join('<br>'));
+        else if(html) show(chung, cls, html);
+        else if(!chung.classList.contains('good')) chung.className = 'fb fb-dien';
         return;
       }
       if(!hfb){ hfb = el('div', 'fb fb-fill'); (host.closest('p,td,li,.act') || host).appendChild(hfb); }
@@ -1958,7 +2186,9 @@
        và nhắc quy ước SGK (nhóm nghìn bằng khoảng trắng) — không chấm sai một phép tính đúng */
     var NGUYEN = answers.length && answers.every(function(a){ return /^-?\d+$/.test(a); });
     var CHAM_NGHIN = /^\d{1,3}(\.\d{3})+$/;
+    var vCu = null, soSai = 0, nhac = null;
     function check(){
+      if(inp.disabled) return;
       var v = chuan(inp.value), dauCham = false;
       if(!v){ mark.innerHTML = ''; return; }
       if(NGUYEN && CHAM_NGHIN.test(v)){ v = v.replace(/\./g, ''); dauCham = true; }
@@ -1969,24 +2199,40 @@
       });
       mark.innerHTML = ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
       host._ok = ok;
+      inp.classList.toggle('dat', ok);
+      inp.classList.toggle('sai-o', !ok);
       /* ví dụ trong lời nhắc là CHÍNH SỐ em vừa gõ (không in đáp án) */
       var NHAC_CHAM = 'Lưu ý: SGK viết nhóm nghìn bằng <b>khoảng trắng</b> (' + nhom(v) + '), không dùng dấu chấm.';
       /* sai mà không có câu gỡ riêng: KHÔNG để trống (em tự học không biết làm gì tiếp) —
          data-fb-sai của ô, hoặc câu mặc định; câu nào cũng không in đáp số */
-      if(!ok) hienFb('bad', (hsC[v] || host.getAttribute('data-fb-sai') ||
+      if(!ok){
+        var moiSai = v !== vCu;
+        if(moiSai){ vCu = v; soSai++; }
+        var khoa = moiSai && soSai % 3 === 0;
+        hienFb('bad', (hsC[v] || host.getAttribute('data-fb-sai') ||
                              (NGUYEN ? 'Chưa đúng — em soát lại phép tính từng bước (đặt tính thẳng cột, tính từ hàng đơn vị) rồi thử lại nhé.'
                                      : 'Chưa đúng — em đọc lại câu hỏi rồi thử lại nhé.')) +
                             (dauCham ? '<br>' + NHAC_CHAM : ''));
+        /* sai 3 giá trị khác nhau: khoá ô 3 giây — không cho thử lần lượt tới khi trúng (ý 31) */
+        if(khoa){
+          inp.disabled = true; b.disabled = true;
+          if(!nhac){ nhac = el('span', 'khoa-nhac'); host.appendChild(nhac); }
+          nhac.textContent = 'Khoá 3 giây — em tính ra giấy rồi gõ lại.';
+          setTimeout(function(){ inp.disabled = false; b.disabled = false; nhac.textContent = ''; }, 3000);
+        }
+      }
       else hienFb(dauCham ? 'good' : '', dauCham ? 'Đúng rồi! ' + NHAC_CHAM : '');
       /* nhiều ô điền trong CÙNG một hoạt động: chỉ tính xong khi MỌI ô đều đúng */
       var a = host.closest('[data-act]');
       var cacO = a ? $$('[data-fill]', a) : [host];
       if(ok && cacO.every(function(f){ return f._ok; })){
-        /* lời khen: data-ok của ô vừa điền, hoặc của ô đầu tiên có data-ok trong hoạt động */
+        /* lời khen: data-ok của ô vừa điền, hoặc của ô đầu tiên có data-ok trong hoạt động.
+           Hoạt động còn widget khác (data-can-het) thì data-ok chỉ nên khen phần ô điền; lời khen CẢ hoạt động đặt ở data-ok-act */
         var coOk = host.getAttribute('data-ok') ? host : cacO.filter(function(f){ return f.getAttribute('data-ok'); })[0];
         if(coOk) hienFb('good', coOk.getAttribute('data-ok') + (dauCham ? '<br>' + NHAC_CHAM : ''));
         done(host);
       }
+      if(ok) soatNhom(host);
     }
     b.addEventListener('click', check);
     inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
@@ -2708,7 +2954,7 @@
     var st;
     host.classList.add('gc');
     host.innerHTML = (demo ? '' : '<p class="gc-hd">Bấm <b>hai thẻ</b> có ' + (nhan ? 'tích' : 'tổng') + ' ' + CAN +
-        ' (tròn trăm, tròn nghìn cũng được) để gom thành một cặp.</p>') +
+        (tron >= 1000 ? '' : tron >= 100 ? ' (tròn nghìn cũng được)' : ' (tròn trăm, tròn nghìn cũng được)') + ' để gom thành một cặp.</p>') +
       '<div class="gc-hang" aria-live="polite"></div><div class="gc-loi"></div>' +
       (demo ? '<p><button type="button" class="btn gc-buoc"></button></p>'
             : '<p class="gc-kq hide"></p><p><button type="button" class="btn ghost gc-lai">Làm lại</button></p>');
@@ -2804,7 +3050,8 @@
           sai++;
           mk.innerHTML = '<span class="x">✗</span>';
           show(fb, 'bad', sai < 2 ? 'Chưa đúng — em tính lại dòng cuối: ' + tong + '.'
-                                  : 'Cộng các số tròn trước (dễ tính nhẩm), rồi mới cộng số còn lại. Làm chậm từng bước: ' + tong + '.');
+                                  : (nhan ? 'Nhân các số tròn trước (dễ tính nhẩm), rồi mới nhân với số còn lại.'
+                                          : 'Cộng các số tròn trước (dễ tính nhẩm), rồi mới cộng số còn lại.') + ' Làm chậm từng bước: ' + tong + '.');
         }
       }
       $('button', kq).addEventListener('click', kiem);
@@ -2859,6 +3106,920 @@
       });
     }
     batDau();
+  });
+
+  /* ---------- 20. data-dattinh — ĐẶT TÍNH CỘT DỌC: cộng · trừ · nhân · chia (rút từ Bài 4, mở rộng cho Bài 5) ----------
+     data-a, data-b (chỉ chữ số) · data-phep="+" | "-" | "x" (hoặc ×, ·) | ":" · data-demo = máy làm mẫu từng bước, không chấm
+     · data-ok = lời khen · data-kq (tuỳ chọn) = kết quả người soạn tự tính, CHỈ để kiem_tra_bai_giang_toan.py đối chiếu.
+     Cộng/trừ (y hệt Bài 4): máy mẫu từng cột (nhớ 1 rơi xuống; trừ có nhớ: nhãn "+1" trên chữ số số trừ); bài chấm gõ từng chữ số
+       từ phải sang, chấm MỌI cột; data-lech="-1" = BƯỚC 0 dời dòng số thứ hai cho thẳng cột (dời được cả hai phía).
+     Nhân: tích riêng của từng chữ số KHÁC 0 của thừa số thứ hai, viết lùi cột; từ tích riêng thứ hai em phải BẤM Ô BẮT ĐẦU
+       (bấm thẳng cột tích riêng trên → "quên lùi"; bấm quá trái → "lùi quá"); chữ số 0 ở giữa thừa số thứ hai → tích riêng bằng 0
+       không viết, tích riêng sau lùi thêm một hàng. Nhiều tích riêng thì cộng lại từng cột. Thừa số thứ hai không tận cùng bằng 0.
+     Chia kiểu Việt Nam: số bị chia bên trái, số chia bên phải sau vạch đứng, thương dưới số chia; mỗi lượt chia → nhân → trừ → hạ.
+       Bài chấm: gõ chữ số thương (thương quá lớn / quá nhỏ → "số dư không nhỏ hơn số chia"), tích, số dư; hạ tự động;
+       lượt chưa chia được phải gõ 0 ("quên chữ số 0 ở thương"). data-gon="1" = viết gọn (không viết tích, gõ thẳng số dư).
+     Ô một chữ số: sai 3 lần ở cùng một ô thì khoá 3 giây (chống thử lần lượt 0 → 9). Phản hồi sai hỏi lại, không in chữ số đúng. */
+  var THU_TU = ['nhất', 'hai', 'ba', 'tư', 'năm', 'sáu', 'bảy', 'tám', 'chín'];
+  function dtO(cls, noi, j){
+    return '<span class="o' + (cls ? ' ' + cls : '') + '"' + (j != null ? ' data-j="' + j + '"' : '') + '>' + noi + '</span>';
+  }
+  function dtLac(inp){ inp.classList.remove('sai'); void inp.offsetWidth; inp.classList.add('sai'); }
+  function dtKhoa(inp, lan, conMo){
+    if(lan % 3) return '';
+    inp.disabled = true;
+    setTimeout(function(){ if(inp.isConnected && conMo()){ inp.disabled = false; inp.value = ''; try{ inp.focus(); }catch(e){} } }, 3000);
+    return ' <br><b>Ô khoá 3 giây</b> — em đọc kĩ dòng trên, tính ra giấy rồi mới gõ lại.';
+  }
+  function dtPhep(p){
+    p = String(p == null ? '+' : p).trim().toLowerCase();
+    if(p === '+' || p === 'cong' || p === 'cộng') return '+';
+    if(p === '-' || p === '−' || p === 'tru' || p === 'trừ') return '-';
+    if(p === 'x' || p === '×' || p === '*' || p === '·' || p === 'nhan' || p === 'nhân') return 'x';
+    if(p === ':' || p === '÷' || p === 'chia') return ':';
+    return '';
+  }
+  /* trừ từng cột (phép trừ, bước "trừ" của phép chia): sa − sb từ phải sang */
+  function dtCotTru(sa, sb){
+    var cot = [], nho = 0;
+    for(var k = 0; k < sa.length; k++){
+      var da = +sa[sa.length - 1 - k], coB = k < sb.length, db = coB ? +sb[sb.length - 1 - k] : 0, bb = db + nho, d, moi;
+      if(da >= bb){ d = da - bb; moi = 0; } else { d = da + 10 - bb; moi = 1; }
+      cot.push({ d: d, da: da, db: db, bb: bb, coB: coB, nhoTruoc: nho, nhoSau: moi });
+      nho = moi;
+    }
+    return cot;
+  }
+  /* máy mẫu chạy hết: cờ cho thu_tuong_tac.py, mở data-mo-sau, phát t6-xong (không tính tiến độ) */
+  function dtHetMau(host){
+    host.setAttribute('data-da-xem', '1'); moSau(host);
+    try{ host.dispatchEvent(new CustomEvent('t6-xong', { bubbles: true })); }catch(e){}
+  }
+  function dtONhap(loai, st, chu, them, nhan, demo){
+    if(st === 2) return demo ? '<span>' + chu + '</span>'
+      : '<input type="text" class="dung" value="' + chu + '" disabled data-o="' + loai + '"' + them + ' aria-label="' + nhan + '">';
+    if(st === 1 && !demo) return '<input type="text" inputmode="numeric" maxlength="1" autocomplete="off" data-o="' + loai + '"' + them + ' aria-label="' + nhan + '">';
+    return '';
+  }
+
+  /* ----- 20a. cộng / trừ (giữ nguyên hành vi của Bài 4) ----- */
+  function dtCongTru(host, sa, sb, cong, demo, lech){
+    var kqSo = cong ? (+sa) + (+sb) : (+sa) - (+sb), R = String(kqSo);
+    var n = Math.max(sa.length, sb.length, R.length);
+    var DU = !demo && lech !== 0 ? 2 : 0, N = n + DU, OFF_MIN = -(n - sb.length), OFF_MAX = DU;
+    var cot = [], nho = 0;
+    for(var k = 0; k < n; k++){
+      var da = k < sa.length ? +sa[sa.length - 1 - k] : 0, coB = k < sb.length, db = coB ? +sb[sb.length - 1 - k] : 0;
+      var d, moi, loi, ten = 'Hàng ' + HANG[k] + ': ', bb = db + nho;
+      if(cong){
+        var s = da + db + nho; d = s % 10; moi = s >= 10 ? 1 : 0;
+        if(!coB && k >= sa.length) loi = 'còn nhớ 1 — viết 1';
+        else if(!coB) loi = da + (nho ? ' thêm 1 là ' + s : '') + ', viết ' + d + (moi ? ', nhớ 1' : '');
+        else loi = da + ' + ' + db + ' = ' + (da + db) + (nho ? ', thêm 1 là ' + s : '') + ', viết ' + d + (moi ? ', nhớ 1' : '');
+      } else {
+        loi = (nho ? db + ' thêm 1 là ' + bb + '; ' : '') + (coB ? '' : 'số trừ không có chữ số ở hàng này (coi như 0); ');
+        if(da >= bb){ d = da - bb; moi = 0; loi += da + ' − ' + bb + ' = ' + d; }
+        else { d = da + 10 - bb; moi = 1; loi += da + ' không trừ được ' + bb + ', lấy ' + (da + 10) + ' − ' + bb + ' = ' + d; }
+        loi += (k >= R.length ? ' — chữ số 0 ở đầu không viết' : ', viết ' + d) + (moi ? ', nhớ 1' : '');
+      }
+      cot.push({ d: d, nhoSau: moi, nhoTruoc: nho, loi: ten + loi, da: da, db: db, bb: bb, coB: coB });
+      nho = moi;
+    }
+    var DA_DT = !demo ? lech === 0 : true;   /* bài chấm: phải đặt thẳng cột trước */
+    var off = demo ? 0 : Math.max(OFF_MIN, Math.min(OFF_MAX, lech)), xongCot = 0, saiCot = 0, soi = false;
+    var o = dtO;
+    function ve(){
+      N = !demo && DA_DT ? n : n + DU;
+      bang.style.gridTemplateColumns = 'repeat(' + (N + 1) + ', auto)';
+      var h = o('h', ''), j, k;
+      for(j = 0; j < N; j++){ k = n - 1 - j; h += o('h', k >= 0 ? HANG[k] : '', j); }
+      h += o('nho', '');
+      for(j = 0; j < N; j++){
+        k = n - 1 - j; var c = k > 0 ? cot[k - 1] : null;
+        h += o('nho', cong && c && c.nhoSau && xongCot >= k ? '<span>1</span>' : '', j);
+      }
+      h += o('dau', '');
+      for(j = 0; j < N; j++){ k = n - 1 - j; h += o('so' + (soi && k === 0 ? ' soi' : ''), k >= 0 && k < sa.length ? sa[sa.length - 1 - k] : '', j); }
+      h += o('dau', cong ? '+' : '−');
+      for(j = 0; j < N; j++){
+        k = n - 1 - j + off;
+        var coNho = !cong && off === 0 && k > 0 && k < n && cot[k - 1] && cot[k - 1].nhoSau && xongCot >= k;
+        h += o('so hang-b' + (coNho ? ' nhot' : '') + (soi && k === 0 ? ' soi' : ''), k >= 0 && k < sb.length ? sb[sb.length - 1 - k] : '', j);
+      }
+      h += '<span class="gach"></span>' + o('dau', '');
+      for(j = 0; j < N; j++){
+        k = n - 1 - j;
+        var noi = '';
+        if(k >= 0 && k < R.length){
+          if(demo) noi = xongCot > k ? '<span>' + R[R.length - 1 - k] + '</span>' : '';
+          else noi = '<input type="text" inputmode="numeric" maxlength="1" data-k="' + k + '" aria-label="chữ số hàng ' + HANG[k] + ' của kết quả"' +
+            (xongCot > k ? ' class="dung" value="' + R[R.length - 1 - k] + '" disabled' : (DA_DT && xongCot === k ? '' : ' disabled')) + '>';
+        }
+        h += o('kq', noi, j);
+      }
+      bang.innerHTML = h;
+      host.setAttribute('data-off', off);
+      var dang = demo ? xongCot - 1 : xongCot;
+      if(dang >= 0 && dang < n && (demo || DA_DT)) $$('[data-j="' + (n - 1 - dang) + '"]', bang).forEach(function(x){ x.classList.add('cot-on'); });
+      if(!demo) gan();
+    }
+    host.innerHTML = '<div class="dt-bang" style="grid-template-columns:repeat(' + (N + 1) + ', auto)"></div><br><div class="dt-loi" aria-live="polite"></div>' +
+      (demo ? '<p class="dt-dk"><button type="button" class="btn dt-nut">Tính cột hàng đơn vị</button></p>'
+            : (lech !== 0 ? '<p class="dt-dk dt-dat">Dời dòng ' + (cong ? 'số hạng thứ hai' : 'số trừ') + ': <button type="button" class="btn ghost" data-d="-1" aria-label="dời sang trái">◀</button>' +
+              '<button type="button" class="btn ghost" data-d="1" aria-label="dời sang phải">▶</button> <button type="button" class="btn go" data-xong>Đặt xong</button></p>' : ''));
+    var bang = $('.dt-bang', host), loiBox = $('.dt-loi', host), fb = fbBox(host);
+    function themLoi(t){ loiBox.insertAdjacentHTML('beforeend', '<div>' + t + '</div>'); }
+    if(demo){
+      var nut = $('.dt-nut', host);
+      nut.addEventListener('click', function(){
+        if(xongCot >= n){ xongCot = 0; loiBox.innerHTML = ''; nut.textContent = 'Tính cột hàng đơn vị'; ve(); return; }
+        themLoi(cot[xongCot].loi + '.');
+        xongCot++;
+        ve();
+        if(xongCot >= n){
+          themLoi('<b>Kết quả: ' + nhom(sa) + (cong ? ' + ' : ' − ') + nhom(sb) + ' = ' + nhom(R) + '.</b>');
+          nut.textContent = 'Xem lại từ đầu';
+          dtHetMau(host);
+        } else nut.textContent = 'Tính cột hàng ' + HANG[xongCot];
+      });
+      ve();
+      return;
+    }
+    /* ----- bài chấm ----- */
+    var saiDat = 0, tenB = cong ? 'số hạng thứ hai' : 'số trừ', tenA = cong ? 'số hạng thứ nhất' : 'số bị trừ';
+    function datLai(d){
+      if(DA_DT) return;
+      var moi = off + d;
+      if(moi > OFF_MAX || moi < OFF_MIN) return;
+      off = moi; soi = false; ve();
+    }
+    function datXong(){
+      if(DA_DT) return;
+      if(off === 0){
+        DA_DT = true; soi = false; $('.dt-dat', host).classList.add('hide');
+        show(fb, 'good', 'Thẳng cột rồi: chữ số hàng đơn vị của hai số đứng thẳng nhau. Giờ gõ chữ số của ' + (cong ? 'tổng' : 'hiệu') +
+          ', bắt đầu từ <b>hàng đơn vị</b> (ô sáng nền vàng).');
+        ve();
+        var i0 = $('input:not([disabled])', bang); if(i0) try{ i0.focus(); }catch(e){}
+      } else {
+        saiDat++; soi = true; ve();
+        show(fb, 'bad', (off > 0 ? hoa(tenB) + ' đang bị đẩy <b>quá sang phải</b>' : hoa(tenB) + ' đang lệch <b>sang trái</b>') +
+          ' — chưa thẳng cột. Nhìn hai ô <b>viền cam</b>: chữ số hàng đơn vị của ' + tenA + ' và của ' + tenB + ' có đứng thẳng nhau không?' +
+          (saiDat < 2 ? '' : ' Chữ số hàng đơn vị của ' + tenB + ' (' + sb[sb.length - 1] + ') phải đứng ngay dưới chữ số hàng đơn vị của ' + tenA + ' (' +
+            sa[sa.length - 1] + ') — số ít chữ số hơn thì lùi sang phải cho tới khi thẳng.'));
+      }
+    }
+    $$('[data-d]', host).forEach(function(b){ b.addEventListener('click', function(){ datLai(+b.getAttribute('data-d')); }); });
+    var nXong = $('[data-xong]', host); if(nXong) nXong.addEventListener('click', datXong);
+    function nhap(inp){
+      var k = +inp.getAttribute('data-k'), v = (inp.value || '').replace(/\D/g, '');
+      if(!v || k !== xongCot || inp.disabled) return;
+      var c = cot[k];
+      if(+v === c.d){
+        saiCot = 0; xongCot++;
+        themLoi(c.loi + '.');
+        if(xongCot >= R.length){
+          ve();
+          $$('input', bang).forEach(function(x){ x.disabled = true; });
+          show(fb, 'good', host.getAttribute('data-ok') || ('Đúng rồi! <span class="m">' + nhom(sa) + (cong ? ' + ' : ' − ') + nhom(sb) + ' = ' + nhom(R) +
+            '</span>. Đặt thẳng cột, tính từ phải sang — không sót hàng nào.'));
+          done(host);
+          return;
+        }
+        fb.className = 'fb';
+        ve();
+        var tiep = $('input:not([disabled])', bang); if(tiep) try{ tiep.focus(); }catch(e){}
+        return;
+      }
+      saiCot++;
+      dtLac(inp);
+      var loiSai;
+      if(!cong && c.nhoSau && +v === c.bb - c.da){
+        loiSai = 'Em đã lấy ' + c.bb + ' − ' + c.da + ' (số lớn trừ số nhỏ) phải không? Trong một cột luôn lấy chữ số của <b>số bị trừ</b> trừ đi chữ số của số trừ: ' +
+          c.da + ' không trừ được ' + c.bb + ' thì lấy thêm 10 thành ' + (c.da + 10) + ', trừ đi ' + c.bb + ', rồi nhớ 1 sang cột bên trái.';
+      } else if(!cong && c.nhoTruoc && +v === ((c.da - c.db) % 10 + 10) % 10){
+        loiSai = 'Em quên phần <b>nhớ 1</b> của cột bên phải rồi: chữ số ' + c.db + ' của số trừ (ô tô cam) phải <b>thêm 1</b> thành ' + c.bb + ' trước khi trừ.';
+      } else if(cong && c.nhoTruoc && +v === (c.da + c.db) % 10){
+        loiSai = 'Em quên phần <b>nhớ 1</b> của cột bên phải rồi (số 1 nhỏ ở hàng trên).';
+      } else if(saiCot < 2){
+        loiSai = 'Chưa đúng — tính lại cột hàng ' + HANG[k] + '.';
+      } else {
+        loiSai = cong ? 'Cột hàng ' + HANG[k] + ': cộng hai chữ số' + (c.nhoTruoc ? ', thêm 1 đã nhớ' : '') + '; đủ 10 thì chỉ viết chữ số hàng đơn vị và nhớ 1.'
+          : 'Cột hàng ' + HANG[k] + ': lấy chữ số của số bị trừ (' + c.da + ') trừ đi chữ số của số trừ (' + (c.coB ? c.db : '0 — không có chữ số') + ')' +
+            (c.nhoTruoc ? ', nhớ thêm 1 vào số trừ' : '') + (c.nhoSau ? '; không trừ được thì lấy thêm 10 và nhớ 1' : '') + '.';
+      }
+      loiSai += dtKhoa(inp, saiCot, function(){ return xongCot === k; });
+      show(fb, 'bad', loiSai);
+    }
+    function gan(){
+      $$('input', bang).forEach(function(inp){
+        inp.addEventListener('input', function(){ nhap(inp); });
+        inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); nhap(inp); } });
+      });
+    }
+    ve();
+  }
+
+  /* ----- 20b. nhân: tích riêng viết lùi cột, rồi cộng các tích riêng ----- */
+  function dtNhan(host, sa, sb, demo){
+    var A = +sa, R = String(A * (+sb)), hang = [];
+    for(var i = 0; i < sb.length; i++){
+      var d = +sb[sb.length - 1 - i];
+      if(!d) continue;
+      var cs = [], nho = 0;
+      for(var t = 0; t < sa.length; t++){
+        var da = +sa[sa.length - 1 - t], s = da * d + nho;
+        cs.push({ d: s % 10, da: da, tich: da * d, s: s, nhoTruoc: nho, nhoSau: Math.floor(s / 10) });
+        nho = Math.floor(s / 10);
+      }
+      if(nho) cs.push({ d: nho, cuoi: true, nhoTruoc: nho, nhoSau: 0 });
+      hang.push({ i: i, d: d, cs: cs, val: String(A * d) });
+    }
+    var nhieu = hang.length > 1, tong = [];
+    if(nhieu){
+      var nh = 0;
+      for(var k = 0; k < R.length; k++){
+        var cac = [];
+        hang.forEach(function(r){ var tt = k - r.i; if(tt >= 0 && tt < r.val.length) cac.push(+r.val[r.val.length - 1 - tt]); });
+        var s2 = cac.reduce(function(x, y){ return x + y; }, 0) + nh;
+        tong.push({ d: s2 % 10, cac: cac, s: s2, nhoTruoc: nh, nhoSau: Math.floor(s2 / 10) });
+        nh = Math.floor(s2 / 10);
+      }
+    }
+    var N = Math.max(R.length, sa.length, sb.length), VIEC = [], IDX = {};
+    function them(v, key){ IDX[key] = VIEC.length; VIEC.push(v); }
+    hang.forEach(function(r, h){
+      if(h > 0) them({ loai: 'chon', h: h }, 'chon:' + h);
+      r.cs.forEach(function(c, tt){ them({ loai: 'p', h: h, t: tt, c: c }, 'p:' + h + ':' + tt); });
+    });
+    tong.forEach(function(c, tt){ them({ loai: 's', t: tt, c: c }, 's:' + tt); });
+    var cur = 0, saiO = 0, saiChon = 0, soiSai = -1, khoaChon = false, tieuDiem = null;
+    function TT(key){ var x = IDX[key]; return x === undefined ? -1 : (x < cur ? 2 : (x === cur ? 1 : 0)); }
+    host.innerHTML = '<div class="dt-bang"></div><br><div class="dt-loi" aria-live="polite"></div>' +
+      (demo ? '<p class="dt-dk"><button type="button" class="btn dt-nut"></button></p>' : '');
+    var bang = $('.dt-bang', host), loiBox = $('.dt-loi', host), fb = fbBox(host);
+    function themLoi(tx){ loiBox.insertAdjacentHTML('beforeend', '<div>' + tx + '</div>'); }
+    var KQ = nhom(sa) + ' × ' + nhom(sb) + ' = ' + nhom(R);
+    function ve(){
+      var F = demo ? tieuDiem : VIEC[cur], V = VIEC[cur], P = VIEC[cur - 1], j, k;
+      bang.style.gridTemplateColumns = 'repeat(' + (N + 1) + ', auto)';
+      var h = dtO('h', '');
+      for(j = 0; j < N; j++) h += dtO('h', HANG[N - 1 - j] || '', j);
+      /* hàng nhớ: số ĐANG nhớ sau chữ số vừa tính, đặt trên chữ số sẽ tính tiếp */
+      var nhoCot = -1, nhoSo = 0;
+      if(P && P.c && P.c.nhoSau && (!V || (V.loai === P.loai && (V.loai === 's' || V.h === P.h)))){ nhoSo = P.c.nhoSau; nhoCot = P.t + 1; }
+      h += dtO('nho', '');
+      for(j = 0; j < N; j++){ k = N - 1 - j; h += dtO('nho', k === nhoCot ? '<span>' + nhoSo + '</span>' : '', j); }
+      var sA = F && F.loai === 'p' && !F.c.cuoi ? F.t : -1, sB = sA >= 0 ? hang[F.h].i : -1, sCot = F && F.loai === 's' ? F.t : -1;
+      h += dtO('dau', '');
+      for(j = 0; j < N; j++){ k = N - 1 - j; h += dtO('so' + (k === sA ? ' cot-on' : ''), k < sa.length ? sa[sa.length - 1 - k] : '', j); }
+      h += dtO('dau', '×');
+      for(j = 0; j < N; j++){ k = N - 1 - j; h += dtO('so' + (k === sB ? ' cot-on' : ''), k < sb.length ? sb[sb.length - 1 - k] : '', j); }
+      h += '<span class="gach"></span>';
+      hang.forEach(function(r, hh){
+        var moDau = hh === 0 ? 0 : IDX['chon:' + hh];
+        if(moDau > cur || (demo && hh > 0 && moDau >= cur)) return;
+        var chonNay = !demo && V && V.loai === 'chon' && V.h === hh, cuoiH = nhieu && hh === hang.length - 1;
+        h += dtO('dau' + (cuoiH ? ' giua' : ''), cuoiH ? '+' : '');
+        for(var j2 = 0; j2 < N; j2++){
+          var k2 = N - 1 - j2, tt = k2 - r.i;
+          if(chonNay){
+            h += '<button type="button" class="o dt-cot' + (soiSai === k2 ? ' sai' : '') + '" data-h="' + hh + '" data-k="' + k2 + '" data-j="' + j2 +
+              '" aria-label="tích riêng bắt đầu ở cột hàng ' + HANG[k2] + '"></button>';
+            continue;
+          }
+          var noi = '', cls = 'kq';
+          if(tt >= 0 && tt < r.cs.length){
+            noi = dtONhap('p', TT('p:' + hh + ':' + tt), r.cs[tt].d, ' data-h="' + hh + '" data-t="' + tt + '"',
+              'chữ số thứ ' + (tt + 1) + ' (từ phải sang) của tích riêng thứ ' + THU_TU[hh], demo);
+            if(F && ((F.loai === 'p' && F.h === hh && F.t === tt) || (F.loai === 'chon' && F.h === hh && tt === 0))) cls += ' cot-on';
+          }
+          if(k2 === sCot) cls += ' cot-on';
+          h += dtO(cls, noi, j2);
+        }
+      });
+      if(nhieu && cur >= IDX['s:0']){
+        h += '<span class="gach"></span>' + dtO('dau', '');
+        for(j = 0; j < N; j++){
+          k = N - 1 - j;
+          var noiS = k < R.length ? dtONhap('s', TT('s:' + k), R[R.length - 1 - k], ' data-t="' + k + '"', 'chữ số hàng ' + HANG[k] + ' của tích', demo) : '';
+          h += dtO('kq' + (k === sCot ? ' cot-on' : ''), noiS, j);
+        }
+      }
+      bang.innerHTML = h;
+      if(!demo) gan();
+    }
+    function loiDau(){ return '<b>Tích riêng thứ nhất:</b> ' + nhom(sa) + ' × ' + hang[0].d + ' (chữ số hàng đơn vị của ' + nhom(sb) + ').'; }
+    function loiCong(){ return '<b>Cộng các tích riêng</b> — thẳng cột, từ phải sang:'; }
+    function loiChon(hh){
+      var r = hang[hh], lui = r.i - hang[hh - 1].i, bo = [];
+      for(var x = hang[hh - 1].i + 1; x < r.i; x++) bo.push(HANG[x]);
+      return '<b>Tích riêng thứ ' + THU_TU[hh] + ':</b> ' + nhom(sa) + ' × ' + r.d + ' (chữ số ' + r.d + ' ở hàng ' + HANG[r.i] + ' của ' + nhom(sb) +
+        ') — viết <b>lùi sang trái ' + (lui === 1 ? 'một hàng' : lui + ' hàng') + '</b>, chữ số đầu tiên thẳng cột hàng ' + HANG[r.i] + '.' +
+        (bo.length ? ' (Chữ số 0 ở hàng ' + bo.join(', ') + ' cho tích riêng bằng 0 — không viết.)' : '');
+    }
+    function loiViec(v){
+      var c = v.c;
+      if(v.loai === 'p'){
+        if(c.cuoi) return 'Hết chữ số của ' + nhom(sa) + ': viết nốt ' + c.d + ' (số đã nhớ).';
+        return c.da + ' × ' + hang[v.h].d + ' = ' + c.tich + (c.nhoTruoc ? ', thêm ' + c.nhoTruoc + ' là ' + c.s : '') + ', viết ' + c.d + (c.nhoSau ? ', nhớ ' + c.nhoSau : '') + '.';
+      }
+      var ten = 'Hàng ' + HANG[v.t] + ': ', s0 = c.cac.reduce(function(x, y){ return x + y; }, 0);
+      if(!c.cac.length) return ten + 'còn nhớ ' + c.nhoTruoc + ' — viết ' + c.d + '.';
+      if(c.cac.length === 1 && !c.nhoTruoc) return ten + 'hạ ' + c.d + '.';
+      return ten + c.cac.join(' + ') + (c.cac.length > 1 ? ' = ' + s0 : '') + (c.nhoTruoc ? ', thêm ' + c.nhoTruoc + ' là ' + c.s : '') +
+        ', viết ' + c.d + (c.nhoSau ? ', nhớ ' + c.nhoSau : '') + '.';
+    }
+    if(!hang.length){ host.innerHTML = '<p class="muted small">(Khối đặt tính khai báo sai: thừa số thứ hai bằng 0)</p>'; return; }
+    if(demo){
+      var nut = $('.dt-nut', host);
+      var nhanNut = function(){
+        var V = VIEC[cur];
+        if(!V) return 'Xem lại từ đầu';
+        if(V.loai === 'chon') return 'Tích riêng thứ ' + THU_TU[V.h] + ': lùi cột';
+        if(V.loai === 'p') return V.t === 0 ? (nhieu ? 'Tích riêng thứ ' + THU_TU[V.h] + ': nhân với ' + hang[V.h].d : 'Nhân chữ số hàng đơn vị') : 'Nhân chữ số tiếp theo';
+        return V.t === 0 ? 'Cộng các tích riêng: hàng đơn vị' : 'Cộng cột hàng ' + HANG[V.t];
+      };
+      nut.addEventListener('click', function(){
+        if(cur >= VIEC.length){ cur = 0; tieuDiem = null; loiBox.innerHTML = ''; nut.textContent = nhanNut(); ve(); return; }
+        var V = VIEC[cur], S = VIEC[cur + 1];
+        if(V.loai === 'p' && V.h === 0 && V.t === 0 && nhieu) themLoi(loiDau());
+        if(V.loai === 's' && V.t === 0) themLoi(loiCong());
+        if(V.loai === 'chon') themLoi(loiChon(V.h));
+        else if(V.loai === 'p' && !V.c.cuoi && S && S.loai === 'p' && S.c.cuoi && S.h === V.h){
+          /* chữ số cuối + số nhớ còn lại: đọc một lần như tiểu học ("viết 59") */
+          var c = V.c;
+          themLoi(c.da + ' × ' + hang[V.h].d + ' = ' + c.tich + (c.nhoTruoc ? ', thêm ' + c.nhoTruoc + ' là ' + c.s : '') + ', viết ' + c.s + '.');
+          cur++;
+        } else themLoi(loiViec(V));
+        tieuDiem = V; cur++;
+        if(cur >= VIEC.length){ themLoi('<b>Kết quả: ' + KQ + '.</b>'); nut.textContent = 'Xem lại từ đầu'; ve(); dtHetMau(host); return; }
+        nut.textContent = nhanNut(); ve();
+      });
+      nut.textContent = nhanNut(); ve();
+      return;
+    }
+    /* ----- bài chấm ----- */
+    function focusTiep(){ var x = $('input:not([disabled]):not(.dung)', bang) || $('.dt-cot', bang); if(x) try{ x.focus(); }catch(e){} }
+    function goiY(V, v){
+      var c = V.c;
+      if(V.loai === 'p'){
+        var r = hang[V.h];
+        if(c.cuoi) return 'Hết chữ số của ' + nhom(sa) + ' rồi — còn <b>nhớ</b> bao nhiêu (số nhỏ ở hàng trên) thì viết nốt bấy nhiêu.';
+        if(c.nhoTruoc && v === c.tich % 10) return 'Em quên cộng phần <b>nhớ</b> (số nhỏ ở hàng trên) rồi: ' + c.da + ' × ' + r.d + ' xong còn phải thêm số đã nhớ.';
+        if(c.s >= 10 && v === Math.floor(c.s / 10)) return 'Em viết chữ số hàng <b>chục</b> rồi. Được số có hai chữ số thì viết chữ số <b>hàng đơn vị</b>, còn chữ số hàng chục thì nhớ sang hàng bên trái.';
+        return saiO < 2 ? 'Chưa đúng — tính lại ' + c.da + ' × ' + r.d + (c.nhoTruoc ? ' rồi thêm số đã nhớ.' : '.')
+          : 'Nhân ' + c.da + ' với ' + r.d + (c.nhoTruoc ? ', thêm số đã nhớ ở hàng trên' : '') + '; được số có hai chữ số thì chỉ viết chữ số hàng đơn vị, nhớ chữ số hàng chục sang hàng bên trái.';
+      }
+      if(c.nhoTruoc && v === (c.s - c.nhoTruoc) % 10) return 'Em quên phần <b>nhớ</b> của cột bên phải rồi (số nhỏ ở hàng trên).';
+      return saiO < 2 ? 'Chưa đúng — cộng lại các chữ số ở cột hàng ' + HANG[V.t] + '.'
+        : 'Cột hàng ' + HANG[V.t] + ': cộng các chữ số của các tích riêng nằm trong cột' + (c.nhoTruoc ? ', thêm số đã nhớ' : '') + '; đủ 10 thì viết chữ số hàng đơn vị và nhớ sang cột bên trái.';
+    }
+    function xongViec(){
+      var V = VIEC[cur];
+      if(V.loai === 'p' && V.h === 0 && V.t === 0 && nhieu) themLoi(loiDau());
+      if(V.loai === 's' && V.t === 0) themLoi(loiCong());
+      themLoi(loiViec(V));
+      cur++;
+      if(cur >= VIEC.length){
+        themLoi('<b>Kết quả: ' + KQ + '.</b>'); ve();
+        $$('input', bang).forEach(function(x){ x.disabled = true; });
+        show(fb, 'good', host.getAttribute('data-ok') || ('Đúng rồi! <span class="m">' + KQ + '</span>. ' +
+          (nhieu ? 'Tích riêng thứ hai trở đi viết lùi sang trái, rồi cộng các tích riêng.' : 'Nhân từ phải sang trái, nhớ sang hàng bên trái.')));
+        done(host);
+        return;
+      }
+      fb.className = 'fb'; ve(); focusTiep();
+    }
+    function nhap(inp){
+      var V = VIEC[cur];
+      if(!V || inp.disabled || V.loai === 'chon') return;
+      var v = (inp.value || '').replace(/\D/g, '');
+      if(!v) return;
+      if(+v === V.c.d){ saiO = 0; xongViec(); return; }
+      saiO++; dtLac(inp);
+      show(fb, 'bad', goiY(V, +v) + dtKhoa(inp, saiO, function(){ return VIEC[cur] === V; }));
+    }
+    function chonCot(k){
+      var V = VIEC[cur];
+      if(!V || V.loai !== 'chon' || khoaChon) return;
+      var r = hang[V.h], dung = r.i, truoc = hang[V.h - 1], m;
+      if(k === dung){
+        saiChon = 0; soiSai = -1;
+        themLoi(loiChon(V.h));
+        cur++; ve();
+        show(fb, 'good', 'Đúng chỗ rồi: chữ số ' + r.d + ' ở hàng ' + HANG[dung] + ' nên tích riêng thứ ' + THU_TU[V.h] + ' bắt đầu thẳng cột hàng ' +
+          HANG[dung] + '. Giờ gõ từng chữ số, từ phải sang trái.');
+        focusTiep();
+        return;
+      }
+      saiChon++; soiSai = k; ve();
+      if(k <= truoc.i){
+        m = saiChon < 2 ? 'Chưa <b>lùi</b> rồi! Tích riêng này đang đứng thẳng cột với tích riêng ở trên. Chữ số ' + r.d + ' của ' + nhom(sb) + ' đứng ở hàng nào?'
+          : '<b>Quên lùi</b> tích riêng: chữ số ' + r.d + ' đứng ở hàng <b>' + HANG[dung] + '</b> của ' + nhom(sb) + ' — nó là ' + r.d + ' ' + HANG[dung] +
+            ', nên chữ số đầu tiên của tích riêng phải viết thẳng cột hàng ' + HANG[dung] + '.';
+      } else if(k < dung){
+        m = 'Chưa lùi đủ: giữa hai tích riêng, ' + nhom(sb) + ' có chữ số 0 — tích riêng bằng 0 nên không viết, nhưng cột của nó vẫn phải chừa ra. Chữ số ' +
+          r.d + ' đứng ở hàng nào của ' + nhom(sb) + '?';
+      } else {
+        m = saiChon < 2 ? 'Lùi quá rồi — chữ số ' + r.d + ' của ' + nhom(sb) + ' đứng ở hàng nào?'
+          : 'Lùi quá rồi: chữ số ' + r.d + ' đứng ở hàng ' + HANG[dung] + ' của ' + nhom(sb) + ', không phải hàng ' + HANG[k] + '. Mỗi hàng của thừa số thứ hai chỉ lùi đúng <b>một</b> cột.';
+      }
+      if(saiChon % 3 === 0){ khoaChon = true; m += ' <br><b>Khoá 3 giây</b> — em đọc kĩ rồi bấm lại.'; setTimeout(function(){ khoaChon = false; }, 3000); }
+      show(fb, 'bad', m);
+    }
+    function gan(){
+      $$('input:not([disabled])', bang).forEach(function(inp){
+        inp.addEventListener('input', function(){ nhap(inp); });
+        inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); nhap(inp); } });
+      });
+      $$('.dt-cot', bang).forEach(function(b){ b.addEventListener('click', function(){ chonCot(+b.getAttribute('data-k')); }); });
+    }
+    ve();
+  }
+
+  /* ----- 20c. chia kiểu Việt Nam: chia → nhân → trừ → hạ ----- */
+  function dtChia(host, sa, sb, demo, gon){
+    var A = +sa, B = +sb, L = sa.length, e = 0, P = +sa[0];
+    while(P < B && e < L - 1){ e++; P = P * 10 + (+sa[e]); }
+    var BUOC = [], THUONG = [], VIEC = [], IDX = {};
+    function them(v, key){ IDX[key] = VIEC.length; VIEC.push(v); }
+    for(var m = 0; ; m++){
+      var q = Math.floor(P / B), tich = q * B, r = P - tich, ts = String(tich), rs = String(r);
+      var bc = { P: P, Ps: m === 0 ? String(P) : BUOC[m - 1].dong, e: e, q: q, ts: ts, r: r, rs: rs, dong: rs, ha: [], qi: THUONG.length };
+      bc.tc = []; var nho = 0;
+      for(var t = 0; t < sb.length; t++){ var db = +sb[sb.length - 1 - t], s = db * q + nho; bc.tc.push({ d: s % 10, tich: db * q, s: s, nhoTruoc: nho, db: db }); nho = Math.floor(s / 10); }
+      if(nho) bc.tc.push({ d: nho, cuoi: true, nhoTruoc: nho });
+      bc.cot = dtCotTru(String(P), ts);
+      BUOC.push(bc); THUONG.push(q);
+      them({ loai: 'q', m: m, qi: bc.qi, d: q }, 'q:' + m); IDX['qi:' + bc.qi] = IDX['q:' + m];
+      if(!gon) for(t = 0; t < ts.length; t++) them({ loai: 't', m: m, t: t, d: +ts[ts.length - 1 - t] }, 't:' + m + ':' + t);
+      for(t = 0; t < rs.length; t++) them({ loai: 'r', m: m, t: t, d: +rs[rs.length - 1 - t] }, 'r:' + m + ':' + t);
+      var cu = r, tiep = false;
+      while(e < L - 1){
+        e++; var dg = +sa[e]; cu = cu * 10 + dg; var x = bc.ha.length; bc.ha.push(dg); bc.dong += dg;
+        them({ loai: 'ha', m: m, x: x, e: e, dg: dg, cu: cu }, 'ha:' + m + ':' + x);
+        if(cu >= B){ P = cu; tiep = true; break; }
+        THUONG.push(0);
+        them({ loai: 'q0', m: m, x: x, qi: THUONG.length - 1, cu: cu, d: 0, quen0: e < L - 1 ? Math.floor((cu * 10 + (+sa[e + 1])) / B) : -1 }, 'q0:' + (THUONG.length - 1));
+        IDX['qi:' + (THUONG.length - 1)] = VIEC.length - 1;
+      }
+      if(!tiep) break;
+    }
+    var DU = A % B, Q = Math.floor(A / B), cur = 0, saiO = 0, tieuDiem = null;
+    var KQ = nhom(sa) + ' : ' + nhom(sb) + ' = ' + nhom(Q) + (DU ? ' (dư ' + nhom(DU) + ')' : '');
+    function TT(key){ var x = IDX[key]; return x === undefined ? -1 : (x < cur ? 2 : (x === cur ? 1 : 0)); }
+    host.innerHTML = '<div class="dt-chia"><div class="dt-bang"></div><div class="dt-phai"></div></div><br><div class="dt-loi" aria-live="polite"></div>' +
+      (demo ? '<p class="dt-dk"><span class="muted small">Mỗi lượt: <b>chia → nhân → trừ → hạ</b></span><br><button type="button" class="btn dt-nut"></button></p>' : '');
+    var bang = $('.dt-bang', host), phai = $('.dt-phai', host), loiBox = $('.dt-loi', host), fb = fbBox(host);
+    function themLoi(tx){ loiBox.insertAdjacentHTML('beforeend', '<div>' + tx + '</div>'); }
+    function ve(){
+      var F = demo ? tieuDiem : VIEC[cur], H = [], TEN = {};
+      function hangMoi(ten){ var a = []; for(var j = 0; j <= L; j++) a.push({ noi: '', cls: '' }); TEN[ten] = H.length; H.push(a); return a; }
+      var r0 = hangMoi('a');
+      for(var i = 0; i < L; i++) r0[i + 1] = { noi: sa[i], cls: 'so' };
+      BUOC.forEach(function(bc, m){
+        if(cur <= IDX['q:' + m]) return;
+        var cP = bc.e + 1, t;
+        if(!gon){
+          var rp = hangMoi('t' + m);
+          rp[cP - bc.Ps.length] = { noi: '−', cls: 'dau giua' };
+          for(t = 0; t < bc.ts.length; t++) rp[cP - t] = { noi: dtONhap('t', TT('t:' + m + ':' + t), bc.ts[bc.ts.length - 1 - t], ' data-m="' + m + '" data-t="' + t + '"',
+            'chữ số thứ ' + (t + 1) + ' (từ phải sang) của tích', demo), cls: 'kq' };
+          for(var c = cP - bc.Ps.length + 1; c <= cP; c++) rp[c].cls += ' gd';
+        }
+        if(cur >= IDX['r:' + m + ':0']){
+          var rr = hangMoi('r' + m);
+          for(t = 0; t < bc.rs.length; t++) rr[cP - t] = { noi: dtONhap('r', TT('r:' + m + ':' + t), bc.rs[bc.rs.length - 1 - t], ' data-m="' + m + '" data-t="' + t + '"',
+            'chữ số thứ ' + (t + 1) + ' (từ phải sang) của số dư', demo), cls: 'kq' };
+          bc.ha.forEach(function(dg, x){ if(TT('ha:' + m + ':' + x) === 2) rr[cP + 1 + x] = { noi: '<span class="ha">' + dg + '</span>', cls: 'so' }; });
+        }
+      });
+      function soi(ten, c1, c2, cls){ var hh = TEN[ten]; if(hh === undefined) return; for(var c = c1; c <= c2; c++) if(H[hh][c]) H[hh][c].cls += ' ' + (cls || 'cot-on'); }
+      /* trừ có nhớ: nhãn +1 trên chữ số của tích (như Bài 4) */
+      if(!gon) BUOC.forEach(function(bc, m){ var cP = bc.e + 1; bc.cot.forEach(function(c, t){ if(c.nhoSau && TT('r:' + m + ':' + t) === 2) soi('t' + m, cP - t - 1, cP - t - 1, 'nhot'); }); });
+      var soiSC = false, soiQ = -1;
+      if(F){
+        var bF = BUOC[F.m], cF = bF.e + 1;
+        if(F.loai === 'q'){ soi(F.m === 0 ? 'a' : 'r' + (F.m - 1), cF - bF.Ps.length + 1, cF); soiSC = true; soiQ = F.qi; }
+        else if(F.loai === 'q0'){ soi('r' + F.m, cF - bF.rs.length + 1, cF + 1 + F.x); soiSC = true; soiQ = F.qi; }
+        else if(F.loai === 't'){ if(demo) soi('t' + F.m, cF - bF.ts.length + 1, cF); else soi('t' + F.m, cF - F.t, cF - F.t); soiSC = true; soiQ = bF.qi; }
+        else if(F.loai === 'r'){
+          if(demo) soi('r' + F.m, cF - bF.rs.length + 1, cF);
+          else { var cc = cF - F.t; soi(F.m === 0 ? 'a' : 'r' + (F.m - 1), cc, cc); soi('t' + F.m, cc, cc); soi('r' + F.m, cc, cc); }
+        }
+        else if(F.loai === 'ha'){ soi('a', F.e + 1, F.e + 1, 'soi-ha'); soi('r' + F.m, cF + 1 + F.x, cF + 1 + F.x); }
+      }
+      bang.style.gridTemplateColumns = 'repeat(' + (L + 1) + ', auto)';
+      bang.innerHTML = H.map(function(row){ return row.map(function(o, j){ return dtO(o.cls, o.noi, j); }).join(''); }).join('');
+      var th = THUONG.map(function(qd, qi){
+        var noi = dtONhap('q', TT('qi:' + qi), qd, ' data-qi="' + qi + '"', 'chữ số thứ ' + (qi + 1) + ' của thương', demo);
+        return noi ? dtO('kq' + (qi === soiQ ? ' cot-on' : ''), noi) : '';
+      }).join('');
+      phai.innerHTML = '<span class="o sc' + (soiSC ? ' cot-on' : '') + '">' + nhom(sb) + '</span><span class="th">' + th + '</span>';
+      if(!demo) gan();
+    }
+    function loiQ(V){
+      var bc = BUOC[V.m];
+      return (V.m === 0 && bc.e > 0 ? nhom(sa.slice(0, bc.e)) + ' &lt; ' + nhom(sb) + ' nên lấy ' + nhom(bc.P) + ' để chia. ' : '') +
+        nhom(bc.P) + ' : ' + nhom(sb) + ' được ' + bc.q + ', viết ' + bc.q + ' ở thương.';
+    }
+    function loiT(bc){ return bc.q + ' · ' + nhom(sb) + ' = ' + nhom(bc.ts) + ', viết ' + nhom(bc.ts) + ' thẳng cột dưới ' + nhom(bc.P) + '.'; }
+    function loiR(bc){
+      return gon ? bc.q + ' · ' + nhom(sb) + ' = ' + nhom(bc.ts) + '; ' + nhom(bc.P) + ' − ' + nhom(bc.ts) + ' = ' + nhom(bc.rs) + ', viết ' + nhom(bc.rs) + '.'
+                 : nhom(bc.P) + ' − ' + nhom(bc.ts) + ' = ' + nhom(bc.rs) + '.';
+    }
+    function loiHa(V){ return 'Hạ ' + V.dg + ', được ' + nhom(V.cu) + '.'; }
+    function loiQ0(V){ return nhom(V.cu) + ' &lt; ' + nhom(sb) + ' nên được 0, viết 0 ở thương.'; }
+    function loiCuoi(){
+      return 'Hết chữ số để hạ. ' + (DU ? 'Số dư ' + nhom(DU) + ' &lt; số chia ' + nhom(sb) + ' ✓ — <b>phép chia có dư</b>: ' : 'Số dư bằng 0 — <b>phép chia hết</b>: ') +
+        '<b>' + KQ + '</b>.';
+    }
+    if(demo){
+      var nut = $('.dt-nut', host);
+      var nhanNut = function(){ var V = VIEC[cur]; if(!V) return 'Xem lại từ đầu'; return { q: 'Chia', q0: 'Chia', t: 'Nhân', r: gon ? 'Nhân rồi trừ' : 'Trừ', ha: 'Hạ' }[V.loai] + ' ▸'; };
+      nut.addEventListener('click', function(){
+        if(cur >= VIEC.length){ cur = 0; tieuDiem = null; loiBox.innerHTML = ''; nut.textContent = nhanNut(); ve(); return; }
+        var V = VIEC[cur], bc = BUOC[V.m];
+        tieuDiem = V;
+        if(V.loai === 'q'){ themLoi(loiQ(V)); cur++; }
+        else if(V.loai === 'q0'){ themLoi(loiQ0(V)); cur++; }
+        else if(V.loai === 'ha'){ themLoi(loiHa(V)); cur++; }
+        else { var lo = V.loai; while(VIEC[cur] && VIEC[cur].loai === lo && VIEC[cur].m === V.m) cur++; themLoi(lo === 't' ? loiT(bc) : loiR(bc)); }
+        if(cur >= VIEC.length){ themLoi(loiCuoi()); nut.textContent = 'Xem lại từ đầu'; ve(); dtHetMau(host); return; }
+        nut.textContent = nhanNut(); ve();
+      });
+      nut.textContent = nhanNut(); ve();
+      return;
+    }
+    /* ----- bài chấm ----- */
+    function focusTiep(){ var x = $('input:not([disabled]):not(.dung)', host); if(x) try{ x.focus(); }catch(e){} }
+    function goiY(V, v){
+      var bc = BUOC[V.m];
+      if(V.loai === 'q0'){
+        if(V.quen0 > 0 && v === V.quen0) return nhom(V.cu) + ' có chia được cho ' + nhom(sb) + ' không? ' + nhom(V.cu) + ' &lt; ' + nhom(sb) +
+          ' nên lượt này được <b>0</b> — phải <b>viết 0</b> ở thương rồi mới hạ tiếp. Quên chữ số 0 thì thương bị thiếu một hàng.';
+        return nhom(V.cu) + ' &lt; ' + nhom(sb) + ' — ' + nhom(V.cu) + ' chia cho ' + nhom(sb) + ' được mấy?';
+      }
+      if(V.loai === 'q'){
+        if(v * B > bc.P) return v + ' · ' + nhom(sb) + ' = ' + nhom(v * B) + ' — lớn hơn ' + nhom(bc.P) + ': thương <b>quá lớn</b>, thử số nhỏ hơn.';
+        return 'Nếu viết ' + v + ' thì còn dư ' + nhom(bc.P) + ' − ' + nhom(v * B) + ' = ' + nhom(bc.P - v * B) + ' — <b>không nhỏ hơn số chia</b> ' + nhom(sb) +
+          ': còn chia tiếp được! (Pi: trong phép chia có dư, số dư bao giờ cũng nhỏ hơn số chia.) Thử số lớn hơn.';
+      }
+      if(V.loai === 't'){
+        var c = bc.tc[V.t];
+        if(c.cuoi) return 'Hết chữ số của ' + nhom(sb) + ' — còn <b>nhớ</b> bao nhiêu thì viết nốt bấy nhiêu.';
+        if(c.nhoTruoc && v === c.tich % 10) return 'Em quên cộng phần <b>nhớ</b> rồi: ' + bc.q + ' × ' + c.db + ' xong còn phải thêm số đã nhớ từ hàng bên phải.';
+        return saiO < 2 ? 'Chưa đúng — tính lại ' + bc.q + ' · ' + nhom(sb) + ', nhân từ phải sang trái.'
+          : 'Tính ' + bc.q + ' · ' + nhom(sb) + ': nhân ' + bc.q + ' với từng chữ số của ' + nhom(sb) + ' từ phải sang, thêm phần nhớ; được số có hai chữ số thì viết chữ số hàng đơn vị, nhớ chữ số hàng chục.';
+      }
+      var c2 = bc.cot[V.t];
+      if(c2.nhoSau && v === c2.bb - c2.da) return 'Em đã lấy ' + c2.bb + ' − ' + c2.da + ' (số lớn trừ số nhỏ) phải không? Trong một cột luôn lấy chữ số ở trên trừ chữ số ở dưới: ' +
+        c2.da + ' không trừ được ' + c2.bb + ' thì lấy thêm 10 thành ' + (c2.da + 10) + ', trừ đi ' + c2.bb + ', rồi nhớ 1 sang cột bên trái.';
+      if(c2.nhoTruoc && v === ((c2.da - c2.db) % 10 + 10) % 10) return 'Em quên phần <b>nhớ 1</b> của cột bên phải rồi: chữ số ở dưới phải <b>thêm 1</b> trước khi trừ.';
+      if(gon) return saiO < 2 ? 'Chưa đúng — nhẩm ' + bc.q + ' · ' + nhom(sb) + ' rồi lấy ' + nhom(bc.P) + ' trừ đi.'
+        : 'Số dư = ' + nhom(bc.P) + ' − ' + bc.q + ' · ' + nhom(sb) + '. Nhẩm tích trước, rồi trừ từng cột từ phải sang.';
+      return saiO < 2 ? 'Chưa đúng — tính lại ' + nhom(bc.P) + ' − ' + nhom(bc.ts) + ' từ hàng đơn vị.'
+        : 'Lấy ' + nhom(bc.P) + ' trừ ' + nhom(bc.ts) + ' từng cột, từ phải sang; cột nào không trừ được thì lấy thêm 10 và nhớ 1 sang cột bên trái.';
+    }
+    function xongViec(){
+      var V = VIEC[cur], bc = BUOC[V.m];
+      if(V.loai === 'q') themLoi(loiQ(V));
+      else if(V.loai === 'q0') themLoi(loiQ0(V));
+      else if(V.loai === 't' && V.t === bc.ts.length - 1) themLoi(loiT(bc));
+      else if(V.loai === 'r' && V.t === bc.rs.length - 1) themLoi(loiR(bc));
+      cur++;
+      while(VIEC[cur] && VIEC[cur].loai === 'ha'){ themLoi(loiHa(VIEC[cur])); cur++; }
+      if(cur >= VIEC.length){
+        themLoi(loiCuoi()); ve();
+        $$('input', host).forEach(function(x){ x.disabled = true; });
+        show(fb, 'good', host.getAttribute('data-ok') || ('Đúng rồi! <span class="m">' + KQ + '</span>. ' +
+          (DU ? 'Số dư ' + nhom(DU) + ' nhỏ hơn số chia ' + nhom(sb) + ' ✓.' : 'Số dư bằng 0 — đây là phép chia hết.')));
+        done(host);
+        return;
+      }
+      fb.className = 'fb'; ve(); focusTiep();
+    }
+    function nhap(inp){
+      var V = VIEC[cur];
+      if(!V || inp.disabled) return;
+      var v = (inp.value || '').replace(/\D/g, '');
+      if(!v) return;
+      if(+v === V.d){ saiO = 0; xongViec(); return; }
+      saiO++; dtLac(inp);
+      show(fb, 'bad', goiY(V, +v) + dtKhoa(inp, saiO, function(){ return VIEC[cur] === V; }));
+    }
+    function gan(){
+      $$('input:not([disabled])', host).forEach(function(inp){
+        inp.addEventListener('input', function(){ nhap(inp); });
+        inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); nhap(inp); } });
+      });
+    }
+    ve();
+  }
+
+  $$('[data-dattinh]').forEach(function(host){
+    var so = function(k){ return (host.getAttribute(k) || '').replace(/\D/g, '').replace(/^0+(?=\d)/, ''); };
+    var sa = so('data-a'), sb = so('data-b'), phep = dtPhep(host.getAttribute('data-phep')), demo = host.hasAttribute('data-demo');
+    host.classList.add('dt');
+    var loi = !sa || !sb ? 'thiếu data-a / data-b' : (!phep ? 'data-phep không hợp lệ' : (phep === '-' && +sa < +sb ? 'số bị trừ nhỏ hơn số trừ'
+      : (phep === 'x' && (/0$/.test(sb) || +sa === 0) ? 'thừa số bằng 0 hoặc thừa số thứ hai tận cùng bằng 0 (chưa hỗ trợ)'
+      : (phep === ':' && (+sb === 0 || +sa < +sb) ? 'số chia bằng 0 hoặc lớn hơn số bị chia' : ''))));
+    if(loi){ host.innerHTML = '<p class="muted small">(Khối đặt tính khai báo sai: ' + loi + ')</p>'; return; }
+    if(phep === '+' || phep === '-') dtCongTru(host, sa, sb, phep === '+', demo, demo ? 0 : +(host.getAttribute('data-lech') || 0));
+    else if(phep === 'x') dtNhan(host, sa, sb, demo);
+    else dtChia(host, sa, sb, demo, host.getAttribute('data-gon') === '1');
+  });
+
+  /* ---------- 21. data-timx — TÌM SỐ CHƯA BIẾT bằng sơ đồ đoạn thẳng (rút từ "#tim-x" Bài 4, mở rộng cho nhân/chia) ----------
+     <div data-timx data-ok="(câu thêm khi xong câu cuối)">
+       <div data-cau="347 + 918 = ? + 347"></div>   giao hoán (chỉ phép cộng): chọn tính chất, hình hai thanh mở SAU khi đúng
+       <div data-cau="9 + x = 245"></div>           x là số hạng          · "40 − x = 12" số trừ · "x − 35 = 8" số bị trừ
+       <div data-cau="6 · x = 138"></div>           x là thừa số          · "96 : x = 8" số chia · "x : 7 = 23" số bị chia
+     </div>
+     Engine đọc đẳng thức → vẽ sơ đồ (cả thanh + các phần; nhân/chia: các phần BẰNG NHAU) → 3 lựa chọn "cách tìm"
+     (đúng · phép ngược nhầm · phép không làm được trong ℕ) với hint chỉ vào hình → đúng mới mở ô gõ số (hint cho số của phép nhầm)
+     → đúng: ô x đổi viền đứt thành nét liền nền xanh, câu sau mở. Xong câu cuối thì done().
+     Ghi đè trên từng câu: data-chon="x = 245 + 9;x = 9 − 245;x = 245 − 9" (nhãn + thứ tự) · data-dung (nhãn đúng, khi chon là chữ)
+     · data-hint-chon (JSON nhãn → câu gỡ) · data-hint-sai (JSON số gõ sai → câu gỡ) · data-khen · data-sau-chon · data-hoi-chon
+     · data-hinh-sau="1|0" · data-x (đáp số người soạn tự tính — chỉ để script kiểm đối chiếu). */
+  function txNum(t){ return +String(t).replace(/[\s ]/g, ''); }
+  function txDoc(s){
+    s = String(s || '').replace(/<[^>]*>/g, '').replace(/&nbsp;| /g, ' ');
+    var ve = s.split('=');
+    if(ve.length !== 2) return null;
+    var TERM = '(\\d[\\d ]*\\d|\\d|[A-Za-z?])', re = new RegExp('^\\s*' + TERM + '\\s*(?:([+\\-−·×:])\\s*' + TERM + ')?\\s*$');
+    function hang(t){ t = t.trim(); return /^\d/.test(t) ? { n: txNum(t) } : { x: t }; }
+    function mot(t){
+      var m = t.match(re);
+      if(!m) return null;
+      return m[2] ? { a: hang(m[1]), op: m[2] === '-' ? '−' : (m[2] === '×' ? '·' : m[2]), b: hang(m[3]) } : { a: hang(m[1]) };
+    }
+    var Lv = mot(ve[0]), Rv = mot(ve[1]);
+    if(!Lv || !Rv) return null;
+    function soX(v){ return (v.a.x ? 1 : 0) + (v.b && v.b.x ? 1 : 0); }
+    if(soX(Lv) + soX(Rv) !== 1) return null;
+    var u = Lv.a.x || (Lv.b && Lv.b.x) || Rv.a.x || (Rv.b && Rv.b.x);
+    var Q = { u: u, L: Lv, R: Rv };
+    if(Lv.op && Rv.op){
+      if(Lv.op !== '+' || Rv.op !== '+') return null;           /* giao hoán: chỉ phép cộng */
+      var du = soX(Lv) ? Rv : Lv, co = soX(Lv) ? Lv : Rv, k = co.a.x ? co.b.n : co.a.n;
+      var viDu = du.a.n === k ? 0 : (du.b.n === k ? 1 : -1), viCo = co.a.x ? 1 : 0;
+      if(viDu < 0 || viDu === viCo) return null;
+      Q.dang = 'giao'; Q.op = '+'; Q.du = du; Q.co = co; Q.k = k; Q.ans = viDu ? du.a.n : du.b.n;
+      Q.benDu = du === Lv ? 'trái' : 'phải'; Q.benCo = du === Lv ? 'phải' : 'trái';
+      return Q;
+    }
+    var bt = Lv.op ? Lv : Rv, don = Lv.op ? Rv : Lv;
+    if(don.a.x) return null;
+    var c = don.a.n, a = bt.a, b = bt.b, op = bt.op;
+    Q.dang = 'tim'; Q.op = op; Q.a = a; Q.b = b; Q.c = c; Q.bt = bt;
+    if(op === '+'){ Q.k = a.x ? b.n : a.n; if(Q.k > c) return null; Q.vt = 'sohang'; Q.ans = c - Q.k; }
+    else if(op === '−'){ if(a.x){ Q.vt = 'sobitru'; Q.ans = c + b.n; } else { if(c > a.n) return null; Q.vt = 'sotru'; Q.ans = a.n - c; } }
+    else if(op === '·'){ Q.k = a.x ? b.n : a.n; if(!Q.k || c % Q.k) return null; Q.vt = 'thuaso'; Q.ans = c / Q.k; }
+    else { if(a.x){ if(!b.n) return null; Q.vt = 'sobichia'; Q.ans = c * b.n; } else { if(!c || a.n % c) return null; Q.vt = 'sochia'; Q.ans = a.n / c; } }
+    return Q;
+  }
+  function txTinh(nhan){
+    var m = String(nhan).replace(/&nbsp;| /g, ' ').match(/=\s*(\d[\d ]*\d|\d)\s*([+\-−·×:])\s*(\d[\d ]*\d|\d)\s*$/);
+    if(!m) return null;
+    var p = txNum(m[1]), op = m[2] === '-' ? '−' : (m[2] === '×' ? '·' : m[2]), q = txNum(m[3]);
+    return { p: p, op: op, q: q, v: op === '+' ? p + q : (op === '−' ? (p >= q ? p - q : null) : (op === '·' ? p * q : (q && p % q === 0 ? p / q : null))) };
+  }
+  var TX_VT = {
+    sohang:   { phan: true,  ten: 'một số hạng (một phần)', cach: 'lấy tổng trừ số hạng kia', op: '−' },
+    sotru:    { phan: true,  ten: 'số trừ (một phần)',       cach: 'lấy số bị trừ trừ hiệu',   op: '−' },
+    sobitru:  { phan: false, ten: 'số bị trừ (cả thanh)',    cach: 'lấy hiệu cộng số trừ',     op: '+' },
+    thuaso:   { phan: true,  ten: 'một thừa số (một phần)',  cach: 'lấy tích chia cho thừa số kia', op: ':' },
+    sochia:   { phan: true,  ten: 'số chia (số phần)',       cach: 'lấy số bị chia chia cho thương', op: ':' },
+    sobichia: { phan: false, ten: 'số bị chia (cả thanh)',   cach: 'lấy thương nhân với số chia',   op: '·' }
+  };
+  var TX_DONG = { '+': 'cộng', '−': 'trừ', '·': 'nhân', ':': 'chia' };
+  function txKhoa(s){ return String(s).replace(/<[^>]*>/g, '').replace(/[\s ]/g, ''); }
+  function txHop(x, y, w, cls, chu, duoi, laX, sau){
+    return '<rect class="tx-o ' + cls + (laX ? ' tx-o-x' : '') + '" x="' + x + '" y="' + y + '" width="' + w + '" height="38" rx="6"/>' +
+      '<text class="tx-chu ' + (laX ? 'an tx-chu-x' : cls) + '"' + (sau ? ' data-sau="' + esc(sau) + '"' : '') + ' x="' + (x + w / 2) + '" y="' + (y + 19) + '">' + chu + '</text>' +
+      (duoi ? '<text class="tx-chu nho" x="' + (x + w / 2) + '" y="' + (y + 54) + '">' + duoi + '</text>' : '');
+  }
+  function txNgoac(x1, x2, y, chu, laX, sau){
+    return '<path class="tx-ngoac' + (laX ? ' an tx-ngoac-x' : '') + '" d="M' + x1 + ' ' + (y + 10) + ' v-10 h' + (x2 - x1) + ' v10"/>' +
+      '<text class="tx-chu ' + (laX ? 'an tx-chu-x' : 'ca') + '"' + (sau ? ' data-sau="' + esc(sau) + '"' : '') + ' x="' + ((x1 + x2) / 2) + '" y="' + (y - 15) + '">' + chu + '</text>';
+  }
+  /* bề rộng tỉ lệ với giá trị, mỗi phần tối thiểu MIN px */
+  function txRong(vals, W, MIN){
+    var tong = vals.reduce(function(s, v){ return s + v; }, 0) || 1;
+    var w = vals.map(function(v){ return v / tong * W; }), nho = w.map(function(x){ return x < MIN; });
+    var conLai = W - MIN * nho.filter(Boolean).length, lon = 0;
+    w.forEach(function(x, i){ if(!nho[i]) lon += x; });
+    return w.map(function(x, i){ return nho[i] ? MIN : Math.round(x / (lon || 1) * conLai); });
+  }
+  function txViet(v, u, U){
+    function t(z){ return z.x ? U : nhom(z.n); }
+    return v.op ? t(v.a) + ' ' + v.op + ' ' + t(v.b) : t(v.a);
+  }
+  function txHinh(Q){
+    var X0 = 70, W = 510, Y = 40, h = '', u = Q.u;
+    if(Q.dang === 'giao'){
+      var du = Q.du, co = Q.co, dv = [du.a.n, du.b.n], wd = txRong(dv, W, 50), x = 40, wK = wd[dv[0] === Q.k ? 0 : 1], wX = wd[dv[0] === Q.k ? 1 : 0];
+      h += '<text class="tx-chu nho trai" x="40" y="13">vế ' + Q.benDu + ': ' + txViet(du, u, u) + '</text>';
+      [du.a, du.b].forEach(function(z, i){ h += txHop(x, 28, wd[i], z.n === Q.k ? 'p1' : 'p2', nhom(z.n)); x += wd[i]; });
+      h += '<text class="tx-chu nho trai" x="40" y="85">vế ' + Q.benCo + ': ' + txViet(co, u, u) + '</text>';
+      x = 40;
+      [co.a, co.b].forEach(function(z){ var w1 = z.x ? wX : wK; h += txHop(x, 100, w1, z.x ? 'an' : 'p1', z.x ? u : nhom(z.n), '', !!z.x, z.x ? u + ' = ' + nhom(Q.ans) : ''); x += w1; });
+      h += '<text class="tx-chu nho" x="295" y="162">hai thanh dài bằng nhau, chỉ đổi chỗ hai phần</text>';
+      return { svg: h, cao: 176 };
+    }
+    if(Q.op === '+' || Q.op === '−'){
+      var parts;
+      if(Q.vt === 'sohang'){
+        parts = Q.a.x ? [{ x: 1, v: Q.ans, duoi: 'số hạng chưa biết' }, { v: Q.k, duoi: 'số hạng' }] : [{ v: Q.k, duoi: 'số hạng' }, { x: 1, v: Q.ans, duoi: 'số hạng chưa biết' }];
+        h += txNgoac(X0, X0 + W, 34, 'tổng ' + nhom(Q.c));
+      } else if(Q.vt === 'sotru'){
+        parts = [{ x: 1, v: Q.ans, duoi: 'số trừ (phần bớt đi)' }, { v: Q.c, duoi: 'hiệu (phần còn lại)' }];
+        h += txNgoac(X0, X0 + W, 34, 'số bị trừ ' + nhom(Q.a.n));
+      } else {
+        parts = [{ v: Q.b.n, duoi: 'số trừ' }, { v: Q.c, duoi: 'hiệu' }];
+        h += txNgoac(X0, X0 + W, 34, u + ' (số bị trừ) — cả thanh chưa biết', true, u + ' = ' + nhom(Q.ans) + ' (số bị trừ — cả thanh)');
+      }
+      var w = txRong(parts.map(function(p){ return p.v; }), W, 60), xx = X0;
+      parts.forEach(function(p, i){
+        h += txHop(xx, Y, w[i], p.x ? 'an' : (i ? 'p2' : 'p1'), p.x ? u : nhom(p.v), p.duoi, !!p.x, p.x ? u + ' = ' + nhom(Q.ans) : '');
+        xx += w[i];
+      });
+      return { svg: h, cao: 112 };
+    }
+    /* nhân / chia: cả thanh gồm các phần BẰNG NHAU; nhiều phần (> 8) hoặc chưa biết số phần thì vẽ "…" */
+    var n, laX, chuO, duoiChu;
+    if(Q.vt === 'thuaso'){ n = Q.k; h += txNgoac(X0, X0 + W, 34, 'tích ' + nhom(Q.c)); chuO = u; laX = true; duoiChu = nhom(Q.k) + ' phần bằng nhau, mỗi phần là ' + u; }
+    else if(Q.vt === 'sobichia'){ n = Q.b.n; h += txNgoac(X0, X0 + W, 34, u + ' (số bị chia) — cả thanh chưa biết', true, u + ' = ' + nhom(Q.ans) + ' (số bị chia — cả thanh)');
+      chuO = nhom(Q.c); laX = false; duoiChu = nhom(Q.b.n) + ' phần bằng nhau (số chia), mỗi phần ' + nhom(Q.c) + ' (thương)'; }
+    else { n = 0; h += txNgoac(X0, X0 + W, 34, 'số bị chia ' + nhom(Q.a.n)); chuO = nhom(Q.c); laX = false; duoiChu = u + ' phần (số chia — chưa biết), mỗi phần ' + nhom(Q.c); }
+    var du8 = n && n <= 8, slots = du8 ? n : 5, wo = W / slots, x2 = X0;
+    for(var i = 0; i < slots; i++){
+      if(!du8 && i === 3){ h += '<text class="tx-chu nho" x="' + (x2 + wo / 2) + '" y="' + (Y + 19) + '">…</text>'; x2 += wo; continue; }
+      h += txHop(x2, Y, wo, laX ? 'an' : 'p1', laX && !(wo >= 44 || i === 0) ? '' : chuO, '', laX, laX && i === 0 ? u + ' = ' + nhom(Q.ans) : '');
+      x2 += wo;
+    }
+    if(Q.vt === 'sochia'){
+      h += '<path class="tx-ngoac an tx-ngoac-x" d="M' + X0 + ' ' + (Y + 46) + ' v8 h' + W + ' v-8"/>' +
+        '<text class="tx-chu an tx-chu-x" data-sau="' + esc(u + ' = ' + nhom(Q.ans) + ' phần') + '" x="' + (X0 + W / 2) + '" y="' + (Y + 74) + '">' + duoiChu + '</text>';
+      return { svg: h, cao: 126 };
+    }
+    h += '<text class="tx-chu nho" x="' + (X0 + W / 2) + '" y="' + (Y + 60) + '">' + duoiChu + '</text>';
+    return { svg: h, cao: 112 };
+  }
+  function txDung(Q){
+    /* nhãn "cách tìm" mặc định: [đúng, nhầm phép ngược, phép không làm được] */
+    var u = Q.u, c = Q.c, N = nhom;
+    function l(p, op, q){ return u + ' = ' + N(p) + ' ' + op + ' ' + N(q); }
+    switch(Q.vt){
+      case 'sohang':   return [l(c, '−', Q.k), l(c, '+', Q.k), l(Q.k, '−', c)];
+      case 'sotru':    return [l(Q.a.n, '−', c), l(Q.a.n, '+', c), l(c, '−', Q.a.n)];
+      case 'sobitru':  return [l(c, '+', Q.b.n), l(Q.b.n, '−', c), l(c, '−', Q.b.n)];
+      case 'thuaso':   return [l(c, ':', Q.k), l(c, '·', Q.k), l(Q.k, ':', c)];
+      case 'sochia':   return [l(Q.a.n, ':', c), l(Q.a.n, '·', c), l(c, ':', Q.a.n)];
+      default:         return [l(c, '·', Q.b.n), l(Q.b.n, ':', c), l(c, ':', Q.b.n)];
+    }
+  }
+  function txGoiChon(Q, e, U){
+    if(!e) return 'Nhìn lại sơ đồ: ' + U + ' là cả thanh hay một phần?';
+    if(e.v === null){
+      if(e.op === '−') return nhom(e.p) + ' nhỏ hơn ' + nhom(e.q) + ' — phép trừ này có thực hiện được trong ℕ không? (Pi: a − b cần a ≥ b.)';
+      return nhom(e.p) + (e.p < e.q ? ' nhỏ hơn ' : ' không chia hết cho ') + nhom(e.q) + ' — phép chia này không cho thương là số tự nhiên, mà ' + U + ' phải là số tự nhiên.';
+    }
+    var vt = Q.vt, lon = e.op === '+' || e.op === '·';
+    if(TX_VT[vt].phan && lon){
+      if(vt === 'sohang') return U + ' chỉ là <b>một phần</b> của cả thanh ' + nhom(Q.c) + '. Một phần thì lớn hơn hay nhỏ hơn cả thanh? Cộng thêm ' + nhom(Q.k) + ' thì được số lớn hơn ' + nhom(Q.c) + '.';
+      if(vt === 'sotru') return U + ' là số trừ — <b>một phần</b> của cả thanh ' + nhom(Q.a.n) + '. Một phần thì không thể lớn hơn cả thanh.';
+      if(vt === 'thuaso') return U + ' là <b>một phần</b> — một trong ' + nhom(Q.k) + ' phần bằng nhau của cả thanh ' + nhom(Q.c) + '. Nhân lên thì được số lớn hơn cả thanh.';
+      return U + ' là <b>số phần</b>: cả thanh ' + nhom(Q.a.n) + ' được chia thành các phần bằng nhau, mỗi phần ' + nhom(Q.c) + '. Nhân lên thì được số lớn hơn cả thanh — muốn biết có bao nhiêu phần thì làm phép tính gì?';
+    }
+    if(!TX_VT[vt].phan && !lon){
+      if(vt === 'sobitru') return 'Thấy dấu «−» là trừ ngay? Nhìn hình: ' + U + ' là <b>cả thanh</b>, gồm phần ' + nhom(Q.b.n) + ' và phần ' + nhom(Q.c) + ' ghép lại. Ghép lại là phép tính gì?';
+      return 'Thấy dấu «:» là chia ngay? Nhìn hình: ' + U + ' là <b>cả thanh</b>, gồm ' + nhom(Q.b.n) + ' phần bằng nhau, mỗi phần ' + nhom(Q.c) + '. Gộp các phần bằng nhau lại là phép tính gì?';
+    }
+    return 'Nhìn lại sơ đồ: ' + U + ' là cả thanh hay một phần?';
+  }
+  function txCachDung(Q, U){
+    var N = nhom;
+    switch(Q.vt){
+      case 'sohang':   return U + ' là một phần của thanh ' + N(Q.c) + ' — phải lấy ' + N(Q.c) + ' bớt đi ' + N(Q.k) + '.';
+      case 'sotru':    return 'Số trừ là một phần của thanh ' + N(Q.a.n) + ': lấy cả thanh bớt đi phần hiệu ' + N(Q.c) + '.';
+      case 'sobitru':  return U + ' là số bị trừ — cả thanh, gồm phần ' + N(Q.b.n) + ' và phần ' + N(Q.c) + ': phải cộng lại.';
+      case 'thuaso':   return U + ' là một phần — một trong ' + N(Q.k) + ' phần bằng nhau của ' + N(Q.c) + ': phải chia ' + N(Q.c) + ' thành ' + N(Q.k) + ' phần bằng nhau.';
+      case 'sochia':   return U + ' là số phần: thanh ' + N(Q.a.n) + ' chia thành các phần, mỗi phần ' + N(Q.c) + ' — phải lấy ' + N(Q.a.n) + ' chia cho ' + N(Q.c) + '.';
+      default:         return U + ' là số bị chia — cả thanh, gồm ' + N(Q.b.n) + ' phần bằng nhau, mỗi phần ' + N(Q.c) + ': phải nhân.';
+    }
+  }
+  var SO_CHU = ['', 'một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín', 'mười'];
+  $$('[data-timx]').forEach(function(tx){
+    var CAU = [];
+    $$('[data-cau]', tx).forEach(function(el, i){
+      var Q = txDoc(el.getAttribute('data-cau'));
+      if(!Q){ CAU.push({ loi: el.getAttribute('data-cau') }); return; }
+      var u = Q.u, U = u === '?' ? '?' : '<i>' + esc(u) + '</i>', G = function(k){ return el.getAttribute(k); };
+      var C = { Q: Q, goc: el.getAttribute('data-cau'), U: U, u: u, hs: {}, chon: [], hc: json(el, 'data-hint-chon') };
+      C.de = txViet(Q.L, u, U) + ' = ' + txViet(Q.R, u, U);
+      C.hinh = txHinh(Q);
+      var thuLai = function(){ var V = Q.dang === 'giao' ? null : Q; if(!V) return ''; var s = function(z){ return z.x ? nhom(Q.ans) : nhom(z.n); };
+        var vt = function(v){ return v.op ? s(v.a) + ' ' + v.op + ' ' + s(v.b) : s(v.a); }; return vt(Q.L) + ' = ' + vt(Q.R); };
+      if(Q.dang === 'giao'){
+        var d = Q.du, x1 = nhom(d.a.n), x2 = nhom(d.b.n), coTxt = txViet(Q.co, u, U), viTri = function(v){ return v.a.n === Q.k ? 'trước' : 'sau'; };
+        C.hinhSau = G('data-hinh-sau') !== '0';
+        C.hoiChon = G('data-hoi-chon') || ('Vì sao tìm được «' + U + '» mà không cần tính tổng? Chọn tính chất:');
+        var nh = G('data-chon') ? list(G('data-chon')) : ['Tính chất kết hợp', 'Tính chất giao hoán', 'Cộng với 0'];
+        C.dung = G('data-dung') || 'Tính chất giao hoán';
+        var mac = { 'Tính chất kết hợp': 'Kết hợp là đổi cách <b>nhóm</b> ba số (dời dấu ngoặc). Ở đây chỉ có hai số hạng — nhìn xem hai vế khác nhau ở chỗ nào?',
+          'Cộng với 0': 'Không có số 0 nào ở đây. Nhìn thứ tự các số hạng: ' + nhom(Q.k) + ' đứng ' + viTri(Q.L) + ' ở vế trái, đứng ' + (Q.R.a.x ? 'sau' : (Q.R.a.n === Q.k ? 'trước' : 'sau')) + ' ở vế phải.' };
+        C.chon = nh.map(function(t){ return [t, t === C.dung ? '' : (C.hc[txKhoa(t)] || C.hc[t] || mac[t] || 'Nhìn hai vế: khác nhau ở chỗ nào?')]; });
+        C.sauChon = G('data-sau-chon') || 'Đúng: hai vế chỉ <b>đổi chỗ</b> các số hạng. Vậy <b>' + U + '</b> bằng bao nhiêu? (Không cần tính tổng.)';
+        C.hs[String(Q.k)] = nhom(Q.k) + ' đã có ở vế ' + Q.benCo + ' rồi. Vế ' + Q.benDu + ' có ' + x1 + ' và ' + x2 + '; vế ' + Q.benCo + ' có ' +
+          (Q.co.a.x ? U + ' và ' + nhom(Q.co.b.n) : nhom(Q.co.a.n) + ' và ' + U) + ' — số hạng nào còn thiếu ở vế ' + Q.benCo + '?';
+        C.hs[String(d.a.n + d.b.n)] = 'Em đã cộng ' + x1 + ' + ' + x2 + '. Nếu ' + U + ' là ' + nhom(d.a.n + d.b.n) + ' thì vế ' + Q.benCo + ' ' + coTxt + ' lớn hơn vế ' + Q.benDu + ' nhiều. Chỉ cần đổi chỗ, không cần tính.';
+        var lo = Math.max(d.a.n, d.b.n), be = Math.min(d.a.n, d.b.n);
+        if(lo !== be) C.hs[String(lo - be)] = 'Em đã trừ ' + nhom(lo) + ' − ' + nhom(be) + '. Giao hoán chỉ <b>đổi chỗ</b> các số hạng: số hạng nào của vế ' + Q.benDu + ' chưa có mặt ở vế ' + Q.benCo + '?';
+        C.khen = G('data-khen') || ('Đúng! Theo tính chất giao hoán, ' + x1 + ' + ' + x2 + ' = ' + x2 + ' + ' + x1 + ', nên ' + u + ' = ' + nhom(Q.ans) +
+          ' — không cần tính tổng. Hình dưới: hai thanh dài bằng nhau, chỉ đổi chỗ hai phần.');
+      } else {
+        C.hinhSau = G('data-hinh-sau') === '1';
+        C.hoiChon = G('data-hoi-chon') || '';
+        var md = txDung(Q), nhan = G('data-chon') ? list(G('data-chon')) : [[md[1], md[0], md[2]], [md[1], md[2], md[0]], [md[0], md[1], md[2]]][i % 3];
+        var vtQ = TX_VT[Q.vt];
+        nhan.forEach(function(t){
+          var e = txTinh(t), ok = G('data-dung') ? txKhoa(t) === txKhoa(G('data-dung')) : !!(e && e.v === Q.ans && e.op === vtQ.op);
+          if(ok && !C.dung) C.dung = t;
+          C.chon.push([t, ok ? '' : (C.hc[txKhoa(t)] || C.hc[t] || txGoiChon(Q, e, U))]);
+          if(!ok && e && e.v !== null && e.v !== Q.ans) C.hs[String(e.v)] = 'Em đã ' + TX_DONG[e.op] + '. ' + txCachDung(Q, U);
+        });
+        C.sauChon = G('data-sau-chon') || '';
+        var dungE = txTinh(C.dung || '');
+        C.khen = G('data-khen') || ('Đúng! ' + U + ' là ' + vtQ.ten + ': ' + vtQ.cach + ', ' + u + ' = ' + (dungE ? nhom(dungE.p) + ' ' + dungE.op + ' ' + nhom(dungE.q) : '…') +
+          ' = ' + nhom(Q.ans) + '. Thử lại: ' + thuLai() + '.');
+      }
+      var them = json(el, 'data-hint-sai');
+      Object.keys(them).forEach(function(k){ C.hs[txKhoa(k)] = them[k]; });
+      CAU.push(C);
+    });
+    tx.classList.add('tx');
+    var nHop = CAU.filter(function(c){ return c.Q; }).length;
+    if(!nHop || nHop !== CAU.length){ tx.innerHTML = '<p class="muted small">(Khối tìm x khai báo sai: không đọc được «' + esc((CAU.filter(function(c){ return !c.Q; })[0] || {}).loi || '') + '»)</p>'; return; }
+    tx.innerHTML = CAU.map(function(c, i){
+      var svg = function(sau){ return '<svg class="tx-hinh' + (sau ? ' tx-hinh-sau hide' : '') + '" viewBox="0 0 600 ' + c.hinh.cao + '" role="img" aria-label="sơ đồ đoạn thẳng của câu ' + (i + 1) + '">' + c.hinh.svg + '</svg>'; };
+      var nhanHien = function(t){ return c.u === '?' ? t : t.replace(new RegExp('(^|[^A-Za-zÀ-ỹ])' + c.u + '(?![A-Za-zÀ-ỹ])', 'g'), '$1<i>' + c.u + '</i>'); };
+      return '<div class="tx-cau' + (i ? ' hide' : '') + '" data-i="' + i + '" data-cau="' + esc(c.goc) + '"><h5>Câu ' + (i + 1) + '</h5>' +
+        '<p class="de">' + c.de + '</p>' + (c.hinhSau ? '' : svg(false)) +
+        (c.hoiChon ? '<p class="small" style="text-align:center; margin:4px 0">' + c.hoiChon + '</p>' : '') +
+        '<p class="chon">' + c.chon.map(function(o, k){ return '<button type="button" class="btn ghost" data-k="' + k + '">' + nhanHien(o[0]) + '</button>'; }).join('') + '</p>' +
+        '<p class="dien hide"><span class="m">' + c.U + ' =</span> <input type="text" inputmode="numeric" aria-label="giá trị của ' + esc(c.u) + '">' +
+          ' <button type="button" class="btn">Kiểm</button> <span class="mark"></span></p>' +
+        (c.hinhSau ? svg(true) : '') + '<div class="fb"></div></div>';
+    }).join('');
+    var luat = [];
+    if(CAU.some(function(c){ return c.Q.op === '+' || c.Q.op === '−'; })) luat.push('chưa biết <b>một phần</b> thì trừ, chưa biết <b>cả thanh</b> thì cộng');
+    if(CAU.some(function(c){ return c.Q.op === '·' || c.Q.op === ':'; })) luat.push('chưa biết <b>một phần</b> (thừa số) hoặc <b>số phần</b> (số chia) thì chia, chưa biết <b>cả thanh</b> (số bị chia) thì nhân');
+    var KET = tx.getAttribute('data-ok') || ('<b>' + (CAU.length > 1 ? 'Cả ' + (SO_CHU[CAU.length] || CAU.length) + ' câu đều đúng!' : 'Đúng hết!') + '</b>' +
+      (luat.length && CAU.some(function(c){ return c.Q.dang === 'tim'; }) ? ' Luật nhớ: ' + luat.join('; ') + '.' : ''));
+    function xongCau(i){
+      var d = $('.tx-cau[data-i="' + i + '"]', tx), c = CAU[i];
+      d.classList.add('xong');
+      var hs = $('.tx-hinh-sau', d); if(hs){ hs.classList.remove('hide'); hs.classList.add('mo-ra'); }
+      $$('.tx-chu-x', d).forEach(function(t){ var s = t.getAttribute('data-sau'); if(s){ t.textContent = s; t.classList.add('tx-x'); } });
+      show($('.fb', d), 'good', c.khen);
+      var sau = $('.tx-cau[data-i="' + (i + 1) + '"]', tx);
+      if(sau){ sau.classList.remove('hide'); sau.classList.add('mo-ra'); }
+      else { done(tx); show($('.fb', d), 'good', c.khen + '<br>' + KET); }
+    }
+    function chon(i, k){
+      var d = $('.tx-cau[data-i="' + i + '"]', tx), c = CAU[i], fb = $('.fb', d), o = c.chon[k];
+      if(d.classList.contains('xong') || d._daChon) return;
+      var b = $('.chon [data-k="' + k + '"]', d);
+      if(o[0] === c.dung){
+        d._daChon = true;
+        $$('.chon .btn', d).forEach(function(x){ x.disabled = true; });
+        b.className = 'btn dung';
+        var dien = $('.dien', d);
+        dien.classList.remove('hide'); dien.classList.add('mo-ra');
+        show(fb, 'good', c.sauChon || ('Đúng cách tìm rồi. Giờ tính: ' + b.innerHTML + ' = ?'));
+        var inp = $('input', dien); try{ inp.focus(); }catch(e){}
+      } else {
+        b.classList.remove('sai'); void b.offsetWidth; b.className = 'btn ghost sai';
+        show(fb, 'bad', o[1] || 'Nhìn lại sơ đồ.');
+      }
+    }
+    function kiem(i){
+      var d = $('.tx-cau[data-i="' + i + '"]', tx), c = CAU[i], inp = $('.dien input', d), mk = $('.dien .mark', d);
+      if(d.classList.contains('xong')) return;
+      var v = (inp.value || '').replace(/[\s . ]/g, '');
+      if(!v) return;
+      if(/^\d+$/.test(v) && +v === c.Q.ans){ mk.innerHTML = '<span class="ok">✓</span>'; inp.disabled = true; xongCau(i); }
+      else { mk.innerHTML = '<span class="x">✗</span>'; show($('.fb', d), 'bad', c.hs[v] || 'Chưa đúng — tính lại phép tính em vừa chọn (đặt tính nếu cần).'); }
+    }
+    CAU.forEach(function(c, i){
+      var d = $('.tx-cau[data-i="' + i + '"]', tx);
+      $$('.chon .btn', d).forEach(function(b){ b.addEventListener('click', function(){ chon(i, +b.getAttribute('data-k')); }); });
+      $('.dien button', d).addEventListener('click', function(){ kiem(i); });
+      $('.dien input', d).addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); kiem(i); } });
+    });
   });
 
   /* ---------- API cho "JS RIÊNG CỦA BÀI" ----------
@@ -2931,7 +4092,8 @@
   })();
 
   window.Toan6 = { done: done, show: show, fbBox: fbBox, esc: esc, list: list, el: el,
-                   nhom: nhom, HANG: HANG, itDong: itDong, tia: TIA, tuLam: [] };
+                   nhom: nhom, HANG: HANG, itDong: itDong, tia: TIA, tuLam: [],
+                   khiDienDung: khiDienDung, moSau: moSau };
 })();
 </script>
 

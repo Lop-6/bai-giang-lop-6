@@ -84,9 +84,10 @@
 
   /* ----- hoạt động ----- */
   .act{border:1px solid #cddcf7; background:#fbfcff; border-radius:12px; padding:14px 16px; margin:16px 0}
-  .act > h4{margin-top:0; color:var(--brand); display:flex; align-items:center; gap:8px}
+  /* tiêu đề hoạt động: KHÔNG dùng flex (flex tách từng <i>, chữ thường thành ô riêng → "điểm  a ,  b" hở, vỡ dòng ở màn hẹp) */
+  .act > h4{margin-top:0; color:var(--brand); line-height:1.5}
   .act > h4 .tag{font-size:12px; background:var(--brand); color:#fff; border-radius:999px;
-    padding:2px 9px; font-weight:600; letter-spacing:.3px}
+    padding:2px 9px; font-weight:600; letter-spacing:.3px; display:inline-block; margin-right:8px; vertical-align:2px; white-space:nowrap}
   .act.done{border-color:#b8e5d7; background:#f7fdfb}
   .act.done > h4 .tag{background:var(--green)}
   .btn{font:inherit; font-size:15px; cursor:pointer; border-radius:999px; padding:6px 14px;
@@ -101,6 +102,8 @@
   .fb.show{display:block}
   .fb.good{background:var(--green-soft); border:1px solid #b8e5d7; color:#0b6b52}
   .fb.bad{background:var(--warm-soft); border:1px solid #f3d79a; color:#8a5a06}
+  .mo-ra{animation:pop .4s ease both}
+  .fb-fill{margin-top:6px; font-size:15px}
   .reveal{display:none; margin-top:12px; border-top:1px dashed var(--line); padding-top:12px}
   .reveal.open{display:block; animation:fadein .3s ease}
   @keyframes fadein{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
@@ -304,11 +307,119 @@
   .pt-gt{text-align:center; margin:6px 0}
   table.ptab td.hang.on{font-weight:800; color:var(--ink)}
 
+  /* ----- so sánh hai số theo từng hàng (data-compare) -----
+     Màu của chữ số lớn hơn / nhỏ hơn ở cột "đèn" lấy từ biến --cp-lon / --cp-nho: bài đặt trong CSS RIÊNG
+     theo bảng màu khái niệm của bài (mặc định trung tính). Màu chỉ hiện SAU khi chọn dấu đúng. */
+  .cp{margin:10px 0; text-align:center}
+  .cp-wrap{overflow-x:auto; padding:4px 0}
+  .cp-grid{display:inline-grid; gap:4px 3px; align-items:center; justify-items:stretch; margin:4px auto}
+  .cp-ten{font:italic 700 22px "Cambria Math","Times New Roman",serif; padding-right:8px; text-align:right; white-space:nowrap}
+  .cp-h{font-size:11.5px; line-height:1.15; color:var(--muted); min-height:32px; display:flex; align-items:flex-end;
+    justify-content:center; text-align:center; border-radius:8px}
+  .cp-h button{font:inherit; font-size:11.5px; line-height:1.15; padding:3px 2px; width:100%; min-height:36px; cursor:pointer;
+    border:1px dashed #a9bde6; border-radius:8px; background:#f5f8ff; color:var(--ink)}
+  .cp-h button:hover{border-color:var(--brand); background:var(--brand-soft)}
+  .cp-h button.sai{border-color:var(--warm); background:var(--warm-soft); animation:shake .3s}
+  .cp-d{font:700 30px "Cambria Math","Times New Roman",serif; text-align:center; padding:2px 0; border-radius:8px;
+    min-width:34px; transition:background .25s}
+  .cp-d.trong{color:transparent; border:1px dashed var(--line)}
+  .cp-m{min-height:30px; font:700 20px "Cambria Math","Times New Roman",serif; color:#8a93a6; text-align:center}
+  .cp-grid .lopdau{margin-left:12px}
+  .cp-grid .cp-bang{background:#eef1f6; animation:pop .35s ease both}
+  .cp-d.cp-bang{color:#8a93a6}
+  .cp-grid .cp-den{background:#fff3b0; box-shadow:0 0 0 2px #f2c200, 0 0 18px 4px rgba(255,204,0,.55); animation:pop .45s ease both}
+  .cp-d.cp-lon{color:var(--cp-lon, var(--ink))} .cp-d.cp-nho{color:var(--cp-nho, var(--ink))}
+  .cp-bulb{width:22px; height:28px; vertical-align:middle}
+  .cp-hoi{font-size:16px; margin:6px 0}
+  .cp-dau{margin:8px 0; font-size:22px}
+  .cp-dau .btn{font-size:22px; min-width:52px}
+  .cp-dau .btn.sai{background:var(--red-soft); border-color:var(--red); color:var(--red); animation:shake .3s}
+  .cp-kl{font-size:17px; min-height:24px; margin:6px 0}
+  .cp-kl b.lon{font:700 26px "Cambria Math","Times New Roman",serif}
+  .cp-tia svg{max-width:520px}
+  .cp-pt{cursor:pointer}
+  .cp-pt circle{fill:#fff; stroke:var(--brand); stroke-width:3; transition:.15s}
+  .cp-pt:hover circle,.cp-pt:focus circle{fill:var(--brand-soft); outline:none}
+  .cp-pt.sai circle{stroke:var(--warm); fill:var(--warm-soft)}
+  .cp-pt.dung circle{fill:var(--green); stroke:var(--green)}
+  .cp-pt text{font:italic 700 20px "Cambria Math","Times New Roman",serif; text-anchor:middle; fill:var(--ink)}
+
+  /* ----- gom cặp tròn chục / tròn trăm để tính hợp lí (data-gomcap, thêm từ Bài 4) -----
+     Màu ngoặc/nền tổng của cặp lấy từ biến --gc-cap / --gc-nen: bài đặt trong CSS RIÊNG (bọc #id) theo bảng màu khái niệm */
+  .gc{--gc-cap:#475569; --gc-nen:#eef1f6; margin:10px 0; text-align:center}
+  .gc-hd{font-size:15px; color:var(--muted); margin:2px 0 4px}
+  .gc > .fb{text-align:left}
+  .gc-hang{display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; gap:6px 2px; margin:8px 0 2px; min-height:96px}
+  .gc-don,.gc-nhom{display:inline-flex; flex-direction:column; align-items:center}
+  .gc-tren{display:inline-flex; align-items:center}
+  .gc-the{font:700 24px "Cambria Math","Times New Roman",serif; min-width:66px; height:52px; padding:0 10px; margin:0 2px; cursor:pointer;
+    border:2px solid #9aa3b5; border-radius:12px; background:#fff; color:var(--ink); transition:transform .15s, box-shadow .15s; white-space:nowrap}
+  .gc-the:hover:not(:disabled){border-color:var(--brand)}
+  .gc-the:disabled{cursor:default; opacity:1; color:var(--ink)}
+  .gc-the.sel{border-color:var(--brand); box-shadow:0 0 0 4px var(--brand-soft); transform:translateY(-5px)}
+  .gc-the.sai{border-color:var(--warm); background:var(--warm-soft); animation:shake .3s 2}
+  .gc-dau{font:700 26px "Cambria Math","Times New Roman",serif; color:var(--muted); padding:0 3px; height:52px; line-height:52px}
+  .gc-ngoac{font:400 40px "Cambria Math","Times New Roman",serif; color:var(--gc-cap); line-height:52px; animation:pop .35s ease both}
+  .gc-nhom .gc-the{border-color:var(--gc-cap)}
+  .gc-mo{display:block; align-self:stretch; height:12px; margin:2px 16px 0; border:3px solid var(--gc-cap); border-top:0;
+    border-radius:0 0 12px 12px; animation:pop .35s ease .15s both}
+  .gc-tong{display:inline-block; margin-top:3px; padding:1px 12px; border-radius:999px; background:var(--gc-nen); color:var(--gc-cap);
+    font:700 22px "Cambria Math","Times New Roman",serif; animation:pop .45s ease .35s both}
+  .gc-loi{display:inline-block; text-align:left; margin:8px auto 2px; font:20px "Cambria Math","Times New Roman",serif}
+  .gc-dong{margin:3px 0; animation:dropin .4s ease both}
+  .gc-ghi{font:italic 14px "Segoe UI",sans-serif; color:var(--muted); margin-left:10px}
+  .gc-kq{display:inline-flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:center}
+  .gc-kq input{font:inherit; width:120px; padding:5px 8px; border:1px solid var(--line); border-radius:9px; text-align:center; min-width:0}
+  @media(max-width:560px){ .gc-the{min-width:54px; font-size:21px; padding:0 6px} .gc-loi{font-size:18px} }
+
   /* ----- công tắc giữ pane cũ (data-t2-giu): pane đã xem mờ đi, pane đang chọn rõ ----- */
   [data-t2] .t2-cu{opacity:.7}
 
+  /* ----- mục tiêu bài học: bảng hai cột như SGK (<table class="muc-tieu">) — dùng ở MỌI bài ----- */
+  table.muc-tieu{margin:6px 0 10px; font-size:15.5px}
+  table.muc-tieu th{font-size:14px}
+  table.muc-tieu td{vertical-align:top}
+
+  /* ----- sơ đồ tư duy ở Chốt bài (SVG trong <div class="mm-wrap">): nhánh <path class="mm-line draw">,
+     ô <g class="mm-node" style="animation-delay:…"> chứa rect + <text class="mm-t"> (.b gốc đậm · .s canh trái)
+     + hình thu nhỏ; chữ trên icon .mm-ic (.s nhỏ, canh trái). Màu viền/nền ô đặt ngay trên rect theo bảng màu của bài ----- */
+  .mm-line{fill:none; stroke-width:3}
+  .mm-node{animation:pop .45s ease both; transform-box:fill-box; transform-origin:50% 50%}
+  .mm-node rect{stroke-width:2}
+  .mm-t{font:600 14.5px "Segoe UI",sans-serif; text-anchor:middle; dominant-baseline:central; fill:#1f2430}
+  .mm-t.b{font-weight:800; font-size:17px}
+  .mm-t.s{text-anchor:start; font-size:14.5px}
+  .mm-ic{font:700 13px "Segoe UI",sans-serif; text-anchor:middle; dominant-baseline:central}
+  .mm-ic.s{text-anchor:start; font-size:9.5px}
+
+  /* ----- bảng lỗi hay gặp ở Chốt bài: <table class="bang-loi">, ô <td class="o-sai"> / <td class="o-dung">;
+     chỉ BIỂU THỨC bọc <span class="m"> (font toán, đậm), lời giải thích để font thường ----- */
+  table.bang-loi td.o-sai{color:#9b1c1c} table.bang-loi td.o-dung{color:#0b6b52}
+  table.bang-loi td .m{font-weight:700}
+
+  /* ----- mốc nghỉ giữa một mục dài (> 6 hoạt động): <div class="moc-nghi" role="note"> ----- */
+  .moc-nghi{margin:18px 0; padding:10px 14px; border-radius:12px; background:#eef7ee; border:1px dashed #7fb17f; font-size:16px}
+
+  /* ----- tia số của HÌNH RIÊNG vẽ bằng Toan6.tia.truc() (chữ số dùng lớp để @media phóng to được) ----- */
+  .tr-so{font:15px "Segoe UI",sans-serif; fill:#5c6577; text-anchor:middle}
+  .tr-so.nho{font-size:12px}
+  .tr-o{font:italic 700 16px "Cambria Math","Times New Roman",serif; fill:#5c6577; text-anchor:middle}
+  .tr-3c{font:700 16px "Segoe UI",sans-serif; fill:#8a93a6}
+  @media(max-width:640px){ .tr-so{font-size:20px} .tr-so.nho{font-size:14px} }
+
   /* ----- sơ đồ tư duy rộng: màn hẹp thì cuộn ngang thay vì thu nhỏ chữ còn 8 px ----- */
-  @media(max-width:640px){ .mm-wrap{overflow-x:auto} .mm-wrap svg{min-width:900px} }
+  @media(max-width:640px){ .mm-wrap{overflow-x:auto} .mm-wrap svg{min-width:900px}
+    /* báo cho học sinh biết sơ đồ còn phần bên phải (dòng chữ dính mép trái khi cuộn) */
+    .mm-wrap::before{content:"← kéo ngang để xem hết sơ đồ →"; display:block; position:sticky; left:0; width:max-content;
+      font-size:13px; color:var(--muted); background:#fff8e1; border:1px dashed #e0c36a; border-radius:8px; padding:2px 8px; margin:0 0 4px} }
+  /* màn hẹp: tia số/trục số BẤM CHỌN (data-answer) giữ tối thiểu 560 px (điểm bấm không nhỏ dưới ~16 px), cuộn ngang trong khung;
+     tên hàng của máy so sánh nhỏ lại để "Trăm nghìn" không bị cắt chữ */
+  @media(max-width:640px){
+    .numline[data-answer]{overflow-x:auto}
+    .numline[data-answer] > svg{display:block; min-width:560px}
+    .numline[data-answer] .pt{r:11px}
+    .cp-h button{font-size:9px; padding:2px 0; letter-spacing:-.2px}
+  }
 
   body.no-motion *{animation:none !important; transition:none !important}
   @media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
@@ -964,13 +1075,32 @@
     if(txt) txt.textContent = n + '/' + ACTS.length + ' hoạt động';
   }
   var WIDGET_CHAM = '[data-venn],[data-lab],[data-picks],[data-mcq],[data-uniq],[data-numline][data-answer],' +
-    '[data-fill],[data-abacus][data-answer],[data-expand],[data-match],[data-placetable][data-ask],[data-placetable][data-ask-gt],[data-custom]';
+    '[data-fill],[data-abacus][data-answer],[data-expand],[data-match],[data-placetable][data-ask],[data-placetable][data-ask-gt],[data-compare]:not([data-demo]),[data-gomcap]:not([data-demo]),[data-custom]';
+  /* Mở các khối data-mo-sau="#id" (vd. câu hỏi tiếp theo) khi widget chứa thuộc tính này làm đúng */
+  function moSau(w){
+    var s = w && w.getAttribute ? w.getAttribute('data-mo-sau') : '';
+    if(s) $$(s).forEach(function(t){ t.classList.remove('hide'); t.classList.add('mo-ra'); });
+  }
   function done(node){
-    var a = node && node.closest ? node.closest('[data-act]') : null;
+    if(!node || !node.closest) return;
+    /* widget vừa làm đúng: đánh dấu, mở khối data-mo-sau, phát sự kiện "t6-xong" (JS riêng của bài nghe được) */
+    var w = node.matches && node.matches('[data-act]') ? node : (node.closest(WIDGET_CHAM) || node);
+    if(w.matches && w.matches('[data-act]')) $$('[data-mcq]', w).forEach(function(q){ q._xong = true; });
+    w._xong = true;
+    /* data-mo-sau trên chính .act nghĩa là "xong CẢ hoạt động" → mở ở cuối hàm, không mở khi nhóm mcq vừa đúng */
+    if(!(w.matches && w.matches('[data-act]'))) moSau(w);
+    try{ w.dispatchEvent(new CustomEvent('t6-xong', { bubbles: true })); }catch(e){}
+    var a = node.closest('[data-act]');
     if(!a) return;
+    /* data-can-het: hoạt động có nhiều widget thì phải làm đúng TẤT CẢ mới tính xong */
+    if(a.hasAttribute('data-can-het') &&
+       !$$(WIDGET_CHAM, a).every(function(x){ return x._xong || x._ok; })) return;
     var k = a.getAttribute('data-act');
     if(DONE[k]) return;
     DONE[k] = true; a.classList.add('done'); paint();
+    /* móc "sau khi xong cả hoạt động": hình giải thích mở ra lúc này (class done đã gắn) */
+    moSau(a);
+    try{ a.dispatchEvent(new CustomEvent('t6-act-xong', { bubbles: true })); }catch(e){}
   }
   paint();
 
@@ -1226,6 +1356,7 @@
           b.className = 'btn';
           st.ok = (o === ans); st.answered = true;
           mark.innerHTML = st.ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
+          if(st.ok) moSau(host);   /* data-mo-sau riêng từng câu: mở bước kế tiếp khi câu NÀY đúng */
           report();
         });
         host.appendChild(b);
@@ -1235,7 +1366,9 @@
       return st;
     });
     function report(){
-      if(!fb) fb = fbBox(act);
+      /* phần tử .fb-mcq đặt sẵn trong hoạt động = chỗ hiện phản hồi của các câu data-mcq
+         (hoạt động có thêm widget khác thì đặt, để không ghi đè phản hồi của widget kia) */
+      if(!fb) fb = $('.fb-mcq', act) || fbBox(act);
       if(states.every(function(s){ return s.ok; })){
         show(fb,'good','Đúng cả rồi. Em làm tiếp phần sau nhé.');
         done(act); return;
@@ -1370,9 +1503,12 @@
     var answer = list(host.getAttribute('data-answer'));
     var okMsg  = host.getAttribute('data-ok') || 'Đúng rồi.';
     var n = to - from, W = 640, PAD = 34, step = (W - 2*PAD) / (n || 1), H = 92, Y = 54;
-    var svg = ['<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="trục số từ ' +
+    /* data-tia="1": TIA số gốc O (Toán 6, Chương I) — nét bắt đầu đúng ở điểm 0, có chữ O ở gốc */
+    var tia = host.getAttribute('data-tia') === '1' && from === 0;
+    var svg = ['<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + (tia ? 'tia số gốc O, các điểm từ ' : 'trục số từ ') +
                from + ' đến ' + to + '">'];
-    svg.push('<line class="axis" x1="10" y1="' + Y + '" x2="' + (W-10) + '" y2="' + Y + '"/>');
+    svg.push('<line class="axis" x1="' + (tia ? PAD : 10) + '" y1="' + Y + '" x2="' + (W-10) + '" y2="' + Y + '"/>');
+    if(tia) svg.push('<text class="lbl" x="' + PAD + '" y="' + (Y-16) + '" style="font-style:italic; font-weight:700">O</text>');
     svg.push('<path class="axis" fill="none" d="M' + (W-22) + ' ' + (Y-7) + ' L' + (W-8) + ' ' + Y +
              ' L' + (W-22) + ' ' + (Y+7) + '"/>');
     for(var i = 0; i <= n; i++){
@@ -1409,8 +1545,19 @@
     bChk.addEventListener('click', function(){
       var a = sel.slice().sort(function(x,y){ return x-y; }).join(';');
       var b = answer.slice().sort(function(x,y){ return x-y; }).join(';');
-      if(a === b){ show(fb,'good', okMsg); done(host); }
-      else show(fb,'bad','Chưa đúng — em đang chọn ' + (sel.length || 0) +
+      if(a === b){ show(fb,'good', okMsg); done(host); return; }
+      /* data-hint-thua / data-hint-thieu: câu hỏi gỡ cho từng điểm chọn thừa / bỏ sót (như data-pick) —
+         không bao giờ in ra đáp án */
+      var th = json(host,'data-hint-thua'), tk = json(host,'data-hint-thieu');
+      var thua  = sel.filter(function(v){ return answer.indexOf(v) < 0; });
+      var thieu = answer.filter(function(v){ return sel.indexOf(v) < 0; });
+      /* thiếu từ 2 điểm trở lên: câu gợi ý của TỪNG điểm ("còn một điểm hay bị quên…") sẽ sai sự thật →
+         dùng data-hint-thieu-nhieu (nếu có) hoặc câu chung; câu của từng điểm chỉ dùng khi thiếu đúng 1 điểm */
+      var nhieu = host.getAttribute('data-hint-thieu-nhieu') ||
+        'Còn sót khá nhiều điểm — đọc lại điều kiện của đề rồi soát <b>lần lượt từng điểm</b>, từ trái sang phải.';
+      var m = thua.length && th[thua[0]] ? th[thua[0]]
+        : (thieu.length >= 2 ? nhieu : (thieu.length && tk[thieu[0]] ? tk[thieu[0]] : ''));
+      show(fb,'bad', m ? 'Chưa đúng. ' + m : 'Chưa đúng — em đang chọn ' + (sel.length || 0) +
         ' điểm. Đọc lại đề rồi soát từng điểm một.');
     });
     bRst.addEventListener('click', function(){
@@ -1441,19 +1588,57 @@
     else box.appendChild(b);
     box.appendChild(mark);
     host.appendChild(box);
+    /* data-hint-sai='{"giá trị sai":"câu hỏi gỡ"}' — khoá viết như học sinh gõ, được chuẩn hoá giống đáp án */
+    var hs = json(host, 'data-hint-sai'), hsC = {};
+    Object.keys(hs).forEach(function(k){ hsC[chuan(k)] = hs[k]; });
+    var hfb = null;
+    function hienFb(cls, html){
+      /* hoạt động có đặt sẵn <div class="fb fb-dien"> thì mọi ô điền trong đó dùng CHUNG ô phản hồi ấy
+         (bảng nhiều ô: câu gỡ không làm vỡ ô bảng); không có thì tạo ô phản hồi ngay dưới dòng chứa ô điền */
+      var act = host.closest('[data-act]'), chung = act ? act._fbDien || $('.fb-dien', act) : null;
+      if(chung){
+        act._fbDien = chung;
+        if(html){ show(chung, cls, html); chung._cua = host; }
+        else if(chung._cua === host) chung.className = 'fb fb-dien';
+        return;
+      }
+      if(!hfb){ hfb = el('div', 'fb fb-fill'); (host.closest('p,td,li,.act') || host).appendChild(hfb); }
+      if(html) show(hfb, cls, html); else hfb.className = 'fb fb-fill';
+    }
+    var SO = /^-?\d+(\.\d+)?$/;
+    /* đáp án toàn số nguyên → học sinh gõ "727.700" (dấu chấm nhóm nghìn, thói quen ngoài đời) thì hiểu là 727700
+       và nhắc quy ước SGK (nhóm nghìn bằng khoảng trắng) — không chấm sai một phép tính đúng */
+    var NGUYEN = answers.length && answers.every(function(a){ return /^-?\d+$/.test(a); });
+    var CHAM_NGHIN = /^\d{1,3}(\.\d{3})+$/;
     function check(){
-      var v = chuan(inp.value);
+      var v = chuan(inp.value), dauCham = false;
       if(!v){ mark.innerHTML = ''; return; }
+      if(NGUYEN && CHAM_NGHIN.test(v)){ v = v.replace(/\./g, ''); dauCham = true; }
+      /* chỉ so theo GIÁ TRỊ SỐ khi cả hai đều là số viết đúng dạng ("7abc" không được coi là 7) */
       var ok = answers.some(function(a){
         if(a === v) return true;
-        var na = parseFloat(a), nv = parseFloat(v);
-        return !isNaN(na) && !isNaN(nv) && Math.abs(na - nv) < 1e-9;
+        return SO.test(a) && SO.test(v) && Math.abs(parseFloat(a) - parseFloat(v)) < 1e-9;
       });
       mark.innerHTML = ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
       host._ok = ok;
+      /* ví dụ trong lời nhắc là CHÍNH SỐ em vừa gõ (không in đáp án) */
+      var NHAC_CHAM = 'Lưu ý: SGK viết nhóm nghìn bằng <b>khoảng trắng</b> (' + nhom(v) + '), không dùng dấu chấm.';
+      /* sai mà không có câu gỡ riêng: KHÔNG để trống (em tự học không biết làm gì tiếp) —
+         data-fb-sai của ô, hoặc câu mặc định; câu nào cũng không in đáp số */
+      if(!ok) hienFb('bad', (hsC[v] || host.getAttribute('data-fb-sai') ||
+                             (NGUYEN ? 'Chưa đúng — em soát lại phép tính từng bước (đặt tính thẳng cột, tính từ hàng đơn vị) rồi thử lại nhé.'
+                                     : 'Chưa đúng — em đọc lại câu hỏi rồi thử lại nhé.')) +
+                            (dauCham ? '<br>' + NHAC_CHAM : ''));
+      else hienFb(dauCham ? 'good' : '', dauCham ? 'Đúng rồi! ' + NHAC_CHAM : '');
       /* nhiều ô điền trong CÙNG một hoạt động: chỉ tính xong khi MỌI ô đều đúng */
       var a = host.closest('[data-act]');
-      if(ok && (!a || $$('[data-fill]', a).every(function(f){ return f._ok; }))) done(host);
+      var cacO = a ? $$('[data-fill]', a) : [host];
+      if(ok && cacO.every(function(f){ return f._ok; })){
+        /* lời khen: data-ok của ô vừa điền, hoặc của ô đầu tiên có data-ok trong hoạt động */
+        var coOk = host.getAttribute('data-ok') ? host : cacO.filter(function(f){ return f.getAttribute('data-ok'); })[0];
+        if(coOk) hienFb('good', coOk.getAttribute('data-ok') + (dauCham ? '<br>' + NHAC_CHAM : ''));
+        done(host);
+      }
     }
     b.addEventListener('click', check);
     inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
@@ -1781,6 +1966,16 @@
       b.addEventListener('pointercancel', up);
       return t;
     });
+    /* data-xao="1": xáo thứ tự thẻ mỗi lần mở trang (chắc chắn khác thứ tự viết) — người soạn không phải tự xáo tay */
+    if(host.getAttribute('data-xao') === '1' && T.length > 1){
+      var X = T.slice();
+      do{
+        for(var xi = X.length - 1; xi > 0; xi--){
+          var xj = Math.floor(Math.random() * (xi + 1)), xt = X[xi]; X[xi] = X[xj]; X[xj] = xt;
+        }
+      } while(X.every(function(t, i){ return t.v === T[i].v; }) && T.some(function(t){ return t.v !== T[0].v; }));
+      X.forEach(function(t){ pool.appendChild(t.b); });
+    }
     slots.forEach(function(s){
       s.classList.add('mslot'); s.tabIndex = 0; s.setAttribute('role','button'); s._tok = null; veSlot(s);
       function bam(){
@@ -1800,14 +1995,17 @@
       }
       var sai = slots.filter(function(s){ return s._tok.v !== s.getAttribute('data-slot'); });
       if(!sai.length){ slots.forEach(function(x){ x.classList.add('dung'); }); show(fb,'good', okMsg); done(host); return; }
-      sai.forEach(function(x){ x.classList.add('sai'); });
+      /* data-khong-to="1": KHÔNG tô cam vị trí ô sai (chống dò đáp án bằng cách đổi dần các ô cam) —
+         chỉ báo số ô sai và câu gỡ của ô sai đầu tiên */
+      var khongTo = host.getAttribute('data-khong-to') === '1';
+      if(!khongTo) sai.forEach(function(x){ x.classList.add('sai'); });
       /* ưu tiên gợi ý theo đúng THẺ em đặt nhầm (data-hint-sai trên ô), rồi mới tới gợi ý chung của ô */
       var h = sai.map(function(x){
         var m = {};
         try{ m = JSON.parse(x.getAttribute('data-hint-sai') || '{}'); }catch(err){}
         return m[x._tok.v] || x.getAttribute('data-slot-hint');
       }).filter(Boolean)[0];
-      show(fb,'bad','Có <b>' + sai.length + '</b> ô chưa đúng (tô cam). ' + (h || 'Em soát lại những ô đó.'));
+      show(fb,'bad','Có <b>' + sai.length + '</b> ô chưa đúng' + (khongTo ? '' : ' (tô cam)') + '. ' + (h || 'Em soát lại những ô đó.'));
     });
     void T;
   });
@@ -1910,12 +2108,482 @@
     });
   });
 
+  /* ---------- 16. So sánh hai số theo từng hàng (data-compare) ----------
+     Chấm điểm: Bước 1 em bấm tên HÀNG khác nhau đầu tiên (từ trái sang) → cột đó "đèn sáng", các hàng bên trái
+     hiện dấu "="; Bước 2 chọn dấu < > =; Bước 3 (data-tia="1") bấm điểm biểu diễn số thứ hai trên tia số.
+     data-demo: máy so mẫu — nút "So hàng tiếp theo" đi từng hàng, không chấm. Phản hồi sai KHÔNG in đáp án. */
+  var BULB = '<svg class="cp-bulb" viewBox="0 0 22 28" aria-hidden="true"><circle cx="11" cy="10" r="8" fill="#ffd54a" stroke="#e0a800" stroke-width="1.5"/>' +
+             '<rect x="7" y="18" width="8" height="6" rx="1.5" fill="#9aa3b5"/><path d="M8 26 H14" stroke="#9aa3b5" stroke-width="2"/></svg>';
+  $$('[data-compare]').forEach(function(host){
+    var A = (host.getAttribute('data-a') || '').replace(/\D/g, ''), B = (host.getAttribute('data-b') || '').replace(/\D/g, '');
+    if(!A || !B) return;
+    host.classList.add('cp');
+    var demo = host.hasAttribute('data-demo'), coTia = host.getAttribute('data-tia') === '1';
+    var nA = host.getAttribute('data-ten-a'), nB = host.getAttribute('data-ten-b');
+    var ta = nA ? '<i>' + esc(nA) + '</i>' : '<b>' + nhom(A) + '</b>', tb = nB ? '<i>' + esc(nB) + '</i>' : '<b>' + nhom(B) + '</b>';
+    var L = Math.max(A.length, B.length);
+    var pa = new Array(L - A.length + 1).join(' ') + A, pb = new Array(L - B.length + 1).join(' ') + B;
+    function so(c){ return c === ' ' ? 0 : +c; }
+    function tenHang(j){ return HANG[Math.min(L - 1 - j, HANG.length - 1)]; }
+    function cs(p, j){ return p[j] === ' ' ? 'không có chữ số (coi như 0)' : 'chữ số <b>' + p[j] + '</b>'; }
+    var first = -1;
+    for(var i = 0; i < L; i++) if(so(pa[i]) !== so(pb[i])){ first = i; break; }
+    var dau = first < 0 ? '=' : (so(pa[first]) > so(pb[first]) ? '>' : '<');
+
+    /* lưới: cột tên + L cột chữ số; hàng 1 tên hàng, hàng 2–3 hai số, hàng 4 dấu "=" / bóng đèn */
+    var wrap = el('div','cp-wrap'), g = el('div','cp-grid');
+    g.style.gridTemplateColumns = 'auto repeat(' + L + ', minmax(36px, 50px))';
+    function o(cls, html, j){
+      var d = el('div', cls, html);
+      if(j != null){ d.setAttribute('data-j', j); if(j > 0 && (L - 1 - j) % 3 === 2) d.classList.add('lopdau'); }
+      g.appendChild(d); return d;
+    }
+    o('cp-ten', '');
+    for(i = 0; i < L; i++){
+      var h = o('cp-h', demo ? esc(hoa(tenHang(i))) : '', i);
+      if(!demo){
+        var hb = el('button', null, esc(hoa(tenHang(i)))); hb.type = 'button'; hb.setAttribute('data-j', i);
+        hb.setAttribute('aria-label', 'hàng ' + tenHang(i)); h.appendChild(hb);
+      }
+    }
+    [[pa, nA], [pb, nB]].forEach(function(r){
+      o('cp-ten', r[1] ? esc(r[1]) + ' =' : '');
+      for(var j = 0; j < L; j++) o('cp-d' + (r[0][j] === ' ' ? ' trong' : ''), r[0][j] === ' ' ? '0' : r[0][j], j);
+    });
+    o('cp-ten', '');
+    for(i = 0; i < L; i++) o('cp-m', '', i);
+    wrap.appendChild(g); host.appendChild(wrap);
+    var hoi = el('p','cp-hoi'), bDau = el('div','cp-dau hide'), kl = el('p','cp-kl'), tiaBox = el('div','cp-tia hide');
+    host.appendChild(hoi); host.appendChild(bDau); host.appendChild(kl); host.appendChild(tiaBox);
+    var fb = fbBox(host);
+
+    function cot(j){ return $$('[data-j="' + j + '"]', g).filter(function(x){ return x.tagName !== 'BUTTON'; }); }
+    function bang(j, tre){
+      cot(j).forEach(function(x){ x.classList.add('cp-bang'); x.style.animationDelay = (tre || 0) + 's'; });
+      var m = $('.cp-m[data-j="' + j + '"]', g); if(m) m.textContent = '=';
+    }
+    function den(j, tre){
+      cot(j).forEach(function(x){ x.classList.add('cp-den'); x.style.animationDelay = (tre || 0) + 's'; });
+      var m = $('.cp-m[data-j="' + j + '"]', g); if(m) m.innerHTML = BULB;
+    }
+    function toMau(){
+      if(first < 0) return;
+      var d = $$('.cp-d[data-j="' + first + '"]', g), lonA = dau === '>';
+      d[0].classList.add(lonA ? 'cp-lon' : 'cp-nho'); d[1].classList.add(lonA ? 'cp-nho' : 'cp-lon');
+    }
+    function ketLuan(){
+      var lon = dau === '>' ? ta : tb, nho = dau === '>' ? tb : ta;
+      if(first < 0) return ta + ' <b class="lon">=</b> ' + tb + ' — mọi hàng đều có hai chữ số bằng nhau.';
+      return ta + ' <b class="lon">' + (dau === '>' ? '&gt;' : '&lt;') + '</b> ' + tb +
+        ' &nbsp;(hay ' + tb + ' <b>' + (dau === '>' ? '&lt;' : '&gt;') + '</b> ' + ta + ') — vì ở hàng <b>' + tenHang(first) + '</b>, ' +
+        lon + ' có ' + cs(dau === '>' ? pa : pb, first) + ', lớn hơn ' + cs(dau === '>' ? pb : pa, first) + ' của ' + nho +
+        (first > 0 ? '; các hàng bên trái đều bằng nhau.' : '.');
+    }
+
+    if(demo){
+      var c = 0, bT = el('button','btn','So hàng tiếp theo'), bL = el('button','btn ghost','Làm lại');
+      bT.type = 'button'; bL.type = 'button';
+      hoi.appendChild(bT); hoi.appendChild(bL);
+      bT.addEventListener('click', function(){
+        if(c > first && first >= 0 || c >= L) return;
+        if(first < 0 || c < first){
+          bang(c);
+          kl.innerHTML = 'Hàng <b>' + tenHang(c) + '</b>: hai chữ số bằng nhau → chưa biết số nào lớn hơn, so tiếp sang phải.';
+          c++;
+          if(first < 0 && c >= L){ kl.innerHTML = ketLuan(); bT.disabled = true; bT.className = 'btn ghost'; bT.textContent = 'Đã so xong'; moSau(host); }
+          return;
+        }
+        den(c); toMau(); kl.innerHTML = ketLuan(); c++;
+        bT.disabled = true; bT.className = 'btn ghost'; bT.textContent = 'Đã so xong';
+        /* máy mẫu chạy xong: mở data-mo-sau + phát "t6-xong" (không tính tiến độ vì không nằm trong data-act chấm) */
+        moSau(host);
+        try{ host.dispatchEvent(new CustomEvent('t6-xong', { bubbles: true })); }catch(e){}
+      });
+      bL.addEventListener('click', function(){
+        c = 0; kl.innerHTML = ''; bT.disabled = false; bT.className = 'btn'; bT.textContent = 'So hàng tiếp theo';
+        $$('.cp-bang,.cp-den,.cp-lon,.cp-nho', g).forEach(function(x){ x.classList.remove('cp-bang','cp-den','cp-lon','cp-nho'); x.style.animationDelay = ''; });
+        $$('.cp-m', g).forEach(function(x){ x.innerHTML = ''; });
+      });
+      return;
+    }
+
+    /* ---- chế độ chấm ---- */
+    var buoc = 1, saiDau = 0;
+    function moBuoc2(){
+      buoc = 2;
+      bDau.classList.remove('hide');
+      bDau.innerHTML = '<span class="cp-hoi"><b>Bước 2.</b> Chọn dấu đúng: </span>' + ta + ' ';
+      ['<', '>', '='].forEach(function(s){
+        var b = el('button','btn ghost', esc(s)); b.type = 'button'; b.setAttribute('data-s', s);
+        b.addEventListener('click', function(){ chonDau(b, s); });
+        bDau.appendChild(b);
+      });
+      bDau.insertAdjacentHTML('beforeend', ' ' + tb);
+    }
+    if(first < 0){
+      for(i = 0; i < L; i++) bang(i, i * .12);
+      hoi.innerHTML = '<b>Bước 1.</b> So từng hàng từ trái sang: mọi hàng đều có hai chữ số bằng nhau.';
+      moBuoc2();
+    } else hoi.innerHTML = '<b>Bước 1.</b> So từng cặp chữ số ở cùng một hàng, <b>từ trái sang phải</b>. ' +
+      'Bấm vào tên của <b>hàng đầu tiên</b> có hai chữ số khác nhau.';
+    $$('.cp-h button', g).forEach(function(b){
+      b.addEventListener('click', function(){
+        if(buoc !== 1) return;
+        var j = +b.getAttribute('data-j');
+        b.classList.remove('sai'); void b.offsetWidth;
+        if(j < first){
+          bang(j);
+          show(fb,'bad','Ở hàng <b>' + tenHang(j) + '</b> hai chữ số bằng nhau — chưa phân được số nào lớn hơn. So tiếp các hàng bên phải.');
+          return;
+        }
+        if(j > first){
+          b.classList.add('sai');
+          show(fb,'bad','Khoan đã — các hàng <b>bên trái</b> hàng ' + tenHang(j) + ' em đã so hết chưa? Hàng nào khác nhau <b>trước</b> (tính từ trái sang) thì hàng đó quyết định.');
+          return;
+        }
+        fb.className = 'fb';
+        for(var k = 0; k < first; k++) bang(k, k * .12);
+        den(first, first * .12);
+        $$('.cp-h button', g).forEach(function(x){ x.disabled = true; x.classList.remove('sai'); });
+        hoi.innerHTML = '<b>Bước 1.</b> ✓ Hàng <b>' + tenHang(first) + '</b> là hàng đầu tiên có hai chữ số khác nhau — đèn sáng ở cột đó.';
+        moBuoc2();
+      });
+    });
+    function xong(){
+      buoc = 4;
+      kl.innerHTML = ketLuan();
+      show(fb,'good', host.getAttribute('data-ok') || 'Đúng rồi — em đã so sánh đúng cách: từ trái sang, hàng khác nhau đầu tiên quyết định.');
+      done(host);
+    }
+    function chonDau(b, s){
+      if(buoc !== 2) return;
+      $$('button', bDau).forEach(function(x){ x.classList.remove('sai'); });
+      void b.offsetWidth;
+      if(s !== dau){
+        saiDau++; b.classList.add('sai');
+        show(fb,'bad', first < 0 ? 'Chưa đúng — mọi hàng đều bằng nhau thì hai số thế nào với nhau?'
+          : (saiDau < 2 ? 'Chưa đúng — nhìn lại cột đèn sáng: ở đó chữ số của số nào lớn hơn?'
+            : 'Ở hàng <b>' + tenHang(first) + '</b>: ' + ta + ' có ' + cs(pa, first) + ', ' + tb + ' có ' + cs(pb, first) +
+              '. Số nào có chữ số lớn hơn ở hàng này thì số đó lớn hơn.'));
+        return;
+      }
+      $$('button', bDau).forEach(function(x){ x.disabled = true; x.className = x === b ? 'btn go' : 'btn ghost'; });
+      fb.className = 'fb';
+      toMau();
+      if(!coTia || first < 0){ xong(); return; }
+      buoc = 3;
+      /* Bước 3: hai điểm trên tia số (không theo tỉ lệ). Câu kết luận CHƯA in (in ở xong()), để bước 3 không chỉ là đọc lại.
+         Hỏi NGẪU NHIÊN điểm của số thứ nhất hay số thứ hai; bấm sai một lần thì phải trả lời thêm câu hỏi về điểm còn lại. */
+      var trai = dau === '>' ? 'b' : 'a';     /* số nhỏ hơn nằm bên trái */
+      var tenB = nB || nhom(B), tenA = nA || nhom(A);
+      var hoiP = Math.random() < .5 ? 'a' : 'b', daSai = false, hoiLai = false;
+      function dungP(){ return hoiP === trai ? 0 : 1; }   /* 0 = điểm bên trái */
+      function cauHoi(){
+        var t = hoiP === 'a' ? ta : tb;
+        tiaBox.setAttribute('data-hoi', hoiP);
+        $('.cp-hoi-p', tiaBox).innerHTML = 'Bấm vào <b>điểm ' + t + '</b>.';
+      }
+      tiaBox.classList.remove('hide');
+      tiaBox.innerHTML = '<p class="cp-hoi"><b>Bước 3.</b> Hai điểm dưới đây biểu diễn ' + ta + ' và ' + tb +
+        ' trên tia số nằm ngang (hình không theo tỉ lệ). <span class="cp-hoi-p"></span></p>' +
+        '<svg viewBox="0 0 520 92" role="group" aria-label="tia số có hai điểm chưa ghi tên">' +
+        '<line x1="30" y1="54" x2="505" y2="54" stroke="#1f2430" stroke-width="2"/><path d="M495 47 L509 54 L495 61" fill="none" stroke="#1f2430" stroke-width="2"/>' +
+        '<text x="30" y="84" style="font:italic 700 16px serif; fill:#5c6577" text-anchor="middle">O</text><line x1="30" y1="47" x2="30" y2="61" stroke="#1f2430" stroke-width="2"/>' +
+        '<g class="cp-pt" data-p="0" tabindex="0" role="button" aria-label="điểm bên trái"><circle cx="190" cy="54" r="11"/><text x="190" y="28">?</text></g>' +
+        '<g class="cp-pt" data-p="1" tabindex="0" role="button" aria-label="điểm bên phải"><circle cx="370" cy="54" r="11"/><text x="370" y="28">?</text></g></svg>';
+      cauHoi();
+      $$('.cp-pt', tiaBox).forEach(function(p){
+        function bam(){
+          if(buoc !== 3) return;
+          var pts = $$('.cp-pt', tiaBox);
+          if(+p.getAttribute('data-p') !== dungP()){
+            daSai = true;
+            p.classList.remove('sai'); void p.getBoundingClientRect(); p.classList.add('sai');
+            show(fb,'bad','Chưa đúng — em vừa tìm được dấu giữa ' + ta + ' và ' + tb + '. Trên tia số nằm ngang, số nhỏ hơn nằm bên trái hay bên phải?');
+            return;
+          }
+          pts.forEach(function(x){ x.classList.remove('sai'); });
+          if(daSai && !hoiLai){
+            /* đã có lần bấm sai: đúng rồi thì hỏi thêm điểm còn lại, để chắc em không bấm may */
+            hoiLai = true; hoiP = hoiP === 'a' ? 'b' : 'a'; cauHoi();
+            show(fb,'good','Đúng rồi. Thêm một câu nữa cho chắc: ' + $('.cp-hoi-p', tiaBox).innerHTML);
+            return;
+          }
+          p.classList.add('dung');
+          $('text', pts[0]).textContent = trai === 'b' ? tenB : tenA;
+          $('text', pts[1]).textContent = trai === 'b' ? tenA : tenB;
+          tiaBox.insertAdjacentHTML('beforeend', '<p class="cp-kl">Điểm ' + (trai === 'b' ? tb : ta) + ' nằm <b>trước</b> điểm ' +
+            (trai === 'b' ? ta : tb) + ' (nằm bên trái).</p>');
+          xong();
+        }
+        p.addEventListener('click', bam);
+        p.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); bam(); } });
+      });
+    }
+  });
+
+  /* ---------- 19. data-gomcap — gom cặp tròn chục / tròn trăm để tính hợp lí (thêm từ Bài 4) ----------
+     data-so="117;68;23" · data-tron="10" (tổng của cặp phải chia hết cho số này, mặc định 10) · data-phep="nhan" (tích, Bài 5)
+     Chấm: bấm hai thẻ → cặp tròn thì hai thẻ TRƯỢT lại cạnh nhau (giao hoán), ngoặc bao quanh, tổng của cặp nảy lên (kết hợp);
+     cặp không tròn thì lắc + mẹo. Gom đủ số cặp tối đa → dòng viết lại theo nhóm + ô gõ kết quả → đúng thì done().
+     data-demo: máy làm mẫu 3 bước giống lời giải SGK (đổi chỗ · nhóm · cộng các tổng tròn), không chấm. */
+  $$('[data-gomcap]').forEach(function(host){
+    var so = list(host.getAttribute('data-so')).map(function(x){ return +x.replace(/[\s ]/g, ''); });
+    if(so.length < 2) return;
+    var tron = +(host.getAttribute('data-tron') || 10) || 10;
+    var nhan = host.getAttribute('data-phep') === 'nhan';
+    var DAU = nhan ? '·' : '+';
+    var demo = host.hasAttribute('data-demo');
+    function tinh(a, b){ return nhan ? a * b : a + b; }
+    function tot(a, b){ return tinh(a, b) % tron === 0; }
+    function tenTron(v){ return v % 1000 === 0 ? 'tròn nghìn' : (v % 100 === 0 ? 'tròn trăm' : 'tròn chục'); }
+    var CAN = tron >= 1000 ? 'tròn nghìn' : (tron >= 100 ? 'tròn trăm' : 'tròn chục');
+    var meo = host.getAttribute('data-meo') || (nhan
+      ? 'Mẹo: tìm hai số có tích ' + CAN + ', như 5 · 2 = 10, 25 · 4 = 100.'
+      : (tron >= 100 ? 'Mẹo: hai chữ số tận cùng của hai số cộng lại phải được 100 (hoặc cùng là 00).'
+                     : 'Mẹo: tìm hai số có <b>chữ số hàng đơn vị cộng lại bằng 10</b> (hoặc cùng tận cùng bằng 0).'));
+    /* số cặp tròn tối đa (vét cạn, n nhỏ) */
+    function toiDa(ds){
+      var best = [];
+      (function thu(con, cap){
+        if(cap.length > best.length) best = cap.slice();
+        for(var x = 0; x < con.length; x++) for(var y = x + 1; y < con.length; y++){
+          if(!tot(so[con[x]], so[con[y]])) continue;
+          var moi = con.filter(function(_, k){ return k !== x && k !== y; });
+          thu(moi, cap.concat([[con[x], con[y]]]));
+        }
+      })(ds, []);
+      return best;
+    }
+    var TAT = so.map(function(_, i){ return i; }), MAX = toiDa(TAT);
+    var TONG = so.reduce(function(s, x){ return nhan ? s * x : s + x; }, nhan ? 1 : 0);
+    var st;
+    host.classList.add('gc');
+    host.innerHTML = (demo ? '' : '<p class="gc-hd">Bấm <b>hai thẻ</b> có ' + (nhan ? 'tích' : 'tổng') + ' ' + CAN +
+        ' (tròn trăm, tròn nghìn cũng được) để gom thành một cặp.</p>') +
+      '<div class="gc-hang" aria-live="polite"></div><div class="gc-loi"></div>' +
+      (demo ? '<p><button type="button" class="btn gc-buoc"></button></p>'
+            : '<p class="gc-kq hide"></p><p><button type="button" class="btn ghost gc-lai">Làm lại</button></p>');
+    var hang = $('.gc-hang', host), loi = $('.gc-loi', host), kq = $('.gc-kq', host), fb = fbBox(host);
+    function bt(g){ return g.map(function(i){ return nhom(so[i]); }).join(' ' + DAU + ' '); }
+    function bieuThuc(tt){
+      return tt.map(function(g){ return g.length > 1 ? '(' + bt(g) + ')' : bt(g); }).join(' ' + DAU + ' ');
+    }
+    function viTri(){
+      var m = {};
+      $$('.gc-the', hang).forEach(function(b){ m[b.getAttribute('data-i')] = b.getBoundingClientRect(); });
+      return m;
+    }
+    function flip(cu){
+      if(itDong()) return;
+      $$('.gc-the', hang).forEach(function(b){
+        var r0 = cu[b.getAttribute('data-i')]; if(!r0) return;
+        var r1 = b.getBoundingClientRect(), dx = r0.left - r1.left, dy = r0.top - r1.top;
+        if(!dx && !dy) return;
+        b.style.transition = 'none'; b.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+        void b.offsetWidth;
+        b.style.transition = 'transform .55s ease'; b.style.transform = '';
+      });
+    }
+    function ve(){
+      hang.innerHTML = st.tt.map(function(g, k){
+        var the = g.map(function(i){
+          return '<button type="button" class="gc-the' + (st.chon === i ? ' sel' : '') + '" data-i="' + i + '"' +
+            (g.length > 1 || demo || st.xong ? ' disabled' : '') + ' aria-label="số ' + so[i] + '">' + nhom(so[i]) + '</button>';
+        }).join('<span class="gc-dau">' + DAU + '</span>');
+        var o = g.length > 1
+          ? '<span class="gc-nhom"><span class="gc-tren"><span class="gc-ngoac">(</span>' + the + '<span class="gc-ngoac">)</span></span>' +
+            '<span class="gc-mo"></span>' + (demo && st.buoc < 3 ? '' : '<b class="gc-tong">' + nhom(tinh(so[g[0]], so[g[1]])) + '</b>') + '</span>'
+          : '<span class="gc-don">' + the + '</span>';
+        return (k ? '<span class="gc-dau">' + DAU + '</span>' : '') + o;
+      }).join('');
+    }
+    function dong(html, ghi){
+      loi.insertAdjacentHTML('beforeend', '<div class="gc-dong">' + html + (ghi ? '<span class="gc-ghi">← ' + ghi + '</span>' : '') + '</div>');
+    }
+    function batDau(){
+      st = { tt: TAT.map(function(i){ return [i]; }), cap: [], chon: null, xong: false, buoc: 0 };
+      loi.innerHTML = ''; fb.className = 'fb';
+      if(kq){ kq.classList.add('hide'); kq.innerHTML = ''; }
+      dong(bt(TAT));
+      ve();
+      if(demo){ var b = $('.gc-buoc', host); b.className = 'btn gc-buoc'; b.textContent = 'Bước 1: Đổi chỗ cho các cặp tròn đứng cạnh nhau'; }
+    }
+    /* ----- chế độ chấm ----- */
+    function ghep(j, i){
+      var pj = -1, pi = -1;
+      st.tt.forEach(function(g, k){ if(g.indexOf(j) >= 0) pj = k; if(g.indexOf(i) >= 0) pi = k; });
+      var p = pj < pi ? j : i, q = pj < pi ? i : j, keNhau = Math.abs(pj - pi) === 1;
+      var cu = viTri();
+      var moi = [];
+      st.tt.forEach(function(g){
+        if(g.length === 1 && g[0] === p) moi.push([p, q]);
+        else if(!(g.length === 1 && g[0] === q)) moi.push(g);
+      });
+      st.tt = moi; st.cap.push([p, q]);
+      ve(); flip(cu);
+      var v = tinh(so[p], so[q]);
+      var con = TAT.filter(function(x){ return !st.cap.some(function(c){ return c.indexOf(x) >= 0; }); });
+      var conCap = toiDa(con).length;
+      var loiKhen = nhom(so[p]) + ' ' + DAU + ' ' + nhom(so[q]) + ' = <b>' + nhom(v) + '</b> — ' + tenTron(v) + '!' +
+        (keNhau ? '' : ' Hai số đã <b>đổi chỗ</b> để đứng cạnh nhau (tính chất giao hoán) rồi được <b>nhóm</b> lại (tính chất kết hợp).');
+      if(conCap > 0){ show(fb, 'good', loiKhen + ' Còn cặp nào nữa không?'); return; }
+      if(st.cap.length < MAX.length){
+        show(fb, 'bad', loiKhen + ' Nhưng giờ không còn cặp nào ' + CAN + ' nữa — có cách gom được <b>nhiều cặp hơn</b>. Bấm «Làm lại» và thử cặp khác.');
+        return;
+      }
+      show(fb, 'good', loiKhen + ' Gom xong rồi — giờ tính kết quả.');
+      moKetQua();
+    }
+    function moKetQua(){
+      st.xong = true; ve();
+      var tong = st.tt.map(function(g){ return g.length > 1 ? nhom(tinh(so[g[0]], so[g[1]])) : nhom(so[g[0]]); }).join(' ' + DAU + ' ');
+      dong('= ' + bieuThuc(st.tt));
+      dong('= ' + tong);
+      kq.classList.remove('hide');
+      kq.innerHTML = '<span>Kết quả: ' + tong + ' =</span><input type="text" inputmode="numeric" aria-label="kết quả">' +
+        '<button type="button" class="btn">Kiểm</button><span class="mark"></span>';
+      var inp = $('input', kq), mk = $('.mark', kq), sai = 0;
+      function kiem(){
+        var v = (inp.value || '').replace(/[\s .]/g, '');
+        if(!v) return;
+        if(+v === TONG && /^\d+$/.test(v)){
+          mk.innerHTML = '<span class="ok">✓</span>'; inp.disabled = true;
+          dong('= ' + nhom(TONG) + '.');
+          show(fb, 'good', host.getAttribute('data-ok') || ('Đúng rồi! Nhờ gom các cặp ' + CAN + ', phép tính trở nên rất nhẹ.'));
+          done(host);
+        } else {
+          sai++;
+          mk.innerHTML = '<span class="x">✗</span>';
+          show(fb, 'bad', sai < 2 ? 'Chưa đúng — em tính lại dòng cuối: ' + tong + '.'
+                                  : 'Cộng các số tròn trước (dễ tính nhẩm), rồi mới cộng số còn lại. Làm chậm từng bước: ' + tong + '.');
+        }
+      }
+      $('button', kq).addEventListener('click', kiem);
+      inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); kiem(); } });
+    }
+    if(!demo){
+      hang.addEventListener('click', function(e){
+        var b = e.target.closest ? e.target.closest('.gc-the') : null;
+        if(!b || b.disabled || st.xong) return;
+        var i = +b.getAttribute('data-i');
+        if(st.chon === null || st.chon === i){ st.chon = st.chon === i ? null : i; ve(); return; }
+        var j = st.chon; st.chon = null;
+        if(!tot(so[j], so[i])){
+          ve();
+          [i, j].forEach(function(x){ var t = $('.gc-the[data-i="' + x + '"]', hang); if(t) t.classList.add('sai'); });
+          show(fb, 'bad', nhom(so[j]) + ' ' + DAU + ' ' + nhom(so[i]) + ' = ' + nhom(tinh(so[j], so[i])) + ' — chưa ' + CAN + '. ' + meo);
+          return;
+        }
+        ghep(j, i);
+      });
+      $('.gc-lai', host).addEventListener('click', function(){ if(!st.xong) batDau(); });
+    } else {
+      /* ----- máy làm mẫu ----- */
+      $('.gc-buoc', host).addEventListener('click', function(){
+        if(st.het){ batDau(); return; }                       /* xong rồi: bấm lại là xem từ đầu */
+        var b = this, cap = MAX.slice().sort(function(x, y){ return Math.min(x[0], x[1]) - Math.min(y[0], y[1]); });
+        cap = cap.map(function(c){ return c[0] < c[1] ? c : [c[1], c[0]]; });
+        var le = TAT.filter(function(x){ return !cap.some(function(c){ return c.indexOf(x) >= 0; }); });
+        st.buoc++;
+        if(st.buoc === 1){
+          var cu = viTri();
+          st.tt = []; cap.forEach(function(c){ st.tt.push([c[0]], [c[1]]); }); le.forEach(function(x){ st.tt.push([x]); });
+          ve(); flip(cu);
+          dong('= ' + bieuThuc(st.tt), 'Tính chất giao hoán');
+          b.textContent = 'Bước 2: Nhóm từng cặp lại';
+        } else if(st.buoc === 2){
+          st.tt = cap.map(function(c){ return c; }).concat(le.map(function(x){ return [x]; }));
+          ve();
+          dong('= ' + bieuThuc(st.tt), 'Tính chất kết hợp');
+          /* tên "tròn chục / tròn trăm" lấy từ CÁC TỔNG THẬT của máy mẫu (200 và 600 → tròn trăm), không từ data-tron */
+          var tenCap = cap.map(function(c){ return tenTron(tinh(so[c[0]], so[c[1]])); });
+          var ten3 = tenCap.every(function(t){ return t === tenCap[0]; }) ? tenCap[0] : CAN;
+          b.textContent = 'Bước 3: Tính các ' + (nhan ? 'tích ' : 'tổng ') + ten3;
+        } else {
+          ve();                                           /* bước 3 mới hiện các tổng của cặp (nảy lên) */
+          dong('= ' + st.tt.map(function(g){ return g.length > 1 ? nhom(tinh(so[g[0]], so[g[1]])) : nhom(so[g[0]]); }).join(' ' + DAU + ' '));
+          dong('= ' + nhom(TONG) + '.');
+          b.textContent = 'Xem lại từ đầu'; b.className = 'btn ghost gc-buoc'; st.het = true;
+          host.setAttribute('data-da-xem', '1');
+          try{ host.dispatchEvent(new CustomEvent('t6-xong', { bubbles: true })); }catch(e){}
+        }
+      });
+    }
+    batDau();
+  });
+
   /* ---------- API cho "JS RIÊNG CỦA BÀI" ----------
      Hình minh hoạ riêng muốn được CHẤM ĐIỂM thì: đặt data-custom trên phần tử chứa (bên trong .act[data-act]),
      gọi Toan6.done(phần_tử) khi học sinh làm đúng, và đăng kí một hàm tự làm đúng vào Toan6.tuLam
      để scripts/thu_tuong_tac.py bấm thử được. */
+  /* ---------- Toan6.tia — tia số cho HÌNH RIÊNG (rút từ Bài 3, dùng lại cho cộng/trừ trên tia số, số nguyên…) ----------
+     Toạ độ khớp data-numline: viewBox rộng 640, PAD 34, bước 44, 14 điểm s … s + 13.
+       truc(s, Y[, soDiem])        → chuỗi SVG: trục, vạch, chữ số (.tr-so); s = 0 thì có gốc O, s > 0 thì có "…" bên trái;
+                                     soDiem = số điểm (mặc định 14) — ít điểm thì trục ngắn lại, thu viewBox cho vừa
+       X(v, s)                     → hoành độ của số v khi tia bắt đầu từ s
+       muiTen(v1, v2, s, Y, mau)   → mũi tên thẳng từ v1 tới v2 ở độ cao Y; ĐẦU MŨI TÊN LÀ <path> RIÊNG (class tia-dau)
+                                     nên thân (class tia-than) vẽ dần bằng stroke-dasharray được mà đầu không hiện trước
+       toaDo(svg, e) · giaTri(svg, e, s, lo, hi) → đổi toạ độ chuột ra số gần nhất (kẹp trong [lo; hi])
+       keoDuoc(g, svg, lay, dat)   → kéo nhóm <g> dọc tia (Pointer Events, capture trên svg) + phím ◀ ▶: dat(v) hoặc dat(null, ±1) */
+  var TIA = (function(){
+    var PAD = 34, BUOC = 44, SO = 14;
+    function X(v, s){ return PAD + (v - (s || 0)) * BUOC; }
+    /* soDiem (tuỳ chọn, mặc định 14): tia ngắn hơn cho hình chỉ cần ít điểm (Bài 4 HĐ: 0 … 10) — mũi tên trục
+       kết thúc ở X(s + soDiem − 1) + 50; đặt viewBox rộng = X(s + soDiem − 1) + 56 để hình vừa màn hẹp, khỏi cuộn ngang */
+    function truc(s, Y, soDiem){
+      s = s || 0;
+      var nD = soDiem || SO, xe = soDiem ? X(s + nD - 1, s) + 50 : 634;
+      var h = '', x0 = s === 0 ? PAD : 8;
+      h += '<line x1="' + x0 + '" y1="' + Y + '" x2="' + (xe - 4) + '" y2="' + Y + '" stroke="#1f2430" stroke-width="2"/>' +
+           '<path d="M' + (xe - 14) + ' ' + (Y - 7) + ' L' + xe + ' ' + Y + ' L' + (xe - 14) + ' ' + (Y + 7) + '" fill="none" stroke="#1f2430" stroke-width="2"/>';
+      if(s === 0) h += '<text x="' + PAD + '" y="' + (Y - 16) + '" class="tr-o">O</text>';
+      else h += '<text x="14" y="' + (Y + 5) + '" class="tr-3c">…</text>';
+      for(var i = 0; i < nD; i++){
+        var v = s + i, x = X(v, s);
+        h += '<line x1="' + x + '" y1="' + (Y - 7) + '" x2="' + x + '" y2="' + (Y + 7) + '" stroke="#5c6577" stroke-width="1.5"/>' +
+             '<text x="' + x + '" y="' + (Y + 28) + '" class="tr-so' + (v > 999 ? ' nho' : '') + '">' + nhom(v) + '</text>';
+      }
+      return h;
+    }
+    function muiTen(v1, v2, s, Y, mau){
+      mau = mau || '#1f2430';
+      var x1 = X(v1, s), x2 = X(v2, s), d = x2 >= x1 ? 1 : -1;
+      return '<line class="tia-than" x1="' + x1 + '" y1="' + Y + '" x2="' + (x2 - 4 * d) + '" y2="' + Y + '" stroke="' + mau +
+             '" stroke-width="3" stroke-linecap="round"/>' +
+             '<path class="tia-dau" d="M' + (x2 - 11 * d) + ' ' + (Y - 6) + ' L' + x2 + ' ' + Y + ' L' + (x2 - 11 * d) + ' ' + (Y + 6) +
+             'Z" fill="' + mau + '"/>';
+    }
+    function toaDo(svg, e){
+      var p = svg.createSVGPoint(); p.x = e.clientX; p.y = e.clientY;
+      var m = svg.getScreenCTM();
+      return m ? p.matrixTransform(m.inverse()) : { x: 0, y: 0 };
+    }
+    function giaTri(svg, e, s, lo, hi){
+      var v = Math.round((toaDo(svg, e).x - PAD) / BUOC) + (s || 0);
+      return Math.max(lo, Math.min(hi, v));
+    }
+    function keoDuoc(g, svg, lay, dat){
+      var pid = null;
+      g.addEventListener('pointerdown', function(e){
+        pid = e.pointerId; g.classList.add('keo');
+        try{ svg.setPointerCapture(pid); }catch(err){}
+        e.preventDefault();
+      });
+      svg.addEventListener('pointermove', function(e){ if(pid !== null && e.pointerId === pid) dat(lay(e)); });
+      function tha(e){ if(pid !== null && e.pointerId === pid){ pid = null; g.classList.remove('keo'); } }
+      svg.addEventListener('pointerup', tha);
+      svg.addEventListener('pointercancel', tha);
+      g.addEventListener('keydown', function(e){
+        if(e.key === 'ArrowLeft'){ e.preventDefault(); dat(null, -1); }
+        if(e.key === 'ArrowRight'){ e.preventDefault(); dat(null, 1); }
+      });
+    }
+    return { PAD: PAD, BUOC: BUOC, SO: SO, X: X, truc: truc, muiTen: muiTen, toaDo: toaDo, giaTri: giaTri, keoDuoc: keoDuoc };
+  })();
+
   window.Toan6 = { done: done, show: show, fbBox: fbBox, esc: esc, list: list, el: el,
-                   nhom: nhom, HANG: HANG, itDong: itDong, tuLam: [] };
+                   nhom: nhom, HANG: HANG, itDong: itDong, tia: TIA, tuLam: [] };
 })();
 </script>
 

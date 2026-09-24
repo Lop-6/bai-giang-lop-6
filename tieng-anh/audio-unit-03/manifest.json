@@ -1,0 +1,944 @@
+{
+  "voc-active": {
+    "file": "voc-active.mp3",
+    "kieu": "don",
+    "text": "active",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a676abbd79a5b669"
+  },
+  "voc-appearance": {
+    "file": "voc-appearance.mp3",
+    "kieu": "don",
+    "text": "appearance",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5c8d3165863dfb6f"
+  },
+  "voc-careful": {
+    "file": "voc-careful.mp3",
+    "kieu": "don",
+    "text": "careful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "da21f46bb2a02676"
+  },
+  "voc-caring": {
+    "file": "voc-caring.mp3",
+    "kieu": "don",
+    "text": "caring",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4374a4febaad2d86"
+  },
+  "voc-cheek": {
+    "file": "voc-cheek.mp3",
+    "kieu": "don",
+    "text": "cheek",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1d0bdcd212e267a5"
+  },
+  "voc-clever": {
+    "file": "voc-clever.mp3",
+    "kieu": "don",
+    "text": "clever",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7dd38dd5f162d081"
+  },
+  "voc-confident": {
+    "file": "voc-confident.mp3",
+    "kieu": "don",
+    "text": "confident",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c12a1e556a91bdd3"
+  },
+  "voc-creative": {
+    "file": "voc-creative.mp3",
+    "kieu": "don",
+    "text": "creative",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0ab9bf5fc264fbae"
+  },
+  "voc-friendly": {
+    "file": "voc-friendly.mp3",
+    "kieu": "don",
+    "text": "friendly",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "628c5f0e0b0a1005"
+  },
+  "voc-funny": {
+    "file": "voc-funny.mp3",
+    "kieu": "don",
+    "text": "funny",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1502d721e52c7edd"
+  },
+  "voc-hard-working": {
+    "file": "voc-hard-working.mp3",
+    "kieu": "don",
+    "text": "hard-working",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "174d732204e00778"
+  },
+  "voc-kind": {
+    "file": "voc-kind.mp3",
+    "kieu": "don",
+    "text": "kind",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bc046eb4f6eb60bb"
+  },
+  "voc-loving": {
+    "file": "voc-loving.mp3",
+    "kieu": "don",
+    "text": "loving",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ddb158302e1009fb"
+  },
+  "voc-personality": {
+    "file": "voc-personality.mp3",
+    "kieu": "don",
+    "text": "personality",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "25a4558152c63c11"
+  },
+  "voc-shoulder": {
+    "file": "voc-shoulder.mp3",
+    "kieu": "don",
+    "text": "shoulder",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9897e6e01bfbc762"
+  },
+  "voc-shy": {
+    "file": "voc-shy.mp3",
+    "kieu": "don",
+    "text": "shy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "aeb4ec0c383ade40"
+  },
+  "voc-slim": {
+    "file": "voc-slim.mp3",
+    "kieu": "don",
+    "text": "slim",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5d4c1c41007f9a5d"
+  },
+  "thing-eye": {
+    "file": "thing-eye.mp3",
+    "kieu": "don",
+    "text": "eye",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "522a861c53f2519e"
+  },
+  "thing-hand": {
+    "file": "thing-hand.mp3",
+    "kieu": "don",
+    "text": "hand",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4a1a0ba5e108aa30"
+  },
+  "thing-arm": {
+    "file": "thing-arm.mp3",
+    "kieu": "don",
+    "text": "arm",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cf5173d30faccf9a"
+  },
+  "thing-mouth": {
+    "file": "thing-mouth.mp3",
+    "kieu": "don",
+    "text": "mouth",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f6a5592d23b48ebb"
+  },
+  "thing-leg": {
+    "file": "thing-leg.mp3",
+    "kieu": "don",
+    "text": "leg",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3b068ae3aacde4df"
+  },
+  "thing-nose": {
+    "file": "thing-nose.mp3",
+    "kieu": "don",
+    "text": "nose",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "06b663e6b1abc9f3"
+  },
+  "thing-hair": {
+    "file": "thing-hair.mp3",
+    "kieu": "don",
+    "text": "hair",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8674bbd3d62cc8c6"
+  },
+  "thing-foot": {
+    "file": "thing-foot.mp3",
+    "kieu": "don",
+    "text": "foot",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "89a72d2a8a11000e"
+  },
+  "thing-long": {
+    "file": "thing-long.mp3",
+    "kieu": "don",
+    "text": "long",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "06c27c74eea42ec2"
+  },
+  "thing-short": {
+    "file": "thing-short.mp3",
+    "kieu": "don",
+    "text": "short",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "60912cd1847dae28"
+  },
+  "thing-small": {
+    "file": "thing-small.mp3",
+    "kieu": "don",
+    "text": "small",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ec955721f40f624a"
+  },
+  "thing-tall": {
+    "file": "thing-tall.mp3",
+    "kieu": "don",
+    "text": "tall",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "471dd1b30870602c"
+  },
+  "thing-blonde": {
+    "file": "thing-blonde.mp3",
+    "kieu": "don",
+    "text": "blonde",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f5da77a0d4ffe7d9"
+  },
+  "thing-curly": {
+    "file": "thing-curly.mp3",
+    "kieu": "don",
+    "text": "curly",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c52d0961d53b45f7"
+  },
+  "thing-round": {
+    "file": "thing-round.mp3",
+    "kieu": "don",
+    "text": "round",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "404a9fab2943f786"
+  },
+  "thing-glasses": {
+    "file": "thing-glasses.mp3",
+    "kieu": "don",
+    "text": "glasses",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "324e2d19d8f91edb"
+  },
+  "thing-piano": {
+    "file": "thing-piano.mp3",
+    "kieu": "don",
+    "text": "piano",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "523239cdcb1ad935"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "ten",
+    "text": "That was a great idea, Nam. I love picnics!",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Nam",
+        "doc": "Nam",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "7becfb92ad910156"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "don",
+    "text": "Please pass me the biscuits.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "f040bbbdf5c7c834"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "don",
+    "text": "Sure. Here you are.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "c07f20a090e91641"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "ten",
+    "text": "Thanks. What are you reading, Phong?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "9904f1ef67d25170"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "don",
+    "text": "4Teen. It's my favourite magazine!",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "302af1b0eb6c4641"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "ten",
+    "text": "Look! It's Mai. And she is with someone.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mai",
+        "doc": "Mai",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "57929005c034b071"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "don",
+    "text": "Oh, who's that? She has glasses and long black hair.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "acb0aad7f0caa45b"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "I don't know. They're coming over.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "183bca26a0958c3b"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "ten",
+    "text": "Hi there. This is my friend Chau.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Chau",
+        "doc": "Châu",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "733d36e6a60f8509"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "ten",
+    "text": "Hi, Chau. Nice to meet you.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Chau",
+        "doc": "Châu",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "53a2888723cae504"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "don",
+    "text": "Nice to meet you, too.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "0a3993a00a4c9133"
+  },
+  "gs-12": {
+    "file": "gs-12.mp3",
+    "kieu": "don",
+    "text": "Would you like to sit down? We have lots of food.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "9dad848e4e005829"
+  },
+  "gs-13": {
+    "file": "gs-13.mp3",
+    "kieu": "don",
+    "text": "Oh, sorry, we can't. We're going to the bookshop.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c0e1c2bafadefe8f"
+  },
+  "gs-14": {
+    "file": "gs-14.mp3",
+    "kieu": "don",
+    "text": "Bye for now.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "06b3fa7e823ab654"
+  },
+  "gs-15": {
+    "file": "gs-15.mp3",
+    "kieu": "don",
+    "text": "Bye bye.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "1b8eea333aa3e350"
+  },
+  "q-who": {
+    "file": "q-who.mp3",
+    "kieu": "don",
+    "text": "Oh, who's that?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "11b0861330f5e234"
+  },
+  "sp-02": {
+    "file": "sp-02.mp3",
+    "kieu": "don",
+    "text": "She has long hair and big eyes.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb5c719fd9c1e53f"
+  },
+  "sp-03": {
+    "file": "sp-03.mp3",
+    "kieu": "ten",
+    "text": "Is that Lan?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Lan",
+        "doc": "Lan",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "70f5b34072f6b569"
+  },
+  "sp-04": {
+    "file": "sp-04.mp3",
+    "kieu": "don",
+    "text": "That's right.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "53f1e86adb3040be"
+  },
+  "ten-phong": {
+    "file": "ten-phong.mp3",
+    "kieu": "don",
+    "text": "Phong",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
+  },
+  "ten-nam": {
+    "file": "ten-nam.mp3",
+    "kieu": "don",
+    "text": "Nam",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f4be55c18d730e8e"
+  },
+  "ten-mai": {
+    "file": "ten-mai.mp3",
+    "kieu": "don",
+    "text": "Mai",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "0aef0243b233b0bb"
+  },
+  "ten-chau": {
+    "file": "ten-chau.mp3",
+    "kieu": "don",
+    "text": "Châu",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "15f58ca3c43aefef"
+  },
+  "ten-nhung": {
+    "file": "ten-nhung.mp3",
+    "kieu": "don",
+    "text": "Nhung",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "399d56bcea3ac5cd"
+  },
+  "ten-vinh": {
+    "file": "ten-vinh.mp3",
+    "kieu": "don",
+    "text": "Vinh",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "42a7518d4284beb7"
+  },
+  "pr-big": {
+    "file": "pr-big.mp3",
+    "kieu": "don",
+    "text": "big",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0ad2fa45936c3a29"
+  },
+  "pr-pig": {
+    "file": "pr-pig.mp3",
+    "kieu": "don",
+    "text": "pig",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "654f912a36f3b162"
+  },
+  "pr-bear": {
+    "file": "pr-bear.mp3",
+    "kieu": "don",
+    "text": "bear",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "35d6b96b72d423f2"
+  },
+  "pr-pear": {
+    "file": "pr-pear.mp3",
+    "kieu": "don",
+    "text": "pear",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "217afbc71e042a9c"
+  },
+  "pr-buy": {
+    "file": "pr-buy.mp3",
+    "kieu": "don",
+    "text": "buy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c14ac91c177f266a"
+  },
+  "pr-pie": {
+    "file": "pr-pie.mp3",
+    "kieu": "don",
+    "text": "pie",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ed936da2d2ced937"
+  },
+  "pr-robe": {
+    "file": "pr-robe.mp3",
+    "kieu": "don",
+    "text": "robe",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7d4ccda5a995e692"
+  },
+  "pr-rope": {
+    "file": "pr-rope.mp3",
+    "kieu": "don",
+    "text": "rope",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "70e78b55479eaaa1"
+  },
+  "chant-picnic": {
+    "file": "chant-picnic.mp3",
+    "kieu": "don",
+    "text": "picnic",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a5a9aa87e0f68eb7"
+  },
+  "chant-biscuits": {
+    "file": "chant-biscuits.mp3",
+    "kieu": "don",
+    "text": "biscuits",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8a4440a40a4286ac"
+  },
+  "chant-bringing": {
+    "file": "chant-bringing.mp3",
+    "kieu": "don",
+    "text": "bringing",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ca5efd586fb3c9bd"
+  },
+  "chant-playing": {
+    "file": "chant-playing.mp3",
+    "kieu": "don",
+    "text": "playing",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8b094ac78ef8bc2f"
+  },
+  "prs-01": {
+    "file": "prs-01.mp3",
+    "kieu": "don",
+    "text": "We're having a picnic. We're having a picnic. Fun! Fun! Fun!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "993dc89ad4b177b1"
+  },
+  "prs-02": {
+    "file": "prs-02.mp3",
+    "kieu": "don",
+    "text": "We're bringing some biscuits. We're bringing some biscuits. Yum! Yum! Yum!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bec8e78090cea47e"
+  },
+  "prs-03": {
+    "file": "prs-03.mp3",
+    "kieu": "don",
+    "text": "We're playing together. We're playing together. Hurrah! Hurrah! Hurrah!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "965f9263bfac832f"
+  },
+  "gr-01": {
+    "file": "gr-01.mp3",
+    "kieu": "don",
+    "text": "She's talking.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1f4016912e4f7d74"
+  },
+  "gr-02": {
+    "file": "gr-02.mp3",
+    "kieu": "don",
+    "text": "They're not talking.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d96fc1ef56931a57"
+  },
+  "gr-03": {
+    "file": "gr-03.mp3",
+    "kieu": "don",
+    "text": "I'm doing my homework at present.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "62748db87062f282"
+  },
+  "gr-04": {
+    "file": "gr-04.mp3",
+    "kieu": "don",
+    "text": "Are you reading now?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "89a84ded5a007c82"
+  },
+  "gr-05": {
+    "file": "gr-05.mp3",
+    "kieu": "don",
+    "text": "Yes, I am.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3ee783c22c52bc88"
+  },
+  "gr-06": {
+    "file": "gr-06.mp3",
+    "kieu": "ten",
+    "text": "She's talking to Mai.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mai",
+        "doc": "Mai",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "621e0dc960516941"
+  },
+  "gr-07": {
+    "file": "gr-07.mp3",
+    "kieu": "don",
+    "text": "Is your sister making a cake?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "9026b24c49ed6d48"
+  },
+  "gr-08": {
+    "file": "gr-08.mp3",
+    "kieu": "don",
+    "text": "Yes, she is.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "83092e3326736b66"
+  },
+  "gr-09": {
+    "file": "gr-09.mp3",
+    "kieu": "don",
+    "text": "Are you dancing?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bf9b9a4ef2e7c877"
+  },
+  "gr-10": {
+    "file": "gr-10.mp3",
+    "kieu": "don",
+    "text": "No, I'm not.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "39b4e759c13f6040"
+  },
+  "gr-11": {
+    "file": "gr-11.mp3",
+    "kieu": "don",
+    "text": "Are you looking for something?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "e3fea517e6d2d537"
+  },
+  "gr-12": {
+    "file": "gr-12.mp3",
+    "kieu": "don",
+    "text": "Yes, I am.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "a050cf5110996ea0"
+  },
+  "gr-13": {
+    "file": "gr-13.mp3",
+    "kieu": "don",
+    "text": "When something often happens or is fixed, we use the present simple.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "eb880ad1c7f62948"
+  },
+  "gr-14": {
+    "file": "gr-14.mp3",
+    "kieu": "don",
+    "text": "When something is happening now, we use the present continuous.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5d045fabddc26a98"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "don",
+    "text": "What does your best friend look like?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "260dbfa8bee71240"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "She's short with long black hair. She has bright brown eyes.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2fe0b6f3d83e34c2"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "don",
+    "text": "What's she like?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "72a68310e5ff8af2"
+  },
+  "com-04": {
+    "file": "com-04.mp3",
+    "kieu": "don",
+    "text": "She's very kind and creative.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fe3af19c5f2492c1"
+  },
+  "read-vinh": {
+    "file": "read-vinh.mp3",
+    "kieu": "ten",
+    "text": "I live in Da Nang. At home, I can do my homework without my parents' help. At school, I like speaking English. I'm going to an English club now.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Da Nang",
+        "doc": "Đà Nẵng",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "32385e97e0f1d40d"
+  },
+  "read-john": {
+    "file": "read-john.mp3",
+    "kieu": "don",
+    "text": "I come from Cambridge. In my free time, I draw pictures and play the piano. I also help some old people near my house. I usually read to them at the weekend. Now I'm drawing in my garden.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "9f7e096a9b136fec"
+  },
+  "read-ad": {
+    "file": "read-ad.mp3",
+    "kieu": "don",
+    "text": "The Superb Summer Camp. A perfect present for kids aged between ten and fifteen.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "77928c678f85deb4"
+  },
+  "read-01": {
+    "file": "read-01.mp3",
+    "kieu": "don",
+    "text": "Hi Mum and Dad, Here I am at the Superb Summer Camp. Mr Black asked us to write emails in English! Wow, everything here is in English!",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "c3248101465ee6c8"
+  },
+  "read-02": {
+    "file": "read-02.mp3",
+    "kieu": "ten",
+    "text": "I have some new friends: Jimmy, Phong, and Nhung. They're in the photo. Jimmy has blonde hair and blue eyes. He's clever and creative. He likes taking photos. Phong is the tall boy. He's sporty and plays basketball very well. Nhung has curly black hair. She's kind. She shared her lunch with me today.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-NamMinhNeural"
+      },
+      {
+        "tu": "Nhung",
+        "doc": "Nhung",
+        "voice": "vi-VN-NamMinhNeural"
+      },
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-NamMinhNeural"
+      },
+      {
+        "tu": "Nhung",
+        "doc": "Nhung",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "a1d54e5caa3543d6"
+  },
+  "read-03": {
+    "file": "read-03.mp3",
+    "kieu": "ten",
+    "text": "We're having fun. Jimmy's taking photos of me. Phong's reading a comic book, and Nhung's playing the violin. I must go now.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong's",
+        "doc": "Phong's",
+        "voice": "vi-VN-NamMinhNeural"
+      },
+      {
+        "tu": "Nhung's",
+        "doc": "Nhung's",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "425aa7fcc45dc860"
+  },
+  "read-04": {
+    "file": "read-04.mp3",
+    "kieu": "ten",
+    "text": "Please write soon. Love, Nam",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Nam",
+        "doc": "Nam",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "ec5eabc418b4e34d"
+  },
+  "sp-mi": {
+    "file": "sp-mi.mp3",
+    "kieu": "ten",
+    "text": "Mi is twelve years old. She likes drawing and writing stories. She's good at English. She's creative and friendly.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mi",
+        "doc": "Mi",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "966fa5daad2169bc"
+  },
+  "sp-an": {
+    "file": "sp-an.mp3",
+    "kieu": "ten",
+    "text": "An is sixteen years old. He doesn't know English. He's funny and kind.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "An",
+        "doc": "An",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "c2c9b227bb834281"
+  },
+  "sp-vy": {
+    "file": "sp-vy.mp3",
+    "kieu": "ten",
+    "text": "Vy is fourteen years old. She likes playing sports. Her English isn't very good. She's clever, but she isn't active.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Vy",
+        "doc": "Vy",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "4ba254a622dcfcf7"
+  },
+  "sp-01": {
+    "file": "sp-01.mp3",
+    "kieu": "don",
+    "text": "I want to go to this camp because I can speak English there.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0c05b17c385df3df"
+  }
+}

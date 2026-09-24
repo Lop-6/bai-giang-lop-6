@@ -1,0 +1,855 @@
+{
+  "voc-town-house": {
+    "file": "voc-town-house.mp3",
+    "kieu": "don",
+    "text": "town house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "678f6ca7773bab01"
+  },
+  "voc-country-house": {
+    "file": "voc-country-house.mp3",
+    "kieu": "don",
+    "text": "country house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f629a7d3be9ce652"
+  },
+  "voc-flat": {
+    "file": "voc-flat.mp3",
+    "kieu": "don",
+    "text": "flat",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7843459619098e10"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "don",
+    "text": "Wow! Your room looks so big, Nick.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b9d162aca7fe476a"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "don",
+    "text": "It's Elena's room. She's my sister.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "11789453174bd062"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "don",
+    "text": "I see. Is there a TV behind you?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "27d39e7a83568aa4"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "ten",
+    "text": "Yes, there is. Where do you live, Mi?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mi",
+        "doc": "Mi",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "30712b3770235d05"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "don",
+    "text": "I live in a town house. And you?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d82eb2f6b83b20f2"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "don",
+    "text": "I live in a country house. Who do you live with?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "f62c6a780cedd4ee"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "don",
+    "text": "My parents and younger brother. We're moving to a flat next month!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "939b4c8b679b6936"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "Are you?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "b82e5068141c572f"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "don",
+    "text": "Yes. My aunt lives near there, and I can play with my cousin.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7c5df74897577762"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "don",
+    "text": "Are there many rooms in your new flat?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "61b715f286c5ab04"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "don",
+    "text": "Yes, there are. There's a living room, three bedrooms, a kitchen and two bathrooms.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c1b876a189657e38"
+  },
+  "q-tv": {
+    "file": "q-tv.mp3",
+    "kieu": "don",
+    "text": "Is there a TV behind you?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "61bd187d134c66a4"
+  },
+  "q-live": {
+    "file": "q-live.mp3",
+    "kieu": "ten",
+    "text": "Where do you live, Mi?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mi",
+        "doc": "Mi",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "c84e72c84cea9f24"
+  },
+  "q-with": {
+    "file": "q-with.mp3",
+    "kieu": "don",
+    "text": "Who do you live with?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "95298ca3d39d6d65"
+  },
+  "q-moving": {
+    "file": "q-moving.mp3",
+    "kieu": "don",
+    "text": "We're moving to a flat next month!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "034b558f0929e6d0"
+  },
+  "ten-mi": {
+    "file": "ten-mi.mp3",
+    "kieu": "don",
+    "text": "Mi",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "791ca9d9872c8e64"
+  },
+  "ten-phong": {
+    "file": "ten-phong.mp3",
+    "kieu": "don",
+    "text": "Phong",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
+  },
+  "ten-da-lat": {
+    "file": "ten-da-lat.mp3",
+    "kieu": "don",
+    "text": "Đà Lạt",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "24b102b77c9856ce"
+  },
+  "voc-between": {
+    "file": "voc-between.mp3",
+    "kieu": "don",
+    "text": "between",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "867b2a96e547be82"
+  },
+  "voc-chest-of-drawers": {
+    "file": "voc-chest-of-drawers.mp3",
+    "kieu": "don",
+    "text": "chest of drawers",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ff42f57993c23df7"
+  },
+  "voc-cooker": {
+    "file": "voc-cooker.mp3",
+    "kieu": "don",
+    "text": "cooker",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "344526201a344088"
+  },
+  "voc-crazy": {
+    "file": "voc-crazy.mp3",
+    "kieu": "don",
+    "text": "crazy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "90c15b4f7d041c0b"
+  },
+  "voc-cupboard": {
+    "file": "voc-cupboard.mp3",
+    "kieu": "don",
+    "text": "cupboard",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c85227eea3a6481e"
+  },
+  "voc-department-store": {
+    "file": "voc-department-store.mp3",
+    "kieu": "don",
+    "text": "department store",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e392f9b73ed56b3e"
+  },
+  "voc-dishwasher": {
+    "file": "voc-dishwasher.mp3",
+    "kieu": "don",
+    "text": "dishwasher",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "57c91a702eb6d34c"
+  },
+  "voc-furniture": {
+    "file": "voc-furniture.mp3",
+    "kieu": "don",
+    "text": "furniture",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "66a4bedff9a482d3"
+  },
+  "voc-hall": {
+    "file": "voc-hall.mp3",
+    "kieu": "don",
+    "text": "hall",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e53650d365a0ec5e"
+  },
+  "voc-in-front-of": {
+    "file": "voc-in-front-of.mp3",
+    "kieu": "don",
+    "text": "in front of",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7ba61a3c59b754b3"
+  },
+  "voc-next-to": {
+    "file": "voc-next-to.mp3",
+    "kieu": "don",
+    "text": "next to",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "75a70f6d11c01c68"
+  },
+  "voc-shelf": {
+    "file": "voc-shelf.mp3",
+    "kieu": "don",
+    "text": "shelf",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a376501695795697"
+  },
+  "voc-sink": {
+    "file": "voc-sink.mp3",
+    "kieu": "don",
+    "text": "sink",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "79dcae06cca7ce89"
+  },
+  "voc-strange": {
+    "file": "voc-strange.mp3",
+    "kieu": "don",
+    "text": "strange",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a7e95a21ce60262d"
+  },
+  "voc-wardrobe": {
+    "file": "voc-wardrobe.mp3",
+    "kieu": "don",
+    "text": "wardrobe",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b20f11adcbc92c63"
+  },
+  "thing-kitchen": {
+    "file": "thing-kitchen.mp3",
+    "kieu": "don",
+    "text": "kitchen",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8e0510314587bb92"
+  },
+  "thing-bedroom": {
+    "file": "thing-bedroom.mp3",
+    "kieu": "don",
+    "text": "bedroom",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3127ec8086cc0f58"
+  },
+  "thing-bathroom": {
+    "file": "thing-bathroom.mp3",
+    "kieu": "don",
+    "text": "bathroom",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8a8cbd5a6839e4d7"
+  },
+  "thing-living-room": {
+    "file": "thing-living-room.mp3",
+    "kieu": "don",
+    "text": "living room",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b45a3ba667dd7ad4"
+  },
+  "thing-lamp": {
+    "file": "thing-lamp.mp3",
+    "kieu": "don",
+    "text": "lamp",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0e3dc0302bde07b3"
+  },
+  "thing-toilet": {
+    "file": "thing-toilet.mp3",
+    "kieu": "don",
+    "text": "toilet",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7054322524a11593"
+  },
+  "thing-picture": {
+    "file": "thing-picture.mp3",
+    "kieu": "don",
+    "text": "picture",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "72846000afdbcf71"
+  },
+  "thing-sofa": {
+    "file": "thing-sofa.mp3",
+    "kieu": "don",
+    "text": "sofa",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "647ba513a8c4b198"
+  },
+  "thing-fridge": {
+    "file": "thing-fridge.mp3",
+    "kieu": "don",
+    "text": "fridge",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f2d9bc5228ce5787"
+  },
+  "thing-shower": {
+    "file": "thing-shower.mp3",
+    "kieu": "don",
+    "text": "shower",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "89cc84aeb7b9f2f9"
+  },
+  "thing-room": {
+    "file": "thing-room.mp3",
+    "kieu": "don",
+    "text": "room",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9a8e4f9d24e66361"
+  },
+  "pr-lamps": {
+    "file": "pr-lamps.mp3",
+    "kieu": "don",
+    "text": "lamps",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bfde35d1f938a752"
+  },
+  "pr-sinks": {
+    "file": "pr-sinks.mp3",
+    "kieu": "don",
+    "text": "sinks",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "14e756402889d885"
+  },
+  "pr-flats": {
+    "file": "pr-flats.mp3",
+    "kieu": "don",
+    "text": "flats",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e1c97dba2a15c5c3"
+  },
+  "pr-toilets": {
+    "file": "pr-toilets.mp3",
+    "kieu": "don",
+    "text": "toilets",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7375671276d18669"
+  },
+  "pr-cupboards": {
+    "file": "pr-cupboards.mp3",
+    "kieu": "don",
+    "text": "cupboards",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2ead1d4b6262e18f"
+  },
+  "pr-sofas": {
+    "file": "pr-sofas.mp3",
+    "kieu": "don",
+    "text": "sofas",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bf2c6324241f0b36"
+  },
+  "pr-kitchens": {
+    "file": "pr-kitchens.mp3",
+    "kieu": "don",
+    "text": "kitchens",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d60c01ca3786ce56"
+  },
+  "pr-rooms": {
+    "file": "pr-rooms.mp3",
+    "kieu": "don",
+    "text": "rooms",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "461fcabe35e6f02d"
+  },
+  "pr-bedrooms": {
+    "file": "pr-bedrooms.mp3",
+    "kieu": "don",
+    "text": "bedrooms",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fc37ed928b64421f"
+  },
+  "prs-01": {
+    "file": "prs-01.mp3",
+    "kieu": "don",
+    "text": "Mum, are you home?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6a479061ee023443"
+  },
+  "prs-02": {
+    "file": "prs-02.mp3",
+    "kieu": "don",
+    "text": "Yes, honey. I'm in the kitchen. I've bought these new bowls and chopsticks.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "8222b2fc13a58415"
+  },
+  "prs-03": {
+    "file": "prs-03.mp3",
+    "kieu": "don",
+    "text": "They're beautiful, Mum. Where did you buy them?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d83cc96da8a7ad09"
+  },
+  "prs-04": {
+    "file": "prs-04.mp3",
+    "kieu": "don",
+    "text": "In the department store near our house. They have a lot of things for homes.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "25c327988bfedd4f"
+  },
+  "prs-05": {
+    "file": "prs-05.mp3",
+    "kieu": "don",
+    "text": "Don't forget we need two lamps for my bedroom, Mum.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "51a9d3086d4f2014"
+  },
+  "prs-06": {
+    "file": "prs-06.mp3",
+    "kieu": "don",
+    "text": "Let's go there this weekend.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "2020c5c772486898"
+  },
+  "gr-01": {
+    "file": "gr-01.mp3",
+    "kieu": "don",
+    "text": "This is Elena's room.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b96f14682df45001"
+  },
+  "gr-02": {
+    "file": "gr-02.mp3",
+    "kieu": "don",
+    "text": "This is my mum's book.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7b4e12eb32c95e4e"
+  },
+  "so-its-great": {
+    "file": "so-its-great.mp3",
+    "kieu": "don",
+    "text": "It's great.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a2d3f6d921be1d88"
+  },
+  "so-shes": {
+    "file": "so-shes.mp3",
+    "kieu": "don",
+    "text": "She's my sister.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "046c7ae187f541c6"
+  },
+  "so-theres": {
+    "file": "so-theres.mp3",
+    "kieu": "don",
+    "text": "There's a living room",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "45e485260277ca6b"
+  },
+  "so-whats": {
+    "file": "so-whats.mp3",
+    "kieu": "don",
+    "text": "What's in your room?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6327ed24f4f7a0bd"
+  },
+  "so-elena": {
+    "file": "so-elena.mp3",
+    "kieu": "don",
+    "text": "Elena's room",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "23908dfeeb5b34fe"
+  },
+  "so-mum": {
+    "file": "so-mum.mp3",
+    "kieu": "don",
+    "text": "my mum's book",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "210b654c0f59e1a5"
+  },
+  "so-nick": {
+    "file": "so-nick.mp3",
+    "kieu": "don",
+    "text": "Nick's house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9ff6235747a95d82"
+  },
+  "gr-in": {
+    "file": "gr-in.mp3",
+    "kieu": "don",
+    "text": "in",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e32a2c358052bbf8"
+  },
+  "gr-on": {
+    "file": "gr-on.mp3",
+    "kieu": "don",
+    "text": "on",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5a36c86db56ee47b"
+  },
+  "gr-under": {
+    "file": "gr-under.mp3",
+    "kieu": "don",
+    "text": "under",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9aad6c7ee470cda5"
+  },
+  "gr-behind": {
+    "file": "gr-behind.mp3",
+    "kieu": "don",
+    "text": "behind",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "237812c3209d2786"
+  },
+  "gr-03": {
+    "file": "gr-03.mp3",
+    "kieu": "don",
+    "text": "The dog is on the chair.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c03318add15f545c"
+  },
+  "gr-04": {
+    "file": "gr-04.mp3",
+    "kieu": "don",
+    "text": "The books are on the table.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4cbe9ac9031bb750"
+  },
+  "gr-05": {
+    "file": "gr-05.mp3",
+    "kieu": "don",
+    "text": "Where are the books?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "ee766565c8d12dce"
+  },
+  "gr-06": {
+    "file": "gr-06.mp3",
+    "kieu": "don",
+    "text": "They're on the table.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2acc14e160e2c826"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "don",
+    "text": "My bedroom isn't nice.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b551237505a7b764"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "How about putting a picture on the wall?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "289bb03c24e991c6"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "don",
+    "text": "Great idea, Mum.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b78050116baf78e5"
+  },
+  "com-04": {
+    "file": "com-04.mp3",
+    "kieu": "don",
+    "text": "Let's go to the department store to buy one.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "98a8c921670fc6b6"
+  },
+  "com-05": {
+    "file": "com-05.mp3",
+    "kieu": "ten",
+    "text": "Where does Mi live?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mi",
+        "doc": "Mi",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "b7528ab2d6d624c9"
+  },
+  "com-06": {
+    "file": "com-06.mp3",
+    "kieu": "don",
+    "text": "She lives in a town house.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a3b63bd3870d3660"
+  },
+  "sp-01": {
+    "file": "sp-01.mp3",
+    "kieu": "don",
+    "text": "What's in your room?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "f0b10611b248423b"
+  },
+  "sp-02": {
+    "file": "sp-02.mp3",
+    "kieu": "don",
+    "text": "A sofa and a television.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3098e8edca0e8bca"
+  },
+  "sp-03": {
+    "file": "sp-03.mp3",
+    "kieu": "don",
+    "text": "Is it the living room?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "5715243d4ac10868"
+  },
+  "sp-04": {
+    "file": "sp-04.mp3",
+    "kieu": "don",
+    "text": "Yes.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "48fbeb2e31ce139c"
+  },
+  "sp-05": {
+    "file": "sp-05.mp3",
+    "kieu": "don",
+    "text": "Where do you live?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "5cbaa9833a376700"
+  },
+  "sp-06": {
+    "file": "sp-06.mp3",
+    "kieu": "don",
+    "text": "I live in a flat.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "be2f77cd51d08380"
+  },
+  "sp-07": {
+    "file": "sp-07.mp3",
+    "kieu": "don",
+    "text": "This is the Shark Room. There's a big shark at the door. There's a table and a sofa in the middle of the room",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ad1450f47b487f7a"
+  },
+  "sp-08": {
+    "file": "sp-08.mp3",
+    "kieu": "don",
+    "text": "There's a big bed next to the door.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "15f18e057cb74774"
+  },
+  "read-01": {
+    "file": "read-01.mp3",
+    "kieu": "ten",
+    "text": "Hi Phong and Mi, How are you? I'm in Da Lat with my parents. We're staying at the Crazy House Hotel. Wow! It really is crazy.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-HoaiMyNeural"
+      },
+      {
+        "tu": "Mi",
+        "doc": "Mi",
+        "voice": "vi-VN-HoaiMyNeural"
+      },
+      {
+        "tu": "Da Lat",
+        "doc": "Đà Lạt",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "0ddbd7db8af499e5"
+  },
+  "read-02": {
+    "file": "read-02.mp3",
+    "kieu": "don",
+    "text": "There are ten rooms in the hotel. There's a Kangaroo Room, an Eagle Room, and even an Ant Room. I'm staying in the Tiger Room. It's called the Tiger Room because there's a big tiger on the wall.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "53377c1b3bb4f712"
+  },
+  "read-03": {
+    "file": "read-03.mp3",
+    "kieu": "don",
+    "text": "The tiger is between the bathroom door and the window. The bed is next to the window, but the window is a strange shape. I put my bag under the bed. There's a lamp, a wardrobe and a desk.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f9d70801fb115c7c"
+  },
+  "read-04": {
+    "file": "read-04.mp3",
+    "kieu": "ten",
+    "text": "You should stay here when you visit Da Lat. It's great. See you soon! Nick",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Da Lat",
+        "doc": "Đà Lạt",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "8015b000a0f4799d"
+  },
+  "wr-01": {
+    "file": "wr-01.mp3",
+    "kieu": "don",
+    "text": "Hi Mira,",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3e34fc101f0492fb"
+  },
+  "wr-02": {
+    "file": "wr-02.mp3",
+    "kieu": "don",
+    "text": "Thanks for your email. Now I'll tell you about my house.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "546ac9924b648f28"
+  },
+  "wr-03": {
+    "file": "wr-03.mp3",
+    "kieu": "don",
+    "text": "What about you? Where do you live? Tell me in your next email.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0a50676939ca6cc6"
+  },
+  "wr-04": {
+    "file": "wr-04.mp3",
+    "kieu": "don",
+    "text": "All the best,",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "380eea6ce4801555"
+  }
+}

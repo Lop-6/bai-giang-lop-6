@@ -1,0 +1,2358 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNIT 2. MY HOUSE — Bài giảng Tiếng Anh 6 (Global Success)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
+    --line:#e3e7f0; --brand:#2f6fdb; --brand-soft:#e8f0ff;
+    --warm:#f59e0b; --warm-soft:#fff6e5; --green:#0f9d76; --green-soft:#e6f7f1;
+    --red:#d64545; --red-soft:#fdeceb; --purple:#7c5cd6; --purple-soft:#f1ecff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:120px}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,Arial,sans-serif;
+    font-size:17px; line-height:1.65;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:0 16px 80px}
+
+  header.top{
+    background:linear-gradient(135deg,#2f6fdb,#6a4fd8); color:#fff;
+    padding:26px 16px 22px;
+  }
+  header.top .wrap{padding-bottom:0}
+  header.top h1{margin:0 0 4px; font-size:30px; letter-spacing:.3px}
+  header.top .sub{opacity:.92; font-size:15px; margin:0}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px; border-radius:999px; font-size:13px; margin-top:8px}
+
+  .toolbar{
+    position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  }
+  .toolbar .wrap{padding-top:10px; padding-bottom:10px; display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .chip{
+    display:inline-block; padding:5px 11px; border-radius:999px; font-size:14px;
+    background:#eef1f7; color:#3a4152; text-decoration:none; border:1px solid transparent;
+  }
+  .chip:hover{background:var(--brand-soft); border-color:#c8dbff; color:var(--brand)}
+  /* engine tu gom moi .chip (va nut Tat chuyen dong) vao .chips: dien thoai thi mot hang cuon ngang */
+  .toolbar .chips{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .spacer{flex:1}
+  .speed{display:flex; align-items:center; gap:6px; font-size:14px; color:var(--muted)}
+  .speed button{
+    font:inherit; font-size:14px; padding:4px 10px; border-radius:8px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--ink);
+  }
+  .speed button.on{background:var(--brand); border-color:var(--brand); color:#fff}
+
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:20px 0; box-shadow:0 1px 2px rgba(20,30,60,.04)}
+  h2{font-size:22px; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:18px; margin:22px 0 8px; color:#243049}
+  h4{font-size:16px; margin:16px 0 6px; color:#37405a}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 20px; padding:0}
+  li{margin:4px 0}
+
+  table{border-collapse:collapse; width:100%; margin:10px 0; font-size:16px}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top}
+  th{background:#f2f5fb; font-weight:600}
+  td.ipa{white-space:nowrap; color:var(--purple); font-family:"Segoe UI",system-ui,sans-serif}
+
+  .say{
+    display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+    font:inherit; font-size:15px; line-height:1.3;
+    background:var(--brand-soft); color:var(--brand); border:1px solid #7fa6e6;
+    border-radius:999px; padding:5px 13px 5px 10px; margin:2px 4px 2px 0;
+    transition:background .12s, transform .06s;
+  }
+  .say:hover{background:#d8e6ff}
+  .say:active{transform:scale(.97)}
+  .say::before{content:"▶"; font-size:11px; opacity:.85}
+  .say.playing{background:var(--green); border-color:var(--green); color:#fff}
+  .say.playing::before{content:"■"}
+  .say.mini{font-size:14px; padding:3px 10px 3px 8px}
+  .say.icon{padding:4px 9px; font-size:13px}
+  .say.icon::before{content:"🔊"; font-size:14px; opacity:1}
+  .say.icon.playing::before{content:"■"}
+  .say.line{background:#fff; border-color:#9dbcf3; color:var(--muted)}
+  .say.line:hover{background:var(--brand-soft); color:var(--brand)}
+  .say.line.playing{background:var(--green); border-color:var(--green); color:#fff}
+  .say-all{
+    background:var(--green-soft); border-color:#b8e5d7; color:#0b7a5c; font-weight:600;
+  }
+  .say-all:hover{background:#d2f0e6}
+  .say-all::before{content:"▶▶"; letter-spacing:-2px}
+
+  .box{border-left:5px solid var(--brand); background:#f8faff; border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:12px 0}
+  .box.remember{border-left-color:var(--warm); background:var(--warm-soft)}
+  .box.tip{border-left-color:var(--green); background:var(--green-soft)}
+  .box.warn{border-left-color:var(--red); background:var(--red-soft)}
+  .box.quote{border-left-color:var(--purple); background:var(--purple-soft)}
+  .box p:first-child{margin-top:0}
+  .box p:last-child{margin-bottom:0}
+  .box .label{font-weight:700; display:block; margin-bottom:4px}
+
+  .dlg{margin:6px 0}
+  .dlg .who{display:inline-block; min-width:64px; font-weight:700; color:var(--brand)}
+  .dlg .who.f{color:#c2408f}
+  .dlg .who.f2{color:#b3541e}        /* vai nu thu hai (giong F2 = en-GB-LibbyNeural): Mum, co giao... */
+  .dlg .who.m2{color:#0f7a8a}        /* vai nam thu hai neu co */
+  .dlg.ba-cham{color:var(--muted); letter-spacing:2px}
+  .wordgrid{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
+  .pron2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:12px 0}
+  .pron2 .col{border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#fbfcff}
+  .pron2 .col h4{margin-top:0; font-size:19px; text-align:center;
+    color:#fff; background:var(--brand); border-radius:8px; padding:4px 0}
+  .pron2 .col.b h4{background:var(--purple)}
+  .pron2 .w{display:flex; align-items:center; justify-content:space-between; gap:8px;
+    padding:5px 0; border-bottom:1px dashed var(--line); font-size:18px}
+  .pron2 .w:last-child{border-bottom:none}
+  .pron2 .w b{color:var(--red)}
+  .sentlist{list-style:none; margin:10px 0 0; padding:0}
+  .sentlist li{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-bottom:1px dashed var(--line)}
+  .sentlist li:last-child{border-bottom:none}
+  .sentlist .n{font-weight:700; color:var(--muted); min-width:20px}
+  .sentlist .tx{flex:1}
+  .err{background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:10px 0}
+  .err .h{font-weight:700; color:var(--red); margin-bottom:4px}
+  .x{color:var(--red); font-weight:700}
+  .ok{color:var(--green); font-weight:700}
+  .muted{color:var(--muted)}
+  .small{font-size:15px}
+  .task{background:#fbfcff; border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin:10px 0}
+  footer{color:var(--muted); font-size:14px; margin-top:26px; padding-top:14px; border-top:1px solid var(--line)}
+  #nowplay{
+    position:fixed; left:50%; transform:translateX(-50%); bottom:-70px; z-index:99;
+    background:#12301f; color:#fff; padding:9px 18px; border-radius:999px; font-size:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,.25); transition:bottom .2s; max-width:92vw;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  #nowplay.on{bottom:18px}
+  @media (max-width:640px){
+    body{font-size:16px}
+    .pron2{grid-template-columns:1fr}
+    header.top h1{font-size:24px}
+    section{padding:16px 14px}
+    table{font-size:15px}
+  }
+
+  /* ================= ENGINE TƯƠNG TÁC — CSS DÙNG CHUNG ================= */
+  .hide{display:none !important}
+  .mo-ra{animation:hienra .45s ease-out}
+  @keyframes hienra{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+  @keyframes pop{0%{transform:scale(.4); opacity:0} 70%{transform:scale(1.15); opacity:1} 100%{transform:scale(1)}}
+  @keyframes lac{0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)}}
+
+  /* thanh tiến độ + nút tắt chuyển động */
+  .progress{display:flex; align-items:center; gap:7px; font-size:13px; color:var(--muted); white-space:nowrap}
+  .progress .track{width:96px; height:8px; border-radius:99px; background:#e7ebf3; overflow:hidden}
+  .progress .track i{display:block; height:100%; width:0; background:linear-gradient(90deg,#f5b400,var(--green)); transition:width .4s}
+  .tbtn{font:inherit; font-size:13px; padding:4px 10px; border-radius:8px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--muted)}
+  .tbtn[aria-pressed="true"]{background:#eef1f7; color:var(--ink)}
+  h2 .nv{float:right; font-size:13px; font-weight:600; color:#8a6d00; background:#fff6d6;
+    border:1px solid #f1dc8f; border-radius:999px; padding:2px 10px; margin-top:4px}
+  h2 .nv.du{color:#0b7a5c; background:var(--green-soft); border-color:#b8e5d7}
+
+  /* khung một nhiệm vụ */
+  .act{position:relative; border:1px solid #d9e2f3; border-radius:14px; padding:14px 16px 12px;
+    margin:18px 0; background:#fbfcff}
+  .act > h4:first-child{margin-top:0}
+  .act h4 .tag{display:inline-block; background:var(--brand); color:#fff; font-size:12px; font-weight:700;
+    letter-spacing:.4px; border-radius:999px; padding:1px 10px; margin-right:6px; vertical-align:2px}
+  .act.done{border-color:#9fdcc6; background:#f5fcf9}
+  .act.done > h4 .tag{background:var(--green)}
+  .act.done::after{content:"⭐"; position:absolute; top:-14px; right:-6px; font-size:26px; animation:pop .5s ease-out}
+  .nguon{display:inline-block; font-size:13px; color:var(--muted); background:#f1f3f8; border-radius:6px;
+    padding:1px 8px; margin:0 0 6px}
+  .nguon.sgk{background:#eef7ee; color:#2d6a2d}
+
+  /* nút chung của widget */
+  .btn{font:inherit; font-size:15px; cursor:pointer; border-radius:10px; padding:6px 14px; margin:4px 6px 4px 0;
+    border:1px solid #c8dbff; background:#fff; color:var(--brand); min-height:38px}
+  .btn:hover{background:var(--brand-soft)}
+  .btn.chinh{background:var(--brand); color:#fff; border-color:var(--brand)}
+  .btn.chinh:hover{background:#2560c4}
+  .btn[disabled]{opacity:.5; cursor:default}
+  .fb{display:none; margin:8px 0 2px; padding:8px 12px; border-radius:10px; font-size:15.5px}
+  .fb.show{display:block; animation:hienra .3s}
+  .fb.good{background:var(--green-soft); color:#0b5e47; border:1px solid #b8e5d7}
+  .fb.bad{background:var(--warm-soft); color:#7a4a00; border:1px solid #f3d49b}
+  .fb.info{background:#f1f3f8; color:var(--muted); border:1px solid var(--line)}
+
+  /* phương án bấm chọn (mcq, listen) */
+  .opts{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 2px}
+  .opt{font:inherit; font-size:17px; cursor:pointer; min-width:64px; min-height:42px; padding:6px 16px;
+    border-radius:12px; border:2px solid #d4dcec; background:#fff; color:var(--ink); transition:transform .08s, background .15s}
+  .opt:hover{border-color:#9dbcf3; background:#f5f8ff}
+  .opt.sai{border-color:#f0b35a; background:var(--warm-soft); animation:lac .35s}
+  .opt.dung{border-color:var(--green); background:var(--green-soft); color:#0b5e47; font-weight:700}
+  .opt[disabled]{cursor:default}
+  .opt[disabled]:not(.dung){opacity:.55}
+  [data-mcq]{margin:10px 0 14px}
+  [data-mcq] + [data-mcq]{border-top:1px dashed var(--line); padding-top:10px}
+
+  /* 1. thẻ từ lật */
+  .fc-bar{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:4px 0 10px; font-size:14px; color:var(--muted)}
+  .fc-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:12px}
+  .fc{position:relative; height:150px; perspective:900px; cursor:pointer; outline:none}
+  .fc-in{position:absolute; inset:0; transition:transform .5s; transform-style:preserve-3d}
+  .fc.lat .fc-in{transform:rotateY(180deg)}
+  .fc-mat{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    padding:10px; text-align:center; border:2px solid #d4dcec; box-shadow:0 2px 6px rgba(20,30,60,.06)}
+  .fc-mat.truoc{background:linear-gradient(160deg,#ffffff,#eef4ff)}
+  .fc-mat.sau{background:linear-gradient(160deg,#fffdf4,#fff1cf); border-color:#f1dc8f; transform:rotateY(180deg)}
+  .fc:focus-visible .fc-mat{border-color:var(--brand)}
+  .fc-w{font-size:21px; font-weight:700; color:#1d3f8f; line-height:1.2}
+  .fc-ipa{font-size:14px; color:var(--purple)}
+  .fc-emo{font-size:40px; line-height:1}
+  .fc-nghia{font-size:16px; font-weight:600; color:#6a4a00; line-height:1.3}
+  .fc-lat{position:absolute; bottom:6px; right:10px; font-size:11px; color:#9aa3b5}
+  .fc.da-xem .fc-mat.truoc{border-color:#b8e5d7}
+  .fc .say.icon{margin:2px 0 0}
+
+  /* 2. nghe rồi chọn */
+  .ls-q{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  .say.big{font-size:17px; font-weight:700; padding:9px 20px 9px 16px; background:var(--brand); color:#fff; border-color:var(--brand)}
+  .say.big::before{content:"🔊"; font-size:18px; opacity:1}
+  .say.big:hover{background:#2560c4}
+  .say.big.playing::before{content:"■"}
+  [data-listen]{margin:10px 0 16px}
+  [data-listen] + [data-listen]{border-top:1px dashed var(--line); padding-top:12px}
+
+  /* 3. nối cặp */
+  .pr-wrap{display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin:8px 0}
+  .pr-col{display:flex; flex-direction:column; gap:8px}
+  .pc{display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:46px; padding:7px 12px;
+    border:2px solid #d4dcec; border-radius:12px; background:#fff; cursor:pointer; user-select:none; outline:none;
+    transition:background .15s, border-color .15s}
+  .pc:hover{border-color:#9dbcf3}
+  .pc:focus-visible{border-color:var(--brand)}
+  .pc.chon{border-color:var(--brand); background:var(--brand-soft); box-shadow:0 0 0 3px #c8dbff}
+  .pc.sai{border-color:#f0b35a; background:var(--warm-soft); animation:lac .35s}
+  .pc.khop{border-color:#9fdcc6; background:var(--green-soft); cursor:default; color:#0b5e47}
+  .pc.khop .say{opacity:.8}
+  .pr-dem{font-size:14px; color:var(--muted)}
+
+  /* 4. xếp vào cột */
+  .so-pool{display:flex; flex-wrap:wrap; gap:8px; min-height:54px; padding:10px; border:2px dashed #cfd7e6;
+    border-radius:12px; background:#fff; margin:6px 0 10px}
+  .so-pool:empty::after{content:"(đã xếp hết thẻ)"; color:#9aa3b5; font-size:14px}
+  .so-cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px}
+  .so-col{border:2px solid #d4dcec; border-radius:12px; background:#fbfcff; min-height:120px; cursor:pointer}
+  .so-col.moi{border-color:var(--brand); box-shadow:0 0 0 3px #c8dbff}
+  .so-h{text-align:center; font-weight:700; font-size:19px; color:#fff; background:var(--brand);
+    border-radius:9px 9px 0 0; padding:4px 6px}
+  .so-col:nth-child(2) .so-h{background:var(--purple)}
+  .so-col:nth-child(3) .so-h{background:#0f8a9d}
+  .so-col:nth-child(4) .so-h{background:#b06a00}
+  .so-z{display:flex; flex-wrap:wrap; gap:8px; padding:10px; min-height:70px}
+  .sc{display:inline-flex; align-items:center; gap:4px; padding:4px 6px 4px 12px; min-height:40px; font-size:17px;
+    border:2px solid #d4dcec; border-radius:999px; background:#fff; cursor:pointer; user-select:none; outline:none}
+  .sc:focus-visible{border-color:var(--brand)}
+  .sc.chon{border-color:var(--brand); background:var(--brand-soft); box-shadow:0 0 0 3px #c8dbff}
+  [data-sort].khoa .sc{cursor:default; border-color:#9fdcc6; background:var(--green-soft)}
+  .so-meo{font-size:14px; color:var(--muted); margin:2px 0}
+
+  /* 5. điền từ */
+  .fl{display:inline-flex; align-items:center; gap:4px; vertical-align:middle; flex-wrap:wrap}
+  .fl input{font:inherit; font-size:17px; line-height:1.3; padding:3px 8px; border:none; border-bottom:2px solid #9dbcf3;
+    background:#f5f8ff; border-radius:6px 6px 0 0; min-width:70px; color:#1d3f8f; text-align:center}
+  .fl input:focus{outline:none; border-bottom-color:var(--brand); background:#eaf1ff}
+  .fl.dung input{border-bottom-color:var(--green); background:var(--green-soft); color:#0b5e47; font-weight:700}
+  .fl .btn{min-height:30px; padding:1px 10px; font-size:14px; margin:0}
+  .fb-in{font-size:14.5px; line-height:1.4; border-radius:8px; padding:1px 8px}
+  .fb-in:empty{display:none}
+  .fb-in.good{color:#0b5e47; background:var(--green-soft)}
+  .fb-in.bad{color:#7a4a00; background:var(--warm-soft)}
+  .cau-fill{line-height:2.4}
+
+  /* 6. sắp xếp từ thành câu */
+  .od{margin:10px 0 14px}
+  .od + .od{border-top:1px dashed var(--line); padding-top:12px}
+  .od-line{display:flex; flex-wrap:wrap; align-items:center; gap:6px; min-height:52px; padding:8px 10px;
+    border-bottom:3px solid #9dbcf3; background:#f5f8ff; border-radius:10px 10px 0 0}
+  .od-line:empty::before{content:"Bấm các thẻ bên dưới theo đúng thứ tự…"; color:#9aa3b5; font-size:14px}
+  .od-pool{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 4px; min-height:44px}
+  .tk{font:inherit; font-size:17px; cursor:pointer; padding:5px 13px; min-height:40px; border-radius:10px;
+    border:2px solid #d4dcec; background:#fff; color:var(--ink); transition:transform .08s}
+  .tk:hover{border-color:#9dbcf3}
+  .od-line .tk{border-color:#9dbcf3; background:#fff}
+  .od-pool:empty{min-height:0; margin:2px 0}
+  /* xong roi thi an nut Kiem / Lam lai (chi giu nut Nghe ca cau) */
+  .od.dung > div > .btn, [data-sort].khoa > div > .btn, .fl.dung .btn{display:none}
+  .fc .say.icon,.pc .say.icon,.sc .say.icon{background:#fff; border-color:#9dbcf3}
+  .od-dau{font-size:20px; font-weight:700; color:var(--muted)}
+  .od.dung .od-line{border-bottom-color:var(--green); background:var(--green-soft)}
+  .od.dung .tk{cursor:default; border-color:#9fdcc6}
+
+  /* 7. gợi ý / đối chiếu / đồng hồ */
+  .hint,.reveal{display:none; margin:8px 0; padding:10px 14px; border-radius:10px; font-size:15.5px}
+  .hint{background:#fffbea; border:1px dashed #e8cf6a}
+  .reveal{background:#f1f3f8; border:1px dashed #b9c3d6}
+  .hint.open,.reveal.open{display:block; animation:hienra .3s}
+  .ex{border:1px solid var(--line); border-left:5px solid #9aa3b5; border-radius:0 10px 10px 0; background:#fff;
+    padding:10px 14px; margin:12px 0}
+  .ex .so{font-weight:700; color:#37405a}
+  .tm{display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .tm-so{font-size:22px; font-weight:700; color:#1d3f8f; min-width:64px; font-variant-numeric:tabular-nums}
+  .tm.het .tm-so{color:var(--green)}
+
+  /* móc mở đầu, nghỉ giải lao, mini-game, chúc mừng */
+  .mo-dau{border:2px solid #f1dc8f; background:linear-gradient(135deg,#fffdf4,#fff3d6); border-radius:14px; padding:14px 16px; margin:12px 0}
+  .mo-dau .label{font-weight:700; color:#8a5a00; display:block; margin-bottom:4px}
+  .moc-nghi{display:flex; gap:12px; align-items:flex-start; border:2px dashed #b8e5d7; background:#f3fbf8;
+    border-radius:14px; padding:12px 16px; margin:18px 0; font-size:15.5px}
+  .moc-nghi .ic{font-size:30px; line-height:1}
+  .game{border:2px solid #d9ccff; background:linear-gradient(160deg,#ffffff,#f4efff)}
+  .game > h4 .tag{background:var(--purple)}
+  .chuc-mung{text-align:center; border:2px solid #b8e5d7; background:linear-gradient(135deg,#f3fbf8,#fff8e1);
+    border-radius:14px; padding:18px; margin:16px 0; font-size:18px}
+  .chuc-mung .to{font-size:40px; display:block; animation:pop .6s ease-out}
+  .bang-nv{width:100%; font-size:15px}
+  .bang-nv td:first-child{white-space:nowrap}
+  #khen{position:fixed; top:64px; right:16px; z-index:98; background:#fff; color:#0b5e47; border:2px solid #b8e5d7;
+    border-radius:14px; padding:8px 14px; font-size:15px; font-weight:600; box-shadow:0 8px 24px rgba(15,80,60,.18);
+    opacity:0; transform:translateY(-8px); transition:opacity .25s, transform .25s; pointer-events:none; max-width:78vw}
+  #khen.on{opacity:1; transform:none}
+
+  /* 8. o ghi du doan (data-ghi, khong cham dung sai) + xem lai (data-xem-lai) */
+  .ghi-q{font-weight:600; margin:0 0 6px}
+  .ghi textarea{display:block; width:100%; min-height:84px; font:inherit; font-size:16px; line-height:1.5; padding:8px 10px;
+    border-radius:10px; border:1px solid #e6cf9b; background:#fffdf6; resize:vertical}
+  .ghi textarea:focus{outline:none; border-color:var(--warm); box-shadow:0 0 0 3px #fde7b8}
+  .ghi-tt{font-size:14px; color:var(--muted); margin-top:4px}
+  .xem-lai{border:1px dashed #c9b8f3; background:#faf7ff; border-radius:12px; padding:10px 14px; margin:14px 0}
+  .xem-lai .noi{display:none; margin-top:6px; white-space:pre-wrap; background:#fff; border-left:4px solid var(--purple);
+    border-radius:0 8px 8px 0; padding:8px 12px}
+  .xem-lai.mo .noi{display:block; animation:hienra .3s}
+
+  /* 8b. noi theo (data-noi): nghe mau -> noi to N lan -> tu bam tung lan */
+  .noi-theo .noi-cau{font-size:19px; font-weight:600; margin:0 0 8px}
+  .noi-theo .noi-hang{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .noi-theo .lan{min-height:44px; min-width:92px; border-radius:999px; border:2px dashed #9fc0f5; background:#f5f9ff;
+    color:#1d4fa8; font:inherit; font-size:15px; font-weight:600; cursor:pointer; padding:4px 14px}
+  .noi-theo .lan[disabled]{opacity:.5; cursor:not-allowed}
+  .noi-theo .lan.da{border-style:solid; border-color:#2fa37f; background:#e8f8f1; color:#0b5e47; opacity:1}
+
+  /* bang ron chia buoi hoc + tien do tung buoi */
+  .buoi{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:26px 0 6px; padding:10px 16px; border-radius:14px;
+    background:linear-gradient(90deg,#2f6fdb,#6a4fd8); color:#fff}
+  .buoi .ten{font-size:18px; font-weight:700}
+  .buoi .mo-ta{font-size:14px; opacity:.92; flex:1; min-width:180px}
+  .buoi .dem{font-size:14px; font-weight:700; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.45);
+    border-radius:999px; padding:2px 12px; white-space:nowrap}
+  .buoi.du .dem{background:#fff; color:#0b7a5c}
+  .lam-lai{font:inherit; font-size:13px; padding:4px 10px; border-radius:8px; cursor:pointer; border:1px solid var(--line);
+    background:#fff; color:var(--muted)}
+  .da-luu{font-size:13px; color:var(--muted)}
+
+  /* ket qua mini-game */
+  .kq-game{display:none; margin:10px 0 4px; padding:10px 14px; border-radius:12px; background:#fff; border:2px solid #d9ccff; font-size:16px}
+  .kq-game.show{display:block; animation:hienra .3s}
+  .kq-game b.so{font-size:20px; color:#5b3fc0}
+  .game.cho-bat-dau [data-mcq] .opts, .game.cho-bat-dau [data-listen] .opts{opacity:.55}
+
+  /* canh nho minh hoa vi tri (gioi tu, chi duong): DO VAT ve bang CSS (giong nhau tren moi may),
+     chi con vat dung emoji (.m). Dat con vat theo do vat: bottom = 10 (san) + chieu cao phan do vat no cham */
+  .canh{position:relative; display:inline-block; width:150px; height:96px; background:#f5f8fc; border:1px dashed #c3cfdf;
+    border-radius:10px; margin:2px 10px 6px 0; vertical-align:middle; overflow:hidden}
+  .canh .san{position:absolute; left:0; right:0; bottom:0; height:10px; background:#e8dcc8; border-top:2px solid #c9b391}
+  .canh .m{position:absolute; font-size:26px; line-height:1; z-index:2}
+  .canh .m.sau{z-index:0}
+  .canh .v{position:absolute; font-size:40px; line-height:1}
+  .canh .hop{position:absolute; left:44px; bottom:10px; width:62px; height:38px; border:3px solid #a8743a; border-top:none;
+    background:rgba(214,166,98,.28); border-radius:0 0 6px 6px; z-index:1}
+  .canh .hop.kin{border-top:3px solid #a8743a; background:#e0b77a}
+  .canh .ghe{position:absolute; left:46px; bottom:10px; width:60px; height:44px; z-index:1}
+  .canh .ghe i, .canh .sofa i, .canh .tv i, .canh .ban i{position:absolute; display:block}
+  .canh .ghe i{background:#8d6a4a; border-radius:2px}
+  .canh .ghe .mat{left:0; right:0; top:16px; height:6px}
+  .canh .ghe .lung{left:0; top:-8px; width:6px; height:30px}
+  .canh .ghe .c1{left:2px; top:22px; width:5px; height:22px}
+  .canh .ghe .c2{right:2px; top:22px; width:5px; height:22px}
+  .canh .sofa{position:absolute; left:33px; bottom:10px; width:84px; height:42px; z-index:1}
+  .canh .sofa .lung{left:8px; right:8px; top:0; height:22px; background:#5a79c4; border-radius:8px 8px 2px 2px}
+  .canh .sofa .dem{left:0; right:0; top:18px; height:16px; background:#7593de; border-radius:6px}
+  .canh .sofa .tay1{left:0; top:10px; width:12px; height:24px; background:#4d6bb5; border-radius:6px}
+  .canh .sofa .tay2{right:0; top:10px; width:12px; height:24px; background:#4d6bb5; border-radius:6px}
+  .canh .sofa .ch1{left:8px; bottom:0; width:6px; height:8px; background:#33415f}
+  .canh .sofa .ch2{right:8px; bottom:0; width:6px; height:8px; background:#33415f}
+  .canh .tv{position:absolute; left:40px; bottom:10px; width:70px; height:56px; z-index:1}
+  .canh .tv .man{left:0; top:0; width:70px; height:44px; background:#34425c; border:4px solid #1c2433; border-radius:5px}
+  .canh .tv .chan{left:28px; bottom:0; width:14px; height:12px; background:#1c2433}
+  .canh .cua{position:absolute; left:52px; bottom:10px; width:46px; height:72px; background:#c98b52; border:3px solid #8a5a2b;
+    border-bottom:none; border-radius:5px 5px 0 0; z-index:1}
+  .canh .cua::after{content:""; position:absolute; left:7px; top:36px; width:7px; height:7px; border-radius:50%; background:#f3d27a}
+  .canh .ban{position:absolute; left:35px; bottom:10px; width:80px; height:40px; z-index:1}
+  .canh .ban .mat{left:0; right:0; top:0; height:7px; background:#9b6b3f; border-radius:2px}
+  .canh .ban .c1{left:6px; top:7px; width:6px; height:33px; background:#7d5430}
+  .canh .ban .c2{right:6px; top:7px; width:6px; height:33px; background:#7d5430}
+  .mcq-canh{display:flex; flex-wrap:wrap; align-items:center; gap:4px}
+
+  @media (max-width:640px){
+    .toolbar .wrap{padding-top:6px; padding-bottom:6px; gap:6px; padding-left:10px; padding-right:10px}
+    .toolbar .chips{flex:1 1 100%; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none; padding:2px 0}
+    .toolbar .chips::-webkit-scrollbar{display:none}
+    .chip{white-space:nowrap; flex:0 0 auto; padding:5px 10px}
+    .toolbar .tbtn{white-space:nowrap; flex:0 0 auto}
+    .speed{font-size:0; gap:4px}
+    .speed button{font-size:13px; padding:4px 9px}
+    .progress .nv-chu{display:none}
+    .say{min-height:38px}
+    .say.icon{min-width:40px; min-height:40px; justify-content:center}
+    .say.mini{min-height:36px}
+    .fl input{min-height:36px}
+    .fl .btn{min-height:36px}
+    .canh{margin-right:0}
+    .pr-wrap{gap:8px 8px}
+    .pc{padding:6px 8px; font-size:15.5px}
+    .fc-grid{grid-template-columns:repeat(2,1fr); gap:10px}
+    .fc{height:140px}
+    .fc-w{font-size:19px}
+    h2 .nv{float:none; display:inline-block; margin-left:6px}
+    .progress .track{width:64px}
+    #khen{top:auto; bottom:74px; right:50%; transform:translate(50%,8px)}
+    #khen.on{transform:translate(50%,0)}
+  }
+
+  body.no-motion *{animation:none !important; transition:none !important}
+  @media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+  @media print{
+    .toolbar,.btn,.tbtn,.fc-bar,#khen,#nowplay,.say::before{display:none !important}
+    .fc-lat,.hd-bam,.pr-dem,.tm,.kq-game,.ghi-tt,.lam-lai,.da-luu,.buoi .dem,.noi-hang,h2 .nv{display:none !important}
+    .od-line:empty::before{content:""}
+    .hide.in-hien{display:block !important}
+    .xem-lai .noi{display:block}
+    .buoi{background:none; color:inherit; border:2px solid #999}
+    .say{border:none; background:none; padding:0; color:inherit}
+    .say.icon,.say.big,.say-all{display:none}
+    section,.act{break-inside:avoid; box-shadow:none}
+    .hint{display:block}
+    .fc{height:auto; perspective:none}
+    .fc-in{position:static; transform:none !important}
+    .fc-mat{position:static; transform:none !important; backface-visibility:visible; margin-bottom:4px}
+    .act.done::after{display:none}
+  }
+</style>
+
+<!-- CSS RIÊNG CỦA BÀI — chỉ khi thật sự cần cho một bài. Thứ gì dùng lại được thì đưa vào CSS chung ở trên. -->
+<style>
+
+</style>
+</head>
+<body data-audio-dir="audio-unit-02/">
+
+<header class="top" data-audio-dir="audio-unit-02/">
+  <div class="wrap">
+    <h1>UNIT 2. MY HOUSE</h1>
+    <p class="sub">Bài giảng Tiếng Anh 6 — Global Success, tập một, trang 16–25</p>
+    <span class="badge">Bấm nút ▶ để nghe phát âm chuẩn</span>
+    <span class="badge">Làm xong nhiệm vụ nào, ⭐ sáng nhiệm vụ đó</span>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="wrap">
+    <a class="chip" href="#s1">Khởi động</a>
+    <a class="chip" href="#s2">Hội thoại</a>
+    <a class="chip" href="#s3">Từ vựng</a>
+    <a class="chip" href="#s4">Phát âm</a>
+    <a class="chip" href="#s5">Sở hữu 's</a>
+    <a class="chip" href="#s6">Giới từ</a>
+    <a class="chip" href="#s7">Gợi ý</a>
+    <a class="chip" href="#s8">Đọc</a>
+    <a class="chip" href="#s9">Nghe – Viết</a>
+    <a class="chip" href="#s10">Ôn tập</a>
+    <a class="chip" href="#s11">Mini-game</a>
+    <span class="spacer"></span>
+    <span class="progress" data-progress><span class="track"><i></i></span><span class="txt"></span></span>
+    <span class="speed">
+      Tốc độ:
+      <button id="spd-slow" type="button">Chậm</button>
+      <button id="spd-norm" type="button" class="on">Bình thường</button>
+    </span>
+    <button class="tbtn" type="button" data-motion aria-pressed="false">Tắt chuyển động</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<noscript>
+  <section class="box warn"><span class="label">Trang này cần bật JavaScript</span>
+  Nút nghe và các nhiệm vụ bấm chọn sẽ không chạy. Em đọc bản Markdown cùng tên (đuôi <b>.md</b>) thay thế nhé.</section>
+</noscript>
+
+<!-- ============================== BUỔI 1 ============================== -->
+<div class="buoi"><span class="ten">📅 Buổi 1</span><span class="mo-ta">Khởi động · Hội thoại · Từ vựng · Phát âm — khoảng 40 phút. Làm đến đâu, ⭐ tự lưu đến đó.</span></div>
+
+<!-- ============================== 1. KHỞI ĐỘNG ============================== -->
+<section id="s1">
+  <h2>1. Khởi động — Nhà em thế nào?</h2>
+
+  <div class="mo-dau">
+    <span class="label">🏠 Đoán xem nào!</span>
+    <p>Nhà em là <b>nhà ống ngoài phố</b>, <b>căn hộ trong chung cư</b>, hay <b>nhà ở quê</b> có sân,
+    có vườn? Trong nhà, <b>phòng nào em thích nhất</b> — và trong phòng đó có gì? Em thử nghĩ bằng
+    tiếng Việt trước. Học xong Unit này, em sẽ kể được tất cả bằng tiếng Anh cho một người bạn ở nước ngoài.</p>
+  </div>
+
+  <p>Unit 2 dạy em: tên <b>các loại nhà, các phòng và đồ đạc</b>; hai âm cuối <b>/s/</b> và
+  <b>/z/</b>; <b>sở hữu cách 's</b> (<i>Elena's room</i> — phòng của Elena); <b>giới từ chỉ vị trí</b>
+  (<i>in, on, under…</i>); và cách <b>đưa ra gợi ý</b> (<i>How about…? / Let's…</i>).</p>
+
+  <table class="bang-nv">
+    <tr><th>Nhiệm vụ</th><th>Em sẽ làm gì</th></tr>
+    <tr><td colspan="2"><b>Buổi 1 — 8 ⭐</b></td></tr>
+    <tr><td>⭐ 1</td><td>Lật thẻ: ba loại nhà</td></tr>
+    <tr><td>⭐ 2–3</td><td>Hội thoại: nối câu hỏi với câu đáp · tai thính: ai đang nói?</td></tr>
+    <tr><td>⭐ 4–6</td><td>Từ vựng: lật thẻ các phòng, đồ đạc · nối từ với nghĩa</td></tr>
+    <tr><td>⭐ 7–8</td><td>Phát âm: xếp từ vào cột /s/ – /z/ · nghe tai: một cái hay nhiều cái?</td></tr>
+    <tr><td colspan="2"><b>Buổi 2 — 8 ⭐</b></td></tr>
+    <tr><td>⭐ 9–11</td><td>Sở hữu 's: xếp câu · thám tử hai loại 's · điền từ</td></tr>
+    <tr><td>⭐ 12–14</td><td>Giới từ: con mèo trốn ở đâu? · đừng quên <i>of / to / and</i> · xếp câu</td></tr>
+    <tr><td>⭐ 15–16</td><td>Gợi ý <i>How about…? / Let's…</i> · <i>There is</i> hay <i>There are</i>?</td></tr>
+    <tr><td colspan="2"><b>Buổi 3 — 6 ⭐</b></td></tr>
+    <tr><td>⭐ 17–19</td><td>Đọc thư của Nick từ Đà Lạt: đoán trước khi đọc · đoán nghĩa từ · xếp câu</td></tr>
+    <tr><td>⭐ 20–21</td><td>Chiến thuật nghe · khung một bức thư điện tử</td></tr>
+    <tr><td>⭐ 22</td><td>Mini-game: Ai nhanh hơn đồng hồ? (có kỉ lục để phá!)</td></tr>
+  </table>
+  <p class="small muted">Trang tự lưu ⭐ và chữ em ghi trên máy này — hôm nay làm Buổi 1, mai mở lại làm tiếp. Muốn làm lại từ
+  đầu thì bấm <b>↺</b> trên thanh công cụ.</p>
+
+  <div class="act" data-act="loai-nha">
+    <h4><span class="tag">NHIỆM VỤ 1</span> Ba loại nhà — bấm 🔊 nghe, đoán nghĩa, rồi lật thẻ</h4>
+    <div data-flip>
+      <div class="fc" data-a="voc-town-house" data-t="town house" data-ipa="/ˈtaʊn haʊs/" data-emo="🏘️">nhà phố</div>
+      <div class="fc" data-a="voc-country-house" data-t="country house" data-ipa="/ˌkʌntri ˈhaʊs/" data-emo="🏡">nhà ở vùng quê</div>
+      <div class="fc" data-a="voc-flat" data-t="flat" data-ipa="/flæt/" data-emo="🏢">căn hộ</div>
+    </div>
+  </div>
+  <p class="small">Liên hệ nhà mình: dãy <b>nhà ống</b> san sát ở Hà Nội, TP. Hồ Chí Minh là <i>town house</i>;
+  <b>căn hộ chung cư</b> là <i>flat</i>; nhà ông bà ở quê có sân, có gà là <i>country house</i>.</p>
+</section>
+
+<!-- ============================== 2. GETTING STARTED ============================== -->
+<section id="s2">
+  <h2>2. Getting Started — <i>A look inside</i> 🎧 <span class="muted small">(Track 10, tập một)</span></h2>
+
+  <p>Mi (Việt Nam) đang gọi video cho Nick (bạn nước ngoài của Mi). Nick ngồi trong một căn phòng rất to…
+  nhưng đó có phải phòng của Nick không? Bấm <b>Nghe cả hội thoại</b>, hai giọng khác nhau cho em nhận ra ai đang nói.</p>
+
+  <div class="box tip">
+    <span class="label">Tên người Việt đọc theo tiếng Việt</span>
+    <p>Bạn <b>Mi</b> là người Việt, nên tên bạn đọc là "Mi" đúng như tiếng Việt — kể cả khi Nick nói
+    tiếng Anh. Tên Nick, Elena là tên nước ngoài thì đọc theo tiếng Anh.
+      <button class="say mini" data-a="ten-mi" data-lang="vi-VN" data-t="Mi">Mi</button></p>
+  </div>
+
+  <p><button class="say say-all" data-all="#dlg-gs">Nghe cả hội thoại</button></p>
+  <div id="dlg-gs">
+    <div class="dlg"><span class="who f">Mi:</span> <span class="en">Wow! Your room looks so big, Nick.</span>
+      <button class="say line icon" data-a="gs-01" data-t="Wow! Your room looks so big, Nick."></button></div>
+    <div class="dlg"><span class="who">Nick:</span> <span class="en">It's <b>Elena's</b> room. She's my sister.</span>
+      <button class="say line icon" data-a="gs-02" data-t="It's Elena's room. She's my sister."></button></div>
+    <div class="dlg"><span class="who f">Mi:</span> <span class="en">I see. Is there a TV <b>behind</b> you?</span>
+      <button class="say line icon" data-a="gs-03" data-t="I see. Is there a TV behind you?"></button></div>
+    <div class="dlg"><span class="who">Nick:</span> <span class="en">Yes, there is. Where do you live, Mi?</span>
+      <button class="say line icon" data-a="gs-04" data-t="Yes, there is. Where do you live, Mi?"></button></div>
+    <div class="dlg"><span class="who f">Mi:</span> <span class="en">I live in a <b>town house</b>. And you?</span>
+      <button class="say line icon" data-a="gs-05" data-t="I live in a town house. And you?"></button></div>
+    <div class="dlg"><span class="who">Nick:</span> <span class="en">I live in a <b>country house</b>. Who do you live with?</span>
+      <button class="say line icon" data-a="gs-06" data-t="I live in a country house. Who do you live with?"></button></div>
+    <div class="dlg"><span class="who f">Mi:</span> <span class="en">My parents and younger brother. We're moving to a <b>flat</b> next month!</span>
+      <button class="say line icon" data-a="gs-07" data-t="My parents and younger brother. We're moving to a flat next month!"></button></div>
+    <div class="dlg"><span class="who">Nick:</span> <span class="en">Are you?</span>
+      <button class="say line icon" data-a="gs-08" data-t="Are you?"></button></div>
+    <div class="dlg"><span class="who f">Mi:</span> <span class="en">Yes. My aunt lives near there, and I can play with my cousin.</span>
+      <button class="say line icon" data-a="gs-09" data-t="Yes. My aunt lives near there, and I can play with my cousin."></button></div>
+    <div class="dlg"><span class="who">Nick:</span> <span class="en">Are there many rooms in your new flat?</span>
+      <button class="say line icon" data-a="gs-10" data-t="Are there many rooms in your new flat?"></button></div>
+    <div class="dlg"><span class="who f">Mi:</span> <span class="en">Yes, there are. There's a <b>living room</b>, three <b>bedrooms</b>, a <b>kitchen</b> and two <b>bathrooms</b>.</span>
+      <button class="say line icon" data-a="gs-11" data-t="Yes, there are. There's a living room, three bedrooms, a kitchen and two bathrooms."></button></div>
+  </div>
+
+  <div class="box tip">
+    <span class="label">Cả Unit nằm gọn trong mấy chữ in đậm</span>
+    <ul>
+      <li><i><b>Elena's</b> room</i> → <b>sở hữu cách 's</b> (mục 5)</li>
+      <li><i>a TV <b>behind</b> you</i> → <b>giới từ chỉ vị trí</b> (mục 6)</li>
+      <li><i>town house, country house, flat, living room, bedrooms…</i> → <b>từ vựng</b> (mục 3)</li>
+    </ul>
+    <p class="small">Cô giải nghĩa nhanh: <i>We're moving to a flat next month!</i> = Tháng sau nhà tớ chuyển
+    đến một căn hộ! Dạng <i>We're moving</i> em sẽ học kĩ ở Unit 3 — hôm nay chỉ cần hiểu nghĩa.</p>
+  </div>
+
+  <div class="act" data-act="hoi-dap" data-nguon="sgk">
+    <h4><span class="tag">NHIỆM VỤ 2</span> Nối lượt lời bên trái với câu đáp đúng trong hội thoại — rồi nói theo Mi</h4>
+    <p class="small">Để ý hai cặp <i>Is there…? – Yes, there <b>is</b>.</i> và <i>Are there…? – Yes, there <b>are</b>.</i> Hỏi bằng từ nào thì đáp bằng từ ấy!</p>
+    <div data-pair data-ok="Nối đúng hết rồi! Em đọc to từng cặp, đổi vai với người nhà nhé.">
+      <div class="cap" data-a="q-tv" data-t="Is there a TV behind you?" data-goi-y="Câu hỏi bắt đầu bằng Is there — câu đáp phải có từ nào?"><span>Is there a TV behind you?</span><span>Yes, there is.</span></div>
+      <div class="cap" data-a="q-live" data-t="Where do you live, Mi?"><span>Where do you live, Mi?</span><span>I live in a town house. And you?</span></div>
+      <div class="cap" data-a="q-with" data-t="Who do you live with?" data-goi-y="Who hỏi về NGƯỜI. Câu đáp nào nói về người trong gia đình?"><span>Who do you live with?</span><span>My parents and younger brother.</span></div>
+      <div class="cap" data-a="gs-10" data-t="Are there many rooms in your new flat?" data-goi-y="Câu hỏi bắt đầu bằng Are there — câu đáp phải có từ nào?"><span>Are there many rooms in your new flat?</span><span>Yes, there are.</span></div>
+      <div class="cap" data-a="q-moving" data-t="We're moving to a flat next month!"><span>We're moving to a flat next month!</span><span>Are you?</span></div>
+    </div>
+    <p class="small">Nối xong thì <b>nói theo Mi</b>: đây là câu em sẽ dùng để kể về nhà mình (đổi <i>town house</i> thành loại nhà của em).</p>
+    <div data-noi data-a="gs-05" data-t="I live in a town house. And you?" data-lan="3">I live in a town house. And you?</div>
+  </div>
+
+  <div class="act" data-act="ai-noi" data-nguon="sgk">
+    <h4><span class="tag">NHIỆM VỤ 3</span> Tai thính: nghe một câu trong hội thoại — ai đang nói?</h4>
+    <p class="small">Không nhìn lên hội thoại nhé! Hội thoại nhắc tới ba bạn: <b>Mi</b>, <b>Nick</b> và <b>Elena</b>.
+    Nghe cả giọng lẫn nội dung rồi chọn người nói.</p>
+    <div data-listen data-a="gs-07" data-t="My parents and younger brother. We're moving to a flat next month!" data-opts="Mi;Nick;Elena" data-answer="Mi"
+         data-hint-sai='{"Nick":"Nghe lại: người nói sắp chuyển nhà đến một căn hộ. Trong hội thoại, ai sắp chuyển nhà?","Elena":"Elena có nói câu nào trong hội thoại không? Nghe lại: người nói đang kể cho Nick về gia đình mình."}'>Câu 1: Ai đang nói?</div>
+    <div data-listen data-a="gs-02" data-t="It's Elena's room. She's my sister." data-opts="Mi;Nick;Elena" data-answer="Nick"
+         data-hint-sai='{"Mi":"Nghe lại: người nói đang giới thiệu căn phòng mình đang ngồi. Ai đang ngồi trong căn phòng to?","Elena":"Người nói kể về Elena như kể về một người khác. Elena có tự gọi mình là my sister không?"}'>Câu 2: Ai đang nói?</div>
+    <div data-listen data-tron="2" data-a="gs-09" data-t="Yes. My aunt lives near there, and I can play with my cousin." data-opts="Mi;Nick;Elena" data-answer="Mi"
+         data-hint-sai='{"Nick":"Nghe lại: người nói có cô/dì sống gần nhà mới. Nhà mới là của ai?","Elena":"Elena không nói câu nào trong hội thoại. Người nói đang kể với Nick về nhà mới của mình."}'>Câu 3: Ai đang nói?</div>
+    <div data-listen data-a="gs-04" data-t="Yes, there is. Where do you live, Mi?" data-opts="Mi;Nick;Elena" data-answer="Nick"
+         data-hint-sai='{"Mi":"Nghe lại cuối câu: người nói gọi tên ai? Mình không tự gọi tên mình khi hỏi.","Elena":"Giọng này là giọng nam hay giọng nữ? Elena là một bạn nữ."}'>Câu 4: Ai đang nói?</div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây:</b> đứng dậy, chỉ tay ra cửa sổ về phía nhà em
+  và nói to như Mi: <i>I live in a town house.</i> — hoặc đổi thành <i>flat</i> / <i>country house</i> cho đúng nhà em. Nói hai lần!</div></div>
+
+  <h3>Bài tập SGK — Getting Started</h3>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 17).</span> <b>Which family members does Mi talk about? Put a tick (✓).</b></p>
+    <p>1. parents ✓ <span class="muted small">(SGK đánh sẵn làm mẫu)</span> &nbsp;·&nbsp; 2. sister &nbsp;·&nbsp; 3. brother &nbsp;·&nbsp; 4. aunt &nbsp;·&nbsp; 5. cousin</p>
+    <button class="btn" type="button" data-hint="#gy-gs2">Gợi ý</button>
+    <div class="hint" id="gy-gs2">Chỉ đọc lượt lời của <b>Mi</b>, không đọc lượt của Nick. Nick nói "She's my sister" — vậy
+    Elena là người nhà của ai? Với từng từ 2–5, em tìm xem Mi có nói từ đó (hoặc từ cùng nghĩa) không.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 17).</span> <b>Read the conversation again. Complete each sentence with ONE word.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">Elena is Nick's ______.</span></li>
+      <li><span class="n">2.</span><span class="tx">There is a ______ in Elena's room.</span></li>
+      <li><span class="n">3.</span><span class="tx">Now Mi lives in a ______ house.</span></li>
+      <li><span class="n">4.</span><span class="tx">Nick lives in a ______ house.</span></li>
+      <li><span class="n">5.</span><span class="tx">Mi's new flat has ______ bedrooms.</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-gs3">Gợi ý</button>
+    <div class="hint" id="gy-gs3">Mỗi chỗ trống <b>đúng một từ</b>. Tìm trong hội thoại câu chứa từ khoá của mỗi câu
+    (Elena, TV, Mi lives, Nick lives, bedrooms) rồi chép đúng một từ. Câu 3 cẩn thận: chữ <b>Now</b> — bây giờ Mi
+    sống ở đâu, còn tháng sau mới chuyển đi đâu?</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 17).</span> <b>Complete the word web. Use the words from the conversation and the ones you know.</b></p>
+    <p class="small">Sơ đồ: ô giữa <b>TYPES OF HOUSE</b>, ô đầu đã có <i>town house</i>, ba ô còn trống.</p>
+    <button class="btn" type="button" data-hint="#gy-gs4">Gợi ý</button>
+    <div class="hint" id="gy-gs4">Đọc lại lượt lời của Mi và Nick: mỗi bạn nói mình sống ở đâu, và Mi sắp chuyển đến đâu?
+    Chép đúng cụm từ chỉ loại nhà. Ô cuối dùng từ em biết.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 5 (trang 17).</span> <b>Work in groups. Ask your friends where they live. Then report their answers.</b></p>
+    <div class="dlg"><span class="who">A:</span> <span class="en">Where do you live?</span>
+      <button class="say line icon" data-a="sp-05" data-t="Where do you live?"></button></div>
+    <div class="dlg"><span class="who f">B:</span> <span class="en">I live in a flat.</span>
+      <button class="say line icon" data-a="sp-06" data-t="I live in a flat."></button></div>
+    <button class="btn" type="button" data-hint="#gy-gs5">Gợi ý</button>
+    <div class="hint" id="gy-gs5">Hỏi 3 bạn (hoặc bố, mẹ, anh chị) câu <i>Where do you live?</i>. Khi báo cáo lại, người
+    được kể là <b>he / she</b> — động từ <i>live</i> cần thêm gì? (Nhớ lại Unit 1.)</div>
+  </div>
+</section>
+
+<!-- ============================== 3. TỪ VỰNG ============================== -->
+<section id="s3">
+  <h2>3. Từ vựng — các phòng và đồ đạc <span class="muted small">(A Closer Look 1, trang 17–18)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🔎 Đi một vòng quanh nhà</span>
+    <p>Từ cửa vào, em đi qua những phòng nào? Phòng nào có tủ lạnh, phòng nào có giường? Cùng
+    học tên tiếng Anh của chúng — nhớ bấm 🔊 và <b>đọc to theo</b>, đọc thầm thì mau quên lắm.</p>
+  </div>
+
+  <div class="act" data-act="phong">
+    <h4><span class="tag">NHIỆM VỤ 4</span> Các phòng trong nhà — nghe, đoán, lật</h4>
+    <div data-flip>
+      <div class="fc" data-a="voc-hall" data-t="hall" data-ipa="/hɔːl/" data-emo="🚪">sảnh</div>
+      <div class="fc" data-a="thing-kitchen" data-t="kitchen" data-emo="🍳">phòng bếp</div>
+      <div class="fc" data-a="thing-bedroom" data-t="bedroom" data-emo="🛏️">phòng ngủ</div>
+      <div class="fc" data-a="thing-bathroom" data-t="bathroom" data-emo="🛁">phòng tắm</div>
+      <div class="fc" data-a="thing-living-room" data-t="living room">phòng khách</div>
+    </div>
+  </div>
+
+  <div class="act" data-act="do-dac">
+    <h4><span class="tag">NHIỆM VỤ 5</span> Đồ đạc trong nhà — nghe, đoán, lật (bấm ⇄ để tự kiểm ngược)</h4>
+    <div data-flip>
+      <div class="fc" data-a="thing-lamp" data-t="lamp">cái đèn (đèn bàn, đèn cây)</div>
+      <div class="fc" data-a="thing-sofa" data-t="sofa" data-emo="🛋️">ghế sofa</div>
+      <div class="fc" data-a="thing-picture" data-t="picture" data-emo="🖼️">bức tranh</div>
+      <div class="fc" data-a="thing-fridge" data-t="fridge">tủ lạnh</div>
+      <div class="fc" data-a="thing-shower" data-t="shower" data-emo="🚿">vòi hoa sen</div>
+      <div class="fc" data-a="thing-toilet" data-t="toilet" data-emo="🚽">bồn cầu</div>
+      <div class="fc" data-a="voc-sink" data-t="sink" data-ipa="/sɪŋk/">bồn rửa bát</div>
+      <div class="fc" data-a="voc-cupboard" data-t="cupboard" data-ipa="/ˈkʌbəd/">tủ đựng bát đĩa / quần áo</div>
+      <div class="fc" data-a="voc-dishwasher" data-t="dishwasher" data-ipa="/ˈdɪʃwɒʃə/">máy rửa bát</div>
+      <div class="fc" data-a="voc-chest-of-drawers" data-t="chest of drawers" data-ipa="/ˌtʃest əv ˈdrɔːz/">tủ có ngăn kéo</div>
+    </div>
+  </div>
+
+  <div class="box warn">
+    <span class="label">⚠️ Hai từ hay đọc sai</span>
+    <p><b>cupboard</b> đọc là /ˈkʌbəd/ — chữ <b>p</b> câm, không đọc "cấp-boa".
+      <button class="say mini" data-a="voc-cupboard" data-t="cupboard">cupboard</button>
+    · <b>chest of drawers</b> — chữ <i>of</i> đọc lướt rất nhẹ /əv/.
+      <button class="say mini" data-a="voc-chest-of-drawers" data-t="chest of drawers">chest of drawers</button></p>
+  </div>
+
+  <h3>Glossary Unit 2 <span class="muted small">(phiên âm chính thức của sách)</span></h3>
+  <table>
+    <tr><th style="width:190px">Từ</th><th style="width:50px">Loại</th><th>Phiên âm</th><th>Nghĩa</th></tr>
+    <tr><td><button class="say mini" data-a="voc-between" data-t="between">between</button></td><td>pre</td><td class="ipa">/bɪˈtwiːn/</td><td>ở giữa</td></tr>
+    <tr><td><button class="say mini" data-a="voc-chest-of-drawers" data-t="chest of drawers">chest of drawers</button></td><td>n</td><td class="ipa">/ˌtʃest əv ˈdrɔːz/</td><td>tủ có ngăn kéo</td></tr>
+    <tr><td><button class="say mini" data-a="voc-cooker" data-t="cooker">cooker</button></td><td>n</td><td class="ipa">/ˈkʊkə/</td><td>bếp</td></tr>
+    <tr><td><button class="say mini" data-a="voc-country-house" data-t="country house">country house</button></td><td>n</td><td class="ipa">/ˌkʌntri ˈhaʊs/</td><td>nhà ở vùng quê</td></tr>
+    <tr><td><button class="say mini" data-a="voc-crazy" data-t="crazy">crazy</button></td><td>adj</td><td class="ipa">/ˈkreɪzi/</td><td>kì lạ, lạ thường</td></tr>
+    <tr><td><button class="say mini" data-a="voc-cupboard" data-t="cupboard">cupboard</button></td><td>n</td><td class="ipa">/ˈkʌbəd/</td><td>tủ đựng bát đĩa / quần áo</td></tr>
+    <tr><td><button class="say mini" data-a="voc-department-store" data-t="department store">department store</button></td><td>n</td><td class="ipa">/dɪˈpɑːtmənt stɔː/</td><td>cửa hàng bách hoá</td></tr>
+    <tr><td><button class="say mini" data-a="voc-dishwasher" data-t="dishwasher">dishwasher</button></td><td>n</td><td class="ipa">/ˈdɪʃwɒʃə/</td><td>máy rửa bát</td></tr>
+    <tr><td><button class="say mini" data-a="voc-flat" data-t="flat">flat</button></td><td>n</td><td class="ipa">/flæt/</td><td>căn hộ</td></tr>
+    <tr><td><button class="say mini" data-a="voc-furniture" data-t="furniture">furniture</button></td><td>n</td><td class="ipa">/ˈfɜːnɪtʃə/</td><td>đồ đạc trong nhà</td></tr>
+    <tr><td><button class="say mini" data-a="voc-hall" data-t="hall">hall</button></td><td>n</td><td class="ipa">/hɔːl/</td><td>sảnh</td></tr>
+    <tr><td><button class="say mini" data-a="voc-in-front-of" data-t="in front of">in front of</button></td><td>pre</td><td class="ipa">/ɪn frʌnt əv/</td><td>ở đằng trước, phía trước</td></tr>
+    <tr><td><button class="say mini" data-a="voc-next-to" data-t="next to">next to</button></td><td>pre</td><td class="ipa">/ˈnekst tə/</td><td>bên cạnh</td></tr>
+    <tr><td><button class="say mini" data-a="voc-shelf" data-t="shelf">shelf</button></td><td>n</td><td class="ipa">/ʃelf/</td><td>kệ, giá</td></tr>
+    <tr><td><button class="say mini" data-a="voc-sink" data-t="sink">sink</button></td><td>n</td><td class="ipa">/sɪŋk/</td><td>bồn rửa bát</td></tr>
+    <tr><td><button class="say mini" data-a="voc-strange" data-t="strange">strange</button></td><td>adj</td><td class="ipa">/streɪndʒ/</td><td>kì lạ</td></tr>
+    <tr><td><button class="say mini" data-a="voc-town-house" data-t="town house">town house</button></td><td>n</td><td class="ipa">/ˈtaʊn haʊs/</td><td>nhà phố</td></tr>
+    <tr><td><button class="say mini" data-a="voc-wardrobe" data-t="wardrobe">wardrobe</button></td><td>n</td><td class="ipa">/ˈwɔːdrəʊb/</td><td>tủ đựng quần áo</td></tr>
+  </table>
+
+  <div class="act" data-act="noi-nghia">
+    <h4><span class="tag">NHIỆM VỤ 6</span> Nối từ với nghĩa (các từ của Glossary)</h4>
+    <div data-pair data-ok="Giỏi lắm! Em đọc to lại sáu từ, mỗi từ hai lần nhé.">
+      <div class="cap" data-a="voc-wardrobe" data-t="wardrobe"><span>wardrobe</span><span>tủ đựng quần áo</span></div>
+      <div class="cap" data-a="voc-shelf" data-t="shelf"><span>shelf</span><span>kệ, giá</span></div>
+      <div class="cap" data-a="voc-cooker" data-t="cooker" data-goi-y="cooker là một đồ vật để nấu ăn, không phải một căn phòng hay một người."><span>cooker</span><span>bếp</span></div>
+      <div class="cap" data-a="voc-furniture" data-t="furniture"><span>furniture</span><span>🪑 đồ đạc trong nhà</span></div>
+      <div class="cap" data-a="voc-department-store" data-t="department store"><span>department store</span><span>🏬 cửa hàng bách hoá</span></div>
+      <div class="cap" data-a="voc-crazy" data-t="crazy"><span>crazy</span><span>🤪 kì lạ, lạ thường</span></div>
+    </div>
+  </div>
+
+  <div class="box warn">
+    <span class="label">⚠️ cooker không phải "người nấu ăn"</span>
+    <p>Nhiều bạn đoán <i>cooker</i> là đầu bếp vì có <i>cook</i> (nấu) + <i>-er</i>. Nhưng theo sách, <b>cooker = bếp</b>
+    (cái bếp để nấu). Học theo Glossary, đừng đoán theo mặt chữ.</p>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây:</b> đứng dậy, nhìn quanh nhà em, chỉ vào
+  <b>3 đồ vật</b> và gọi tên bằng tiếng Anh (<i>sofa, lamp, fridge…</i> — chỉ dùng từ vừa học). Gọi được cả 3 là em xịn rồi!</div></div>
+
+  <h3>Bài tập SGK — A Closer Look 1 (Vocabulary)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 1 (trang 17).</span> <b>Look at the house. Name the rooms in it.</b></p>
+    <p><i>hall · kitchen · bedroom · bathroom · living room</i></p>
+    <p class="small">Tranh SGK: mặt cắt ngôi nhà hai tầng, ô <b>a. hall</b> đã điền sẵn, bốn ô b–e để trống.</p>
+    <button class="btn" type="button" data-hint="#gy-a1">Gợi ý</button>
+    <div class="hint" id="gy-a1">Em mở SGK trang 17, nhìn tranh. Mỗi phòng có một đồ vật "đặc trưng" — em tìm đồ vật ấy rồi
+    tự hỏi: phòng này dùng để làm gì (ngủ, tắm, nấu ăn, ngồi chơi)? Rồi lật lại Nhiệm vụ 4.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 18).</span> <b>Name the things in each room in 1. Use the word list below. (You may use a word more than once.)</b></p>
+    <p><i>lamp · toilet · picture · cupboard · sink · sofa · dishwasher · fridge · shower · chest of drawers</i></p>
+    <button class="btn" type="button" data-hint="#gy-a2">Gợi ý</button>
+    <div class="hint" id="gy-a2">Kẻ 5 cột trong vở theo 5 phòng a–e. Nhìn tranh SGK, thấy đồ gì trong phòng nào thì chép vào cột đó.
+    Để ý câu <i>You may use a word more than once</i>: có từ xuất hiện ở hơn một phòng.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 18).</span> <b>Think of a room in your house. In pairs, ask and answer questions to guess it.</b></p>
+    <p><button class="say say-all" data-all="#vd-a3">Nghe ví dụ</button></p>
+    <div id="vd-a3">
+      <div class="dlg"><span class="who">A:</span> <span class="en">What's in your room?</span>
+        <button class="say line icon" data-a="sp-01" data-t="What's in your room?"></button></div>
+      <div class="dlg"><span class="who f">B:</span> <span class="en">A sofa and a television.</span>
+        <button class="say line icon" data-a="sp-02" data-t="A sofa and a television."></button></div>
+      <div class="dlg"><span class="who">A:</span> <span class="en">Is it the living room?</span>
+        <button class="say line icon" data-a="sp-03" data-t="Is it the living room?"></button></div>
+      <div class="dlg"><span class="who f">B:</span> <span class="en">Yes.</span>
+        <button class="say line icon" data-a="sp-04" data-t="Yes."></button></div>
+    </div>
+    <button class="btn" type="button" data-hint="#gy-a3">Gợi ý</button>
+    <div class="hint" id="gy-a3">Chơi "Đoán phòng" với người nhà: em nghĩ một phòng, chỉ nói <b>hai đồ vật</b> trong đó.
+    Người kia đoán <i>Is it the …?</i> Đổi vai. Chọn đồ vật "khó" để đố cho vui!</div>
+  </div>
+</section>
+
+<!-- ============================== 4. PHÁT ÂM ============================== -->
+<section id="s4">
+  <h2>4. Phát âm: âm cuối /s/ và /z/ <span class="muted small">(A Closer Look 1, bài 4 🎧 Track 11)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">✋ Thí nghiệm cổ họng</span>
+    <p>Đặt nhẹ bàn tay lên cổ. Kêu dài "<b>sssss</b>" như rắn — tay có rung không? Giờ kêu "<b>zzzzz</b>" như
+    ong bay — thấy khác chưa? <b>/s/ không rung, /z/ rung.</b> Đuôi <i>-s</i> của danh từ số nhiều lúc đọc /s/, lúc đọc /z/ đấy!</p>
+  </div>
+
+  <p>So từng cặp <b>một cái – nhiều cái</b>. Nghe kĩ phần đuôi:</p>
+  <div class="wordgrid">
+    <button class="say" data-a="thing-lamp" data-t="lamp">lamp</button>
+    <button class="say" data-a="pr-lamps" data-t="lamps">lamps</button>
+    <button class="say" data-a="thing-sofa" data-t="sofa">sofa</button>
+    <button class="say" data-a="pr-sofas" data-t="sofas">sofas</button>
+    <button class="say" data-a="thing-room" data-t="room">room</button>
+    <button class="say" data-a="pr-rooms" data-t="rooms">rooms</button>
+  </div>
+
+  <div class="act" data-act="xep-am" data-mo-sau="#bang-sz">
+    <h4><span class="tag">NHIỆM VỤ 7</span> Nghe từng thẻ, đặt tay lên cổ, rồi xếp vào đúng cột</h4>
+    <div data-sort data-cols="/s/;/z/" data-ok="Tai và tay em đều tinh! /s/ xì hơi, /z/ rung cổ.">
+      <span data-col="/s/" data-a="pr-lamps" data-t="lamps">lam<b>ps</b></span>
+      <span data-col="/z/" data-a="pr-cupboards" data-t="cupboards" data-goi-y="Âm ngay trước đuôi -s là âm rung hay âm xì hơi? Đặt tay lên cổ đọc lại.">cupboar<b>ds</b></span>
+      <span data-col="/s/" data-a="pr-sinks" data-t="sinks">sin<b>ks</b></span>
+      <span data-col="/z/" data-a="pr-sofas" data-t="sofas" data-goi-y="Có thẻ tận cùng bằng nguyên âm trước đuôi -s — nguyên âm luôn rung đấy.">sof<b>as</b></span>
+      <span data-col="/s/" data-a="pr-flats" data-t="flats">fla<b>ts</b></span>
+      <span data-col="/z/" data-a="pr-kitchens" data-t="kitchens">kitche<b>ns</b></span>
+      <span data-col="/s/" data-a="pr-toilets" data-t="toilets" data-goi-y="Nghe lại những thẻ có chữ t đứng trước s: chữ t bật hơi, không rung.">toile<b>ts</b></span>
+      <span data-col="/z/" data-a="pr-rooms" data-t="rooms">roo<b>ms</b></span>
+    </div>
+  </div>
+
+  <div id="bang-sz" class="hide in-hien">
+    <p><b>🔓 Mở khoá bảng chốt</b> — đúng như sách in ở bài 4. Bấm từng từ, đọc to theo:</p>
+    <div class="pron2">
+      <div class="col a">
+        <h4>/s/ — xì hơi, không rung</h4>
+        <div class="w"><span>lam<b>ps</b></span><button class="say icon" data-a="pr-lamps" data-t="lamps"></button></div>
+        <div class="w"><span>sin<b>ks</b></span><button class="say icon" data-a="pr-sinks" data-t="sinks"></button></div>
+        <div class="w"><span>fla<b>ts</b></span><button class="say icon" data-a="pr-flats" data-t="flats"></button></div>
+        <div class="w"><span>toile<b>ts</b></span><button class="say icon" data-a="pr-toilets" data-t="toilets"></button></div>
+      </div>
+      <div class="col b">
+        <h4>/z/ — có rung ở cổ</h4>
+        <div class="w"><span>cupboar<b>ds</b></span><button class="say icon" data-a="pr-cupboards" data-t="cupboards"></button></div>
+        <div class="w"><span>sof<b>as</b></span><button class="say icon" data-a="pr-sofas" data-t="sofas"></button></div>
+        <div class="w"><span>kitche<b>ns</b></span><button class="say icon" data-a="pr-kitchens" data-t="kitchens"></button></div>
+        <div class="w"><span>roo<b>ms</b></span><button class="say icon" data-a="pr-rooms" data-t="rooms"></button></div>
+      </div>
+    </div>
+  <div class="box tip">
+    <span class="label">💡 Vì sao lại thế? Mẹo của cô</span>
+    <ul>
+      <li>Từ tận cùng bằng âm "<b>bật hơi, không rung</b>" như /p/ (lam<b>p</b>), /k/ (sin<b>k</b>), /t/ (fla<b>t</b>)
+      → đuôi <i>-s</i> đọc <b>/s/</b>, nhẹ như tiếng xì hơi.</li>
+      <li>Từ tận cùng bằng <b>nguyên âm</b> (sof<b>a</b>) hoặc âm <b>rung</b> như /d/, /n/, /m/ (cupboar<b>d</b>,
+      kitche<b>n</b>, roo<b>m</b>) → đuôi <i>-s</i> đọc <b>/z/</b>, có rung ở cổ.</li>
+    </ul>
+    <p class="small">Em vừa xếp bằng tai và bằng tay — mẹo này giải thích vì sao. Đây là mẹo cô giảng thêm để em dễ nhớ; sách chỉ cho em nghe và nhắc lại.</p>
+  </div>
+  </div>
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — nuốt mất đuôi -s</div>
+    <p><span class="x">✗</span> <i>two lamp</i>, <i>three bedroom</i> (đọc thiếu đuôi) &nbsp;·&nbsp; <span class="x">✗</span> đọc
+    <i>rooms</i> thành "rum-sờ" (thêm hẳn một tiếng "sờ").</p>
+    <p>Tiếng Việt không có âm cuối /s/, /z/ nên em hay bỏ quên hoặc đọc thành một tiếng riêng. Đuôi <i>-s</i> phải
+    <b>dính liền</b> vào từ, gọn và nhẹ. Bấm <b>Chậm</b> trên thanh công cụ rồi nghe lại từng từ.</p>
+  </div>
+
+  <div class="act" data-act="nghe-duoi" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 8</span> Nghe tai: một cái hay nhiều cái?</h4>
+    <div data-listen data-a="pr-sinks" data-t="sinks" data-opts="sink;sinks" data-answer="sinks"
+         data-hint-sai='{"sink":"Nghe lại phần cuối: sau âm /k/ còn một tiếng xì nhỏ nào không? Thử bấm Chậm."}'>Câu 1: Em nghe thấy từ nào?</div>
+    <div data-listen data-a="voc-flat" data-t="flat" data-opts="flat;flats" data-answer="flat"
+         data-hint-sai='{"flats":"Nghe lại: từ kết thúc gọn ở âm /t/, hay còn tiếng xì hơi phía sau?"}'>Câu 2: Em nghe thấy từ nào?</div>
+    <div data-listen data-a="pr-rooms" data-t="rooms" data-opts="room;rooms" data-answer="rooms"
+         data-hint-sai='{"room":"Nghe lại: sau âm /m/ có thêm một tiếng rung /z/ nhỏ không?"}'>Câu 3: Em nghe thấy từ nào?</div>
+    <div data-listen data-a="thing-lamp" data-t="lamp" data-opts="lamp;lamps" data-answer="lamp"
+         data-hint-sai='{"lamps":"Nghe lại thật kĩ phần cuối từ — có tiếng xì hơi sau âm /p/ không?"}'>Câu 4: Em nghe thấy từ nào?</div>
+    <div data-listen data-a="pr-sofas" data-t="sofas" data-opts="sofa;sofas" data-answer="sofas"
+         data-hint-sai='{"sofa":"Nghe lại: từ dừng ở nguyên âm, hay có thêm tiếng rung /z/ ở cuối?"}'>Câu 5: Em nghe thấy từ nào?</div>
+  </div>
+
+  <h3>Bài tập SGK — A Closer Look 1 (Pronunciation)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 5 (trang 18).</span> <b>Listen to the conversation. Underline the final <i>s</i> in the words and put them into the correct column.</b> 🎧 <span class="muted small">(Track 12, tập một)</span></p>
+    <p class="small">Hội thoại này SGK có in lời — cô cho máy đọc từng câu để em nghe. Em tự gạch chân và tự xếp cột nhé.</p>
+    <p><button class="say say-all" data-all="#dlg-a5">Nghe cả hội thoại</button></p>
+    <div id="dlg-a5">
+      <div class="dlg"><span class="who f">Mi:</span> <span class="en">Mum, are you home?</span>
+        <button class="say line icon" data-a="prs-01" data-t="Mum, are you home?"></button></div>
+      <div class="dlg"><span class="who f2">Mum:</span> <span class="en">Yes, honey. I'm in the kitchen. I've bought these new bowls and chopsticks.</span>
+        <button class="say line icon" data-a="prs-02" data-t="Yes, honey. I'm in the kitchen. I've bought these new bowls and chopsticks."></button></div>
+      <div class="dlg"><span class="who f">Mi:</span> <span class="en">They're beautiful, Mum. Where did you buy them?</span>
+        <button class="say line icon" data-a="prs-03" data-t="They're beautiful, Mum. Where did you buy them?"></button></div>
+      <div class="dlg"><span class="who f2">Mum:</span> <span class="en">In the department store near our house. They have a lot of things for homes.</span>
+        <button class="say line icon" data-a="prs-04" data-t="In the department store near our house. They have a lot of things for homes."></button></div>
+      <div class="dlg"><span class="who f">Mi:</span> <span class="en">Don't forget we need two lamps for my bedroom, Mum.</span>
+        <button class="say line icon" data-a="prs-05" data-t="Don't forget we need two lamps for my bedroom, Mum."></button></div>
+      <div class="dlg"><span class="who f2">Mum:</span> <span class="en">Let's go there this weekend.</span>
+        <button class="say line icon" data-a="prs-06" data-t="Let's go there this weekend."></button></div>
+    </div>
+    <table><tr><th>/s/</th><th>/z/</th></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr></table>
+    <p><b>Now practise the conversation with a partner.</b></p>
+    <button class="btn" type="button" data-hint="#gy-a5">Gợi ý</button>
+    <div class="hint" id="gy-a5">Chỉ gạch chân <b>danh từ số nhiều</b> có đuôi <i>s</i>. Với mỗi từ, đặt tay lên cổ và đọc chậm:
+    âm ngay trước đuôi <i>s</i> xì hơi hay rung? Cẩn thận: <i>Let's</i> không phải danh từ số nhiều.</div>
+    <p class="small muted">Mẹ mua bát và đũa (<i>bowls and chopsticks</i>) ở cửa hàng bách hoá — giống hệt mẹ em đi sắm đồ
+    cho nhà mới! Câu <i>I've bought</i> dùng một thì em sẽ học ở lớp trên; còn <i>did you buy</i> là thì quá khứ đơn, em sẽ
+    học ở Unit 8. Bây giờ chỉ cần hiểu nghĩa: "Mẹ vừa mua…", "Mẹ mua ở đâu thế?".</p>
+  </div>
+</section>
+
+<!-- ============================== BUỔI 2 ============================== -->
+<div class="buoi"><span class="ten">📅 Buổi 2</span><span class="mo-ta">Sở hữu cách 's · Giới từ chỉ vị trí · Đưa ra gợi ý — khoảng 40 phút.</span></div>
+
+<!-- ============================== 5. SỞ HỮU CÁCH ============================== -->
+<section id="s5">
+  <h2>5. Ngữ pháp 1 — Sở hữu cách <b>'s</b> <span class="muted small">(A Closer Look 2, trang 18)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🎒 Của ai đây?</span>
+    <p>Trên bàn có một chiếc cặp. Tiếng Việt nói "cặp <b>của</b> Nam". Tiếng Anh không cần chữ "của" — chỉ cần
+    thêm một dấu nhỏ và chữ <b>s</b> vào sau tên người. Dấu đó là gì? Xem khung Remember!</p>
+  </div>
+
+  <div class="box remember">
+    <span class="label">📌 Remember! <span class="muted small">— nguyên văn SGK</span></span>
+    <p>1. We use <b>'s</b> after a proper name.<br><b>Example:</b> This is <b>Elena's</b> room.
+      <button class="say line icon" data-a="gr-01" data-t="This is Elena's room."></button></p>
+    <p>2. We use <b>'s</b> after a singular noun.<br><b>Example:</b> This is my <b>mum's</b> book.
+      <button class="say line icon" data-a="gr-02" data-t="This is my mum's book."></button></p>
+  </div>
+
+  <p><b>Giảng bằng tiếng Việt:</b> muốn nói <b>vật này của ai</b>, em viết <b>người sở hữu + 's + vật</b>.
+  Thứ tự ngược với tiếng Việt: "phòng của Elena" → <i>Elena's room</i>; "sách của mẹ tớ" → <i>my mum's book</i>.
+  <i>'s</i> đi sau <b>tên riêng</b> (Elena, Nick, Mi…) và sau <b>danh từ số ít</b> (mum, brother, teacher…).</p>
+
+  <div class="act" data-act="xep-so-huu" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 9</span> Xếp thẻ thành câu: "Cái đèn ở trên bàn của bố tớ."</h4>
+    <div data-order data-answer="The lamp is on my dad's desk."
+         data-hint-sai="Tiếng Anh: người sở hữu đứng TRƯỚC 's, đồ vật đứng SAU. Cái bàn là của ai — chữ đó phải đứng ngay trước desk."></div>
+  </div>
+
+  <div class="box warn">
+    <span class="label">⚠️ Hai chữ 's trông giống hệt nhau</span>
+    <p>Trong hội thoại Nick nói: <i>It<b>'s</b> Elena<b>'s</b> room. She<b>'s</b> my sister.</i> — ba chữ <i>'s</i>
+    nhưng <b>không cùng một loại</b>! Có chữ <i>'s</i> là <b>is</b> viết gọn (<i>It's = It is</i>), có chữ <i>'s</i> là
+    <b>của ai</b>. Mẹo: thử thay <i>'s</i> bằng <i>is</i> — câu còn đúng nghĩa thì đó là <i>is</i>; còn nếu ngay sau
+    <i>'s</i> là một <b>vật</b> thuộc về người đó thì đó là sở hữu.</p>
+  </div>
+
+  <div class="act" data-act="hai-kieu-s">
+    <h4><span class="tag">NHIỆM VỤ 10</span> Thám tử 's: chữ 's nào là <i>is</i>, chữ 's nào là "của ai"?</h4>
+    <div data-sort data-cols="'s = is;'s = của ai" data-ok="Thám tử xuất sắc! Em đã không bị hai chữ 's đánh lừa.">
+      <span data-col="'s = is" data-a="so-its-great" data-t="It's great.">It<b>'s</b> great.</span>
+      <span data-col="'s = của ai" data-a="so-elena" data-t="Elena's room">Elena<b>'s</b> room</span>
+      <span data-col="'s = is" data-a="so-shes" data-t="She's my sister." data-goi-y="Thử thay 's bằng is: câu còn đúng nghĩa không? Nếu còn thì đó là is.">She<b>'s</b> my sister.</span>
+      <span data-col="'s = của ai" data-a="so-mum" data-t="my mum's book" data-goi-y="Có thẻ mà ngay sau 's là một đồ vật thuộc về người đứng trước — đó là sở hữu.">my mum<b>'s</b> book</span>
+      <span data-col="'s = is" data-a="so-whats" data-t="What's in your room?">What<b>'s</b> in your room?</span>
+      <span data-col="'s = của ai" data-a="so-nick" data-t="Nick's house">Nick<b>'s</b> house</span>
+      <span data-col="'s = is" data-a="so-theres" data-t="There's a living room">There<b>'s</b> a living room</span>
+    </div>
+  </div>
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — quên dấu phẩy trên, hoặc quên cả 's</div>
+    <p><span class="x">✗</span> <i>Nicks room</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>Nick' room</i> &nbsp;·&nbsp;
+    <span class="x">✗</span> <i>Nick room</i></p>
+    <p>Nghe thì giống nhau, nhưng viết phải đủ <b>dấu phẩy trên + s</b> (<b>'s</b>). Không có dấu thì <i>Nicks</i> trông như
+    "nhiều bạn Nick"; không có <i>'s</i> thì mất nghĩa "của".</p>
+  </div>
+
+  <div class="act" data-act="dien-so-huu" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 11</span> Viết dạng sở hữu của từ trong ngoặc</h4>
+    <p class="cau-fill">1. This is <span data-fill data-answer="Phong's" data-w="9"
+       data-goi-y="Phong là tên riêng — nhìn lại quy tắc 1 trong khung Remember!"
+       data-hint-sai='{"phongs":"Gần đúng rồi! Giữa tên và chữ s còn thiếu một dấu nhỏ — dấu gì?","phong":"Chỉ viết tên thì chưa có nghĩa của. Cần thêm gì sau tên?","phong&apos;":"Có dấu phẩy trên rồi — còn thiếu một chữ cái nữa."}'></span> bedroom. (Phong)</p>
+    <p class="cau-fill">2. The sofa is in <span data-fill data-answer="Duy's" data-w="8"
+       data-goi-y="Duy là tên riêng. Thêm dấu gì và chữ gì vào sau tên?"
+       data-hint-sai='{"duys":"Duys trông như nhiều bạn Duy. Cần thêm dấu phẩy trên ở đâu?","duy":"Phòng khách của Duy — thiếu chữ của rồi. Tiếng Anh viết của bằng gì?"}'></span> living room. (Duy)</p>
+    <p class="cau-fill">3. My <span data-fill data-answer="uncle's" data-w="10"
+       data-goi-y="uncle là danh từ số ít — nhìn lại quy tắc 2 trong khung Remember!"
+       data-hint-sai='{"uncles":"Thiếu dấu phẩy trên — không có nó thì uncles nghĩa là nhiều chú bác.","uncle":"Cái đèn của chú — viết chữ của bằng cách nào?"}'></span> lamp is on the desk. (uncle)</p>
+    <p class="cau-fill">4. <span data-fill data-answer="Mai's" data-w="8"
+       data-goi-y="Mai là tên riêng — tên + dấu phẩy trên + s."
+       data-hint-sai='{"mais":"Còn thiếu dấu phẩy trên giữa tên và chữ s.","mai":"Nhà của Mai — thêm gì sau tên để có nghĩa của?"}'></span> house is next to a department store. (Mai)</p>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây:</b> cầm một quyển sách của bố hoặc mẹ, giơ lên và nói
+  thật to câu của sách: <i>This is my mum's book.</i> (hoặc đổi <i>mum</i> thành <i>dad</i>). Nói hai lần, lần hai nhanh hơn!</div></div>
+
+  <h3>Bài tập SGK — A Closer Look 2 (Possessive case)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 1 (trang 18).</span> <b>Choose the correct answer.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">My (grandmothers / grandmother's) house is in Ha Noi.</span></li>
+      <li><span class="n">2.</span><span class="tx">This is my (sister's / sister') desk.</span></li>
+      <li><span class="n">3.</span><span class="tx">My (cousin's / cousin) dad is my uncle.</span></li>
+      <li><span class="n">4.</span><span class="tx">(Nam's / Nam') house is small.</span></li>
+      <li><span class="n">5.</span><span class="tx">There are two bedrooms in (Ans / An's) flat.</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-b1">Gợi ý</button>
+    <div class="hint" id="gy-b1">Với từng câu, hỏi: từ trong ngoặc là <b>người sở hữu</b>, và ngay sau nó có <b>vật</b> thuộc về người đó
+    không? Nếu có, cách viết nào giống hệt mẫu <i>Elena's</i> / <i>mum's</i> trong khung Remember!?</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 19).</span> <b>Complete the sentences with the correct possessive forms.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">Thuc Anh is ______ cousin. (Mi)</span></li>
+      <li><span class="n">2.</span><span class="tx">This is their ______ chair. (teacher)</span></li>
+      <li><span class="n">3.</span><span class="tx">Where is ______ computer? (Nick)</span></li>
+      <li><span class="n">4.</span><span class="tx">My ______ motorbike is in the garden. (father)</span></li>
+      <li><span class="n">5.</span><span class="tx">My ______ bedroom is next to the living room. (brother)</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-b2">Gợi ý</button>
+    <div class="hint" id="gy-b2">Từ trong ngoặc là tên riêng hoặc danh từ số ít → dùng quy tắc nào trong khung Remember!? Câu 2 đọc
+    nghĩa: "ghế của thầy/cô giáo của họ" — <i>their</i> đứng trước, sau đó mới đến người sở hữu.</div>
+  </div>
+</section>
+
+<!-- ============================== 6. GIỚI TỪ ============================== -->
+<section id="s6">
+  <h2>6. Ngữ pháp 2 — Giới từ chỉ vị trí <span class="muted small">(A Closer Look 2, trang 19–20)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🐱 Con mèo trốn đâu rồi?</span>
+    <p>Sáng nào mẹ em cũng hỏi: "Chìa khoá để <b>ở đâu</b>?" — "Ở <b>trên</b> bàn!", "Ở <b>trong</b> túi!", "Ở <b>cạnh</b> ti vi!".
+    Tiếng Việt chỉ cần "ở", còn tiếng Anh có hẳn một bộ từ riêng cho từng vị trí.</p>
+  </div>
+
+  <div class="box remember">
+    <span class="label">📌 Remember! <span class="muted small">— nguyên văn SGK</span></span>
+    <p>Prepositions of place describe where people or things are.</p>
+    <p>These are some prepositions of place.</p>
+    <div class="wordgrid">
+      <button class="say" data-a="gr-in" data-t="in">in</button>
+      <button class="say" data-a="gr-on" data-t="on">on</button>
+      <button class="say" data-a="gr-behind" data-t="behind">behind</button>
+      <button class="say" data-a="gr-under" data-t="under">under</button>
+      <button class="say" data-a="voc-next-to" data-t="next to">next to</button>
+      <button class="say" data-a="voc-in-front-of" data-t="in front of">in front of</button>
+      <button class="say" data-a="voc-between" data-t="between">between</button>
+    </div>
+  </div>
+
+  <table>
+    <tr><th style="width:130px">Giới từ</th><th>Nghĩa</th><th>Mẹo nhớ của cô</th></tr>
+    <tr><td><b>in</b></td><td>ở trong</td><td>lọt vào <b>bên trong</b> lòng một vật (hộp, tủ, phòng)</td></tr>
+    <tr><td><b>on</b></td><td>ở trên (mặt)</td><td><b>chạm / dính</b> lên <b>bề mặt</b> của vật: đặt trên mặt bàn, mặt ghế; treo, dán trên bức tường</td></tr>
+    <tr><td><b>under</b></td><td>ở dưới</td><td>nằm <b>dưới gầm</b> (bàn, ghế, giường)</td></tr>
+    <tr><td><b>behind</b></td><td>ở đằng sau</td><td>bị vật kia <b>che</b> mất một phần</td></tr>
+    <tr><td><b>in front of</b></td><td>ở đằng trước</td><td>đứng <b>che</b> vật kia; ba chữ đi liền nhau</td></tr>
+    <tr><td><b>next to</b></td><td>bên cạnh</td><td>sát bên <b>một</b> vật</td></tr>
+    <tr><td><b>between</b></td><td>ở giữa</td><td>kẹp giữa <b>hai</b> vật</td></tr>
+  </table>
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — bỏ quên chữ nhỏ đi kèm giới từ</div>
+    <p><span class="x">✗</span> <i>in front the TV</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>next the bed</i> &nbsp;·&nbsp;
+    <span class="x">✗</span> <i>between the door or the window</i></p>
+    <p>Ba giới từ này là <b>cả một cụm</b>: <b>in front of</b> (ba chữ), <b>next to</b> (hai chữ), <b>between … and …</b>
+    (hai vật nối bằng <i>and</i>). Tiếng Việt nói "trước ti vi", "cạnh giường" — không có chữ nào ứng với <i>of</i>, <i>to</i>,
+    nên em rất hay quên. Bấm nghe lại <i>in front of</i>, <i>next to</i> trong khung Remember! và đọc to cả cụm.</p>
+  </div>
+
+  <div class="act" data-act="canh-gioi-tu" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 12</span> Con mèo 🐱 trốn ở đâu? Nhìn cảnh, chọn giới từ</h4>
+    <div data-mcq data-opts="on;in;under" data-answer="in"
+         data-hint-sai='{"on":"Con mèo ngồi TRÊN NẮP hộp, hay lọt vào BÊN TRONG lòng hộp? Nhìn kĩ thành hộp.","under":"Con mèo có nằm dưới đáy hộp không? Nó đang ở đâu so với thành hộp?"}'>
+      <div class="mcq-canh"><span class="canh" aria-label="cảnh 1"><span class="san"></span><span class="m" style="left:62px;bottom:14px;z-index:0">🐱</span><span class="hop"></span></span>
+      <span>1. The cat is ___ the box.</span></div></div>
+    <div data-mcq data-opts="under;on;behind" data-answer="on"
+         data-hint-sai='{"under":"Con mèo ở phía trên hay phía dưới mặt đệm ghế sofa?","behind":"Ghế có che con mèo không? Hay con mèo ngồi chạm lên mặt đệm ghế?"}'>
+      <div class="mcq-canh"><span class="canh" aria-label="cảnh 2"><span class="san"></span><span class="sofa"><i class="lung"></i><i class="dem"></i><i class="tay1"></i><i class="tay2"></i><i class="ch1"></i><i class="ch2"></i></span><span class="m" style="left:62px;bottom:33px">🐱</span></span>
+      <span>2. The cat is ___ the sofa.</span></div></div>
+    <div data-mcq data-opts="on;in;under" data-answer="under"
+         data-hint-sai='{"on":"Con mèo ở phía trên hay phía dưới mặt ghế? Nhìn lại mặt ghế nằm ở đâu.","in":"Chiếc ghế không có lòng như cái hộp. Con mèo nằm ở đâu so với mặt ghế?"}'>
+      <div class="mcq-canh"><span class="canh" aria-label="cảnh 3"><span class="san"></span><span class="ghe"><i class="mat"></i><i class="lung"></i><i class="c1"></i><i class="c2"></i></span><span class="m" style="left:64px;bottom:10px;font-size:22px">🐱</span></span>
+      <span>3. The cat is ___ the chair.</span></div></div>
+    <div data-mcq data-opts="in front of;behind;next to" data-answer="behind"
+         data-hint-sai='{"in front of":"Cánh cửa che con chó, hay con chó che cánh cửa? Em chỉ thấy một nửa con chó thôi.","next to":"Con chó đứng sát bên cạnh cửa, hay bị cánh cửa che mất một nửa?"}'>
+      <div class="mcq-canh"><span class="canh" aria-label="cảnh 4"><span class="san"></span><span class="m sau" style="left:80px;bottom:10px;font-size:34px">🐶</span><span class="cua"></span></span>
+      <span>4. The dog is ___ the door.</span></div></div>
+    <div data-mcq data-opts="behind;in front of;on" data-answer="in front of"
+         data-hint-sai='{"behind":"Cái ti vi che con mèo, hay con mèo đang che một phần màn hình? Con mèo ở gần em hơn hay xa em hơn?","on":"Con mèo có ngồi chạm lên nóc ti vi không, hay ngồi dưới sàn?"}'>
+      <div class="mcq-canh"><span class="canh" aria-label="cảnh 5"><span class="san"></span><span class="tv"><i class="man"></i><i class="chan"></i></span><span class="m" style="left:58px;bottom:9px;font-size:34px;z-index:3">🐱</span></span>
+      <span>5. The cat is ___ the TV.</span></div></div>
+    <div data-mcq data-opts="between;next to;on" data-answer="next to"
+         data-hint-sai='{"between":"Đếm xem: hai bên con mèo có hai đồ vật, hay chỉ có một?","on":"Con mèo có ngồi lên nắp hộp không, hay ngồi dưới sàn?"}'>
+      <div class="mcq-canh"><span class="canh" aria-label="cảnh 6"><span class="san"></span><span class="hop kin" style="left:26px"></span><span class="m" style="left:100px;bottom:10px">🐱</span></span>
+      <span>6. The cat is ___ the box.</span></div></div>
+    <div data-mcq data-opts="next to;between;behind" data-answer="between"
+         data-hint-sai='{"next to":"Đếm lại: con mèo ở sát cạnh MỘT chiếc ghế, hay kẹp giữa HAI chiếc?","behind":"Có chiếc ghế nào che con mèo không?"}'>
+      <div class="mcq-canh"><span class="canh" aria-label="cảnh 7"><span class="san"></span><span class="ghe" style="left:6px;width:40px"><i class="mat"></i><i class="lung"></i><i class="c1"></i><i class="c2"></i></span><span class="m" style="left:62px;bottom:10px">🐱</span><span class="ghe" style="left:104px;width:40px"><i class="mat"></i><i class="lung" style="left:auto;right:0"></i><i class="c1"></i><i class="c2"></i></span></span>
+      <span>7. The cat is ___ the chairs.</span></div></div>
+  </div>
+
+  <div class="act" data-act="dien-cum-gioi-tu" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 13</span> Đừng bỏ quên chữ nhỏ! Điền <b>một</b> từ còn thiếu của cụm giới từ</h4>
+    <p class="cau-fill">1. The cat is in front <span data-fill data-answer="of" data-w="4"
+       data-goi-y="in front … — cụm này có ba chữ. Bấm nghe lại in front of trong khung Remember!"
+       data-hint-sai='{"to":"to đi với next. Còn in front đi với chữ nào? Nghe lại cụm trong khung Remember!","on":"on là một giới từ riêng. Cụm in front … còn thiếu chữ nào ở cuối?","the":"Chữ the đã có ngay sau ô trống rồi. Cụm in front … còn thiếu chữ nào?"}'></span> the TV.</p>
+    <p class="cau-fill">2. The lamp is next <span data-fill data-answer="to" data-w="4"
+       data-goi-y="next … — cụm này có hai chữ. Bấm nghe lại next to."
+       data-hint-sai='{"of":"of đi với in front. Còn next đi với chữ nào?","by":"Sách dạy cụm next … với một chữ khác. Nghe lại trong khung Remember!","the":"Chữ the đã có ngay sau ô trống rồi. Cụm next … còn thiếu chữ nào?"}'></span> the sofa.</p>
+    <p class="cau-fill">3. The box is between the sofa <span data-fill data-answer="and" data-w="4"
+       data-goi-y="between nói về HAI vật. Hai vật nối với nhau bằng chữ nào?"
+       data-hint-sai='{"or":"or nghĩa là hoặc — nhưng cái hộp nằm giữa CẢ HAI vật, không phải một trong hai. Hai vật nối với nhau bằng chữ gì?","with":"between … … : hai vật nối bằng một chữ rất quen, nghĩa là và."}'></span> the chair.</p>
+  </div>
+
+  <div class="act" data-act="xep-gioi-tu" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 14</span> Xếp thẻ thành câu hỏi: "Có cái đèn nào ở cạnh giường không?"</h4>
+    <div data-order data-answer="Is there a lamp next to the bed?"
+         data-hint-sai="Câu hỏi bắt đầu bằng Is there…? Cụm next to đi liền nhau và đứng ngay trước đồ vật làm mốc."></div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — "Simon says" với cục tẩy:</b> đặt cục tẩy
+  <b>on</b> quyển sách, rồi <b>under</b>, rồi <b>next to</b>, rồi <b>in</b> hộp bút. Mỗi lần đặt, nói to giới từ đó.
+  Nhờ người nhà hô, em làm theo — ai nhanh hơn?</div></div>
+
+  <h3>Bài tập SGK — A Closer Look 2 (Prepositions of place)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 19).</span> <b>Write the correct preposition in the box under each picture. Say a sentence to describe the picture.</b></p>
+    <p><i>in · on · next to · behind · in front of · under · between</i></p>
+    <p><b>Example:</b> <b>1. on</b> — The dog is on the chair.
+      <button class="say line icon" data-a="gr-03" data-t="The dog is on the chair."></button></p>
+    <p>2. ______ &nbsp;·&nbsp; 3. ______ &nbsp;·&nbsp; 4. ______ &nbsp;·&nbsp; 5. ______ &nbsp;·&nbsp; 6. ______ &nbsp;·&nbsp; 7. ______</p>
+    <button class="btn" type="button" data-hint="#gy-b3">Gợi ý</button>
+    <div class="hint" id="gy-b3">Mở SGK trang 19, nhìn từng tranh và hỏi: con vật lọt vào trong? chạm lên mặt? nằm dưới gầm?
+    sát cạnh? kẹp giữa hai vật? Rồi nói thành câu giống ví dụ <i>The dog is on the chair.</i></div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 20).</span> <b>Look at the picture and write T (True) or F (False) for each sentence. Correct the false ones.</b></p>
+    <p><b>Example:</b> The books are under the table. <b>F</b> → <b>The books are on the table.</b>
+      <button class="say line icon" data-a="gr-04" data-t="The books are on the table."></button></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">The dog is behind the bed. ______</span></li>
+      <li><span class="n">2.</span><span class="tx">The school bag is on the table. ______</span></li>
+      <li><span class="n">3.</span><span class="tx">The picture is between the clocks. ______</span></li>
+      <li><span class="n">4.</span><span class="tx">The cat is in front of the computer. ______</span></li>
+      <li><span class="n">5.</span><span class="tx">The cap is under the pillow. ______</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-b4">Gợi ý</button>
+    <div class="hint" id="gy-b4">Tìm từng đồ vật trong tranh SGK trang 20 trước, rồi so vị trí thật với giới từ trong câu. Câu 3 đếm kĩ:
+    trên tường có mấy bức tranh, mấy chiếc đồng hồ? Câu sai thì sửa bằng cách <b>đổi giới từ</b> (hoặc đổi vật) như ví dụ.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 5 (trang 20).</span> <b>🎲 GAME — Memory challenge.</b> <b>Work in pairs. Look at the picture in 4 carefully, and then cover it. Ask and answer questions about the position of things in the picture.</b></p>
+    <div class="dlg"><span class="who">A:</span> <span class="en">Where are the books?</span>
+      <button class="say line icon" data-a="gr-05" data-t="Where are the books?"></button></div>
+    <div class="dlg"><span class="who f">B:</span> <span class="en">They're on the table.</span>
+      <button class="say line icon" data-a="gr-06" data-t="They're on the table."></button></div>
+    <button class="btn" type="button" data-hint="#gy-b5">Gợi ý</button>
+    <div class="hint" id="gy-b5">Nhìn tranh 30 giây, gập sách lại, rồi hỏi nhau. Một vật thì hỏi <i>Where is …?</i>, nhiều vật thì hỏi
+    <i>Where are …?</i> — em chọn đúng chưa?</div>
+  </div>
+</section>
+
+<!-- ============================== 7. COMMUNICATION ============================== -->
+<section id="s7">
+  <h2>7. Communication — Đưa ra gợi ý 🎧 <span class="muted small">(Track 13, tập một · trang 20–21)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">💡 Thuyết phục bố mẹ</span>
+    <p>Sắp Tết, em muốn trang trí lại góc học tập. Em sẽ rủ mẹ thế nào cho mẹ gật đầu ngay? Tiếng Anh có hai "câu thần chú"
+    rất lịch sự để đưa ra gợi ý — mẹ của Elena dùng cả hai!</p>
+  </div>
+
+  <p>Elena và mẹ bàn cách trang trí phòng ngủ. Để ý hai câu in đậm:</p>
+  <p><button class="say say-all" data-all="#dlg-com">Nghe cả đoạn</button></p>
+  <div id="dlg-com">
+    <div class="dlg ba-cham">…</div>
+    <div class="dlg"><span class="who f">Elena:</span> <span class="en">My bedroom isn't nice.</span>
+      <button class="say line icon" data-a="com-01" data-t="My bedroom isn't nice."></button></div>
+    <div class="dlg"><span class="who f2">Mum:</span> <span class="en"><b><i>How about putting a picture on the wall?</i></b></span>
+      <button class="say line icon" data-a="com-02" data-t="How about putting a picture on the wall?"></button></div>
+    <div class="dlg"><span class="who f">Elena:</span> <span class="en">Great idea, Mum.</span>
+      <button class="say line icon" data-a="com-03" data-t="Great idea, Mum."></button></div>
+    <div class="dlg"><span class="who f2">Mum:</span> <span class="en"><b><i>Let's go to the department store to buy one.</i></b></span>
+      <button class="say line icon" data-a="com-04" data-t="Let's go to the department store to buy one."></button></div>
+    <div class="dlg ba-cham">…</div>
+  </div>
+  <p class="small muted">SGK chỉ in đoạn này (có dấu … ở đầu và cuối); bản đầy đủ nghe ở đĩa/app NXB (Track 13, tập một).</p>
+
+  <div class="box remember">
+    <span class="label">Hai mẫu câu gợi ý <span class="muted small">— nguyên văn SGK (bài 2)</span></span>
+    <p>• <b><i>How about + V-ing?</i></b> &nbsp;&nbsp; • <b><i>Let's + V.</i></b></p>
+  </div>
+  <p><b>Giảng bằng tiếng Việt:</b> <i>How about…?</i> = "Hay là… nhỉ?", sau nó động từ <b>thêm -ing</b> (<i>putting</i>).
+  <i>Let's…</i> = "Mình cùng… đi!", sau nó là động từ <b>nguyên thể</b> (<i>go</i>). Đáp lại gợi ý hay thì nói như Elena:
+  <i>Great idea!</i></p>
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — tráo đuôi động từ giữa hai mẫu</div>
+    <p><span class="x">✗</span> <i>How about put…?</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>Let's going…</i></p>
+    <p>Nhớ theo cặp: <b>How about → -ing</b>, <b>Let's → nguyên thể</b>. Mở lại hai câu của mẹ Elena mà soi.</p>
+  </div>
+
+  <div class="act" data-act="goi-y" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 15</span> Chọn đúng dạng để đưa ra gợi ý — rồi nói theo mẹ Elena</h4>
+    <div data-mcq data-opts="put;putting" data-answer="putting"
+         data-hint-sai='{"put":"Sau How about, động từ cần đuôi gì? Nghe lại câu in đậm thứ nhất của mẹ Elena."}'>1. How about ___ a lamp next to the bed?</div>
+    <div data-mcq data-opts="put;putting" data-answer="put"
+         data-hint-sai='{"putting":"Sau Let&apos;s là động từ dạng nào? Nghe lại câu in đậm thứ hai: Let&apos;s go…, không phải going."}'>2. Let's ___ the sofa in the living room.</div>
+    <div data-mcq data-opts="How about;Let's" data-answer="How about"
+         data-hint-sai='{"let&apos;s":"Nhìn động từ phía sau: going có đuôi -ing. Mẫu nào đi với -ing?"}'>3. ___ going to the department store?</div>
+    <div data-mcq data-opts="How about;Let's" data-answer="Let's"
+         data-hint-sai='{"how about":"Nhìn động từ phía sau: buy là nguyên thể, và câu kết thúc bằng dấu chấm. Mẫu nào đi với động từ nguyên thể?"}'>4. ___ buy a new wardrobe.</div>
+    <p class="small">Chọn xong thì <b>nói theo mẹ Elena</b> — câu gợi ý em sẽ dùng để rủ bố mẹ ở mốc nghỉ sắp tới:</p>
+    <div data-noi data-a="com-02" data-t="How about putting a picture on the wall?" data-lan="3">How about putting a picture on the wall?</div>
+  </div>
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — <i>There is</i> với nhiều vật</div>
+    <p><span class="x">✗</span> <i>There is two bedrooms.</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>There are a sofa.</i></p>
+    <p>Tiếng Việt chỉ nói "có" cho cả một vật lẫn nhiều vật. Tiếng Anh thì phải <b>đếm</b>: <b>There is</b> (<i>There's</i>)
+    + <b>một</b> vật; <b>There are</b> + <b>nhiều</b> vật. Mi nói đúng như vậy trong hội thoại: <i>Are there many rooms…? —
+    Yes, there <b>are</b>.</i> Mẹo: nhìn danh từ ngay sau chỗ trống — có đuôi <i>-s</i> số nhiều không?</p>
+  </div>
+
+  <div class="act" data-act="there-is-are" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 16</span> Đếm rồi chọn: <i>is</i> hay <i>are</i>?</h4>
+    <div data-mcq data-opts="is;are" data-answer="is"
+         data-hint-sai='{"are":"Đếm xem: one sofa là một cái hay nhiều cái?"}'>1. There ___ one sofa in Mai's living room.</div>
+    <div data-mcq data-tron="2" data-opts="is;are" data-answer="are"
+         data-hint-sai='{"is":"Đếm xem: three lamps là một hay nhiều? Nhìn đuôi -s của lamps."}'>2. There ___ three lamps in my bedroom.</div>
+    <div data-mcq data-tron="4" data-opts="is;are" data-answer="are"
+         data-hint-sai='{"is":"Đếm xem: two wardrobes là một hay nhiều?"}'>3. There ___ two wardrobes in Nick's room.</div>
+    <div data-mcq data-opts="is;are" data-answer="is"
+         data-hint-sai='{"are":"Đếm xem: one bathroom là một hay nhiều? Không có đuôi -s số nhiều."}'>4. There ___ one bathroom in my flat.</div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — rủ thật:</b> chạy ra gặp bố hoặc mẹ, nói một câu
+  gợi ý thật bằng tiếng Anh: <i>How about putting a lamp next to my bed?</i> hoặc <i>Let's …</i> (chọn đồ vật em muốn). Bố mẹ
+  gật đầu thì em được thêm một ⭐ "ngoài đời"!</div></div>
+
+  <h3>Bài tập SGK — Communication</h3>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 20).</span> <b>Work in pairs. Make a similar dialogue. Remember to use the structures:</b>
+    <i>How about + V-ing?</i> · <i>Let's + V.</i></p>
+    <button class="btn" type="button" data-hint="#gy-c2">Gợi ý</button>
+    <div class="hint" id="gy-c2">Đổi tình huống: phòng khách, phòng bếp hay góc học tập của em. Người thứ nhất than "My … isn't nice."; người
+    thứ hai gợi ý bằng một trong hai mẫu, dùng đồ đạc vừa học (lamp, picture, sofa, shelf…).</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 20–21).</span> <b>Mi tells Nick about her grandparents' country house. Look at the pictures of her grandparents' house and complete the sentences.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">My grandparents live in a ______ house in Ninh Binh.</span></li>
+      <li><span class="n">2.</span><span class="tx">There ______ four rooms in the house and a big garden.</span></li>
+      <li><span class="n">3.</span><span class="tx">I like the living room. There ______ a big window in this room.</span></li>
+      <li><span class="n">4.</span><span class="tx">There are four ______ and a table in the middle of the room.</span></li>
+      <li><span class="n">5.</span><span class="tx">There are two family photos ______ the wall.</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-c3">Gợi ý</button>
+    <div class="hint" id="gy-c3">Câu 1: đọc lại nhan đề bài — nhà ông bà Mi là loại nhà gì? Câu 2 và 3: nhìn danh từ phía sau chỗ trống — một vật
+    hay nhiều vật? Câu 5: ảnh treo chạm vào tường — giới từ nào?</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 21).</span> <b>Student A looks at the pictures of Nick's house on this page. Student B looks at the pictures of Mi's house on page 25. Ask questions to find the differences between the two houses.</b></p>
+    <div class="dlg"><span class="who">A:</span> <span class="en">Where does Mi live?</span>
+      <button class="say line icon" data-a="com-05" data-t="Where does Mi live?"></button></div>
+    <div class="dlg"><span class="who f">B:</span> <span class="en">She lives in a town house.</span>
+      <button class="say line icon" data-a="com-06" data-t="She lives in a town house."></button></div>
+    <button class="btn" type="button" data-hint="#gy-c4">Gợi ý</button>
+    <div class="hint" id="gy-c4">Một bạn mở trang 21 (nhà Nick), một bạn mở trang 25 (nhà Mi), không nhìn sách của nhau. Hỏi về loại nhà, số phòng,
+    đồ đạc: <i>How many rooms are there…? Is there a … in…?</i> Tìm ít nhất 3 điểm khác nhau.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 5 (trang 21).</span> <b>Draw a simple picture of your house. Tell your partner about it.</b></p>
+    <button class="btn" type="button" data-hint="#gy-c5">Gợi ý</button>
+    <div class="hint" id="gy-c5">Vẽ mặt cắt nhà em như tranh SGK. Kể theo thứ tự: loại nhà → có mấy phòng → phòng em thích có gì, đặt ở đâu
+    (dùng giới từ ở mục 6).</div>
+  </div>
+</section>
+
+<!-- ============================== BUỔI 3 ============================== -->
+<div class="buoi"><span class="ten">📅 Buổi 3</span><span class="mo-ta">Đọc thư · Nghe và viết thư · Ôn tập · Mini-game — khoảng 40 phút.</span></div>
+
+<!-- ============================== 8. SKILLS 1 ============================== -->
+<section id="s8">
+  <h2>8. Skills 1 — Đọc thư của Nick từ Đà Lạt <span class="muted small">(trang 22)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🌲 Đà Lạt có một ngôi nhà "điên"</span>
+    <p>Ở Đà Lạt có khách sạn <b>Crazy House</b> — người ta hay gọi là "Ngôi nhà điên" vì trông như một gốc cây khổng lồ,
+    tường uốn lượn chẳng giống nhà nào. Nick đang ở đó và viết thư kể cho Phong và Mi. Em đoán xem: phòng của Nick có gì lạ?</p>
+  </div>
+
+  <div class="box tip">
+    <span class="label">📝 Reading skill: Predicting <span class="muted small">— nguyên văn SGK</span></span>
+    <p>Predicting makes reading easy.</p>
+    <p>Before reading, look at the pictures, design and title.</p>
+    <p>Decide what the text is about.</p>
+    <p>Think about what you know about the topic.</p>
+  </div>
+  <p class="small"><b>Cô giảng:</b> <i>Predicting</i> = đoán trước. Trước khi đọc, nhìn <b>tranh, cách trình bày, tiêu đề</b> để đoán
+  bài nói về gì, rồi nghĩ xem mình đã biết gì về chủ đề ấy. Đoán trước thì đọc nhanh hơn hẳn.</p>
+
+  <p class="small muted">Tranh SGK: bên trong một phòng của khách sạn Crazy House với tường uốn lượn kì lạ, và toàn cảnh khách sạn hình
+  gốc cây khổng lồ giữa vườn hoa.</p>
+
+  <div class="act" data-act="doan-truoc" data-mo-sau="#thu-doc">
+    <h4><span class="tag">NHIỆM VỤ 17</span> Predicting — đoán trước khi đọc (bức thư đang được giấu!)</h4>
+    <div data-ghi data-luu="u2-du-doan-thu" data-it-nhat="4"
+         data-ok="Em đã ghi dự đoán! Bức thư của Nick đã mở ra bên dưới — đọc xem em đoán trúng không nhé.">🔮 Tiêu đề bức thư là
+      <b>A room at the Crazy House Hotel</b>. Nhìn tiêu đề và tranh SGK trang 22: em đoán bức thư kể về điều gì? Trong phòng của
+      Nick có gì lạ? (Viết tiếng Việt cũng được, ít nhất 4 từ.)</div>
+  </div>
+
+  <div id="thu-doc" class="hide in-hien">
+  <p><button class="say say-all" data-all="#thu-nick">Nghe cả bức thư</button></p>
+    <div class="box quote" id="thu-nick">
+      <span class="label">✉️ New message</span>
+      <p class="small"><b>To:</b> phong@webmail.com; mi@webmail.com<br><b>Subject:</b> A room at the Crazy House Hotel</p>
+      <p>Hi Phong and Mi,<br>How are you? I'm in Da Lat with my parents. We're staying at the Crazy House Hotel. Wow! It really is crazy.
+        <button class="say line icon" data-a="read-01" data-t="Hi Phong and Mi, How are you? I'm in Da Lat with my parents. We're staying at the Crazy House Hotel. Wow! It really is crazy."></button></p>
+      <p>There are ten rooms in the hotel. There's a Kangaroo Room, an Eagle Room, and even an Ant Room. I'm staying in the Tiger Room. It's called the Tiger Room because there's a big tiger on the wall.
+        <button class="say line icon" data-a="read-02" data-t="There are ten rooms in the hotel. There's a Kangaroo Room, an Eagle Room, and even an Ant Room. I'm staying in the Tiger Room. It's called the Tiger Room because there's a big tiger on the wall."></button></p>
+      <p>The tiger is between the bathroom door and the window. The bed is next to the window, but the window is a strange shape. I put my bag under the bed. There's a lamp, a wardrobe and a desk.
+        <button class="say line icon" data-a="read-03" data-t="The tiger is between the bathroom door and the window. The bed is next to the window, but the window is a strange shape. I put my bag under the bed. There's a lamp, a wardrobe and a desk."></button></p>
+      <p>You should stay here when you visit Da Lat. It's great.<br>See you soon!<br>Nick
+        <button class="say line icon" data-a="read-04" data-t="You should stay here when you visit Da Lat. It's great. See you soon! Nick"></button></p>
+    </div>
+    <p class="small">Tên Việt trong thư đọc theo tiếng Việt:
+      <button class="say mini" data-a="ten-phong" data-lang="vi-VN" data-t="Phong">Phong</button>
+      <button class="say mini" data-a="ten-mi" data-lang="vi-VN" data-t="Mi">Mi</button>
+      <button class="say mini" data-a="ten-da-lat" data-lang="vi-VN" data-t="Đà Lạt">Da Lat</button>
+    · <i>You should…</i> = "Các cậu nên…" — mẫu này em sẽ học kĩ ở Unit 6.</p>
+    <div class="xem-lai" data-xem-lai="u2-du-doan-thu"><p><b>Đọc xong rồi!</b> Em mở lại dự đoán lúc nãy: em đoán trúng chỗ nào?
+      Điều gì trong phòng của Nick làm em bất ngờ nhất?</p></div>
+  </div>
+
+  <div class="act" data-act="tu-khoa" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 18</span> Đoán nghĩa từ trong bài đọc</h4>
+    <div data-mcq data-opts="kì lạ, lạ thường;buồn chán;nhỏ bé" data-answer="kì lạ, lạ thường"
+         data-hint-sai='{"buồn chán":"Nick viết Wow! ngay trước đó — Nick đang chán hay đang ngạc nhiên thích thú?","nhỏ bé":"Nhìn lại tranh khách sạn hình gốc cây khổng lồ. Nó nhỏ bé, hay khác thường?"}'>1. <i>It really is <b>crazy</b>.</i> — ở đây <i>crazy</i> nghĩa là gì?</div>
+    <div data-mcq data-opts="tên các phòng trong khách sạn;tên bạn của Nick;tên các thành phố" data-answer="tên các phòng trong khách sạn" data-tron="2"
+         data-hint-sai='{"tên bạn của Nick":"Nhìn chữ đi ngay sau mỗi tên: Kangaroo Room, Eagle Room… Room nghĩa là gì?","tên các thành phố":"Nhìn chữ đi ngay sau mỗi tên: Kangaroo Room, Eagle Room… Room nghĩa là gì?"}'>2. <i>Kangaroo, Eagle, Ant, Tiger</i> trong đoạn 2 là gì?</div>
+    <div data-mcq data-opts="kì lạ;đẹp;to" data-answer="kì lạ"
+         data-hint-sai='{"đẹp":"Tra Glossary Unit 2 ở mục 3: strange nghĩa là gì?","to":"Tra Glossary Unit 2 ở mục 3: strange nghĩa là gì?"}'>3. <i>the window is a <b>strange</b> shape</i> — cửa sổ có hình dạng thế nào?</div>
+  </div>
+
+  <div class="act" data-act="xep-cau-doc" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 19</span> Xếp thẻ thành câu có <i>between … and …</i>: "Ghế sofa ở giữa cái ti vi và cánh cửa." — rồi nói theo câu mẫu</h4>
+    <div data-order data-answer="The sofa is between the TV and the door."
+         data-hint-sai="between đi với HAI vật nối bằng and: between … and … Vật nào đứng giữa — vật đó làm chủ ngữ đứng đầu câu."></div>
+    <p class="small">Xếp xong thì <b>nói theo câu mẫu</b> của SGK (bài 5): lát nữa em tả căn phòng em tự thiết kế đúng kiểu này.</p>
+    <div data-noi data-a="sp-07" data-t="This is the Shark Room. There's a big shark at the door. There's a table and a sofa in the middle of the room" data-lan="2">This is the Shark Room. There's a big shark at the door. There's a table and a sofa in the middle of the room …</div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — hoạ sĩ nhanh tay:</b> lấy giấy nháp, vẽ thật nhanh
+  <b>Tiger Room</b> của Nick theo bức thư — thư nhắc tới thứ gì thì vẽ thứ đó, đặt đúng chỗ thư kể. Hết 30 giây thì đọc
+  lại thư mà soát: em vẽ đúng chỗ được mấy thứ?</div></div>
+
+  <h3>Bài tập SGK — Skills 1</h3>
+  <div class="ex">
+    <p><span class="so">Bài 1 (trang 22).</span> <b>Look at the text. Answer the questions.</b></p>
+    <p>1. Is it an email or a letter? &nbsp;·&nbsp; 2. What is the text about?</p>
+    <button class="btn" type="button" data-hint="#gy-d1">Gợi ý</button>
+    <div class="hint" id="gy-d1">Dùng mẹo Predicting: nhìn phần đầu bức thư (<i>New message, To:, Subject:</i>) và địa chỉ có chữ <i>@</i> — thư tay
+    có những thứ đó không? Câu 2: dòng <i>Subject</i> cho em biết gì?</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 22).</span> <b>Read the text again and answer the questions.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">Who is Nick in Da Lat with?</span></li>
+      <li><span class="n">2.</span><span class="tx">How many rooms are there in the hotel?</span></li>
+      <li><span class="n">3.</span><span class="tx">Why is the room called the Tiger Room?</span></li>
+      <li><span class="n">4.</span><span class="tx">Where is Nick's bag?</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-d2">Gợi ý</button>
+    <div class="hint" id="gy-d2">Mỗi câu hỏi có một từ khoá: <i>with, How many, Why, bag</i>. Tìm từ khoá (hoặc từ trả lời cho nó, như
+    <i>because</i> cho <i>Why</i>) trong bài, đọc câu chứa nó. Câu 4 trả lời bằng một giới từ vị trí.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 22).</span> <b>Circle the things in the Tiger Room.</b></p>
+    <p>(a window) — <i>đã khoanh sẵn làm ví dụ</i> · a wardrobe · a cooker · a cupboard · a shelf · a lamp · a desk · a tiger</p>
+    <button class="btn" type="button" data-hint="#gy-d3">Gợi ý</button>
+    <div class="hint" id="gy-d3">Đọc kĩ đoạn 2 và đoạn 3. Chỉ khoanh những thứ bài đọc <b>có nhắc tới</b> trong phòng — đừng khoanh theo
+    "phòng khách sạn thường có gì".</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 22).</span> <b>Create a new room for the hotel. Draw a plan for the room.</b></p>
+    <p><span class="so">Bài 5 (trang 22).</span> <b>Show your plan to your partner and describe it.</b></p>
+    <p><b>Example:</b> This is the Shark Room. There's a big shark at the door. There's a table and a sofa in the middle of the room …
+      <button class="say line icon" data-a="sp-07" data-t="This is the Shark Room. There's a big shark at the door. There's a table and a sofa in the middle of the room"></button></p>
+    <button class="btn" type="button" data-hint="#gy-d45">Gợi ý</button>
+    <div class="hint" id="gy-d45">Chọn một con vật em thích đặt tên phòng. Vẽ sơ đồ, rồi tả 3–4 câu: <i>This is the … Room. There's a …
+    There are …</i> — nhớ dùng ít nhất <b>hai giới từ</b> vị trí khác nhau.</div>
+  </div>
+</section>
+
+<!-- ============================== 9. SKILLS 2 ============================== -->
+<section id="s9">
+  <h2>9. Skills 2 — Nghe và viết thư <span class="muted small">(trang 23)</span></h2>
+
+  <div class="box warn">
+    <span class="label">⛔ Phần nghe: em dùng đĩa / app của NXB</span>
+    <p>Bài 1 (🎧 <b>Track 14</b>) và bài 2 (🎧 <b>Track 15</b>) — <b>Tiếng Anh 6 tập một</b>. SGK không in lời bài nghe, nên cô
+    <b>không có nội dung băng</b> và trang này <b>không có file nghe</b> cho hai bài đó. Em mở đĩa hoặc ứng dụng học liệu
+    của NXB Giáo dục, nghe đúng số Track, rồi gửi cô đáp án em chọn — cô cùng em soi lại.</p>
+  </div>
+
+  <p>Không có băng vẫn luyện được <b>chiến thuật nghe</b>: đọc trước câu hỏi, gạch chân từ khoá, đoán xem mình cần
+  nghe <b>loại thông tin</b> gì (một con số? một giới từ? một hoạt động?).</p>
+
+  <div class="act" data-act="chien-thuat-nghe" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 20</span> Trước khi nghe bài 2: em cần "săn" loại thông tin nào?</h4>
+    <div data-mcq data-opts="một con số;một màu sắc;tên một món ăn" data-answer="một con số"
+         data-hint-sai='{"một màu sắc":"Câu 1 hỏi gia đình Mai có mấy người. Mấy người thì trả lời bằng gì?","tên một món ăn":"Câu 1 hỏi gia đình Mai có mấy người. Mấy người thì trả lời bằng gì?"}'>1. Câu 1 và câu 2 hỏi về số người, số phòng. Khi nghe, em tập trung vào…</div>
+    <div data-mcq data-opts="giới từ chỉ vị trí;tính từ chỉ màu sắc;tên người" data-answer="giới từ chỉ vị trí"
+         data-hint-sai='{"tính từ chỉ màu sắc":"Câu 3 và 4 hỏi vật này ở ĐÂU. Loại từ nào ở mục 6 nói về vị trí?","tên người":"Câu 3 và 4 hỏi vật này ở ĐÂU. Loại từ nào ở mục 6 nói về vị trí?"}'>2. Câu 3 và câu 4 hỏi phòng khách, đồng hồ ở đâu. Em nghe kĩ…</div>
+    <div data-mcq data-opts="một hoạt động Mai làm;số phòng trong nhà;tên thành phố" data-answer="một hoạt động Mai làm"
+         data-hint-sai='{"số phòng trong nhà":"Câu 5 có động từ listens — đó là một việc làm hay một con số?","tên thành phố":"Câu 5 có động từ listens — đó là một việc làm hay một địa danh?"}'>3. Câu 5 hỏi Mai thường làm gì trong phòng ngủ. Em nghe kĩ…</div>
+  </div>
+
+  <h3>Bài tập SGK — Skills 2 (Listening)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 1 (trang 23).</span> <b>Look at the pictures. Name each of them. Guess if they are mentioned in the listening text.</b>
+    <b>Now listen and check your guesses.</b> 🎧 <span class="muted small">(Track 14, tập một)</span></p>
+    <button class="btn" type="button" data-hint="#gy-e1">Gợi ý</button>
+    <div class="hint" id="gy-e1">Mở SGK trang 23, gọi tên 5 đồ vật bằng từ của Unit (mục 3). Đoán trước (Predicting!) rồi mới nghe để kiểm tra.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 23).</span> <b>Listen to Mai talking about her house. Tick (✓) T (True) or F (False).</b> 🎧 <span class="muted small">(Track 15, tập một)</span></p>
+    <table>
+      <tr><th style="width:40px"></th><th></th><th style="width:40px">T</th><th style="width:40px">F</th></tr>
+      <tr><td>1.</td><td>There are four people in Mai's family.</td><td></td><td></td></tr>
+      <tr><td>2.</td><td>Mai's house has seven rooms.</td><td></td><td></td></tr>
+      <tr><td>3.</td><td>The living room is next to the kitchen.</td><td></td><td></td></tr>
+      <tr><td>4.</td><td>In her bedroom, there's a clock on the wall.</td><td></td><td></td></tr>
+      <tr><td>5.</td><td>She often listens to music in her bedroom.</td><td></td><td></td></tr>
+    </table>
+    <button class="btn" type="button" data-hint="#gy-e2">Gợi ý</button>
+    <div class="hint" id="gy-e2">Gạch chân trước từ khoá mỗi câu: <i>four, seven, next to, clock / on the wall, listens to music</i>. Khi nghe, chỉ cần
+    so từ khoá với điều Mai nói: giống thì T, khác thì F. Nghe lần 2 để soát lại.</div>
+  </div>
+
+  <h3>Viết thư điện tử cho bạn qua thư</h3>
+  <p>Bài 4 cho sẵn khung một bức thư gửi <b>Mira</b>. Thư điện tử bằng tiếng Anh có "bộ khung" giống hệt thư em viết cho
+  bạn bằng tiếng Việt: chào → cảm ơn → nội dung chính → hỏi lại bạn → chào cuối thư.</p>
+
+  <div class="act" data-act="khung-email" data-nguon="sgk">
+    <h4><span class="tag">NHIỆM VỤ 21</span> Nối mỗi phần trong khung thư của SGK với việc nó làm</h4>
+    <div data-pair data-ok="Chuẩn! Giờ em đã có bộ khung — chỉ cần viết phần giữa về ngôi nhà của em.">
+      <div class="cap" data-a="wr-01" data-t="Hi Mira,"><span>Hi Mira,</span><span>👋 Lời chào mở đầu</span></div>
+      <div class="cap" data-a="wr-02" data-t="Thanks for your email. Now I'll tell you about my house."><span>Thanks for your email. Now I'll tell you about my house.</span><span>🙏 Cảm ơn thư của bạn, giới thiệu điều sắp kể</span></div>
+      <div class="cap" data-a="wr-03" data-t="What about you? Where do you live? Tell me in your next email." data-goi-y="What about you? nghĩa là Còn bạn thì sao? — đây là lúc em hỏi lại bạn."><span>What about you? Where do you live? Tell me in your next email.</span><span>❓ Hỏi lại bạn, hẹn thư sau</span></div>
+      <div class="cap" data-a="wr-04" data-t="All the best,"><span>All the best,</span><span>✍️ Lời chào cuối thư (rồi kí tên)</span></div>
+    </div>
+  </div>
+
+  <h3>Bài tập SGK — Skills 2 (Writing)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 23).</span> <b>Answer the questions.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">Where do you live?</span></li>
+      <li><span class="n">2.</span><span class="tx">How many rooms are there in your house? What are they?</span></li>
+      <li><span class="n">3.</span><span class="tx">Which room do you like the best in your house? Why?</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-e3">Gợi ý</button>
+    <div class="hint" id="gy-e3">Trả lời bằng câu trọn vẹn về chính nhà em: <i>I live in a …</i> / <i>There are … rooms in my house. They are …</i> /
+    <i>I like … the best because …</i>. Không có đáp án duy nhất — miễn đúng với nhà em và đúng ngữ pháp.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 23).</span> <b>Write an email to Mira, your penfriend. Tell her about your house. Use the answers to the questions in 3.</b></p>
+    <div class="box quote">
+      <p class="small"><b>To:</b> mira@webmail.com<br><b>Subject:</b> My house</p>
+      <p>Hi Mira,</p>
+      <p>Thanks for your email. Now I'll tell you about my house.</p>
+      <p>______</p>
+      <p>What about you? Where do you live? Tell me in your next email.</p>
+      <p>All the best,</p>
+    </div>
+    <button class="btn" type="button" data-hint="#gy-e4">Gợi ý</button>
+    <div class="hint" id="gy-e4">Chép ba câu trả lời ở bài 3 vào chỗ trống, nối lại cho liền mạch và thêm một câu tả đồ đạc có giới từ
+    (<i>There's a … next to …</i>). Cuối thư nhớ kí tên em. Viết xong gửi cô chữa nhé.</div>
+  </div>
+</section>
+
+<!-- ============================== 10. LOOKING BACK + PROJECT ============================== -->
+<section id="s10" class="khong-nv">
+  <h2>10. Ôn tập: Looking Back + Project — em làm vào vở, gửi cô chữa <span class="muted small">(trang 24–25)</span></h2>
+
+  <div class="ex">
+    <p><span class="so">Looking Back, bài 1 (trang 24).</span> <b>Put the words into the correct group. Add a new word to each group.</b></p>
+    <p><i>kitchen · dishwasher · sink · town house · flat · cupboard · bedroom · country house · fridge · chest of drawers · bathroom · living room</i></p>
+    <table><tr><th>Types of house</th><th>Rooms</th><th>Furniture</th></tr><tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr></table>
+    <button class="btn" type="button" data-hint="#gy-f1">Gợi ý</button>
+    <div class="hint" id="gy-f1">Với mỗi từ, hỏi: đây là cả một ngôi nhà, một căn phòng, hay một món đồ đặt trong phòng? Từ mới em thêm có thể lấy ở
+    Glossary (mục 3).</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Looking Back, bài 2 (trang 24).</span> <b>Complete the second sentence with the correct possessive form.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">My teacher has a house next to our house. → Our house is next to my ______ house.</span></li>
+      <li><span class="n">2.</span><span class="tx">My brother has a TV. → This is my ______ TV.</span></li>
+      <li><span class="n">3.</span><span class="tx">Elena has a big bookshelf in her bedroom. → There's a big bookshelf in ______ bedroom.</span></li>
+      <li><span class="n">4.</span><span class="tx">My grandfather likes the kitchen the best. → The kitchen is my ______ favourite room.</span></li>
+      <li><span class="n">5.</span><span class="tx">My aunt has a daughter, Vy. → I'm ______ cousin.</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-f2">Gợi ý</button>
+    <div class="hint" id="gy-f2">Câu thứ nhất cho biết <b>ai có cái gì</b>. Câu thứ hai: người sở hữu + 's. Câu 5 cẩn thận: dì có con gái là Vy — vậy
+    em là anh/chị/em họ <b>của ai</b>?</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Looking Back, bài 3 (trang 24).</span> <b>Make sentences. Use prepositions of place.</b></p>
+    <p>1. The cat ______. · 2. The dog ______. · 3. The cat ______. · 4. The cat ______. · 5. The girl ______. · 6. The boy ______.</p>
+    <button class="btn" type="button" data-hint="#gy-f3">Gợi ý</button>
+    <div class="hint" id="gy-f3">Nhìn từng tranh SGK trang 24, áp mẹo nhớ ở bảng giới từ (mục 6). Câu đủ phải có: <i>is</i> + giới từ + <i>the</i> + đồ vật.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Looking Back, bài 4 (trang 24).</span> <b>Write three sentences to describe your favourite room in your house. Write the sentences in your notebook.</b></p>
+    <p><b>Example:</b> There's a big bed next to the door.
+      <button class="say line icon" data-a="sp-08" data-t="There's a big bed next to the door."></button></p>
+    <button class="btn" type="button" data-hint="#gy-f4">Gợi ý</button>
+    <div class="hint" id="gy-f4">Mỗi câu một đồ vật + một giới từ khác nhau. Một vật: <i>There's a …</i>; nhiều vật: <i>There are …</i></div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Project — STRANGE HOUSES (trang 25).</span> <b>These are some strange houses around the world.</b></p>
+    <p class="small">Tranh SGK: A. ngôi nhà hình chiếc giày cao cổ · B. ngôi nhà lộn ngược, mái ở dưới đất · C. ngôi nhà hình quả trứng.</p>
+    <p><b>1. Which one would you like to live in? Why?</b></p>
+    <p><b>2. Now work in groups.</b> Draw your own strange house. · Decorate it. · Tell the class about your house.</p>
+    <button class="btn" type="button" data-hint="#gy-f5">Gợi ý</button>
+    <div class="hint" id="gy-f5">Nhà "điên" của nhóm em trông giống vật gì? Có mấy phòng, phòng nào lạ nhất, đồ đạc đặt ở đâu? Dùng <i>crazy, strange</i>
+    và các giới từ vừa học để kể trước lớp.</div>
+  </div>
+
+  <h3>Now I can … — tự chấm cuối Unit</h3>
+  <p class="small">Đánh dấu vào vở: ✓ (làm được) · ✓✓ (làm tốt) · ✓✓✓ (làm rất tốt).</p>
+  <table>
+    <tr><th>Now I can …</th><th>✓</th><th>✓✓</th><th>✓✓✓</th></tr>
+    <tr><td>use the words for types of house, rooms and furniture.</td><td></td><td></td><td></td></tr>
+    <tr><td>pronounce the sounds /s/ and /z/ at the end of the words correctly.</td><td></td><td></td><td></td></tr>
+    <tr><td>use possessive case to describe possession.</td><td></td><td></td><td></td></tr>
+    <tr><td>use prepositions of place to describe where people or things are.</td><td></td><td></td><td></td></tr>
+    <tr><td>give suggestions.</td><td></td><td></td><td></td></tr>
+    <tr><td>read about rooms and furniture.</td><td></td><td></td><td></td></tr>
+    <tr><td>describe houses, rooms and furniture.</td><td></td><td></td><td></td></tr>
+    <tr><td>listen about someone's house.</td><td></td><td></td><td></td></tr>
+    <tr><td>write an email to a friend describing my house.</td><td></td><td></td><td></td></tr>
+  </table>
+</section>
+
+<!-- ============================== 11. TỰ KIỂM TRA ============================== -->
+<section id="s11">
+  <h2>11. Tự kiểm tra 1 phút — Mini-game</h2>
+  <p>Làm xong phần Ôn tập rồi thì thử sức nhé! Sáu câu trộn đủ cả Unit: từ vựng, âm cuối, <i>There is/are</i>, hai loại
+  <i>'s</i>, giới từ, gợi ý. Đồng hồ <b>tự chạy khi em bấm câu đầu tiên</b> và tự dừng khi em xong câu cuối — trang ghi lại
+  <b>kỉ lục</b> của em để lần sau phá.</p>
+  <div class="act game" data-act="tu-kiem-tra" data-nguon="luyen">
+    <h4><span class="tag">MINI-GAME</span> Ai nhanh hơn đồng hồ? 6 câu — 60 giây</h4>
+    <p><span data-timer="60"></span></p>
+    <div data-mcq data-opts="hall;wardrobe;strange" data-answer="wardrobe"
+         data-hint-sai='{"hall":"hall là một khu vực trong nhà (sảnh). Từ nào là đồ đạc em đặt vào phòng?","strange":"strange là tính từ (kì lạ). Từ nào là một món đồ đạc?"}'>1. Từ nào là một món đồ đạc (<i>furniture</i>)?</div>
+    <div data-listen data-a="pr-bedrooms" data-t="bedrooms" data-opts="/s/;/z/" data-answer="/z/" data-giu-thu-tu
+         data-hint-sai='{"/s/":"Nghe lại, đặt tay lên cổ: âm m ngay trước đuôi -s có rung không?"}'>2. Một từ mới chưa có trong bảng xếp cột! Đuôi -s của từ này đọc là âm gì?</div>
+    <div data-mcq data-opts="is;are" data-answer="are"
+         data-hint-sai='{"is":"Đếm xem: two bathrooms là một hay nhiều?"}'>3. There ___ two bathrooms in my flat.</div>
+    <div data-mcq data-opts="'s = is;'s = của ai" data-answer="'s = is"
+         data-hint-sai='{"&apos;s = của ai":"Thử thay &apos;s bằng is: It is called the Tiger Room — câu còn đúng nghĩa không? Ngay sau &apos;s có phải một đồ vật của ai đó không?"}'>4. <i>It<b>'s</b> called the Tiger Room.</i> — chữ <i>'s</i> ở đây là gì?</div>
+    <div data-mcq data-opts="on;in front of;behind" data-answer="on"
+         data-hint-sai='{"in front of":"Con mèo có đứng dưới sàn che màn hình không, hay ngồi chạm lên nóc ti vi?","behind":"Ti vi có che con mèo không? Con mèo đang ngồi chạm lên phần nào của ti vi?"}'>
+      <div class="mcq-canh"><span class="canh" aria-label="cảnh 8"><span class="san"></span><span class="tv"><i class="man"></i><i class="chan"></i></span><span class="m" style="left:62px;bottom:65px">🐱</span></span>
+      <span>5. The cat is ___ the TV.</span></div></div>
+    <div data-mcq data-opts="How about;Let's" data-answer="Let's"
+         data-hint-sai='{"how about":"Nhìn động từ ngay sau chỗ trống: put là nguyên thể hay có đuôi -ing? Câu kết thúc bằng dấu chấm hay dấu hỏi?"}'>6. ___ put the lamp next to the bed.</div>
+  </div>
+  <div class="chuc-mung hide" data-khi-xong-het><span class="to">🏆</span>
+    Tuyệt vời! Em đã thắp đủ <b>22 ⭐</b> của Unit 2 — nhà, phòng, đồ đạc, <i>'s</i>, giới từ, gợi ý, em có đủ cả rồi! Nhớ gửi cô
+    bài SGK ở mục 10 để cô chữa, và tối nay kể cho bố mẹ nghe <b>phòng em thích nhất</b> bằng tiếng Anh nhé:
+    <i>There's a … next to …</i></div>
+</section>
+
+<footer>
+  <p><b>Về file phát âm:</b> toàn bộ <code>.mp3</code> trong thư mục <code>audio-unit-02/</code> do máy tổng
+  hợp giọng đọc (Microsoft Edge TTS, giọng <b>Anh – Anh</b>: <code>en-GB-SoniaNeural</code> cho nữ,
+  <code>en-GB-RyanNeural</code> cho nam, <code>en-GB-LibbyNeural</code> cho vai người mẹ; tên riêng Việt Nam đọc
+  bằng giọng <code>vi-VN</code>), sinh từ đúng ngữ liệu in trong SGK. Đây là
+  <b>giọng máy để tham chiếu khi luyện đọc</b>, không phải file nghe chính thức của bộ sách —
+  các bài Listening vẫn phải dùng đĩa/app của NXB vì SGK không in nội dung băng.</p>
+  <p>Các câu có nhãn <i>“Câu luyện của bài giảng”</i> do cô đặt để em luyện, dùng đúng từ và mẫu
+  câu của Unit — <b>không phải câu trong SGK</b> và không có giọng đọc. Nếu trình duyệt không mở
+  được file mp3, trang sẽ tự chuyển sang đọc bằng giọng máy có sẵn của trình duyệt. Nguồn nội
+  dung: <code>kiến thức/tiếng anh/</code>.</p>
+</footer>
+
+</div><!-- /wrap -->
+
+<div id="nowplay"></div>
+<div id="khen" role="status" aria-live="polite"></div>
+
+<!-- ================= ENGINE DÙNG CHUNG — KHÔNG SỬA CHO TỪNG BÀI ================= -->
+<script>
+/* ---------- A. NUT NGHE (giu nguyen hanh vi cu) ---------- */
+(function(){
+  var DIR = (document.body.dataset.audioDir || '').replace(/\/?$/, '/');
+  var rate = 1;
+  var audio = null, curBtn = null, chain = null;
+  var toast = document.getElementById('nowplay');
+
+  function showToast(t){
+    if(!toast) return;
+    if(!t){ toast.className=''; return; }
+    toast.textContent = '🔊 ' + t;
+    toast.className = 'on';
+  }
+
+  function clearBtn(){
+    if(curBtn){ curBtn.classList.remove('playing'); curBtn = null; }
+  }
+
+  function hardStop(){
+    if(audio){ audio.pause(); audio.onended = null; audio.onerror = null; audio = null; }
+    if(window.speechSynthesis) window.speechSynthesis.cancel();
+    clearBtn();
+    showToast(null);
+  }
+
+  function labelOf(btn){
+    if(btn.hasAttribute('data-an')) return 'Đang phát… em nghe thật kĩ nhé';   // cau do nghe: khong lo chu
+    return btn.dataset.t || btn.textContent.trim() || '…';
+  }
+
+  // Doc bang giong may cua trinh duyet (du phong khi khong mo duoc mp3)
+  function speak(btn, done){
+    var text = btn.dataset.t;
+    if(!window.speechSynthesis || !text){ clearBtn(); showToast(null); if(done) done(); return; }
+    var lang = btn.dataset.lang || 'en-GB';     // data-lang="vi-VN" cho ten rieng Viet
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = lang;
+    u.rate = rate === 1 ? 0.95 : 0.65;
+    var vs = window.speechSynthesis.getVoices() || [];
+    var goc = lang.split('-')[0];
+    var v = vs.filter(function(x){ return x.lang === lang; })[0] ||
+            vs.filter(function(x){ return x.lang.indexOf(goc) === 0; })[0];
+    if(v) u.voice = v;
+    u.onend = function(){ clearBtn(); showToast(null); if(done) done(); };
+    u.onerror = function(){ clearBtn(); showToast(null); if(done) done(); };
+    window.speechSynthesis.speak(u);
+  }
+
+  function play(btn, done){
+    hardStop();
+    curBtn = btn;
+    btn.classList.add('playing');
+    showToast(labelOf(btn));
+
+    var slug = btn.dataset.a;
+    if(!slug){ speak(btn, done); return; }
+
+    audio = new Audio(DIR + slug + '.mp3');
+    audio.playbackRate = rate;
+    if('preservesPitch' in audio) audio.preservesPitch = true;
+    if('mozPreservesPitch' in audio) audio.mozPreservesPitch = true;
+    if('webkitPreservesPitch' in audio) audio.webkitPreservesPitch = true;
+
+    audio.onended = function(){ clearBtn(); showToast(null); if(done) done(); };
+    audio.onerror = function(){ audio = null; speak(btn, done); };
+
+    var p = audio.play();
+    if(p && p.catch) p.catch(function(){ if(audio){ audio = null; } speak(btn, done); });
+  }
+
+  function playChain(list, i){
+    if(i >= list.length){ chain = null; return; }
+    chain = list;
+    play(list[i], function(){
+      if(chain === list) setTimeout(function(){ playChain(list, i + 1); }, 320);
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.say') : null;
+    if(!btn) return;
+    e.preventDefault();
+
+    // dang phat chinh nut nay -> dung lai
+    if(btn.classList.contains('playing')){ chain = null; hardStop(); return; }
+
+    chain = null;
+
+    if(btn.dataset.all){
+      var host = document.querySelector(btn.dataset.all);
+      if(!host) return;
+      var list = Array.prototype.slice.call(host.querySelectorAll('.say'));
+      if(list.length){ hardStop(); playChain(list, 0); }
+      return;
+    }
+    play(btn, null);
+  });
+
+  // Toc do
+  var bNorm = document.getElementById('spd-norm');
+  var bSlow = document.getElementById('spd-slow');
+  function setRate(r){
+    rate = r;
+    if(bNorm) bNorm.classList.toggle('on', r === 1);
+    if(bSlow) bSlow.classList.toggle('on', r !== 1);
+    if(audio) audio.playbackRate = rate;
+  }
+  if(bNorm) bNorm.addEventListener('click', function(){ setRate(1); });
+  if(bSlow) bSlow.addEventListener('click', function(){ setRate(0.65); });
+
+  // Esc de dung
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ chain = null; hardStop(); }
+  });
+
+  if(window.speechSynthesis) window.speechSynthesis.getVoices();
+})();
+
+/* ---------- B. ENGINE TUONG TAC khai bao bang data-* ---------- */
+(function(){
+  "use strict";
+  var $  = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function list(s){ return (s||'').split(';').map(function(x){ return x.trim(); }).filter(Boolean); }
+  function json(e,name){
+    var raw = e.getAttribute(name);
+    if(!raw) return {};
+    try{ return JSON.parse(raw); }catch(err){ return {}; }
+  }
+  function el(tag,cls,html){
+    var d = document.createElement(tag);
+    if(cls) d.className = cls;
+    if(html != null) d.innerHTML = html;
+    return d;
+  }
+  function nut(text, cls){ var b = el('button', 'btn' + (cls ? ' ' + cls : ''), text); b.type = 'button'; return b; }
+  /* so sanh cau tra loi: khong phan biet hoa thuong, dau nhay cong, khoang trang thua, dau cham cuoi */
+  function norm(s){
+    return String(s == null ? '' : s).replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').trim()
+      .replace(/[.!?]+$/, '').trim().toLowerCase();
+  }
+  function fire(node, name){ try{ node.dispatchEvent(new CustomEvent(name, { bubbles: true })); }catch(e){} }
+  function fbBox(host){
+    var f = null;
+    for(var i = 0; i < host.children.length; i++) if(host.children[i].classList.contains('fb')) f = host.children[i];
+    if(!f){ f = el('div','fb'); f.setAttribute('role','status'); host.appendChild(f); }
+    return f;
+  }
+  function show(f, cls, html){ f.className = 'fb show ' + cls; f.innerHTML = html; }
+  function hideFb(f){ f.className = 'fb'; f.innerHTML = ''; }
+  /* nut loa sinh ra trong widget: cung cu phap voi nut nghe thuong */
+  function loa(src, cls, an){
+    var t = src.getAttribute('data-t'); if(!t) return null;
+    var b = el('button', 'say ' + (cls || 'icon')); b.type = 'button';
+    if(src.getAttribute('data-a')) b.setAttribute('data-a', src.getAttribute('data-a'));
+    b.setAttribute('data-t', t);
+    if(src.getAttribute('data-lang')) b.setAttribute('data-lang', src.getAttribute('data-lang'));
+    if(an) b.setAttribute('data-an', '1');
+    b.setAttribute('aria-label', an ? 'Nghe' : 'Nghe: ' + t);
+    return b;
+  }
+  /* tron co dinh theo chuoi (anh chup on dinh). tronThat = Fisher-Yates co hat giong (co the trung thu tu goc);
+     tron = nhu tronThat nhung KHONG BAO GIO giu nguyen thu tu goc (dung cho the xep, the noi).
+     kiem_tra_bai_giang.py chep DUNG thuat toan nay de tinh vi tri dap an -> doi o day thi doi ca o do. */
+  function tronThat(arr, seed){
+    var a = arr.slice(), h = 7;
+    for(var i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) % 2147483647;
+    for(var j = a.length - 1; j > 0; j--){ h = (h * 16807) % 2147483647; var k = h % (j + 1); var x = a[j]; a[j] = a[k]; a[k] = x; }
+    return a;
+  }
+  function tron(arr, seed){
+    var a = tronThat(arr, seed);
+    if(a.length > 1 && a.every(function(v, i){ return v === arr[i]; })) a.push(a.shift());
+    return a;
+  }
+
+  /* ---------- luu tien do tren may (localStorage), khoa theo duong dan file ---------- */
+  var KHOA = 'ta6:' + location.pathname, kho = {};
+  try{ kho = JSON.parse(localStorage.getItem(KHOA) || '{}') || {}; }catch(e){ kho = {}; }
+  kho.xong = kho.xong || {}; kho.ghi = kho.ghi || {}; kho.game = kho.game || {};
+  function ghiKho(){ try{ localStorage.setItem(KHOA, JSON.stringify(kho)); }catch(e){} }
+
+  /* ---------- thanh cong cu: gom chip vao mot hang (dien thoai cuon ngang), scroll-padding theo chieu cao that ---------- */
+  var tb = $('.toolbar .wrap');
+  if(tb){
+    var chips = $$('.chip', tb), hangChip = el('div', 'chips');
+    if(chips.length){
+      tb.insertBefore(hangChip, chips[0]);
+      chips.forEach(function(c){ hangChip.appendChild(c); });
+      var bmo = $('[data-motion]', tb); if(bmo) hangChip.appendChild(bmo);
+    }
+  }
+  function datPadding(){
+    var t = $('.toolbar'); if(t) document.documentElement.style.scrollPaddingTop = (t.offsetHeight + 8) + 'px';
+  }
+  datPadding(); window.addEventListener('resize', datPadding);
+  var KHEN = ['Giỏi lắm!', 'Chuẩn rồi!', 'Tuyệt vời!', 'Làm tốt lắm!', 'Em nắm bài rồi đấy!', 'Hay quá!'];
+  var MAC_DINH_OK = ['Đúng rồi! ', 'Chính xác! ', 'Giỏi quá! '];
+  function khenNgau(){ return MAC_DINH_OK[Math.floor(Math.random() * MAC_DINH_OK.length)]; }
+
+  /* ---------- tat chuyen dong ---------- */
+  var bm = $('[data-motion]');
+  if(bm) bm.addEventListener('click', function(){
+    var off = document.body.classList.toggle('no-motion');
+    bm.textContent = off ? 'Bật chuyển động' : 'Tắt chuyển động';
+    bm.setAttribute('aria-pressed', off ? 'true' : 'false');
+  });
+
+  /* ---------- nhan nguon cua nhiem vu ---------- */
+  $$('[data-act][data-nguon]').forEach(function(a){
+    var n = a.getAttribute('data-nguon');
+    var t = n === 'sgk' ? '📗 Câu lấy nguyên văn từ SGK' : '✍️ Câu luyện của bài giảng (dùng từ và mẫu câu của Unit — không phải câu SGK)';
+    var h = a.querySelector('h4');
+    var tag = el('div', 'nguon' + (n === 'sgk' ? ' sgk' : ''), t);
+    if(h && h.parentNode === a) a.insertBefore(tag, h.nextSibling); else a.insertBefore(tag, a.firstChild);
+  });
+
+  /* ---------- tien do, sao, loi khen ---------- */
+  var WIDGET = '[data-flip],[data-listen],[data-pair],[data-sort],[data-mcq],[data-fill],[data-order],[data-ghi],[data-noi]';
+  var ACTS = $$('[data-act]'), DONE = {}, box = $('[data-progress]'), khen = $('#khen');
+  var SECS = $$('section').filter(function(s){ return $('[data-act]', s); });
+  SECS.forEach(function(s){
+    var h = $('h2', s); if(!h) return;
+    s._nv = el('span', 'nv'); h.appendChild(s._nv);
+  });
+  /* bang ron buoi hoc: <div class="buoi"><span class="ten">Buổi 1</span><span class="mo-ta">…</span></div>
+     -> engine dem cac nhiem vu tu bang ron nay den bang ron sau, gan "⭐ d/n" */
+  var BUOI = $$('.buoi').map(function(b, i, all){
+    var sau = all[i + 1];
+    var a = ACTS.filter(function(x){
+      return (b.compareDocumentPosition(x) & 4) && (!sau || (sau.compareDocumentPosition(x) & 2));
+    });
+    var d = el('span', 'dem'); b.appendChild(d);
+    return { b: b, a: a, d: d };
+  });
+  function paint(){
+    var n = Object.keys(DONE).length, t = ACTS.length || 1;
+    if(box){
+      var bar = $('.track i', box), txt = $('.txt', box);
+      if(bar) bar.style.width = Math.round(n / t * 100) + '%';
+      if(txt) txt.innerHTML = '⭐ ' + n + '/' + ACTS.length + '<span class="nv-chu"> nhiệm vụ</span>';
+    }
+    SECS.forEach(function(s){
+      if(!s._nv) return;
+      var a = $$('[data-act]', s), d = a.filter(function(x){ return x.classList.contains('done'); }).length;
+      s._nv.textContent = '⭐ ' + d + '/' + a.length;
+      s._nv.classList.toggle('du', d === a.length);
+    });
+    BUOI.forEach(function(o){
+      var d = o.a.filter(function(x){ return x.classList.contains('done'); }).length;
+      o.d.textContent = '⭐ ' + d + '/' + o.a.length + (d === o.a.length && d ? ' — xong buổi!' : '');
+      o.b.classList.toggle('du', d === o.a.length && d > 0);
+    });
+  }
+  function noiKhen(t){
+    if(!khen) return;
+    khen.textContent = t; khen.className = 'on';
+    clearTimeout(khen._t); khen._t = setTimeout(function(){ khen.className = ''; }, 2400);
+  }
+  function moSau(w){
+    var s = w && w.getAttribute ? w.getAttribute('data-mo-sau') : '';
+    if(s) $$(s).forEach(function(t){ t.classList.remove('hide'); t.classList.add('mo-ra'); });
+  }
+  /* widget lam dung -> danh dau; nhiem vu xong khi MOI widget cham diem trong no deu xong */
+  function xong(w){
+    if(w._xong) return;
+    w._xong = true; w.classList.add('xong');
+    moSau(w); fire(w, 'ta6-xong');
+    var a = w.closest('[data-act]');
+    if(!a) return;
+    if(!$$(WIDGET, a).every(function(x){ return x._xong; })) return;
+    var k = a.getAttribute('data-act');
+    if(DONE[k]) return;
+    DONE[k] = true; a.classList.add('done'); paint();
+    kho.xong[k] = 1; ghiKho();
+    moSau(a); fire(a, 'ta6-act-xong');
+    var n = Object.keys(DONE).length;
+    if(n === ACTS.length){
+      noiKhen('🏆 Em đã hoàn thành cả ' + n + ' nhiệm vụ!');
+      xongHet();
+    } else {
+      noiKhen('⭐ ' + KHEN[n % KHEN.length] + ' Xong ' + n + '/' + ACTS.length + ' nhiệm vụ');
+    }
+  }
+  function xongHet(){ $$('[data-khi-xong-het]').forEach(function(t){ t.classList.remove('hide'); t.classList.add('mo-ra'); }); }
+
+  /* nap lai nhiem vu da xong lan truoc: ⭐ giu nguyen, widget van lam lai duoc (lam lai khong tinh them) */
+  ACTS.forEach(function(a){
+    var k = a.getAttribute('data-act');
+    if(!kho.xong[k]) return;
+    DONE[k] = true; a.classList.add('done'); moSau(a);
+    var h = $('h4', a);
+    if(h && h.parentNode === a) h.appendChild(el('span', 'da-luu', ' · ⭐ đã xong lần trước'));
+  });
+  if(ACTS.length && Object.keys(DONE).length === ACTS.length) xongHet();
+  paint();
+  if(box && ACTS.length){
+    var bLai = el('button', 'lam-lai', '↺<span class="nv-chu"> Làm lại</span>'); bLai.type = 'button';
+    bLai.setAttribute('aria-label', 'Làm lại từ đầu');
+    bLai.title = 'Xoá ⭐ và chữ em đã ghi trên máy này, làm lại từ đầu';
+    bLai.addEventListener('click', function(){
+      if(window.confirm && !window.confirm('Xoá hết ⭐ và ghi chép đã lưu trên máy này để làm lại từ đầu?')) return;
+      try{ localStorage.removeItem(KHOA); }catch(e){}
+      location.reload();
+    });
+    box.parentNode.insertBefore(bLai, box.nextSibling);
+  }
+
+  /* ---------- the div role=button bam duoc bang ban phim ---------- */
+  document.addEventListener('keydown', function(e){
+    var t = e.target;
+    if(!t || !t.getAttribute || t.getAttribute('role') !== 'button' || t.tagName === 'BUTTON') return;
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); t.click(); }
+  });
+
+  /* ---------- 1. THE TU LAT: data-flip ---------- */
+  $$('[data-flip]').forEach(function(deck){
+    var cards = $$('.fc', deck);
+    var bar = el('div', 'fc-bar'), dem = el('span', '', ''), grid = el('div', 'fc-grid');
+    var bTron = nut('🔀 Trộn thẻ'), bNguoc = nut('⇄ Nhìn nghĩa, đoán từ');
+    bar.appendChild(bTron); bar.appendChild(bNguoc); bar.appendChild(dem);
+    function capNhat(){
+      var d = cards.filter(function(c){ return c._xem; }).length;
+      dem.textContent = 'Đã lật ' + d + '/' + cards.length + ' thẻ';
+      if(d === cards.length){ show(fbBox(deck), 'good', deck.getAttribute('data-ok') ||
+        'Em đã xem hết thẻ! Thử bấm <b>⇄ Nhìn nghĩa, đoán từ</b> để tự kiểm tra nhé.'); xong(deck); }
+    }
+    cards.forEach(function(c){
+      var w = c.getAttribute('data-w') || c.getAttribute('data-t') || '';
+      var nghia = c.innerHTML.trim(), emo = c.getAttribute('data-emo') || '', ipa = c.getAttribute('data-ipa') || '';
+      c.innerHTML = '';
+      c.setAttribute('tabindex', '0'); c.setAttribute('role', 'button');
+      c.setAttribute('aria-label', 'Thẻ từ ' + w + ', bấm để lật');
+      var inn = el('div', 'fc-in'), tr = el('div', 'fc-mat truoc'), sau = el('div', 'fc-mat sau');
+      tr.appendChild(el('span', 'fc-w', esc(w)));
+      if(ipa) tr.appendChild(el('span', 'fc-ipa', esc(ipa)));
+      var b = loa(c, 'icon'); if(b) tr.appendChild(b);
+      tr.appendChild(el('span', 'fc-lat', 'lật ↻'));
+      if(emo) sau.appendChild(el('span', 'fc-emo', esc(emo)));
+      sau.appendChild(el('span', 'fc-nghia', nghia));
+      inn.appendChild(tr); inn.appendChild(sau); c.appendChild(inn); grid.appendChild(c);
+      c.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.say')) return;       // bam loa khong lat the
+        c.classList.toggle('lat');
+        if(!c._xem){ c._xem = true; c.classList.add('da-xem'); capNhat(); }
+      });
+    });
+    deck.innerHTML = ''; deck.appendChild(bar); deck.appendChild(grid);
+    bTron.addEventListener('click', function(){
+      cards.slice().sort(function(){ return Math.random() - .5; }).forEach(function(c){ grid.appendChild(c); });
+    });
+    bNguoc.addEventListener('click', function(){
+      var ng = deck.classList.toggle('nguoc');
+      cards.forEach(function(c){ c.classList.toggle('lat', ng); });
+      bNguoc.textContent = ng ? '⇄ Nhìn từ, đoán nghĩa' : '⇄ Nhìn nghĩa, đoán từ';
+    });
+    capNhat();
+  });
+
+  /* ---------- phuong an bam chon dung chung cho mcq va listen ---------- */
+  /* Thu tu hien phuong an: TRON co dinh (anh chup on dinh) de vi tri dap an khong co quy luat.
+     Hat giong = data-opts | data-answer | data-a | data-tron | so thu tu cua cau trong nhiem vu.
+     data-giu-thu-tu  -> giu dung thu tu viet (cap co thu tu tu nhien: /s/;/z/, sink;sinks).
+     data-tron="2"    -> doi hat giong (kiem_tra_bai_giang.py canh bao vi tri lap lai thi doi so nay). */
+  var PA_SEL = '[data-mcq],[data-listen]';
+  function hatGiong(host){
+    var a = host.closest('[data-act]'), i = a ? $$(PA_SEL, a).indexOf(host) : 0;
+    return [host.getAttribute('data-opts') || '', host.getAttribute('data-answer') || '',
+            host.getAttribute('data-a') || '', host.getAttribute('data-tron') || '', i].join('|');
+  }
+  function phuongAn(host, macDinhSai){
+    var opts = list(host.getAttribute('data-opts')), ans = host.getAttribute('data-answer') || '';
+    var hs0 = json(host, 'data-hint-sai'), hs = {}, row = el('div', 'opts'), f;
+    Object.keys(hs0).forEach(function(k){ hs[norm(k)] = hs0[k]; });   /* khoa JSON khong phan biet hoa thuong, nhu data-fill */
+    var hien = host.hasAttribute('data-giu-thu-tu') ? opts : tronThat(opts, hatGiong(host));
+    host._sai = 0;
+    hien.forEach(function(o){
+      var b = el('button', 'opt', esc(o)); b.type = 'button';
+      b.addEventListener('click', function(){
+        if(host._xong) return;
+        fire(host, 'ta6-bam');
+        f = fbBox(host);
+        if(norm(o) === norm(ans)){
+          b.classList.add('dung');
+          $$('.opt', row).forEach(function(x){ x.disabled = true; x.classList.remove('sai'); });
+          show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em làm tiếp nhé.'));
+          xong(host);
+        } else {
+          host._sai++;
+          b.classList.remove('sai'); void b.offsetWidth; b.classList.add('sai');
+          show(f, 'bad', hs[norm(o)] || host.getAttribute('data-goi-y') || macDinhSai);
+        }
+      });
+      row.appendChild(b);
+    });
+    host._reset = function(){
+      host._xong = false; host._sai = 0; host.classList.remove('xong');
+      $$('.opt', row).forEach(function(x){ x.disabled = false; x.classList.remove('sai'); x.classList.remove('dung'); });
+      hideFb(fbBox(host));
+    };
+    return row;
+  }
+
+  /* ---------- 2. NGHE ROI CHON: data-listen ---------- */
+  $$('[data-listen]').forEach(function(host){
+    var q = el('div', 'ls-q'), b = loa(host, 'big', true);
+    if(b){ b.textContent = 'Nghe'; q.appendChild(b); }
+    var hoi = host.innerHTML.trim() || host.getAttribute('data-hoi') || 'Em nghe thấy từ nào?';
+    q.appendChild(el('span', 'ls-hoi', hoi));
+    host.innerHTML = '';
+    host.appendChild(q);
+    host.appendChild(phuongAn(host, 'Chưa phải từ đó. Em bấm 🔊 nghe lại — thử bấm <b>Chậm</b> trên thanh công cụ — rồi chọn lại nhé.'));
+  });
+
+  /* ---------- 3. TRAC NGHIEM NHANH: data-mcq ---------- */
+  $$('[data-mcq]').forEach(function(host){
+    var q = el('div', 'mcq-q', host.innerHTML.trim());
+    host.innerHTML = ''; host.appendChild(q);
+    host.appendChild(phuongAn(host, 'Chưa đúng. Em đọc lại cả câu, nhìn chủ ngữ và khung <b>Remember!</b> rồi chọn lại nhé.'));
+  });
+
+  /* ---------- 4. NOI CAP: data-pair ---------- */
+  $$('[data-pair]').forEach(function(host){
+    var rows = $$('.cap', host), sel = { L: null, R: null }, khop = 0;
+    var wrap = el('div', 'pr-wrap'), cL = el('div', 'pr-col'), cR = el('div', 'pr-col');
+    var dem = el('div', 'pr-dem');
+    function the(html, k, side, src){
+      var d = el('div', 'pc', '<span>' + html + '</span>');
+      d.setAttribute('role', 'button'); d.setAttribute('tabindex', '0');
+      d._k = k; d._s = side; d.setAttribute('data-k', k);
+      if(src){ var b = loa(src, 'icon'); if(b) d.appendChild(b); }
+      d.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.say')) return;
+        if(d.classList.contains('khop')) return;
+        if(sel[side] === d){ d.classList.remove('chon'); sel[side] = null; return; }
+        if(sel[side]) sel[side].classList.remove('chon');
+        sel[side] = d; d.classList.add('chon');
+        if(sel.L && sel.R) thu();
+      });
+      return d;
+    }
+    var goi = rows.map(function(r){ return r.getAttribute('data-goi-y') || ''; });
+    var trai = rows.map(function(r, i){ return the(r.children[0] ? r.children[0].innerHTML : '', i, 'L', r); });
+    var phai = rows.map(function(r, i){ return the(r.children[1] ? r.children[1].innerHTML : '', i, 'R', null); });
+    trai.forEach(function(d){ cL.appendChild(d); });
+    tron(phai, host.textContent).forEach(function(d){ cR.appendChild(d); });
+    function capNhat(){ dem.textContent = 'Đã nối ' + khop + '/' + rows.length + ' cặp'; }
+    function thu(){
+      var l = sel.L, r = sel.R, f = fbBox(host);
+      sel.L = sel.R = null;
+      l.classList.remove('chon'); r.classList.remove('chon');
+      if(l._k === r._k){
+        l.classList.add('khop'); r.classList.add('khop'); khop++; capNhat();
+        if(khop === rows.length){ show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em nối đúng hết rồi.')); xong(host); }
+        else show(f, 'good', '✓ Khớp rồi! Còn ' + (rows.length - khop) + ' cặp.');
+      } else {
+        [l, r].forEach(function(x){ x.classList.remove('sai'); void x.offsetWidth; x.classList.add('sai'); });
+        setTimeout(function(){ l.classList.remove('sai'); r.classList.remove('sai'); }, 700);
+        show(f, 'bad', goi[l._k] || host.getAttribute('data-goi-y') ||
+          'Chưa khớp. Em bấm 🔊 nghe lại từ bên trái, đọc lại nghĩa bên phải, rồi thử cặp khác nhé.');
+      }
+    }
+    host.innerHTML = '';
+    wrap.appendChild(cL); wrap.appendChild(cR);
+    host.appendChild(wrap); host.appendChild(dem); capNhat();
+  });
+
+  /* ---------- 5. XEP VAO COT: data-sort ---------- */
+  $$('[data-sort]').forEach(function(host){
+    var cols = list(host.getAttribute('data-cols'));
+    var goc = $$('[data-col]', host), sel = null;
+    var meo = el('p', 'so-meo hd-bam', 'Bấm 🔊 nghe thẻ → bấm thẻ để chọn → bấm vào cột. Bấm thẻ đã xếp để đổi cột.');
+    var pool = el('div', 'so-pool'), bang = el('div', 'so-cols'), zones = [];
+    var chips = goc.map(function(s){
+      var d = el('div', 'sc', '<span>' + s.innerHTML + '</span>');
+      d.setAttribute('role', 'button'); d.setAttribute('tabindex', '0');
+      d._col = s.getAttribute('data-col'); d._goi = s.getAttribute('data-goi-y') || '';
+      var b = loa(s, 'icon'); if(b) d.appendChild(b);
+      d.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.say')) return;
+        if(host._xong) return;
+        e.stopPropagation();
+        if(sel === d){ d.classList.remove('chon'); sel = null; return; }
+        if(sel) sel.classList.remove('chon');
+        sel = d; d.classList.add('chon');
+      });
+      return d;
+    });
+    function dat(zone, e){
+      if(e && e.target.closest && e.target.closest('.say')) return;   // bam loa cua the khong lam di chuyen the
+      if(!sel || host._xong) return;
+      zone.appendChild(sel); sel.classList.remove('chon'); sel = null; hideFb(fbBox(host));
+    }
+    pool.addEventListener('click', function(e){ dat(pool, e); });
+    cols.forEach(function(c){
+      var col = el('div', 'so-col'), h = el('div', 'so-h', esc(c)), z = el('div', 'so-z');
+      col.setAttribute('role', 'button'); col.setAttribute('tabindex', '0');
+      col.setAttribute('aria-label', 'Cột ' + c); col.setAttribute('data-cot', c);
+      z._ten = c; col.appendChild(h); col.appendChild(z); bang.appendChild(col); zones.push(z);
+      col.addEventListener('click', function(e){ dat(z, e); });
+    });
+    tron(chips, host.textContent).forEach(function(d){ pool.appendChild(d); });
+    var bK = nut('Kiểm tra', 'chinh'), bL = nut('Xếp lại từ đầu'), hang = el('div', '');
+    hang.appendChild(bK); hang.appendChild(bL);
+    bK.addEventListener('click', function(){
+      if(host._xong) return;
+      var f = fbBox(host), con = $$('.sc', pool).length;
+      if(con){ show(f, 'bad', 'Còn ' + con + ' thẻ chưa xếp. Em nghe rồi xếp nốt nhé.'); return; }
+      var sai = chips.filter(function(d){ return d.parentNode._ten !== d._col; });
+      if(!sai.length){
+        host.classList.add('khoa');
+        show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em xếp đúng hết rồi.'));
+        xong(host);
+      } else {
+        show(f, 'bad', 'Có <b>' + sai.length + '</b> thẻ chưa nằm đúng cột. Em bấm 🔊 nghe lại từng thẻ, ' +
+          'so với từ mẫu của mỗi cột, rồi đổi chỗ thẻ đó.' +
+          (function(){ var g = sai.filter(function(d){ return d._goi; })[0]; return g ? '<br>💡 ' + g._goi : ''; })());
+      }
+    });
+    bL.addEventListener('click', function(){
+      if(host._xong) return;
+      chips.forEach(function(d){ d.classList.remove('chon'); pool.appendChild(d); }); sel = null; hideFb(fbBox(host));
+    });
+    host.innerHTML = '';
+    host.appendChild(meo); host.appendChild(pool); host.appendChild(bang); host.appendChild(hang);
+  });
+
+  /* ---------- 6. DIEN TU: data-fill (dat ngay trong cau) ---------- */
+  $$('[data-fill]').forEach(function(host){
+    var dap = (host.getAttribute('data-answer') || '').split('|').map(norm).filter(Boolean);
+    var hs = json(host, 'data-hint-sai'), hsN = {};
+    Object.keys(hs).forEach(function(k){ hsN[norm(k)] = hs[k]; });
+    var rong = +(host.getAttribute('data-w') || 0) ||
+      Math.max(5, Math.max.apply(null, dap.map(function(d){ return d.length; }).concat([4])) + 2);
+    host.classList.add('fl');
+    var inp = el('input'); inp.type = 'text'; inp.size = rong; inp.setAttribute('autocomplete', 'off');
+    inp.setAttribute('autocapitalize', 'off'); inp.setAttribute('spellcheck', 'false');
+    inp.setAttribute('aria-label', 'Ô điền từ');
+    var b = nut('Kiểm'), f = el('span', 'fb-in');
+    host.innerHTML = ''; host.appendChild(inp); host.appendChild(b); host.appendChild(f);
+    host._sai = 0;
+    host._reset = function(){
+      host._xong = false; host._sai = 0; host.classList.remove('xong'); host.classList.remove('dung');
+      inp.readOnly = false; inp.value = ''; b.disabled = false; f.className = 'fb-in'; f.innerHTML = '';
+    };
+    inp.addEventListener('focus', function(){ fire(host, 'ta6-bam'); });
+    function kiem(){
+      if(host._xong) return;
+      fire(host, 'ta6-bam');
+      var v = norm(inp.value);
+      if(!v){ f.className = 'fb-in bad'; f.textContent = 'Em chưa điền gì.'; return; }
+      if(dap.indexOf(v) < 0) host._sai++;
+      if(dap.indexOf(v) >= 0){
+        host.classList.add('dung'); inp.readOnly = true; b.disabled = true;
+        f.className = 'fb-in good'; f.innerHTML = host.getAttribute('data-ok') || '✓ Đúng rồi!';
+        xong(host);
+      } else {
+        f.className = 'fb-in bad';
+        f.innerHTML = hsN[v] || host.getAttribute('data-goi-y') || 'Chưa đúng — em xem lại chủ ngữ và mẫu câu, rồi sửa nhé.';
+      }
+    }
+    b.addEventListener('click', kiem);
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); kiem(); } });
+  });
+
+  /* ---------- 7. SAP XEP TU THANH CAU: data-order ---------- */
+  $$('[data-order]').forEach(function(host){
+    var cau = (host.getAttribute('data-answer') || '').trim();
+    var m = cau.match(/^(.*?)([.!?]+)$/), than = m ? m[1] : cau, dau = m ? m[2] : '';
+    var tu = than.split(/\s+/).filter(Boolean);
+    host.classList.add('od');
+    var hoi = host.innerHTML.trim();
+    var line = el('div', 'od-line'), pool = el('div', 'od-pool'), dauEl = el('span', 'od-dau', esc(dau));
+    var hang = el('div', ''), bK = nut('Kiểm tra', 'chinh'), bL = nut('Làm lại');
+    hang.appendChild(bK); hang.appendChild(bL);
+    var tks = tu.map(function(w, i){
+      var t = el('button', 'tk', esc(w)); t.type = 'button'; t._i = i; t._w = w;
+      t.addEventListener('click', function(){
+        if(host._xong) return;
+        (t.parentNode === pool ? line : pool).appendChild(t);
+        hideFb(fbBox(host));
+      });
+      return t;
+    });
+    function datLai(){ tron(tks, cau).forEach(function(t){ pool.appendChild(t); }); }
+    host.innerHTML = '';
+    if(hoi) host.appendChild(el('div', 'od-hoi', hoi));
+    var o = el('div', ''); o.style.display = 'flex'; o.style.alignItems = 'flex-end'; o.style.gap = '4px';
+    line.style.flex = '1'; o.appendChild(line); o.appendChild(dauEl);
+    host.appendChild(o); host.appendChild(pool); host.appendChild(hang);
+    datLai();
+    bL.addEventListener('click', function(){ if(!host._xong){ datLai(); hideFb(fbBox(host)); } });
+    bK.addEventListener('click', function(){
+      if(host._xong) return;
+      var f = fbBox(host), dang = $$('.tk', line).map(function(t){ return t._w; });
+      if(dang.length < tu.length){ show(f, 'bad', 'Còn ' + (tu.length - dang.length) + ' thẻ chưa dùng. Câu cần đủ tất cả các thẻ.'); return; }
+      if(norm(dang.join(' ')) === norm(than)){
+        host.classList.add('dung');
+        var html = host.getAttribute('data-ok') || (khenNgau() + 'Em đọc to cả câu một lần nhé.');
+        show(f, 'good', html);
+        var b = loa(host, 'mini'); if(b){ b.textContent = 'Nghe cả câu'; f.appendChild(document.createTextNode(' ')); f.appendChild(b); }
+        xong(host);
+      } else {
+        var dung = 0; while(dung < dang.length && norm(dang[dung]) === norm(tu[dung])) dung++;
+        show(f, 'bad', (host.getAttribute('data-hint-sai') || 'Chưa đúng thứ tự. Em đọc to câu lên: nghe đã tự nhiên chưa?') +
+          (dung > 0 ? '<br>💡 ' + dung + ' thẻ đầu tiên của em đã đúng chỗ.' : '<br>💡 Thẻ đầu câu chưa đúng — chữ nào được viết hoa?'));
+      }
+    });
+  });
+
+  /* ---------- 8. GOI Y / DOI CHIEU ---------- */
+  $$('[data-hint]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-hint')); if(!t) return;
+      b.textContent = t.classList.toggle('open') ? 'Ẩn gợi ý' : (b.getAttribute('data-open') || 'Gợi ý');
+    });
+  });
+  $$('[data-reveal]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-reveal')); if(!t) return;
+      var open = t.classList.toggle('open');
+      b.textContent = open ? (b.getAttribute('data-close') || 'Ẩn phần đối chiếu')
+                           : (b.getAttribute('data-open') || 'Em làm xong rồi — xem đối chiếu');
+    });
+  });
+
+  /* ---------- 9. O GHI DU DOAN: data-ghi (khong cham dung sai; viet du N tu la xong) ---------- */
+  $$('[data-ghi]').forEach(function(host){
+    var k = host.getAttribute('data-luu') || ('ghi-' + $$('[data-ghi]').indexOf(host));
+    var can = +(host.getAttribute('data-it-nhat') || 3);
+    var hoi = host.innerHTML.trim();
+    host.classList.add('ghi');
+    var ta = el('textarea'); ta.rows = 3; ta.placeholder = host.getAttribute('data-goi-y') || 'Em gõ vào đây — tiếng Việt cũng được…';
+    ta.setAttribute('aria-label', hoi.replace(/<[^>]+>/g, '') || 'Ô ghi của em');
+    var tt = el('div', 'ghi-tt');
+    host.innerHTML = '';
+    if(hoi) host.appendChild(el('p', 'ghi-q', hoi));
+    host.appendChild(ta); host.appendChild(tt);
+    function soTu(){ return ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; }
+    function capNhat(){
+      var n = soTu();
+      tt.textContent = n >= can ? '✓ Đã lưu trên máy này — không chấm đúng sai.'
+                                : 'Không chấm đúng sai. Viết ít nhất ' + can + ' từ là xong (chữ em gõ tự lưu trên máy này).';
+      if(n >= can && !host._xong){
+        show(fbBox(host), 'good', host.getAttribute('data-ok') || 'Em đã ghi dự đoán! Giờ đọc xem em đoán trúng không nhé.');
+        xong(host);
+      }
+    }
+    ta.value = kho.ghi[k] || '';
+    ta.addEventListener('input', function(){ kho.ghi[k] = ta.value; ghiKho(); capNhat(); });
+    host._reset = function(){};
+    capNhat();
+  });
+  $$('[data-xem-lai]').forEach(function(host){
+    var k = host.getAttribute('data-xem-lai');
+    var b = nut(host.getAttribute('data-nhan') || '🔮 Mở lại điều em đoán lúc trước'), noi = el('div', 'noi');
+    host.appendChild(b); host.appendChild(noi);
+    b.addEventListener('click', function(){
+      var t = (kho.ghi[k] || '').trim();
+      noi.textContent = t || '(Em chưa ghi gì ở ô dự đoán.)';
+      b.textContent = host.classList.toggle('mo') ? 'Ẩn lại' : (host.getAttribute('data-nhan') || '🔮 Mở lại điều em đoán lúc trước');
+    });
+  });
+
+  /* ---------- 9b. NOI THEO: data-noi (nghe mau -> noi TO N lan -> tu bam tung lan; khong cham giong) ----------
+     <div data-noi data-a="gs-03" data-t="There's a living room…" data-lan="3">There's a living room…</div>
+     Nut "Lan 1" chi mo sau khi em bam 🔊 nghe mau; bam theo thu tu; du N lan la xong. */
+  $$('[data-noi]').forEach(function(host){
+    var can = Math.max(1, +(host.getAttribute('data-lan') || 3)), da = 0;
+    var cau = host.innerHTML.trim() || esc(host.getAttribute('data-t') || '');
+    host.classList.add('noi-theo');
+    host.innerHTML = '';
+    host.appendChild(el('div', 'nguon sgk', '📗 Câu mẫu SGK — nghe rồi nói theo'));
+    host.appendChild(el('p', 'noi-cau', cau));
+    var hang = el('div', 'noi-hang'), l = loa(host, 'big'), daNghe = !l, nuts = [];
+    if(l){ l.textContent = 'Nghe mẫu'; hang.appendChild(l); l.addEventListener('click', function(){ daNghe = true; moKhoa(); }); }
+    function moKhoa(){ nuts.forEach(function(b, i){ b.disabled = !daNghe || i !== da; }); }
+    for(var i = 0; i < can; i++) (function(i){
+      var b = el('button', 'lan', '🗣️ Lần ' + (i + 1)); b.type = 'button';
+      b.setAttribute('aria-label', 'Em đã nói to lần ' + (i + 1));
+      b.addEventListener('click', function(){
+        if(b.disabled || i !== da) return;
+        fire(host, 'ta6-bam');
+        da++; b.classList.add('da'); b.textContent = '✓ Lần ' + (i + 1); moKhoa();
+        if(da >= can){
+          show(fbBox(host), 'good', host.getAttribute('data-ok') ||
+               ('Em đã nói to ' + can + ' lần! Bấm 🔊 nghe lại một lần nữa — giọng em đã giống mẫu chưa?'));
+          xong(host);
+        }
+      });
+      nuts.push(b); hang.appendChild(b);
+    })(i);
+    host.appendChild(hang);
+    host.appendChild(el('div', 'ghi-tt', 'Bấm 🔊 nghe mẫu, rồi nói TO theo. Nói xong mỗi lần thì bấm một nút. ' +
+                                          'Máy không chấm giọng — em tự làm thật nhé.'));
+    host._reset = function(){
+      da = 0; daNghe = !l; host._xong = false; host.classList.remove('xong');
+      nuts.forEach(function(b, i){ b.classList.remove('da'); b.textContent = '🗣️ Lần ' + (i + 1); });
+      moKhoa(); hideFb(fbBox(host));
+    };
+    moKhoa();
+  });
+
+  /* ---------- 10. DONG HO: data-timer (khong cham diem) ----------
+     Dat trong .act.game: dong ho TU CHAY khi em bam cau dau tien, TU DUNG khi xong moi cau,
+     bao "Em xong trong N giay", so cau dung ngay lan dau, ki luc (luu tren may), nut Choi lai. */
+  function mmss(g){ var p = Math.floor(g / 60), s = g % 60; return p + ':' + (s < 10 ? '0' : '') + s; }
+  $$('[data-timer]').forEach(function(host){
+    var tong = +(host.getAttribute('data-timer') || 60), con = tong, id = null, daChay = 0, daXong = false;
+    var game = host.closest('.act.game');
+    var ws = game ? $$(WIDGET, game) : [];
+    var kGame = game ? (game.getAttribute('data-act') || 'game') : '';
+    host.classList.add('tm');
+    var so = el('span', 'tm-so'), b = nut('⏱ Bắt đầu', 'chinh'), ghi = el('span', 'muted small', '');
+    var kq = el('div', 'kq-game'); kq.setAttribute('role', 'status');
+    function ve(){ so.textContent = mmss(Math.max(0, con)); }
+    host.innerHTML = ''; host.appendChild(b); host.appendChild(so); host.appendChild(ghi); ve();
+    if(game){
+      game.appendChild(kq);
+      ghi.textContent = 'Đồng hồ tự chạy khi em bấm câu đầu tiên.';
+      if(kho.game[kGame]) ghi.textContent += ' Kỉ lục của em: ' + mmss(kho.game[kGame]) + '.';
+    }
+    function dung(){ if(id){ clearInterval(id); id = null; } }
+    function tick(){
+      daChay++;
+      if(con > 0){ con--; ve(); }
+      if(con <= 0 && !host.classList.contains('het')){
+        host.classList.add('het');
+        ghi.textContent = 'Hết giờ! Em làm được mấy câu? Làm tiếp cho xong nhé — không sao cả.';
+        if(!game){ dung(); b.textContent = '↺ Chơi lại'; }
+      }
+    }
+    function chay(){ if(id || daXong) return; b.textContent = '⏸ Dừng'; id = setInterval(tick, 1000); }
+    function choiLai(){
+      dung(); ws.forEach(function(w){ if(w._reset) w._reset(); });
+      con = tong; daChay = 0; daXong = false; host.classList.remove('het');
+      ghi.textContent = game ? 'Đồng hồ tự chạy khi em bấm câu đầu tiên.' : '';
+      if(game && kho.game[kGame]) ghi.textContent += ' Kỉ lục của em: ' + mmss(kho.game[kGame]) + ' — thử phá kỉ lục nhé!';
+      kq.className = 'kq-game'; kq.innerHTML = ''; b.textContent = '⏱ Bắt đầu'; ve();
+    }
+    b.addEventListener('click', function(){
+      if(daXong || (!game && con <= 0)){ choiLai(); if(!game) chay(); return; }
+      if(id){ dung(); b.textContent = '⏱ Chạy tiếp'; return; }
+      chay();
+    });
+    if(!game) return;
+    game.addEventListener('ta6-bam', function(){ if(!id && !daXong && daChay === 0) chay(); });
+    game.addEventListener('ta6-xong', function(){
+      if(daXong || !ws.every(function(w){ return w._xong; })) return;
+      daXong = true; dung();
+      daChay = Math.max(1, daChay);
+      var dungNgay = ws.filter(function(w){ return !w._sai; }).length;
+      var cu = kho.game[kGame], moi = !cu || daChay < cu;
+      if(daChay > 0 && moi){ kho.game[kGame] = daChay; ghiKho(); }
+      var html = (con > 0 ? '🏁 Em xong trong <b class="so">' + daChay + ' giây</b> — nhanh hơn đồng hồ!'
+                          : '🏁 Xong rồi! Lần này em cần <b class="so">' + daChay + ' giây</b> — lần sau thử nhanh hơn nhé.') +
+                 '<br>Đúng ngay lần đầu: <b>' + dungNgay + '/' + ws.length + '</b> câu.' +
+                 (daChay > 0 ? (moi ? (cu ? ' 🎉 Kỉ lục mới! (lần trước ' + mmss(cu) + ')' : '')
+                                    : ' Kỉ lục của em: ' + mmss(cu) + ' — thử phá kỉ lục nhé!') : '');
+      kq.innerHTML = html; kq.className = 'kq-game show';
+      var bl = nut('↺ Chơi lại'); bl.addEventListener('click', choiLai);
+      kq.appendChild(document.createElement('br')); kq.appendChild(bl);
+      b.textContent = '↺ Chơi lại'; ghi.textContent = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,43 +1,9 @@
 <!DOCTYPE html>
-<!--
-  MẪU TRANG BÀI GIẢNG TOÁN 6 — tương tác, một file, chạy offline.
-
-  CÁCH DÙNG
-  1. Chép file này sang  bài giảng/toán/<slug>-bai-giang.html
-  2. Sửa <title>, <header>, các chip điều hướng.
-  3. Đổ nội dung vào các <section>. GIỮ NGUYÊN toàn bộ CSS và khối <script> engine.
-  4. Xoá hết các khối ví dụ đánh dấu "MẪU —" (chúng chỉ để tra cú pháp).
-  5. Chạy scripts/kiem_tra_bai_giang_toan.py, rồi scripts/chup_anh_trang.py để soi mắt thường.
-
-  KHÔNG sửa CSS/JS cho một bài riêng lẻ. Cần sửa thì sửa chính file mẫu này, để mọi bài
-  giảng Toán về sau đồng nhất. JS riêng của một bài (hình minh hoạ một lần dùng) đặt trong
-  khối <script> cuối trang có ghi chú "JS RIÊNG CỦA BÀI".
-
-  ─────────────────────────── BỘ KHỐI TƯƠNG TÁC (khai báo bằng data-*) ───────────────────────────
-  Mọi hoạt động nằm trong  <div class="act" data-act="tên-ngắn">…</div>  — engine tự đếm tiến độ.
-
-   data-venn     sơ đồ Venn bấm được          <g class="el" data-v="4" data-in="1">
-   data-lab      bàn thử kéo–thả vào/ra tập   data-items / data-answer / data-hint-sai
-   data-t2       công tắc hai cách trình bày  data-t2-btn / data-t2-pane / data-t2-note
-   data-picks    chọn phần tử từ dải số       chứa nhiều data-pick, engine tự thêm nút Kiểm tra
-   data-mcq      chọn một kí hiệu (∈ / ∉ …)   data-options / data-answer / data-fb-sai
-   data-uniq     xếp tập từ một từ (bẫy lặp)  data-word
-   data-collect  gom phần tử thành tập (nháp) data-items="khoá|nhãn"
-   data-strip    dải số ℕ / ℕ*                data-from / data-to  + nút data-strip-set
-   data-numline  trục số (có thể bấm chọn)    data-from / data-to / data-mark / data-answer
-   data-fill     ô điền đáp số                data-answer (nhiều đáp án ngăn bởi "|")
-   data-steps    lời giải hiện dần từng bước  mỗi bước một data-step
-   data-reveal   nút mở khối chữa bài         trỏ tới #id của .reveal
-   data-hint     nút mở gợi ý                 trỏ tới #id của .hint
-
-  Cú pháp đầy đủ + ví dụ: references/bo-khoi-tuong-tac.md
-  Luật số học Việt Nam (dấu ; trong tập hợp, dấu phẩy thập phân): references/kinh-nghiem-svg-va-hoat-anh.md
--->
 <html lang="vi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bài 1. Tập hợp — Bài giảng tương tác Toán 6 (Kết nối tri thức)</title>
+<title>BÀI 1. TẬP HỢP — Bài giảng tương tác Toán 6 (Kết nối tri thức)</title>
 <style>
   :root{
     --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
@@ -146,6 +112,7 @@
   .chips{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0}
   .num{font:inherit; font-size:18px; cursor:pointer; min-width:46px; height:46px; padding:0 8px;
     border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--ink); transition:.15s}
+  .num{white-space:nowrap}
   .num:hover{border-color:var(--brand); color:var(--brand)}
   .num.on{background:var(--brand); border-color:var(--brand); color:#fff; font-weight:700}
   .let{font:inherit; font-size:20px; font-weight:700; cursor:pointer; width:44px; height:48px;
@@ -225,6 +192,8 @@
   .fillbox input{font:inherit; padding:6px 10px; border:1px solid var(--line); border-radius:9px;
     background:#fff; color:var(--ink); width:120px; text-align:center}
   .fillbox .mark{font-size:19px; min-width:18px}
+  .fillbox input[type=text]{min-width:0}
+  .fillbox.gon{gap:3px} .fillbox.gon input[type=text]{width:92px; padding:5px 6px}
   .step{border-left:4px solid var(--brand-soft); background:#fff; border-radius:0 10px 10px 0;
     padding:8px 14px; margin:8px 0}
   input[type=text]{font:inherit; padding:7px 11px; border:1px solid var(--line); border-radius:9px;
@@ -242,11 +211,116 @@
   .kbd{font:13px ui-monospace,Consolas,monospace; background:#eef1f7; border:1px solid var(--line);
     border-radius:6px; padding:1px 6px}
 
+  /* ----- MÃ MÀU THEO HÀNG — nhất quán mọi bài về giá trị chữ số -----
+     đơn vị = xanh lá · chục = xanh dương · trăm = tím · nghìn = cam · chục nghìn = đỏ · trăm nghìn = xanh ngọc
+     Lớp tô nền theo màu hàng đầu của lớp: lớp đơn vị (lá) · lớp nghìn (cam) · lớp triệu (hồng) · lớp tỉ (xám xanh) */
+  :root{--h0:#0f9d76; --h1:#2f6fdb; --h2:#7c5cd6; --h3:#d97a00; --h4:#d64545; --h5:#0e8fa8; --h6:#b4478f}
+  .h0{color:var(--h0)} .h1{color:var(--h1)} .h2{color:var(--h2)} .h3{color:var(--h3)}
+  .h4{color:var(--h4)} .h5{color:var(--h5)} .h6,.h7,.h8,.h9,.h10,.h11{color:var(--h6)}
+  .hb{font-weight:700}
+  .lop0{background:#e6f7f1} .lop1{background:#fff1dc} .lop2{background:#fbe9f4} .lop3{background:#eceff5}
+  .ol{text-decoration:overline; font-style:italic}
+  .nowrap{white-space:nowrap}
+  @keyframes pop{0%{transform:scale(.3); opacity:0} 70%{transform:scale(1.15); opacity:1} 100%{transform:scale(1)}}
+  @keyframes dropin{from{opacity:0; transform:translateY(-14px)} to{opacity:1; transform:none}}
+  @keyframes pulse{0%,100%{transform:scale(1)} 50%{transform:scale(1.25)}}
+  .dropin{animation:dropin .45s ease both}
+
+  /* ----- bàn tính hàng (data-abacus) ----- */
+  .abacus{position:relative; display:flex; justify-content:center; gap:10px; flex-wrap:nowrap; margin:12px 0;
+    padding:12px 10px 6px; border:1px solid var(--line); border-radius:14px; background:linear-gradient(#fffdf7,#fbf4e4)}
+  .ab-col{display:flex; flex-direction:column; align-items:center; width:96px}
+  .ab-head{font-size:14px; font-weight:700; text-align:center; line-height:1.25; min-height:36px}
+  .ab-rod{position:relative; width:64px; height:232px; display:flex; flex-direction:column-reverse;
+    align-items:center; gap:2px; padding:4px 0; border-radius:10px; background:#fff; border:1px solid #eadfc6}
+  .ab-rod::before{content:""; position:absolute; top:4px; bottom:4px; left:50%; width:4px; margin-left:-2px;
+    background:#c9b58a; border-radius:2px}
+  .bead{position:relative; width:40px; height:20px; border-radius:10px; background:currentColor;
+    box-shadow:inset 0 -4px 0 rgba(0,0,0,.18); animation:pop .3s ease both; flex:none}
+  .bead.note{width:58px; height:21px; border-radius:3px; box-shadow:inset 0 0 0 2px rgba(255,255,255,.55);
+    font:700 10px "Segoe UI",sans-serif; display:flex; align-items:center; justify-content:center}
+  .bead.note span{color:#fff}
+  .ab-rod.gom .bead{animation:gom .7s ease forwards}
+  @keyframes gom{40%{transform:scale(1.12); filter:brightness(1.3)} 100%{transform:translateY(-40px) scale(.2); opacity:0}}
+  .bead.fly{position:absolute; z-index:5; animation:none; transition:left .6s ease, top .6s ease; pointer-events:none}
+  .ab-dig{font:700 30px "Cambria Math","Times New Roman",serif; margin-top:4px}
+  .ab-btns .btn{padding:3px 12px; font-size:18px; margin:2px}
+  .ab-out{font-family:"Cambria Math","Times New Roman",Georgia,serif; font-size:19px; text-align:center;
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 14px; min-height:52px}
+  /* màn hẹp: các cột KHÔNG được xuống dòng (mất nghĩa "hàng bên trái"), nên thu nhỏ cột */
+  @media(max-width:560px){
+    .abacus{gap:4px; padding:10px 4px 6px}
+    .ab-col{width:auto; flex:1 1 0; min-width:0}
+    .ab-head{font-size:12px; min-height:32px}
+    .ab-rod{width:46px} .bead{width:32px} .bead.note{width:44px; font-size:8px}
+    .ab-btns .btn{padding:2px 9px; font-size:16px}
+  }
+  .ab-msg{min-height:26px; text-align:center; font-size:16px; color:#8a5a06; margin:6px 0}
+
+  /* ----- tách số thành tổng giá trị các chữ số (data-expand) ----- */
+  .xp-num{font:700 46px "Cambria Math","Times New Roman",serif; text-align:center; letter-spacing:2px; margin:6px 0}
+  .xp-num .xp-d{display:inline-block; padding:0 2px; border-bottom:4px solid transparent; transition:.2s}
+  .xp-num .xp-d.cur{border-bottom-color:currentColor; animation:pulse .8s ease 2}
+  .xp-num .xp-d.xong{opacity:.45}
+  /* chế độ hỏi: chữ số CHƯA trả lời để màu trung tính — màu hàng là phần thưởng sau khi đúng, không phải gợi ý */
+  .xp-num.hoi .xp-d:not(.xong){color:var(--ink)}
+  .xp-gt{display:inline-flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:center}
+  .xp-gt input,.pt-gt input{font:inherit; width:130px; padding:5px 8px; border:1px solid var(--line); border-radius:9px; text-align:center}
+  .xp-num .gapg{display:inline-block; width:.35em}
+  .xp-q{text-align:center; margin:8px 0}
+  .xp-q .btn.sai{background:var(--red-soft); border-color:var(--red); color:var(--red); animation:shake .3s}
+  .xp-row{background:#fff; border:1px solid var(--line); border-left:6px solid currentColor; border-radius:0 10px 10px 0;
+    padding:7px 12px; margin:6px 0; animation:dropin .45s ease both}
+  .xp-row span.t{color:var(--ink)}
+  .xp-sum{display:inline-block; animation:dropin .5s ease both}
+
+  /* ----- ghép thẻ vào ô (data-match) ----- */
+  .mt-pool{min-height:52px; padding:8px; border:1px dashed var(--line); border-radius:12px; background:#fbfcff}
+  .mtok{font:inherit; font-size:18px; font-weight:700; cursor:grab; min-width:48px; height:42px; padding:0 12px;
+    border-radius:10px; border:2px solid var(--brand); background:#fff; color:var(--ink); touch-action:none; user-select:none}
+  .mtok.sel{background:var(--brand); color:#fff; box-shadow:0 0 0 4px var(--brand-soft)}
+  .mtok.ghost{display:flex; align-items:center; justify-content:center; position:fixed; z-index:99; pointer-events:none; opacity:.9; box-shadow:0 8px 18px rgba(30,50,90,.28)}
+  .mtok.used{visibility:hidden}
+  .mslot{font:inherit; font-size:18px; font-weight:700; display:inline-flex; align-items:center; justify-content:center;
+    min-width:74px; height:42px; padding:0 10px; margin:2px 4px; vertical-align:middle; cursor:pointer;
+    border:2px dashed #a9bde6; border-radius:10px; background:#f5f8ff; color:var(--ink)}
+  .mslot.full{border-style:solid; border-color:var(--brand); background:#fff; animation:pop .25s ease}
+  .mslot.hover{background:var(--brand-soft); border-color:var(--brand)}
+  .mslot.dung{border-color:var(--green); background:var(--green-soft); color:#0b6b52}
+  .mslot.sai{border-color:var(--warm); background:var(--warm-soft); animation:shake .3s}
+
+  /* ----- bảng lớp – hàng (data-placetable) ----- */
+  .pt-wrap{overflow-x:auto; margin:10px 0}
+  table.ptab{width:auto; min-width:100%; font-size:14px; text-align:center}
+  table.ptab th,table.ptab td{text-align:center; padding:5px 4px; vertical-align:middle}
+  table.ptab th.lop{font-size:15px}
+  table.ptab td.hang{font-size:12.5px; line-height:1.2; color:var(--muted); min-width:52px}
+  table.ptab button.pd{font:700 24px "Cambria Math","Times New Roman",serif; width:44px; height:46px; cursor:pointer;
+    border:1px solid var(--line); border-radius:10px; background:#fff; transition:.15s}
+  table.ptab button.pd:hover{border-color:var(--brand)}
+  table.ptab button.pd.on{background:#1b2440; color:#fff; border-color:#1b2440; animation:pulse .5s}
+  table.ptab td.col-on{box-shadow:inset 0 0 0 3px var(--brand)}
+  .pt-ask{font-size:17px; text-align:center; margin:6px 0}
+  .pt-gt{text-align:center; margin:6px 0}
+  table.ptab td.hang.on{font-weight:800; color:var(--ink)}
+
+  /* ----- công tắc giữ pane cũ (data-t2-giu): pane đã xem mờ đi, pane đang chọn rõ ----- */
+  [data-t2] .t2-cu{opacity:.7}
+
+  /* ----- sơ đồ tư duy rộng: màn hẹp thì cuộn ngang thay vì thu nhỏ chữ còn 8 px ----- */
+  @media(max-width:640px){ .mm-wrap{overflow-x:auto} .mm-wrap svg{min-width:900px} }
+
   body.no-motion *{animation:none !important; transition:none !important}
   @media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+  /* tắt chuyển động thì nét "vẽ dần" phải hiện NGAY — nếu không, đường .draw biến mất hẳn */
+  body.no-motion .draw{stroke-dashoffset:0}
+  @media(prefers-reduced-motion:reduce){.draw{stroke-dashoffset:0}}
   @media print{
     .toolbar,.btn,.tbtn{display:none}
     .reveal,.hint{display:block} section{break-inside:avoid; box-shadow:none}
+    [data-t2-pane].hide,[data-t2-note].hide{display:block !important}
+    [data-t2-empty]{display:none !important}
+    [data-t2] .t2-cu{opacity:1}
   }
 </style>
 
@@ -889,6 +963,8 @@
     if(bar) bar.style.width = Math.round(n / t * 100) + '%';
     if(txt) txt.textContent = n + '/' + ACTS.length + ' hoạt động';
   }
+  var WIDGET_CHAM = '[data-venn],[data-lab],[data-picks],[data-mcq],[data-uniq],[data-numline][data-answer],' +
+    '[data-fill],[data-abacus][data-answer],[data-expand],[data-match],[data-placetable][data-ask],[data-placetable][data-ask-gt],[data-custom]';
   function done(node){
     var a = node && node.closest ? node.closest('[data-act]') : null;
     if(!a) return;
@@ -906,7 +982,9 @@
       var open = t.classList.toggle('open');
       b.textContent = open ? (b.getAttribute('data-close') || 'Ẩn phần đối chiếu')
                            : (b.getAttribute('data-open')  || 'Xem đối chiếu');
-      if(open) done(b);
+      /* hoạt động có widget chấm điểm thì phải làm widget — mở đối chiếu không tính là xong */
+      var act = b.closest('[data-act]');
+      if(open && !(act && act.querySelector(WIDGET_CHAM))) done(b);
     });
   });
   $$('[data-hint]').forEach(function(b){
@@ -1050,22 +1128,25 @@
   });
 
   /* ---------- 3. Công tắc hai cách trình bày ---------- */
+  /* data-t2-mo="k": mở sẵn pane k khi tải trang (tình huống mở đầu phải có hình ngay).
+     data-t2-giu="1": pane đã xem KHÔNG ẩn đi mà mờ lại (.t2-cu) — hai hình nằm cạnh nhau để so sánh trước/sau. */
   $$('[data-t2]').forEach(function(host){
-    var btns = $$('[data-t2-btn]', host);
-    btns.forEach(function(b){
-      b.addEventListener('click', function(){
-        var k = b.getAttribute('data-t2-btn');
-        btns.forEach(function(o){
-          o.className = o === b ? 'btn' : 'btn ghost';
-        });
-        $$('[data-t2-empty]', host).forEach(function(e){ e.classList.add('hide'); });
-        $$('[data-t2-pane],[data-t2-note]', host).forEach(function(p){
-          var pk = p.getAttribute('data-t2-pane') || p.getAttribute('data-t2-note');
-          p.classList.toggle('hide', pk !== k);
-        });
-        done(host);
+    var btns = $$('[data-t2-btn]', host), giu = host.getAttribute('data-t2-giu') === '1';
+    function mo(k){
+      btns.forEach(function(o){ o.className = o.getAttribute('data-t2-btn') === k ? 'btn' : 'btn ghost'; });
+      $$('[data-t2-empty]', host).forEach(function(e){ e.classList.add('hide'); });
+      $$('[data-t2-pane],[data-t2-note]', host).forEach(function(p){
+        var pk = p.getAttribute('data-t2-pane') || p.getAttribute('data-t2-note');
+        if(giu){
+          if(pk === k) p.classList.remove('hide', 't2-cu');
+          else if(!p.classList.contains('hide')) p.classList.add('t2-cu');
+        } else p.classList.toggle('hide', pk !== k);
       });
+    }
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){ mo(b.getAttribute('data-t2-btn')); done(host); });
     });
+    if(host.hasAttribute('data-t2-mo')) mo(host.getAttribute('data-t2-mo'));
   });
 
   /* ---------- 4. Chọn phần tử + kiểm tra ---------- */
@@ -1074,6 +1155,7 @@
       var items  = list(host.getAttribute('data-items'));
       var answer = list(host.getAttribute('data-answer'));
       var st = { host: host, name: host.getAttribute('data-name') || '?',
+                 nhan: host.getAttribute('data-nhan') || '',
                  answer: answer, sel: [], btns: {},
                  thua: json(host,'data-hint-thua'), thieu: json(host,'data-hint-thieu') };
       var wrap = el('div','chips');
@@ -1105,16 +1187,17 @@
         allOk = false;
         var thua  = p.sel.filter(function(v){ return p.answer.indexOf(v) < 0; });
         var thieu = p.answer.filter(function(v){ return p.sel.indexOf(v) < 0; });
-        if(thua.length && p.thua[thua[0]])   msg.push('Tập <i>' + esc(p.name) + '</i>: ' + p.thua[thua[0]]);
-        else if(thieu.length && p.thieu[thieu[0]]) msg.push('Tập <i>' + esc(p.name) + '</i>: ' + p.thieu[thieu[0]]);
-        else if(thua.length)  msg.push('Tập <i>' + esc(p.name) + '</i>: em chọn thừa «' + esc(thua[0]) +
-                                       '» — soát lại điều kiện của tập.');
-        else msg.push('Tập <i>' + esc(p.name) + '</i>: còn thiếu phần tử — đếm lại xem có bao nhiêu số thoả điều kiện.');
+        /* data-nhan: nhãn thay cho "Tập X" khi khối chọn không phải một tập hợp (vd. "Câu a") */
+        var nh = p.nhan ? '<b>' + esc(p.nhan) + '</b>' : 'Tập <i>' + esc(p.name) + '</i>';
+        if(thua.length && p.thua[thua[0]])   msg.push(nh + ': ' + p.thua[thua[0]]);
+        else if(thieu.length && p.thieu[thieu[0]]) msg.push(nh + ': ' + p.thieu[thieu[0]]);
+        else if(thua.length)  msg.push(nh + ': em chọn thừa «' + esc(thua[0]) + '» — soát lại điều kiện.');
+        else msg.push(nh + ': còn thiếu — đếm lại xem có bao nhiêu cái thoả điều kiện.');
       });
       if(allOk){
-        show(fb,'good','Đúng rồi: ' + picks.map(function(p){
+        show(fb,'good', group.getAttribute('data-ok') || ('Đúng rồi: ' + picks.map(function(p){
           return setline(p.name, p.answer);
-        }).join(' &nbsp;và&nbsp; ') + '.');
+        }).join(' &nbsp;và&nbsp; ') + '.'));
         done(group);
       } else show(fb,'bad', msg.join('<br>'));
     });
@@ -1350,9 +1433,13 @@
     var mark = el('span','mark');
     box.appendChild(inp);
     if(unit) box.appendChild(el('span','muted', esc(unit)));
+    /* data-gon="1": ô gọn — không có nút Kiểm, tự chấm khi gõ Enter hoặc rời ô (dùng khi nhiều ô đứng cạnh nhau) */
+    var gon = host.getAttribute('data-gon') === '1';
     var b = el('button','btn','Kiểm');
     b.type = 'button';
-    box.appendChild(b); box.appendChild(mark);
+    if(gon){ box.classList.add('gon'); inp.addEventListener('change', function(){ check(); }); }
+    else box.appendChild(b);
+    box.appendChild(mark);
     host.appendChild(box);
     function check(){
       var v = chuan(inp.value);
@@ -1363,7 +1450,10 @@
         return !isNaN(na) && !isNaN(nv) && Math.abs(na - nv) < 1e-9;
       });
       mark.innerHTML = ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
-      if(ok) done(host);
+      host._ok = ok;
+      /* nhiều ô điền trong CÙNG một hoạt động: chỉ tính xong khi MỌI ô đều đúng */
+      var a = host.closest('[data-act]');
+      if(ok && (!a || $$('[data-fill]', a).every(function(f){ return f._ok; }))) done(host);
     }
     b.addEventListener('click', check);
     inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
@@ -1384,11 +1474,452 @@
       else b.textContent = 'Hiện bước ' + (i + 1);
     });
   });
+
+  /* ================= GIÁ TRỊ CHỮ SỐ — tiện ích chung cho các khối 12–15 ================= */
+  var HANG = ['đơn vị','chục','trăm','nghìn','chục nghìn','trăm nghìn',
+              'triệu','chục triệu','trăm triệu','tỉ','chục tỉ','trăm tỉ'];
+  var LOP  = ['đơn vị','nghìn','triệu','tỉ'];
+  /* khoảng trắng không ngắt (U+00A0): số không bị bẻ đôi giữa hai lớp khi xuống dòng */
+  function nhom(s){ return String(s).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0'); }
+  function zeros(k){ return new Array(k + 1).join('0'); }
+  function mu10(k){ return nhom('1' + zeros(k)); }
+  function hoa(s){ s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function hc(k){ return 'h' + Math.min(k, 11); }
+  function itDong(){
+    return document.body.classList.contains('no-motion') ||
+      !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  /* ---------- 12. Bàn tính hàng: đổi 10 thành 1 (data-abacus) ---------- */
+  $$('[data-abacus]').forEach(function(host){
+    var vals = list(host.getAttribute('data-values')).map(Number), i;
+    var n = vals.length || (+host.getAttribute('data-cols') || 3);
+    if(!vals.length) for(i = n - 1; i >= 0; i--) vals.push(Math.pow(10, i));
+    var labels = list(host.getAttribute('data-labels'));
+    var start  = list(host.getAttribute('data-start')).map(Number);
+    var ansRaw = (host.getAttribute('data-answer') || '').replace(/\s/g, '');
+    var carry  = host.getAttribute('data-carry') !== '0';
+    var max    = +(host.getAttribute('data-max') || 9);
+    var skin   = host.getAttribute('data-bead') || '';
+    var unit   = host.getAttribute('data-unit') || '';
+    var okMsg  = host.getAttribute('data-ok') || 'Chính xác!';
+    var d = [], busy = false;
+    var box = el('div','abacus'), msg = el('div','ab-msg'), out = el('div','ab-out');
+    box.setAttribute('aria-live','polite');
+    var cols = vals.map(function(v, i){
+      var k = Math.round(Math.log(v) / Math.LN10);
+      var ten = labels[i] || ('Hàng ' + HANG[k]);
+      var c = el('div','ab-col ' + hc(k));
+      var rod = el('div','ab-rod'), dig = el('div','ab-dig','0'), bs = el('div','ab-btns');
+      var bp = el('button','btn ab-plus','+'), bm = el('button','btn ghost ab-minus','−');
+      bp.type = 'button'; bm.type = 'button';
+      bp.setAttribute('aria-label','thêm một ở cột ' + ten);
+      bm.setAttribute('aria-label','bớt một ở cột ' + ten);
+      bs.appendChild(bp); bs.appendChild(bm);
+      c.appendChild(el('div','ab-head', esc(ten))); c.appendChild(rod); c.appendChild(dig); c.appendChild(bs);
+      box.appendChild(c);
+      bp.addEventListener('click', function(){ cong(i); });
+      bm.addEventListener('click', function(){ tru(i); });
+      return { k: k, ten: ten, rod: rod, dig: dig };
+    });
+    host.appendChild(box); host.appendChild(msg); host.appendChild(out);
+    var bar = el('p'), bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Xếp lại từ đầu');
+    if(ansRaw) bar.appendChild(bChk);
+    bar.appendChild(bRst); host.appendChild(bar);
+    var fb = fbBox(host);
+
+    function tong(){ return d.reduce(function(s, x, i){ return s + x * vals[i]; }, 0); }
+    function hat(i){
+      var b = el('div', 'bead' + (skin === 'tien' ? ' note' : ''));
+      if(skin === 'tien') b.innerHTML = '<span>' + esc(nhom(vals[i])) + '</span>';
+      return b;
+    }
+    function ve(i){
+      var r = cols[i].rod;
+      while(r.children.length > d[i]) r.removeChild(r.lastChild);
+      while(r.children.length < d[i]) r.appendChild(hat(i));
+      cols[i].dig.textContent = d[i];
+    }
+    function veHet(){
+      for(var i = 0; i < n; i++) ve(i);
+      var parts = d.map(function(x, i){
+        return '<span class="' + hc(cols[i].k) + ' hb">' +
+          (vals[i] === 1 ? x : '(' + x + ' × ' + esc(nhom(vals[i])) + ')') + '</span>';
+      });
+      out.innerHTML = (skin === 'tien' ? 'Tổng: ' : 'Số trên bàn tính: ') + '<b>' + nhom(tong()) + '</b>' +
+        (unit ? ' ' + esc(unit) : '') + '<br><span style="font-size:17px">= ' + parts.join(' + ') + '</span>';
+      host.setAttribute('data-digits', d.join(';'));
+    }
+    function doi(i){
+      var c = cols[i], left = cols[i - 1];
+      busy = true;
+      msg.innerHTML = 'Đủ <b>10</b> ở cột <b class="' + hc(c.k) + '">' + esc(c.ten) + '</b> → đổi thành <b>1</b> ở cột <b class="' +
+        hc(left.k) + '">' + esc(left.ten) + '</b>!';
+      function xong(){
+        c.rod.classList.remove('gom');
+        d[i] = 0; d[i - 1]++;
+        veHet();
+        busy = false;
+        if(d[i - 1] >= 10) doi(i - 1);
+      }
+      if(itDong()){ xong(); return; }
+      c.rod.classList.add('gom');
+      setTimeout(function(){
+        var br = box.getBoundingClientRect(), r1 = c.rod.getBoundingClientRect(), r2 = left.rod.getBoundingClientRect();
+        var f = hat(i - 1); f.className += ' fly ' + hc(left.k);
+        box.appendChild(f);
+        var w = f.offsetWidth / 2;
+        f.style.left = (r1.left - br.left + r1.width / 2 - w) + 'px';
+        f.style.top  = (r1.top - br.top + r1.height / 2) + 'px';
+        void f.offsetWidth;
+        f.style.left = (r2.left - br.left + r2.width / 2 - w) + 'px';
+        f.style.top  = (r2.bottom - br.top - 26 - 22 * d[i - 1]) + 'px';
+        setTimeout(function(){ f.remove(); xong(); }, 650);
+      }, 700);
+    }
+    function cong(i){
+      if(busy) return;
+      fb.className = 'fb'; msg.innerHTML = '';
+      if(!carry){
+        if(d[i] >= max){ msg.innerHTML = 'Cột này tối đa <b>' + max + '</b> thôi.'; return; }
+        d[i]++; veHet(); return;
+      }
+      if(d[i] < 9){ d[i]++; veHet(); return; }
+      var j = i - 1;
+      while(j >= 0 && d[j] === 9) j--;
+      if(j < 0){ msg.innerHTML = 'Bàn tính hết chỗ rồi — muốn thêm nữa phải có thêm một hàng mới bên trái!'; return; }
+      d[i] = 10; ve(i); doi(i);
+    }
+    function tru(i){
+      if(busy) return;
+      fb.className = 'fb'; msg.innerHTML = '';
+      if(!d[i]){ msg.innerHTML = 'Cột này đang trống.'; return; }
+      d[i]--; veHet();
+    }
+    function reset(){
+      d = vals.map(function(v, i){ return start[i] || 0; });
+      busy = false; msg.innerHTML = ''; fb.className = 'fb';
+      cols.forEach(function(c){ c.rod.classList.remove('gom'); });
+      veHet();
+    }
+    reset();
+    bRst.addEventListener('click', reset);
+    bChk.addEventListener('click', function(){
+      if(busy) return;
+      var t = tong(), a = +ansRaw;
+      if(t === a){ show(fb,'good', okMsg); done(host); return; }
+      show(fb,'bad', (host.getAttribute('data-fb-sai') ? host.getAttribute('data-fb-sai') + ' ' : '') +
+        'Đang là <b>' + nhom(t) + '</b>' + (unit ? ' ' + esc(unit) : '') + ', cần <b>' + nhom(a) + '</b>. ' +
+        (t > a ? 'Đang <b>thừa</b>' : 'Đang <b>thiếu</b>') + ' — em so từng cột, từ trái sang phải, xem cột nào lệch.');
+    });
+  });
+
+  /* ---------- 13. Tách số thành tổng giá trị các chữ số (data-expand) ---------- */
+  $$('[data-expand]').forEach(function(host){
+    var s = (host.getAttribute('data-number') || '').replace(/\D/g, '');
+    if(!s) return;
+    /* data-hoi="1": chọn tên hàng · "2": chọn tên hàng rồi GÕ giá trị (HĐ1 kiểu SGK: học sinh tự phát biểu giá trị) */
+    var hoiMuc = +(host.getAttribute('data-hoi') || 0), hoi = hoiMuc >= 1;
+    var okMsg = host.getAttribute('data-ok') || '';
+    var L = s.length, cur = 0, ds = [], sai = 0;
+    var num = el('div','xp-num' + (hoi ? ' hoi' : '')), q = el('div','xp-q'), rows = el('div'), sum = el('div');
+    s.split('').forEach(function(c, i){
+      var k = L - 1 - i, sp = el('span','xp-d ' + hc(k), c);
+      ds.push(sp); num.appendChild(sp);
+      if(k > 0 && k % 3 === 0) num.appendChild(el('span','gapg'));
+    });
+    host.appendChild(num); host.appendChild(q); host.appendChild(rows); host.appendChild(sum);
+    var bar = el('p'), bRst = el('button','btn ghost','Làm lại từ đầu');
+    bRst.type = 'button'; bar.appendChild(bRst); host.appendChild(bar);
+    var fb = fbBox(host);
+
+    function giaTri(i){ var k = L - 1 - i; return s[i] === '0' ? '0' : nhom(s[i] + zeros(k)); }
+    function hienDong(i){
+      var k = L - 1 - i, c = s[i];
+      var r = el('div','xp-row ' + hc(k));
+      r.innerHTML = '<span class="t">Chữ số <b class="' + hc(k) + '">' + c + '</b> nằm ở hàng <b class="' + hc(k) + '">' +
+        HANG[k] + '</b> và có giá trị bằng </span><b class="' + hc(k) + '">' +
+        (k === 0 ? c : c + ' × ' + mu10(k) + ' = ' + giaTri(i)) + '</b>';
+      rows.appendChild(r);
+      ds[i].classList.remove('cur'); ds[i].classList.add('xong');
+    }
+    /* Câu hỏi KHÔNG nói "thứ n từ trái sang" (ngược chiều mẹo đếm hàng) và chữ số đang hỏi để màu trung tính. */
+    function hoiHang(){
+      var k = L - 1 - cur;
+      host.setAttribute('data-cur', k); host.removeAttribute('data-gt');
+      sai = 0;
+      q.innerHTML = '<p>Chữ số đang nhấp nháy — chữ số <b style="font-size:24px">' + s[cur] + '</b> — nằm ở hàng nào?</p>';
+      for(var j = L - 1; j >= 0; j--) (function(j){
+        var b = el('button','btn ghost', hoa(HANG[j])); b.type = 'button'; b.setAttribute('data-k', j);
+        b.addEventListener('click', function(){
+          if(j === k){ fb.className = 'fb'; if(hoiMuc >= 2 && k > 0) hoiGiaTri(); else { hienDong(cur); cur++; tiep(); } return; }
+          sai++;
+          b.classList.remove('sai'); void b.offsetWidth; b.classList.add('sai');
+          show(fb,'bad', sai < 2 ? 'Chưa đúng — em thử lại.'
+            : 'Gợi ý: đếm hàng từ <b>phải sang trái</b> — đơn vị, chục, trăm, nghìn, chục nghìn… ' +
+              'Chữ số đang nhấp nháy đứng thứ mấy, tính từ bên phải?');
+        });
+        q.appendChild(b);
+      })(j);
+    }
+    /* data-hoi="2": đã chọn đúng hàng → học sinh tự gõ giá trị; đúng mới hiện câu mẫu */
+    function hoiGiaTri(){
+      var k = L - 1 - cur, dung = s[cur] === '0' ? '0' : s[cur] + zeros(k);
+      host.setAttribute('data-gt', '1');
+      sai = 0;
+      q.innerHTML = '<p>Đúng — hàng <b class="' + hc(k) + '">' + HANG[k] + '</b>. Vậy chữ số <b>' + s[cur] +
+        '</b> có giá trị bằng bao nhiêu?</p>';
+      var wrap = el('span','xp-gt'), inp = document.createElement('input'), b = el('button','btn','Kiểm');
+      inp.type = 'text'; inp.setAttribute('aria-label','giá trị của chữ số'); b.type = 'button';
+      wrap.appendChild(inp); wrap.appendChild(b); q.appendChild(wrap);
+      function kiem(){
+        var v = inp.value.replace(/[\s.]/g, '');
+        if(!v) return;
+        if(v === dung){ fb.className = 'fb'; hienDong(cur); cur++; tiep(); return; }
+        sai++;
+        show(fb,'bad', sai < 2 ? 'Chưa đúng — em tính lại.'
+          : 'Giá trị = chữ số × giá trị của hàng. Hàng ' + HANG[k] + ' là ' + mu10(k) + ', vậy ' + s[cur] + ' × ' + mu10(k) +
+            ' bằng bao nhiêu?');
+      }
+      b.addEventListener('click', kiem);
+      inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); kiem(); } });
+      try{ inp.focus({ preventScroll: true }); }catch(err){}
+    }
+    function nutTiep(){
+      q.innerHTML = '';
+      var b = el('button','btn', cur ? 'Tách chữ số tiếp theo' : 'Bắt đầu tách'); b.type = 'button';
+      b.addEventListener('click', function(){ hienDong(cur); cur++; tiep(); });
+      q.appendChild(b);
+    }
+    function ketThuc(){
+      q.innerHTML = ''; host.removeAttribute('data-cur'); host.removeAttribute('data-gt');
+      var parts = s.split('').map(function(c, i){
+        return '<span class="' + hc(L - 1 - i) + ' hb xp-sum" style="animation-delay:' + (i * 0.25) + 's">' + giaTri(i) + '</span>';
+      });
+      sum.innerHTML = '<p class="setline">' + nhom(s) + ' = ' + parts.join(' + ') + '</p>';
+      if(okMsg) show(fb,'good', okMsg);
+      done(host);
+    }
+    function tiep(){
+      if(cur >= L){ ketThuc(); return; }
+      ds[cur].classList.add('cur');
+      if(hoi) hoiHang(); else nutTiep();
+    }
+    bRst.addEventListener('click', function(){
+      cur = 0; rows.innerHTML = ''; sum.innerHTML = ''; fb.className = 'fb';
+      ds.forEach(function(x){ x.classList.remove('cur','xong'); });
+      tiep();
+    });
+    tiep();
+  });
+
+  /* ---------- 14. Ghép thẻ vào ô (data-match) ---------- */
+  $$('[data-match]').forEach(function(host){
+    var reuse = host.getAttribute('data-reuse') === '1';
+    var okMsg = host.getAttribute('data-ok') || 'Chính xác!';
+    var pool = el('div','chips mt-pool');
+    host.insertBefore(pool, host.firstChild);
+    var slots = $$('[data-slot]', host), sel = null;
+    var bar = el('p'), bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Xếp lại từ đầu');
+    bChk.type = 'button'; bRst.type = 'button';
+    bar.appendChild(bChk); bar.appendChild(bRst); host.appendChild(bar);
+    var fb = fbBox(host);
+
+    function boChon(){ if(sel){ sel.b.classList.remove('sel'); sel = null; } }
+    function veSlot(s){
+      s.textContent = s._tok ? s._tok.v : '';
+      s.classList.toggle('full', !!s._tok);
+      s.setAttribute('aria-label', s._tok ? 'ô đang chứa ' + s._tok.v + ', bấm để gỡ ra' : 'ô trống');
+    }
+    function xoaMau(){ fb.className = 'fb'; slots.forEach(function(x){ x.classList.remove('sai','dung'); }); }
+    function go(s){
+      if(!s._tok) return;
+      if(!reuse){ s._tok.used = false; s._tok.b.classList.remove('used'); }
+      s._tok = null; veSlot(s);
+    }
+    function dat(s, t){
+      if(!reuse) slots.forEach(function(x){ if(x._tok === t) go(x); });
+      go(s);
+      s._tok = t;
+      if(!reuse){ t.used = true; t.b.classList.add('used'); }
+      boChon(); veSlot(s); xoaMau();
+    }
+    var T = list(host.getAttribute('data-tokens')).map(function(v){
+      var b = el('button','mtok'); b.type = 'button'; b.textContent = v;
+      var t = { v: v, b: b, used: false }, ghost = null, pid = null, sx = 0, sy = 0;
+      pool.appendChild(b);
+      b.addEventListener('click', function(){
+        if(b.dataset.moved === '1'){ b.dataset.moved = '0'; return; }
+        if(sel === t){ boChon(); return; }
+        boChon(); sel = t; b.classList.add('sel');
+      });
+      b.addEventListener('pointerdown', function(e){
+        pid = e.pointerId; sx = e.clientX; sy = e.clientY; b.dataset.moved = '0';
+        try{ b.setPointerCapture(pid); }catch(err){}
+      });
+      b.addEventListener('pointermove', function(e){
+        if(pid === null) return;
+        if(!ghost && Math.abs(e.clientX - sx) + Math.abs(e.clientY - sy) < 6) return;
+        if(!ghost){ ghost = el('div','mtok ghost', esc(v)); document.body.appendChild(ghost); b.dataset.moved = '1'; }
+        ghost.style.left = (e.clientX - 24) + 'px'; ghost.style.top = (e.clientY - 21) + 'px';
+        var o = document.elementFromPoint(e.clientX, e.clientY);
+        slots.forEach(function(s){ s.classList.toggle('hover', !!o && (o === s || s.contains(o))); });
+      });
+      function up(e){
+        if(pid === null) return;
+        try{ b.releasePointerCapture(pid); }catch(err){}
+        pid = null;
+        if(!ghost) return;
+        ghost.remove(); ghost = null;
+        slots.forEach(function(x){ x.classList.remove('hover'); });
+        var o = document.elementFromPoint(e.clientX, e.clientY);
+        var s = o && o.closest ? o.closest('.mslot') : null;
+        if(s && host.contains(s)) dat(s, t);
+        setTimeout(function(){ b.dataset.moved = '0'; }, 50);
+      }
+      b.addEventListener('pointerup', up);
+      b.addEventListener('pointercancel', up);
+      return t;
+    });
+    slots.forEach(function(s){
+      s.classList.add('mslot'); s.tabIndex = 0; s.setAttribute('role','button'); s._tok = null; veSlot(s);
+      function bam(){
+        if(sel){ dat(s, sel); return; }
+        if(s._tok){ go(s); xoaMau(); }
+      }
+      s.addEventListener('click', bam);
+      s.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); bam(); } });
+    });
+    bRst.addEventListener('click', function(){ boChon(); slots.forEach(go); xoaMau(); });
+    bChk.addEventListener('click', function(){
+      var trong = slots.filter(function(s){ return !s._tok; }).length;
+      slots.forEach(function(x){ x.classList.remove('sai','dung'); });
+      if(trong){
+        show(fb,'bad','Còn <b>' + trong + '</b> ô trống. Em kéo thẻ vào ô (hoặc bấm thẻ rồi bấm ô) để điền hết nhé.');
+        return;
+      }
+      var sai = slots.filter(function(s){ return s._tok.v !== s.getAttribute('data-slot'); });
+      if(!sai.length){ slots.forEach(function(x){ x.classList.add('dung'); }); show(fb,'good', okMsg); done(host); return; }
+      sai.forEach(function(x){ x.classList.add('sai'); });
+      /* ưu tiên gợi ý theo đúng THẺ em đặt nhầm (data-hint-sai trên ô), rồi mới tới gợi ý chung của ô */
+      var h = sai.map(function(x){
+        var m = {};
+        try{ m = JSON.parse(x.getAttribute('data-hint-sai') || '{}'); }catch(err){}
+        return m[x._tok.v] || x.getAttribute('data-slot-hint');
+      }).filter(Boolean)[0];
+      show(fb,'bad','Có <b>' + sai.length + '</b> ô chưa đúng (tô cam). ' + (h || 'Em soát lại những ô đó.'));
+    });
+    void T;
+  });
+
+  /* ---------- 15. Bảng lớp – hàng bấm được (data-placetable) ---------- */
+  $$('[data-placetable]').forEach(function(host){
+    var s = (host.getAttribute('data-number') || '').replace(/\D/g, '');
+    if(!s) return;
+    var asks = list(host.getAttribute('data-ask')).map(function(x){ return x.replace(/\D/g, ''); });
+    var asksGt = list(host.getAttribute('data-ask-gt')).map(Number);
+    var okMsg = host.getAttribute('data-ok') || 'Chính xác!';
+    var L = s.length, nl = Math.ceil(L / 3), g, i, k;
+    var r1 = '<tr><th>Lớp</th>', r2 = '<tr><th>Hàng</th>', r3 = '<tr><th>Chữ số</th>';
+    for(g = nl - 1; g >= 0; g--)
+      r1 += '<th class="lop lop' + Math.min(g, 3) + '" colspan="' + Math.min(3, L - g * 3) + '">' + hoa(LOP[g] || '') + '</th>';
+    for(i = 0; i < L; i++){
+      k = L - 1 - i; g = Math.min(Math.floor(k / 3), 3);
+      var val = s[i] === '0' ? '0' : s[i] + zeros(k);
+      r2 += '<td class="hang lop' + g + '" data-c="' + i + '">' + hoa(HANG[k] || '') + '</td>';
+      r3 += '<td class="lop' + g + '" data-c="' + i + '"><button type="button" class="pd ' + hc(k) + '" data-i="' + i +
+            '" data-val="' + val + '" aria-label="chữ số ' + s[i] + ' ở hàng ' + (HANG[k] || '') + '">' + s[i] + '</button></td>';
+    }
+    var wrap = el('div','pt-wrap'), tb = el('table','ptab');
+    tb.innerHTML = r1 + '</tr>' + r2 + '</tr>' + r3 + '</tr>';
+    wrap.appendChild(tb);
+    var ask = el('div','pt-ask'), out = el('div','labout', '<span class="muted">Bấm vào một chữ số để xem nó ở hàng nào, lớp nào và có giá trị bao nhiêu.</span>');
+    var gtBox = el('div','pt-gt');
+    host.appendChild(ask); host.appendChild(wrap); host.appendChild(out); host.appendChild(gtBox);
+    var fb = fbBox(host), qi = 0, gi = 0, tong = asks.length + asksGt.length;
+    function dangHoi(){ return qi < asks.length || gi < asksGt.length; }
+    function sang(i){
+      $$('button.pd', tb).forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-i') === String(i)); });
+      $$('td', tb).forEach(function(td){
+        var on = td.getAttribute('data-c') === String(i);
+        td.classList.toggle('col-on', on);
+        if(td.classList.contains('hang')) td.classList.toggle('on', on);
+      });
+    }
+    function dongDu(i){
+      var k = L - 1 - i, v = s[i] === '0' ? '0' : s[i] + zeros(k);
+      return 'Chữ số <b class="' + hc(k) + '">' + s[i] + '</b> ở <b>hàng ' + (HANG[k] || '') + '</b> (lớp ' +
+        (LOP[Math.floor(k / 3)] || '') + ') — giá trị: <b class="' + hc(k) + '">' +
+        (k === 0 ? s[i] : s[i] + ' × ' + mu10(k) + ' = ' + nhom(v)) + '</b>';
+    }
+    /* Câu ngược (data-ask-gt = chỉ số hàng k): tô sáng một chữ số, học sinh GÕ giá trị của nó */
+    function hoiGt(){
+      gtBox.innerHTML = '';
+      if(gi >= asksGt.length) return;
+      var k = asksGt[gi], i = L - 1 - k, dung = s[i] === '0' ? '0' : s[i] + zeros(k);
+      sang(i); host.setAttribute('data-gt-k', k);
+      out.innerHTML = 'Chữ số đang tô sáng: <b>' + s[i] + '</b> ở <b>hàng ' + HANG[k] + '</b>.';
+      var p = el('p', null, 'Câu ' + (asks.length + gi + 1) + '/' + tong + ': chữ số đang tô sáng có giá trị bằng bao nhiêu? ');
+      var inp = document.createElement('input'), b = el('button','btn','Kiểm'), sai = 0;
+      inp.type = 'text'; inp.setAttribute('aria-label','giá trị của chữ số đang tô sáng'); b.type = 'button';
+      p.appendChild(inp); p.appendChild(b); gtBox.appendChild(p);
+      function kiem(){
+        var v = inp.value.replace(/[\s.]/g, '');
+        if(!v) return;
+        if(v === dung){
+          out.innerHTML = dongDu(i); gi++; host.removeAttribute('data-gt-k');
+          if(!dangHoi()){ gtBox.innerHTML = ''; hoi(); show(fb,'good', okMsg); done(host); }
+          else { show(fb,'good','Đúng rồi! Sang câu tiếp theo.'); hoiGt(); }
+          return;
+        }
+        sai++;
+        show(fb,'bad', sai < 2 ? 'Chưa đúng — em tính lại.'
+          : 'Giá trị = chữ số × giá trị của hàng: ' + s[i] + ' × ' + mu10(k) + ' bằng bao nhiêu? Đếm kĩ số chữ số 0.');
+      }
+      b.addEventListener('click', kiem);
+      inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); kiem(); } });
+    }
+    function hoi(){
+      if(!tong){ ask.innerHTML = ''; return; }
+      ask.innerHTML = qi < asks.length
+        ? 'Câu ' + (qi + 1) + '/' + tong + ': bấm vào chữ số có giá trị <b>' + nhom(asks[qi]) + '</b>.'
+        : dangHoi() ? '' : '<span class="ok">Xong cả ' + tong + ' câu — giờ em bấm tự do để tra cứu.</span>';
+    }
+    hoi();
+    if(!asks.length && asksGt.length) hoiGt();
+    $$('button.pd', tb).forEach(function(b){
+      b.addEventListener('click', function(){
+        var i = +b.getAttribute('data-i'), k = L - 1 - i, v = b.getAttribute('data-val');
+        if(qi >= asks.length && gi < asksGt.length) return;          // đang ở câu gõ giá trị: giữ nguyên ô tô sáng
+        sang(i);
+        /* Đang hỏi: KHÔNG in giá trị (bấm lần lượt 12 ô là lộ đáp án). Chỉ in đủ phép tính khi đúng hoặc khi đã xong. */
+        if(!asks.length || qi >= asks.length){ out.innerHTML = dongDu(i); return; }
+        if(v === asks[qi]){
+          out.innerHTML = dongDu(i);
+          qi++; hoi();
+          if(!dangHoi()){ show(fb,'good', okMsg); done(host); }
+          else { show(fb,'good','Đúng rồi! Sang câu tiếp theo.'); if(qi >= asks.length) hoiGt(); }
+        } else {
+          var d0 = asks[qi].charAt(0);
+          out.innerHTML = 'Chữ số <b>' + s[i] + '</b> ở <b>hàng ' + (HANG[k] || '') + '</b> (lớp ' + (LOP[Math.floor(k / 3)] || '') + ').';
+          show(fb,'bad', (s[i] === d0
+            ? 'Đúng chữ số ' + d0 + ' nhưng chưa đúng hàng: ' + d0 + ' × (giá trị hàng ' + (HANG[k] || '') + ') có bằng <b>' + nhom(asks[qi]) + '</b> không?'
+            : 'Giá trị <b>' + nhom(asks[qi]) + '</b> bắt đầu bằng chữ số mấy? Tìm chữ số đó, rồi xem nó phải đứng ở hàng nào.'));
+        }
+      });
+    });
+  });
+
+  /* ---------- API cho "JS RIÊNG CỦA BÀI" ----------
+     Hình minh hoạ riêng muốn được CHẤM ĐIỂM thì: đặt data-custom trên phần tử chứa (bên trong .act[data-act]),
+     gọi Toan6.done(phần_tử) khi học sinh làm đúng, và đăng kí một hàm tự làm đúng vào Toan6.tuLam
+     để scripts/thu_tuong_tac.py bấm thử được. */
+  window.Toan6 = { done: done, show: show, fbBox: fbBox, esc: esc, list: list, el: el,
+                   nhom: nhom, HANG: HANG, itDong: itDong, tuLam: [] };
 })();
 </script>
 
-
-<!-- ================= JS RIÊNG CỦA BÀI — hình "giao hai tập hợp" dùng một lần ============ -->
+<!-- ================= JS RIÊNG CỦA BÀI — hình "giao hai tập hợp" dùng một lần ================= -->
 <script>
 (function(){
   var sl = document.getElementById('sl');

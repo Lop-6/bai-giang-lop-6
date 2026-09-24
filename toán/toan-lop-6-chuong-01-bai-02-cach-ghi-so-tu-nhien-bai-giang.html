@@ -1,0 +1,2370 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BÀI 2. CÁCH GHI SỐ TỰ NHIÊN — Bài giảng tương tác Toán 6 (Kết nối tri thức)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
+    --line:#e3e7f0; --brand:#2f6fdb; --brand-soft:#e8f0ff;
+    --warm:#f59e0b; --warm-soft:#fff6e5; --green:#0f9d76; --green-soft:#e6f7f1;
+    --red:#d64545; --red-soft:#fdeceb; --purple:#7c5cd6; --purple-soft:#f1ecff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:120px}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,Arial,sans-serif;
+    font-size:17px; line-height:1.65;
+  }
+  .wrap{max-width:920px; margin:0 auto; padding:0 16px 80px}
+
+  header.top{background:linear-gradient(135deg,#2f6fdb,#6a4fd8); color:#fff; padding:26px 16px 22px}
+  header.top .wrap{padding-bottom:0}
+  header.top h1{margin:0 0 4px; font-size:30px; letter-spacing:.3px}
+  header.top .sub{opacity:.92; font-size:15px; margin:0}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px; border-radius:999px; font-size:13px; margin:8px 6px 0 0}
+
+  .toolbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line)}
+  .toolbar .wrap{padding-top:10px; padding-bottom:10px; display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .chip{display:inline-block; padding:5px 11px; border-radius:999px; font-size:14px;
+    background:#eef1f7; color:#3a4152; text-decoration:none; border:1px solid transparent}
+  .chip:hover{background:var(--brand-soft); border-color:#c8dbff; color:var(--brand)}
+  .spacer{flex:1}
+  .tbtn{font:inherit; font-size:14px; padding:5px 11px; border-radius:999px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--muted)}
+  .tbtn:hover{border-color:#c8dbff; color:var(--brand)}
+  .progress{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+  .progress .track{width:110px; height:7px; border-radius:99px; background:#e7ebf3; overflow:hidden}
+  .progress .track i{display:block; height:100%; width:0; background:var(--green); transition:width .4s}
+
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:20px 0; box-shadow:0 1px 2px rgba(20,30,60,.04)}
+  h2{font-size:22px; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:18px; margin:22px 0 8px; color:#243049}
+  h4{font-size:16px; margin:16px 0 6px; color:#37405a}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 20px; padding:0}
+  li{margin:4px 0}
+  table{border-collapse:collapse; width:100%; margin:10px 0; font-size:16px}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top}
+  th{background:#f2f5fb; font-weight:600}
+
+  /* ----- kí hiệu toán (Unicode, KHÔNG dùng MathJax/KaTeX) ----- */
+  .m{font-family:"Cambria Math","Latin Modern Math","Times New Roman",Georgia,serif; font-size:1.06em}
+  .m i{font-style:italic}
+  .op{color:var(--brand); font-weight:700; padding:0 2px}
+  .op.no{color:var(--red)}
+  .setline{font-family:"Cambria Math","Times New Roman",Georgia,serif; font-size:21px;
+    text-align:center; margin:12px 0; letter-spacing:.3px}
+  .nn{font-weight:700}
+  .frac{display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center;
+    font-size:.92em; line-height:1.15; margin:0 3px}
+  .frac b{border-bottom:1.6px solid currentColor; padding:0 5px; font-weight:400}
+  .frac span{padding:0 5px}
+
+  /* ----- khối nội dung ----- */
+  .box{border-left:5px solid var(--brand); background:#f8faff; border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:14px 0}
+  .box.key{border-left-color:var(--warm); background:var(--warm-soft)}
+  .box.tip{border-left-color:var(--green); background:var(--green-soft)}
+  .box.warn{border-left-color:var(--red); background:var(--red-soft)}
+  .box.quote{border-left-color:var(--purple); background:var(--purple-soft)}
+  .box .label{font-weight:700; display:block; margin-bottom:4px}
+  .box p:first-child{margin-top:0} .box p:last-child{margin-bottom:0}
+  .say-pi{display:flex; gap:10px; align-items:flex-start; background:var(--purple-soft);
+    border:1px solid #ddd2ff; border-radius:12px; padding:10px 14px; margin:12px 0}
+  .say-pi .who{font-weight:700; color:var(--purple); white-space:nowrap}
+  .muted{color:var(--muted)} .small{font-size:15px}
+  .x{color:var(--red); font-weight:700} .ok{color:var(--green); font-weight:700}
+  .hide{display:none !important}
+
+  /* ----- hoạt động ----- */
+  .act{border:1px solid #cddcf7; background:#fbfcff; border-radius:12px; padding:14px 16px; margin:16px 0}
+  .act > h4{margin-top:0; color:var(--brand); display:flex; align-items:center; gap:8px}
+  .act > h4 .tag{font-size:12px; background:var(--brand); color:#fff; border-radius:999px;
+    padding:2px 9px; font-weight:600; letter-spacing:.3px}
+  .act.done{border-color:#b8e5d7; background:#f7fdfb}
+  .act.done > h4 .tag{background:var(--green)}
+  .btn{font:inherit; font-size:15px; cursor:pointer; border-radius:999px; padding:6px 14px;
+    border:1px solid #c8dbff; background:var(--brand-soft); color:var(--brand); margin:3px 4px 3px 0}
+  .btn:hover{background:#d8e6ff}
+  .btn:active{transform:scale(.97)}
+  .btn.go{background:var(--green-soft); border-color:#b8e5d7; color:#0b7a5c; font-weight:600}
+  .btn.go:hover{background:#d2f0e6}
+  .btn.ghost{background:#fff; border-color:var(--line); color:var(--muted)}
+  .btn.ghost:hover{background:#f3f6fc; color:var(--brand)}
+  .fb{margin-top:10px; padding:10px 14px; border-radius:10px; font-size:16px; display:none}
+  .fb.show{display:block}
+  .fb.good{background:var(--green-soft); border:1px solid #b8e5d7; color:#0b6b52}
+  .fb.bad{background:var(--warm-soft); border:1px solid #f3d79a; color:#8a5a06}
+  .reveal{display:none; margin-top:12px; border-top:1px dashed var(--line); padding-top:12px}
+  .reveal.open{display:block; animation:fadein .3s ease}
+  @keyframes fadein{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
+  .hint{display:none; margin-top:8px; padding:9px 13px; border-left:4px solid var(--warm);
+    background:var(--warm-soft); border-radius:0 8px 8px 0; font-size:16px}
+  .hint.open{display:block; animation:fadein .25s ease}
+
+  /* ----- chip số / chữ ----- */
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0}
+  .num{font:inherit; font-size:18px; cursor:pointer; min-width:46px; height:46px; padding:0 8px;
+    border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--ink); transition:.15s}
+  .num{white-space:nowrap}
+  .num:hover{border-color:var(--brand); color:var(--brand)}
+  .num.on{background:var(--brand); border-color:var(--brand); color:#fff; font-weight:700}
+  .let{font:inherit; font-size:20px; font-weight:700; cursor:pointer; width:44px; height:48px;
+    border-radius:10px; border:1px solid var(--line); background:#fff; color:var(--ink); transition:.15s}
+  .let:hover{border-color:var(--brand)}
+  .let.on{background:var(--green); border-color:var(--green); color:#fff}
+  .let.dup{background:var(--red-soft); border-color:var(--red); color:var(--red); animation:shake .3s}
+  @keyframes shake{25%{transform:translateX(-4px)} 75%{transform:translateX(4px)}}
+  .gap{width:18px}
+  .pchip{font:inherit; font-size:15px; cursor:pointer; border-radius:999px; padding:6px 13px;
+    border:1px solid var(--line); background:#fff; margin:3px 4px 3px 0}
+  .pchip:hover{border-color:var(--brand); color:var(--brand)}
+  .pchip.on{background:#1b2440; border-color:#1b2440; color:#fff}
+
+  /* ----- hình SVG ----- */
+  figure{margin:16px 0; text-align:center}
+  figcaption{font-size:14px; color:var(--muted); margin-top:6px}
+  svg{max-width:100%; height:auto}
+  .fig2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:640px){.fig2{grid-template-columns:1fr}}
+  .figcard{border:1px solid var(--line); border-radius:12px; background:#fbfcff; padding:8px}
+  .el{cursor:pointer}
+  .bg{fill:#fff; stroke:var(--line); stroke-width:1.5; transition:.15s}
+  .tx{font:700 21px "Segoe UI",sans-serif; fill:var(--ink); text-anchor:middle; dominant-baseline:central}
+  .el:hover .bg{fill:var(--brand-soft); stroke:var(--brand)}
+  .el.pick .bg{fill:var(--brand); stroke:var(--brand)}
+  .el.pick .tx{fill:#fff}
+  .el:focus{outline:none}
+  .el:focus .bg{stroke:var(--purple); stroke-width:3}
+  .ring-svg{fill:#eef4ff; stroke:var(--brand); stroke-width:2.5}
+  .ring-lbl{font:italic 700 24px Georgia,serif; fill:var(--brand)}
+  .draw{stroke-dasharray:1200; stroke-dashoffset:1200; animation:draw 1.6s ease .2s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .spin{transform-box:view-box; animation:spin var(--dur,12s) linear infinite; animation-delay:var(--del,0s)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .lit{stroke:#fff; stroke-width:3; filter:drop-shadow(0 0 6px #fff)}
+  .float{transform-box:fill-box; transform-origin:50% 100%;
+    animation:sway 3.4s ease-in-out infinite alternate; animation-delay:var(--d,0s)}
+  @keyframes sway{from{transform:rotate(-3.5deg)} to{transform:rotate(3.5deg)}}
+
+  /* ----- bàn thử kéo–thả ----- */
+  .lab{position:relative; height:320px; border:1px solid var(--line); border-radius:12px;
+    background:linear-gradient(#fbfcff,#f4f7fd); margin:12px 0; overflow:hidden; touch-action:none}
+  .lab .ring{position:absolute; left:4%; top:8%; width:58%; height:84%; border:3px dashed var(--brand);
+    border-radius:50%; background:rgba(47,111,219,.06)}
+  .lab .ring b{position:absolute; left:8px; top:4px; font:italic 700 26px Georgia,serif; color:var(--brand)}
+  .lab .outside{position:absolute; right:2%; top:8%; width:32%; height:84%; border:1px dashed var(--line);
+    border-radius:12px; color:var(--muted); font-size:13px; text-align:center; padding-top:6px}
+  .tok{position:absolute; min-width:52px; height:52px; padding:0 6px; margin:0; border-radius:26px;
+    cursor:grab; border:2px solid var(--brand); background:#fff; color:var(--ink);
+    font:700 21px "Segoe UI",sans-serif; transform:translate(-50%,-50%);
+    transition:left .35s cubic-bezier(.2,.9,.3,1.2), top .35s cubic-bezier(.2,.9,.3,1.2), box-shadow .15s;
+    box-shadow:0 2px 5px rgba(30,50,90,.12); user-select:none; touch-action:none; z-index:2}
+  .tok.in{border-color:var(--green); background:var(--green-soft); color:#0b6b52}
+  .tok.drag{cursor:grabbing; transition:none; box-shadow:0 8px 18px rgba(30,50,90,.28); z-index:9}
+  .tok:focus-visible{outline:3px solid var(--purple); outline-offset:2px}
+  .labout{font-family:"Cambria Math","Times New Roman",Georgia,serif; font-size:19px;
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 14px; min-height:52px}
+
+  /* ----- dải số / trục số ----- */
+  .strip{display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin:12px 0}
+  .strip .s{min-width:42px; height:42px; padding:0 6px; border-radius:10px; border:1px solid var(--line);
+    background:#fff; display:flex; align-items:center; justify-content:center; font-size:17px; transition:.25s}
+  .strip .s.on{background:var(--brand); border-color:var(--brand); color:#fff; font-weight:700}
+  .strip .s.off{opacity:.3; text-decoration:line-through}
+  .strip .dots{font-size:22px; color:var(--muted); letter-spacing:2px}
+  .numline{margin:14px 0}
+  .numline .axis{stroke:var(--ink); stroke-width:2}
+  .numline .tick{stroke:var(--muted); stroke-width:1.5}
+  .numline .lbl{font:15px "Segoe UI",sans-serif; fill:var(--muted); text-anchor:middle}
+  .numline .pt{fill:#fff; stroke:var(--brand); stroke-width:2; cursor:pointer; transition:.15s}
+  .numline .pt.on{fill:var(--brand)}
+  .numline .pt.fixed{fill:var(--red); stroke:var(--red); cursor:default}
+
+  /* ----- ô điền, lời giải từng bước ----- */
+  .fillbox{display:inline-flex; align-items:center; gap:6px}
+  .fillbox input{font:inherit; padding:6px 10px; border:1px solid var(--line); border-radius:9px;
+    background:#fff; color:var(--ink); width:120px; text-align:center}
+  .fillbox .mark{font-size:19px; min-width:18px}
+  .fillbox input[type=text]{min-width:0}
+  .fillbox.gon{gap:3px} .fillbox.gon input[type=text]{width:92px; padding:5px 6px}
+  .step{border-left:4px solid var(--brand-soft); background:#fff; border-radius:0 10px 10px 0;
+    padding:8px 14px; margin:8px 0}
+  input[type=text]{font:inherit; padding:7px 11px; border:1px solid var(--line); border-radius:9px;
+    background:#fff; color:var(--ink); min-width:170px}
+  input[type=range]{width:min(360px,90%)}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:640px){.two{grid-template-columns:1fr}}
+  .pane{border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#fff}
+  .pane h5{margin:0 0 6px; font-size:16px; color:var(--brand)}
+  .ex{background:#fff; border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:14px 0}
+  .ex .no{font-weight:700; color:var(--brand); margin-right:6px}
+
+  footer{color:var(--muted); font-size:14px; margin-top:26px; padding-top:14px; border-top:1px solid var(--line)}
+  .kbd{font:13px ui-monospace,Consolas,monospace; background:#eef1f7; border:1px solid var(--line);
+    border-radius:6px; padding:1px 6px}
+
+  /* ----- MÃ MÀU THEO HÀNG — nhất quán mọi bài về giá trị chữ số -----
+     đơn vị = xanh lá · chục = xanh dương · trăm = tím · nghìn = cam · chục nghìn = đỏ · trăm nghìn = xanh ngọc
+     Lớp tô nền theo màu hàng đầu của lớp: lớp đơn vị (lá) · lớp nghìn (cam) · lớp triệu (hồng) · lớp tỉ (xám xanh) */
+  :root{--h0:#0f9d76; --h1:#2f6fdb; --h2:#7c5cd6; --h3:#d97a00; --h4:#d64545; --h5:#0e8fa8; --h6:#b4478f}
+  .h0{color:var(--h0)} .h1{color:var(--h1)} .h2{color:var(--h2)} .h3{color:var(--h3)}
+  .h4{color:var(--h4)} .h5{color:var(--h5)} .h6,.h7,.h8,.h9,.h10,.h11{color:var(--h6)}
+  .hb{font-weight:700}
+  .lop0{background:#e6f7f1} .lop1{background:#fff1dc} .lop2{background:#fbe9f4} .lop3{background:#eceff5}
+  .ol{text-decoration:overline; font-style:italic}
+  .nowrap{white-space:nowrap}
+  @keyframes pop{0%{transform:scale(.3); opacity:0} 70%{transform:scale(1.15); opacity:1} 100%{transform:scale(1)}}
+  @keyframes dropin{from{opacity:0; transform:translateY(-14px)} to{opacity:1; transform:none}}
+  @keyframes pulse{0%,100%{transform:scale(1)} 50%{transform:scale(1.25)}}
+  .dropin{animation:dropin .45s ease both}
+
+  /* ----- bàn tính hàng (data-abacus) ----- */
+  .abacus{position:relative; display:flex; justify-content:center; gap:10px; flex-wrap:nowrap; margin:12px 0;
+    padding:12px 10px 6px; border:1px solid var(--line); border-radius:14px; background:linear-gradient(#fffdf7,#fbf4e4)}
+  .ab-col{display:flex; flex-direction:column; align-items:center; width:96px}
+  .ab-head{font-size:14px; font-weight:700; text-align:center; line-height:1.25; min-height:36px}
+  .ab-rod{position:relative; width:64px; height:232px; display:flex; flex-direction:column-reverse;
+    align-items:center; gap:2px; padding:4px 0; border-radius:10px; background:#fff; border:1px solid #eadfc6}
+  .ab-rod::before{content:""; position:absolute; top:4px; bottom:4px; left:50%; width:4px; margin-left:-2px;
+    background:#c9b58a; border-radius:2px}
+  .bead{position:relative; width:40px; height:20px; border-radius:10px; background:currentColor;
+    box-shadow:inset 0 -4px 0 rgba(0,0,0,.18); animation:pop .3s ease both; flex:none}
+  .bead.note{width:58px; height:21px; border-radius:3px; box-shadow:inset 0 0 0 2px rgba(255,255,255,.55);
+    font:700 10px "Segoe UI",sans-serif; display:flex; align-items:center; justify-content:center}
+  .bead.note span{color:#fff}
+  .ab-rod.gom .bead{animation:gom .7s ease forwards}
+  @keyframes gom{40%{transform:scale(1.12); filter:brightness(1.3)} 100%{transform:translateY(-40px) scale(.2); opacity:0}}
+  .bead.fly{position:absolute; z-index:5; animation:none; transition:left .6s ease, top .6s ease; pointer-events:none}
+  .ab-dig{font:700 30px "Cambria Math","Times New Roman",serif; margin-top:4px}
+  .ab-btns .btn{padding:3px 12px; font-size:18px; margin:2px}
+  .ab-out{font-family:"Cambria Math","Times New Roman",Georgia,serif; font-size:19px; text-align:center;
+    background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 14px; min-height:52px}
+  /* màn hẹp: các cột KHÔNG được xuống dòng (mất nghĩa "hàng bên trái"), nên thu nhỏ cột */
+  @media(max-width:560px){
+    .abacus{gap:4px; padding:10px 4px 6px}
+    .ab-col{width:auto; flex:1 1 0; min-width:0}
+    .ab-head{font-size:12px; min-height:32px}
+    .ab-rod{width:46px} .bead{width:32px} .bead.note{width:44px; font-size:8px}
+    .ab-btns .btn{padding:2px 9px; font-size:16px}
+  }
+  .ab-msg{min-height:26px; text-align:center; font-size:16px; color:#8a5a06; margin:6px 0}
+
+  /* ----- tách số thành tổng giá trị các chữ số (data-expand) ----- */
+  .xp-num{font:700 46px "Cambria Math","Times New Roman",serif; text-align:center; letter-spacing:2px; margin:6px 0}
+  .xp-num .xp-d{display:inline-block; padding:0 2px; border-bottom:4px solid transparent; transition:.2s}
+  .xp-num .xp-d.cur{border-bottom-color:currentColor; animation:pulse .8s ease 2}
+  .xp-num .xp-d.xong{opacity:.45}
+  /* chế độ hỏi: chữ số CHƯA trả lời để màu trung tính — màu hàng là phần thưởng sau khi đúng, không phải gợi ý */
+  .xp-num.hoi .xp-d:not(.xong){color:var(--ink)}
+  .xp-gt{display:inline-flex; align-items:center; gap:6px; flex-wrap:wrap; justify-content:center}
+  .xp-gt input,.pt-gt input{font:inherit; width:130px; padding:5px 8px; border:1px solid var(--line); border-radius:9px; text-align:center}
+  .xp-num .gapg{display:inline-block; width:.35em}
+  .xp-q{text-align:center; margin:8px 0}
+  .xp-q .btn.sai{background:var(--red-soft); border-color:var(--red); color:var(--red); animation:shake .3s}
+  .xp-row{background:#fff; border:1px solid var(--line); border-left:6px solid currentColor; border-radius:0 10px 10px 0;
+    padding:7px 12px; margin:6px 0; animation:dropin .45s ease both}
+  .xp-row span.t{color:var(--ink)}
+  .xp-sum{display:inline-block; animation:dropin .5s ease both}
+
+  /* ----- ghép thẻ vào ô (data-match) ----- */
+  .mt-pool{min-height:52px; padding:8px; border:1px dashed var(--line); border-radius:12px; background:#fbfcff}
+  .mtok{font:inherit; font-size:18px; font-weight:700; cursor:grab; min-width:48px; height:42px; padding:0 12px;
+    border-radius:10px; border:2px solid var(--brand); background:#fff; color:var(--ink); touch-action:none; user-select:none}
+  .mtok.sel{background:var(--brand); color:#fff; box-shadow:0 0 0 4px var(--brand-soft)}
+  .mtok.ghost{display:flex; align-items:center; justify-content:center; position:fixed; z-index:99; pointer-events:none; opacity:.9; box-shadow:0 8px 18px rgba(30,50,90,.28)}
+  .mtok.used{visibility:hidden}
+  .mslot{font:inherit; font-size:18px; font-weight:700; display:inline-flex; align-items:center; justify-content:center;
+    min-width:74px; height:42px; padding:0 10px; margin:2px 4px; vertical-align:middle; cursor:pointer;
+    border:2px dashed #a9bde6; border-radius:10px; background:#f5f8ff; color:var(--ink)}
+  .mslot.full{border-style:solid; border-color:var(--brand); background:#fff; animation:pop .25s ease}
+  .mslot.hover{background:var(--brand-soft); border-color:var(--brand)}
+  .mslot.dung{border-color:var(--green); background:var(--green-soft); color:#0b6b52}
+  .mslot.sai{border-color:var(--warm); background:var(--warm-soft); animation:shake .3s}
+
+  /* ----- bảng lớp – hàng (data-placetable) ----- */
+  .pt-wrap{overflow-x:auto; margin:10px 0}
+  table.ptab{width:auto; min-width:100%; font-size:14px; text-align:center}
+  table.ptab th,table.ptab td{text-align:center; padding:5px 4px; vertical-align:middle}
+  table.ptab th.lop{font-size:15px}
+  table.ptab td.hang{font-size:12.5px; line-height:1.2; color:var(--muted); min-width:52px}
+  table.ptab button.pd{font:700 24px "Cambria Math","Times New Roman",serif; width:44px; height:46px; cursor:pointer;
+    border:1px solid var(--line); border-radius:10px; background:#fff; transition:.15s}
+  table.ptab button.pd:hover{border-color:var(--brand)}
+  table.ptab button.pd.on{background:#1b2440; color:#fff; border-color:#1b2440; animation:pulse .5s}
+  table.ptab td.col-on{box-shadow:inset 0 0 0 3px var(--brand)}
+  .pt-ask{font-size:17px; text-align:center; margin:6px 0}
+  .pt-gt{text-align:center; margin:6px 0}
+  table.ptab td.hang.on{font-weight:800; color:var(--ink)}
+
+  /* ----- công tắc giữ pane cũ (data-t2-giu): pane đã xem mờ đi, pane đang chọn rõ ----- */
+  [data-t2] .t2-cu{opacity:.7}
+
+  /* ----- sơ đồ tư duy rộng: màn hẹp thì cuộn ngang thay vì thu nhỏ chữ còn 8 px ----- */
+  @media(max-width:640px){ .mm-wrap{overflow-x:auto} .mm-wrap svg{min-width:900px} }
+
+  body.no-motion *{animation:none !important; transition:none !important}
+  @media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+  /* tắt chuyển động thì nét "vẽ dần" phải hiện NGAY — nếu không, đường .draw biến mất hẳn */
+  body.no-motion .draw{stroke-dashoffset:0}
+  @media(prefers-reduced-motion:reduce){.draw{stroke-dashoffset:0}}
+  @media print{
+    .toolbar,.btn,.tbtn{display:none}
+    .reveal,.hint{display:block} section{break-inside:avoid; box-shadow:none}
+    [data-t2-pane].hide,[data-t2-note].hide{display:block !important}
+    [data-t2-empty]{display:none !important}
+    [data-t2] .t2-cu{opacity:1}
+  }
+</style>
+
+<!-- CSS RIÊNG CỦA BÀI — chỉ dùng cho hoạt ảnh của hình minh hoạ riêng bài này
+     (cá bơi, bong bóng, quầng sáng…). Thứ gì dùng lại được thì đưa vào CSS chung ở trên. -->
+<style>
+  /* Mở đầu: chữ tượng hình Ai Cập hiện dần từng kí hiệu */
+  .eg{transform-box:fill-box; transform-origin:50% 100%; animation:pop .4s ease both;
+    animation-delay:calc(var(--i) * .22s)}
+  .eg path,.eg line,.eg circle.k{fill:none; stroke:#8a5a06; stroke-width:4; stroke-linecap:round; stroke-linejoin:round}
+  .eglbl{font:700 15px "Segoe UI",sans-serif; text-anchor:middle}
+  .dg{font:700 64px "Cambria Math","Times New Roman",serif; text-anchor:middle; animation:pop .4s ease both;
+    transform-box:fill-box; transform-origin:50% 100%; animation-delay:calc(var(--i) * .22s)}
+  .dem{display:inline-block; font-weight:700; border-radius:999px; padding:2px 12px; background:#fff; border:1px solid var(--line)}
+
+  /* 10 chữ số hiện dần */
+  .digits10{display:flex; gap:6px; flex-wrap:wrap; justify-content:center; margin:10px 0}
+  .digits10 span{width:44px; height:50px; border-radius:10px; background:#fff; border:2px solid var(--brand);
+    display:flex; align-items:center; justify-content:center; font:700 26px "Cambria Math","Times New Roman",serif;
+    color:var(--brand); animation:pop .35s ease both; animation-delay:calc(var(--i) * .09s)}
+
+  /* tách lớp từng bước */
+  .grpline{font:700 30px "Cambria Math","Times New Roman",serif; letter-spacing:1px}
+  .grp{display:inline-block; padding:0 5px; margin:0 3px; border-radius:7px; animation:pop .4s ease both}
+  .grp.cu{animation:none}
+
+  /* số và chữ số */
+  .sochuso{display:flex; flex-wrap:wrap; gap:18px; align-items:center; justify-content:center; margin:8px 0}
+  .sochuso .khung{border:3px solid var(--brand); border-radius:14px; padding:4px 16px;
+    font:700 38px "Cambria Math","Times New Roman",serif}
+  .sochuso .cs{display:inline-block; border:2px dashed var(--warm); border-radius:8px; padding:0 6px; margin:0 2px;
+    font:700 30px "Cambria Math","Times New Roman",serif}
+
+  /* que tính La Mã */
+  .qs{stroke:#e9b872; stroke-width:5; stroke-linecap:round}
+  .qh{fill:#d64545}
+  .qbox{stroke-width:2}
+  .qval{font:700 17px "Segoe UI",sans-serif; text-anchor:middle}
+  .truot{animation:truot 1.1s ease .4s both}
+  @keyframes truot{from{transform:translateX(50px)} to{transform:none}}
+  .hop{animation:hienra .45s ease 1.5s both}
+  .moi{animation:pop .45s ease .3s both; transform-box:fill-box; transform-origin:50% 100%}
+  @keyframes hienra{from{opacity:0} to{opacity:1}}
+  .tp-cards{display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin:10px 0}
+  .tp-card{border:1px solid var(--line); border-radius:12px; background:#fff; padding:6px 10px 4px; text-align:center; min-width:90px}
+  .tp-card b{display:block; font:700 22px Georgia,serif}
+  .tp-card .v{font-size:15px; color:var(--muted)}
+  table.lm td,table.lm th{text-align:center; padding:6px 4px; font-size:16px}
+  table.lm th{font-family:Georgia,serif; font-size:17px}
+  /* bảng màu RIÊNG của phần La Mã — không trùng màu hàng h0–h6 (số La Mã không chia hàng) */
+  .lm-cs{color:#8a5a06} .lm-cum{color:#7b1f3a}
+  .lm-them{color:#8a5a06; font:inherit; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:3px}
+  .tp-card.cs{border:2px solid #8a5a06} .tp-card.cs b{color:#8a5a06}
+  .tp-card.cum{border:2px solid #7b1f3a} .tp-card.cum b{color:#7b1f3a}
+
+  /* đồng hồ La Mã */
+  .so{cursor:pointer}
+  .so circle{fill:transparent; transition:.15s}
+  .so text{font:700 21px Georgia,serif; fill:#243049; text-anchor:middle; dominant-baseline:central}
+  .so:hover circle,.so.on circle{fill:#e8f0ff; stroke:var(--brand); stroke-width:2}
+  .so:focus{outline:none} .so:focus circle{stroke:var(--purple); stroke-width:3}
+  .kim{pointer-events:none}
+
+  /* bàn xếp que */
+  .qt-ban{min-height:96px; border:1px solid #eadfc6; border-radius:12px; background:linear-gradient(#fffdf7,#fbf4e4);
+    display:flex; align-items:center; justify-content:center; padding:8px; overflow-x:auto}
+  .qt-dem{font-size:17px; text-align:center; margin:6px 0}
+  .qt-dem b.n{font-size:24px}
+  .qt-tim{display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin:8px 0}
+  .qt-tim span{min-width:86px; padding:4px 10px; border-radius:10px; border:2px dashed var(--line); text-align:center;
+    font:700 17px "Times New Roman",serif; color:var(--muted)}
+  .qt-tim span.co{border-style:solid; border-color:var(--green); background:var(--green-soft); color:#0b6b52; animation:pop .35s ease}
+
+  /* bóng đèn nhị phân */
+  .den{cursor:pointer}
+  .den .bong{fill:#e3e7f0; stroke:#9aa3b5; stroke-width:2; transition:.2s}
+  .den.on .bong{fill:#ffd54a; stroke:#e0a800; filter:drop-shadow(0 0 8px #ffcc33)}
+  .den text{font:700 22px "Cambria Math","Times New Roman",serif; text-anchor:middle}
+  .den:focus{outline:none} .den:focus .bong{stroke:var(--purple); stroke-width:3}
+
+  /* kẹo: gói – hộp – thùng */
+  .keo-lbl{font:700 15px "Segoe UI",sans-serif; text-anchor:middle; fill:#37405a}
+
+  /* sơ đồ tư duy */
+  .mm-line{fill:none; stroke-width:3}
+  .mm-node{animation:pop .45s ease both; transform-box:fill-box; transform-origin:50% 50%}
+  .mm-node rect{stroke-width:2}
+  .mm-t{font:600 14.5px "Segoe UI",sans-serif; text-anchor:middle; dominant-baseline:central; fill:#1f2430}
+  .mm-t.b{font-weight:800; font-size:17px}
+  .mm-t.s{text-anchor:start; font-size:14px}
+  .mm-ic{font:700 13px "Segoe UI",sans-serif; text-anchor:middle; dominant-baseline:central}
+  .mm-ic.s{text-anchor:start; font-size:9.5px}
+
+  /* Luyện tập: năm ô điền xếp theo hàng */
+  .tong5{display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:center; gap:6px; margin:12px 0}
+  .tong5 .o{display:flex; flex-direction:column; align-items:center; gap:4px; font-size:15px}
+  .tong5 .dau{font:700 22px "Cambria Math","Times New Roman",serif; padding-bottom:8px}
+  table.lm.tp th:first-child,table.lm.tp td:first-child{font-family:inherit}
+  .tong5 .cap{display:inline-flex; align-items:flex-end; gap:6px}
+
+  /* mục tiêu bài học: bảng hai cột như SGK */
+  table.muc-tieu{margin:6px 0 10px; font-size:15.5px}
+  table.muc-tieu th{font-size:14px}
+  table.muc-tieu td{vertical-align:top}
+
+  /* chữ số hàng chục ↔ số chục (1 425) */
+  .so1425{font:700 46px "Cambria Math","Times New Roman",serif; text-align:center; letter-spacing:3px; margin:6px 0}
+  .so1425 .nhat{opacity:.3}
+  .so1425 .noi{display:inline-block; border-bottom:5px solid currentColor; animation:pop .45s ease .2s both}
+  .so1425 .gach{display:inline-block; border-bottom:5px solid var(--brand); animation:gach .45s ease both;
+    animation-delay:calc(.3s + var(--i) * .5s)}
+  @keyframes gach{from{border-bottom-color:transparent}}
+  .so1425 .vach{color:var(--red); margin:0 8px; font-weight:400}
+
+  /* thanh trượt La Mã 1 – 30 */
+  .truot-lm .tl-dk{display:flex; align-items:center; gap:10px; justify-content:center; flex-wrap:wrap; margin:6px 0}
+  .truot-lm input[type=range]{width:min(420px,70vw)}
+  .truot-lm .tl-so{font:700 26px "Cambria Math","Times New Roman",serif; min-width:48px; text-align:center}
+  .truot-lm .tl-hinh{min-height:112px; display:flex; align-items:center; justify-content:center; overflow-x:auto}
+  .truot-lm .tl-cau{text-align:center; font-size:16px; min-height:26px}
+  .vao-trai{animation:vaotrai .8s ease both}
+  @keyframes vaotrai{from{transform:translateX(-50px); opacity:0} to{transform:none; opacity:1}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>BÀI 2. CÁCH GHI SỐ TỰ NHIÊN</h1>
+    <p class="sub">Toán 6 · Chương I. Tập hợp các số tự nhiên · Kết nối tri thức với cuộc sống</p>
+    <span class="badge">Bài giảng tương tác</span>
+    <span class="badge">Bàn tính · thẻ kéo thả · que tính La Mã</span>
+    <span class="badge">Bài tập 1.6–1.12 chỉ có gợi ý, không có đáp án</span>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="wrap">
+    <a class="chip" href="#mo-dau">Mở đầu</a>
+    <a class="chip" href="#he-thap-phan">1. Hệ thập phân</a>
+    <a class="chip" href="#la-ma">2. Số La Mã</a>
+    <a class="chip" href="#bai-tap">Bài tập</a>
+    <a class="chip" href="#em-co-biet">Em có biết?</a>
+    <a class="chip" href="#chot-bai">Chốt bài</a>
+    <span class="spacer"></span>
+    <span class="progress" data-progress><span class="track"><i></i></span><span class="txt"></span></span>
+    <button class="tbtn" data-motion aria-pressed="false">Tắt chuyển động</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<noscript>
+  <section class="box warn"><span class="label">Trang này cần bật JavaScript</span>
+  Các hoạt động bấm và kéo sẽ không chạy. Em đọc bản Markdown
+  <b>toan-lop-6-chuong-01-bai-02-cach-ghi-so-tu-nhien-bai-giang.md</b> thay thế nhé.</section>
+</noscript>
+
+<!-- ============================ MỞ ĐẦU ============================ -->
+<section id="mo-dau">
+  <h2>Mở đầu — người xưa ghi số thế nào?</h2>
+  <p>Trong lịch sử loài người, số tự nhiên bắt nguồn từ nhu cầu đếm và có từ rất sớm. Nhưng trải qua
+  nhiều thế kỉ người ta mới có được cách ghi số tự nhiên như ngày nay, vừa dễ đọc, vừa sử dụng thuận
+  tiện trong khoa học. <b>Cách ghi số tự nhiên đó như thế nào?</b></p>
+
+  <div class="act">
+    <h4><span class="tag">SO SÁNH TRƯỚC / SAU</span> Cùng số 1&nbsp;324 — hai cách ghi</h4>
+    <p class="muted small">SGK mở bài bằng hình chữ tượng hình của người Ai Cập cổ. Cô vẽ lại để em hình dung:
+    người Ai Cập dùng một vạch cho 1, hình vòm cho 10, cuộn dây cho 100, bông sen cho 1&nbsp;000
+    <i>(phần này đọc thêm, không phải kiến thức của bài)</i>.</p>
+    <div data-t2 data-t2-mo="0" data-t2-giu="1">
+      <button class="btn" data-t2-btn="0">Người Ai Cập cổ ghi</button>
+      <button class="btn ghost" data-t2-btn="1">Chúng ta ghi (hệ thập phân)</button>
+      <span class="muted small">← bấm nút thứ hai: hai cách ghi hiện cạnh nhau để em so.</span>
+      <div class="setline" data-t2-empty><span class="muted small">Bấm lần lượt hai nút để so sánh…</span></div>
+      <figure class="hide" data-t2-pane="0">
+        <svg viewBox="0 0 640 190" role="img" aria-label="Số 1 324 viết bằng chữ tượng hình Ai Cập: 1 bông sen, 3 cuộn dây, 2 hình vòm, 4 vạch">
+          <g class="eg" style="--i:0">
+            <path d="M45 120 L45 72"/>
+            <path d="M45 72 C30 62 27 46 32 34 C38 48 42 56 45 62 C48 56 52 48 58 34 C63 46 60 62 45 72 Z"/>
+            <path d="M45 104 C58 100 64 92 66 84 C54 86 48 94 45 104"/></g>
+          <g class="eg" style="--i:1"><circle class="k" cx="115" cy="96" r="22"/><circle class="k" cx="115" cy="96" r="12"/><circle class="k" cx="115" cy="96" r="3"/><path d="M137 96 L137 120"/></g>
+          <g class="eg" style="--i:2"><circle class="k" cx="175" cy="96" r="22"/><circle class="k" cx="175" cy="96" r="12"/><circle class="k" cx="175" cy="96" r="3"/><path d="M197 96 L197 120"/></g>
+          <g class="eg" style="--i:3"><circle class="k" cx="235" cy="96" r="22"/><circle class="k" cx="235" cy="96" r="12"/><circle class="k" cx="235" cy="96" r="3"/><path d="M257 96 L257 120"/></g>
+          <g class="eg" style="--i:4"><path d="M290 120 L290 82 Q290 58 304 58 Q318 58 318 82 L318 120"/></g>
+          <g class="eg" style="--i:5"><path d="M340 120 L340 82 Q340 58 354 58 Q368 58 368 82 L368 120"/></g>
+          <g class="eg" style="--i:6"><line x1="405" y1="60" x2="405" y2="120"/></g>
+          <g class="eg" style="--i:7"><line x1="430" y1="60" x2="430" y2="120"/></g>
+          <g class="eg" style="--i:8"><line x1="455" y1="60" x2="455" y2="120"/></g>
+          <g class="eg" style="--i:9"><line x1="480" y1="60" x2="480" y2="120"/></g>
+          <text class="eglbl" x="45" y="158" style="fill:var(--h3)">1 nghìn</text>
+          <text class="eglbl" x="175" y="158" style="fill:var(--h2)">3 trăm</text>
+          <text class="eglbl" x="329" y="158" style="fill:var(--h1)">2 chục</text>
+          <text class="eglbl" x="442" y="158" style="fill:var(--h0)">4 đơn vị</text>
+          <text x="580" y="100" style="font:700 30px 'Segoe UI',sans-serif; fill:#8a5a06" text-anchor="middle">10</text>
+          <text x="580" y="126" style="font:14px 'Segoe UI',sans-serif; fill:#5c6577" text-anchor="middle">kí hiệu</text>
+        </svg>
+        <figcaption>Chữ tượng hình: phải vẽ <span class="dem">10 kí hiệu</span> — mỗi trăm một cuộn dây, mỗi chục một hình vòm.</figcaption>
+      </figure>
+      <figure class="hide" data-t2-pane="1">
+        <svg viewBox="0 0 640 190" role="img" aria-label="Số 1 324 viết trong hệ thập phân: 4 chữ số">
+          <text class="dg" x="190" y="112" style="--i:0; fill:var(--h3)">1</text>
+          <text class="dg" x="275" y="112" style="--i:1; fill:var(--h2)">3</text>
+          <text class="dg" x="335" y="112" style="--i:2; fill:var(--h1)">2</text>
+          <text class="dg" x="395" y="112" style="--i:3; fill:var(--h0)">4</text>
+          <text class="eglbl" x="190" y="158" style="fill:var(--h3)">nghìn</text>
+          <text class="eglbl" x="275" y="158" style="fill:var(--h2)">trăm</text>
+          <text class="eglbl" x="335" y="158" style="fill:var(--h1)">chục</text>
+          <text class="eglbl" x="395" y="158" style="fill:var(--h0)">đơn vị</text>
+          <text x="560" y="100" style="font:700 30px 'Segoe UI',sans-serif; fill:#2f6fdb" text-anchor="middle">4</text>
+          <text x="560" y="126" style="font:14px 'Segoe UI',sans-serif; fill:#5c6577" text-anchor="middle">chữ số</text>
+        </svg>
+        <figcaption>Hệ thập phân: chỉ <span class="dem">4 chữ số</span> — <b>chỗ đứng</b> của chữ số đã cho biết nó là nghìn, trăm, chục hay đơn vị.</figcaption>
+      </figure>
+    </div>
+    <p><b>Câu hỏi mở đầu:</b> vì sao ta chỉ cần 4 kí hiệu mà người Ai Cập cần tới 10?</p>
+    <button class="btn" data-reveal="#rv-modau" data-open="Em nghĩ xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em nghĩ xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-modau">
+      <p>Vì trong cách ghi của ta, <b>vị trí</b> của chữ số đã nói lên nó đếm đơn vị, chục, trăm hay nghìn.
+      Chữ số <b class="h2">3</b> trong 1&nbsp;324 không cần vẽ 3 cuộn dây — chỉ cần <b>đứng ở hàng trăm</b> là đủ hiểu "3 trăm".</p>
+      <p>Đó chính là bí mật của <b>hệ thập phân</b> mà bài này sẽ học.</p>
+    </div>
+  </div>
+
+  <div class="box tip"><span class="label">Mục tiêu của bài (SGK)</span>
+    <table class="muc-tieu">
+      <tr><th>KHÁI NIỆM, THUẬT NGỮ</th><th>KIẾN THỨC, KĨ NĂNG</th></tr>
+      <tr><td>Hệ thập phân<br>Chữ số<br>Số La Mã, chữ số La Mã</td>
+        <td>• Nhận biết giá trị các chữ số của một số tự nhiên viết trong hệ thập phân.<br>
+            • Biểu diễn mỗi số tự nhiên thành tổng giá trị các chữ số của nó.<br>
+            • Đọc và viết số La Mã từ 1 đến 30.</td></tr>
+    </table>
+    Hết bài, em phải: <b>nói được</b> mỗi chữ số đứng ở hàng nào, có giá trị bao nhiêu;
+    <b>viết</b> một số thành tổng giá trị các chữ số của nó; <b>đọc – viết</b> số La Mã từ 1 đến 30.
+  </div>
+  <div class="box"><span class="label">Mã màu phần hệ thập phân — nhìn màu là biết hàng</span>
+    <b class="h0">đơn vị</b> · <b class="h1">chục</b> · <b class="h2">trăm</b> · <b class="h3">nghìn</b> ·
+    <b class="h4">chục nghìn</b> · <b class="h5">trăm nghìn</b> · <b class="h6">từ hàng triệu trở lên</b>
+    <span class="muted small">(các hàng này dùng chung màu hồng — em nhìn thêm tên hàng)</span>.
+    <br><span class="muted small">Phần số La Mã có bảng màu riêng (nâu), vì số La Mã không chia hàng.</span>
+  </div>
+</section>
+
+<!-- ======================== 1. HỆ THẬP PHÂN ======================== -->
+<section id="he-thap-phan">
+  <h2>1. Hệ thập phân</h2>
+
+  <h3>📖 Cách ghi số tự nhiên trong hệ thập phân</h3>
+  <div class="box key"><span class="label">📌 SGK</span>
+    <ul>
+      <li>Trong <b>hệ thập phân</b>, mỗi số tự nhiên được viết dưới dạng một dãy những <b>chữ số</b> lấy trong
+      10 chữ số 0; 1; 2; 3; 4; 5; 6; 7; 8 và 9; vị trí của các chữ số trong dãy gọi là <b>hàng</b>.</li>
+      <li>Cứ 10 đơn vị ở một hàng thì bằng 1 đơn vị ở hàng liền trước nó. Chẳng hạn, 10 chục thì bằng
+      1 trăm; 10 trăm thì bằng 1 nghìn; …</li>
+    </ul>
+  </div>
+  <div class="digits10" aria-label="mười chữ số từ 0 đến 9">
+    <span style="--i:0">0</span><span style="--i:1">1</span><span style="--i:2">2</span><span style="--i:3">3</span><span style="--i:4">4</span>
+    <span style="--i:5">5</span><span style="--i:6">6</span><span style="--i:7">7</span><span style="--i:8">8</span><span style="--i:9">9</span>
+  </div>
+  <p><b>Cô nói lại bằng lời thường:</b> chỉ có <b>mười</b> chữ số, nhưng viết được <b>mọi</b> số — vì cùng một
+  chữ số, đặt ở chỗ khác nhau thì mang giá trị khác nhau. Luật đổi rất đều: <b>gom đủ 10 thì đổi thành 1 ở
+  hàng bên trái.</b> Chữ "thập" trong "thập phân" nghĩa là <b>mười</b>.</p>
+
+  <div class="act" data-act="doi-10">
+    <h4><span class="tag">HOẠT ĐỘNG 1</span> Bàn tính — tận mắt thấy "10 đổi thành 1"</h4>
+    <p><b>Bước 1.</b> Bấm <span class="kbd">+</span> ở cột <b class="h0">hàng đơn vị</b> liên tục. Chuyện gì xảy ra ở hạt thứ 10?
+    Thử tiếp ở cột <b class="h1">hàng chục</b>.<br>
+    <b>Bước 2.</b> Bấm <b>Xếp lại từ đầu</b>, rồi <b>lập số 1&nbsp;205</b> trên bàn tính và bấm Kiểm tra.</p>
+    <div data-abacus data-cols="4" data-answer="1205"
+         data-ok="Đúng rồi! 1 205 gồm 1 nghìn, 2 trăm, 0 chục và 5 đơn vị — cột hàng chục để trống nhưng vẫn phải có chữ số 0 giữ chỗ."></div>
+    <p class="muted small">Tự kiểm tra: đang có 9 chục và 9 đơn vị (tức 99), thêm 1 đơn vị nữa thì sao? <b>Đoán trước</b>, rồi mới thử.
+      <button class="btn ghost" data-hint="#h-99">Gợi ý</button></p>
+    <div class="hint" id="h-99">Lập 99 trên bàn tính (9 hạt cột chục, 9 hạt cột đơn vị). Ghi ra giấy điều em đoán, rồi bấm
+      <span class="kbd">+</span> ở cột đơn vị. Để ý cột chục sau khi nhận thêm 1 hạt: nó có mấy hạt? Lúc đó chuyện gì xảy ra tiếp?</div>
+    <button class="btn" data-reveal="#rv-99" data-open="Em thử xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em thử xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-99">Hàng đơn vị đủ 10 → đổi thành 1 chục; lúc đó hàng chục thành 10 → lại đổi thành 1 trăm.
+      Hai lần đổi liền nhau: được 1 trăm, 0 chục, 0 đơn vị — tức là <b>100</b>.</div>
+  </div>
+
+  <h3>Chú ý (SGK) — hai quy ước khi viết số</h3>
+  <div class="box">
+    <ol>
+      <li>Với các số tự nhiên khác 0, chữ số đầu tiên (từ trái sang phải) khác 0.</li>
+      <li>Để dễ đọc, đối với các số có bốn chữ số trở lên, ta viết tách riêng từng <b>lớp</b>. Mỗi lớp là một
+      nhóm ba chữ số kể từ phải sang trái.</li>
+    </ol>
+  </div>
+  <div class="act">
+    <h4><span class="tag">SO SÁNH TRƯỚC / SAU</span> Quy ước 1 — chữ số 0 đứng đầu có nghĩa gì không?</h4>
+    <p class="muted small">Bấm lần lượt hai nút và nhìn cột <b class="h3">hàng nghìn</b>. Không chấm điểm.</p>
+    <div data-t2 data-t2-mo="0" data-t2-giu="1">
+      <button class="btn" data-t2-btn="0">Viết «0245»</button>
+      <button class="btn ghost" data-t2-btn="1">Viết «2245»</button>
+      <div class="setline" data-t2-empty><span class="muted small">Bấm một nút…</span></div>
+      <div class="hide" data-t2-pane="0">
+        <div data-abacus data-cols="4" data-start="0;2;4;5"></div>
+        <p class="small"><b>Trước:</b> cột hàng nghìn <b>trống</b> — trên bàn tính chỉ là số <b>245</b>, số có <b>ba</b> chữ số.
+        Chữ số 0 viết thêm ở đầu không mang giá trị gì, nên theo Chú ý 1 ta <b>không</b> viết nó.</p>
+      </div>
+      <div class="hide" data-t2-pane="1">
+        <div data-abacus data-cols="4" data-start="2;2;4;5"></div>
+        <p class="small"><b>Sau:</b> cột hàng nghìn có <b>2 hạt</b> — bây giờ mới thật sự là số có bốn chữ số, và chữ số đầu tiên là
+        <b class="h3">2</b> (khác 0). Theo Chú ý 2 ta viết tách lớp: <b>2&nbsp;245</b>.</p>
+      </div>
+    </div>
+  </div>
+  <p>Chẳng hạn, số <b class="nowrap">221&nbsp;707&nbsp;263&nbsp;598</b> (đọc là <i>hai trăm hai mươi mốt tỉ, bảy trăm linh bảy triệu,
+  hai trăm sáu mươi ba nghìn, năm trăm chín mươi tám</i>) có các lớp, hàng nêu trong Bảng 1.</p>
+
+  <div class="act" data-act="bang-1">
+    <h4><span class="tag">HOẠT ĐỘNG 2</span> Bảng 1 — bấm vào từng chữ số</h4>
+    <p class="muted small">Số này có <b>hai</b> chữ số 7 và <b>ba</b> chữ số 2 — cùng một chữ số mà giá trị khác nhau hẳn.
+    Mỗi lớp một màu nền.</p>
+    <div data-placetable data-number="221707263598" data-ask="7000000;200000" data-ask-gt="8"
+         data-ok="Giỏi! Cùng là chữ số 7 nhưng một cái đáng 700 000 000, một cái chỉ đáng 7 000 000 — giá trị phụ thuộc vào hàng."></div>
+    <p class="muted small" style="text-align:center"><i>Bảng 1</i> · Từ hàng triệu trở lên cô dùng chung một màu hồng —
+    em phân biệt bằng <b>tên hàng</b> ở dòng trên và <b>màu nền lớp</b>.</p>
+  </div>
+
+  <h3>⚠️ Bẫy nhóm nghìn — tách lớp phải đi từ PHẢI sang TRÁI</h3>
+  <p>Viết số 3804156092 cho dễ đọc. Em đoán trước từng bước rồi mới bấm:</p>
+  <div data-steps>
+    <div class="step" data-step><span class="grpline">3804156<span class="grp lop0">092</span></span>
+      &nbsp; Đếm 3 chữ số <b>cuối cùng</b> → lớp đơn vị.</div>
+    <div class="step" data-step><span class="grpline">3804<span class="grp lop1">156</span><span class="grp cu lop0">092</span></span>
+      &nbsp; Thêm 3 chữ số nữa → lớp nghìn.</div>
+    <div class="step" data-step><span class="grpline">3<span class="grp lop2">804</span><span class="grp cu lop1">156</span><span class="grp cu lop0">092</span></span>
+      &nbsp; Thêm 3 chữ số nữa → lớp triệu.</div>
+    <div class="step" data-step><span class="grpline"><span class="grp lop3">3</span><span class="grp cu lop2">804</span><span class="grp cu lop1">156</span><span class="grp cu lop0">092</span></span>
+      &nbsp; Còn 1 chữ số → lớp tỉ. <b>Chỉ lớp đầu tiên (bên trái) được phép thiếu.</b></div>
+  </div>
+
+  <div class="act" data-act="nhom-lop">
+    <h4><span class="tag">HOẠT ĐỘNG 3</span> Chọn nhanh — hai quy ước</h4>
+    <div data-picks data-ok="Đúng cả hai câu! Tách lớp đếm từ phải sang trái; chữ số đầu tiên của số khác 0 thì khác 0 — còn số 0 vẫn viết là 0.">
+      <p>a) Viết số 6072301845 cho dễ đọc. Cách viết nào đúng quy ước tách lớp?</p>
+      <div data-pick data-name="a" data-nhan="Câu a" data-items="607 230 184 5;6 072 301 845;60 723 018 45" data-answer="6 072 301 845"
+           data-hint-thua='{"607 230 184 5":"lớp bên phải chỉ còn 1 chữ số — em đã tách từ trái sang. Tách lớp phải đếm từ đâu?","60 723 018 45":"lớp bên phải chỉ có 2 chữ số. Lớp nào mới được phép thiếu chữ số?"}'></div>
+      <p>b) Theo Chú ý 1, những cách viết số nào dưới đây <b>đúng</b> quy ước? (chọn tất cả)</p>
+      <div data-pick data-name="b" data-nhan="Câu b" data-items="072;720;012;120;00;0;507" data-answer="720;120;0;507"
+           data-hint-thua='{"072":"«072» bắt đầu bằng chữ số 0 — Chú ý 1 nói gì về chữ số đầu tiên của một số khác 0?","012":"«012» bắt đầu bằng chữ số 0 — nó có đúng Chú ý 1 không?","00":"Số không được viết bằng mấy chữ số 0?"}'
+           data-hint-thieu='{"0":"Số 0 viết là «0». Chú ý 1 chỉ nói về các số KHÁC 0 — vậy «0» có sai quy ước không?","720":"Còn cách viết đúng em chưa chọn — soát lại chữ số đầu tiên của từng số.","120":"Còn cách viết đúng em chưa chọn — soát lại chữ số đầu tiên của từng số.","507":"Còn cách viết đúng em chưa chọn — chữ số 0 ở giữa có bị cấm không?"}'></div>
+    </div>
+  </div>
+
+  <div class="box tip"><span class="label">Cô lưu ý — "số" và "chữ số" là hai thứ khác nhau</span>
+    <div class="sochuso">
+      <span class="khung">2&nbsp;019</span><span>là <b>một số</b>, được viết bởi <b>bốn chữ số</b></span>
+      <span><span class="cs">2</span><span class="cs">0</span><span class="cs">1</span><span class="cs">9</span></span>
+    </div>
+    <p>Cũng vậy với số 1&nbsp;425 — bấm hai nút để thấy hai câu hỏi <b>khác nhau</b>:</p>
+    <div data-t2 data-t2-mo="0">
+      <button class="btn" data-t2-btn="0">Chữ số hàng chục</button>
+      <button class="btn ghost" data-t2-btn="1">Số chục</button>
+      <div class="setline" data-t2-empty><span class="muted small">Bấm một nút…</span></div>
+      <div class="hide" data-t2-pane="0">
+        <p class="so1425">1<span class="nhat">4</span><b class="h1 noi">2</b><span class="nhat">5</span></p>
+        <p class="small" style="text-align:center"><b class="h1">Chữ số hàng chục</b> là <b class="h1">2</b> — chỉ <b>một</b> chữ số, đứng ở hàng chục.</p>
+      </div>
+      <div class="hide" data-t2-pane="1">
+        <p class="so1425"><span class="gach" style="--i:0">1</span><span class="gach" style="--i:1">4</span><span class="gach" style="--i:2">2</span><span class="vach">|</span><span class="nhat">5</span></p>
+        <p class="small" style="text-align:center"><b>Số chục</b> là <b>142</b>: 1&nbsp;425 có tất cả <b>142 chục</b>, còn dư <b>5</b> đơn vị
+        (1&nbsp;425 = 142 × 10 + 5) — che chữ số hàng đơn vị đi là thấy ngay.</p>
+      </div>
+    </div>
+    <p class="small">Đọc đề kĩ hai chữ này: «chữ số hàng chục» khác «số chục».</p>
+  </div>
+
+  <h3>❓ Câu hỏi (SGK)</h3>
+  <div class="act" data-act="ba-the">
+    <h4><span class="tag">HOẠT ĐỘNG 4</span> Ba chữ số 0; 1; 2</h4>
+    <p>Chỉ dùng ba chữ số 0; 1 và 2, hãy viết tất cả các số tự nhiên có ba chữ số, mỗi chữ số chỉ viết một lần.</p>
+    <p class="muted small">Em tự viết ra nháp trước. Rồi trong các thẻ dưới đây — có cả thẻ <b>đúng</b> lẫn thẻ <b>bẫy</b> — chọn
+    <b>tất cả</b> các số thoả đề bài. Gọi <i>S</i> là tập các số đó. Soát kĩ ba điều: có đủ ba chữ số không? mỗi chữ số
+    chỉ viết một lần chưa? chữ số đầu tiên có khác 0 không?</p>
+    <div data-picks>
+      <div data-pick data-name="S" data-items="120;100;012;210;21;201;110;102;211;021;12" data-answer="102;120;201;210"
+           data-hint-thua='{"012":"«012» bắt đầu bằng chữ số 0 — Chú ý 1 nói gì về chữ số đầu tiên?","021":"«021» bắt đầu bằng chữ số 0 — nó có thật là số có ba chữ số không?","100":"«100» dùng chữ số 0 hai lần — đề cho mỗi chữ số viết mấy lần?","110":"«110» dùng chữ số 1 hai lần — đề cho mỗi chữ số viết mấy lần?","211":"«211» dùng chữ số 1 hai lần, lại thiếu chữ số 0 — đọc lại đề.","12":"«12» chỉ có hai chữ số — đề hỏi số có mấy chữ số?","21":"«21» chỉ có hai chữ số — đề hỏi số có mấy chữ số?"}'
+           data-hint-thieu='{"102":"Còn thiếu — thử lấy chữ số 1 làm hàng trăm: được mấy số?","120":"Còn thiếu — thử lấy chữ số 1 làm hàng trăm: được mấy số?","201":"Còn thiếu — thử lấy chữ số 2 làm hàng trăm: được mấy số?","210":"Còn thiếu — thử lấy chữ số 2 làm hàng trăm: được mấy số?"}'></div>
+    </div>
+    <button class="btn" data-reveal="#rv-bathe" data-open="Em làm xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-bathe">
+      <p>Chữ số hàng trăm không được là 0 (Chú ý 1), nên chỉ có thể là 1 hoặc 2.</p>
+      <ul><li>Hàng trăm là 1: <b>102</b>; <b>120</b>.</li><li>Hàng trăm là 2: <b>201</b>; <b>210</b>.</li></ul>
+      <p>Có tất cả <b>4 số</b>. Các cách xếp 012 và 021 <b>không</b> phải số có ba chữ số; 100, 110, 211 viết lặp chữ số;
+      12, 21 chỉ có hai chữ số.</p>
+    </div>
+  </div>
+
+  <h3>🔍 Giá trị các chữ số của một số tự nhiên</h3>
+  <p><b>HĐ1.</b> Trong số 32&nbsp;019, ta thấy: "Chữ số <b class="h3">2</b> nằm ở hàng nghìn và có giá trị bằng
+  <span class="m">2 × 1&nbsp;000 = 2&nbsp;000</span>". Hãy phát biểu theo mẫu câu đó đối với các chữ số còn lại.</p>
+  <p><b>HĐ2.</b> Viết số 32&nbsp;019 thành tổng giá trị các chữ số của nó.</p>
+  <div class="act" data-act="hd1-hd2">
+    <h4><span class="tag">HOẠT ĐỘNG 5</span> HĐ1 + HĐ2 — tách số 32&nbsp;019</h4>
+    <p class="muted small">Chữ số đang nhấp nháy là chữ số cần xét: em <b>chọn hàng</b> của nó, rồi <b>gõ giá trị</b> của nó.
+    Trả lời đúng thì chữ số mới hiện màu của hàng. <b>Mẹo:</b> đếm hàng từ <b>phải sang trái</b>.</p>
+    <div data-expand data-number="32019" data-hoi="2"
+         data-ok="Đó chính là HĐ2! Để ý chữ số 0 vẫn phải <b>giữ chỗ</b> cho hàng trăm: bỏ nó đi thì 32&nbsp;019 thành 3&nbsp;219 — một số khác hẳn."></div>
+  </div>
+
+  <div class="box key"><span class="label">📌 Kiến thức trọng tâm</span>
+    <p>Mỗi số tự nhiên viết trong hệ thập phân đều biểu diễn được thành <i>tổng giá trị các chữ số của nó</i>.</p>
+  </div>
+  <div class="say-pi"><span class="who">💬 Pi:</span><span>Các chữ số mà chúng ta đang dùng được gọi là chữ số Ả Rập.
+    Tuy nhiên, người Ả Rập không sáng tạo ra chúng. Họ có công học cách viết đó của người Ấn Độ và truyền bá vào châu Âu.</span></div>
+
+  <h3>Ví dụ (SGK)</h3>
+  <p class="setline"><span class="h2">2</span><span class="h1">3</span><span class="h0">6</span> =
+    (<span class="h2">2</span> × 100) + (<span class="h1">3</span> × 10) + <span class="h0">6</span>;</p>
+  <p class="setline"><span class="ol">ab</span> = (<i class="h1">a</i> × 10) + <i class="h0">b</i>, &nbsp;với <i>a</i> ≠ 0.</p>
+  <p class="setline"><span class="ol">abc</span> = (<i class="h2">a</i> × 100) + (<i class="h1">b</i> × 10) + <i class="h0">c</i>, &nbsp;với <i>a</i> ≠ 0.</p>
+  <p>Trong đó: <span class="ol m">ab</span> là kí hiệu số tự nhiên có hai chữ số, hàng chục là <i>a</i>, hàng đơn vị là <i>b</i>;
+  <span class="ol m">abc</span> là kí hiệu số tự nhiên có ba chữ số, hàng trăm là <i>a</i>, hàng chục là <i>b</i>, hàng đơn vị là <i>c</i>.</p>
+  <div class="box warn"><span class="label">Vì sao có dấu gạch ngang trên đầu?</span>
+    Vì <i>ab</i> không gạch thường được hiểu là <i>a</i> nhân <i>b</i>. Gạch ngang nhắc: đây là <b>một số</b>, còn <i>a</i>, <i>b</i> là
+    <b>các chữ số</b> của nó. Với <i>a</i> = 4, <i>b</i> = 7: <span class="ol m">ab</span> = 47 = (4 × 10) + 7, còn <i>a</i> · <i>b</i> = 28 — khác hẳn.
+    Điều kiện <i>a</i> ≠ 0 chính là Chú ý 1.</div>
+  <div class="act">
+    <h4><span class="tag">THỬ TỰ DO</span> Số <span class="ol">abc</span> trên bàn tính</h4>
+    <p class="muted small">Đổi số hạt ở mỗi cột — dòng dưới luôn đúng dạng (<i>a</i> × 100) + (<i>b</i> × 10) + <i>c</i>. Không chấm điểm.</p>
+    <div data-abacus data-cols="3" data-start="2;3;6"></div>
+  </div>
+
+  <h3>Luyện tập (SGK)</h3>
+  <div class="act" data-act="luyen-tap">
+    <h4><span class="tag">HOẠT ĐỘNG 6</span> Viết số 34&nbsp;604 thành tổng giá trị các chữ số của nó</h4>
+    <p class="muted small">Có <b>hai</b> chữ số 4 — một ở hàng nghìn, một ở hàng đơn vị. Và đừng quên chữ số 0.
+    Gõ số vào từng ô rồi nhấn <b>Enter</b> (hoặc bấm sang ô khác) — trang đánh dấu ✓ / ✗ ngay; phải đúng <b>cả năm ô</b>.</p>
+    <div class="tong5">
+      <span class="dau">34&nbsp;604 =</span>
+      <span class="o"><b class="h4">chục nghìn</b><span data-fill data-gon="1" data-answer="30000"></span></span>
+      <span class="cap"><span class="dau">+</span><span class="o"><b class="h3">nghìn</b><span data-fill data-gon="1" data-answer="4000"></span></span></span>
+      <span class="cap"><span class="dau">+</span><span class="o"><b class="h2">trăm</b><span data-fill data-gon="1" data-answer="600"></span></span></span>
+      <span class="cap"><span class="dau">+</span><span class="o"><b class="h1">chục</b><span data-fill data-gon="1" data-answer="0"></span></span></span>
+      <span class="cap"><span class="dau">+</span><span class="o"><b class="h0">đơn vị</b><span data-fill data-gon="1" data-answer="4"></span></span></span>
+    </div>
+    <button class="btn" data-reveal="#rv-lt" data-open="Em làm xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-lt">
+      <p class="setline">34&nbsp;604 = <span class="h4">30&nbsp;000</span> + <span class="h3">4&nbsp;000</span> + <span class="h2">600</span> + <span class="h1">0</span> + <span class="h0">4</span></p>
+      <p>hay 34&nbsp;604 = (3 × 10&nbsp;000) + (4 × 1&nbsp;000) + (6 × 100) + (0 × 10) + 4.
+      Hai chữ số 4 <b>giống nhau về hình</b> nhưng giá trị khác nhau: <b class="h3">4&nbsp;000</b> và <b class="h0">4</b>.</p>
+    </div>
+  </div>
+
+  <h3>Vận dụng (SGK)</h3>
+  <div class="act" data-act="van-dung">
+    <h4><span class="tag">HOẠT ĐỘNG 7</span> Ví tiền của bác Hoa</h4>
+    <p>Bác Hoa đi chợ. Bác chỉ mang ba loại tiền: loại (có mệnh giá) 1 nghìn (1&nbsp;000) đồng, loại 10 nghìn (10&nbsp;000) đồng
+    và loại 100 nghìn (100&nbsp;000) đồng. Tổng số tiền bác phải trả là 492 nghìn đồng. Nếu mỗi loại tiền, bác mang theo
+    không quá 9 tờ thì bác sẽ phải trả bao nhiêu tờ tiền mỗi loại, mà người bán không phải trả lại tiền thừa?</p>
+    <p class="muted small">Bấm <span class="kbd">+</span> để đặt từng tờ tiền lên quầy (mỗi loại tối đa 9 tờ). Đủ đúng 492&nbsp;000 đồng thì bấm Kiểm tra.
+    <b>Gợi ý:</b> tờ 100&nbsp;000 đồng giống "hàng trăm nghìn", tờ 10&nbsp;000 đồng giống "hàng chục nghìn", tờ 1&nbsp;000 đồng giống "hàng nghìn".</p>
+    <div data-abacus data-values="100000;10000;1000" data-labels="Tờ 100 000 đ;Tờ 10 000 đ;Tờ 1 000 đ"
+         data-carry="0" data-max="9" data-bead="tien" data-unit="đồng" data-answer="492000"
+         data-ok="Đúng rồi! Người bán không phải trả lại tiền thừa, và mỗi loại không quá 9 tờ."></div>
+    <button class="btn" data-reveal="#rv-vd" data-open="Em làm xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-vd">
+      <p class="setline">492&nbsp;000 = (<span class="h5">4</span> × 100&nbsp;000) + (<span class="h4">9</span> × 10&nbsp;000) + (<span class="h3">2</span> × 1&nbsp;000)</p>
+      <p>Bác trả <b>4 tờ 100&nbsp;000 đồng, 9 tờ 10&nbsp;000 đồng và 2 tờ 1&nbsp;000 đồng</b>.
+      Kiểm tra: 400&nbsp;000 + 90&nbsp;000 + 2&nbsp;000 = 492&nbsp;000 đồng, mỗi loại không quá 9 tờ. ✔</p>
+      <p class="muted">Điều kiện "không quá 9 tờ" chính là luật của hệ thập phân: mỗi hàng chỉ có một chữ số từ 0 đến 9.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================== 2. SỐ LA MÃ ========================== -->
+<section id="la-ma">
+  <h2>2. Số La Mã</h2>
+  <p>Ngoài cách ghi số trong hệ thập phân, người ta còn có những cách ghi số khác. Cách ghi số La Mã xuất hiện
+  trong nhiều công trình kiến trúc ở châu Âu hay trên mặt đồng hồ theo phong cách cổ điển. Trong nhiều văn bản
+  và sách báo, số La Mã thường được dùng để đánh số thứ tự.</p>
+
+  <h3>📖 Cách viết số La Mã</h3>
+  <div class="box key"><span class="label">📌 SGK</span>
+    Để viết các <b>số La Mã</b> không quá 30, ta dùng ba kí tự I, V và X (gọi là những chữ số La Mã).
+    <i>Ba chữ số ấy cùng với hai cụm chữ số là IV và IX là năm <b>thành phần</b> dùng để ghi số La Mã.</i>
+    <b>Giá trị</b> <i>của mỗi thành phần</i> được ghi trong bảng sau và <i>không thay đổi</i>, dù nó đứng ở bất kì vị trí nào:
+  </div>
+  <div class="pt-wrap"><table class="lm tp">
+    <tr><th>Thành phần</th><th>I</th><th>V</th><th>X</th><th>IV</th><th>IX</th></tr>
+    <tr><td>Giá trị (viết trong hệ thập phân)</td><td>1</td><td>5</td><td>10</td><td>4</td><td>9</td></tr>
+  </table></div>
+  <div class="box"><span class="label">Màu của phần La Mã — khác hẳn màu hàng</span>
+    Số La Mã <b>không chia hàng</b>, nên cô không dùng màu hàng ở đây. Khung <b class="lm-cs">nâu</b> = một
+    <b class="lm-cs">chữ số La Mã</b> (I, V, X); khung <b class="lm-cum">đỏ rượu</b> = một <b class="lm-cum">cụm chữ số</b> (IV, IX)
+    — tuy có hai kí tự nhưng là <b>một</b> thành phần.
+  </div>
+  <p class="muted small">Năm thành phần xếp bằng que tính:</p>
+  <div class="tp-cards">
+    <div class="tp-card cs"><span data-que="I" data-tach="1" data-khong-so="1"></span><b>I</b><span class="v">= 1 · 1 que</span></div>
+    <div class="tp-card cs"><span data-que="V" data-tach="1" data-khong-so="1"></span><b>V</b><span class="v">= 5 · 2 que</span></div>
+    <div class="tp-card cs"><span data-que="X" data-tach="1" data-khong-so="1"></span><b>X</b><span class="v">= 10 · 2 que</span></div>
+    <div class="tp-card cum"><span data-que="IV" data-tach="1" data-khong-so="1"></span><b>IV</b><span class="v">= 4 · 3 que</span></div>
+    <div class="tp-card cum"><span data-que="IX" data-tach="1" data-khong-so="1"></span><b>IX</b><span class="v">= 9 · 3 que</span></div>
+  </div>
+
+  <p>Dưới đây là các số La Mã biểu diễn các số từ 1 đến 10:</p>
+  <div class="pt-wrap"><table class="lm">
+    <tr><th>I</th><th>II</th><th>III</th><th>IV</th><th>V</th><th>VI</th><th>VII</th><th>VIII</th><th>IX</th><th>X</th></tr>
+    <tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+  </table></div>
+  <p>Để biểu diễn các số từ 11 đến 20, ta thêm <b class="lm-them">X</b> vào bên trái mỗi số từ I đến X:</p>
+  <div class="pt-wrap"><table class="lm">
+    <tr><th><b class="lm-them">X</b>I</th><th><b class="lm-them">X</b>II</th><th><b class="lm-them">X</b>III</th><th><b class="lm-them">X</b>IV</th><th><b class="lm-them">X</b>V</th>
+        <th><b class="lm-them">X</b>VI</th><th><b class="lm-them">X</b>VII</th><th><b class="lm-them">X</b>VIII</th><th><b class="lm-them">X</b>IX</th><th><b class="lm-them">X</b>X</th></tr>
+    <tr><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td></tr>
+  </table></div>
+  <p>Để biểu diễn các số từ 21 đến 30, ta thêm <b class="lm-them">XX</b> vào bên trái mỗi số từ I đến X:</p>
+  <div class="pt-wrap"><table class="lm">
+    <tr><th><b class="lm-them">XX</b>I</th><th><b class="lm-them">XX</b>II</th><th><b class="lm-them">XX</b>III</th><th><b class="lm-them">XX</b>IV</th><th><b class="lm-them">XX</b>V</th>
+        <th><b class="lm-them">XX</b>VI</th><th><b class="lm-them">XX</b>VII</th><th><b class="lm-them">XX</b>VIII</th><th><b class="lm-them">XX</b>IX</th><th><b class="lm-them">XX</b>X</th></tr>
+    <tr><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td></tr>
+  </table></div>
+
+  <div class="act">
+    <h4><span class="tag">THỬ TỰ DO</span> Thanh trượt 1 – 30: "thêm X vào bên trái"</h4>
+    <p class="muted small">Kéo thanh trượt (hoặc bấm ◀ ▶). Để ý lúc đi qua <b>10 → 11</b> và <b>20 → 21</b>: một que
+    <b class="lm-cs">X</b> mới trượt vào từ <b>bên trái</b>, phần bên phải lại bắt đầu từ I. Không chấm điểm.</p>
+    <div id="truot-lm" class="truot-lm"></div>
+  </div>
+
+  <div class="act">
+    <h4><span class="tag">QUAN SÁT</span> Que I đứng bên phải hay bên trái?</h4>
+    <p class="muted small">Bấm từng nút. Để ý: khi que I chạy sang <b>bên trái</b> V (hoặc X), hai kí tự gộp thành
+    <b>một thành phần</b> có giá trị riêng — không cộng từng kí tự nữa.</p>
+    <div data-t2>
+      <button class="btn" data-t2-btn="0">VI</button>
+      <button class="btn ghost" data-t2-btn="1">IV</button>
+      <button class="btn ghost" data-t2-btn="2">XI</button>
+      <button class="btn ghost" data-t2-btn="3">IX</button>
+      <div class="setline" data-t2-empty><span class="muted small">Bấm một nút…</span></div>
+      <div class="hide" data-t2-pane="0" style="text-align:center"><span data-que="VI" data-tach="1" data-moi="1"></span></div>
+      <div class="hide" data-t2-pane="1" style="text-align:center"><span data-que="IV" data-tach="1" data-truot="1"></span></div>
+      <div class="hide" data-t2-pane="2" style="text-align:center"><span data-que="XI" data-tach="1" data-moi="1"></span></div>
+      <div class="hide" data-t2-pane="3" style="text-align:center"><span data-que="IX" data-tach="1" data-truot="1"></span></div>
+      <p class="hide" data-t2-note="0"><b>VI</b> gồm <b>hai</b> thành phần V và I: 5 + 1 = <b>6</b>.</p>
+      <p class="hide" data-t2-note="1"><b>IV</b> là <b>một</b> thành phần, giá trị <b>4</b> (tra bảng năm thành phần).</p>
+      <p class="hide" data-t2-note="2"><b>XI</b> gồm <b>hai</b> thành phần X và I: 10 + 1 = <b>11</b>.</p>
+      <p class="hide" data-t2-note="3"><b>IX</b> là <b>một</b> thành phần, giá trị <b>9</b>.</p>
+    </div>
+  </div>
+
+  <div class="act">
+    <h4><span class="tag">KHÁM PHÁ</span> Mặt đồng hồ số La Mã</h4>
+    <p class="muted small">SGK có hình mặt đồng hồ ghi số La Mã từ I đến XII. Bấm vào một số trên mặt đồng hồ để xem nó gồm
+    những thành phần nào. Không chấm điểm.</p>
+    <div class="two">
+      <figure style="margin:0">
+        <svg id="dong-ho" viewBox="0 0 300 300" role="group" aria-label="Mặt đồng hồ số La Mã từ I đến XII">
+          <circle cx="150" cy="150" r="140" fill="#fffaf0" stroke="#b08d57" stroke-width="6"/>
+          <circle cx="150" cy="150" r="128" fill="none" stroke="#e7d7b5" stroke-width="2"/>
+          <g class="kim">
+            <line x1="150" y1="150" x2="150" y2="96" stroke="#243049" stroke-width="7" stroke-linecap="round" transform="rotate(-60 150 150)"/>
+            <line x1="150" y1="150" x2="150" y2="80" stroke="#243049" stroke-width="4.5" stroke-linecap="round" transform="rotate(60 150 150)"/>
+            <line class="spin" x1="150" y1="162" x2="150" y2="72" stroke="#d64545" stroke-width="2" style="--dur:60s; transform-origin:150px 150px"/>
+            <circle cx="150" cy="150" r="6" fill="#d64545"/>
+          </g>
+          <g id="dong-ho-so"></g>
+        </svg>
+      </figure>
+      <div class="pane" id="dong-ho-out" aria-live="polite"><p class="muted">Bấm một số La Mã trên mặt đồng hồ…</p></div>
+    </div>
+    <p><b>Câu hỏi nhỏ:</b> đỉnh mặt đồng hồ ghi <b>XII</b> chứ không ghi số 0 như đồng hồ điện tử (00:00). Vì sao?
+      <button class="btn ghost" data-hint="#h-dh0">Gợi ý</button></p>
+    <div class="hint" id="h-dh0">Em tìm trong bảng năm thành phần: có thành phần nào mang giá trị 0 không? Rồi đọc ý 2 của
+      phần Nhận xét ngay bên dưới.</div>
+  </div>
+
+  <h3>Nhận xét (SGK)</h3>
+  <div class="box">
+    <ol>
+      <li>Mỗi số La Mã biểu diễn một số tự nhiên bằng tổng giá trị của các thành phần viết nên số đó. Chẳng hạn, số XXIV
+      có ba thành phần là X, X và IV tương ứng với các giá trị 10, 10 và 4. Do đó XXIV biểu diễn số 24.</li>
+      <li>Không có số La Mã nào biểu diễn số 0.</li>
+    </ol>
+  </div>
+  <p><b>Cách đọc một số La Mã (ba bước)</b> — em đoán trước rồi bấm:</p>
+  <div data-steps>
+    <div class="step" data-step><b>Bước 0.</b> Số cần đọc: <span data-que="XXIV"></span></div>
+    <div class="step" data-step><b>Bước 1.</b> Tách thành các thành phần — tìm IV, IX trước: <span data-que="XXIV" data-tach="1" data-khong-so="1"></span></div>
+    <div class="step" data-step><b>Bước 2.</b> Ghi giá trị dưới mỗi thành phần: <span data-que="XXIV" data-tach="1"></span></div>
+    <div class="step" data-step><b>Bước 3.</b> Cộng lại: <span class="m" style="font-size:22px">10 + 10 + 4 = <b>24</b></span>. Vậy XXIV biểu diễn số 24.</div>
+  </div>
+
+  <h3>❓ Câu hỏi (SGK)</h3>
+  <div class="act" data-act="cau-hoi-la-ma">
+    <h4><span class="tag">HOẠT ĐỘNG 8</span> a) Viết các số 14 và 27 bằng số La Mã. &nbsp;b) Đọc các số La Mã XVI, XXII.</h4>
+    <p class="muted small">Kéo thẻ vào ô (hoặc bấm thẻ rồi bấm ô). Có vài thẻ nhiễu — không phải thẻ nào cũng dùng.</p>
+    <div data-match data-tokens="XIIII;XXVII;16;XIV;22;XXVIII;14;20"
+         data-ok="Đúng cả bốn ô! Em đã biết cả viết lẫn đọc số La Mã.">
+      <p class="m" style="font-size:20px">a) &nbsp;14 = <span data-slot="XIV" data-slot-hint="Tách 14 thành 10 và phần còn lại, rồi tra bảng SGK cho từng phần."
+          data-hint-sai='{"XIIII":"Ô «14 =»: số 4 trong bảng SGK viết là IV, không viết IIII.","XXVII":"Ô «14 =»: thẻ em chọn có hai chữ X — tức là từ 20 trở lên. 14 cần mấy chữ X?","XXVIII":"Ô «14 =»: thẻ em chọn có hai chữ X — tức là từ 20 trở lên. 14 cần mấy chữ X?"}'></span>
+        &nbsp;&nbsp; 27 = <span data-slot="XXVII" data-slot-hint="Tách 27 thành tổng các số 10 và phần còn lại, rồi tra bảng SGK cho từng phần."
+          data-hint-sai='{"XXVIII":"Ô «27 =»: em đọc lại thẻ vừa đặt — X, X, V, I, I, I cộng lại là bao nhiêu? Có đúng 27 không?","XIV":"Ô «27 =»: thẻ em chọn chỉ có một chữ X — tức là chưa tới 20.","XIIII":"Ô «27 =»: IIII không có trong bảng SGK; mà 27 cần mấy chữ X?"}'></span></p>
+      <p class="m" style="font-size:20px">b) &nbsp;XVI = <span data-slot="16" data-slot-hint="Tách XVI thành các thành phần rồi cộng giá trị."
+          data-hint-sai='{"14":"Ô «XVI =»: trong XVI, chữ I đứng bên phải hay bên trái V? Nó có tạo thành cụm IV không?","22":"Ô «XVI =»: XVI có mấy chữ X?","20":"Ô «XVI =»: em cộng lại giá trị từng thành phần X, V, I xem."}'></span>
+        &nbsp;&nbsp; XXII = <span data-slot="22" data-slot-hint="Tách XXII thành các thành phần rồi cộng giá trị."
+          data-hint-sai='{"20":"Ô «XXII =»: còn hai chữ I ở cuối — mỗi I có giá trị bao nhiêu?","16":"Ô «XXII =»: XXII có hai chữ X, tức là từ 20 trở lên.","14":"Ô «XXII =»: XXII có hai chữ X, tức là từ 20 trở lên."}'></span></p>
+    </div>
+    <button class="btn" data-reveal="#rv-chlm" data-open="Em làm xong rồi — xem đối chiếu"
+            data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
+    <div class="reveal" id="rv-chlm">
+      <p>a) 14 = 10 + 4 → X và IV → <b>XIV</b>. &nbsp; 27 = 10 + 10 + 5 + 1 + 1 → <b>XXVII</b>.</p>
+      <p>b) XVI = X | V | I = 10 + 5 + 1 = <b>16</b>. &nbsp; XXII = X | X | I | I = 10 + 10 + 1 + 1 = <b>22</b>.</p>
+    </div>
+  </div>
+
+  <h3>🧩 Thử thách nhỏ (SGK)</h3>
+  <div class="act" data-act="que-tinh">
+    <h4><span class="tag">HOẠT ĐỘNG 9</span> Sử dụng đúng 7 que tính, em xếp được những số La Mã nào?</h4>
+    <p class="muted small">I cần 1 que, V cần 2 que, X cần 2 que. Chỉ xét các số La Mã đã học (từ 1 đến 30).
+    Bấm I, V, X để xếp; xếp đúng một số dùng đủ 7 que thì nó được ghi vào bảng. Tìm <b>hết</b> các số như thế —
+    khi nghĩ là đã hết, bấm «Em nghĩ đã tìm hết».</p>
+    <div id="que-tinh" data-custom></div>
+  </div>
+</section>
+
+<!-- ============================ BÀI TẬP ============================ -->
+<section id="bai-tap">
+  <h2>Bài tập (SGK)</h2>
+  <div class="box warn"><span class="label">Phần này em tự làm vào vở</span>
+    Cô chỉ để lại <b>gợi ý</b>, không có lời giải sẵn. Làm xong em gửi lại bài, cô chữa từng câu.</div>
+
+  <div class="ex">
+    <p><span class="no">1.6.</span> Cho các số: 27&nbsp;501; 106&nbsp;712; 7&nbsp;110&nbsp;385; 2&nbsp;915&nbsp;404&nbsp;267 (viết trong hệ thập phân).</p>
+    <p>a) Đọc mỗi số đã cho;<br>b) Chữ số 7 trong mỗi số đã cho có giá trị là bao nhiêu?</p>
+    <button class="btn ghost" data-hint="#h16">Gợi ý</button>
+    <div class="hint" id="h16">a) Đọc lần lượt từng lớp từ trái sang phải, đọc xong mỗi lớp thì đọc tên lớp (tỉ, triệu, nghìn).
+      Hàng chục là 0 thì đọc là "linh". b) Kẻ bảng như Bảng 1, đặt chữ số 7 vào đúng hàng (đếm từ phải sang trái),
+      rồi viết giá trị = 7 × (1; 10; 100; …).</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.7.</span> Chữ số 4 đứng ở hàng nào trong một số tự nhiên nếu nó có giá trị bằng:</p>
+    <p>a) 400; &nbsp;&nbsp;&nbsp; b) 40; &nbsp;&nbsp;&nbsp; c) 4.</p>
+    <button class="btn ghost" data-hint="#h17">Gợi ý</button>
+    <div class="hint" id="h17">Viết mỗi giá trị thành dạng 4 × … rồi xem thừa số còn lại ứng với hàng nào.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.8.</span> Đọc các số La Mã: XIV; XVI; XXIII.</p>
+    <button class="btn ghost" data-hint="#h18">Gợi ý</button>
+    <div class="hint" id="h18">Làm đúng ba bước như ở mục Nhận xét: tách thành các thành phần (tìm IV, IX trước),
+      ghi giá trị từng thành phần, rồi cộng.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.9.</span> Viết các số sau bằng số La Mã: 18; 25.</p>
+    <button class="btn ghost" data-hint="#h19">Gợi ý</button>
+    <div class="hint" id="h19">Tách số thành tổng 10 + … rồi ghép các thành phần theo bảng. Viết xong, đọc ngược lại để soát.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.10.</span> Một số tự nhiên được viết bởi ba chữ số 0 và ba chữ số 9 nằm xen kẽ nhau. Đó là số nào?</p>
+    <button class="btn ghost" data-hint="#h110">Gợi ý</button>
+    <div class="hint" id="h110">Số đó có mấy chữ số? Thử viết các chữ số xen kẽ nhau rồi đối chiếu với Chú ý 1.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.11.</span> Dùng các chữ số 0; 3 và 5, viết một số tự nhiên có ba chữ số khác nhau mà chữ số 5 có giá trị là 50.</p>
+    <button class="btn ghost" data-hint="#h111">Gợi ý</button>
+    <div class="hint" id="h111">Giá trị 50 nghĩa là chữ số 5 đứng ở hàng nào? Còn hai chữ số cho hai hàng còn lại — nhớ Chú ý 1.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.12.</span> Trong một cửa hàng bánh kẹo, người ta đóng gói kẹo thành các loại: mỗi gói có 10 cái kẹo;
+    mỗi hộp có 10 gói; mỗi thùng có 10 hộp. Một người mua 9 thùng, 9 hộp và 9 gói kẹo. Hỏi người đó đã mua tất cả
+    bao nhiêu cái kẹo?</p>
+    <figure>
+      <svg viewBox="0 0 640 175" role="img" aria-label="Gói có 10 cái kẹo, hộp có 10 gói, thùng có 10 hộp">
+        <g>
+          <path d="M60 70 Q58 58 70 56 L110 56 Q122 58 120 70 L126 128 Q126 138 116 138 L64 138 Q54 138 54 128 Z" fill="#ffd6e4" stroke="#d4426f" stroke-width="2.5"/>
+          <path d="M66 56 L72 44 L108 44 L114 56" fill="#f7a8c2" stroke="#d4426f" stroke-width="2.5"/>
+          <circle cx="68" cy="92" r="5.5" fill="#f5a524"/><circle cx="79" cy="92" r="5.5" fill="#2f6fdb"/><circle cx="90" cy="92" r="5.5" fill="#0f9d76"/><circle cx="101" cy="92" r="5.5" fill="#d64545"/><circle cx="112" cy="92" r="5.5" fill="#7c5cd6"/><circle cx="68" cy="114" r="5.5" fill="#2f6fdb"/><circle cx="79" cy="114" r="5.5" fill="#0f9d76"/><circle cx="90" cy="114" r="5.5" fill="#d64545"/><circle cx="101" cy="114" r="5.5" fill="#7c5cd6"/><circle cx="112" cy="114" r="5.5" fill="#f5a524"/>
+          <text class="keo-lbl" x="90" y="162">1 gói = 10 cái kẹo</text>
+        </g>
+        <text x="190" y="100" style="font:700 22px 'Segoe UI',sans-serif; fill:#5c6577" text-anchor="middle">→ ×10</text>
+        <g>
+          <rect x="245" y="52" width="120" height="86" rx="6" fill="#eef0f5" stroke="#5c6b8a" stroke-width="2.5"/>
+          <path d="M245 52 L262 36 L382 36 L365 52" fill="#dde2ec" stroke="#5c6b8a" stroke-width="2.5"/>
+          <g fill="#ffd6e4" stroke="#d4426f" stroke-width="1.5">
+            <rect x="255" y="62" width="16" height="24" rx="3"/><rect x="275" y="62" width="16" height="24" rx="3"/><rect x="295" y="62" width="16" height="24" rx="3"/><rect x="315" y="62" width="16" height="24" rx="3"/><rect x="335" y="62" width="16" height="24" rx="3"/>
+            <rect x="255" y="100" width="16" height="24" rx="3"/><rect x="275" y="100" width="16" height="24" rx="3"/><rect x="295" y="100" width="16" height="24" rx="3"/><rect x="315" y="100" width="16" height="24" rx="3"/><rect x="335" y="100" width="16" height="24" rx="3"/>
+          </g>
+          <text class="keo-lbl" x="305" y="162">1 hộp = 10 gói</text>
+        </g>
+        <text x="418" y="100" style="font:700 22px 'Segoe UI',sans-serif; fill:#5c6577" text-anchor="middle">→ ×10</text>
+        <g>
+          <rect x="470" y="40" width="140" height="98" rx="6" fill="#f6e7c8" stroke="#b08d57" stroke-width="3"/>
+          <g stroke="#b08d57" stroke-width="2">
+            <line x1="498" y1="40" x2="498" y2="138"/><line x1="526" y1="40" x2="526" y2="138"/><line x1="554" y1="40" x2="554" y2="138"/><line x1="582" y1="40" x2="582" y2="138"/>
+            <line x1="470" y1="89" x2="610" y2="89"/>
+          </g>
+          <g fill="#eef0f5" stroke="#5c6b8a" stroke-width="1.5"><rect x="474" y="56.5" width="20" height="16" rx="2"/><line x1="474" y1="61.5" x2="494" y2="61.5"/><rect x="502" y="56.5" width="20" height="16" rx="2"/><line x1="502" y1="61.5" x2="522" y2="61.5"/><rect x="530" y="56.5" width="20" height="16" rx="2"/><line x1="530" y1="61.5" x2="550" y2="61.5"/><rect x="558" y="56.5" width="20" height="16" rx="2"/><line x1="558" y1="61.5" x2="578" y2="61.5"/><rect x="586" y="56.5" width="20" height="16" rx="2"/><line x1="586" y1="61.5" x2="606" y2="61.5"/><rect x="474" y="105.5" width="20" height="16" rx="2"/><line x1="474" y1="110.5" x2="494" y2="110.5"/><rect x="502" y="105.5" width="20" height="16" rx="2"/><line x1="502" y1="110.5" x2="522" y2="110.5"/><rect x="530" y="105.5" width="20" height="16" rx="2"/><line x1="530" y1="110.5" x2="550" y2="110.5"/><rect x="558" y="105.5" width="20" height="16" rx="2"/><line x1="558" y1="110.5" x2="578" y2="110.5"/><rect x="586" y="105.5" width="20" height="16" rx="2"/><line x1="586" y1="110.5" x2="606" y2="110.5"/></g>
+          <text class="keo-lbl" x="540" y="162">1 thùng = 10 hộp</text>
+        </g>
+      </svg>
+      <figcaption>Cô vẽ lại dữ kiện của đề cho dễ hình dung — hình không chứa đáp án.</figcaption>
+    </figure>
+    <button class="btn ghost" data-hint="#h112">Gợi ý</button>
+    <div class="hint" id="h112">Tính trước: 1 hộp có bao nhiêu cái kẹo? 1 thùng có bao nhiêu cái kẹo? Rồi tính số kẹo
+      trong 9 thùng, 9 hộp, 9 gói và cộng lại.</div>
+  </div>
+</section>
+
+<!-- ========================== EM CÓ BIẾT ========================== -->
+<section id="em-co-biet">
+  <h2>Em có biết? <span class="muted small">(đọc thêm — không bắt buộc thuộc)</span></h2>
+
+  <h3>Hệ La Mã</h3>
+  <p>Ngoài các chữ số I, V, X và cụm chữ số IV, IX hệ La Mã còn có các chữ số khác là L, C, D, M (tương ứng với 50, 100,
+  500 và 1&nbsp;000) và các cụm chữ số XL, XC, CD, CM (tương ứng với 40, 90, 400 và 900). Các chữ số và cụm chữ số ấy là các
+  thành phần dùng để ghi số La Mã theo các quy tắc sau:</p>
+  <ol>
+    <li>Trong một số La Mã, mỗi chữ số V, L và D có mặt không quá một lần; mỗi chữ số I, X, C và M không lặp lại quá ba lần liên tiếp.</li>
+    <li>Mỗi số La Mã là một dãy các thành phần. Giá trị của mỗi thành phần đều không nhỏ hơn giá trị của thành phần liền kề bên phải.</li>
+    <li>Mỗi số La Mã biểu diễn số tự nhiên bằng tổng giá trị của các thành phần viết nên số đó.</li>
+  </ol>
+  <p>Ví dụ, số MMXIX gồm bốn thành phần là M, M, X và IX tương ứng với các giá trị 1&nbsp;000, 1&nbsp;000, 10 và 9. Vậy số MMXIX
+  biểu diễn số <span class="m">1&nbsp;000 + 1&nbsp;000 + 10 + 9 = 2&nbsp;019</span>.</p>
+
+  <h3>Ghi số trong hệ nhị phân</h3>
+  <p>Để ghi số trong <i>hệ nhị phân</i>, ta chỉ dùng hai chữ số là 0 và 1. Mỗi số tự nhiên được viết dưới dạng một dãy chữ số
+  chỉ gồm 0 và 1. Chẳng hạn, trong hệ nhị phân, hai số 100 và 1&nbsp;001 lần lượt biểu diễn số 4 và 9 trong hệ thập phân.</p>
+  <p>Hai chữ số 1 và 0 tương ứng với hai trạng thái "đóng" và "mở" của mạch điện. Do đó hệ nhị phân được sử dụng nhiều
+  trong khoa học máy tính.</p>
+  <div class="act">
+    <h4><span class="tag">CHƠI THỬ</span> Bốn bóng đèn — sáng là 1, tắt là 0</h4>
+    <p class="muted small">Bấm vào bóng đèn để bật/tắt. Thử bật thành dãy <b>100</b> và <b>1001</b> như SGK.</p>
+    <figure style="margin:6px 0">
+      <svg id="den-nhi-phan" viewBox="0 0 440 150" role="group" aria-label="Bốn bóng đèn nhị phân"></svg>
+    </figure>
+    <div class="labout" id="den-out" style="text-align:center"></div>
+  </div>
+</section>
+
+<!-- =========================== CHỐT BÀI =========================== -->
+<section id="chot-bai">
+  <h2>Chốt bài</h2>
+  <figure>
+    <div class="mm-wrap">
+    <svg viewBox="0 0 960 370" role="img" aria-label="Sơ đồ tư duy: Cách ghi số tự nhiên gồm Hệ thập phân và Số La Mã, mỗi ô có một hình nhỏ">
+      <path class="mm-line draw" d="M430 62 C430 88 160 74 160 100" stroke="#2f6fdb"/>
+      <path class="mm-line draw" d="M530 62 C530 88 640 74 640 100" stroke="#8a5a06"/>
+      <path class="mm-line draw" d="M50 140 L50 330 M50 180 L70 180 M50 230 L70 230 M50 280 L70 280 M50 330 L70 330" stroke="#2f6fdb" style="animation-delay:.6s"/>
+      <path class="mm-line draw" d="M530 140 L530 330 M530 180 L550 180 M530 230 L550 230 M530 280 L550 280 M530 330 L550 330" stroke="#8a5a06" style="animation-delay:.6s"/>
+      <g class="mm-node" style="animation-delay:0s"><rect x="365" y="12" width="230" height="50" rx="25" fill="#fff6e5" stroke="#f59e0b"/><text class="mm-t b" x="480" y="37">CÁCH GHI SỐ TỰ NHIÊN</text></g>
+      <g class="mm-node" style="animation-delay:.4s"><rect x="30" y="100" width="260" height="40" rx="12" fill="#e8f0ff" stroke="#2f6fdb"/><text class="mm-t b" x="160" y="120">Hệ thập phân</text></g>
+      <g class="mm-node" style="animation-delay:.4s"><rect x="510" y="100" width="260" height="40" rx="12" fill="#fbf1dc" stroke="#8a5a06"/><text class="mm-t b" x="640" y="120">Số La Mã (đến 30)</text></g>
+      <g class="mm-node" style="animation-delay:.9s"><rect x="70" y="161" width="420" height="38" rx="10" fill="#fff" stroke="#c8dbff"/><text class="mm-t s" x="168" y="180">10 chữ số 0 – 9 · vị trí của chữ số là hàng</text></g>
+      <g class="mm-node" style="animation-delay:.9s"><rect x="80" y="168" width="20" height="24" rx="4" fill="#fff" stroke="#2f6fdb"/><text class="mm-ic" x="90" y="180" fill="#2f6fdb">0</text><rect x="103" y="168" width="20" height="24" rx="4" fill="#fff" stroke="#2f6fdb"/><text class="mm-ic" x="113" y="180" fill="#2f6fdb">…</text><rect x="126" y="168" width="20" height="24" rx="4" fill="#fff" stroke="#2f6fdb"/><text class="mm-ic" x="136" y="180" fill="#2f6fdb">9</text></g>
+      <g class="mm-node" style="animation-delay:.9s"><rect x="550" y="161" width="400" height="38" rx="10" fill="#fff" stroke="#e6d3ad"/><text class="mm-t s" x="642" y="180">5 thành phần: I · V · X · IV · IX</text></g>
+      <g class="mm-node" style="animation-delay:.9s"><line x1="568" y1="168" x2="568" y2="192" stroke="#e9b872" stroke-width="3.5" stroke-linecap="round"/><line x1="580" y1="168" x2="588" y2="192" stroke="#e9b872" stroke-width="3.5" stroke-linecap="round"/><line x1="596" y1="168" x2="588" y2="192" stroke="#e9b872" stroke-width="3.5" stroke-linecap="round"/><line x1="604" y1="168" x2="622" y2="192" stroke="#e9b872" stroke-width="3.5" stroke-linecap="round"/><line x1="622" y1="168" x2="604" y2="192" stroke="#e9b872" stroke-width="3.5" stroke-linecap="round"/></g>
+      <g class="mm-node" style="animation-delay:1.1s"><rect x="70" y="211" width="420" height="38" rx="10" fill="#fff" stroke="#c8dbff"/><text class="mm-t s" x="168" y="230">10 đơn vị một hàng = 1 đơn vị hàng liền trước</text></g>
+      <g class="mm-node" style="animation-delay:1.1s"><circle cx="84" cy="225" r="3" fill="var(--h0)"/><circle cx="92" cy="225" r="3" fill="var(--h0)"/><circle cx="100" cy="225" r="3" fill="var(--h0)"/><circle cx="108" cy="225" r="3" fill="var(--h0)"/><circle cx="116" cy="225" r="3" fill="var(--h0)"/><circle cx="84" cy="235" r="3" fill="var(--h0)"/><circle cx="92" cy="235" r="3" fill="var(--h0)"/><circle cx="100" cy="235" r="3" fill="var(--h0)"/><circle cx="108" cy="235" r="3" fill="var(--h0)"/><circle cx="116" cy="235" r="3" fill="var(--h0)"/><text class="mm-ic" x="130" y="230" fill="#5c6577">→</text><circle cx="146" cy="230" r="6.5" fill="var(--h1)"/></g>
+      <g class="mm-node" style="animation-delay:1.1s"><rect x="550" y="211" width="400" height="38" rx="10" fill="#fff" stroke="#e6d3ad"/><text class="mm-t s" x="642" y="230">Giá trị: 1 · 5 · 10 · 4 · 9 (không đổi)</text></g>
+      <g class="mm-node" style="animation-delay:1.1s"><rect x="560" y="218" width="36" height="24" rx="6" fill="#7b1f3a22" stroke="#7b1f3a"/><text class="mm-ic" x="578" y="230" fill="#7b1f3a">IV</text><text class="mm-ic" x="614" y="230" fill="#7b1f3a">=4</text></g>
+      <g class="mm-node" style="animation-delay:1.3s"><rect x="70" y="261" width="420" height="38" rx="10" fill="#fff" stroke="#c8dbff"/><text class="mm-t s" x="168" y="280">Tách lớp 3 chữ số, từ phải sang trái</text></g>
+      <g class="mm-node" style="animation-delay:1.3s"><rect x="79" y="271" width="23" height="18" rx="4" fill="#fbe9f4" stroke="#b4478f"/><rect x="82" y="275" width="4" height="10" fill="#b4478f"/><rect x="88" y="275" width="4" height="10" fill="#b4478f"/><rect x="95" y="275" width="4" height="10" fill="#b4478f"/><rect x="104" y="271" width="23" height="18" rx="4" fill="#fff1dc" stroke="#d97a00"/><rect x="107" y="275" width="4" height="10" fill="#d97a00"/><rect x="113" y="275" width="4" height="10" fill="#d97a00"/><rect x="120" y="275" width="4" height="10" fill="#d97a00"/><rect x="129" y="271" width="23" height="18" rx="4" fill="#e6f7f1" stroke="#0f9d76"/><rect x="132" y="275" width="4" height="10" fill="#0f9d76"/><rect x="138" y="275" width="4" height="10" fill="#0f9d76"/><rect x="145" y="275" width="4" height="10" fill="#0f9d76"/></g>
+      <g class="mm-node" style="animation-delay:1.3s"><rect x="550" y="261" width="400" height="38" rx="10" fill="#fff" stroke="#e6d3ad"/><text class="mm-t s" x="642" y="280">Số La Mã = tổng giá trị các thành phần</text></g>
+      <g class="mm-node" style="animation-delay:1.3s"><text class="mm-ic s" x="558" y="280"><tspan fill="#8a5a06">X</tspan><tspan fill="#8a5a06">X</tspan><tspan fill="#7b1f3a">IV</tspan><tspan fill="#5c6577">=24</tspan></text></g>
+      <g class="mm-node" style="animation-delay:1.5s"><rect x="70" y="311" width="420" height="38" rx="10" fill="#fff" stroke="#c8dbff"/><text class="mm-t s" x="168" y="330">Số = tổng giá trị các chữ số của nó</text></g>
+      <g class="mm-node" style="animation-delay:1.5s"><text class="mm-ic s" x="78" y="330"><tspan fill="var(--h2)">2</tspan><tspan fill="var(--h1)">3</tspan><tspan fill="var(--h0)">6</tspan><tspan fill="#5c6577">=</tspan><tspan fill="var(--h2)">200</tspan><tspan fill="#5c6577">+</tspan><tspan fill="var(--h1)">30</tspan><tspan fill="#5c6577">+</tspan><tspan fill="var(--h0)">6</tspan></text></g>
+      <g class="mm-node" style="animation-delay:1.5s"><rect x="550" y="311" width="400" height="38" rx="10" fill="#fff" stroke="#e6d3ad"/><text class="mm-t s" x="642" y="330">Không có số La Mã biểu diễn số 0</text></g>
+      <g class="mm-node" style="animation-delay:1.5s"><circle cx="592" cy="330" r="15" fill="#fffaf0" stroke="#b08d57" stroke-width="2.5"/><text class="mm-ic" x="592" y="322" style="font-size:8px" fill="#243049">XII</text><line x1="592" y1="330" x2="592" y2="327" stroke="#243049" stroke-width="2"/><line x1="592" y1="330" x2="600" y2="334" stroke="#243049" stroke-width="2"/><text class="mm-ic" x="622" y="330" fill="#d64545">≠0</text></g>
+    </svg>
+    </div>
+    <figcaption>Sơ đồ tư duy của cả bài — mỗi ô có một hình nhỏ nhắc lại hoạt động em đã làm. Em chép vào vở, tự vẽ thêm ví dụ.</figcaption>
+  </figure>
+  <ol>
+    <li><b>Hệ thập phân</b> dùng 10 chữ số 0; 1; …; 9. Vị trí của chữ số gọi là <b>hàng</b>;
+      <b>10 đơn vị ở một hàng = 1 đơn vị ở hàng liền trước</b>.</li>
+    <li><b>Hai quy ước:</b> chữ số đầu tiên của số khác 0 thì khác 0; số từ bốn chữ số trở lên tách <b>lớp</b> ba chữ số
+      <b>từ phải sang trái</b>.</li>
+    <li><b>Giá trị của chữ số</b> = chữ số × giá trị của hàng. Mỗi số tự nhiên bằng <b>tổng giá trị các chữ số</b> của nó:
+      <span class="ol m">abc</span> = (<i class="h2">a</i> × 100) + (<i class="h1">b</i> × 10) + <i class="h0">c</i>.</li>
+    <li><b>Số La Mã (đến 30):</b> năm thành phần I = 1, V = 5, X = 10, IV = 4, IX = 9; số La Mã bằng <b>tổng giá trị các
+      thành phần</b>. Không có số La Mã biểu diễn số 0.</li>
+  </ol>
+  <h3>Năm lỗi hay gặp nhất ở bài này</h3>
+  <table><tr><th>Lỗi</th><th>Sai</th><th>Đúng</th></tr>
+    <tr><td>Tách lớp từ trái sang</td><td class="m x">380&nbsp;415&nbsp;609 2</td><td class="m ok">3&nbsp;804&nbsp;156&nbsp;092</td></tr>
+    <tr><td>Quên chữ số 0 giữ chỗ khi viết lại số</td><td class="m x">Từ 30&nbsp;000 + 4&nbsp;000 + 600 + 4 viết ngược lại thành 3&nbsp;464 (quên hàng chục là 0)</td><td class="m ok">Hàng chục là 0 phải giữ chỗ: 34&nbsp;604 (có thể ghi rõ + 0 cho khỏi quên)</td></tr>
+    <tr><td>Coi giá trị của chữ số là chính chữ số đó</td><td class="m x">chữ số 3 trong 32&nbsp;019 có giá trị 3</td><td class="m ok">3 × 10&nbsp;000 = 30&nbsp;000</td></tr>
+    <tr><td>Lẫn "chữ số hàng chục" với "số chục"</td><td class="m x">chữ số hàng chục của 1&nbsp;425 là 142</td><td class="m ok">chữ số hàng chục là 2; số chục là 142</td></tr>
+    <tr><td>Viết 4 là IIII, 9 là VIIII</td><td class="m x">XIIII</td><td class="m ok">XIV</td></tr>
+  </table>
+  <div class="box tip"><span class="label">Làm tiếp</span>
+    Bài tập <b>1.6 → 1.12</b> trong SGK. Làm xong gửi lại, cô chữa. Bài sau: <b>Bài 3. Thứ tự trong tập hợp các số tự nhiên</b>.</div>
+
+  <footer>
+    Bài giảng do agent <b>giao-vien-toan</b> soạn, bám nguyên văn SGK Toán 6
+    <i>Kết nối tri thức với cuộc sống</i> — nguồn:
+    <span class="kbd">kiến thức/toán/toan-lop-6-chuong-01-bai-02-cach-ghi-so-tu-nhien.md</span>.<br>
+    Bản đọc/in: <span class="kbd">toan-lop-6-chuong-01-bai-02-cach-ghi-so-tu-nhien-bai-giang.md</span>.
+    Các phần "đối chiếu" chỉ mở sau khi em đã tự làm; phần Bài tập cuối bài cố ý không có đáp án.
+  </footer>
+</section>
+
+</div><!-- /wrap -->
+
+<!-- ================= ENGINE DÙNG CHUNG — KHÔNG SỬA CHO TỪNG BÀI ================= -->
+<script>
+(function(){
+  "use strict";
+  var $  = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function list(s){ return (s||'').split(';').map(function(x){ return x.trim(); }).filter(Boolean); }
+  function json(el,name){
+    var raw = el.getAttribute(name);
+    if(!raw) return {};
+    try{ return JSON.parse(raw); }catch(e){ return {}; }
+  }
+  function el(tag,cls,html){
+    var d = document.createElement(tag);
+    if(cls) d.className = cls;
+    if(html != null) d.innerHTML = html;
+    return d;
+  }
+  function fbBox(host){
+    var f = $('.fb', host);
+    if(!f){ f = el('div','fb'); host.appendChild(f); }
+    return f;
+  }
+  function show(f,cls,html){ f.className = 'fb show ' + cls; f.innerHTML = html; }
+  function setline(name, items){
+    return '<i>' + esc(name) + '</i> = {' + items.map(esc).join('; ') + '}';
+  }
+
+  /* ---------- tắt chuyển động ---------- */
+  var bm = $('[data-motion]');
+  if(bm) bm.addEventListener('click', function(){
+    var off = document.body.classList.toggle('no-motion');
+    bm.textContent = off ? 'Bật chuyển động' : 'Tắt chuyển động';
+    bm.setAttribute('aria-pressed', off ? 'true' : 'false');
+  });
+
+  /* ---------- tiến độ ---------- */
+  var ACTS = $$('[data-act]'), DONE = {}, box = $('[data-progress]');
+  function paint(){
+    if(!box) return;
+    var n = Object.keys(DONE).length, t = ACTS.length || 1;
+    var bar = $('.track i', box), txt = $('.txt', box);
+    if(bar) bar.style.width = Math.round(n / t * 100) + '%';
+    if(txt) txt.textContent = n + '/' + ACTS.length + ' hoạt động';
+  }
+  var WIDGET_CHAM = '[data-venn],[data-lab],[data-picks],[data-mcq],[data-uniq],[data-numline][data-answer],' +
+    '[data-fill],[data-abacus][data-answer],[data-expand],[data-match],[data-placetable][data-ask],[data-placetable][data-ask-gt],[data-custom]';
+  function done(node){
+    var a = node && node.closest ? node.closest('[data-act]') : null;
+    if(!a) return;
+    var k = a.getAttribute('data-act');
+    if(DONE[k]) return;
+    DONE[k] = true; a.classList.add('done'); paint();
+  }
+  paint();
+
+  /* ---------- nút chữa bài / gợi ý ---------- */
+  $$('[data-reveal]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-reveal'));
+      if(!t) return;
+      var open = t.classList.toggle('open');
+      b.textContent = open ? (b.getAttribute('data-close') || 'Ẩn phần đối chiếu')
+                           : (b.getAttribute('data-open')  || 'Xem đối chiếu');
+      /* hoạt động có widget chấm điểm thì phải làm widget — mở đối chiếu không tính là xong */
+      var act = b.closest('[data-act]');
+      if(open && !(act && act.querySelector(WIDGET_CHAM))) done(b);
+    });
+  });
+  $$('[data-hint]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-hint'));
+      if(!t) return;
+      b.textContent = t.classList.toggle('open') ? 'Ẩn gợi ý' : 'Gợi ý';
+    });
+  });
+
+  /* ---------- 1. Venn bấm được ---------- */
+  $$('[data-venn]').forEach(function(host){
+    var name = host.getAttribute('data-set') || 'A';
+    var out  = $('[data-venn-out]', host) ||
+               $('[data-venn-out]', host.parentNode) || null;
+    $$('.el', host).forEach(function(g){
+      function tell(){
+        $$('.el', host).forEach(function(o){ o.classList.remove('pick'); });
+        g.classList.add('pick');
+        var v = g.getAttribute('data-v'), inS = g.getAttribute('data-in') === '1';
+        if(out) out.innerHTML = inS
+          ? '<b>' + esc(v) + ' <span class="op">∈</span> <i>' + esc(name) + '</i></b> — đọc là "' +
+            esc(v) + ' thuộc ' + esc(name) + '". Phần tử này nằm <b>trong</b> vòng.'
+          : '<b>' + esc(v) + ' <span class="op no">∉</span> <i>' + esc(name) + '</i></b> — đọc là "' +
+            esc(v) + ' không thuộc ' + esc(name) + '". Nó có trong hình nhưng nằm <b>ngoài</b> vòng.';
+        done(host);
+      }
+      g.addEventListener('click', tell);
+      g.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); tell(); }
+      });
+    });
+  });
+
+  /* ---------- 2. Bàn thử kéo–thả ---------- */
+  var INSIDE  = [[22,26],[44,24],[20,58],[44,62],[33,42],[12,42]];
+  var OUTSIDE = [[80,28],[90,45],[80,62],[90,79],[80,90],[72,45]];
+  $$('[data-lab]').forEach(function(host){
+    var name   = host.getAttribute('data-set') || 'A';
+    var items  = list(host.getAttribute('data-items'));
+    var answer = list(host.getAttribute('data-answer'));
+    var hints  = json(host, 'data-hint-sai');
+    var okMsg  = host.getAttribute('data-ok') || 'Chính xác!';
+
+    var lab = el('div','lab');
+    lab.appendChild(el('div','ring','<b>' + esc(name) + '</b>'));
+    lab.appendChild(el('div','outside','bên ngoài tập ' + esc(name)));
+    var out = el('div','labout');
+    var bar = el('p');
+    var bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Xếp lại từ đầu');
+    if(answer.length) bar.appendChild(bChk);
+    bar.appendChild(bRst);
+    host.appendChild(lab); host.appendChild(out); host.appendChild(bar);
+    var fb = fbBox(host);
+    var toks = [];
+
+    function hit(xp,yp){
+      var dx = (xp - 33) / 29, dy = (yp - 50) / 42;
+      return dx*dx + dy*dy <= 1;
+    }
+    function render(){
+      var ins = toks.filter(function(t){ return t.inSet; }).map(function(t){ return t.v; });
+      out.innerHTML = toks.map(function(t){
+        return t.inSet
+          ? '<b>' + esc(t.v) + ' <span class="op">∈</span> <i>' + esc(name) + '</i></b>'
+          : esc(t.v) + ' <span class="op no">∉</span> <i>' + esc(name) + '</i>';
+      }).join(' &nbsp;·&nbsp; ') + '<br><span style="font-size:17px">Liệt kê: ' +
+        setline(name, ins) + '</span>';
+    }
+    function layout(){
+      var ci = 0, co = 0;
+      toks.forEach(function(t){
+        var p = t.inSet ? INSIDE[ci++ % INSIDE.length] : OUTSIDE[co++ % OUTSIDE.length];
+        t.el.style.left = p[0] + '%'; t.el.style.top = p[1] + '%';
+        t.el.classList.toggle('in', t.inSet);
+        t.el.setAttribute('aria-label', 'phần tử ' + t.v +
+          (t.inSet ? ', đang ở trong tập ' + name : ', đang ở ngoài tập ' + name));
+      });
+      render();
+    }
+    function build(){
+      toks.forEach(function(t){ t.el.remove(); });
+      toks = items.map(function(v){
+        var b = el('button','tok'); b.type = 'button'; b.textContent = v;
+        lab.appendChild(b);
+        var t = { v: v, el: b, inSet: false }, id = null;
+        b.addEventListener('click', function(){
+          if(b.dataset.moved === '1'){ b.dataset.moved = '0'; return; }
+          t.inSet = !t.inSet; layout();
+        });
+        b.addEventListener('pointerdown', function(e){
+          id = e.pointerId; b.setPointerCapture(id);
+          b.classList.add('drag'); b.dataset.moved = '0';
+        });
+        b.addEventListener('pointermove', function(e){
+          if(id === null || !b.classList.contains('drag')) return;
+          var r = lab.getBoundingClientRect();
+          b.style.left = Math.max(3, Math.min(97, (e.clientX - r.left) / r.width  * 100)) + '%';
+          b.style.top  = Math.max(6, Math.min(94, (e.clientY - r.top)  / r.height * 100)) + '%';
+          b.dataset.moved = '1';
+        });
+        function drop(e){
+          if(id === null) return;
+          b.classList.remove('drag');
+          try{ b.releasePointerCapture(id); }catch(err){}
+          id = null;
+          if(b.dataset.moved === '1'){
+            var r = lab.getBoundingClientRect();
+            t.inSet = hit((e.clientX - r.left) / r.width * 100, (e.clientY - r.top) / r.height * 100);
+            layout();
+            setTimeout(function(){ b.dataset.moved = '0'; }, 50);
+          }
+        }
+        b.addEventListener('pointerup', drop);
+        b.addEventListener('pointercancel', drop);
+        return t;
+      });
+      layout();
+      fb.className = 'fb';
+    }
+    build();
+    bRst.addEventListener('click', build);
+    bChk.addEventListener('click', function(){
+      var ins  = toks.filter(function(t){ return t.inSet; }).map(function(t){ return t.v; });
+      var sIns = ins.slice().sort().join('\u0001'), sAns = answer.slice().sort().join('\u0001');
+      if(sIns === sAns){ show(fb,'good', okMsg + ' ' + setline(name, ins)); done(host); return; }
+      if(!ins.length){
+        show(fb,'bad','Vòng <i>' + esc(name) + '</i> đang trống. Em kéo (hoặc bấm) phần tử vào trong vòng nhé.');
+        return;
+      }
+      var thua = ins.filter(function(v){ return answer.indexOf(v) < 0; });
+      if(thua.length){
+        show(fb,'bad', hints[thua[0]] || ('Phần tử «' + esc(thua[0]) +
+          '» đang nằm trong vòng — em kiểm tra lại xem nó có thoả điều kiện của tập <i>' +
+          esc(name) + '</i> không?'));
+        return;
+      }
+      show(fb,'bad','Chưa đủ: trong vòng cần có <b>' + answer.length +
+        '</b> phần tử, em đang để ' + ins.length + '. Thiếu phần tử nào nhỉ?');
+    });
+  });
+
+  /* ---------- 3. Công tắc hai cách trình bày ---------- */
+  /* data-t2-mo="k": mở sẵn pane k khi tải trang (tình huống mở đầu phải có hình ngay).
+     data-t2-giu="1": pane đã xem KHÔNG ẩn đi mà mờ lại (.t2-cu) — hai hình nằm cạnh nhau để so sánh trước/sau. */
+  $$('[data-t2]').forEach(function(host){
+    var btns = $$('[data-t2-btn]', host), giu = host.getAttribute('data-t2-giu') === '1';
+    function mo(k){
+      btns.forEach(function(o){ o.className = o.getAttribute('data-t2-btn') === k ? 'btn' : 'btn ghost'; });
+      $$('[data-t2-empty]', host).forEach(function(e){ e.classList.add('hide'); });
+      $$('[data-t2-pane],[data-t2-note]', host).forEach(function(p){
+        var pk = p.getAttribute('data-t2-pane') || p.getAttribute('data-t2-note');
+        if(giu){
+          if(pk === k) p.classList.remove('hide', 't2-cu');
+          else if(!p.classList.contains('hide')) p.classList.add('t2-cu');
+        } else p.classList.toggle('hide', pk !== k);
+      });
+    }
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){ mo(b.getAttribute('data-t2-btn')); done(host); });
+    });
+    if(host.hasAttribute('data-t2-mo')) mo(host.getAttribute('data-t2-mo'));
+  });
+
+  /* ---------- 4. Chọn phần tử + kiểm tra ---------- */
+  $$('[data-picks]').forEach(function(group){
+    var picks = $$('[data-pick]', group).map(function(host){
+      var items  = list(host.getAttribute('data-items'));
+      var answer = list(host.getAttribute('data-answer'));
+      var st = { host: host, name: host.getAttribute('data-name') || '?',
+                 nhan: host.getAttribute('data-nhan') || '',
+                 answer: answer, sel: [], btns: {},
+                 thua: json(host,'data-hint-thua'), thieu: json(host,'data-hint-thieu') };
+      var wrap = el('div','chips');
+      items.forEach(function(v){
+        var b = el('button','num'); b.type = 'button'; b.textContent = v;
+        b.addEventListener('click', function(){
+          var i = st.sel.indexOf(v);
+          if(i >= 0){ st.sel.splice(i,1); b.classList.remove('on'); }
+          else { st.sel.push(v); b.classList.add('on'); }
+        });
+        st.btns[v] = b; wrap.appendChild(b);
+      });
+      host.appendChild(wrap);
+      return st;
+    });
+    if(!picks.length) return;
+
+    var bar = el('p');
+    var bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Chọn lại');
+    bar.appendChild(bChk); bar.appendChild(bRst);
+    group.appendChild(bar);
+    var fb = fbBox(group);
+
+    bChk.addEventListener('click', function(){
+      var msg = [], allOk = true;
+      picks.forEach(function(p){
+        var ok = p.sel.slice().sort().join('\u0001') === p.answer.slice().sort().join('\u0001');
+        if(ok) return;
+        allOk = false;
+        var thua  = p.sel.filter(function(v){ return p.answer.indexOf(v) < 0; });
+        var thieu = p.answer.filter(function(v){ return p.sel.indexOf(v) < 0; });
+        /* data-nhan: nhãn thay cho "Tập X" khi khối chọn không phải một tập hợp (vd. "Câu a") */
+        var nh = p.nhan ? '<b>' + esc(p.nhan) + '</b>' : 'Tập <i>' + esc(p.name) + '</i>';
+        if(thua.length && p.thua[thua[0]])   msg.push(nh + ': ' + p.thua[thua[0]]);
+        else if(thieu.length && p.thieu[thieu[0]]) msg.push(nh + ': ' + p.thieu[thieu[0]]);
+        else if(thua.length)  msg.push(nh + ': em chọn thừa «' + esc(thua[0]) + '» — soát lại điều kiện.');
+        else msg.push(nh + ': còn thiếu — đếm lại xem có bao nhiêu cái thoả điều kiện.');
+      });
+      if(allOk){
+        show(fb,'good', group.getAttribute('data-ok') || ('Đúng rồi: ' + picks.map(function(p){
+          return setline(p.name, p.answer);
+        }).join(' &nbsp;và&nbsp; ') + '.'));
+        done(group);
+      } else show(fb,'bad', msg.join('<br>'));
+    });
+    bRst.addEventListener('click', function(){
+      picks.forEach(function(p){
+        p.sel = [];
+        Object.keys(p.btns).forEach(function(k){ p.btns[k].classList.remove('on'); });
+      });
+      fb.className = 'fb';
+    });
+  });
+
+  /* ---------- 5. Chọn một kí hiệu ---------- */
+  $$('[data-act]').forEach(function(act){
+    var qs = $$('[data-mcq]', act);
+    if(!qs.length) return;
+    var fb = null;
+    var states = qs.map(function(host){
+      var opts = list(host.getAttribute('data-options'));
+      var ans  = (host.getAttribute('data-answer') || '').trim();
+      var st = { ok: false, answered: false, host: host };
+      opts.forEach(function(o){
+        var b = el('button','btn'); b.type = 'button'; b.textContent = o;
+        b.addEventListener('click', function(){
+          $$('button', host).forEach(function(x){ if(x !== mark) x.className = 'btn ghost'; });
+          b.className = 'btn';
+          st.ok = (o === ans); st.answered = true;
+          mark.innerHTML = st.ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
+          report();
+        });
+        host.appendChild(b);
+      });
+      var mark = el('span','mark'); mark.style.marginLeft = '6px';
+      host.appendChild(mark);
+      return st;
+    });
+    function report(){
+      if(!fb) fb = fbBox(act);
+      if(states.every(function(s){ return s.ok; })){
+        show(fb,'good','Đúng cả rồi. Em làm tiếp phần sau nhé.');
+        done(act); return;
+      }
+      if(states.every(function(s){ return s.answered; })){
+        var t = states.filter(function(s){ return !s.ok; }).map(function(s){
+          return s.host.getAttribute('data-fb-sai') || 'Có một ô chưa đúng — em đọc lại điều kiện của tập rồi thử lại.';
+        });
+        show(fb,'bad', t.join('<br>'));
+      }
+    }
+  });
+
+  /* ---------- 6. Xếp tập từ một từ (bẫy phần tử lặp) ---------- */
+  $$('[data-uniq]').forEach(function(host){
+    var word = (host.getAttribute('data-word') || '').toUpperCase();
+    var name = host.getAttribute('data-name') || 'L';
+    var chars = word.split('');
+    var uniq = [];
+    chars.forEach(function(c){ if(c !== ' ' && uniq.indexOf(c) < 0) uniq.push(c); });
+
+    var wrap = el('div','chips'), out = el('div','labout');
+    var bar = el('p'), bRst = el('button','btn ghost','Xếp lại từ đầu');
+    bar.appendChild(bRst);
+    host.appendChild(wrap); host.appendChild(out); host.appendChild(bar);
+    var fb = fbBox(host), got = [], dup = 0;
+
+    function draw(){
+      out.innerHTML = setline(name, got) +
+        (got.length ? '<span class="muted" style="font-size:16px"> — đang có ' + got.length + ' phần tử</span>' : '');
+    }
+    function build(){
+      wrap.innerHTML = ''; got = []; dup = 0; fb.className = 'fb';
+      chars.forEach(function(c){
+        if(c === ' '){ wrap.appendChild(el('span','gap')); return; }
+        var b = el('button','let'); b.type = 'button'; b.textContent = c;
+        b.addEventListener('click', function(){
+          if(got.indexOf(c) >= 0){
+            dup++;
+            b.classList.remove('dup'); void b.offsetWidth; b.classList.add('dup');
+            show(fb,'bad','Chữ <b>' + esc(c) + '</b> đã có trong tập <i>' + esc(name) +
+              '</i> rồi! Quy tắc: <b>mỗi phần tử chỉ được viết một lần</b> — nên không thêm nó lần nữa.');
+          } else {
+            got.push(c); b.classList.add('on'); fb.className = 'fb';
+          }
+          draw();
+          if(got.length === uniq.length){
+            show(fb,'good','Xong: <b>' + setline(name, got) + '</b> — <b>' + uniq.length +
+              ' phần tử</b>, trong khi từ có ' + chars.filter(function(x){ return x !== ' '; }).length +
+              ' chữ cái.' + (dup ? ' Em đã bấm trúng chữ lặp ' + dup + ' lần — đó đúng là chỗ hay sai.' : ''));
+            done(host);
+          }
+        });
+        wrap.appendChild(b);
+      });
+      draw();
+    }
+    build();
+    bRst.addEventListener('click', build);
+  });
+
+  /* ---------- 7. Gom phần tử (chỗ nháp) ---------- */
+  $$('[data-collect]').forEach(function(host){
+    var name  = host.getAttribute('data-name') || 'S';
+    var items = list(host.getAttribute('data-items')).map(function(s){
+      var p = s.split('|');
+      return p.length > 1 ? { k: p[0].trim(), t: p[1].trim() } : { k: null, t: p[0].trim() };
+    });
+    var wrap = el('div','chips'), out = el('div','labout');
+    var bar = el('p'), bRst = el('button','btn ghost','Bỏ hết, chọn lại');
+    bar.appendChild(bRst);
+    host.appendChild(wrap); host.appendChild(out); host.appendChild(bar);
+    var got = [];
+    function draw(){
+      out.innerHTML = setline(name, got) +
+        (got.length ? '<span class="muted" style="font-size:16px"> — ' + got.length + ' phần tử</span>' : '');
+    }
+    function build(){
+      wrap.innerHTML = ''; got = [];
+      items.forEach(function(it){
+        var b = el('button','pchip'); b.type = 'button'; b.textContent = it.t;
+        if(it.k){
+          var dots = $$('[data-p="' + it.k + '"]');
+          b.addEventListener('mouseenter', function(){ dots.forEach(function(d){ d.classList.add('lit'); }); });
+          b.addEventListener('mouseleave', function(){ dots.forEach(function(d){ d.classList.remove('lit'); }); });
+        }
+        b.addEventListener('click', function(){
+          var i = got.indexOf(it.t);
+          if(i >= 0){ got.splice(i,1); b.classList.remove('on'); }
+          else { got.push(it.t); b.classList.add('on'); }
+          draw();
+        });
+        wrap.appendChild(b);
+      });
+      draw();
+    }
+    build();
+    bRst.addEventListener('click', build);
+  });
+
+  /* ---------- 8. Dải số ---------- */
+  function drawStrip(host, off){
+    var from = +host.getAttribute('data-from'), to = +host.getAttribute('data-to');
+    var dots = host.getAttribute('data-dots') === '1';
+    host.className = 'strip'; host.innerHTML = '';
+    for(var i = from; i <= to; i++){
+      var d = el('div','s' + (off.indexOf(String(i)) >= 0 ? ' off' : ' on'));
+      d.textContent = i;
+      host.appendChild(d);
+    }
+    if(dots) host.appendChild(el('div','dots','…'));
+  }
+  $$('[data-strip]').forEach(function(h){ drawStrip(h, []); });
+  $$('[data-strip-set]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var sel = b.getAttribute('data-strip-set'), host = $(sel);
+      if(!host) return;
+      drawStrip(host, list(b.getAttribute('data-off')));
+      $$('[data-strip-set="' + sel + '"]').forEach(function(o){
+        o.className = o === b ? 'btn' : 'btn ghost';
+      });
+      var note = $('[data-strip-note="' + sel + '"]');
+      if(note && b.getAttribute('data-note')) note.innerHTML = b.getAttribute('data-note');
+      done(b);
+    });
+  });
+
+  /* ---------- 9. Trục số ---------- */
+  $$('[data-numline]').forEach(function(host){
+    var from = +host.getAttribute('data-from'), to = +host.getAttribute('data-to');
+    var fixed  = list(host.getAttribute('data-mark'));
+    var answer = list(host.getAttribute('data-answer'));
+    var okMsg  = host.getAttribute('data-ok') || 'Đúng rồi.';
+    var n = to - from, W = 640, PAD = 34, step = (W - 2*PAD) / (n || 1), H = 92, Y = 54;
+    var svg = ['<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="trục số từ ' +
+               from + ' đến ' + to + '">'];
+    svg.push('<line class="axis" x1="10" y1="' + Y + '" x2="' + (W-10) + '" y2="' + Y + '"/>');
+    svg.push('<path class="axis" fill="none" d="M' + (W-22) + ' ' + (Y-7) + ' L' + (W-8) + ' ' + Y +
+             ' L' + (W-22) + ' ' + (Y+7) + '"/>');
+    for(var i = 0; i <= n; i++){
+      var x = PAD + i * step, v = from + i;
+      svg.push('<line class="tick" x1="' + x + '" y1="' + (Y-7) + '" x2="' + x + '" y2="' + (Y+7) + '"/>');
+      svg.push('<text class="lbl" x="' + x + '" y="' + (Y+28) + '">' + v + '</text>');
+      var isFixed = fixed.indexOf(String(v)) >= 0;
+      if(isFixed || answer.length)
+        svg.push('<circle class="pt' + (isFixed ? ' fixed' : '') + '" data-v="' + v +
+                 '" cx="' + x + '" cy="' + Y + '" r="8"' +
+                 (isFixed ? '' : ' tabindex="0" role="button" aria-label="điểm ' + v + '"') + '/>');
+    }
+    svg.push('</svg>');
+    host.innerHTML = svg.join('');
+    host.classList.add('numline');
+    if(!answer.length) return;
+
+    var sel = [], bar = el('p');
+    var bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Chọn lại');
+    bar.appendChild(bChk); bar.appendChild(bRst);
+    host.appendChild(bar);
+    var fb = fbBox(host);
+    $$('.pt:not(.fixed)', host).forEach(function(c){
+      function toggle(){
+        var v = c.getAttribute('data-v'), i = sel.indexOf(v);
+        if(i >= 0){ sel.splice(i,1); c.classList.remove('on'); }
+        else { sel.push(v); c.classList.add('on'); }
+      }
+      c.addEventListener('click', toggle);
+      c.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); toggle(); }
+      });
+    });
+    bChk.addEventListener('click', function(){
+      var a = sel.slice().sort(function(x,y){ return x-y; }).join(';');
+      var b = answer.slice().sort(function(x,y){ return x-y; }).join(';');
+      if(a === b){ show(fb,'good', okMsg); done(host); }
+      else show(fb,'bad','Chưa đúng — em đang chọn ' + (sel.length || 0) +
+        ' điểm. Đọc lại đề rồi soát từng điểm một.');
+    });
+    bRst.addEventListener('click', function(){
+      sel = [];
+      $$('.pt.on', host).forEach(function(c){ c.classList.remove('on'); });
+      fb.className = 'fb';
+    });
+  });
+
+  /* ---------- 10. Ô điền đáp số ---------- */
+  function chuan(s){
+    return String(s).trim().replace(/\s| /g,'').replace(',', '.').toLowerCase();
+  }
+  $$('[data-fill]').forEach(function(host){
+    var answers = (host.getAttribute('data-answer') || '').split('|').map(chuan);
+    var unit = host.getAttribute('data-unit') || '';
+    var box = el('span','fillbox');
+    var inp = document.createElement('input');
+    inp.type = 'text'; inp.setAttribute('aria-label','ô điền đáp số');
+    var mark = el('span','mark');
+    box.appendChild(inp);
+    if(unit) box.appendChild(el('span','muted', esc(unit)));
+    /* data-gon="1": ô gọn — không có nút Kiểm, tự chấm khi gõ Enter hoặc rời ô (dùng khi nhiều ô đứng cạnh nhau) */
+    var gon = host.getAttribute('data-gon') === '1';
+    var b = el('button','btn','Kiểm');
+    b.type = 'button';
+    if(gon){ box.classList.add('gon'); inp.addEventListener('change', function(){ check(); }); }
+    else box.appendChild(b);
+    box.appendChild(mark);
+    host.appendChild(box);
+    function check(){
+      var v = chuan(inp.value);
+      if(!v){ mark.innerHTML = ''; return; }
+      var ok = answers.some(function(a){
+        if(a === v) return true;
+        var na = parseFloat(a), nv = parseFloat(v);
+        return !isNaN(na) && !isNaN(nv) && Math.abs(na - nv) < 1e-9;
+      });
+      mark.innerHTML = ok ? '<span class="ok">✓</span>' : '<span class="x">✗</span>';
+      host._ok = ok;
+      /* nhiều ô điền trong CÙNG một hoạt động: chỉ tính xong khi MỌI ô đều đúng */
+      var a = host.closest('[data-act]');
+      if(ok && (!a || $$('[data-fill]', a).every(function(f){ return f._ok; }))) done(host);
+    }
+    b.addEventListener('click', check);
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); check(); } });
+  });
+
+  /* ---------- 11. Lời giải hiện dần ---------- */
+  $$('[data-steps]').forEach(function(host){
+    var steps = $$('[data-step]', host);
+    if(!steps.length) return;
+    steps.forEach(function(s){ s.classList.add('hide'); });
+    var i = 0, b = el('button','btn','Hiện bước 1');
+    b.type = 'button';
+    host.insertBefore(b, steps[0]);
+    b.addEventListener('click', function(){
+      if(i >= steps.length) return;
+      steps[i].classList.remove('hide'); i++;
+      if(i >= steps.length){ b.textContent = 'Đã hết các bước'; b.className = 'btn ghost'; done(host); }
+      else b.textContent = 'Hiện bước ' + (i + 1);
+    });
+  });
+
+  /* ================= GIÁ TRỊ CHỮ SỐ — tiện ích chung cho các khối 12–15 ================= */
+  var HANG = ['đơn vị','chục','trăm','nghìn','chục nghìn','trăm nghìn',
+              'triệu','chục triệu','trăm triệu','tỉ','chục tỉ','trăm tỉ'];
+  var LOP  = ['đơn vị','nghìn','triệu','tỉ'];
+  /* khoảng trắng không ngắt (U+00A0): số không bị bẻ đôi giữa hai lớp khi xuống dòng */
+  function nhom(s){ return String(s).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0'); }
+  function zeros(k){ return new Array(k + 1).join('0'); }
+  function mu10(k){ return nhom('1' + zeros(k)); }
+  function hoa(s){ s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
+  function hc(k){ return 'h' + Math.min(k, 11); }
+  function itDong(){
+    return document.body.classList.contains('no-motion') ||
+      !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }
+
+  /* ---------- 12. Bàn tính hàng: đổi 10 thành 1 (data-abacus) ---------- */
+  $$('[data-abacus]').forEach(function(host){
+    var vals = list(host.getAttribute('data-values')).map(Number), i;
+    var n = vals.length || (+host.getAttribute('data-cols') || 3);
+    if(!vals.length) for(i = n - 1; i >= 0; i--) vals.push(Math.pow(10, i));
+    var labels = list(host.getAttribute('data-labels'));
+    var start  = list(host.getAttribute('data-start')).map(Number);
+    var ansRaw = (host.getAttribute('data-answer') || '').replace(/\s/g, '');
+    var carry  = host.getAttribute('data-carry') !== '0';
+    var max    = +(host.getAttribute('data-max') || 9);
+    var skin   = host.getAttribute('data-bead') || '';
+    var unit   = host.getAttribute('data-unit') || '';
+    var okMsg  = host.getAttribute('data-ok') || 'Chính xác!';
+    var d = [], busy = false;
+    var box = el('div','abacus'), msg = el('div','ab-msg'), out = el('div','ab-out');
+    box.setAttribute('aria-live','polite');
+    var cols = vals.map(function(v, i){
+      var k = Math.round(Math.log(v) / Math.LN10);
+      var ten = labels[i] || ('Hàng ' + HANG[k]);
+      var c = el('div','ab-col ' + hc(k));
+      var rod = el('div','ab-rod'), dig = el('div','ab-dig','0'), bs = el('div','ab-btns');
+      var bp = el('button','btn ab-plus','+'), bm = el('button','btn ghost ab-minus','−');
+      bp.type = 'button'; bm.type = 'button';
+      bp.setAttribute('aria-label','thêm một ở cột ' + ten);
+      bm.setAttribute('aria-label','bớt một ở cột ' + ten);
+      bs.appendChild(bp); bs.appendChild(bm);
+      c.appendChild(el('div','ab-head', esc(ten))); c.appendChild(rod); c.appendChild(dig); c.appendChild(bs);
+      box.appendChild(c);
+      bp.addEventListener('click', function(){ cong(i); });
+      bm.addEventListener('click', function(){ tru(i); });
+      return { k: k, ten: ten, rod: rod, dig: dig };
+    });
+    host.appendChild(box); host.appendChild(msg); host.appendChild(out);
+    var bar = el('p'), bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Xếp lại từ đầu');
+    if(ansRaw) bar.appendChild(bChk);
+    bar.appendChild(bRst); host.appendChild(bar);
+    var fb = fbBox(host);
+
+    function tong(){ return d.reduce(function(s, x, i){ return s + x * vals[i]; }, 0); }
+    function hat(i){
+      var b = el('div', 'bead' + (skin === 'tien' ? ' note' : ''));
+      if(skin === 'tien') b.innerHTML = '<span>' + esc(nhom(vals[i])) + '</span>';
+      return b;
+    }
+    function ve(i){
+      var r = cols[i].rod;
+      while(r.children.length > d[i]) r.removeChild(r.lastChild);
+      while(r.children.length < d[i]) r.appendChild(hat(i));
+      cols[i].dig.textContent = d[i];
+    }
+    function veHet(){
+      for(var i = 0; i < n; i++) ve(i);
+      var parts = d.map(function(x, i){
+        return '<span class="' + hc(cols[i].k) + ' hb">' +
+          (vals[i] === 1 ? x : '(' + x + ' × ' + esc(nhom(vals[i])) + ')') + '</span>';
+      });
+      out.innerHTML = (skin === 'tien' ? 'Tổng: ' : 'Số trên bàn tính: ') + '<b>' + nhom(tong()) + '</b>' +
+        (unit ? ' ' + esc(unit) : '') + '<br><span style="font-size:17px">= ' + parts.join(' + ') + '</span>';
+      host.setAttribute('data-digits', d.join(';'));
+    }
+    function doi(i){
+      var c = cols[i], left = cols[i - 1];
+      busy = true;
+      msg.innerHTML = 'Đủ <b>10</b> ở cột <b class="' + hc(c.k) + '">' + esc(c.ten) + '</b> → đổi thành <b>1</b> ở cột <b class="' +
+        hc(left.k) + '">' + esc(left.ten) + '</b>!';
+      function xong(){
+        c.rod.classList.remove('gom');
+        d[i] = 0; d[i - 1]++;
+        veHet();
+        busy = false;
+        if(d[i - 1] >= 10) doi(i - 1);
+      }
+      if(itDong()){ xong(); return; }
+      c.rod.classList.add('gom');
+      setTimeout(function(){
+        var br = box.getBoundingClientRect(), r1 = c.rod.getBoundingClientRect(), r2 = left.rod.getBoundingClientRect();
+        var f = hat(i - 1); f.className += ' fly ' + hc(left.k);
+        box.appendChild(f);
+        var w = f.offsetWidth / 2;
+        f.style.left = (r1.left - br.left + r1.width / 2 - w) + 'px';
+        f.style.top  = (r1.top - br.top + r1.height / 2) + 'px';
+        void f.offsetWidth;
+        f.style.left = (r2.left - br.left + r2.width / 2 - w) + 'px';
+        f.style.top  = (r2.bottom - br.top - 26 - 22 * d[i - 1]) + 'px';
+        setTimeout(function(){ f.remove(); xong(); }, 650);
+      }, 700);
+    }
+    function cong(i){
+      if(busy) return;
+      fb.className = 'fb'; msg.innerHTML = '';
+      if(!carry){
+        if(d[i] >= max){ msg.innerHTML = 'Cột này tối đa <b>' + max + '</b> thôi.'; return; }
+        d[i]++; veHet(); return;
+      }
+      if(d[i] < 9){ d[i]++; veHet(); return; }
+      var j = i - 1;
+      while(j >= 0 && d[j] === 9) j--;
+      if(j < 0){ msg.innerHTML = 'Bàn tính hết chỗ rồi — muốn thêm nữa phải có thêm một hàng mới bên trái!'; return; }
+      d[i] = 10; ve(i); doi(i);
+    }
+    function tru(i){
+      if(busy) return;
+      fb.className = 'fb'; msg.innerHTML = '';
+      if(!d[i]){ msg.innerHTML = 'Cột này đang trống.'; return; }
+      d[i]--; veHet();
+    }
+    function reset(){
+      d = vals.map(function(v, i){ return start[i] || 0; });
+      busy = false; msg.innerHTML = ''; fb.className = 'fb';
+      cols.forEach(function(c){ c.rod.classList.remove('gom'); });
+      veHet();
+    }
+    reset();
+    bRst.addEventListener('click', reset);
+    bChk.addEventListener('click', function(){
+      if(busy) return;
+      var t = tong(), a = +ansRaw;
+      if(t === a){ show(fb,'good', okMsg); done(host); return; }
+      show(fb,'bad', (host.getAttribute('data-fb-sai') ? host.getAttribute('data-fb-sai') + ' ' : '') +
+        'Đang là <b>' + nhom(t) + '</b>' + (unit ? ' ' + esc(unit) : '') + ', cần <b>' + nhom(a) + '</b>. ' +
+        (t > a ? 'Đang <b>thừa</b>' : 'Đang <b>thiếu</b>') + ' — em so từng cột, từ trái sang phải, xem cột nào lệch.');
+    });
+  });
+
+  /* ---------- 13. Tách số thành tổng giá trị các chữ số (data-expand) ---------- */
+  $$('[data-expand]').forEach(function(host){
+    var s = (host.getAttribute('data-number') || '').replace(/\D/g, '');
+    if(!s) return;
+    /* data-hoi="1": chọn tên hàng · "2": chọn tên hàng rồi GÕ giá trị (HĐ1 kiểu SGK: học sinh tự phát biểu giá trị) */
+    var hoiMuc = +(host.getAttribute('data-hoi') || 0), hoi = hoiMuc >= 1;
+    var okMsg = host.getAttribute('data-ok') || '';
+    var L = s.length, cur = 0, ds = [], sai = 0;
+    var num = el('div','xp-num' + (hoi ? ' hoi' : '')), q = el('div','xp-q'), rows = el('div'), sum = el('div');
+    s.split('').forEach(function(c, i){
+      var k = L - 1 - i, sp = el('span','xp-d ' + hc(k), c);
+      ds.push(sp); num.appendChild(sp);
+      if(k > 0 && k % 3 === 0) num.appendChild(el('span','gapg'));
+    });
+    host.appendChild(num); host.appendChild(q); host.appendChild(rows); host.appendChild(sum);
+    var bar = el('p'), bRst = el('button','btn ghost','Làm lại từ đầu');
+    bRst.type = 'button'; bar.appendChild(bRst); host.appendChild(bar);
+    var fb = fbBox(host);
+
+    function giaTri(i){ var k = L - 1 - i; return s[i] === '0' ? '0' : nhom(s[i] + zeros(k)); }
+    function hienDong(i){
+      var k = L - 1 - i, c = s[i];
+      var r = el('div','xp-row ' + hc(k));
+      r.innerHTML = '<span class="t">Chữ số <b class="' + hc(k) + '">' + c + '</b> nằm ở hàng <b class="' + hc(k) + '">' +
+        HANG[k] + '</b> và có giá trị bằng </span><b class="' + hc(k) + '">' +
+        (k === 0 ? c : c + ' × ' + mu10(k) + ' = ' + giaTri(i)) + '</b>';
+      rows.appendChild(r);
+      ds[i].classList.remove('cur'); ds[i].classList.add('xong');
+    }
+    /* Câu hỏi KHÔNG nói "thứ n từ trái sang" (ngược chiều mẹo đếm hàng) và chữ số đang hỏi để màu trung tính. */
+    function hoiHang(){
+      var k = L - 1 - cur;
+      host.setAttribute('data-cur', k); host.removeAttribute('data-gt');
+      sai = 0;
+      q.innerHTML = '<p>Chữ số đang nhấp nháy — chữ số <b style="font-size:24px">' + s[cur] + '</b> — nằm ở hàng nào?</p>';
+      for(var j = L - 1; j >= 0; j--) (function(j){
+        var b = el('button','btn ghost', hoa(HANG[j])); b.type = 'button'; b.setAttribute('data-k', j);
+        b.addEventListener('click', function(){
+          if(j === k){ fb.className = 'fb'; if(hoiMuc >= 2 && k > 0) hoiGiaTri(); else { hienDong(cur); cur++; tiep(); } return; }
+          sai++;
+          b.classList.remove('sai'); void b.offsetWidth; b.classList.add('sai');
+          show(fb,'bad', sai < 2 ? 'Chưa đúng — em thử lại.'
+            : 'Gợi ý: đếm hàng từ <b>phải sang trái</b> — đơn vị, chục, trăm, nghìn, chục nghìn… ' +
+              'Chữ số đang nhấp nháy đứng thứ mấy, tính từ bên phải?');
+        });
+        q.appendChild(b);
+      })(j);
+    }
+    /* data-hoi="2": đã chọn đúng hàng → học sinh tự gõ giá trị; đúng mới hiện câu mẫu */
+    function hoiGiaTri(){
+      var k = L - 1 - cur, dung = s[cur] === '0' ? '0' : s[cur] + zeros(k);
+      host.setAttribute('data-gt', '1');
+      sai = 0;
+      q.innerHTML = '<p>Đúng — hàng <b class="' + hc(k) + '">' + HANG[k] + '</b>. Vậy chữ số <b>' + s[cur] +
+        '</b> có giá trị bằng bao nhiêu?</p>';
+      var wrap = el('span','xp-gt'), inp = document.createElement('input'), b = el('button','btn','Kiểm');
+      inp.type = 'text'; inp.setAttribute('aria-label','giá trị của chữ số'); b.type = 'button';
+      wrap.appendChild(inp); wrap.appendChild(b); q.appendChild(wrap);
+      function kiem(){
+        var v = inp.value.replace(/[\s.]/g, '');
+        if(!v) return;
+        if(v === dung){ fb.className = 'fb'; hienDong(cur); cur++; tiep(); return; }
+        sai++;
+        show(fb,'bad', sai < 2 ? 'Chưa đúng — em tính lại.'
+          : 'Giá trị = chữ số × giá trị của hàng. Hàng ' + HANG[k] + ' là ' + mu10(k) + ', vậy ' + s[cur] + ' × ' + mu10(k) +
+            ' bằng bao nhiêu?');
+      }
+      b.addEventListener('click', kiem);
+      inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); kiem(); } });
+      try{ inp.focus({ preventScroll: true }); }catch(err){}
+    }
+    function nutTiep(){
+      q.innerHTML = '';
+      var b = el('button','btn', cur ? 'Tách chữ số tiếp theo' : 'Bắt đầu tách'); b.type = 'button';
+      b.addEventListener('click', function(){ hienDong(cur); cur++; tiep(); });
+      q.appendChild(b);
+    }
+    function ketThuc(){
+      q.innerHTML = ''; host.removeAttribute('data-cur'); host.removeAttribute('data-gt');
+      var parts = s.split('').map(function(c, i){
+        return '<span class="' + hc(L - 1 - i) + ' hb xp-sum" style="animation-delay:' + (i * 0.25) + 's">' + giaTri(i) + '</span>';
+      });
+      sum.innerHTML = '<p class="setline">' + nhom(s) + ' = ' + parts.join(' + ') + '</p>';
+      if(okMsg) show(fb,'good', okMsg);
+      done(host);
+    }
+    function tiep(){
+      if(cur >= L){ ketThuc(); return; }
+      ds[cur].classList.add('cur');
+      if(hoi) hoiHang(); else nutTiep();
+    }
+    bRst.addEventListener('click', function(){
+      cur = 0; rows.innerHTML = ''; sum.innerHTML = ''; fb.className = 'fb';
+      ds.forEach(function(x){ x.classList.remove('cur','xong'); });
+      tiep();
+    });
+    tiep();
+  });
+
+  /* ---------- 14. Ghép thẻ vào ô (data-match) ---------- */
+  $$('[data-match]').forEach(function(host){
+    var reuse = host.getAttribute('data-reuse') === '1';
+    var okMsg = host.getAttribute('data-ok') || 'Chính xác!';
+    var pool = el('div','chips mt-pool');
+    host.insertBefore(pool, host.firstChild);
+    var slots = $$('[data-slot]', host), sel = null;
+    var bar = el('p'), bChk = el('button','btn go','Kiểm tra'), bRst = el('button','btn ghost','Xếp lại từ đầu');
+    bChk.type = 'button'; bRst.type = 'button';
+    bar.appendChild(bChk); bar.appendChild(bRst); host.appendChild(bar);
+    var fb = fbBox(host);
+
+    function boChon(){ if(sel){ sel.b.classList.remove('sel'); sel = null; } }
+    function veSlot(s){
+      s.textContent = s._tok ? s._tok.v : '';
+      s.classList.toggle('full', !!s._tok);
+      s.setAttribute('aria-label', s._tok ? 'ô đang chứa ' + s._tok.v + ', bấm để gỡ ra' : 'ô trống');
+    }
+    function xoaMau(){ fb.className = 'fb'; slots.forEach(function(x){ x.classList.remove('sai','dung'); }); }
+    function go(s){
+      if(!s._tok) return;
+      if(!reuse){ s._tok.used = false; s._tok.b.classList.remove('used'); }
+      s._tok = null; veSlot(s);
+    }
+    function dat(s, t){
+      if(!reuse) slots.forEach(function(x){ if(x._tok === t) go(x); });
+      go(s);
+      s._tok = t;
+      if(!reuse){ t.used = true; t.b.classList.add('used'); }
+      boChon(); veSlot(s); xoaMau();
+    }
+    var T = list(host.getAttribute('data-tokens')).map(function(v){
+      var b = el('button','mtok'); b.type = 'button'; b.textContent = v;
+      var t = { v: v, b: b, used: false }, ghost = null, pid = null, sx = 0, sy = 0;
+      pool.appendChild(b);
+      b.addEventListener('click', function(){
+        if(b.dataset.moved === '1'){ b.dataset.moved = '0'; return; }
+        if(sel === t){ boChon(); return; }
+        boChon(); sel = t; b.classList.add('sel');
+      });
+      b.addEventListener('pointerdown', function(e){
+        pid = e.pointerId; sx = e.clientX; sy = e.clientY; b.dataset.moved = '0';
+        try{ b.setPointerCapture(pid); }catch(err){}
+      });
+      b.addEventListener('pointermove', function(e){
+        if(pid === null) return;
+        if(!ghost && Math.abs(e.clientX - sx) + Math.abs(e.clientY - sy) < 6) return;
+        if(!ghost){ ghost = el('div','mtok ghost', esc(v)); document.body.appendChild(ghost); b.dataset.moved = '1'; }
+        ghost.style.left = (e.clientX - 24) + 'px'; ghost.style.top = (e.clientY - 21) + 'px';
+        var o = document.elementFromPoint(e.clientX, e.clientY);
+        slots.forEach(function(s){ s.classList.toggle('hover', !!o && (o === s || s.contains(o))); });
+      });
+      function up(e){
+        if(pid === null) return;
+        try{ b.releasePointerCapture(pid); }catch(err){}
+        pid = null;
+        if(!ghost) return;
+        ghost.remove(); ghost = null;
+        slots.forEach(function(x){ x.classList.remove('hover'); });
+        var o = document.elementFromPoint(e.clientX, e.clientY);
+        var s = o && o.closest ? o.closest('.mslot') : null;
+        if(s && host.contains(s)) dat(s, t);
+        setTimeout(function(){ b.dataset.moved = '0'; }, 50);
+      }
+      b.addEventListener('pointerup', up);
+      b.addEventListener('pointercancel', up);
+      return t;
+    });
+    slots.forEach(function(s){
+      s.classList.add('mslot'); s.tabIndex = 0; s.setAttribute('role','button'); s._tok = null; veSlot(s);
+      function bam(){
+        if(sel){ dat(s, sel); return; }
+        if(s._tok){ go(s); xoaMau(); }
+      }
+      s.addEventListener('click', bam);
+      s.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); bam(); } });
+    });
+    bRst.addEventListener('click', function(){ boChon(); slots.forEach(go); xoaMau(); });
+    bChk.addEventListener('click', function(){
+      var trong = slots.filter(function(s){ return !s._tok; }).length;
+      slots.forEach(function(x){ x.classList.remove('sai','dung'); });
+      if(trong){
+        show(fb,'bad','Còn <b>' + trong + '</b> ô trống. Em kéo thẻ vào ô (hoặc bấm thẻ rồi bấm ô) để điền hết nhé.');
+        return;
+      }
+      var sai = slots.filter(function(s){ return s._tok.v !== s.getAttribute('data-slot'); });
+      if(!sai.length){ slots.forEach(function(x){ x.classList.add('dung'); }); show(fb,'good', okMsg); done(host); return; }
+      sai.forEach(function(x){ x.classList.add('sai'); });
+      /* ưu tiên gợi ý theo đúng THẺ em đặt nhầm (data-hint-sai trên ô), rồi mới tới gợi ý chung của ô */
+      var h = sai.map(function(x){
+        var m = {};
+        try{ m = JSON.parse(x.getAttribute('data-hint-sai') || '{}'); }catch(err){}
+        return m[x._tok.v] || x.getAttribute('data-slot-hint');
+      }).filter(Boolean)[0];
+      show(fb,'bad','Có <b>' + sai.length + '</b> ô chưa đúng (tô cam). ' + (h || 'Em soát lại những ô đó.'));
+    });
+    void T;
+  });
+
+  /* ---------- 15. Bảng lớp – hàng bấm được (data-placetable) ---------- */
+  $$('[data-placetable]').forEach(function(host){
+    var s = (host.getAttribute('data-number') || '').replace(/\D/g, '');
+    if(!s) return;
+    var asks = list(host.getAttribute('data-ask')).map(function(x){ return x.replace(/\D/g, ''); });
+    var asksGt = list(host.getAttribute('data-ask-gt')).map(Number);
+    var okMsg = host.getAttribute('data-ok') || 'Chính xác!';
+    var L = s.length, nl = Math.ceil(L / 3), g, i, k;
+    var r1 = '<tr><th>Lớp</th>', r2 = '<tr><th>Hàng</th>', r3 = '<tr><th>Chữ số</th>';
+    for(g = nl - 1; g >= 0; g--)
+      r1 += '<th class="lop lop' + Math.min(g, 3) + '" colspan="' + Math.min(3, L - g * 3) + '">' + hoa(LOP[g] || '') + '</th>';
+    for(i = 0; i < L; i++){
+      k = L - 1 - i; g = Math.min(Math.floor(k / 3), 3);
+      var val = s[i] === '0' ? '0' : s[i] + zeros(k);
+      r2 += '<td class="hang lop' + g + '" data-c="' + i + '">' + hoa(HANG[k] || '') + '</td>';
+      r3 += '<td class="lop' + g + '" data-c="' + i + '"><button type="button" class="pd ' + hc(k) + '" data-i="' + i +
+            '" data-val="' + val + '" aria-label="chữ số ' + s[i] + ' ở hàng ' + (HANG[k] || '') + '">' + s[i] + '</button></td>';
+    }
+    var wrap = el('div','pt-wrap'), tb = el('table','ptab');
+    tb.innerHTML = r1 + '</tr>' + r2 + '</tr>' + r3 + '</tr>';
+    wrap.appendChild(tb);
+    var ask = el('div','pt-ask'), out = el('div','labout', '<span class="muted">Bấm vào một chữ số để xem nó ở hàng nào, lớp nào và có giá trị bao nhiêu.</span>');
+    var gtBox = el('div','pt-gt');
+    host.appendChild(ask); host.appendChild(wrap); host.appendChild(out); host.appendChild(gtBox);
+    var fb = fbBox(host), qi = 0, gi = 0, tong = asks.length + asksGt.length;
+    function dangHoi(){ return qi < asks.length || gi < asksGt.length; }
+    function sang(i){
+      $$('button.pd', tb).forEach(function(x){ x.classList.toggle('on', x.getAttribute('data-i') === String(i)); });
+      $$('td', tb).forEach(function(td){
+        var on = td.getAttribute('data-c') === String(i);
+        td.classList.toggle('col-on', on);
+        if(td.classList.contains('hang')) td.classList.toggle('on', on);
+      });
+    }
+    function dongDu(i){
+      var k = L - 1 - i, v = s[i] === '0' ? '0' : s[i] + zeros(k);
+      return 'Chữ số <b class="' + hc(k) + '">' + s[i] + '</b> ở <b>hàng ' + (HANG[k] || '') + '</b> (lớp ' +
+        (LOP[Math.floor(k / 3)] || '') + ') — giá trị: <b class="' + hc(k) + '">' +
+        (k === 0 ? s[i] : s[i] + ' × ' + mu10(k) + ' = ' + nhom(v)) + '</b>';
+    }
+    /* Câu ngược (data-ask-gt = chỉ số hàng k): tô sáng một chữ số, học sinh GÕ giá trị của nó */
+    function hoiGt(){
+      gtBox.innerHTML = '';
+      if(gi >= asksGt.length) return;
+      var k = asksGt[gi], i = L - 1 - k, dung = s[i] === '0' ? '0' : s[i] + zeros(k);
+      sang(i); host.setAttribute('data-gt-k', k);
+      out.innerHTML = 'Chữ số đang tô sáng: <b>' + s[i] + '</b> ở <b>hàng ' + HANG[k] + '</b>.';
+      var p = el('p', null, 'Câu ' + (asks.length + gi + 1) + '/' + tong + ': chữ số đang tô sáng có giá trị bằng bao nhiêu? ');
+      var inp = document.createElement('input'), b = el('button','btn','Kiểm'), sai = 0;
+      inp.type = 'text'; inp.setAttribute('aria-label','giá trị của chữ số đang tô sáng'); b.type = 'button';
+      p.appendChild(inp); p.appendChild(b); gtBox.appendChild(p);
+      function kiem(){
+        var v = inp.value.replace(/[\s.]/g, '');
+        if(!v) return;
+        if(v === dung){
+          out.innerHTML = dongDu(i); gi++; host.removeAttribute('data-gt-k');
+          if(!dangHoi()){ gtBox.innerHTML = ''; hoi(); show(fb,'good', okMsg); done(host); }
+          else { show(fb,'good','Đúng rồi! Sang câu tiếp theo.'); hoiGt(); }
+          return;
+        }
+        sai++;
+        show(fb,'bad', sai < 2 ? 'Chưa đúng — em tính lại.'
+          : 'Giá trị = chữ số × giá trị của hàng: ' + s[i] + ' × ' + mu10(k) + ' bằng bao nhiêu? Đếm kĩ số chữ số 0.');
+      }
+      b.addEventListener('click', kiem);
+      inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); kiem(); } });
+    }
+    function hoi(){
+      if(!tong){ ask.innerHTML = ''; return; }
+      ask.innerHTML = qi < asks.length
+        ? 'Câu ' + (qi + 1) + '/' + tong + ': bấm vào chữ số có giá trị <b>' + nhom(asks[qi]) + '</b>.'
+        : dangHoi() ? '' : '<span class="ok">Xong cả ' + tong + ' câu — giờ em bấm tự do để tra cứu.</span>';
+    }
+    hoi();
+    if(!asks.length && asksGt.length) hoiGt();
+    $$('button.pd', tb).forEach(function(b){
+      b.addEventListener('click', function(){
+        var i = +b.getAttribute('data-i'), k = L - 1 - i, v = b.getAttribute('data-val');
+        if(qi >= asks.length && gi < asksGt.length) return;          // đang ở câu gõ giá trị: giữ nguyên ô tô sáng
+        sang(i);
+        /* Đang hỏi: KHÔNG in giá trị (bấm lần lượt 12 ô là lộ đáp án). Chỉ in đủ phép tính khi đúng hoặc khi đã xong. */
+        if(!asks.length || qi >= asks.length){ out.innerHTML = dongDu(i); return; }
+        if(v === asks[qi]){
+          out.innerHTML = dongDu(i);
+          qi++; hoi();
+          if(!dangHoi()){ show(fb,'good', okMsg); done(host); }
+          else { show(fb,'good','Đúng rồi! Sang câu tiếp theo.'); if(qi >= asks.length) hoiGt(); }
+        } else {
+          var d0 = asks[qi].charAt(0);
+          out.innerHTML = 'Chữ số <b>' + s[i] + '</b> ở <b>hàng ' + (HANG[k] || '') + '</b> (lớp ' + (LOP[Math.floor(k / 3)] || '') + ').';
+          show(fb,'bad', (s[i] === d0
+            ? 'Đúng chữ số ' + d0 + ' nhưng chưa đúng hàng: ' + d0 + ' × (giá trị hàng ' + (HANG[k] || '') + ') có bằng <b>' + nhom(asks[qi]) + '</b> không?'
+            : 'Giá trị <b>' + nhom(asks[qi]) + '</b> bắt đầu bằng chữ số mấy? Tìm chữ số đó, rồi xem nó phải đứng ở hàng nào.'));
+        }
+      });
+    });
+  });
+
+  /* ---------- API cho "JS RIÊNG CỦA BÀI" ----------
+     Hình minh hoạ riêng muốn được CHẤM ĐIỂM thì: đặt data-custom trên phần tử chứa (bên trong .act[data-act]),
+     gọi Toan6.done(phần_tử) khi học sinh làm đúng, và đăng kí một hàm tự làm đúng vào Toan6.tuLam
+     để scripts/thu_tuong_tac.py bấm thử được. */
+  window.Toan6 = { done: done, show: show, fbBox: fbBox, esc: esc, list: list, el: el,
+                   nhom: nhom, HANG: HANG, itDong: itDong, tuLam: [] };
+})();
+</script>
+
+<!-- ================= JS RIÊNG CỦA BÀI — que tính La Mã, đồng hồ, bóng đèn nhị phân ================= -->
+<script>
+(function(){
+  "use strict";
+  var T6 = window.Toan6;
+  if(!T6) return;
+  function $(s, r){ return (r || document).querySelector(s); }
+  function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+
+  /* ---------- số La Mã: thành phần, giá trị, cách viết chuẩn (1 – 30) ---------- */
+  var GT  = { I: 1, V: 5, X: 10, IV: 4, IX: 9 };
+  /* Bảng màu RIÊNG của số La Mã (không trùng màu hàng h0–h6): chữ số La Mã nâu, cụm chữ số đỏ rượu */
+  var MAU = { I: '#8a5a06', V: '#8a5a06', X: '#8a5a06', IV: '#7b1f3a', IX: '#7b1f3a' };
+  var QUE = { I: 1, V: 2, X: 2 };
+  var DV  = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'];
+  function laMa(n){ return new Array(Math.floor(n / 10) + 1).join('X') + DV[n % 10]; }
+  function tach(s){
+    var out = [], i = 0;
+    while(i < s.length){
+      var hai = s.substr(i, 2);
+      if(hai === 'IV' || hai === 'IX'){ out.push(hai); i += 2; }
+      else { out.push(s[i]); i++; }
+    }
+    return out;
+  }
+  function giaTri(s){ return tach(s).reduce(function(t, p){ return t + (GT[p] || 0); }, 0); }
+  function hopLe(s){ var v = giaTri(s); return v >= 1 && v <= 30 && laMa(v) === s; }
+  function soQue(s){ return s.split('').reduce(function(t, c){ return t + (QUE[c] || 0); }, 0); }
+
+  /* ---------- vẽ que tính ---------- */
+  function kiTu(c, x){
+    var h = '';
+    function que(x1, y1, x2, y2){ h += '<line class="qs" x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '"/>' +
+                                        '<circle class="qh" cx="' + x2 + '" cy="' + y2 + '" r="4.5"/>'; }
+    if(c === 'I'){ que(x + 11, 62, x + 11, 12); return { h: h, w: 22 }; }
+    if(c === 'V'){ que(x + 22, 62, x + 6, 12); que(x + 22, 62, x + 38, 12); return { h: h, w: 44 }; }
+    que(x + 6, 62, x + 38, 12); que(x + 38, 62, x + 6, 12); return { h: h, w: 44 };
+  }
+  /* opt: tach (khung thành phần), khongSo (khung mà chưa ghi giá trị), truot (que I trượt sang trái), moi (kí tự cuối hiện ra) */
+  function veQue(s, opt){
+    opt = opt || {};
+    var parts = opt.tach ? tach(s) : [s], x = 6, h = '', G = 8, P = 7;
+    parts.forEach(function(p, pi){
+      var x0 = x, inner = '';
+      p.split('').forEach(function(c, ci){
+        var k = kiTu(c, x + (opt.tach ? P : 0));
+        var cls = '';
+        if(opt.truot && p.length === 2 && ci === 0) cls = 'truot';
+        if(opt.moi && pi === parts.length - 1 && parts.length > 1) cls = 'moi';
+        inner += cls ? '<g class="' + cls + '">' + k.h + '</g>' : k.h;
+        x += k.w + 4;
+      });
+      x -= 4;
+      if(opt.tach){
+        var w = x - x0 + 2 * P, m = MAU[p] || '#5c6577';
+        h += '<g class="tp" data-p="' + pi + '"><g' + (opt.truot && p.length === 2 ? ' class="hop"' : '') + '><rect class="qbox" x="' + x0 + '" y="2" width="' + w +
+             '" height="68" rx="10" fill="' + m + '22" stroke="' + m + '"/>' +
+             (opt.khongSo ? '' : '<text class="qval" x="' + (x0 + w / 2) + '" y="92" fill="' + m + '">' + p + ' = ' + GT[p] + '</text>') + '</g>';
+        h += inner + '</g>';
+        x = x0 + w + G;
+      } else { h += inner; x += G; }
+    });
+    var W = Math.max(x, 40), H = opt.tach && !opt.khongSo ? 100 : 74;
+    return '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" role="img" aria-label="số La Mã ' + s +
+           ' xếp bằng que tính" style="vertical-align:middle">' + h + '</svg>';
+  }
+  $$('[data-que]').forEach(function(sp){
+    sp.innerHTML = veQue(sp.getAttribute('data-que'), {
+      tach: sp.hasAttribute('data-tach'), khongSo: sp.hasAttribute('data-khong-so'),
+      truot: sp.hasAttribute('data-truot'), moi: sp.hasAttribute('data-moi') });
+  });
+
+  /* ---------- thanh trượt 1 – 30: qua 10 → 11, 20 → 21 thì một X mới trượt vào từ bên trái ---------- */
+  var tl = $('#truot-lm');
+  if(tl){
+    tl.innerHTML = '<div class="tl-dk"><button type="button" class="btn ghost" data-tl="-1" aria-label="bớt 1">◀</button>' +
+      '<input type="range" min="1" max="30" value="9" aria-label="chọn một số từ 1 đến 30">' +
+      '<button type="button" class="btn ghost" data-tl="1" aria-label="thêm 1">▶</button><span class="tl-so"></span></div>' +
+      '<div class="tl-hinh" aria-live="polite"></div><div class="tl-cau"></div>';
+    var rg = $('input', tl), tlHinh = $('.tl-hinh', tl), tlCau = $('.tl-cau', tl), tlSo = $('.tl-so', tl), truoc = 9;
+    function veTl(){
+      /* nhóm theo đúng SGK: 1–10 | 11–20 (thêm X) | 21–30 (thêm XX) */
+      function nhomSgk(x){ return x <= 10 ? 0 : x <= 20 ? 1 : 2; }
+      var n = +rg.value, r = laMa(n), p = tach(r), chuc = nhomSgk(n), cu = nhomSgk(truoc);
+      tlSo.textContent = n;
+      tlHinh.innerHTML = veQue(r, { tach: true });
+      var cau = '<b style="font:700 22px Georgia,serif">' + r + '</b> = ' + p.map(function(q){
+        return '<b style="color:' + MAU[q] + '">' + GT[q] + '</b>'; }).join(' + ') + (p.length > 1 ? ' = ' + n : '');
+      if(chuc > cu){
+        var g0 = $('.tp[data-p="0"]', tlHinh);
+        if(g0 && !T6.itDong()) g0.classList.add('vao-trai');
+        cau += ' &nbsp;·&nbsp; <b class="lm-cs">' + (chuc === 1 ? 'từ 11: thêm X vào bên trái' : 'từ 21: thêm XX vào bên trái') + '</b>';
+      }
+      tlCau.innerHTML = cau;
+      truoc = n;
+    }
+    rg.addEventListener('input', veTl);
+    $$('[data-tl]', tl).forEach(function(b){
+      b.addEventListener('click', function(){
+        rg.value = Math.max(1, Math.min(30, +rg.value + (+b.getAttribute('data-tl')))); veTl();
+      });
+    });
+    veTl();
+  }
+
+  /* ---------- mặt đồng hồ La Mã ---------- */
+  var g = $('#dong-ho-so'), dhOut = $('#dong-ho-out');
+  if(g && dhOut){
+    var html = '';
+    for(var n = 1; n <= 12; n++){
+      var a = n * Math.PI / 6, x = 150 + 102 * Math.sin(a), y = 150 - 102 * Math.cos(a), r = laMa(n);
+      html += '<g class="so" data-r="' + r + '" tabindex="0" role="button" aria-label="số La Mã ' + r + '">' +
+              '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="21"/>' +
+              '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '"' + (r.length > 3 ? ' style="font-size:17px"' : '') + '>' + r + '</text></g>';
+    }
+    g.innerHTML = html;
+    $$('.so', g).forEach(function(el){
+      function xem(){
+        $$('.so', g).forEach(function(o){ o.classList.remove('on'); });
+        el.classList.add('on');
+        var r = el.getAttribute('data-r'), p = tach(r);
+        dhOut.innerHTML = '<p style="font:700 28px Georgia,serif; margin:0">' + r + ' = ' + giaTri(r) + '</p>' +
+          '<div style="overflow-x:auto">' + veQue(r, { tach: true }) + '</div>' +
+          '<p class="small">Gồm ' + p.length + ' thành phần: ' + p.map(function(q){
+            return '<b style="color:' + MAU[q] + '">' + q + '</b>'; }).join(', ') +
+          (p.length > 1 ? ' → ' + p.map(function(q){ return GT[q]; }).join(' + ') + ' = ' + giaTri(r) : '') + '.</p>';
+      }
+      el.addEventListener('click', xem);
+      el.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); xem(); } });
+    });
+  }
+
+  /* ---------- Thử thách: bàn xếp que tính (có chấm điểm) ---------- */
+  var host = $('#que-tinh');
+  if(host){
+    var CAN = 5, s = '', tim = [];   // CAN chỉ để chấm — KHÔNG nói trước cho học sinh là có mấy số
+    host.innerHTML =
+      '<div class="qt-ban" aria-live="polite"></div>' +
+      '<div class="qt-dem"></div>' +
+      '<p style="text-align:center">' +
+        '<button type="button" class="btn" data-kt="I">Thêm I (1 que)</button>' +
+        '<button type="button" class="btn" data-kt="V">Thêm V (2 que)</button>' +
+        '<button type="button" class="btn" data-kt="X">Thêm X (2 que)</button>' +
+        '<button type="button" class="btn ghost" data-kt="lui">Bỏ kí tự cuối</button>' +
+        '<button type="button" class="btn ghost" data-kt="xoa">Xoá hết</button>' +
+        '<button type="button" class="btn go" data-kt="het">Em nghĩ đã tìm hết</button></p>' +
+      '<p class="small" style="text-align:center; margin-bottom:0">Các số tìm được (đúng 7 que):</p>' +
+      '<div class="qt-tim"></div>';
+    var ban = $('.qt-ban', host), dem = $('.qt-dem', host), bang = $('.qt-tim', host);
+    var fb = T6.fbBox(host);
+    function veBang(){
+      bang.innerHTML = tim.length ? tim.map(function(x){ return '<span class="co">' + x + ' = ' + giaTri(x) + '</span>'; }).join('')
+                                  : '<em class="muted small">chưa có số nào</em>';
+    }
+    function ve(){
+      ban.innerHTML = s ? veQue(s, { tach: hopLe(s) }) : '<span class="muted">Bàn trống — bấm I, V hoặc X để xếp que.</span>';
+      var q = soQue(s);
+      var t = '<b class="n" style="color:' + (q === 7 ? 'var(--green)' : q > 7 ? 'var(--red)' : 'var(--ink)') + '">' + q +
+              '</b> / 7 que · ';
+      if(!s) t += 'bàn trống — và cũng <b>không có</b> cách xếp que nào cho số 0 (Nhận xét 2: không có số La Mã nào biểu diễn số 0).';
+      else if(hopLe(s)){
+        var p = tach(s);
+        t += 'em xếp được số <b>' + s + '</b> = ' + (p.length > 1 ? p.map(function(x){ return GT[x]; }).join(' + ') + ' = ' : '') +
+             '<b>' + giaTri(s) + '</b>.';
+      } else if(/IIII|VV|XXXX|VX|IIV|IIX|IXI|IVI/.test(s) || giaTri(s) > 30)
+        t += '<span class="x">cách xếp ' + s + ' chưa đúng</span> bảng SGK (từ 1 đến 30). Nhìn lại bảng: 4 viết là IV, 9 viết là IX, V không đứng cạnh V.';
+      else t += '<span class="x">' + s + ' chưa phải số La Mã</span> viết đúng theo bảng SGK — thử sửa lại.';
+      dem.innerHTML = t;
+    }
+    function kiemTra(){
+      if(!hopLe(s) || soQue(s) !== 7){ if(fb.classList.contains('bad')) fb.className = 'fb'; return; }
+      if(tim.indexOf(s) >= 0){ T6.show(fb, 'bad', 'Số <b>' + s + '</b> em tìm rồi — tìm số khác nhé.'); return; }
+      tim.push(s); veBang();
+      if(tim.length >= CAN){
+        T6.show(fb, 'good', 'Tuyệt vời! Em tìm đủ cả 5 số La Mã (từ 1 đến 30) dùng đúng 7 que. ' +
+          '<span class="muted">Cô nói thêm: XXXI (31) cũng dùng 7 que, nhưng bài này chỉ học tới 30.</span>');
+        T6.done(host);
+      } else T6.show(fb, 'good', 'Tìm được <b>' + s + '</b>! Còn số nào khác cũng dùng đúng 7 que không? Bấm "Xoá hết" rồi thử tiếp.');
+    }
+    $$('[data-kt]', host).forEach(function(b){
+      b.addEventListener('click', function(){
+        var k = b.getAttribute('data-kt');
+        if(k === 'het'){
+          if(tim.length >= CAN) return;
+          T6.show(fb, 'bad', 'Chưa hết đâu — vẫn còn số khác dùng đúng 7 que. Em thử có hệ thống: số có <b>một</b> chữ X, ' +
+            'rồi số có <b>hai</b> chữ X — mỗi trường hợp còn lại mấy que cho phần bên phải, và phần đó xếp được những số nào?');
+          return;
+        }
+        if(k === 'xoa') s = '';
+        else if(k === 'lui') s = s.slice(0, -1);
+        else if(s.length >= 8){ T6.show(fb, 'bad', 'Dài quá rồi — số La Mã đến 30 không cần nhiều kí tự thế.'); return; }
+        else s += k;
+        ve(); kiemTra();
+      });
+    });
+    ve(); veBang();
+    T6.tuLam.push(function(){
+      ['XVIII', 'XXIII', 'XXIV', 'XXVI', 'XXIX'].forEach(function(so){
+        $('[data-kt="xoa"]', host).click();
+        so.split('').forEach(function(c){ $('[data-kt="' + c + '"]', host).click(); });
+      });
+    });
+  }
+
+  /* ---------- Em có biết: bóng đèn nhị phân (không chấm điểm) ---------- */
+  var den = $('#den-nhi-phan'), denOut = $('#den-out');
+  if(den && denOut){
+    var bat = [0, 0, 0, 0], h2 = '';
+    for(var i = 0; i < 4; i++){
+      var cx = 70 + i * 100;
+      h2 += '<g class="den" data-i="' + i + '" tabindex="0" role="button" aria-label="bóng đèn thứ ' + (i + 1) + '">' +
+            '<path class="bong" d="M' + (cx - 26) + ' 58 A30 30 0 1 1 ' + (cx + 26) + ' 58 C' + (cx + 18) + ' 72 ' + (cx + 14) + ' 78 ' +
+            (cx + 14) + ' 88 L' + (cx - 14) + ' 88 C' + (cx - 14) + ' 78 ' + (cx - 18) + ' 72 ' + (cx - 26) + ' 58 Z"/>' +
+            '<rect x="' + (cx - 14) + '" y="90" width="28" height="12" rx="3" fill="#9aa3b5"/>' +
+            '<text x="' + cx + '" y="134">0</text></g>';
+    }
+    den.innerHTML = h2;
+    function veDen(){
+      $$('.den', den).forEach(function(d, i){ d.classList.toggle('on', !!bat[i]); $('text', d).textContent = bat[i]; });
+      /* Chỉ nêu giá trị thập phân cho đúng hai ví dụ SGK; cách đổi dãy khác thuộc môn Tin học (ngoài chuẩn Toán 6) */
+      var chuoi = bat.join('').replace(/^0+(?=.)/, '');
+      denOut.innerHTML = 'Dãy nhị phân: <b>' + chuoi + '</b>' +
+        (chuoi === '100' ? ' — đúng ví dụ SGK: dãy 100 biểu diễn số <b>4</b>.'
+        : chuoi === '1001' ? ' — đúng ví dụ SGK: dãy 1 001 biểu diễn số <b>9</b>.'
+        : '<br><span class="muted small">SGK chỉ nêu hai ví dụ: 100 và 1 001. Cách đổi các dãy khác em sẽ học ở môn Tin học.</span>');
+    }
+    $$('.den', den).forEach(function(d){
+      function bam(){ var i = +d.getAttribute('data-i'); bat[i] = 1 - bat[i]; veDen(); }
+      d.addEventListener('click', bam);
+      d.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); bam(); } });
+    });
+    veDen();
+  }
+})();
+</script>
+</body>
+</html>

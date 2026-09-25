@@ -54,6 +54,13 @@
   th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
   th{background:#f7f3f0; font-weight:600}
   .tablewrap{overflow-x:auto}
+  /* bảng rộng hơn khung (JS đo): dòng nhắc "vuốt ngang" ngay trên, để em không bỏ sót cột khuất */
+  .vuot-ngang{font-size:13px; color:var(--muted); margin:6px 0 -4px}
+  /* sơ đồ / dòng thời gian dọc: mỗi ô một li, mũi tên ↓ giữa các ô (thay bảng SGK nhiều ô ngang ở màn hẹp) */
+  ol.sodo{list-style:none; margin:10px 0; padding:0}
+  ol.sodo > li{position:relative; background:#fff; border:1px solid #d9deea; border-radius:10px; padding:8px 12px; margin:0}
+  ol.sodo > li + li{margin-top:28px}
+  ol.sodo > li + li::before{content:"↓"; position:absolute; top:-27px; left:0; right:0; text-align:center; font-size:19px; line-height:26px; font-weight:700; color:var(--brand)}
   .box{border-left:5px solid var(--blue); background:#f8faff; border-radius:0 10px 10px 0;
     padding:12px 16px; margin:14px 0}
   .box.key{border-left-color:var(--warm); background:var(--warm-soft)}
@@ -141,7 +148,7 @@
   .muctieu::before{content:"🎯"; position:absolute; left:12px; top:7px; font-size:18px; line-height:1.4}
   .chang-cuoi{margin-top:20px; padding:10px 14px; border-radius:10px; background:#f7f8fc; border:1px dashed #d9deea; font-size:15px; display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center}
   .chang-cuoi .cc-chu{flex:1 1 220px}
-  .chang-cuoi a{color:var(--brand); font-weight:600; text-decoration:none; white-space:nowrap}
+  .chang-cuoi a{color:var(--brand); font-weight:600; text-decoration:none}
   .chang-cuoi.xong{background:#fff6d6; border:1px solid #f7d57a; color:#8a5a06}
   /* --- Nhân vật dẫn dắt + dừng lại nghĩ --- */
   .dan{display:flex; gap:10px; align-items:flex-start; margin:14px 0}
@@ -222,8 +229,8 @@
   .nguon{display:none}
   /* tô sáng trong đoạn trích */
   .tosang .doan{background:#fff; border-left:5px solid var(--purple); border-radius:0 10px 10px 0; padding:10px 14px; line-height:2}
-  /* vùng chạm >= 36 px, không ngắt giữa cụm */
-  .tosang .t{display:inline-block; white-space:nowrap; line-height:1.5; padding:5px 2px; margin:2px 0; min-height:36px;
+  /* vùng chạm >= 36 px; inline-block tự không ngắt giữa cụm — chỉ cụm dài hơn cả dòng (màn 320 px) mới gập trong hộp của nó */
+  .tosang .t{display:inline-block; white-space:normal; max-width:100%; line-height:1.5; padding:5px 2px; margin:2px 0; min-height:36px;
     border-bottom:2px dotted #b9a7e6; border-radius:6px; cursor:pointer}
   .tosang .t:hover{background:#f3eeff}
   .tosang .t.chon{background:#fde68a; border-bottom:2px solid var(--warm)}
@@ -232,6 +239,7 @@
   /* dấu câu đứng liền trước / sau cụm (JS bọc vào .t-dinh): không bị rơi xuống đầu dòng sau */
   .tosang .t-dinh{white-space:nowrap}
   .tosang .t-dinh > .t{padding-right:1px}
+  .tosang .t-dinh.co-mo > .t{padding-left:0}   /* ngoặc mở dính sát chữ đầu cụm, không hở */
   /* tô sáng theo CÂU (đoạn văn dài): .doan.theo-cau — cụm được xuống dòng tự nhiên */
   /* mỗi dòng của cụm xuống dòng cao >= 32 px (padding dọc 7px + chữ), dòng cách dòng đủ để không đè nhau */
   .tosang .doan.theo-cau{line-height:2.35}
@@ -260,7 +268,11 @@
   .bangdien table{background:#fff; margin:6px 0; table-layout:fixed}
   .bangdien tr > th:first-child{width:30%}
   .bangdien td[data-o]{padding:4px}
-  .bangdien td[data-o] textarea{display:block; width:100%; min-height:64px; font:inherit; font-size:15px; line-height:1.45; padding:6px 8px; border-radius:8px; border:1px solid #e6cf9b; background:#fff; resize:vertical}
+  .bangdien [data-o] textarea{display:block; width:100%; min-height:64px; font:inherit; font-size:15px; line-height:1.45; padding:6px 8px; border-radius:8px; border:1px solid #e6cf9b; background:#fff; resize:vertical}
+  .bangdien ol.sodo [data-o] textarea{margin-top:4px}
+  /* ô tự đánh giá (td[data-tick]) của bảng kiểm: bấm để đánh dấu, lưu trên máy; KHÔNG chấm */
+  .bangdien .tick{font:inherit; font-size:14px; min-height:34px; border-radius:999px; border:1px solid #e6cf9b; background:#fff; color:#6b4e16; padding:3px 11px; cursor:pointer; white-space:nowrap}
+  .bangdien .tick[aria-pressed="true"]{background:var(--green-soft); border-color:#7fd1b6; color:#0b6b52; font-weight:700}
   .ghi-dong{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; margin-top:4px}
   .luu-tt{font-size:13px; color:var(--muted)}
   .camxuc{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 8px}
@@ -300,6 +312,14 @@
     .cot > button{font-size:14.5px; padding-left:32px}
     .ghep,.xep,.nhom,.tosang,.ghichep,.bangdien,.quiz{padding:10px 12px}
     .bangdien th,.bangdien td{padding:5px 6px; font-size:14.5px}
+    /* bảng điền >= 3 cột ô (hoặc data-xoay): mỗi hàng thành một thẻ dọc, mỗi ô một dòng rộng có nhãn cột */
+    .bangdien.xoay table,.bangdien.xoay tbody,.bangdien.xoay tr,.bangdien.xoay th,.bangdien.xoay td{display:block; width:auto !important}
+    .bangdien.xoay table{background:transparent}
+    .bangdien.xoay tr.dau-bang{display:none}
+    .bangdien.xoay tr{background:#fff; border:1px solid #f0dcae; border-radius:10px; margin:8px 0; padding:2px}
+    .bangdien.xoay th,.bangdien.xoay td{border:0}
+    .bangdien.xoay tr > th:first-child{background:#fff6dd; border-radius:8px}
+    .bangdien.xoay td[data-nhan]::before{content:attr(data-nhan); display:block; font-size:13px; font-weight:600; color:#8a5a06; margin:2px 0}
     .thelat{grid-template-columns:repeat(auto-fill,minmax(125px,1fr)); gap:8px}
     .the{min-height:88px; padding:8px}
     .ngans{grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px}
@@ -310,7 +330,7 @@
     *{animation:none !important; transition:none !important} html{scroll-behavior:auto}
   }
   @media print{
-    .toolbar,.btn,.tbtn,.hanhtrinh,.chang-cuoi,.toast,.hd,.xep .dk,.luu-tt,.lb-soat{display:none !important}
+    .toolbar,.btn,.tbtn,.hanhtrinh,.chang-cuoi,.toast,.hd,.xep .dk,.luu-tt,.lb-soat,.vuot-ngang{display:none !important}
     .reveal{display:block !important}
     body{background:#fff} section{box-shadow:none; break-inside:auto}
     .the{min-height:0; box-shadow:none; break-inside:avoid}
@@ -319,7 +339,7 @@
     .ghep,.xep,.nhom,.tosang,.ghichep,.xemlai,.dan,.dung,.muctieu,.q{break-inside:avoid}
     .ngan{min-height:80px}
     .ghichep textarea{border:1px solid #999; min-height:110px}
-    .bangdien td[data-o] textarea{border:0; min-height:70px}
+    .bangdien [data-o] textarea{border:0; min-height:70px}
     /* bản in = phiếu bài tập làm bằng bút: ghép cặp đánh 1, 2, 3… / a, b, c…; bỏ phần chỉ để bấm */
     .cots > .cot:first-child{counter-reset:ghepT} .cots > .cot:last-child{counter-reset:ghepP}
     .cots > .cot:first-child > button{counter-increment:ghepT} .cots > .cot:last-child > button{counter-increment:ghepP}
@@ -514,7 +534,7 @@
     <div class="why">Mỗi dòng 5 tiếng — cô đã đếm cả 76 dòng của bài, dòng nào cũng vậy. Đây là một căn cứ để trả lời câu hỏi 1 ở phần Sau khi đọc.</div></div>
 </div>
 
-<div class="dung" data-giay="30"><p>🔎 <i>Hình dung:</i> Hình ảnh trái đất khi trẻ con được sinh ra. Gạch chân các chữ <i>không, chưa, chỉ</i>: trái đất lúc ấy <b>thiếu</b> những gì?</p></div>
+<div class="dung" data-giay="30"><p>🔎 <i>Hình dung:</i> Hình ảnh trái đất khi trẻ con được sinh ra. Tìm các chữ <i>không, chưa, chỉ</i>: trái đất lúc ấy <b>thiếu</b> những gì?</p></div>
 
 <h4>Khổ 2</h4>
 <p class="small muted">Khổ này dài 28 dòng, cô chia làm hai lần đọc cho em dễ theo dõi.</p>
@@ -1808,7 +1828,7 @@
     var mS = sau && sau.nodeType === 3 && /^[.,;:!?…)\]”’»"]+/.exec(sau.nodeValue);
     var mT = truoc && truoc.nodeType === 3 && /[“‘(«\["]+$/.exec(truoc.nodeValue);
     if(!mS && !mT) return;
-    var bo = tao("span", "t-dinh"); t.parentNode.insertBefore(bo, t);
+    var bo = tao("span", mT ? "t-dinh co-mo" : "t-dinh"); t.parentNode.insertBefore(bo, t);
     if(mT){ truoc.nodeValue = truoc.nodeValue.slice(0, truoc.nodeValue.length - mT[0].length); bo.appendChild(document.createTextNode(mT[0])); }
     bo.appendChild(t);
     if(mS){ sau.nodeValue = sau.nodeValue.slice(mS[0].length); bo.appendChild(document.createTextNode(mS[0])); }
@@ -1968,28 +1988,59 @@
     haiLan(xoa, "Bấm lần nữa để xoá", function(){ xoaO(); ghiKho(); });
     veCx(); tt(); veLb();
   });
-  /* ---- 7b. bảng điền theo ô (.bangdien[data-bang]) — KHÔNG chấm: mỗi td[data-o] một ô gõ, lưu từng ô ---- */
+  /* ---- 7b. bảng điền theo ô (.bangdien[data-bang]) — KHÔNG chấm: mỗi [data-o] (td của bảng, hoặc li của
+     ol.sodo) một ô gõ, lưu từng ô; td[data-tick] = ô tự đánh giá bấm đánh dấu (bảng kiểm). Bảng >= 3 cột ô
+     (hoặc data-xoay) ở màn hẹp: mỗi hàng thành một thẻ dọc (CSS .xoay), nhãn cột ghi trong data-nhan. ---- */
   $$(".bangdien[data-bang]").forEach(function(root){
-    var k = root.getAttribute("data-bang"), cac = [];
-    $$("td[data-o]", root).forEach(function(td, i){
-      var ta = td.querySelector("textarea");
-      if(!ta){ ta = tao("textarea"); ta.rows = 2; td.appendChild(ta); }
+    var k = root.getAttribute("data-bang"), cac = [], tick = [];
+    function nhanCot(td){
       var tr = td.parentNode, bang = td.closest("table"), cot = Array.prototype.indexOf.call(tr.children, td);
-      var hang = tr.children[0], dau = bang && bang.rows[0] ? bang.rows[0].children[cot] : null;
-      ta.setAttribute("aria-label", [hang !== td && hang ? hang.textContent.trim() : "", dau && dau !== td ? dau.textContent.trim() : ""].filter(Boolean).join(" — ") || "Ô em điền");
+      var hang = tr.children[0], dau = bang && bang.rows[0] && bang.rows[0] !== tr ? bang.rows[0].children[cot] : null;
+      return [hang !== td && hang ? hang.textContent.trim() : "", dau ? dau.textContent.trim() : ""];
+    }
+    $$("table", root).forEach(function(bang){
+      var soO = Math.max.apply(null, [0].concat($$("tr", bang).map(function(tr){ return $$(":scope > [data-o]", tr).length; })));
+      if(soO >= 3 || root.hasAttribute("data-xoay")){
+        root.classList.add("xoay");
+        var r0 = bang.rows[0];
+        if(r0 && !r0.querySelector("td")){ r0.classList.add("dau-bang");
+          $$("td", bang).forEach(function(td){ var n = nhanCot(td)[1]; if(n) td.setAttribute("data-nhan", n); }); }
+      }
+    });
+    $$("[data-o]", root).forEach(function(o, i){
+      var ta = o.querySelector("textarea");
+      if(!ta){ ta = tao("textarea"); ta.rows = 2; o.appendChild(ta); }
+      var nh = o.tagName === "TD" ? nhanCot(o) : [((o.querySelector("b,strong") || o).textContent || "").trim().slice(0, 60)];
+      ta.setAttribute("aria-label", nh.filter(Boolean).join(" — ") || "Ô em điền");
       var ki = k + ":" + i;
       ta.value = kho.ghi[ki] || "";
       ta.addEventListener("input", function(){ kho.ghi[ki] = ta.value; ghiKho(); tt(); });
       cac.push({ta: ta, k: ki});
     });
+    $$("[data-tick]", root).forEach(function(o, i){
+      var ki = k + ":v" + i, chu = o.getAttribute("data-tick") || "Đạt", b = nut("tick");
+      b.setAttribute("aria-label", nhanCot(o).concat([chu]).filter(Boolean).join(" — "));
+      function ve(){ var on = kho.ghi[ki] === "1"; b.setAttribute("aria-pressed", on ? "true" : "false"); b.textContent = (on ? "✓ " : "○ ") + chu; }
+      b.addEventListener("click", function(){ kho.ghi[ki] = kho.ghi[ki] === "1" ? "" : "1"; ghiKho(); ve(); tt(); });
+      o.appendChild(b); ve();
+      tick.push({ve: ve, k: ki});
+    });
     var dong = tao("div", "ghi-dong"), trangThai = tao("span", "luu-tt"), xoa = nut("btn nho", "Xoá bảng");
     dong.appendChild(trangThai); dong.appendChild(xoa); root.appendChild(dong);
-    function tt(){ trangThai.textContent = cac.some(function(c){ return c.ta.value.trim(); }) ? "✓ Đã lưu trên máy này" : "Không chấm điểm — chữ em gõ vào từng ô tự lưu trên máy này."; }
-    function xoaBang(){ cac.forEach(function(c){ c.ta.value = ""; kho.ghi[c.k] = ""; }); tt(); }
+    function tt(){ trangThai.textContent = cac.some(function(c){ return c.ta.value.trim(); }) || tick.some(function(c){ return kho.ghi[c.k] === "1"; }) ? "✓ Đã lưu trên máy này" : cac.length ? "Không chấm điểm — chữ em gõ vào từng ô tự lưu trên máy này." : "Không chấm điểm — em tự đánh dấu, máy này tự lưu."; }
+    function xoaBang(){ cac.forEach(function(c){ c.ta.value = ""; kho.ghi[c.k] = ""; }); tick.forEach(function(c){ kho.ghi[c.k] = ""; c.ve(); }); tt(); }
     xoaGhi.push(xoaBang);
     haiLan(xoa, "Bấm lần nữa để xoá cả bảng", function(){ xoaBang(); ghiKho(); });
     tt();
   });
+  /* ---- 7c. bảng rộng hơn khung (.tablewrap cuộn ngang): dòng nhắc "vuốt ngang" ngay trên bảng ---- */
+  var vuot = $$(".tablewrap").map(function(w){
+    var p = tao("p", "vuot-ngang", "↔ Bảng rộng hơn màn hình — em vuốt ngang để xem hết các cột."); p.hidden = true;
+    w.parentNode.insertBefore(p, w); return {w: w, p: p};
+  });
+  function doVuot(){ vuot.forEach(function(v){ v.p.hidden = !(v.w.clientWidth && v.w.scrollWidth > v.w.clientWidth + 2); }); }
+  window.addEventListener("resize", doVuot);
+  document.addEventListener("click", function(){ setTimeout(doVuot, 30); });     /* bảng trong gợi ý vừa mở */
   $$("[data-xem-lai]").forEach(function(root){
     var k = root.getAttribute("data-xem-lai");
     var b = nut("btn", root.getAttribute("data-nhan") || "🔮 Mở lại điều em đã ghi lúc trước");
@@ -2221,9 +2272,10 @@
   napLai(); napNhap(); updateScore(); capNhatChang(false); chipDangDoc();
 
   /* cửa cho script kiểm thử (thu_tu_cham.py, chup_anh_trang.py) — học sinh không dùng */
+  doVuot();
   window.NV6 = {
     units: units, khoa: KHOA, kho: function(){ return kho; },
-    xoaGiaoDien: xoaGiaoDien, chipDangDoc: chipDangDoc,
+    xoaGiaoDien: xoaGiaoDien, chipDangDoc: chipDangDoc, doVuot: doVuot,
     napLai: function(){ napLai(); napNhap(); updateScore(); capNhatChang(false); },
     giaiHet: function(){
       dangNap = true; units.forEach(function(u){ if(!daXong(u)) u.solve(); }); dangNap = false;

@@ -359,8 +359,13 @@
   .tc-mo{float:right; margin:-4px -6px 6px 10px; font:inherit; font-size:13px; line-height:1.4; cursor:pointer;
     padding:3px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--muted)}
   .tc-mo:hover{border-color:#c8dbff; color:var(--brand); background:var(--brand-soft)}
+  /* nút nằm trong khối của bài: CSS của khối (vd. ".khối button{…}") không được làm nút to / méo */
+  button.tc-mo.tc-mo{width:auto; height:auto; min-width:0; min-height:0; max-width:none; aspect-ratio:auto; flex:none;
+    box-shadow:none; text-transform:none; font-weight:400; letter-spacing:0; vertical-align:baseline}
+  .tc-mo-hang{display:flex; justify-content:flex-end; margin:10px 0 -6px}
+  .tc-mo-hang .tc-mo{float:none; margin:0}
   /* chiếu là việc của GV trên máy tính / máy chiếu: màn hẹp (điện thoại của em) không hiện nút chiếu */
-  @media(max-width:700px){.tc-mo,.tc-tb{display:none !important}}
+  @media(max-width:700px){.tc-mo,.tc-mo-hang,.tc-tb{display:none !important}}
   body.tc-dang{overflow:hidden}
   #tc-san{position:fixed; inset:0; z-index:9000; background:#fff; color:#141a26;
     --ink:#141a26; --muted:#3d4558; --line:#b9c1d3; --brand:#b03a0a; --green:#08805f}
@@ -424,7 +429,7 @@
     color:#fff; padding:8px 18px; border-radius:999px; font-size:15px; box-shadow:0 4px 18px rgba(0,0,0,.25)}
   .tc-den{position:absolute; inset:0; z-index:5; background:#000; cursor:none}
 
-  @media print{.tc-mo,#tc-san{display:none !important}}
+  @media print{.tc-mo,.tc-mo-hang,#tc-san{display:none !important}}
 </style>
 </head>
 
@@ -2885,7 +2890,14 @@
     b.type = 'button'; b.className = 'tc-mo'; b.textContent = '⛶ Chiếu';
     b.title = 'Chiếu riêng phần này lên màn hình, phủ kín màn hình (phím F)';
     b.addEventListener('click', function(){ vao(n, true); });
-    n.insertBefore(b, n.firstChild);
+    /* Khối là LƯỚI / hàng FLEX (vd. .thelat của Ngữ văn: display:grid): nút chèn vào trong sẽ thành MỘT Ô của lưới
+       (ô to bằng thẻ, bo tròn thành hình tròn — lỗi 25/9) → đặt nút trên một hàng riêng NGAY TRƯỚC khối.
+       Khối thường (block): nút nổi ở góc phải, bên trong khối. */
+    if(/^(inline-)?(grid|flex)$|^table/.test(getComputedStyle(n).display)){
+      var h = document.createElement('div'); h.className = 'tc-mo-hang'; h.appendChild(b);
+      n.parentNode.insertBefore(h, n);
+    } else n.insertBefore(b, n.firstChild);
+    n._tcNut = b;
   });
   function hien(n){ return n === dang || n.getClientRects().length > 0; }
   function trangGan(){
@@ -2944,7 +2956,7 @@
     try{ sessionStorage.removeItem(KHOA); }catch(e){}
     if(laToan()){ tuThoatFS = true; thoatToan(); }
     n.scrollIntoView({ block: 'center' });
-    var b = $('.tc-mo', n); if(b) try{ b.focus({ preventScroll: true }); }catch(e){}
+    var b = n._tcNut; if(b) try{ b.focus({ preventScroll: true }); }catch(e){}
   }
   function buoc(d){
     if(!dang) return;

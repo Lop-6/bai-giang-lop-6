@@ -862,16 +862,18 @@
     "ten_viet": [
       {
         "tu": "Phong's",
-        "doc": "Phong's",
-        "voice": "vi-VN-NamMinhNeural"
+        "doc": "Phong",
+        "voice": "vi-VN-NamMinhNeural",
+        "giu_duoi": "'s"
       },
       {
         "tu": "Nhung's",
-        "doc": "Nhung's",
-        "voice": "vi-VN-NamMinhNeural"
+        "doc": "Nhung",
+        "voice": "vi-VN-NamMinhNeural",
+        "giu_duoi": "'s"
       }
     ],
-    "bam": "425aa7fcc45dc860"
+    "bam": "eacc3840d4e7595c"
   },
   "read-04": {
     "file": "read-04.mp3",

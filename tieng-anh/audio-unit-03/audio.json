@@ -112,7 +112,7 @@
     {"slug": "read-02", "voice": "M2", "vai": "Nam", "text": "I have some new friends: Jimmy, Phong, and Nhung. They're in the photo. Jimmy has blonde hair and blue eyes. He's clever and creative. He likes taking photos. Phong is the tall boy. He's sporty and plays basketball very well. Nhung has curly black hair. She's kind. She shared her lunch with me today.",
      "ten_viet": ["Phong", "Nhung", "Phong", "Nhung"]},
     {"slug": "read-03", "voice": "M2", "vai": "Nam", "text": "We're having fun. Jimmy's taking photos of me. Phong's reading a comic book, and Nhung's playing the violin. I must go now.",
-     "ten_viet": ["Phong's", "Nhung's"]},
+     "ten_viet": [{"tu": "Phong's", "doc": "Phong", "giu_duoi": "'s"}, {"tu": "Nhung's", "doc": "Nhung", "giu_duoi": "'s"}]},
     {"slug": "read-04", "voice": "M2", "vai": "Nam", "text": "Please write soon. Love, Nam", "ten_viet": ["Nam"]},
     {"slug": "sp-mi", "voice": "F", "text": "Mi is twelve years old. She likes drawing and writing stories. She's good at English. She's creative and friendly.", "ten_viet": ["Mi"]},
     {"slug": "sp-an", "voice": "M", "text": "An is sixteen years old. He doesn't know English. He's funny and kind.", "ten_viet": ["An"]},

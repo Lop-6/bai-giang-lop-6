@@ -155,6 +155,7 @@
 
   /* ================= ENGINE TƯƠNG TÁC — CSS DÙNG CHUNG ================= */
   .hide{display:none !important}
+  .an-sau{display:none !important}   /* data-an-sau: an khi nhiem vu xong (vd dong "loi thoai dang giau") */
   .mo-ra{animation:hienra .45s ease-out}
   @keyframes hienra{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
   @keyframes pop{0%{transform:scale(.4); opacity:0} 70%{transform:scale(1.15); opacity:1} 100%{transform:scale(1)}}
@@ -225,7 +226,7 @@
   .fc-ipa{font-size:14px; color:var(--purple)}
   .fc-emo{font-size:40px; line-height:1}
   .fc-nghia{font-size:16px; font-weight:600; color:#6a4a00; line-height:1.3}
-  .fc-lat{position:absolute; bottom:6px; right:10px; font-size:11px; color:#9aa3b5}
+  .fc-lat{position:absolute; bottom:6px; right:10px; font-size:12.5px; color:#6b7385}
   .fc.da-xem .fc-mat.truoc{border-color:#b8e5d7}
   .fc .say.icon{margin:2px 0 0}
 
@@ -255,7 +256,7 @@
   /* 4. xếp vào cột */
   .so-pool{display:flex; flex-wrap:wrap; gap:8px; min-height:54px; padding:10px; border:2px dashed #cfd7e6;
     border-radius:12px; background:#fff; margin:6px 0 10px}
-  .so-pool:empty::after{content:"(đã xếp hết thẻ)"; color:#9aa3b5; font-size:14px}
+  .so-pool:empty::after{content:"(đã xếp hết thẻ)"; color:#6b7385; font-size:14px}
   .so-cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px}
   .so-col{border:2px solid #d4dcec; border-radius:12px; background:#fbfcff; min-height:120px; cursor:pointer}
   .so-col.moi{border-color:var(--brand); box-shadow:0 0 0 3px #c8dbff}
@@ -271,6 +272,7 @@
   .sc.chon{border-color:var(--brand); background:var(--brand-soft); box-shadow:0 0 0 3px #c8dbff}
   [data-sort].khoa .sc{cursor:default; border-color:#9fdcc6; background:var(--green-soft)}
   .so-meo{font-size:14px; color:var(--muted); margin:2px 0}
+  .sc-an{font-weight:700; color:#1d3f8f}   /* the chi co loa (data-an-chu): chu hien sau khi xep dung */
 
   /* 5. điền từ */
   .fl{display:inline-flex; align-items:center; gap:4px; vertical-align:middle; flex-wrap:wrap}
@@ -281,6 +283,8 @@
   .fl .btn{min-height:30px; padding:1px 10px; font-size:14px; margin:0}
   .fb-in{font-size:14.5px; line-height:1.4; border-radius:8px; padding:1px 8px}
   .fb-in:empty{display:none}
+  /* phan hoi o dien dat NGOAI cau (sau the p/li chua o), de cau tieng Anh khong bi be vun tren dien thoai */
+  .fb-in.fb-khoi{display:block; width:fit-content; max-width:100%; margin:2px 0 4px; line-height:1.45; padding:3px 10px}
   .fb-in.good{color:#0b5e47; background:var(--green-soft)}
   .fb-in.bad{color:#7a4a00; background:var(--warm-soft)}
   .cau-fill{line-height:2.4}
@@ -290,7 +294,7 @@
   .od + .od{border-top:1px dashed var(--line); padding-top:12px}
   .od-line{display:flex; flex-wrap:wrap; align-items:center; gap:6px; min-height:52px; padding:8px 10px;
     border-bottom:3px solid #9dbcf3; background:#f5f8ff; border-radius:10px 10px 0 0}
-  .od-line:empty::before{content:"Bấm các thẻ bên dưới theo đúng thứ tự…"; color:#9aa3b5; font-size:14px}
+  .od-line:empty::before{content:"Bấm các thẻ bên dưới theo đúng thứ tự…"; color:#6b7385; font-size:14px}
   .od-pool{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 4px; min-height:44px}
   .tk{font:inherit; font-size:17px; cursor:pointer; padding:5px 13px; min-height:40px; border-radius:10px;
     border:2px solid #d4dcec; background:#fff; color:var(--ink); transition:transform .08s}
@@ -444,6 +448,7 @@
     .fc-lat,.hd-bam,.pr-dem,.tm,.kq-game,.ghi-tt,.lam-lai,.da-luu,.buoi .dem,.noi-hang,h2 .nv{display:none !important}
     .od-line:empty::before{content:""}
     .hide.in-hien{display:block !important}
+    .bao-giau{display:none !important}
     .xem-lai .noi{display:block}
     .xem-lai .noi:empty{display:none}
     .buoi{background:none; color:inherit; border:2px solid #999}
@@ -1868,6 +1873,8 @@
   function moSau(w){
     var s = w && w.getAttribute ? w.getAttribute('data-mo-sau') : '';
     if(s) $$(s).forEach(function(t){ t.classList.remove('hide'); t.classList.add('mo-ra'); });
+    var an = w && w.getAttribute ? w.getAttribute('data-an-sau') : '';
+    if(an) $$(an).forEach(function(t){ t.classList.add('an-sau'); });
   }
   /* widget lam dung -> danh dau; nhiem vu xong khi MOI widget cham diem trong no deu xong */
   function xong(w){
@@ -2089,13 +2096,19 @@
   $$('[data-sort]').forEach(function(host){
     var cols = list(host.getAttribute('data-cols'));
     var goc = $$('[data-col]', host), sel = null;
-    var meo = el('p', 'so-meo hd-bam', 'Bấm 🔊 nghe thẻ → bấm thẻ để chọn → bấm vào cột. Bấm thẻ đã xếp để đổi cột.');
+    var anChu = host.hasAttribute('data-an-chu');
+    /* chi nhac "Bam 🔊" khi co it nhat mot the co loa; data-khong-meo: tac gia da tu viet huong dan */
+    var coLoa = goc.some(function(s){ return s.getAttribute('data-a'); });
+    var meo = host.hasAttribute('data-khong-meo') ? null : el('p', 'so-meo hd-bam',
+      (coLoa ? 'Bấm 🔊 nghe thẻ → bấm' : 'Bấm') + ' thẻ để chọn → bấm vào cột. Bấm thẻ đã xếp để đổi cột.' +
+      (anChu ? ' Thẻ chỉ có loa, không có chữ — em phải nghe; xếp đúng hết thì chữ hiện ra.' : ''));
     var pool = el('div', 'so-pool'), bang = el('div', 'so-cols'), zones = [];
     var chips = goc.map(function(s){
-      var d = el('div', 'sc', '<span>' + s.innerHTML + '</span>');
+      var d = el('div', 'sc', anChu ? '<span class="sc-an">🎧</span>' : '<span>' + s.innerHTML + '</span>');
+      d._chu = s.innerHTML;
       d.setAttribute('role', 'button'); d.setAttribute('tabindex', '0');
       d._col = s.getAttribute('data-col'); d._goi = s.getAttribute('data-goi-y') || '';
-      var b = loa(s, 'icon'); if(b) d.appendChild(b);
+      var b = loa(s, 'icon', anChu); if(b) d.appendChild(b);
       d.addEventListener('click', function(e){
         if(e.target.closest && e.target.closest('.say')) return;
         if(host._xong) return;
@@ -2119,7 +2132,10 @@
       z._ten = c; col.appendChild(h); col.appendChild(z); bang.appendChild(col); zones.push(z);
       col.addEventListener('click', function(e){ dat(z, e); });
     });
-    tron(chips, host.textContent).forEach(function(d){ pool.appendChild(d); });
+    tron(chips, host.textContent).forEach(function(d, i){
+      if(anChu){ $('.sc-an', d).textContent = '🎧 Thẻ ' + (i + 1); d._so = i + 1; }
+      pool.appendChild(d);
+    });
     var bK = nut('Kiểm tra', 'chinh'), bL = nut('Xếp lại từ đầu'), hang = el('div', '');
     hang.appendChild(bK); hang.appendChild(bL);
     bK.addEventListener('click', function(){
@@ -2129,13 +2145,14 @@
       var sai = chips.filter(function(d){ return d.parentNode._ten !== d._col; });
       if(!sai.length){
         host.classList.add('khoa');
+        if(anChu) chips.forEach(function(d){ var t = $('.sc-an', d); if(t){ t.className = ''; t.innerHTML = d._chu; } });
         show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em xếp đúng hết rồi.'));
         xong(host);
       } else {
         show(f, 'bad', 'Có <b>' + sai.length + '</b> thẻ chưa nằm đúng cột. ' +
           (chips.some(function(d){ return $('.say', d); }) ? 'Em bấm 🔊 nghe lại từng thẻ, ' : 'Em đọc lại nghĩa từng thẻ, ') +
           'so với từ mẫu của mỗi cột, rồi đổi chỗ thẻ đó.' +
-          (function(){ var g = sai.filter(function(d){ return d._goi; })[0]; return g ? '<br>💡 ' + g._goi : ''; })());
+          (function(){ var g = sai.filter(function(d){ return d._goi; })[0]; return g ? '<br>💡 ' + (anChu ? '<b>Thẻ ' + g._so + ':</b> ' : '') + g._goi : ''; })());
       }
     });
     bL.addEventListener('click', function(){
@@ -2143,7 +2160,8 @@
       chips.forEach(function(d){ d.classList.remove('chon'); pool.appendChild(d); }); sel = null; hideFb(fbBox(host));
     });
     host.innerHTML = '';
-    host.appendChild(meo); host.appendChild(pool); host.appendChild(bang); host.appendChild(hang);
+    if(meo) host.appendChild(meo);
+    host.appendChild(pool); host.appendChild(bang); host.appendChild(hang);
   });
 
   /* ---------- 6. DIEN TU: data-fill (dat ngay trong cau) ---------- */
@@ -2157,7 +2175,8 @@
     var inp = el('input'); inp.type = 'text'; inp.size = rong; inp.setAttribute('autocomplete', 'off');
     inp.setAttribute('autocapitalize', 'off'); inp.setAttribute('spellcheck', 'false');
     inp.setAttribute('aria-label', 'Ô điền từ');
-    var b = nut('Kiểm'), f = el('span', 'fb-in');
+    var b = nut('Kiểm'), f = el('div', 'fb-in fb-khoi');
+    host._fb = f;
     host.innerHTML = ''; host.appendChild(inp);
     /* dong tu goi y "(eat)" viet NGAY SAU o dien: keo vao truoc nut Kiem, de em thay dong tu truoc khi thay nut
        (tren dien thoai nut day "(eat)" xuong dong duoi) */
@@ -2166,26 +2185,30 @@
       var ng = el('span', 'fl-ngoac'); ng.textContent = mNg[0];
       sau.nodeValue = sau.nodeValue.slice(mNg[0].length); host.appendChild(ng);
     }
-    host.appendChild(b); host.appendChild(f);
+    host.appendChild(b);
+    /* phan hoi dat SAU cau (the p/li chua o), khong chen giua cau; nhieu o trong mot cau thi ghi "Ô n:" */
+    var khoi = host.closest('p,li') || host, cacO = $$('[data-fill]', khoi), nhan = '';
+    khoi.appendChild(f);   /* cuoi the p/li: xuong dong rieng (display:block), cau khong bi ngat giua chung */
+    if(cacO.length > 1) nhan = '<b>Ô ' + (cacO.indexOf(host) + 1) + ':</b> ';
+    function bao(cls, html){ f.className = 'fb-in fb-khoi' + (cls ? ' ' + cls : ''); f.innerHTML = html ? nhan + html : ''; }
     host._sai = 0;
     host._reset = function(){
       host._xong = false; host._sai = 0; host.classList.remove('xong'); host.classList.remove('dung');
-      inp.readOnly = false; inp.value = ''; b.disabled = false; f.className = 'fb-in'; f.innerHTML = '';
+      inp.readOnly = false; inp.value = ''; b.disabled = false; bao('', '');
     };
     inp.addEventListener('focus', function(){ fire(host, 'ta6-bam'); });
     function kiem(){
       if(host._xong) return;
       fire(host, 'ta6-bam');
       var v = norm(inp.value);
-      if(!v){ f.className = 'fb-in bad'; f.textContent = 'Em chưa điền gì.'; return; }
+      if(!v){ bao('bad', 'Em chưa điền gì.'); return; }
       if(dap.indexOf(v) < 0) host._sai++;
       if(dap.indexOf(v) >= 0){
         host.classList.add('dung'); inp.readOnly = true; b.disabled = true;
-        f.className = 'fb-in good'; f.innerHTML = host.getAttribute('data-ok') || '✓ Đúng rồi!';
+        bao('good', host.getAttribute('data-ok') || '✓ Đúng rồi!');
         xong(host);
       } else {
-        f.className = 'fb-in bad';
-        f.innerHTML = hsN[v] || host.getAttribute('data-goi-y') || 'Chưa đúng — em xem lại chủ ngữ và mẫu câu, rồi sửa nhé.';
+        bao('bad', hsN[v] || host.getAttribute('data-goi-y') || 'Chưa đúng — em xem lại chủ ngữ và mẫu câu, rồi sửa nhé.');
       }
     }
     b.addEventListener('click', kiem);
@@ -2338,7 +2361,8 @@
     var tong = +(host.getAttribute('data-timer') || 60), con = tong, id = null, daChay = 0, daXong = false;
     var game = host.closest('.act.game');
     var ws = game ? $$(WIDGET, game) : [];
-    var kGame = game ? (game.getAttribute('data-act') || 'game') : '';
+    /* khoa 'k2:' — ki luc cu (truoc khi can dung ngay) co the la ki luc bam bua 1 giay: khong dung lai */
+    var kGame = game ? 'k2:' + (game.getAttribute('data-act') || 'game') : '';
     host.classList.add('tm');
     var so = el('span', 'tm-so'), b = nut('⏱ Bắt đầu', 'chinh'), ghi = el('span', 'muted small', '');
     var kq = el('div', 'kq-game'); kq.setAttribute('role', 'status');
@@ -2379,13 +2403,21 @@
       daXong = true; dung();
       daChay = Math.max(1, daChay);
       var dungNgay = ws.filter(function(w){ return !w._sai; }).length;
-      var cu = kho.game[kGame], moi = !cu || daChay < cu;
-      if(daChay > 0 && moi){ kho.game[kGame] = daChay; ghiKho(); }
-      var html = (con > 0 ? '🏁 Em xong trong <b class="so">' + daChay + ' giây</b> — nhanh hơn đồng hồ!'
-                          : '🏁 Xong rồi! Lần này em cần <b class="so">' + daChay + ' giây</b> — lần sau thử nhanh hơn nhé.') +
-                 '<br>Đúng ngay lần đầu: <b>' + dungNgay + '/' + ws.length + '</b> câu.' +
-                 (daChay > 0 ? (moi ? (cu ? ' 🎉 Kỉ lục mới! (lần trước ' + mmss(cu) + ')' : '')
-                                    : ' Kỉ lục của em: ' + mmss(cu) + ' — thử phá kỉ lục nhé!') : '');
+      /* bam lai toi khi dung thi bam bua cung xong nhanh -> ki luc va loi khen "nhanh" CHI khi sai lan dau <= 1 cau */
+      var chac = dungNgay >= ws.length - 1, doanNhieu = dungNgay * 2 < ws.length;
+      var cu = kho.game[kGame], moi = chac && (!cu || daChay < cu);
+      if(moi){ kho.game[kGame] = daChay; ghiKho(); }
+      var dem = '<br>Đúng ngay lần đầu: <b>' + dungNgay + '/' + ws.length + '</b> câu.';
+      var html;
+      if(doanNhieu) html = '🏁 Xong rồi — <b class="so">' + daChay + ' giây</b>, nhưng em nhanh mà đoán nhiều.' + dem +
+        ' Chơi lại, chậm mà chắc nhé: đọc kĩ từng câu rồi mới bấm. Kỉ lục chỉ được ghi khi em sai lần đầu nhiều nhất 1 câu.';
+      else if(!chac) html = '🏁 Xong rồi! Em cần <b class="so">' + daChay + ' giây</b>.' + dem +
+        ' Kỉ lục chỉ được ghi khi em sai lần đầu nhiều nhất 1 câu — xem lại câu vừa sai rồi chơi lại nhé!' +
+        (cu ? ' Kỉ lục của em: ' + mmss(cu) + '.' : '');
+      else html = (con > 0 ? '🏁 Em xong trong <b class="so">' + daChay + ' giây</b> — nhanh hơn đồng hồ!'
+                          : '🏁 Xong rồi! Lần này em cần <b class="so">' + daChay + ' giây</b> — lần sau thử nhanh hơn nhé.') + dem +
+                 (moi ? (cu ? ' 🎉 Kỉ lục mới! (lần trước ' + mmss(cu) + ')' : ' 🎉 Đây là kỉ lục đầu tiên của em!')
+                      : ' Kỉ lục của em: ' + mmss(cu) + ' — thử phá kỉ lục nhé!');
       kq.innerHTML = html; kq.className = 'kq-game show';
       var bl = nut('↺ Chơi lại'); bl.addEventListener('click', choiLai);
       kq.appendChild(document.createElement('br')); kq.appendChild(bl);

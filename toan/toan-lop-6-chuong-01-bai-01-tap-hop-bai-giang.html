@@ -685,6 +685,8 @@
   .tc-mo{float:right; margin:-4px -6px 6px 10px; font:inherit; font-size:13px; line-height:1.4; cursor:pointer;
     padding:3px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--muted)}
   .tc-mo:hover{border-color:#c8dbff; color:var(--brand); background:var(--brand-soft)}
+  /* chiếu là việc của GV trên máy tính / máy chiếu: màn hẹp (điện thoại của em) không hiện nút chiếu */
+  @media(max-width:700px){.tc-mo,.tc-tb{display:none !important}}
   body.tc-dang{overflow:hidden}
   #tc-san{position:fixed; inset:0; z-index:9000; background:#fff; color:#141a26;
     --ink:#141a26; --muted:#3d4558; --line:#b9c1d3; --brand:#1f5fcc; --green:#08805f}
@@ -4440,7 +4442,8 @@
   var TRANG = $$(CHON).filter(function(n){ return !(n.parentElement && n.parentElement.closest(CHON)); });
   var dang = null, cho = null, zHT = 1, zTay = 0, keo = false, tuThoatFS = false, HANG = {}, LO = {};
 
-  function coCham(n){ return $$(CHAM, n).some(function(w){ return !w.closest(MIEN); }); }
+  /* khối chấm có thể CHÍNH LÀ trang chiếu (Ngữ văn: .nhom, .xep… vừa là khối vừa là trang) */
+  function coCham(n){ return (n.matches(CHAM) ? [n] : []).concat($$(CHAM, n)).some(function(w){ return !w.closest(MIEN); }); }
   function dangGiu(node){
     if(!dang || !node || !node.closest || !san.classList.contains('tc-giu')) return false;
     if(!san.contains(node) || node.closest(MIEN)) return false;
@@ -4560,9 +4563,11 @@
   function thoat(){
     if(!dang) return;
     var n = dang;
+    /* ra trang thường: việc đang hoãn thì chạy luôn (như khi tự học) — chạy TRƯỚC khi rời sân để không lưu vào máy GV */
+    san.classList.remove('tc-giu');
+    Object.keys(HANG).forEach(chayHang);
     traVe();
-    san.hidden = true; san.classList.remove('tc-giu', 'tc-nghi'); document.body.classList.remove('tc-dang');
-    Object.keys(HANG).forEach(chayHang);   /* ra trang thường: bước đã làm đúng thì mở như khi tự học */
+    san.hidden = true; san.classList.remove('tc-nghi'); document.body.classList.remove('tc-dang');
     datGio(0);
     try{ sessionStorage.removeItem(KHOA); }catch(e){}
     if(laToan()){ tuThoatFS = true; thoatToan(); }

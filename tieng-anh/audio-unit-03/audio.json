@@ -117,6 +117,8 @@
     {"slug": "sp-mi", "voice": "F", "text": "Mi is twelve years old. She likes drawing and writing stories. She's good at English. She's creative and friendly.", "ten_viet": ["Mi"]},
     {"slug": "sp-an", "voice": "M", "text": "An is sixteen years old. He doesn't know English. He's funny and kind.", "ten_viet": ["An"]},
     {"slug": "sp-vy", "voice": "F", "text": "Vy is fourteen years old. She likes playing sports. Her English isn't very good. She's clever, but she isn't active.", "ten_viet": ["Vy"]},
-    {"slug": "sp-01", "voice": "F", "text": "I want to go to this camp because I can speak English there."}
+    {"slug": "sp-01", "voice": "F", "text": "I want to go to this camp because I can speak English there."},
+    {"slug": "gr-rule-01", "voice": "F", "text": "We use the present continuous for actions happening now."},
+    {"slug": "gr-rule-02", "voice": "F", "text": "We can use the present continuous with now, at present, or at the moment."}
   ]
 }

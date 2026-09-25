@@ -4,266 +4,408 @@
     "kieu": "don",
     "text": "activity",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "4c40b3a6eff9d9f8"
   },
   "voc-art": {
     "file": "voc-art.mp3",
     "kieu": "don",
     "text": "art",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "f20414ce6ea9c5ae"
   },
   "voc-boarding-school": {
     "file": "voc-boarding-school.mp3",
     "kieu": "don",
     "text": "boarding school",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "fc93db18a493b0df"
   },
   "voc-calculator": {
     "file": "voc-calculator.mp3",
     "kieu": "don",
     "text": "calculator",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "87eb5637a9b405a5"
   },
   "voc-classmate": {
     "file": "voc-classmate.mp3",
     "kieu": "don",
     "text": "classmate",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "5dbd04c7e24cf71d"
   },
   "voc-compass": {
     "file": "voc-compass.mp3",
     "kieu": "don",
     "text": "compass",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "581b2271682cf2c6"
   },
   "voc-favourite": {
     "file": "voc-favourite.mp3",
     "kieu": "don",
     "text": "favourite",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "b9ab2d0f773056e9"
   },
   "voc-help": {
     "file": "voc-help.mp3",
     "kieu": "don",
     "text": "help",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "b1b7af0d1e679bff"
   },
   "voc-international": {
     "file": "voc-international.mp3",
     "kieu": "don",
     "text": "international",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "80e4cab0f87cbc62"
   },
   "voc-interview": {
     "file": "voc-interview.mp3",
     "kieu": "don",
     "text": "interview",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "36f56e9dac1c6889"
   },
   "voc-knock": {
     "file": "voc-knock.mp3",
     "kieu": "don",
     "text": "knock",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "089df3633a23ae41"
   },
   "voc-remember": {
     "file": "voc-remember.mp3",
     "kieu": "don",
     "text": "remember",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "61e05e03009a9aa1"
   },
   "voc-share": {
     "file": "voc-share.mp3",
     "kieu": "don",
     "text": "share",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "329c1f3af34c5b97"
   },
   "voc-smart": {
     "file": "voc-smart.mp3",
     "kieu": "don",
     "text": "smart",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "9f423e03db114d9b"
   },
   "voc-swimming-pool": {
     "file": "voc-swimming-pool.mp3",
     "kieu": "don",
     "text": "swimming pool",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "409ac5a3cf75f30d"
   },
   "thing-pencil-sharpener": {
     "file": "thing-pencil-sharpener.mp3",
     "kieu": "don",
     "text": "pencil sharpener",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "bfba8c0c54e5e1e0"
   },
   "thing-school-bag": {
     "file": "thing-school-bag.mp3",
     "kieu": "don",
     "text": "school bag",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "ec4fc3a515529c8f"
   },
   "thing-rubber": {
     "file": "thing-rubber.mp3",
     "kieu": "don",
     "text": "rubber",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "248e60bf65cab420"
   },
   "thing-pencil-case": {
     "file": "thing-pencil-case.mp3",
     "kieu": "don",
     "text": "pencil case",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "23d17eccb5a05ad1"
   },
   "act-school-lunch": {
     "file": "act-school-lunch.mp3",
     "kieu": "don",
     "text": "school lunch",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "3742b2ca5ac799e0"
   },
   "act-exercise": {
     "file": "act-exercise.mp3",
     "kieu": "don",
     "text": "exercise",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "0f31e9ddb9004809"
   },
   "act-english": {
     "file": "act-english.mp3",
     "kieu": "don",
     "text": "English",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "7babf6e49cc26efc"
   },
   "act-science": {
     "file": "act-science.mp3",
     "kieu": "don",
     "text": "science",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "8651b5217782d830"
   },
   "act-history": {
     "file": "act-history.mp3",
     "kieu": "don",
     "text": "history",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "de3f7db0c2b46052"
   },
   "act-football": {
     "file": "act-football.mp3",
     "kieu": "don",
     "text": "football",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "9340b12c52b64d59"
   },
   "act-homework": {
     "file": "act-homework.mp3",
     "kieu": "don",
     "text": "homework",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "373c215dbb66ed7d"
   },
   "act-lessons": {
     "file": "act-lessons.mp3",
     "kieu": "don",
     "text": "lessons",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "988c1e35f4aa4cdf"
   },
   "act-music": {
     "file": "act-music.mp3",
     "kieu": "don",
     "text": "music",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "622f6c1c780dad91"
+  },
+  "act-judo": {
+    "file": "act-judo.mp3",
+    "kieu": "don",
+    "text": "judo",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "472e988b163ca225"
+  },
+  "act-maths": {
+    "file": "act-maths.mp3",
+    "kieu": "don",
+    "text": "maths",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6c6cb49711e62642"
+  },
+  "act-breakfast": {
+    "file": "act-breakfast.mp3",
+    "kieu": "don",
+    "text": "breakfast",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "14613f99e52f8fd7"
+  },
+  "act-volleyball": {
+    "file": "act-volleyball.mp3",
+    "kieu": "don",
+    "text": "volleyball",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "064af3795cf3e6b0"
+  },
+  "act-karate": {
+    "file": "act-karate.mp3",
+    "kieu": "don",
+    "text": "karate",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "42dda8b28c519d46"
+  },
+  "act-dinner": {
+    "file": "act-dinner.mp3",
+    "kieu": "don",
+    "text": "dinner",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "64d6ba66d37ede7d"
+  },
+  "act-badminton": {
+    "file": "act-badminton.mp3",
+    "kieu": "don",
+    "text": "badminton",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b1f51e5df49c2d2c"
+  },
+  "act-geography": {
+    "file": "act-geography.mp3",
+    "kieu": "don",
+    "text": "geography",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "04f5f2e96784cd5b"
   },
   "pr-carton": {
     "file": "pr-carton.mp3",
     "kieu": "don",
     "text": "carton",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "5c078459760d176a"
   },
   "pr-class": {
     "file": "pr-class.mp3",
     "kieu": "don",
     "text": "class",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "355fb8fa2800e118"
   },
   "pr-subject": {
     "file": "pr-subject.mp3",
     "kieu": "don",
     "text": "subject",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "161d63efbaeeecef"
   },
   "pr-study": {
     "file": "pr-study.mp3",
     "kieu": "don",
     "text": "study",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "3ecc6941892fc59f"
   },
   "pr-monday": {
     "file": "pr-monday.mp3",
     "kieu": "don",
     "text": "Monday",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "96a8e5a0aa221a28"
+  },
+  "pr-club": {
+    "file": "pr-club.mp3",
+    "kieu": "don",
+    "text": "club",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b4f7f424fe683bc8"
+  },
+  "pr-garden": {
+    "file": "pr-garden.mp3",
+    "kieu": "don",
+    "text": "garden",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "56b206d757333e9f"
+  },
+  "pr-money": {
+    "file": "pr-money.mp3",
+    "kieu": "don",
+    "text": "money",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f687d1bf4a00bc41"
+  },
+  "pr-uniform": {
+    "file": "pr-uniform.mp3",
+    "kieu": "don",
+    "text": "uniform",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "37bbdaf78abc87c7"
+  },
+  "pr-much": {
+    "file": "pr-much.mp3",
+    "kieu": "don",
+    "text": "much",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e5cf69b47f8b196a"
   },
   "prs-1": {
     "file": "prs-1.mp3",
     "kieu": "don",
     "text": "My brother has a new compass.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "5cab73289076ed12"
   },
   "prs-2": {
     "file": "prs-2.mp3",
     "kieu": "don",
     "text": "Our classroom is large.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "cbaa2e7324644580"
   },
   "prs-3": {
     "file": "prs-3.mp3",
     "kieu": "don",
     "text": "They look smart on their first day at school.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "a9202a9778c52591"
   },
   "prs-4": {
     "file": "prs-4.mp3",
     "kieu": "don",
     "text": "The art lesson starts at nine o'clock.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "56e36c0d6d45128d"
   },
   "prs-5": {
     "file": "prs-5.mp3",
     "kieu": "don",
     "text": "He goes out to have lunch every Sunday.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "f1e74e48dbfc441e"
   },
   "gs-01": {
     "file": "gs-01.mp3",
@@ -277,7 +419,8 @@
         "doc": "Vy",
         "voice": "vi-VN-NamMinhNeural"
       }
-    ]
+    ],
+    "bam": "260c59cca7726a38"
   },
   "gs-02": {
     "file": "gs-02.mp3",
@@ -291,14 +434,16 @@
         "doc": "Phong",
         "voice": "vi-VN-HoaiMyNeural"
       }
-    ]
+    ],
+    "bam": "e47c41e65852cff1"
   },
   "gs-03": {
     "file": "gs-03.mp3",
     "kieu": "don",
     "text": "Just a minute.",
     "voice": "en-GB-RyanNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "756b9d0c4aaae4b2"
   },
   "gs-04": {
     "file": "gs-04.mp3",
@@ -312,7 +457,8 @@
         "doc": "Duy",
         "voice": "vi-VN-HoaiMyNeural"
       }
-    ]
+    ],
+    "bam": "7c0df59ebe613d06"
   },
   "gs-05": {
     "file": "gs-05.mp3",
@@ -326,13 +472,14 @@
         "doc": "Duy",
         "voice": "vi-VN-NamMinhNeural"
       }
-    ]
+    ],
+    "bam": "521ab55578f96065"
   },
   "gs-06": {
     "file": "gs-06.mp3",
     "kieu": "ten",
     "text": "Hi, Phong. I live near here, and we go to the same school!",
-    "voice": "en-GB-RyanNeural",
+    "voice": "en-GB-ThomasNeural",
     "rate": "+0%",
     "ten_viet": [
       {
@@ -340,21 +487,24 @@
         "doc": "Phong",
         "voice": "vi-VN-NamMinhNeural"
       }
-    ]
+    ],
+    "bam": "3432ce5f48c48833"
   },
   "gs-07": {
     "file": "gs-07.mp3",
     "kieu": "don",
     "text": "Good. Hmm, your school bag looks heavy.",
     "voice": "en-GB-RyanNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "c533e1147d40d259"
   },
   "gs-08": {
     "file": "gs-08.mp3",
     "kieu": "don",
     "text": "Yes! I have new books, and we have new subjects to study.",
-    "voice": "en-GB-RyanNeural",
-    "rate": "+0%"
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "7cc734a8d638a3ae"
   },
   "gs-09": {
     "file": "gs-09.mp3",
@@ -368,13 +518,14 @@
         "doc": "Duy",
         "voice": "vi-VN-NamMinhNeural"
       }
-    ]
+    ],
+    "bam": "48a3d5881dac66d6"
   },
   "gs-10": {
     "file": "gs-10.mp3",
     "kieu": "ten",
     "text": "Thanks, Phong. We always look smart in our uniforms.",
-    "voice": "en-GB-RyanNeural",
+    "voice": "en-GB-ThomasNeural",
     "rate": "+0%",
     "ten_viet": [
       {
@@ -382,91 +533,136 @@
         "doc": "Phong",
         "voice": "vi-VN-NamMinhNeural"
       }
-    ]
+    ],
+    "bam": "7b640bf72dcb6881"
   },
   "gs-11": {
     "file": "gs-11.mp3",
     "kieu": "don",
     "text": "Let me put on my uniform. Then we can go.",
     "voice": "en-GB-RyanNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "486914b091f0fe56"
   },
   "gr-01": {
     "file": "gr-01.mp3",
     "kieu": "don",
     "text": "We usually go to school by bus.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "6bf35d1f285743d7"
   },
   "gr-02": {
     "file": "gr-02.mp3",
     "kieu": "don",
     "text": "I don't like school lunch very much.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "ea902305c6e6b3d8"
   },
   "gr-03": {
     "file": "gr-03.mp3",
     "kieu": "don",
     "text": "Tom usually takes the bus to school.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "c23d1d7b57f1cda8"
   },
   "gr-04": {
     "file": "gr-04.mp3",
     "kieu": "don",
     "text": "They don't often go to the cinema.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "7ac5377878a1f29d"
   },
   "gr-05": {
     "file": "gr-05.mp3",
     "kieu": "don",
-    "text": "We have new subjects for this school year.",
+    "text": "We use the present simple to talk about actions or events that often happen, or are fixed.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "9489977445211044"
   },
   "gr-06": {
     "file": "gr-06.mp3",
-    "kieu": "ten",
-    "text": "Duy cycles to school every day.",
+    "kieu": "don",
+    "text": "We use adverbs of frequency to show how often something happens.",
     "voice": "en-GB-SoniaNeural",
     "rate": "+0%",
-    "ten_viet": [
-      {
-        "tu": "Duy",
-        "doc": "Duy",
-        "voice": "vi-VN-HoaiMyNeural"
-      }
-    ]
+    "bam": "ff8afa54f4690276"
   },
   "gr-07": {
     "file": "gr-07.mp3",
     "kieu": "don",
-    "text": "She doesn't have a brother.",
-    "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
-  },
-  "gr-08": {
-    "file": "gr-08.mp3",
-    "kieu": "don",
-    "text": "Where do you live?",
-    "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
-  },
-  "gr-09": {
-    "file": "gr-09.mp3",
-    "kieu": "ten",
-    "text": "Does Vy walk to school with you?",
+    "text": "We usually place the adverb of frequency before the main verb.",
     "voice": "en-GB-SoniaNeural",
     "rate": "+0%",
-    "ten_viet": [
-      {
-        "tu": "Vy",
-        "doc": "Vy",
-        "voice": "vi-VN-HoaiMyNeural"
-      }
-    ]
+    "bam": "0c825f48838c7ac6"
+  },
+  "gr-10": {
+    "file": "gr-10.mp3",
+    "kieu": "don",
+    "text": "The present simple verbs with he, she, it need an s, es.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3d9812097b6e00bd"
+  },
+  "gr-11": {
+    "file": "gr-11.mp3",
+    "kieu": "don",
+    "text": "We often use them with the present simple.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "16711b41319089f4"
+  },
+  "adv-always": {
+    "file": "adv-always.mp3",
+    "kieu": "don",
+    "text": "always",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d01ef5a8894636ed"
+  },
+  "adv-usually": {
+    "file": "adv-usually.mp3",
+    "kieu": "don",
+    "text": "usually",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dd494b8ec5b773bb"
+  },
+  "adv-often": {
+    "file": "adv-often.mp3",
+    "kieu": "don",
+    "text": "often",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "24f932d79e7fd16a"
+  },
+  "adv-sometimes": {
+    "file": "adv-sometimes.mp3",
+    "kieu": "don",
+    "text": "sometimes",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "432a3e63649e707f"
+  },
+  "adv-rarely": {
+    "file": "adv-rarely.mp3",
+    "kieu": "don",
+    "text": "rarely",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8fdb00dd9b2cc8b4"
+  },
+  "adv-never": {
+    "file": "adv-never.mp3",
+    "kieu": "don",
+    "text": "never",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a6a5f95e781ed45d"
   },
   "com-01": {
     "file": "com-01.mp3",
@@ -485,7 +681,8 @@
         "doc": "Duy",
         "voice": "vi-VN-HoaiMyNeural"
       }
-    ]
+    ],
+    "bam": "39d6a616109f5979"
   },
   "com-02": {
     "file": "com-02.mp3",
@@ -499,13 +696,14 @@
         "doc": "Duy",
         "voice": "vi-VN-NamMinhNeural"
       }
-    ]
+    ],
+    "bam": "521ab55578f96065"
   },
   "com-03": {
     "file": "com-03.mp3",
     "kieu": "ten",
     "text": "Hi, Phong. Nice to meet you, too.",
-    "voice": "en-GB-RyanNeural",
+    "voice": "en-GB-ThomasNeural",
     "rate": "+0%",
     "ten_viet": [
       {
@@ -513,14 +711,16 @@
         "doc": "Phong",
         "voice": "vi-VN-NamMinhNeural"
       }
-    ]
+    ],
+    "bam": "98d9f7be407d1b1c"
   },
   "read-sunrise": {
     "file": "read-sunrise.mp3",
     "kieu": "don",
     "text": "Sunrise is a boarding school in Sydney. Students study and live there. About one thousand two hundred boys and girls go to Sunrise. It has students from all over Australia. They study subjects like maths, science and English.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "91b07949274606c6"
   },
   "read-anson": {
     "file": "read-anson.mp3",
@@ -539,76 +739,103 @@
         "doc": "Bắc Ninh",
         "voice": "vi-VN-HoaiMyNeural"
       }
-    ]
+    ],
+    "bam": "41ae887e59c9dbb6"
   },
   "read-dream": {
     "file": "read-dream.mp3",
     "kieu": "don",
     "text": "Dream is an international school. Here students learn English with English-speaking teachers. In the afternoon, they join many interesting clubs. They play sports and games. Some students do paintings in the art club.",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "383693918158f3d6"
   },
   "sp-01": {
     "file": "sp-01.mp3",
     "kieu": "don",
     "text": "Which school would you like to go to?",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "ec3c3cd0940b2f7a"
   },
   "sp-02": {
     "file": "sp-02.mp3",
     "kieu": "don",
     "text": "I'd like to go to Dream School.",
     "voice": "en-GB-RyanNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "836c537c355690ab"
   },
   "sp-03": {
     "file": "sp-03.mp3",
     "kieu": "don",
     "text": "Why?",
     "voice": "en-GB-SoniaNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "58a19fb68b0d7510"
   },
   "sp-04": {
     "file": "sp-04.mp3",
     "kieu": "don",
     "text": "Because I'd like to paint in the art club.",
     "voice": "en-GB-RyanNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "a04b98b3ee1ab02d"
   },
   "ten-vy": {
     "file": "ten-vy.mp3",
     "kieu": "don",
     "text": "Vy",
     "voice": "vi-VN-HoaiMyNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "00df8967417358d3"
   },
   "ten-phong": {
     "file": "ten-phong.mp3",
     "kieu": "don",
     "text": "Phong",
     "voice": "vi-VN-NamMinhNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
   },
   "ten-duy": {
     "file": "ten-duy.mp3",
     "kieu": "don",
     "text": "Duy",
     "voice": "vi-VN-NamMinhNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "052e89004ca5a339"
+  },
+  "ten-nguyet": {
+    "file": "ten-nguyet.mp3",
+    "kieu": "don",
+    "text": "Nguyệt",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "ef7abcd6e47b3d6b"
+  },
+  "ten-hoang": {
+    "file": "ten-hoang.mp3",
+    "kieu": "don",
+    "text": "Hoàng",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "d563a645f61bda78"
   },
   "ten-an-son": {
     "file": "ten-an-son.mp3",
     "kieu": "don",
     "text": "An Sơn",
     "voice": "vi-VN-HoaiMyNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "08999a229c000ad3"
   },
   "ten-bac-ninh": {
     "file": "ten-bac-ninh.mp3",
     "kieu": "don",
     "text": "Bắc Ninh",
     "voice": "vi-VN-HoaiMyNeural",
-    "rate": "+0%"
+    "rate": "+0%",
+    "bam": "43e97b14e4e2cda3"
   }
 }

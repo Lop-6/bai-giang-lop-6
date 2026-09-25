@@ -103,6 +103,8 @@
     {"slug": "wr-01", "voice": "F", "text": "Hi Mira,"},
     {"slug": "wr-02", "voice": "F", "text": "Thanks for your email. Now I'll tell you about my house."},
     {"slug": "wr-03", "voice": "F", "text": "What about you? Where do you live? Tell me in your next email."},
-    {"slug": "wr-04", "voice": "F", "text": "All the best,"}
+    {"slug": "wr-04", "voice": "F", "text": "All the best,"},
+    {"slug": "gr-rule-01", "voice": "F", "text": "Prepositions of place describe where people or things are."},
+    {"slug": "gr-rule-02", "voice": "F", "text": "These are some prepositions of place."}
   ]
 }

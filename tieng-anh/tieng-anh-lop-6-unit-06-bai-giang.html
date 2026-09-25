@@ -346,6 +346,12 @@
   /* .chi-in: dong chi hien khi IN (tro toi Phieu cho nguoi nha doc); .chi-may: chu chi hien tren may ("bam tung tu")
      engine tu them .chi-in cho nhiem vu nghe / the giau chu / mini-game co loa (review Unit 6) */
   .chi-in{display:none}
+  /* review Unit 1: Phieu cho nguoi nha doc in kem trong HTML (web khong co .md) - ghep_bai_giang.py tu chep tu .md khi
+     noi-dung.html chua co #phieu-in; lo trinh dai gap trong <details class="lo-trinh"> de nut bam dau tien o man hinh dau */
+  details.lo-trinh{margin:12px 0; padding:8px 12px; border:1px dashed #b9c3d6; border-radius:10px; background:#fbfcff}
+  details.lo-trinh > summary{cursor:pointer; min-height:32px; line-height:32px}
+  details.lo-trinh[open] > summary{margin-bottom:6px}
+  p.nhay-game{margin:14px 0; padding:10px 14px; border-radius:10px; background:#fff6dd; border:1px solid #f0d58a}
   #khen{position:fixed; top:64px; right:16px; z-index:98; background:#fff; color:#0b5e47; border:2px solid #b8e5d7;
     border-radius:14px; padding:8px 14px; font-size:15px; font-weight:600; box-shadow:0 8px 24px rgba(15,80,60,.18);
     opacity:0; transform:translateY(-8px); transition:opacity .25s, transform .25s; pointer-events:none; max-width:78vw}
@@ -476,6 +482,8 @@
     .fc-doan,.fc-dem-doan,.chi-may{display:none !important}
     .chi-in{display:block !important}
     span.chi-in{display:inline !important}
+    details.lo-trinh{border:0; padding:0}
+    .phieu-in{page-break-before:always}
     .od-line:empty::before{content:""}
     .hide.in-hien{display:block !important}
     .bao-giau{display:none !important}
@@ -880,8 +888,8 @@
     <h4><span class="tag">NHIỆM VỤ 7</span> Tám thẻ bí mật — chỉ có loa, không có chữ! Nghe, đọc theo, rồi xếp vào cột /s/ hay /ʃ/</h4>
     <p class="small">Mỗi thẻ có một âm /s/ hoặc một âm /ʃ/ — ở đầu, ở giữa hoặc ở cuối từ. Nhìn chữ thì dễ bị lừa (có chữ <b>c</b> đọc là /s/,
     có chữ <b>c</b> lại đọc là /ʃ/); ở đây em phải dùng <b>tai</b> và <b>môi</b>.</p>
-    <p class="chi-in small">🖨️ <b>Bản in:</b> thẻ nghe không in được chữ — nhờ người nhà mở <b>Phiếu cho người nhà đọc</b> ở cuối bản
-    <b>.md</b> (mục NV7), đọc to từng từ theo số; em không nhìn phiếu, nghe rồi viết số vào cột /s/ hoặc /ʃ/.</p>
+    <p class="chi-in small">🖨️ <b>Bản in:</b> thẻ nghe không in được chữ — nhờ người nhà mở <b>Phiếu cho người nhà đọc</b> ở trang
+    cuối của bản in này (mục NV7), đọc to từng từ theo số; em không nhìn phiếu, nghe rồi viết số vào cột /s/ hoặc /ʃ/.</p>
     <div data-sort data-an-chu data-cols="/s/;/ʃ/" data-ok="Tai em thính lắm! /s/ xì như rắn, /ʃ/ suỵt tròn môi. Sáu từ của sách vừa mở ra bên dưới.">
       <span data-col="/s/" data-a="pr-rice" data-t="rice" data-goi-y="Thẻ này rất ngắn: nghe âm ở CUỐI thẻ. Đọc theo — môi em dẹt ra hay tròn chu lại?">rice</span>
       <span data-col="/ʃ/" data-a="pr-shopping" data-t="shopping">shopping</span>
@@ -939,7 +947,7 @@
   <div class="act" data-act="nghe-s-sh" data-nguon="luyen" data-mo-sau="#tho-dao">
     <h4><span class="tag">NHIỆM VỤ 8</span> Tai thính: bấm loa nghe một từ (không hiện chữ) — từ đó có âm nào? Rồi nói theo bài thơ</h4>
     <p class="small">Có từ <b>không có</b> âm /s/ mà cũng không có âm /ʃ/ — nghe thật kĩ<span class="chi-may">, bấm <b>Chậm</b> nếu cần</span>.</p>
-    <p class="chi-in small">🖨️ <b>Bản in:</b> nhờ người nhà mở <b>Phiếu cho người nhà đọc</b> ở cuối bản <b>.md</b> (mục NV8), đọc to
+    <p class="chi-in small">🖨️ <b>Bản in:</b> nhờ người nhà mở <b>Phiếu cho người nhà đọc</b> ở trang cuối của bản in này (mục NV8), đọc to
     từng từ; em không nhìn phiếu, nghe rồi nói âm.</p>
     <div data-listen data-a="pr-salt" data-t="salt" data-opts="/s/;/ʃ/;không có /s/ hay /ʃ/" data-answer="/s/" data-giu-thu-tu
          data-hint-sai='{"/ʃ/":"Nghe lại âm ĐẦU từ và đọc theo: môi em tròn chu ra, hay dẹt và xì như rắn?","không có /s/ hay /ʃ/":"Nghe lại âm đầu từ: có một tiếng xì nhẹ không? Bấm Chậm."}'>Câu 1: Từ em nghe có âm nào?</div>
@@ -999,7 +1007,7 @@
     <p class="small">Một bạn nhỏ mặc áo mưa xanh vừa mở cửa bước vào nhà; người mẹ đang nấu ăn quay lại nói:</p>
     <p><i>Nam, you shouldn't come in with your raincoat on.</i> <button class="say line icon" data-a="gr-01" data-t="Nam, you shouldn't come in with your raincoat on."></button></p>
     <p class="small">= "Nam, con không nên mặc nguyên áo mưa đi vào nhà." — mẹ không cấm, mẹ <b>khuyên</b>: làm thế thì ướt nhà. Tên
-      <i>Nam</i> <button class="say mini" data-a="ten-nam" data-lang="vi-VN" data-t="Nam">Nam</button> đọc theo tiếng Việt.</p>
+      <button class="say mini" data-a="ten-nam" data-lang="vi-VN" data-t="Nam">Nam</button> đọc theo tiếng Việt.</p>
   </div>
 
   <div class="box remember">
@@ -1358,7 +1366,7 @@
   <div class="mo-dau">
     <span class="label">🌏 Bạn nhỏ ở nước khác đón năm mới thế nào?</span>
     <p>Ở Mĩ, ở Trung Quốc, trẻ em có được lì xì không? Có ai thức đến nửa đêm xem pháo hoa như em không? Ba bạn nhỏ ở ba nơi —
-    <b>Russ</b> (nước Mĩ), <b>Wu</b> (Trung Quốc) và <b>Mai</b> <button class="say mini" data-a="ten-mai" data-lang="vi-VN" data-t="Mai">Mai</button>
+    <b>Russ</b> (nước Mĩ), <b>Wu</b> (Trung Quốc) và <button class="say mini" data-a="ten-mai" data-lang="vi-VN" data-t="Mai">Mai</button>
     (Việt Nam) — mỗi bạn kể một đoạn ngắn. <i>Russ, Wu</i> là tên nước ngoài; <i>Mai</i> đọc theo tiếng Việt.</p>
   </div>
 
@@ -1712,7 +1720,7 @@
     <div data-mcq data-opts="cheer;throw;behave" data-answer="cheer" data-tron="5"
          data-hint-sai='{"throw":"throw là ném, vứt. Cả sân đang vỗ tay, hò hét vui mừng — Glossary gọi việc đó là gì?","behave":"behave là cư xử. Cả sân đang vỗ tay, hò hét vui mừng — việc đó là gì?"}'>1. ⚽ Đội bóng của em ghi bàn! Cả sân vận động đứng bật dậy, vỗ tay, hò hét vang trời. Các cổ động viên đang ___.</div>
     <div data-listen data-a="pr-sing" data-t="sing" data-opts="/s/;/ʃ/;không có /s/ hay /ʃ/" data-answer="/s/" data-giu-thu-tu
-         data-hint-sai='{"/ʃ/":"Đọc theo âm đầu từ: môi em tròn chu ra, hay dẹt và xì như rắn?","không có /s/ hay /ʃ/":"Nghe lại âm đầu từ: có tiếng xì nhẹ không?"}'>2. Nghe một từ — từ đó có âm nào?<span class="chi-in"> (🖨️ Bản in: người nhà đọc từ ở mục Mini-game câu 2 của Phiếu cho người nhà đọc, cuối bản .md.)</span></div>
+         data-hint-sai='{"/ʃ/":"Đọc theo âm đầu từ: môi em tròn chu ra, hay dẹt và xì như rắn?","không có /s/ hay /ʃ/":"Nghe lại âm đầu từ: có tiếng xì nhẹ không?"}'>2. Nghe một từ — từ đó có âm nào?<span class="chi-in"> (🖨️ Bản in: người nhà đọc từ ở mục Mini-game câu 2 của Phiếu cho người nhà đọc, trang cuối của bản in này.)</span></div>
     <div data-mcq data-opts="nên đánh răng hai lần mỗi ngày;bắt buộc phải đánh răng hai lần mỗi ngày;không được đánh răng hai lần mỗi ngày" data-answer="nên đánh răng hai lần mỗi ngày" data-tron="3"
          data-hint-sai='{"bắt buộc phải đánh răng hai lần mỗi ngày":"Bắt buộc phải là must của Unit 5. Cô nha sĩ dùng should — lời khuyên hay mệnh lệnh?","không được đánh răng hai lần mỗi ngày":"Câu của cô nha sĩ có not / n&apos;t không? should là nên hay không được?"}'>3. 🦷 Cô nha sĩ nói: <i>You should brush your teeth twice a day.</i> Cô khuyên em điều gì?</div>
     <p class="cau-fill">4. There aren't <span data-fill data-answer="any" data-w="6"
@@ -1732,6 +1740,16 @@
     em có đủ cả rồi! Nhớ gửi cô bài SGK ở mục 11, bài nghe ở mục 9 và bức thư ở mục 10 để cô chữa. Tết này, em chúc ông bà một câu bằng
     tiếng Anh nhé: <i>Happy New Year! Wishing you joy &amp; laughter from January to December!</i></div>
 </section>
+
+<div id="phieu-in" class="chi-in phieu-in">
+  <h2>Phiếu cho người nhà đọc — em đừng xem trước!</h2>
+  <p class="small"><i>(In trang này riêng, đưa cho người nhà. Em làm bài nghe bằng tai: người nhà đọc to, em không nhìn chữ.)</i></p>
+  <p><b>NV7 — Tám thẻ bí mật /s/ hay /ʃ/?</b> Đọc to từng từ kèm số, em viết số vào cột /s/ hoặc /ʃ/:<br>
+  1. shy · 2. shopping · 3. rice · 4. spring · 5. wish · 6. celebrate · 7. should · 8. sweets</p>
+  <p><b>NV8 — Từ đó có âm /s/, /ʃ/ hay không có?</b> Đọc to từng từ, em nói âm:<br>
+  1. salt · 2. shelf · 3. fun · 4. Russia</p>
+  <p><b>Mini-game câu 2 — Từ đó có âm nào?</b> Đọc to từ: <i>sing</i></p>
+</div>
 
 <footer>
   <p><b>Về file phát âm:</b> toàn bộ <code>.mp3</code> trong thư mục <code>audio-unit-06/</code> do máy tổng
@@ -1972,11 +1990,34 @@
 
   /* ---------- ban in: nhiem vu phai NGHE (data-listen, the giau chu data-an-chu, mini-game co loa) khong lam duoc tren giay
      -> tu them dong .chi-in tro toi Phieu cho nguoi nha doc cua ban .md (review Unit 6). Da co .chi-in trong nhiem vu thi thoi. ---------- */
+  /* review Unit 1: web chi co .html -> trang co khoi #phieu-in (Phieu in kem, chi hien khi in) thi tro toi "trang cuoi ban in nay" */
+  var choPhieu = $('#phieu-in') ? 'ở trang cuối của bản in này' : 'ở cuối bản .md';
   $$('[data-act]').forEach(function(a){
     var nghe = $('[data-listen], [data-sort][data-an-chu]', a) || (a.classList.contains('game') && $('.say', a));
     if(!nghe || $('.chi-in', a)) return;
-    a.appendChild(el('p', 'chi-in small', '🖨️ <b>Bản in:</b> phần nghe của nhiệm vụ này làm với <b>Phiếu cho người nhà đọc</b> ở cuối ' +
-      'bản .md — nhờ người nhà đọc to, em không nhìn phiếu.'));
+    a.appendChild(el('p', 'chi-in small', '🖨️ <b>Bản in:</b> phần nghe của nhiệm vụ này làm với <b>Phiếu cho người nhà đọc</b> ' +
+      choPhieu + ' — nhờ người nhà đọc to, em không nhìn phiếu.'));
+  });
+
+  /* ---------- ban in: khoi .hide.in-hien (giau toi khi lam xong, KHI IN thi mo san) thuong la dap an / quy tac cua nhiem vu ngay
+     tren -> tu chen dong .chi-in "che lai" o dau khoi (review Unit 1). Khoi da mo dau bang .chi-in thi thoi. ---------- */
+  $$('[data-mo-sau]').forEach(function(a){
+    (a.getAttribute('data-mo-sau') || '').split(',').forEach(function(s){
+      s = s.trim(); if(!s) return;
+      $$(s).forEach(function(t){
+        if(!t.classList.contains('in-hien') || t._cheIn) return;
+        var dau = t.firstElementChild;
+        if(dau && dau.classList.contains('chi-in')) return;
+        t._cheIn = true;
+        t.insertBefore(el('p', 'chi-in small che-in', '🖨️ <b>Bản in:</b> che phần này lại — làm xong nhiệm vụ ngay phía trên ' +
+          '(ra vở) rồi mới đọc.'), t.firstChild);
+      });
+    });
+  });
+
+  /* ban in: lo trinh gap trong <details class="lo-trinh"> thi mo ra truoc khi in (review Unit 1) */
+  window.addEventListener('beforeprint', function(){
+    $$('details.lo-trinh').forEach(function(d){ d.open = true; });
   });
 
   /* ---------- tien do, sao, loi khen ---------- */
@@ -2239,7 +2280,9 @@
     var goi = rows.map(function(r){ return r.getAttribute('data-goi-y') || ''; });
     var trai = rows.map(function(r, i){ return the(r.children[0] ? r.children[0].innerHTML : '', i, 'L', r); });
     var phai = rows.map(function(r, i){ return the(r.children[1] ? r.children[1].innerHTML : '', i, 'R', null); });
-    trai.forEach(function(d){ cL.appendChild(d); });
+    /* review Unit 1: xao CA cot trai - cot trai theo thu tu nguon (always, usually, often...) tung lo dap an bai SGK sap thu tu.
+       data-giu-trai: giu thu tu cot trai (vd luot loi hoi thoai can doc theo thu tu) */
+    (host.hasAttribute('data-giu-trai') ? trai : tron(trai, 'L' + host.textContent)).forEach(function(d){ cL.appendChild(d); });
     tron(phai, host.textContent).forEach(function(d){ cR.appendChild(d); });
     function capNhat(){ dem.textContent = 'Đã nối ' + khop + '/' + rows.length + ' cặp'; }
     function thu(){

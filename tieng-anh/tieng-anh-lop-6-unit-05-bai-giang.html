@@ -346,6 +346,12 @@
   /* .chi-in: dong chi hien khi IN (tro toi Phieu cho nguoi nha doc); .chi-may: chu chi hien tren may ("bam tung tu")
      engine tu them .chi-in cho nhiem vu nghe / the giau chu / mini-game co loa (review Unit 6) */
   .chi-in{display:none}
+  /* review Unit 1: Phieu cho nguoi nha doc in kem trong HTML (web khong co .md) - ghep_bai_giang.py tu chep tu .md khi
+     noi-dung.html chua co #phieu-in; lo trinh dai gap trong <details class="lo-trinh"> de nut bam dau tien o man hinh dau */
+  details.lo-trinh{margin:12px 0; padding:8px 12px; border:1px dashed #b9c3d6; border-radius:10px; background:#fbfcff}
+  details.lo-trinh > summary{cursor:pointer; min-height:32px; line-height:32px}
+  details.lo-trinh[open] > summary{margin-bottom:6px}
+  p.nhay-game{margin:14px 0; padding:10px 14px; border-radius:10px; background:#fff6dd; border:1px solid #f0d58a}
   #khen{position:fixed; top:64px; right:16px; z-index:98; background:#fff; color:#0b5e47; border:2px solid #b8e5d7;
     border-radius:14px; padding:8px 14px; font-size:15px; font-weight:600; box-shadow:0 8px 24px rgba(15,80,60,.18);
     opacity:0; transform:translateY(-8px); transition:opacity .25s, transform .25s; pointer-events:none; max-width:78vw}
@@ -476,6 +482,8 @@
     .fc-doan,.fc-dem-doan,.chi-may{display:none !important}
     .chi-in{display:block !important}
     span.chi-in{display:inline !important}
+    details.lo-trinh{border:0; padding:0}
+    .phieu-in{page-break-before:always}
     .od-line:empty::before{content:""}
     .hide.in-hien{display:block !important}
     .bao-giau{display:none !important}
@@ -1232,8 +1240,7 @@
 
   <div class="mo-dau">
     <span class="label">📅 Chủ nhật này đi đâu?</span>
-    <p>Em muốn rủ bạn thân Chủ nhật này ra công viên chơi. Em nói gì, bạn đáp gì, hai đứa hẹn mấy giờ? Nghe <b>Steven</b> rủ <b>Duong</b>
-    <button class="say mini" data-a="ten-duong" data-lang="vi-VN" data-t="Dương">Duong</button> đi dã ngoại — để ý các cụm được <b>tô
+    <p>Em muốn rủ bạn thân Chủ nhật này ra công viên chơi. Em nói gì, bạn đáp gì, hai đứa hẹn mấy giờ? Nghe <b>Steven</b> rủ <button class="say mini" data-a="ten-duong" data-lang="vi-VN" data-t="Dương">Duong</button> đi dã ngoại — để ý các cụm được <b>tô
     đậm</b>: đó là "bộ đồ nghề" để <b>hẹn</b> và <b>nhận lời hẹn</b>. (<i>Duong</i> đọc là "Dương"; <i>Steven</i> là tên nước ngoài.)</p>
   </div>
 
@@ -1748,6 +1755,23 @@
     một nơi có cảnh đẹp gần nhà bằng tiếng Anh nhé: <i>Let's go for a picnic this Sunday!</i></div>
 </section>
 
+<div id="phieu-in" class="chi-in phieu-in">
+  <h2>Phiếu cho người nhà đọc — em đừng xem trước!</h2>
+  <p class="small"><i>(In trang này riêng, đưa cho người nhà. Em làm bài nghe bằng tai: người nhà đọc to, em không nhìn chữ.)</i></p>
+  <p><b>NV3 — Tai thính: ai đang nói?</b> Đọc to từng câu, em đoán <i>Alice / Elena / Nick</i>:<br>
+  1. Come in, Elena. We're just starting now. But remember you must always be on time.<br>
+  2. Sure. Sorry.<br>
+  3. Is picture 2 Ha Long Bay?<br>
+  4. Right. What do you know about it?</p>
+  <p><b>NV6 — Món đồ nghĩa là gì?</b> Đọc to từng từ, em nói nghĩa tiếng Việt:<br>
+  1. compass · 2. sleeping bag · 3. plaster · 4. scissors</p>
+  <p><b>NV7 — Tám thẻ bí mật /t/ hay /d/?</b> Đọc to từng từ kèm số, em viết số vào cột /t/ hoặc /d/:<br>
+  1. plaster · 2. island · 3. head · 4. hat · 5. waterfall · 6. wonder · 7. mountain · 8. guide</p>
+  <p><b>NV8 — Âm cuối /t/, /d/ hay âm khác?</b> Đọc to từng từ, em nói âm cuối:<br>
+  1. boat · 2. need · 3. cave · 4. meat</p>
+  <p><b>Mini-game câu 3 — Âm cuối là gì?</b> Đọc to từ: <i>hot</i></p>
+</div>
+
 <footer>
   <p><b>Về file phát âm:</b> toàn bộ <code>.mp3</code> trong thư mục <code>audio-unit-05/</code> do máy tổng
   hợp giọng đọc (Microsoft Edge TTS, giọng <b>Anh – Anh</b>: <code>en-GB-SoniaNeural</code> và <code>en-GB-LibbyNeural</code> cho các vai nữ,
@@ -1987,11 +2011,34 @@
 
   /* ---------- ban in: nhiem vu phai NGHE (data-listen, the giau chu data-an-chu, mini-game co loa) khong lam duoc tren giay
      -> tu them dong .chi-in tro toi Phieu cho nguoi nha doc cua ban .md (review Unit 6). Da co .chi-in trong nhiem vu thi thoi. ---------- */
+  /* review Unit 1: web chi co .html -> trang co khoi #phieu-in (Phieu in kem, chi hien khi in) thi tro toi "trang cuoi ban in nay" */
+  var choPhieu = $('#phieu-in') ? 'ở trang cuối của bản in này' : 'ở cuối bản .md';
   $$('[data-act]').forEach(function(a){
     var nghe = $('[data-listen], [data-sort][data-an-chu]', a) || (a.classList.contains('game') && $('.say', a));
     if(!nghe || $('.chi-in', a)) return;
-    a.appendChild(el('p', 'chi-in small', '🖨️ <b>Bản in:</b> phần nghe của nhiệm vụ này làm với <b>Phiếu cho người nhà đọc</b> ở cuối ' +
-      'bản .md — nhờ người nhà đọc to, em không nhìn phiếu.'));
+    a.appendChild(el('p', 'chi-in small', '🖨️ <b>Bản in:</b> phần nghe của nhiệm vụ này làm với <b>Phiếu cho người nhà đọc</b> ' +
+      choPhieu + ' — nhờ người nhà đọc to, em không nhìn phiếu.'));
+  });
+
+  /* ---------- ban in: khoi .hide.in-hien (giau toi khi lam xong, KHI IN thi mo san) thuong la dap an / quy tac cua nhiem vu ngay
+     tren -> tu chen dong .chi-in "che lai" o dau khoi (review Unit 1). Khoi da mo dau bang .chi-in thi thoi. ---------- */
+  $$('[data-mo-sau]').forEach(function(a){
+    (a.getAttribute('data-mo-sau') || '').split(',').forEach(function(s){
+      s = s.trim(); if(!s) return;
+      $$(s).forEach(function(t){
+        if(!t.classList.contains('in-hien') || t._cheIn) return;
+        var dau = t.firstElementChild;
+        if(dau && dau.classList.contains('chi-in')) return;
+        t._cheIn = true;
+        t.insertBefore(el('p', 'chi-in small che-in', '🖨️ <b>Bản in:</b> che phần này lại — làm xong nhiệm vụ ngay phía trên ' +
+          '(ra vở) rồi mới đọc.'), t.firstChild);
+      });
+    });
+  });
+
+  /* ban in: lo trinh gap trong <details class="lo-trinh"> thi mo ra truoc khi in (review Unit 1) */
+  window.addEventListener('beforeprint', function(){
+    $$('details.lo-trinh').forEach(function(d){ d.open = true; });
   });
 
   /* ---------- tien do, sao, loi khen ---------- */
@@ -2254,7 +2301,9 @@
     var goi = rows.map(function(r){ return r.getAttribute('data-goi-y') || ''; });
     var trai = rows.map(function(r, i){ return the(r.children[0] ? r.children[0].innerHTML : '', i, 'L', r); });
     var phai = rows.map(function(r, i){ return the(r.children[1] ? r.children[1].innerHTML : '', i, 'R', null); });
-    trai.forEach(function(d){ cL.appendChild(d); });
+    /* review Unit 1: xao CA cot trai - cot trai theo thu tu nguon (always, usually, often...) tung lo dap an bai SGK sap thu tu.
+       data-giu-trai: giu thu tu cot trai (vd luot loi hoi thoai can doc theo thu tu) */
+    (host.hasAttribute('data-giu-trai') ? trai : tron(trai, 'L' + host.textContent)).forEach(function(d){ cL.appendChild(d); });
     tron(phai, host.textContent).forEach(function(d){ cR.appendChild(d); });
     function capNhat(){ dem.textContent = 'Đã nối ' + khop + '/' + rows.length + ' cặp'; }
     function thu(){

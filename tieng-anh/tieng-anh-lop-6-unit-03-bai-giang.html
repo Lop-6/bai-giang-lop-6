@@ -346,6 +346,12 @@
   /* .chi-in: dong chi hien khi IN (tro toi Phieu cho nguoi nha doc); .chi-may: chu chi hien tren may ("bam tung tu")
      engine tu them .chi-in cho nhiem vu nghe / the giau chu / mini-game co loa (review Unit 6) */
   .chi-in{display:none}
+  /* review Unit 1: Phieu cho nguoi nha doc in kem trong HTML (web khong co .md) - ghep_bai_giang.py tu chep tu .md khi
+     noi-dung.html chua co #phieu-in; lo trinh dai gap trong <details class="lo-trinh"> de nut bam dau tien o man hinh dau */
+  details.lo-trinh{margin:12px 0; padding:8px 12px; border:1px dashed #b9c3d6; border-radius:10px; background:#fbfcff}
+  details.lo-trinh > summary{cursor:pointer; min-height:32px; line-height:32px}
+  details.lo-trinh[open] > summary{margin-bottom:6px}
+  p.nhay-game{margin:14px 0; padding:10px 14px; border-radius:10px; background:#fff6dd; border:1px solid #f0d58a}
   #khen{position:fixed; top:64px; right:16px; z-index:98; background:#fff; color:#0b5e47; border:2px solid #b8e5d7;
     border-radius:14px; padding:8px 14px; font-size:15px; font-weight:600; box-shadow:0 8px 24px rgba(15,80,60,.18);
     opacity:0; transform:translateY(-8px); transition:opacity .25s, transform .25s; pointer-events:none; max-width:78vw}
@@ -476,6 +482,8 @@
     .fc-doan,.fc-dem-doan,.chi-may{display:none !important}
     .chi-in{display:block !important}
     span.chi-in{display:inline !important}
+    details.lo-trinh{border:0; padding:0}
+    .phieu-in{page-break-before:always}
     .od-line:empty::before{content:""}
     .hide.in-hien{display:block !important}
     .bao-giau{display:none !important}
@@ -1081,10 +1089,10 @@
 
   <div class="box remember">
     <span class="label">📌 Remember! <span class="muted small">— nguyên văn SGK</span></span>
-    <p>We use the present continuous for actions happening now.</p>
+    <p>We use the present continuous for actions happening now. <button class="say line icon" data-a="gr-rule-01" data-t="We use the present continuous for actions happening now."></button></p>
     <p><b>Examples:</b><br>– She<b>'s talking</b>. <button class="say line icon" data-a="gr-01" data-t="She's talking."></button><br>
       – They<b>'re not talking</b>. <button class="say line icon" data-a="gr-02" data-t="They're not talking."></button></p>
-    <p>We can use the present continuous with <i>now</i>, <i>at present</i>, or <i>at the moment</i>.</p>
+    <p>We can use the present continuous with <i>now</i>, <i>at present</i>, or <i>at the moment</i>. <button class="say line icon" data-a="gr-rule-02" data-t="We can use the present continuous with now, at present, or at the moment."></button></p>
     <p><b>Examples:</b><br>– I'm doing my homework <b>at present</b>. <button class="say line icon" data-a="gr-03" data-t="I'm doing my homework at present."></button><br>
       – <b>A:</b> Are you reading <b>now</b>? <button class="say line icon" data-a="gr-04" data-t="Are you reading now?"></button><br>
       &nbsp;&nbsp;&nbsp;<b>B:</b> Yes, I am. <button class="say line icon" data-a="gr-05" data-t="Yes, I am."></button></p>
@@ -1749,6 +1757,19 @@
     nhé: <i>My best friend is … She's … She has …</i></div>
 </section>
 
+<div id="phieu-in" class="chi-in phieu-in">
+  <h2>Phiếu cho người nhà đọc — em đừng xem trước!</h2>
+  <p class="small"><i>(In trang này riêng, đưa cho người nhà. Em làm bài nghe bằng tai: người nhà đọc to, em không nhìn chữ.)</i></p>
+  <p><b>NV3 — Tai thính: ai đang nói?</b> Đọc to từng câu, em đoán <i>Phong / Nam / Mai / Chau</i>:<br>
+  1. Thanks. What are you reading, Phong?<br>
+  2. Hi there. This is my friend Chau.<br>
+  3. Nice to meet you, too.<br>
+  4. That was a great idea, Nam. I love picnics!</p>
+  <p><b>NV11 — Âm đầu /b/ hay /p/?</b> Đọc to từng từ, em nói "/b/" hay "/p/":<br>
+  1. biscuits · 2. picnic · 3. playing · 4. bringing</p>
+  <p><b>Mini-game câu 2 — Âm đầu /b/ hay /p/?</b> Đọc to từ: <i>piano</i></p>
+</div>
+
 <footer>
   <p><b>Về file phát âm:</b> toàn bộ <code>.mp3</code> trong thư mục <code>audio-unit-03/</code> do máy tổng
   hợp giọng đọc (Microsoft Edge TTS, giọng <b>Anh – Anh</b>: <code>en-GB-SoniaNeural</code> và <code>en-GB-LibbyNeural</code> cho
@@ -1989,11 +2010,34 @@
 
   /* ---------- ban in: nhiem vu phai NGHE (data-listen, the giau chu data-an-chu, mini-game co loa) khong lam duoc tren giay
      -> tu them dong .chi-in tro toi Phieu cho nguoi nha doc cua ban .md (review Unit 6). Da co .chi-in trong nhiem vu thi thoi. ---------- */
+  /* review Unit 1: web chi co .html -> trang co khoi #phieu-in (Phieu in kem, chi hien khi in) thi tro toi "trang cuoi ban in nay" */
+  var choPhieu = $('#phieu-in') ? 'ở trang cuối của bản in này' : 'ở cuối bản .md';
   $$('[data-act]').forEach(function(a){
     var nghe = $('[data-listen], [data-sort][data-an-chu]', a) || (a.classList.contains('game') && $('.say', a));
     if(!nghe || $('.chi-in', a)) return;
-    a.appendChild(el('p', 'chi-in small', '🖨️ <b>Bản in:</b> phần nghe của nhiệm vụ này làm với <b>Phiếu cho người nhà đọc</b> ở cuối ' +
-      'bản .md — nhờ người nhà đọc to, em không nhìn phiếu.'));
+    a.appendChild(el('p', 'chi-in small', '🖨️ <b>Bản in:</b> phần nghe của nhiệm vụ này làm với <b>Phiếu cho người nhà đọc</b> ' +
+      choPhieu + ' — nhờ người nhà đọc to, em không nhìn phiếu.'));
+  });
+
+  /* ---------- ban in: khoi .hide.in-hien (giau toi khi lam xong, KHI IN thi mo san) thuong la dap an / quy tac cua nhiem vu ngay
+     tren -> tu chen dong .chi-in "che lai" o dau khoi (review Unit 1). Khoi da mo dau bang .chi-in thi thoi. ---------- */
+  $$('[data-mo-sau]').forEach(function(a){
+    (a.getAttribute('data-mo-sau') || '').split(',').forEach(function(s){
+      s = s.trim(); if(!s) return;
+      $$(s).forEach(function(t){
+        if(!t.classList.contains('in-hien') || t._cheIn) return;
+        var dau = t.firstElementChild;
+        if(dau && dau.classList.contains('chi-in')) return;
+        t._cheIn = true;
+        t.insertBefore(el('p', 'chi-in small che-in', '🖨️ <b>Bản in:</b> che phần này lại — làm xong nhiệm vụ ngay phía trên ' +
+          '(ra vở) rồi mới đọc.'), t.firstChild);
+      });
+    });
+  });
+
+  /* ban in: lo trinh gap trong <details class="lo-trinh"> thi mo ra truoc khi in (review Unit 1) */
+  window.addEventListener('beforeprint', function(){
+    $$('details.lo-trinh').forEach(function(d){ d.open = true; });
   });
 
   /* ---------- tien do, sao, loi khen ---------- */
@@ -2256,7 +2300,9 @@
     var goi = rows.map(function(r){ return r.getAttribute('data-goi-y') || ''; });
     var trai = rows.map(function(r, i){ return the(r.children[0] ? r.children[0].innerHTML : '', i, 'L', r); });
     var phai = rows.map(function(r, i){ return the(r.children[1] ? r.children[1].innerHTML : '', i, 'R', null); });
-    trai.forEach(function(d){ cL.appendChild(d); });
+    /* review Unit 1: xao CA cot trai - cot trai theo thu tu nguon (always, usually, often...) tung lo dap an bai SGK sap thu tu.
+       data-giu-trai: giu thu tu cot trai (vd luot loi hoi thoai can doc theo thu tu) */
+    (host.hasAttribute('data-giu-trai') ? trai : tron(trai, 'L' + host.textContent)).forEach(function(d){ cL.appendChild(d); });
     tron(phai, host.textContent).forEach(function(d){ cR.appendChild(d); });
     function capNhat(){ dem.textContent = 'Đã nối ' + khop + '/' + rows.length + ' cặp'; }
     function thu(){

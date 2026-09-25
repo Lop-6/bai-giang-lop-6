@@ -229,6 +229,14 @@
   .fc-lat{position:absolute; bottom:6px; right:10px; font-size:12.5px; color:#6b7385}
   .fc.da-xem .fc-mat.truoc{border-color:#b8e5d7}
   .fc .say.icon{margin:2px 0 0}
+  /* data-doan: nut tu cham "doan trung" o mat sau the (review Unit 6) */
+  .fc-doan{display:flex; gap:4px; margin-top:4px}
+  .fc-doan button{font:inherit; font-size:12px; padding:2px 7px; min-height:32px; border-radius:8px; cursor:pointer;
+    border:1px solid #e3c877; background:#fff; color:#6a4a00}
+  .fc-doan button.chon.dt{background:var(--green); border-color:var(--green); color:#fff}
+  .fc-doan button.chon.dc{background:#8a6d1f; border-color:#8a6d1f; color:#fff}
+  .fc-dem-doan{font-weight:600; color:#1d6b52}
+  .fc-grid.co-doan .fc{height:176px}
 
   /* 2. nghe rồi chọn */
   .ls-q{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
@@ -333,6 +341,11 @@
   .chuc-mung .to{font-size:40px; display:block; animation:pop .6s ease-out}
   .bang-nv{width:100%; font-size:15px}
   .bang-nv td:first-child{white-space:nowrap}
+  /* dong tieu de buoi (colspan) trong bang nhiem vu: khong nowrap -> khong tran ngang o 360 px (review Unit 6) */
+  .bang-nv td[colspan]{white-space:normal}
+  /* .chi-in: dong chi hien khi IN (tro toi Phieu cho nguoi nha doc); .chi-may: chu chi hien tren may ("bam tung tu")
+     engine tu them .chi-in cho nhiem vu nghe / the giau chu / mini-game co loa (review Unit 6) */
+  .chi-in{display:none}
   #khen{position:fixed; top:64px; right:16px; z-index:98; background:#fff; color:#0b5e47; border:2px solid #b8e5d7;
     border-radius:14px; padding:8px 14px; font-size:15px; font-weight:600; box-shadow:0 8px 24px rgba(15,80,60,.18);
     opacity:0; transform:translateY(-8px); transition:opacity .25s, transform .25s; pointer-events:none; max-width:78vw}
@@ -441,11 +454,28 @@
     #khen.on{transform:translate(50%,0)}
   }
 
+  /* dien thoai hep (360-420 px): gom tien do + Lam lai + toc do vao MOT hang, nut >= 40 px cho ngon tay (review Unit 6: o 360 px
+     thanh cong cu cao 127 px, nut Cham chi 31 px) */
+  @media (max-width:420px){
+    /* bang tu vung co cot dat width co dinh (Unit 2-3: 423 / 404 px o man 360) -> ca trang bi thu nho; cho bang tu cuon ngang */
+    section table:not(.bang-nv){display:block; max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch}
+    .toolbar .wrap{gap:5px}
+    .toolbar .spacer{display:none}
+    .toolbar .progress{gap:4px; font-size:12px}
+    .toolbar .progress .track{width:40px}
+    .toolbar .speed{gap:4px}
+    .toolbar .speed button, .toolbar .tbtn, .toolbar .lam-lai{min-height:40px; padding:4px 8px; font-size:12.5px}
+    .toolbar .chip{min-height:36px}
+  }
+
   body.no-motion *{animation:none !important; transition:none !important}
   @media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
   @media print{
     .toolbar,.btn,.tbtn,.fc-bar,#khen,#nowplay,.say::before{display:none !important}
     .fc-lat,.hd-bam,.pr-dem,.tm,.kq-game,.ghi-tt,.lam-lai,.da-luu,.buoi .dem,.noi-hang,h2 .nv{display:none !important}
+    .fc-doan,.fc-dem-doan,.chi-may{display:none !important}
+    .chi-in{display:block !important}
+    span.chi-in{display:inline !important}
     .od-line:empty::before{content:""}
     .hide.in-hien{display:block !important}
     .bao-giau{display:none !important}
@@ -1955,6 +1985,15 @@
     if(h && h.parentNode === a) a.insertBefore(tag, h.nextSibling); else a.insertBefore(tag, a.firstChild);
   });
 
+  /* ---------- ban in: nhiem vu phai NGHE (data-listen, the giau chu data-an-chu, mini-game co loa) khong lam duoc tren giay
+     -> tu them dong .chi-in tro toi Phieu cho nguoi nha doc cua ban .md (review Unit 6). Da co .chi-in trong nhiem vu thi thoi. ---------- */
+  $$('[data-act]').forEach(function(a){
+    var nghe = $('[data-listen], [data-sort][data-an-chu]', a) || (a.classList.contains('game') && $('.say', a));
+    if(!nghe || $('.chi-in', a)) return;
+    a.appendChild(el('p', 'chi-in small', '🖨️ <b>Bản in:</b> phần nghe của nhiệm vụ này làm với <b>Phiếu cho người nhà đọc</b> ở cuối ' +
+      'bản .md — nhờ người nhà đọc to, em không nhìn phiếu.'));
+  });
+
   /* ---------- tien do, sao, loi khen ---------- */
   var WIDGET = '[data-flip],[data-listen],[data-pair],[data-sort],[data-mcq],[data-fill],[data-order],[data-ghi],[data-noi]';
   var ACTS = $$('[data-act]'), DONE = {}, box = $('[data-progress]'), khen = $('#khen');
@@ -2073,6 +2112,16 @@
     var bar = el('div', 'fc-bar'), dem = el('span', '', ''), grid = el('div', 'fc-grid');
     var bTron = nut('🔀 Trộn thẻ'), bNguoc = nut('⇄ Nhìn nghĩa, đoán từ');
     bar.appendChild(bTron); bar.appendChild(bNguoc); bar.appendChild(dem);
+    /* data-doan: em DOAN nghia truoc khi lat, lat ra tu bam "Doan trung" / "Chua trung" -> bo dem "🎯 Doan trung k/n"
+       (tro choi tu cham, khong anh huong ⭐; review Unit 6: the lat khong emoji can mot chien luoc doan THAT) */
+    var doan = deck.hasAttribute('data-doan'), demDoan = el('span', 'fc-dem-doan', '');
+    if(doan){ bar.appendChild(demDoan); grid.classList.add('co-doan'); }
+    function capDoan(){
+      if(!doan) return;
+      var tl = cards.filter(function(c){ return c._doan != null; }), tr = tl.filter(function(c){ return c._doan; }).length;
+      demDoan.textContent = '🎯 Đoán trúng ' + tr + '/' + cards.length + (tl.length === cards.length ? (tr * 2 >= cards.length ?
+        ' — mắt tinh thật!' : ' — không sao, giờ em đã biết nghĩa rồi.') : '');
+    }
     function capNhat(){
       var d = cards.filter(function(c){ return c._xem; }).length;
       dem.textContent = 'Đã lật ' + d + '/' + cards.length + ' thẻ';
@@ -2092,6 +2141,15 @@
       tr.appendChild(el('span', 'fc-lat', 'lật ↻'));
       if(emo) sau.appendChild(el('span', 'fc-emo', esc(emo)));
       sau.appendChild(el('span', 'fc-nghia', nghia));
+      if(doan){
+        var hd = el('span', 'fc-doan'), bT = el('button', 'dt', '✔ Đoán trúng'), bC = el('button', 'dc', '✗ Chưa trúng');
+        bT.type = bC.type = 'button';
+        [bT, bC].forEach(function(b){ b.addEventListener('click', function(e){
+          e.stopPropagation();
+          c._doan = (b === bT); bT.classList.toggle('chon', c._doan); bC.classList.toggle('chon', !c._doan); capDoan();
+        }); });
+        hd.appendChild(bT); hd.appendChild(bC); sau.appendChild(hd);
+      }
       inn.appendChild(tr); inn.appendChild(sau); c.appendChild(inn); grid.appendChild(c);
       c.addEventListener('click', function(e){
         if(e.target.closest && e.target.closest('.say')) return;       // bam loa khong lat the
@@ -2099,7 +2157,7 @@
         if(!c._xem){ c._xem = true; c.classList.add('da-xem'); capNhat(); }
       });
     });
-    deck.innerHTML = ''; deck.appendChild(bar); deck.appendChild(grid);
+    deck.innerHTML = ''; deck.appendChild(bar); deck.appendChild(grid); capDoan();
     bTron.addEventListener('click', function(){
       cards.slice().sort(function(){ return Math.random() - .5; }).forEach(function(c){ grid.appendChild(c); });
     });
@@ -2344,8 +2402,12 @@
 
   /* ---------- 7. SAP XEP TU THANH CAU: data-order ---------- */
   $$('[data-order]').forEach(function(host){
-    var cau = (host.getAttribute('data-answer') || '').trim();
+    /* data-answer nhan NHIEU thu tu dung ngan bang "|" (review Unit 6: "a helmet ... your bike" / "your helmet ... a bike").
+       The lay tu cach THU NHAT; moi cach phai dung dung bo the do (kiem_tra_bai_giang.py bao LOI neu khong). */
+    var cacCau = (host.getAttribute('data-answer') || '').split('|').map(function(x){ return x.trim(); }).filter(Boolean);
+    var cau = cacCau[0] || '';
     var m = cau.match(/^(.*?)([.!?]+)$/), than = m ? m[1] : cau, dau = m ? m[2] : '';
+    var cacThan = cacCau.map(function(c){ return c.replace(/[.!?]+$/, ''); });
     var tu = than.split(/\s+/).filter(Boolean);
     host.classList.add('od');
     var hoi = host.innerHTML.trim();
@@ -2373,14 +2435,16 @@
       if(host._xong) return;
       var f = fbBox(host), dang = $$('.tk', line).map(function(t){ return t._w; });
       if(dang.length < tu.length){ show(f, 'bad', 'Còn ' + (tu.length - dang.length) + ' thẻ chưa dùng. Câu cần đủ tất cả các thẻ.'); return; }
-      if(norm(dang.join(' ')) === norm(than)){
+      if(cacThan.some(function(t){ return norm(dang.join(' ')) === norm(t); })){
         host.classList.add('dung');
         var html = host.getAttribute('data-ok') || (khenNgau() + 'Em đọc to cả câu một lần nhé.');
         show(f, 'good', html);
         var b = loa(host, 'mini'); if(b){ b.textContent = 'Nghe cả câu'; f.appendChild(document.createTextNode(' ')); f.appendChild(b); }
         xong(host);
       } else {
-        var dung = 0; while(dung < dang.length && norm(dang[dung]) === norm(tu[dung])) dung++;
+        var dung = 0;
+        cacThan.forEach(function(t){ var w = t.split(/\s+/), k = 0; while(k < dang.length && norm(dang[k]) === norm(w[k])) k++;
+          if(k > dung) dung = k; });
         show(f, 'bad', (host.getAttribute('data-hint-sai') || 'Chưa đúng thứ tự. Em đọc to câu lên: nghe đã tự nhiên chưa?') +
           (dung > 0 ? '<br>💡 ' + dung + ' thẻ đầu tiên của em đã đúng chỗ.' : '<br>💡 Thẻ đầu câu chưa đúng — chữ nào được viết hoa?'));
       }

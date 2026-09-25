@@ -1,0 +1,852 @@
+{
+  "voc-behave": {
+    "file": "voc-behave.mp3",
+    "kieu": "don",
+    "text": "behave",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "56bf108d2f992c84"
+  },
+  "voc-celebrate": {
+    "file": "voc-celebrate.mp3",
+    "kieu": "don",
+    "text": "celebrate",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5dcb58b545cff5a0"
+  },
+  "voc-cheer": {
+    "file": "voc-cheer.mp3",
+    "kieu": "don",
+    "text": "cheer",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "34e370311548e60e"
+  },
+  "voc-decorate": {
+    "file": "voc-decorate.mp3",
+    "kieu": "don",
+    "text": "decorate",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87fe19a4908b2765"
+  },
+  "voc-family-gathering": {
+    "file": "voc-family-gathering.mp3",
+    "kieu": "don",
+    "text": "family gathering",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "40b04bbf3a05d8de"
+  },
+  "voc-firework": {
+    "file": "voc-firework.mp3",
+    "kieu": "don",
+    "text": "firework",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "adfb16c8aa5bcef6"
+  },
+  "voc-fun": {
+    "file": "voc-fun.mp3",
+    "kieu": "don",
+    "text": "fun",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7b9310e0f844d714"
+  },
+  "voc-luck": {
+    "file": "voc-luck.mp3",
+    "kieu": "don",
+    "text": "luck",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b5a9b2f696500e64"
+  },
+  "voc-lucky-money": {
+    "file": "voc-lucky-money.mp3",
+    "kieu": "don",
+    "text": "lucky money",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d1818b77291ee297"
+  },
+  "voc-mochi-rice-cake": {
+    "file": "voc-mochi-rice-cake.mp3",
+    "kieu": "don",
+    "text": "mochi rice cake",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "93fe011e363dda7a"
+  },
+  "voc-relative": {
+    "file": "voc-relative.mp3",
+    "kieu": "don",
+    "text": "relative",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4608b42587ff7af1"
+  },
+  "voc-strike": {
+    "file": "voc-strike.mp3",
+    "kieu": "don",
+    "text": "strike",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "86892cf81f5a9250"
+  },
+  "voc-temple": {
+    "file": "voc-temple.mp3",
+    "kieu": "don",
+    "text": "temple",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8a0a5cc03bf236e3"
+  },
+  "voc-throw": {
+    "file": "voc-throw.mp3",
+    "kieu": "don",
+    "text": "throw",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a1cae9db2400e010"
+  },
+  "voc-welcome": {
+    "file": "voc-welcome.mp3",
+    "kieu": "don",
+    "text": "welcome",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "69dfe4b7493fb2be"
+  },
+  "voc-wish": {
+    "file": "voc-wish.mp3",
+    "kieu": "don",
+    "text": "wish",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8c65464867ac73c9"
+  },
+  "thing-fireworks": {
+    "file": "thing-fireworks.mp3",
+    "kieu": "don",
+    "text": "fireworks",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4d84e216aef00c26"
+  },
+  "thing-furniture": {
+    "file": "thing-furniture.mp3",
+    "kieu": "don",
+    "text": "furniture",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "66a4bedff9a482d3"
+  },
+  "thing-special-food": {
+    "file": "thing-special-food.mp3",
+    "kieu": "don",
+    "text": "special food",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "827add7dea733254"
+  },
+  "thing-peach-flowers": {
+    "file": "thing-peach-flowers.mp3",
+    "kieu": "don",
+    "text": "peach flowers",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "18ac8d7e141bbf8b"
+  },
+  "thing-times-square": {
+    "file": "thing-times-square.mp3",
+    "kieu": "don",
+    "text": "Times Square",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "527ab874f64457ce"
+  },
+  "thing-suncream": {
+    "file": "thing-suncream.mp3",
+    "kieu": "don",
+    "text": "suncream",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "92bd4c2e5fd2f115"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "ten",
+    "text": "Phong, does Viet Nam celebrate New Years?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-HoaiMyNeural"
+      },
+      {
+        "tu": "Viet Nam",
+        "doc": "Việt Nam",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "2305328d4ce6b646"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "ten",
+    "text": "Yes, we do. We have Tet.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tet",
+        "doc": "Tết",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "934cf61cd50b435b"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "ten",
+    "text": "When is Tet?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tet",
+        "doc": "Tết",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "f3d3e28f2da890e9"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "don",
+    "text": "At different times. This year, it's in January.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "ed5b329489b91d0a"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "ten",
+    "text": "What do you do at Tet?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tet",
+        "doc": "Tết",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "3a83506c85dbcfd9"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "don",
+    "text": "We clean our homes and decorate them with flowers.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "472de1b3c5b1b274"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "ten",
+    "text": "Is Tet a time for family gatherings?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tet",
+        "doc": "Tết",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "9efcc035cf0eefd9"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "Yes. It's a happy time for everybody.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "8e0456b6b12a0c2f"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "don",
+    "text": "Great.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "211ce6b7c1caa61b"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "ten",
+    "text": "Yes, and another good thing about Tet is that children get lucky money.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tet",
+        "doc": "Tết",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "58b7173fc00717c0"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "don",
+    "text": "That sounds interesting. Is there anything special people should do?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4a95756b50bff640"
+  },
+  "gs-12": {
+    "file": "gs-12.mp3",
+    "kieu": "don",
+    "text": "We should say \"Happy New Year\" when we meet people, and we shouldn't break anything.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "f2ad59cdc41e0a46"
+  },
+  "ten-phong": {
+    "file": "ten-phong.mp3",
+    "kieu": "don",
+    "text": "Phong",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
+  },
+  "ten-viet-nam": {
+    "file": "ten-viet-nam.mp3",
+    "kieu": "don",
+    "text": "Việt Nam",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "0044bd98eac902bb"
+  },
+  "ten-tet": {
+    "file": "ten-tet.mp3",
+    "kieu": "don",
+    "text": "Tết",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "2c848da3a3b901b5"
+  },
+  "ten-banh-chung": {
+    "file": "ten-banh-chung.mp3",
+    "kieu": "don",
+    "text": "bánh chưng",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "62c6988db9783024"
+  },
+  "ten-banh-tet": {
+    "file": "ten-banh-tet.mp3",
+    "kieu": "don",
+    "text": "bánh tét",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "0b95835994b1255a"
+  },
+  "ten-nam": {
+    "file": "ten-nam.mp3",
+    "kieu": "don",
+    "text": "Nam",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f4be55c18d730e8e"
+  },
+  "ten-mai": {
+    "file": "ten-mai.mp3",
+    "kieu": "don",
+    "text": "Mai",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "0aef0243b233b0bb"
+  },
+  "pr-shopping": {
+    "file": "pr-shopping.mp3",
+    "kieu": "don",
+    "text": "shopping",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8cf48c52d641f77a"
+  },
+  "pr-special": {
+    "file": "pr-special.mp3",
+    "kieu": "don",
+    "text": "special",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7baac7500c6fa7a2"
+  },
+  "pr-rice": {
+    "file": "pr-rice.mp3",
+    "kieu": "don",
+    "text": "rice",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "65e98052f406befc"
+  },
+  "pr-spring": {
+    "file": "pr-spring.mp3",
+    "kieu": "don",
+    "text": "spring",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5a71b06dcf82a9c3"
+  },
+  "pr-sweets": {
+    "file": "pr-sweets.mp3",
+    "kieu": "don",
+    "text": "sweets",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2f08d707c587781f"
+  },
+  "pr-should": {
+    "file": "pr-should.mp3",
+    "kieu": "don",
+    "text": "should",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "aab61266f6f330a4"
+  },
+  "pr-salt": {
+    "file": "pr-salt.mp3",
+    "kieu": "don",
+    "text": "salt",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "952c172f3d7fceb5"
+  },
+  "pr-shelf": {
+    "file": "pr-shelf.mp3",
+    "kieu": "don",
+    "text": "shelf",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a376501695795697"
+  },
+  "pr-russia": {
+    "file": "pr-russia.mp3",
+    "kieu": "don",
+    "text": "Russia",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7ed290793a5e6dda"
+  },
+  "pr-sing": {
+    "file": "pr-sing.mp3",
+    "kieu": "don",
+    "text": "sing",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a96647ee7802ef23"
+  },
+  "pr-shy": {
+    "file": "pr-shy.mp3",
+    "kieu": "don",
+    "text": "shy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "aeb4ec0c383ade40"
+  },
+  "prs-1": {
+    "file": "prs-1.mp3",
+    "kieu": "don",
+    "text": "Spring is coming!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e399c49727e43ed9"
+  },
+  "prs-2": {
+    "file": "prs-2.mp3",
+    "kieu": "ten",
+    "text": "Tet is coming!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tet",
+        "doc": "Tết",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "1fcda7ad1fe07c88"
+  },
+  "prs-3": {
+    "file": "prs-3.mp3",
+    "kieu": "don",
+    "text": "She sells peach flowers.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1bf05039d9941887"
+  },
+  "prs-4": {
+    "file": "prs-4.mp3",
+    "kieu": "don",
+    "text": "Her cheeks shine.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "106ce98476cb2ef4"
+  },
+  "prs-5": {
+    "file": "prs-5.mp3",
+    "kieu": "don",
+    "text": "Her eyes smile.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d39c83d37121d48b"
+  },
+  "prs-6": {
+    "file": "prs-6.mp3",
+    "kieu": "don",
+    "text": "Her smile is shy.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6c7b167449f921cf"
+  },
+  "gr-01": {
+    "file": "gr-01.mp3",
+    "kieu": "ten",
+    "text": "Nam, you shouldn't come in with your raincoat on.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Nam",
+        "doc": "Nam",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "703500f74fd1c3f2"
+  },
+  "gr-02": {
+    "file": "gr-02.mp3",
+    "kieu": "don",
+    "text": "We use should for things that are good to do.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d531d5accb0d7a73"
+  },
+  "gr-03": {
+    "file": "gr-03.mp3",
+    "kieu": "don",
+    "text": "We use shouldn't for things that are not good to do.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5312ae957b2e5207"
+  },
+  "gr-04": {
+    "file": "gr-04.mp3",
+    "kieu": "don",
+    "text": "Children should behave well.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "258f71688eee3405"
+  },
+  "gr-05": {
+    "file": "gr-05.mp3",
+    "kieu": "don",
+    "text": "Children shouldn't eat lots of sweets.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f2d36358892c13f8"
+  },
+  "gr-06": {
+    "file": "gr-06.mp3",
+    "kieu": "don",
+    "text": "My mother bought some fruits.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cfd91f1e119972f9"
+  },
+  "gr-07": {
+    "file": "gr-07.mp3",
+    "kieu": "don",
+    "text": "I need some milk for the cake.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "20e73f825b321111"
+  },
+  "gr-08": {
+    "file": "gr-08.mp3",
+    "kieu": "don",
+    "text": "I can't answer any questions.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "db293c8142723feb"
+  },
+  "gr-09": {
+    "file": "gr-09.mp3",
+    "kieu": "don",
+    "text": "Do you have any sugar?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "065b31d0d15bb0ba"
+  },
+  "gr-10": {
+    "file": "gr-10.mp3",
+    "kieu": "don",
+    "text": "There is not any ice cream.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fe24105f72f22125"
+  },
+  "gr-11": {
+    "file": "gr-11.mp3",
+    "kieu": "don",
+    "text": "There are some cucumbers.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7284730223acb618"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "don",
+    "text": "Happy New Year.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "78474ef3754cc616"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "Wishing you joy & laughter … from January to December!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e8babdcad5c3d763"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "don",
+    "text": "happy days from January to December",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7f89f18318f7b523"
+  },
+  "com-04": {
+    "file": "com-04.mp3",
+    "kieu": "don",
+    "text": "a year full of fun",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3e6578fcf3226160"
+  },
+  "com-05": {
+    "file": "com-05.mp3",
+    "kieu": "don",
+    "text": "happiness and cheers",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "913d74862057dd99"
+  },
+  "com-06": {
+    "file": "com-06.mp3",
+    "kieu": "don",
+    "text": "a life full of happy moments",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "639b7909cf14d15b"
+  },
+  "com-07": {
+    "file": "com-07.mp3",
+    "kieu": "don",
+    "text": "success in your studies",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "78a35d76374a40e5"
+  },
+  "read-japan": {
+    "file": "read-japan.mp3",
+    "kieu": "don",
+    "text": "In Japan, temples ring their bells one hundred and eight times at midnight on December thirty-first. By doing so, people believe the bad things of the past year will leave.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "33543d1d4d1b8684"
+  },
+  "read-spain": {
+    "file": "read-spain.mp3",
+    "kieu": "don",
+    "text": "In Spain, people try to put twelve grapes in their mouth at midnight for good luck.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "44937a00be79de02"
+  },
+  "read-switzerland": {
+    "file": "read-switzerland.mp3",
+    "kieu": "don",
+    "text": "In Switzerland, they drop ice cream on the floor to celebrate the New Year.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "327c720a72d90399"
+  },
+  "read-romania": {
+    "file": "read-romania.mp3",
+    "kieu": "don",
+    "text": "In Romania, they throw coins into a river for good luck.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4c411c0a3b4a1fe3"
+  },
+  "read-thailand": {
+    "file": "read-thailand.mp3",
+    "kieu": "don",
+    "text": "In Thailand, they throw water on other people to wash away bad luck.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b9cd4613cf60ffe8"
+  },
+  "read-c-midnight": {
+    "file": "read-c-midnight.mp3",
+    "kieu": "don",
+    "text": "at midnight",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ff13e5c0177ff41c"
+  },
+  "read-c-good-luck": {
+    "file": "read-c-good-luck.mp3",
+    "kieu": "don",
+    "text": "for good luck",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4a3c5b090de3018a"
+  },
+  "read-c-bad-luck": {
+    "file": "read-c-bad-luck.mp3",
+    "kieu": "don",
+    "text": "wash away bad luck",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "642311b94e951428"
+  },
+  "read-c-temples": {
+    "file": "read-c-temples.mp3",
+    "kieu": "don",
+    "text": "temples",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ac32f6585a93fc87"
+  },
+  "read-c-leave": {
+    "file": "read-c-leave.mp3",
+    "kieu": "don",
+    "text": "the bad things of the past year will leave",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d31c80ec40320b40"
+  },
+  "sp-c5a": {
+    "file": "sp-c5a.mp3",
+    "kieu": "don",
+    "text": "They throw water on other people.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0eb236643f75268d"
+  },
+  "sp-c5b": {
+    "file": "sp-c5b.mp3",
+    "kieu": "don",
+    "text": "It's in Thailand.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "5f1eecb77b6779db"
+  },
+  "read-russ": {
+    "file": "read-russ.mp3",
+    "kieu": "don",
+    "text": "I often go to Times Square with my parents to welcome the New Year. When the clock strikes midnight, colourful fireworks light up the sky. Everybody cheers and sings.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "09102f7ae6cb0d4d"
+  },
+  "read-wu": {
+    "file": "read-wu.mp3",
+    "kieu": "don",
+    "text": "On New Year's Day, we dress beautifully and go to our grandparents' houses. We wish them Happy New Year and they give us lucky money. Then we go out and have a day full of fun.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "daea82dfee059d8d"
+  },
+  "read-mai": {
+    "file": "read-mai.mp3",
+    "kieu": "ten",
+    "text": "I learn some customs about Tet from my parents. People give rice to wish for enough food and buy salt to wish for good luck. Dogs are lucky animals but cats are not. A cat's cry sounds like \"poor\" in Vietnamese.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tet",
+        "doc": "Tết",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "6b1ded19ed0c68ba"
+  },
+  "sp-01": {
+    "file": "sp-01.mp3",
+    "kieu": "don",
+    "text": "I don't go to Times Square to welcome the New Year.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "45330fb54e5fd63a"
+  },
+  "sp-02": {
+    "file": "sp-02.mp3",
+    "kieu": "ten",
+    "text": "We should dress beautifully at Tet.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tet",
+        "doc": "Tết",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "6ffb6e9169282f13"
+  },
+  "sp-03": {
+    "file": "sp-03.mp3",
+    "kieu": "don",
+    "text": "I agree. Should we ask for lucky money?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "be50c2fd7e928e5b"
+  },
+  "sp-04": {
+    "file": "sp-04.mp3",
+    "kieu": "don",
+    "text": "No, we shouldn't.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "86ba45194917bf42"
+  },
+  "sp-05": {
+    "file": "sp-05.mp3",
+    "kieu": "ten",
+    "text": "Hey, you shouldn't eat all that banh chung!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "banh chung",
+        "doc": "bánh chưng",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "0a94e3c2cfa098e0"
+  }
+}

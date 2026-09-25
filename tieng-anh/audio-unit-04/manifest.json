@@ -1,0 +1,1055 @@
+{
+  "voc-art-gallery": {
+    "file": "voc-art-gallery.mp3",
+    "kieu": "don",
+    "text": "art gallery",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "04b459b94ff7ef1b"
+  },
+  "voc-busy": {
+    "file": "voc-busy.mp3",
+    "kieu": "don",
+    "text": "busy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4bb5c9f81164384e"
+  },
+  "voc-cathedral": {
+    "file": "voc-cathedral.mp3",
+    "kieu": "don",
+    "text": "cathedral",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0c5956fe9977e56e"
+  },
+  "voc-cross": {
+    "file": "voc-cross.mp3",
+    "kieu": "don",
+    "text": "cross",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0a3ff896f61a933c"
+  },
+  "voc-dislike": {
+    "file": "voc-dislike.mp3",
+    "kieu": "don",
+    "text": "dislike",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "964c4aaff7e97692"
+  },
+  "voc-famous": {
+    "file": "voc-famous.mp3",
+    "kieu": "don",
+    "text": "famous",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2d88ae62f4d7ab4b"
+  },
+  "voc-faraway": {
+    "file": "voc-faraway.mp3",
+    "kieu": "don",
+    "text": "faraway",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8bf7f1e56aeb24b8"
+  },
+  "voc-finally": {
+    "file": "voc-finally.mp3",
+    "kieu": "don",
+    "text": "finally",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8df4d9915ddfb9ce"
+  },
+  "voc-narrow": {
+    "file": "voc-narrow.mp3",
+    "kieu": "don",
+    "text": "narrow",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "40546307613d3dca"
+  },
+  "voc-outdoor": {
+    "file": "voc-outdoor.mp3",
+    "kieu": "don",
+    "text": "outdoor",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f51c60c2ae5db7be"
+  },
+  "voc-railway-station": {
+    "file": "voc-railway-station.mp3",
+    "kieu": "don",
+    "text": "railway station",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d0643b9baeadb6d7"
+  },
+  "voc-sandy": {
+    "file": "voc-sandy.mp3",
+    "kieu": "don",
+    "text": "sandy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c6d50cb28fb1ca23"
+  },
+  "voc-square": {
+    "file": "voc-square.mp3",
+    "kieu": "don",
+    "text": "square",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ede9f5cdf1ae76e6"
+  },
+  "voc-suburb": {
+    "file": "voc-suburb.mp3",
+    "kieu": "don",
+    "text": "suburb",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "badb7236bd9a1b01"
+  },
+  "voc-turning": {
+    "file": "voc-turning.mp3",
+    "kieu": "don",
+    "text": "turning",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "64761a0e8132b0e9"
+  },
+  "voc-workshop": {
+    "file": "voc-workshop.mp3",
+    "kieu": "don",
+    "text": "workshop",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d18c6acdd0993310"
+  },
+  "thing-neighbourhood": {
+    "file": "thing-neighbourhood.mp3",
+    "kieu": "don",
+    "text": "neighbourhood",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1efcf76a1cd41a94"
+  },
+  "thing-cinema": {
+    "file": "thing-cinema.mp3",
+    "kieu": "don",
+    "text": "cinema",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b186430fd0d5f2b9"
+  },
+  "thing-park": {
+    "file": "thing-park.mp3",
+    "kieu": "don",
+    "text": "park",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "542bcb9780ce93fc"
+  },
+  "thing-cafe": {
+    "file": "thing-cafe.mp3",
+    "kieu": "don",
+    "text": "café",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e422b2182ac6db84"
+  },
+  "thing-bank": {
+    "file": "thing-bank.mp3",
+    "kieu": "don",
+    "text": "bank",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "59f4ff77466451ac"
+  },
+  "thing-gym": {
+    "file": "thing-gym.mp3",
+    "kieu": "don",
+    "text": "gym",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "67935e4f398f52e6"
+  },
+  "thing-bus-stop": {
+    "file": "thing-bus-stop.mp3",
+    "kieu": "don",
+    "text": "bus stop",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a5f45833aa4bd198"
+  },
+  "thing-temple": {
+    "file": "thing-temple.mp3",
+    "kieu": "don",
+    "text": "temple",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8a0a5cc03bf236e3"
+  },
+  "adj-crowded": {
+    "file": "adj-crowded.mp3",
+    "kieu": "don",
+    "text": "crowded",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c84a33f8daeeb9e9"
+  },
+  "adj-quiet": {
+    "file": "adj-quiet.mp3",
+    "kieu": "don",
+    "text": "quiet",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2413588bc837aa05"
+  },
+  "adj-modern": {
+    "file": "adj-modern.mp3",
+    "kieu": "don",
+    "text": "modern",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "26ba7a3bd520fd19"
+  },
+  "adj-beautiful": {
+    "file": "adj-beautiful.mp3",
+    "kieu": "don",
+    "text": "beautiful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "649aebc9f6876650"
+  },
+  "adj-boring": {
+    "file": "adj-boring.mp3",
+    "kieu": "don",
+    "text": "boring",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "603a577aced1bd14"
+  },
+  "adj-old": {
+    "file": "adj-old.mp3",
+    "kieu": "don",
+    "text": "old",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ddba55b2ac499782"
+  },
+  "adj-wide": {
+    "file": "adj-wide.mp3",
+    "kieu": "don",
+    "text": "wide",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f55a7e1ec01e7428"
+  },
+  "adj-dirty": {
+    "file": "adj-dirty.mp3",
+    "kieu": "don",
+    "text": "dirty",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b5496df4269adc67"
+  },
+  "adj-tall": {
+    "file": "adj-tall.mp3",
+    "kieu": "don",
+    "text": "tall",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "471dd1b30870602c"
+  },
+  "adj-long": {
+    "file": "adj-long.mp3",
+    "kieu": "don",
+    "text": "long",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "06c27c74eea42ec2"
+  },
+  "adj-fine": {
+    "file": "adj-fine.mp3",
+    "kieu": "don",
+    "text": "fine",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "38a1e168c1622b80"
+  },
+  "adj-near": {
+    "file": "adj-near.mp3",
+    "kieu": "don",
+    "text": "near",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "796644fdc386af8c"
+  },
+  "adj-excited": {
+    "file": "adj-excited.mp3",
+    "kieu": "don",
+    "text": "excited",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1c4d555183a45767"
+  },
+  "pr-noisy": {
+    "file": "pr-noisy.mp3",
+    "kieu": "don",
+    "text": "noisy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "748adf3bd2b9b96b"
+  },
+  "pr-exciting": {
+    "file": "pr-exciting.mp3",
+    "kieu": "don",
+    "text": "exciting",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9d48b7950a323913"
+  },
+  "pr-expensive": {
+    "file": "pr-expensive.mp3",
+    "kieu": "don",
+    "text": "expensive",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e46583ce3dd5771e"
+  },
+  "pr-clean": {
+    "file": "pr-clean.mp3",
+    "kieu": "don",
+    "text": "clean",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2e61f726411b60d1"
+  },
+  "pr-peaceful": {
+    "file": "pr-peaceful.mp3",
+    "kieu": "don",
+    "text": "peaceful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f432d5c9221a42a7"
+  },
+  "pr-convenient": {
+    "file": "pr-convenient.mp3",
+    "kieu": "don",
+    "text": "convenient",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87bca6f184c2f4ac"
+  },
+  "pr-cheap": {
+    "file": "pr-cheap.mp3",
+    "kieu": "don",
+    "text": "cheap",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0057ecdfd6cea4d8"
+  },
+  "pr-friendly": {
+    "file": "pr-friendly.mp3",
+    "kieu": "don",
+    "text": "friendly",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "628c5f0e0b0a1005"
+  },
+  "pr-big": {
+    "file": "pr-big.mp3",
+    "kieu": "don",
+    "text": "big",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0ad2fa45936c3a29"
+  },
+  "pr-live": {
+    "file": "pr-live.mp3",
+    "kieu": "don",
+    "text": "live",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3ef269e0f66284bc"
+  },
+  "pr-village": {
+    "file": "pr-village.mp3",
+    "kieu": "don",
+    "text": "village",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dcd1f770bfefac25"
+  },
+  "pr-think": {
+    "file": "pr-think.mp3",
+    "kieu": "don",
+    "text": "think",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fce089f95575e38e"
+  },
+  "pr-street": {
+    "file": "pr-street.mp3",
+    "kieu": "don",
+    "text": "street",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "48105fc406368157"
+  },
+  "pr-trees": {
+    "file": "pr-trees.mp3",
+    "kieu": "don",
+    "text": "trees",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c072711f2365c8d2"
+  },
+  "pr-see": {
+    "file": "pr-see.mp3",
+    "kieu": "don",
+    "text": "see",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4714ce0b20f93c9d"
+  },
+  "pr-three": {
+    "file": "pr-three.mp3",
+    "kieu": "don",
+    "text": "three",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "993daebbeb748cf3"
+  },
+  "pr-seafood": {
+    "file": "pr-seafood.mp3",
+    "kieu": "don",
+    "text": "seafood",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7fbbe12fd0f689f8"
+  },
+  "pr-please": {
+    "file": "pr-please.mp3",
+    "kieu": "don",
+    "text": "please",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fa94e57f980ecfa1"
+  },
+  "pr-building": {
+    "file": "pr-building.mp3",
+    "kieu": "don",
+    "text": "building",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e55426568d027a01"
+  },
+  "pr-need": {
+    "file": "pr-need.mp3",
+    "kieu": "don",
+    "text": "need",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0535798eb4594850"
+  },
+  "prs-01": {
+    "file": "prs-01.mp3",
+    "kieu": "don",
+    "text": "My city is very noisy. There are lots of trees growing. The people here are busy. It's a lively place to live in.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a899fdd04724c1a8"
+  },
+  "prs-02": {
+    "file": "prs-02.mp3",
+    "kieu": "don",
+    "text": "My village is very pretty. There are lots of places to see. The people here are friendly. It's a fantastic place to be.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6cb1962aff8fb445"
+  },
+  "dir-turn-right": {
+    "file": "dir-turn-right.mp3",
+    "kieu": "don",
+    "text": "turn right",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "221ab96555789df7"
+  },
+  "dir-turn-left": {
+    "file": "dir-turn-left.mp3",
+    "kieu": "don",
+    "text": "turn left",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1abc1922d0171754"
+  },
+  "dir-go-straight": {
+    "file": "dir-go-straight.mp3",
+    "kieu": "don",
+    "text": "go straight",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "993fc43961535835"
+  },
+  "dir-cross": {
+    "file": "dir-cross.mp3",
+    "kieu": "don",
+    "text": "cross the road",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c23dc1704b77cd8a"
+  },
+  "dir-second-left": {
+    "file": "dir-second-left.mp3",
+    "kieu": "don",
+    "text": "take the second turning on the left",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "73b1a256af79e007"
+  },
+  "dir-first-right": {
+    "file": "dir-first-right.mp3",
+    "kieu": "don",
+    "text": "Take the first turning on the right.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d0d5d22ecf1c08c2"
+  },
+  "dir-along": {
+    "file": "dir-along.mp3",
+    "kieu": "don",
+    "text": "Go along this street.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e10cf675171054f4"
+  },
+  "dir-on-left": {
+    "file": "dir-on-left.mp3",
+    "kieu": "don",
+    "text": "It's on your left.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "913f4bfa74acb71b"
+  },
+  "dir-on-right": {
+    "file": "dir-on-right.mp3",
+    "kieu": "don",
+    "text": "It's on your right.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "860b9ac71b54253f"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "ten",
+    "text": "Wow! We're in Hoi An. I'm so excited.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Hoi An",
+        "doc": "Hội An",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "0d5030f0953ae22b"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "don",
+    "text": "Me too. It's so beautiful. Where shall we go first?",
+    "voice": "en-GB-ThomasNeural@+20Hz",
+    "rate": "+0%",
+    "bam": "7841ccce1812abe6"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "ten",
+    "text": "Let's go to Chua Cau.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Chua Cau",
+        "doc": "Chùa Cầu",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "65c6a3777e844443"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "ten",
+    "text": "Well, but Tan Ky House is nearer. Shall we go there first?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tan Ky",
+        "doc": "Tấn Ký",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "40fdfce905b74f9f"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "don",
+    "text": "OK, sure.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "5f05715f79cf8bd7"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "don",
+    "text": "First, cross the road, and then turn left.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "fb4693de3f6df798"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "don",
+    "text": "Fine, let's go.",
+    "voice": "en-GB-ThomasNeural@+20Hz",
+    "rate": "+0%",
+    "bam": "9d14efcfb30792f2"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "Wait.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "05f8ac2672757ac3"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "ten",
+    "text": "What's up, Phong?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "ffc745b7f15e6f22"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "don",
+    "text": "I think we're lost.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "490d1538d17629ef"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "don",
+    "text": "Look, there's a girl. Let's ask her.",
+    "voice": "en-GB-ThomasNeural@+20Hz",
+    "rate": "+0%",
+    "bam": "5ad7dfe5d645377c"
+  },
+  "gs-12": {
+    "file": "gs-12.mp3",
+    "kieu": "ten",
+    "text": "Excuse me? Can you tell us the way to Tan Ky House?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Tan Ky",
+        "doc": "Tấn Ký",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "ade1b0190be7e8e7"
+  },
+  "gs-13": {
+    "file": "gs-13.mp3",
+    "kieu": "don",
+    "text": "Sure. Go straight. Take the second turning on the left, and then turn right.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "af3fa2f8c7fd769a"
+  },
+  "gs-14": {
+    "file": "gs-14.mp3",
+    "kieu": "don",
+    "text": "Thank you.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "8dff379f9f93d11a"
+  },
+  "ten-phong": {
+    "file": "ten-phong.mp3",
+    "kieu": "don",
+    "text": "Phong",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
+  },
+  "ten-khang": {
+    "file": "ten-khang.mp3",
+    "kieu": "don",
+    "text": "Khang",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "36287153aafd48ec"
+  },
+  "ten-hoi-an": {
+    "file": "ten-hoi-an.mp3",
+    "kieu": "don",
+    "text": "Hội An",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "632dc647b17dc694"
+  },
+  "ten-chua-cau": {
+    "file": "ten-chua-cau.mp3",
+    "kieu": "don",
+    "text": "Chùa Cầu",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "408596371d5ba3c2"
+  },
+  "ten-tan-ky": {
+    "file": "ten-tan-ky.mp3",
+    "kieu": "don",
+    "text": "Tấn Ký",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "8d8c99e6c4a5cd76"
+  },
+  "ten-da-nang": {
+    "file": "ten-da-nang.mp3",
+    "kieu": "don",
+    "text": "Đà Nẵng",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "c3be17a03a89a085"
+  },
+  "ten-binh-minh": {
+    "file": "ten-binh-minh.mp3",
+    "kieu": "don",
+    "text": "Bình Minh",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "d8ff9cb3034f062f"
+  },
+  "ten-long-son": {
+    "file": "ten-long-son.mp3",
+    "kieu": "don",
+    "text": "Long Sơn",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "2863958979619dc8"
+  },
+  "gr-sg": {
+    "file": "gr-sg.mp3",
+    "kieu": "don",
+    "text": "We can use shall we and let's to make suggestions.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dc828b0274ae14f3"
+  },
+  "gr-01": {
+    "file": "gr-01.mp3",
+    "kieu": "don",
+    "text": "We can use comparative adjectives to compare two people or things.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb208e8f687f681a"
+  },
+  "gr-02": {
+    "file": "gr-02.mp3",
+    "kieu": "don",
+    "text": "Tom is taller than Mary.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fd6b54064b835d9f"
+  },
+  "gr-03": {
+    "file": "gr-03.mp3",
+    "kieu": "don",
+    "text": "A house in a city is normally more expensive than a house in the countryside.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a7f8578a34b8dd5f"
+  },
+  "gr-04": {
+    "file": "gr-04.mp3",
+    "kieu": "don",
+    "text": "This building is taller than that building.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dcea855c7dd5a1b0"
+  },
+  "gr-05": {
+    "file": "gr-05.mp3",
+    "kieu": "ten",
+    "text": "Binh Minh is noisier than Long Son.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Binh Minh",
+        "doc": "Bình Minh",
+        "voice": "vi-VN-HoaiMyNeural"
+      },
+      {
+        "tu": "Long Son",
+        "doc": "Long Sơn",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "a481e3e627e8a528"
+  },
+  "gr-06": {
+    "file": "gr-06.mp3",
+    "kieu": "ten",
+    "text": "Is Binh Minh noisier than Long Son?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Binh Minh",
+        "doc": "Bình Minh",
+        "voice": "vi-VN-HoaiMyNeural"
+      },
+      {
+        "tu": "Long Son",
+        "doc": "Long Sơn",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "89a04a00fa097207"
+  },
+  "gr-07": {
+    "file": "gr-07.mp3",
+    "kieu": "don",
+    "text": "Yes, it is.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "972ce2e9bbde55d9"
+  },
+  "gr-08": {
+    "file": "gr-08.mp3",
+    "kieu": "ten",
+    "text": "Is Long Son more modern than Binh Minh?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Long Son",
+        "doc": "Long Sơn",
+        "voice": "vi-VN-HoaiMyNeural"
+      },
+      {
+        "tu": "Binh Minh",
+        "doc": "Bình Minh",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "eccfed0c19e63449"
+  },
+  "gr-09": {
+    "file": "gr-09.mp3",
+    "kieu": "don",
+    "text": "No, it isn't.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "e8b32dfb2131c608"
+  },
+  "sp-01": {
+    "file": "sp-01.mp3",
+    "kieu": "don",
+    "text": "Is there a square in your neighbourhood?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5b6d15f4e94b0ae5"
+  },
+  "sp-02": {
+    "file": "sp-02.mp3",
+    "kieu": "don",
+    "text": "Yes, there is.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "e31e7922f05795fa"
+  },
+  "sp-02b": {
+    "file": "sp-02b.mp3",
+    "kieu": "don",
+    "text": "No, there isn't.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "881ddb2d077055ea"
+  },
+  "sp-03": {
+    "file": "sp-03.mp3",
+    "kieu": "don",
+    "text": "Is your neighbourhood quiet?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3f4a4a51cb51cf6d"
+  },
+  "sp-04": {
+    "file": "sp-04.mp3",
+    "kieu": "don",
+    "text": "No, it's noisy.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "1fc8288bbd5c679a"
+  },
+  "sp-05": {
+    "file": "sp-05.mp3",
+    "kieu": "don",
+    "text": "Go straight. Take the second turning on the left. It's on your right.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "40544caf9b43f938"
+  },
+  "sp-06": {
+    "file": "sp-06.mp3",
+    "kieu": "don",
+    "text": "Is that the gym?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "72cb792469df13ac"
+  },
+  "sp-07": {
+    "file": "sp-07.mp3",
+    "kieu": "don",
+    "text": "No, try again.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9b2184fa92eb05f0"
+  },
+  "sp-08": {
+    "file": "sp-08.mp3",
+    "kieu": "don",
+    "text": "Where do you live?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a482412752e9dac6"
+  },
+  "sp-09": {
+    "file": "sp-09.mp3",
+    "kieu": "ten",
+    "text": "I live in the suburbs of Da Nang City.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Da Nang",
+        "doc": "Đà Nẵng",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "98f2d9e07fbb5a9a"
+  },
+  "sp-10": {
+    "file": "sp-10.mp3",
+    "kieu": "don",
+    "text": "What do you like about it?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f22d2e9f1e31c198"
+  },
+  "sp-11": {
+    "file": "sp-11.mp3",
+    "kieu": "don",
+    "text": "The weather is fine. The people are friendly and the food is good.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "3dcf510ff8c0bdfb"
+  },
+  "sp-12": {
+    "file": "sp-12.mp3",
+    "kieu": "don",
+    "text": "What do you dislike about it?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6c3b1a8e93a8a3d9"
+  },
+  "sp-13": {
+    "file": "sp-13.mp3",
+    "kieu": "don",
+    "text": "The streets are busy and crowded.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "4e1911b5b08b57fa"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "don",
+    "text": "Excuse me. Could you tell me the way to the cinema, please?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "172cfae85b94f5fa"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "Go along this street. It's on your left.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "58c013bfd71ac0ee"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "don",
+    "text": "Excuse me. Where's the nearest post office, please?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f1bc9e1a313db795"
+  },
+  "com-04": {
+    "file": "com-04.mp3",
+    "kieu": "don",
+    "text": "Go out of the station. Take the first turning on the right.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "ecdddc2db3987e4d"
+  },
+  "read-01": {
+    "file": "read-01.mp3",
+    "kieu": "ten",
+    "text": "My neighbourhood. I live in the suburbs of Da Nang City. There are many things I like about my neighbourhood.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Da Nang",
+        "doc": "Đà Nẵng",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "88adafe519a0a9c1"
+  },
+  "read-02": {
+    "file": "read-02.mp3",
+    "kieu": "don",
+    "text": "It's great for outdoor activities because it has beautiful parks, sandy beaches and fine weather. There's almost everything I need here: shops, restaurants, and markets. The people here are friendlier, and the food is better than in other places.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "c0e970276fb280e8"
+  },
+  "read-03": {
+    "file": "read-03.mp3",
+    "kieu": "don",
+    "text": "However, there are two things I dislike about it: there are many modern buildings and offices; and the streets are busy and crowded.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "34e6a541a4d4239c"
+  }
+}

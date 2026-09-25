@@ -768,57 +768,57 @@
     "file": "read-01.mp3",
     "kieu": "ten",
     "text": "Hi Phong and Mi, How are you? I'm in Da Lat with my parents. We're staying at the Crazy House Hotel. Wow! It really is crazy.",
-    "voice": "en-GB-SoniaNeural",
+    "voice": "en-GB-RyanNeural",
     "rate": "+0%",
     "ten_viet": [
       {
         "tu": "Phong",
         "doc": "Phong",
-        "voice": "vi-VN-HoaiMyNeural"
+        "voice": "vi-VN-NamMinhNeural"
       },
       {
         "tu": "Mi",
         "doc": "Mi",
-        "voice": "vi-VN-HoaiMyNeural"
+        "voice": "vi-VN-NamMinhNeural"
       },
       {
         "tu": "Da Lat",
         "doc": "Đà Lạt",
-        "voice": "vi-VN-HoaiMyNeural"
+        "voice": "vi-VN-NamMinhNeural"
       }
     ],
-    "bam": "0ddbd7db8af499e5"
+    "bam": "ae70af5c2746c4cd"
   },
   "read-02": {
     "file": "read-02.mp3",
     "kieu": "don",
     "text": "There are ten rooms in the hotel. There's a Kangaroo Room, an Eagle Room, and even an Ant Room. I'm staying in the Tiger Room. It's called the Tiger Room because there's a big tiger on the wall.",
-    "voice": "en-GB-SoniaNeural",
+    "voice": "en-GB-RyanNeural",
     "rate": "+0%",
-    "bam": "53377c1b3bb4f712"
+    "bam": "d545118119e9a018"
   },
   "read-03": {
     "file": "read-03.mp3",
     "kieu": "don",
     "text": "The tiger is between the bathroom door and the window. The bed is next to the window, but the window is a strange shape. I put my bag under the bed. There's a lamp, a wardrobe and a desk.",
-    "voice": "en-GB-SoniaNeural",
+    "voice": "en-GB-RyanNeural",
     "rate": "+0%",
-    "bam": "f9d70801fb115c7c"
+    "bam": "1b8157c74e01c9ad"
   },
   "read-04": {
     "file": "read-04.mp3",
     "kieu": "ten",
     "text": "You should stay here when you visit Da Lat. It's great. See you soon! Nick",
-    "voice": "en-GB-SoniaNeural",
+    "voice": "en-GB-RyanNeural",
     "rate": "+0%",
     "ten_viet": [
       {
         "tu": "Da Lat",
         "doc": "Đà Lạt",
-        "voice": "vi-VN-HoaiMyNeural"
+        "voice": "vi-VN-NamMinhNeural"
       }
     ],
-    "bam": "8015b000a0f4799d"
+    "bam": "cd9c149136618bb8"
   },
   "wr-01": {
     "file": "wr-01.mp3",

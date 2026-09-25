@@ -41,7 +41,10 @@
   }
   .chip:hover{background:var(--brand-soft); border-color:#c8dbff; color:var(--brand)}
   /* engine tu gom moi .chip (va nut Tat chuyen dong) vao .chips: dien thoai thi mot hang cuon ngang */
-  .toolbar .chips{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  /* moi co man: chip MOT hang cuon ngang (review Unit 4: 12 chip xuong 2 hang, thanh cao 138 px o 1050 px) */
+  .toolbar .chips{display:flex; flex-wrap:nowrap; gap:8px; align-items:center; flex:1 1 320px; min-width:0;
+    overflow-x:auto; scrollbar-width:thin; padding:2px 0}
+  .toolbar .chips .chip, .toolbar .chips .tbtn{white-space:nowrap; flex:0 0 auto}
   .spacer{flex:1}
   .speed{display:flex; align-items:center; gap:6px; font-size:14px; color:var(--muted)}
   .speed button{
@@ -78,8 +81,13 @@
   .say.playing::before{content:"■"}
   .say.mini{font-size:14px; padding:3px 10px 3px 8px}
   .say.icon{padding:4px 9px; font-size:13px}
-  .say.icon::before{content:"🔊"; font-size:14px; opacity:1}
-  .say.icon.playing::before{content:"■"}
+  /* bieu tuong loa ve bang SVG (mask) -> to mau duoc; emoji 🔊 tren Windows ra mau xam nhat, tuong phan < 3:1 */
+  .say.icon::before, .say.big::before{content:""; display:inline-block; width:17px; height:17px; opacity:1;
+    background:var(--brand);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3Cpath d='M14 7.5v9a4.5 4.5 0 0 0 0-9z'/%3E%3Cpath d='M14 3v2.1a7 7 0 0 1 0 13.8V21a9 9 0 0 0 0-18z'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3Cpath d='M14 7.5v9a4.5 4.5 0 0 0 0-9z'/%3E%3Cpath d='M14 3v2.1a7 7 0 0 1 0 13.8V21a9 9 0 0 0 0-18z'/%3E%3C/svg%3E") center/contain no-repeat}
+  .say.icon.playing::before, .say.big.playing::before{content:"■"; width:auto; height:auto; background:none;
+    -webkit-mask:none; mask:none}
   .say.line{background:#fff; border-color:#9dbcf3; color:var(--muted)}
   .say.line:hover{background:var(--brand-soft); color:var(--brand)}
   .say.line.playing{background:var(--green); border-color:var(--green); color:#fff}
@@ -104,6 +112,8 @@
   .dlg .who.f{color:#c2408f}
   .dlg .who.f2{color:#b3541e}        /* vai nu thu hai (giong F2 = en-GB-LibbyNeural): Mum, co giao... */
   .dlg .who.m2{color:#0f7a8a}        /* vai nam thu hai neu co */
+  .dlg .who.m3{color:#6b4fbf}        /* vai nam thu ba (giong M3 = giong nam co san + nang cao do, vd "en-GB-ThomasNeural@+20Hz") */
+  .dlg .who.f3{color:#8a6d00}        /* vai nu thu ba */
   .dlg.ba-cham{color:var(--muted); letter-spacing:2px}
   .wordgrid{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
   .pron2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:12px 0}
@@ -222,7 +232,7 @@
   /* 2. nghe rồi chọn */
   .ls-q{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
   .say.big{font-size:17px; font-weight:700; padding:9px 20px 9px 16px; background:var(--brand); color:#fff; border-color:var(--brand)}
-  .say.big::before{content:"🔊"; font-size:18px; opacity:1}
+  .say.big::before{width:20px; height:20px; background:#fff}
   .say.big:hover{background:#2560c4}
   .say.big.playing::before{content:"■"}
   [data-listen]{margin:10px 0 16px}
@@ -330,6 +340,8 @@
     border-radius:10px; border:1px solid #e6cf9b; background:#fffdf6; resize:vertical}
   .ghi textarea:focus{outline:none; border-color:var(--warm); box-shadow:0 0 0 3px #fde7b8}
   .ghi-tt{font-size:14px; color:var(--muted); margin-top:4px}
+  .dung-ngay{margin:10px 0 0; font-size:.92em; color:#4a4f5c}
+  .dung-ngay b{color:var(--purple)}
   .xem-lai{border:1px dashed #c9b8f3; background:#faf7ff; border-radius:12px; padding:10px 14px; margin:14px 0}
   .xem-lai .noi{display:none; margin-top:6px; white-space:pre-wrap; background:#fff; border-left:4px solid var(--purple);
     border-radius:0 8px 8px 0; padding:8px 12px}
@@ -433,6 +445,7 @@
     .od-line:empty::before{content:""}
     .hide.in-hien{display:block !important}
     .xem-lai .noi{display:block}
+    .xem-lai .noi:empty{display:none}
     .buoi{background:none; color:inherit; border:2px solid #999}
     .say{border:none; background:none; padding:0; color:inherit}
     .say.icon,.say.big,.say-all{display:none}
@@ -545,8 +558,9 @@
 <section id="s2">
   <h2>2. Getting Started — <i>A look inside</i> 🎧 <span class="muted small">(Track 10, tập một)</span></h2>
 
+  <div class="mo-dau"><span class="label">📱 Gọi video cho bạn ở xa</span>
   <p>Mi (Việt Nam) đang gọi video cho Nick (bạn nước ngoài của Mi). Nick ngồi trong một căn phòng rất to…
-  nhưng đó có phải phòng của Nick không? Bấm <b>Nghe cả hội thoại</b>, hai giọng khác nhau cho em nhận ra ai đang nói.</p>
+  nhưng đó có phải phòng của Nick không? Bấm <b>Nghe cả hội thoại</b>, hai giọng khác nhau cho em nhận ra ai đang nói.</p></div>
 
   <div class="box tip">
     <span class="label">Tên người Việt đọc theo tiếng Việt</span>
@@ -1050,10 +1064,10 @@
 
   <div class="err">
     <div class="h">Lỗi hay gặp — bỏ quên chữ nhỏ đi kèm giới từ</div>
-    <p><span class="x">✗</span> <i>in front the TV</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>next the bed</i> &nbsp;·&nbsp;
+    <p><span class="x">✗</span> <i>in front the wardrobe</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>next the bed</i> &nbsp;·&nbsp;
     <span class="x">✗</span> <i>between the door or the window</i></p>
     <p>Ba giới từ này là <b>cả một cụm</b>: <b>in front of</b> (ba chữ), <b>next to</b> (hai chữ), <b>between … and …</b>
-    (hai vật nối bằng <i>and</i>). Tiếng Việt nói "trước ti vi", "cạnh giường" — không có chữ nào ứng với <i>of</i>, <i>to</i>,
+    (hai vật nối bằng <i>and</i>). Tiếng Việt nói "trước tủ quần áo", "cạnh giường" — không có chữ nào ứng với <i>of</i>, <i>to</i>,
     nên em rất hay quên. Bấm nghe lại <i>in front of</i>, <i>next to</i> trong khung Remember! và đọc to cả cụm.</p>
   </div>
 
@@ -1091,9 +1105,9 @@
 
   <div class="act" data-act="dien-cum-gioi-tu" data-nguon="luyen">
     <h4><span class="tag">NHIỆM VỤ 13</span> Đừng bỏ quên chữ nhỏ! Điền <b>một</b> từ còn thiếu của cụm giới từ</h4>
-    <p class="cau-fill">1. The cat is in front <span data-fill data-answer="of" data-w="4"
+    <p class="cau-fill">1. The bed is in front <span data-fill data-answer="of" data-w="4"
        data-goi-y="in front … — cụm này có ba chữ. Bấm nghe lại in front of trong khung Remember!"
-       data-hint-sai='{"to":"to đi với next. Còn in front đi với chữ nào? Nghe lại cụm trong khung Remember!","on":"on là một giới từ riêng. Cụm in front … còn thiếu chữ nào ở cuối?","the":"Chữ the đã có ngay sau ô trống rồi. Cụm in front … còn thiếu chữ nào?"}'></span> the TV.</p>
+       data-hint-sai='{"to":"to đi với next. Còn in front đi với chữ nào? Nghe lại cụm trong khung Remember!","on":"on là một giới từ riêng. Cụm in front … còn thiếu chữ nào ở cuối?","the":"Chữ the đã có ngay sau ô trống rồi. Cụm in front … còn thiếu chữ nào?"}'></span> the window.</p>
     <p class="cau-fill">2. The lamp is next <span data-fill data-answer="to" data-w="4"
        data-goi-y="next … — cụm này có hai chữ. Bấm nghe lại next to."
        data-hint-sai='{"of":"of đi với in front. Còn next đi với chữ nào?","by":"Sách dạy cụm next … với một chữ khác. Nghe lại trong khung Remember!","the":"Chữ the đã có ngay sau ô trống rồi. Cụm next … còn thiếu chữ nào?"}'></span> the sofa.</p>
@@ -1179,10 +1193,10 @@
   <div class="box remember">
     <span class="label">Hai mẫu câu gợi ý <span class="muted small">— nguyên văn SGK (bài 2)</span></span>
     <p>• <b><i>How about + V-ing?</i></b> &nbsp;&nbsp; • <b><i>Let's + V.</i></b></p>
-  </div>
   <p><b>Giảng bằng tiếng Việt:</b> <i>How about…?</i> = "Hay là… nhỉ?", sau nó động từ <b>thêm -ing</b> (<i>putting</i>).
   <i>Let's…</i> = "Mình cùng… đi!", sau nó là động từ <b>nguyên thể</b> (<i>go</i>). Đáp lại gợi ý hay thì nói như Elena:
   <i>Great idea!</i></p>
+  </div>
 
   <div class="err">
     <div class="h">Lỗi hay gặp — tráo đuôi động từ giữa hai mẫu</div>
@@ -1192,10 +1206,10 @@
 
   <div class="act" data-act="goi-y" data-nguon="luyen">
     <h4><span class="tag">NHIỆM VỤ 15</span> Chọn đúng dạng để đưa ra gợi ý — rồi nói theo mẹ Elena</h4>
-    <div data-mcq data-opts="put;putting" data-answer="putting"
-         data-hint-sai='{"put":"Sau How about, động từ cần đuôi gì? Nghe lại câu in đậm thứ nhất của mẹ Elena."}'>1. How about ___ a lamp next to the bed?</div>
-    <div data-mcq data-opts="put;putting" data-answer="put"
-         data-hint-sai='{"putting":"Sau Let&apos;s là động từ dạng nào? Nghe lại câu in đậm thứ hai: Let&apos;s go…, không phải going."}'>2. Let's ___ the sofa in the living room.</div>
+    <div data-mcq data-tron="2" data-opts="put;putting;to put" data-answer="putting"
+         data-hint-sai='{"put":"Sau How about, động từ cần đuôi gì? Nghe lại câu in đậm thứ nhất của mẹ Elena.","to put":"Sau How about có chữ to không? Nghe lại câu in đậm thứ nhất của mẹ Elena."}'>1. How about ___ a lamp next to the bed?</div>
+    <div data-mcq data-opts="put;putting;to put" data-answer="put"
+         data-hint-sai='{"putting":"Sau Let&apos;s là động từ dạng nào? Nghe lại câu in đậm thứ hai: Let&apos;s go…, không phải going.","to put":"Mẹ Elena nói Let&apos;s go… hay Let&apos;s to go…? Sau Let&apos;s có to không?"}'>2. Let's ___ the sofa in the living room.</div>
     <div data-mcq data-opts="How about;Let's" data-answer="How about"
          data-hint-sai='{"let&apos;s":"Nhìn động từ phía sau: going có đuôi -ing. Mẫu nào đi với -ing?"}'>3. ___ going to the department store?</div>
     <div data-mcq data-opts="How about;Let's" data-answer="Let's"
@@ -1214,12 +1228,12 @@
 
   <div class="act" data-act="there-is-are" data-nguon="luyen">
     <h4><span class="tag">NHIỆM VỤ 16</span> Đếm rồi chọn: <i>is</i> hay <i>are</i>?</h4>
-    <div data-mcq data-opts="is;are" data-answer="is"
-         data-hint-sai='{"are":"Đếm xem: one sofa là một cái hay nhiều cái?"}'>1. There ___ one sofa in Mai's living room.</div>
+    <div data-mcq data-opts="is;are;have" data-answer="is"
+         data-hint-sai='{"are":"Đếm xem: one sofa là một cái hay nhiều cái?","have":"Tiếng Việt nói “có”, nhưng sau There tiếng Anh dùng be hay have?"}'>1. There ___ one sofa in Mai's living room.</div>
     <div data-mcq data-tron="2" data-opts="is;are" data-answer="are"
          data-hint-sai='{"is":"Đếm xem: three lamps là một hay nhiều? Nhìn đuôi -s của lamps."}'>2. There ___ three lamps in my bedroom.</div>
-    <div data-mcq data-tron="4" data-opts="is;are" data-answer="are"
-         data-hint-sai='{"is":"Đếm xem: two wardrobes là một hay nhiều?"}'>3. There ___ two wardrobes in Nick's room.</div>
+    <div data-mcq data-tron="4" data-opts="is;are;have" data-answer="are"
+         data-hint-sai='{"is":"Đếm xem: two wardrobes là một hay nhiều?","have":"There + ___ : chỗ trống là mảnh be (is / are), không phải have. Rồi đếm: two wardrobes."}'>3. There ___ two wardrobes in Nick's room.</div>
     <div data-mcq data-opts="is;are" data-answer="is"
          data-hint-sai='{"are":"Đếm xem: one bathroom là một hay nhiều? Không có đuôi -s số nhiều."}'>4. There ___ one bathroom in my flat.</div>
   </div>
@@ -1286,9 +1300,9 @@
     <p>Before reading, look at the pictures, design and title.</p>
     <p>Decide what the text is about.</p>
     <p>Think about what you know about the topic.</p>
-  </div>
   <p class="small"><b>Cô giảng:</b> <i>Predicting</i> = đoán trước. Trước khi đọc, nhìn <b>tranh, cách trình bày, tiêu đề</b> để đoán
   bài nói về gì, rồi nghĩ xem mình đã biết gì về chủ đề ấy. Đoán trước thì đọc nhanh hơn hẳn.</p>
+  </div>
 
   <p class="small muted">Tranh SGK: bên trong một phòng của khách sạn Crazy House với tường uốn lượn kì lạ, và toàn cảnh khách sạn hình
   gốc cây khổng lồ giữa vườn hoa.</p>
@@ -1387,6 +1401,10 @@
 <!-- ============================== 9. SKILLS 2 ============================== -->
 <section id="s9">
   <h2>9. Skills 2 — Nghe và viết thư <span class="muted small">(trang 23)</span></h2>
+
+  <div class="mo-dau"><span class="label">🕵️ Thử thách thám tử nghe</span>
+  <p>Thám tử giỏi không nghe mò: trước khi bấm nghe, thám tử <b>đọc câu hỏi</b> và đoán mình phải "săn" loại thông tin gì — một
+  con số, một đồ vật, hay một căn phòng? Hôm nay em luyện đúng mẹo đó, rồi viết thư kể về nhà em cho một người bạn.</p></div>
 
   <div class="box warn">
     <span class="label">⛔ Phần nghe: em dùng đĩa / app của NXB</span>
@@ -1539,9 +1557,10 @@
 <!-- ============================== 11. TỰ KIỂM TRA ============================== -->
 <section id="s11">
   <h2>11. Tự kiểm tra 1 phút — Mini-game</h2>
+  <div class="mo-dau"><span class="label">⏱ Ai nhanh hơn đồng hồ?</span>
   <p>Làm xong phần Ôn tập rồi thì thử sức nhé! Sáu câu trộn đủ cả Unit: từ vựng, âm cuối, <i>There is/are</i>, hai loại
   <i>'s</i>, giới từ, gợi ý. Đồng hồ <b>tự chạy khi em bấm câu đầu tiên</b> và tự dừng khi em xong câu cuối — trang ghi lại
-  <b>kỉ lục</b> của em để lần sau phá.</p>
+  <b>kỉ lục</b> của em để lần sau phá.</p></div>
   <div class="act game" data-act="tu-kiem-tra" data-nguon="luyen">
     <h4><span class="tag">MINI-GAME</span> Ai nhanh hơn đồng hồ? 6 câu — 60 giây</h4>
     <p><span data-timer="60"></span></p>
@@ -1549,8 +1568,8 @@
          data-hint-sai='{"hall":"hall là một khu vực trong nhà (sảnh). Từ nào là đồ đạc em đặt vào phòng?","strange":"strange là tính từ (kì lạ). Từ nào là một món đồ đạc?"}'>1. Từ nào là một món đồ đạc (<i>furniture</i>)?</div>
     <div data-listen data-a="pr-bedrooms" data-t="bedrooms" data-opts="/s/;/z/" data-answer="/z/" data-giu-thu-tu
          data-hint-sai='{"/s/":"Nghe lại, đặt tay lên cổ: âm m ngay trước đuôi -s có rung không?"}'>2. Một từ mới chưa có trong bảng xếp cột! Đuôi -s của từ này đọc là âm gì?</div>
-    <div data-mcq data-opts="is;are" data-answer="are"
-         data-hint-sai='{"is":"Đếm xem: two bathrooms là một hay nhiều?"}'>3. There ___ two bathrooms in my flat.</div>
+    <div data-mcq data-opts="is;are;have" data-answer="are"
+         data-hint-sai='{"is":"Đếm xem: two bathrooms là một hay nhiều?","have":"Sau There là mảnh be hay have? Tiếng Việt nói “có” nhưng tiếng Anh không dịch thẳng."}'>3. There ___ two bathrooms in my flat.</div>
     <div data-mcq data-opts="'s = is;'s = của ai" data-answer="'s = is"
          data-hint-sai='{"&apos;s = của ai":"Thử thay &apos;s bằng is: It is called the Tiger Room — câu còn đúng nghĩa không? Ngay sau &apos;s có phải một đồ vật của ai đó không?"}'>4. <i>It<b>'s</b> called the Tiger Room.</i> — chữ <i>'s</i> ở đây là gì?</div>
     <div data-mcq data-opts="on;in front of;behind" data-answer="on"
@@ -1570,11 +1589,11 @@
   <p><b>Về file phát âm:</b> toàn bộ <code>.mp3</code> trong thư mục <code>audio-unit-02/</code> do máy tổng
   hợp giọng đọc (Microsoft Edge TTS, giọng <b>Anh – Anh</b>: <code>en-GB-SoniaNeural</code> cho nữ,
   <code>en-GB-RyanNeural</code> cho nam, <code>en-GB-LibbyNeural</code> cho vai người mẹ; tên riêng Việt Nam đọc
-  bằng giọng <code>vi-VN</code>), sinh từ đúng ngữ liệu in trong SGK. Đây là
+  bằng giọng <code>vi-VN</code>), đọc từ, câu và đoạn in trong SGK Tiếng Anh 6; riêng vài bài nghe luyện âm thì máy đọc <b>một từ đơn</b> lấy trong sách. Đây là
   <b>giọng máy để tham chiếu khi luyện đọc</b>, không phải file nghe chính thức của bộ sách —
   các bài Listening vẫn phải dùng đĩa/app của NXB vì SGK không in nội dung băng.</p>
   <p>Các câu có nhãn <i>“Câu luyện của bài giảng”</i> do cô đặt để em luyện, dùng đúng từ và mẫu
-  câu của Unit — <b>không phải câu trong SGK</b> và không có giọng đọc. Nếu trình duyệt không mở
+  câu của Unit — <b>không phải câu trong SGK</b>; máy không đọc các câu luyện dài. Nếu trình duyệt không mở
   được file mp3, trang sẽ tự chuyển sang đọc bằng giọng máy có sẵn của trình duyệt. Nguồn nội
   dung: <code>kiến thức/tiếng anh/</code>.</p>
 </footer>
@@ -1858,6 +1877,7 @@
     var a = w.closest('[data-act]');
     if(!a) return;
     if(!$$(WIDGET, a).every(function(x){ return x._xong; })) return;
+    dungNgay(a);
     var k = a.getAttribute('data-act');
     if(DONE[k]) return;
     DONE[k] = true; a.classList.add('done'); paint();
@@ -1870,6 +1890,17 @@
     } else {
       noiKhen('⭐ ' + KHEN[n % KHEN.length] + ' Xong ' + n + '/' + ACTS.length + ' nhiệm vụ');
     }
+  }
+  /* "Dung ngay lan dau n/k": cau 2 phuong an bam lai khong gioi han thi lan nao cung xong -> cho em thay minh doan
+     trung bao nhieu cau (game da co san trong khoi ket qua dong ho). Chi dem mcq / listen / fill (co _sai). */
+  function dungNgay(a){
+    if(a.classList.contains('game')) return;
+    var ws = $$('[data-mcq],[data-listen],[data-fill]', a);
+    if(ws.length < 2) return;
+    var d = ws.filter(function(w){ return !w._sai; }).length, p = $('.dung-ngay', a);
+    if(!p){ p = el('p', 'dung-ngay'); a.appendChild(p); }
+    p.innerHTML = '🎯 Đúng ngay lần đầu: <b>' + d + '/' + ws.length + '</b> câu.' +
+      (d < ws.length ? ' Câu nào phải chọn lại, em đọc lại gợi ý của câu đó một lần nữa nhé.' : ' Không cần đoán lần nào — giỏi quá!');
   }
   function xongHet(){ $$('[data-khi-xong-het]').forEach(function(t){ t.classList.remove('hide'); t.classList.add('mo-ra'); }); }
 
@@ -2101,7 +2132,8 @@
         show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em xếp đúng hết rồi.'));
         xong(host);
       } else {
-        show(f, 'bad', 'Có <b>' + sai.length + '</b> thẻ chưa nằm đúng cột. Em bấm 🔊 nghe lại từng thẻ, ' +
+        show(f, 'bad', 'Có <b>' + sai.length + '</b> thẻ chưa nằm đúng cột. ' +
+          (chips.some(function(d){ return $('.say', d); }) ? 'Em bấm 🔊 nghe lại từng thẻ, ' : 'Em đọc lại nghĩa từng thẻ, ') +
           'so với từ mẫu của mỗi cột, rồi đổi chỗ thẻ đó.' +
           (function(){ var g = sai.filter(function(d){ return d._goi; })[0]; return g ? '<br>💡 ' + g._goi : ''; })());
       }
@@ -2126,7 +2158,15 @@
     inp.setAttribute('autocapitalize', 'off'); inp.setAttribute('spellcheck', 'false');
     inp.setAttribute('aria-label', 'Ô điền từ');
     var b = nut('Kiểm'), f = el('span', 'fb-in');
-    host.innerHTML = ''; host.appendChild(inp); host.appendChild(b); host.appendChild(f);
+    host.innerHTML = ''; host.appendChild(inp);
+    /* dong tu goi y "(eat)" viet NGAY SAU o dien: keo vao truoc nut Kiem, de em thay dong tu truoc khi thay nut
+       (tren dien thoai nut day "(eat)" xuong dong duoi) */
+    var sau = host.nextSibling, mNg = sau && sau.nodeType === 3 && sau.nodeValue.match(/^\s*\([^()]*\)/);
+    if(mNg){
+      var ng = el('span', 'fl-ngoac'); ng.textContent = mNg[0];
+      sau.nodeValue = sau.nodeValue.slice(mNg[0].length); host.appendChild(ng);
+    }
+    host.appendChild(b); host.appendChild(f);
     host._sai = 0;
     host._reset = function(){
       host._xong = false; host._sai = 0; host.classList.remove('xong'); host.classList.remove('dung');

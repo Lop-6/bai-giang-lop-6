@@ -1,6 +1,7 @@
 {
   "voices": {"F": "en-GB-SoniaNeural", "M": "en-GB-RyanNeural", "F2": "en-GB-LibbyNeural", "VF": "vi-VN-HoaiMyNeural", "VM": "vi-VN-NamMinhNeural"},
   "giong_ten": {"F": "VF", "F2": "VF", "M": "VM"},
+  "vai": {"Mi": "F", "Nick": "M", "Elena": "F", "Mum": "F2"},
   "items": [
     {"slug": "voc-town-house", "text": "town house", "voice": "F"},
     {"slug": "voc-country-house", "text": "country house", "voice": "F"},
@@ -95,10 +96,10 @@
     {"slug": "sp-06", "voice": "F", "text": "I live in a flat."},
     {"slug": "sp-07", "voice": "F", "text": "This is the Shark Room. There's a big shark at the door. There's a table and a sofa in the middle of the room"},
     {"slug": "sp-08", "voice": "F", "text": "There's a big bed next to the door."},
-    {"slug": "read-01", "voice": "F", "text": "Hi Phong and Mi, How are you? I'm in Da Lat with my parents. We're staying at the Crazy House Hotel. Wow! It really is crazy.", "ten_viet": ["Phong", "Mi", {"tu": "Da Lat", "doc": "Đà Lạt"}]},
-    {"slug": "read-02", "voice": "F", "text": "There are ten rooms in the hotel. There's a Kangaroo Room, an Eagle Room, and even an Ant Room. I'm staying in the Tiger Room. It's called the Tiger Room because there's a big tiger on the wall."},
-    {"slug": "read-03", "voice": "F", "text": "The tiger is between the bathroom door and the window. The bed is next to the window, but the window is a strange shape. I put my bag under the bed. There's a lamp, a wardrobe and a desk."},
-    {"slug": "read-04", "voice": "F", "text": "You should stay here when you visit Da Lat. It's great. See you soon! Nick", "ten_viet": [{"tu": "Da Lat", "doc": "Đà Lạt"}]},
+    {"slug": "read-01", "voice": "M", "vai": "Nick", "text": "Hi Phong and Mi, How are you? I'm in Da Lat with my parents. We're staying at the Crazy House Hotel. Wow! It really is crazy.", "ten_viet": ["Phong", "Mi", {"tu": "Da Lat", "doc": "Đà Lạt"}]},
+    {"slug": "read-02", "voice": "M", "vai": "Nick", "text": "There are ten rooms in the hotel. There's a Kangaroo Room, an Eagle Room, and even an Ant Room. I'm staying in the Tiger Room. It's called the Tiger Room because there's a big tiger on the wall."},
+    {"slug": "read-03", "voice": "M", "vai": "Nick", "text": "The tiger is between the bathroom door and the window. The bed is next to the window, but the window is a strange shape. I put my bag under the bed. There's a lamp, a wardrobe and a desk."},
+    {"slug": "read-04", "voice": "M", "vai": "Nick", "text": "You should stay here when you visit Da Lat. It's great. See you soon! Nick", "ten_viet": [{"tu": "Da Lat", "doc": "Đà Lạt"}]},
     {"slug": "wr-01", "voice": "F", "text": "Hi Mira,"},
     {"slug": "wr-02", "voice": "F", "text": "Thanks for your email. Now I'll tell you about my house."},
     {"slug": "wr-03", "voice": "F", "text": "What about you? Where do you live? Tell me in your next email."},

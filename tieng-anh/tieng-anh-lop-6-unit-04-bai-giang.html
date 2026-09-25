@@ -1,0 +1,2599 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UNIT 4. MY NEIGHBOURHOOD — Bài giảng Tiếng Anh 6 (Global Success)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
+    --line:#e3e7f0; --brand:#2f6fdb; --brand-soft:#e8f0ff;
+    --warm:#f59e0b; --warm-soft:#fff6e5; --green:#0f9d76; --green-soft:#e6f7f1;
+    --red:#d64545; --red-soft:#fdeceb; --purple:#7c5cd6; --purple-soft:#f1ecff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:120px}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,Arial,sans-serif;
+    font-size:17px; line-height:1.65;
+  }
+  .wrap{max-width:900px; margin:0 auto; padding:0 16px 80px}
+
+  header.top{
+    background:linear-gradient(135deg,#2f6fdb,#6a4fd8); color:#fff;
+    padding:26px 16px 22px;
+  }
+  header.top .wrap{padding-bottom:0}
+  header.top h1{margin:0 0 4px; font-size:30px; letter-spacing:.3px}
+  header.top .sub{opacity:.92; font-size:15px; margin:0}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px; border-radius:999px; font-size:13px; margin-top:8px}
+
+  .toolbar{
+    position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line);
+  }
+  .toolbar .wrap{padding-top:10px; padding-bottom:10px; display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .chip{
+    display:inline-block; padding:5px 11px; border-radius:999px; font-size:14px;
+    background:#eef1f7; color:#3a4152; text-decoration:none; border:1px solid transparent;
+  }
+  .chip:hover{background:var(--brand-soft); border-color:#c8dbff; color:var(--brand)}
+  /* engine tu gom moi .chip (va nut Tat chuyen dong) vao .chips: dien thoai thi mot hang cuon ngang */
+  /* moi co man: chip MOT hang cuon ngang (review Unit 4: 12 chip xuong 2 hang, thanh cao 138 px o 1050 px) */
+  .toolbar .chips{display:flex; flex-wrap:nowrap; gap:8px; align-items:center; flex:1 1 320px; min-width:0;
+    overflow-x:auto; scrollbar-width:thin; padding:2px 0}
+  .toolbar .chips .chip, .toolbar .chips .tbtn{white-space:nowrap; flex:0 0 auto}
+  .spacer{flex:1}
+  .speed{display:flex; align-items:center; gap:6px; font-size:14px; color:var(--muted)}
+  .speed button{
+    font:inherit; font-size:14px; padding:4px 10px; border-radius:8px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--ink);
+  }
+  .speed button.on{background:var(--brand); border-color:var(--brand); color:#fff}
+
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:20px 0; box-shadow:0 1px 2px rgba(20,30,60,.04)}
+  h2{font-size:22px; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:18px; margin:22px 0 8px; color:#243049}
+  h4{font-size:16px; margin:16px 0 6px; color:#37405a}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 20px; padding:0}
+  li{margin:4px 0}
+
+  table{border-collapse:collapse; width:100%; margin:10px 0; font-size:16px}
+  th,td{border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top}
+  th{background:#f2f5fb; font-weight:600}
+  td.ipa{white-space:nowrap; color:var(--purple); font-family:"Segoe UI",system-ui,sans-serif}
+
+  .say{
+    display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+    font:inherit; font-size:15px; line-height:1.3;
+    background:var(--brand-soft); color:var(--brand); border:1px solid #7fa6e6;
+    border-radius:999px; padding:5px 13px 5px 10px; margin:2px 4px 2px 0;
+    transition:background .12s, transform .06s;
+  }
+  .say:hover{background:#d8e6ff}
+  .say:active{transform:scale(.97)}
+  .say::before{content:"▶"; font-size:11px; opacity:.85}
+  .say.playing{background:var(--green); border-color:var(--green); color:#fff}
+  .say.playing::before{content:"■"}
+  .say.mini{font-size:14px; padding:3px 10px 3px 8px}
+  .say.icon{padding:4px 9px; font-size:13px}
+  /* bieu tuong loa ve bang SVG (mask) -> to mau duoc; emoji 🔊 tren Windows ra mau xam nhat, tuong phan < 3:1 */
+  .say.icon::before, .say.big::before{content:""; display:inline-block; width:17px; height:17px; opacity:1;
+    background:var(--brand);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3Cpath d='M14 7.5v9a4.5 4.5 0 0 0 0-9z'/%3E%3Cpath d='M14 3v2.1a7 7 0 0 1 0 13.8V21a9 9 0 0 0 0-18z'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3Cpath d='M14 7.5v9a4.5 4.5 0 0 0 0-9z'/%3E%3Cpath d='M14 3v2.1a7 7 0 0 1 0 13.8V21a9 9 0 0 0 0-18z'/%3E%3C/svg%3E") center/contain no-repeat}
+  .say.icon.playing::before, .say.big.playing::before{content:"■"; width:auto; height:auto; background:none;
+    -webkit-mask:none; mask:none}
+  .say.line{background:#fff; border-color:#9dbcf3; color:var(--muted)}
+  .say.line:hover{background:var(--brand-soft); color:var(--brand)}
+  .say.line.playing{background:var(--green); border-color:var(--green); color:#fff}
+  .say-all{
+    background:var(--green-soft); border-color:#b8e5d7; color:#0b7a5c; font-weight:600;
+  }
+  .say-all:hover{background:#d2f0e6}
+  .say-all::before{content:"▶▶"; letter-spacing:-2px}
+
+  .box{border-left:5px solid var(--brand); background:#f8faff; border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:12px 0}
+  .box.remember{border-left-color:var(--warm); background:var(--warm-soft)}
+  .box.tip{border-left-color:var(--green); background:var(--green-soft)}
+  .box.warn{border-left-color:var(--red); background:var(--red-soft)}
+  .box.quote{border-left-color:var(--purple); background:var(--purple-soft)}
+  .box p:first-child{margin-top:0}
+  .box p:last-child{margin-bottom:0}
+  .box .label{font-weight:700; display:block; margin-bottom:4px}
+
+  .dlg{margin:6px 0}
+  .dlg .who{display:inline-block; min-width:64px; font-weight:700; color:var(--brand)}
+  .dlg .who.f{color:#c2408f}
+  .dlg .who.f2{color:#b3541e}        /* vai nu thu hai (giong F2 = en-GB-LibbyNeural): Mum, co giao... */
+  .dlg .who.m2{color:#0f7a8a}        /* vai nam thu hai neu co */
+  .dlg .who.m3{color:#6b4fbf}        /* vai nam thu ba (giong M3 = giong nam co san + nang cao do, vd "en-GB-ThomasNeural@+20Hz") */
+  .dlg .who.f3{color:#8a6d00}        /* vai nu thu ba */
+  .dlg.ba-cham{color:var(--muted); letter-spacing:2px}
+  .wordgrid{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
+  .pron2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:12px 0}
+  .pron2 .col{border:1px solid var(--line); border-radius:12px; padding:12px 14px; background:#fbfcff}
+  .pron2 .col h4{margin-top:0; font-size:19px; text-align:center;
+    color:#fff; background:var(--brand); border-radius:8px; padding:4px 0}
+  .pron2 .col.b h4{background:var(--purple)}
+  .pron2 .w{display:flex; align-items:center; justify-content:space-between; gap:8px;
+    padding:5px 0; border-bottom:1px dashed var(--line); font-size:18px}
+  .pron2 .w:last-child{border-bottom:none}
+  .pron2 .w b{color:var(--red)}
+  .sentlist{list-style:none; margin:10px 0 0; padding:0}
+  .sentlist li{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-bottom:1px dashed var(--line)}
+  .sentlist li:last-child{border-bottom:none}
+  .sentlist .n{font-weight:700; color:var(--muted); min-width:20px}
+  .sentlist .tx{flex:1}
+  .err{background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:10px 0}
+  .err .h{font-weight:700; color:var(--red); margin-bottom:4px}
+  .x{color:var(--red); font-weight:700}
+  .ok{color:var(--green); font-weight:700}
+  .muted{color:var(--muted)}
+  .small{font-size:15px}
+  .task{background:#fbfcff; border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin:10px 0}
+  footer{color:var(--muted); font-size:14px; margin-top:26px; padding-top:14px; border-top:1px solid var(--line)}
+  #nowplay{
+    position:fixed; left:50%; transform:translateX(-50%); bottom:-70px; z-index:99;
+    background:#12301f; color:#fff; padding:9px 18px; border-radius:999px; font-size:15px;
+    box-shadow:0 6px 20px rgba(0,0,0,.25); transition:bottom .2s; max-width:92vw;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  #nowplay.on{bottom:18px}
+  @media (max-width:640px){
+    body{font-size:16px}
+    .pron2{grid-template-columns:1fr}
+    header.top h1{font-size:24px}
+    section{padding:16px 14px}
+    table{font-size:15px}
+  }
+
+  /* ================= ENGINE TƯƠNG TÁC — CSS DÙNG CHUNG ================= */
+  .hide{display:none !important}
+  .mo-ra{animation:hienra .45s ease-out}
+  @keyframes hienra{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+  @keyframes pop{0%{transform:scale(.4); opacity:0} 70%{transform:scale(1.15); opacity:1} 100%{transform:scale(1)}}
+  @keyframes lac{0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)}}
+
+  /* thanh tiến độ + nút tắt chuyển động */
+  .progress{display:flex; align-items:center; gap:7px; font-size:13px; color:var(--muted); white-space:nowrap}
+  .progress .track{width:96px; height:8px; border-radius:99px; background:#e7ebf3; overflow:hidden}
+  .progress .track i{display:block; height:100%; width:0; background:linear-gradient(90deg,#f5b400,var(--green)); transition:width .4s}
+  .tbtn{font:inherit; font-size:13px; padding:4px 10px; border-radius:8px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--muted)}
+  .tbtn[aria-pressed="true"]{background:#eef1f7; color:var(--ink)}
+  h2 .nv{float:right; font-size:13px; font-weight:600; color:#8a6d00; background:#fff6d6;
+    border:1px solid #f1dc8f; border-radius:999px; padding:2px 10px; margin-top:4px}
+  h2 .nv.du{color:#0b7a5c; background:var(--green-soft); border-color:#b8e5d7}
+
+  /* khung một nhiệm vụ */
+  .act{position:relative; border:1px solid #d9e2f3; border-radius:14px; padding:14px 16px 12px;
+    margin:18px 0; background:#fbfcff}
+  .act > h4:first-child{margin-top:0}
+  .act h4 .tag{display:inline-block; background:var(--brand); color:#fff; font-size:12px; font-weight:700;
+    letter-spacing:.4px; border-radius:999px; padding:1px 10px; margin-right:6px; vertical-align:2px}
+  .act.done{border-color:#9fdcc6; background:#f5fcf9}
+  .act.done > h4 .tag{background:var(--green)}
+  .act.done::after{content:"⭐"; position:absolute; top:-14px; right:-6px; font-size:26px; animation:pop .5s ease-out}
+  .nguon{display:inline-block; font-size:13px; color:var(--muted); background:#f1f3f8; border-radius:6px;
+    padding:1px 8px; margin:0 0 6px}
+  .nguon.sgk{background:#eef7ee; color:#2d6a2d}
+
+  /* nút chung của widget */
+  .btn{font:inherit; font-size:15px; cursor:pointer; border-radius:10px; padding:6px 14px; margin:4px 6px 4px 0;
+    border:1px solid #c8dbff; background:#fff; color:var(--brand); min-height:38px}
+  .btn:hover{background:var(--brand-soft)}
+  .btn.chinh{background:var(--brand); color:#fff; border-color:var(--brand)}
+  .btn.chinh:hover{background:#2560c4}
+  .btn[disabled]{opacity:.5; cursor:default}
+  .fb{display:none; margin:8px 0 2px; padding:8px 12px; border-radius:10px; font-size:15.5px}
+  .fb.show{display:block; animation:hienra .3s}
+  .fb.good{background:var(--green-soft); color:#0b5e47; border:1px solid #b8e5d7}
+  .fb.bad{background:var(--warm-soft); color:#7a4a00; border:1px solid #f3d49b}
+  .fb.info{background:#f1f3f8; color:var(--muted); border:1px solid var(--line)}
+
+  /* phương án bấm chọn (mcq, listen) */
+  .opts{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 2px}
+  .opt{font:inherit; font-size:17px; cursor:pointer; min-width:64px; min-height:42px; padding:6px 16px;
+    border-radius:12px; border:2px solid #d4dcec; background:#fff; color:var(--ink); transition:transform .08s, background .15s}
+  .opt:hover{border-color:#9dbcf3; background:#f5f8ff}
+  .opt.sai{border-color:#f0b35a; background:var(--warm-soft); animation:lac .35s}
+  .opt.dung{border-color:var(--green); background:var(--green-soft); color:#0b5e47; font-weight:700}
+  .opt[disabled]{cursor:default}
+  .opt[disabled]:not(.dung){opacity:.55}
+  [data-mcq]{margin:10px 0 14px}
+  [data-mcq] + [data-mcq]{border-top:1px dashed var(--line); padding-top:10px}
+
+  /* 1. thẻ từ lật */
+  .fc-bar{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:4px 0 10px; font-size:14px; color:var(--muted)}
+  .fc-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:12px}
+  .fc{position:relative; height:150px; perspective:900px; cursor:pointer; outline:none}
+  .fc-in{position:absolute; inset:0; transition:transform .5s; transform-style:preserve-3d}
+  .fc.lat .fc-in{transform:rotateY(180deg)}
+  .fc-mat{position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+    border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+    padding:10px; text-align:center; border:2px solid #d4dcec; box-shadow:0 2px 6px rgba(20,30,60,.06)}
+  .fc-mat.truoc{background:linear-gradient(160deg,#ffffff,#eef4ff)}
+  .fc-mat.sau{background:linear-gradient(160deg,#fffdf4,#fff1cf); border-color:#f1dc8f; transform:rotateY(180deg)}
+  .fc:focus-visible .fc-mat{border-color:var(--brand)}
+  .fc-w{font-size:21px; font-weight:700; color:#1d3f8f; line-height:1.2}
+  .fc-ipa{font-size:14px; color:var(--purple)}
+  .fc-emo{font-size:40px; line-height:1}
+  .fc-nghia{font-size:16px; font-weight:600; color:#6a4a00; line-height:1.3}
+  .fc-lat{position:absolute; bottom:6px; right:10px; font-size:11px; color:#9aa3b5}
+  .fc.da-xem .fc-mat.truoc{border-color:#b8e5d7}
+  .fc .say.icon{margin:2px 0 0}
+
+  /* 2. nghe rồi chọn */
+  .ls-q{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+  .say.big{font-size:17px; font-weight:700; padding:9px 20px 9px 16px; background:var(--brand); color:#fff; border-color:var(--brand)}
+  .say.big::before{width:20px; height:20px; background:#fff}
+  .say.big:hover{background:#2560c4}
+  .say.big.playing::before{content:"■"}
+  [data-listen]{margin:10px 0 16px}
+  [data-listen] + [data-listen]{border-top:1px dashed var(--line); padding-top:12px}
+
+  /* 3. nối cặp */
+  .pr-wrap{display:grid; grid-template-columns:1fr 1fr; gap:10px 18px; margin:8px 0}
+  .pr-col{display:flex; flex-direction:column; gap:8px}
+  .pc{display:flex; align-items:center; justify-content:space-between; gap:8px; min-height:46px; padding:7px 12px;
+    border:2px solid #d4dcec; border-radius:12px; background:#fff; cursor:pointer; user-select:none; outline:none;
+    transition:background .15s, border-color .15s}
+  .pc:hover{border-color:#9dbcf3}
+  .pc:focus-visible{border-color:var(--brand)}
+  .pc.chon{border-color:var(--brand); background:var(--brand-soft); box-shadow:0 0 0 3px #c8dbff}
+  .pc.sai{border-color:#f0b35a; background:var(--warm-soft); animation:lac .35s}
+  .pc.khop{border-color:#9fdcc6; background:var(--green-soft); cursor:default; color:#0b5e47}
+  .pc.khop .say{opacity:.8}
+  .pr-dem{font-size:14px; color:var(--muted)}
+
+  /* 4. xếp vào cột */
+  .so-pool{display:flex; flex-wrap:wrap; gap:8px; min-height:54px; padding:10px; border:2px dashed #cfd7e6;
+    border-radius:12px; background:#fff; margin:6px 0 10px}
+  .so-pool:empty::after{content:"(đã xếp hết thẻ)"; color:#9aa3b5; font-size:14px}
+  .so-cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px}
+  .so-col{border:2px solid #d4dcec; border-radius:12px; background:#fbfcff; min-height:120px; cursor:pointer}
+  .so-col.moi{border-color:var(--brand); box-shadow:0 0 0 3px #c8dbff}
+  .so-h{text-align:center; font-weight:700; font-size:19px; color:#fff; background:var(--brand);
+    border-radius:9px 9px 0 0; padding:4px 6px}
+  .so-col:nth-child(2) .so-h{background:var(--purple)}
+  .so-col:nth-child(3) .so-h{background:#0f8a9d}
+  .so-col:nth-child(4) .so-h{background:#b06a00}
+  .so-z{display:flex; flex-wrap:wrap; gap:8px; padding:10px; min-height:70px}
+  .sc{display:inline-flex; align-items:center; gap:4px; padding:4px 6px 4px 12px; min-height:40px; font-size:17px;
+    border:2px solid #d4dcec; border-radius:999px; background:#fff; cursor:pointer; user-select:none; outline:none}
+  .sc:focus-visible{border-color:var(--brand)}
+  .sc.chon{border-color:var(--brand); background:var(--brand-soft); box-shadow:0 0 0 3px #c8dbff}
+  [data-sort].khoa .sc{cursor:default; border-color:#9fdcc6; background:var(--green-soft)}
+  .so-meo{font-size:14px; color:var(--muted); margin:2px 0}
+
+  /* 5. điền từ */
+  .fl{display:inline-flex; align-items:center; gap:4px; vertical-align:middle; flex-wrap:wrap}
+  .fl input{font:inherit; font-size:17px; line-height:1.3; padding:3px 8px; border:none; border-bottom:2px solid #9dbcf3;
+    background:#f5f8ff; border-radius:6px 6px 0 0; min-width:70px; color:#1d3f8f; text-align:center}
+  .fl input:focus{outline:none; border-bottom-color:var(--brand); background:#eaf1ff}
+  .fl.dung input{border-bottom-color:var(--green); background:var(--green-soft); color:#0b5e47; font-weight:700}
+  .fl .btn{min-height:30px; padding:1px 10px; font-size:14px; margin:0}
+  .fb-in{font-size:14.5px; line-height:1.4; border-radius:8px; padding:1px 8px}
+  .fb-in:empty{display:none}
+  .fb-in.good{color:#0b5e47; background:var(--green-soft)}
+  .fb-in.bad{color:#7a4a00; background:var(--warm-soft)}
+  .cau-fill{line-height:2.4}
+
+  /* 6. sắp xếp từ thành câu */
+  .od{margin:10px 0 14px}
+  .od + .od{border-top:1px dashed var(--line); padding-top:12px}
+  .od-line{display:flex; flex-wrap:wrap; align-items:center; gap:6px; min-height:52px; padding:8px 10px;
+    border-bottom:3px solid #9dbcf3; background:#f5f8ff; border-radius:10px 10px 0 0}
+  .od-line:empty::before{content:"Bấm các thẻ bên dưới theo đúng thứ tự…"; color:#9aa3b5; font-size:14px}
+  .od-pool{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 4px; min-height:44px}
+  .tk{font:inherit; font-size:17px; cursor:pointer; padding:5px 13px; min-height:40px; border-radius:10px;
+    border:2px solid #d4dcec; background:#fff; color:var(--ink); transition:transform .08s}
+  .tk:hover{border-color:#9dbcf3}
+  .od-line .tk{border-color:#9dbcf3; background:#fff}
+  .od-pool:empty{min-height:0; margin:2px 0}
+  /* xong roi thi an nut Kiem / Lam lai (chi giu nut Nghe ca cau) */
+  .od.dung > div > .btn, [data-sort].khoa > div > .btn, .fl.dung .btn{display:none}
+  .fc .say.icon,.pc .say.icon,.sc .say.icon{background:#fff; border-color:#9dbcf3}
+  .od-dau{font-size:20px; font-weight:700; color:var(--muted)}
+  .od.dung .od-line{border-bottom-color:var(--green); background:var(--green-soft)}
+  .od.dung .tk{cursor:default; border-color:#9fdcc6}
+
+  /* 7. gợi ý / đối chiếu / đồng hồ */
+  .hint,.reveal{display:none; margin:8px 0; padding:10px 14px; border-radius:10px; font-size:15.5px}
+  .hint{background:#fffbea; border:1px dashed #e8cf6a}
+  .reveal{background:#f1f3f8; border:1px dashed #b9c3d6}
+  .hint.open,.reveal.open{display:block; animation:hienra .3s}
+  .ex{border:1px solid var(--line); border-left:5px solid #9aa3b5; border-radius:0 10px 10px 0; background:#fff;
+    padding:10px 14px; margin:12px 0}
+  .ex .so{font-weight:700; color:#37405a}
+  .tm{display:inline-flex; align-items:center; gap:10px; flex-wrap:wrap}
+  .tm-so{font-size:22px; font-weight:700; color:#1d3f8f; min-width:64px; font-variant-numeric:tabular-nums}
+  .tm.het .tm-so{color:var(--green)}
+
+  /* móc mở đầu, nghỉ giải lao, mini-game, chúc mừng */
+  .mo-dau{border:2px solid #f1dc8f; background:linear-gradient(135deg,#fffdf4,#fff3d6); border-radius:14px; padding:14px 16px; margin:12px 0}
+  .mo-dau .label{font-weight:700; color:#8a5a00; display:block; margin-bottom:4px}
+  .moc-nghi{display:flex; gap:12px; align-items:flex-start; border:2px dashed #b8e5d7; background:#f3fbf8;
+    border-radius:14px; padding:12px 16px; margin:18px 0; font-size:15.5px}
+  .moc-nghi .ic{font-size:30px; line-height:1}
+  .game{border:2px solid #d9ccff; background:linear-gradient(160deg,#ffffff,#f4efff)}
+  .game > h4 .tag{background:var(--purple)}
+  .chuc-mung{text-align:center; border:2px solid #b8e5d7; background:linear-gradient(135deg,#f3fbf8,#fff8e1);
+    border-radius:14px; padding:18px; margin:16px 0; font-size:18px}
+  .chuc-mung .to{font-size:40px; display:block; animation:pop .6s ease-out}
+  .bang-nv{width:100%; font-size:15px}
+  .bang-nv td:first-child{white-space:nowrap}
+  #khen{position:fixed; top:64px; right:16px; z-index:98; background:#fff; color:#0b5e47; border:2px solid #b8e5d7;
+    border-radius:14px; padding:8px 14px; font-size:15px; font-weight:600; box-shadow:0 8px 24px rgba(15,80,60,.18);
+    opacity:0; transform:translateY(-8px); transition:opacity .25s, transform .25s; pointer-events:none; max-width:78vw}
+  #khen.on{opacity:1; transform:none}
+
+  /* 8. o ghi du doan (data-ghi, khong cham dung sai) + xem lai (data-xem-lai) */
+  .ghi-q{font-weight:600; margin:0 0 6px}
+  .ghi textarea{display:block; width:100%; min-height:84px; font:inherit; font-size:16px; line-height:1.5; padding:8px 10px;
+    border-radius:10px; border:1px solid #e6cf9b; background:#fffdf6; resize:vertical}
+  .ghi textarea:focus{outline:none; border-color:var(--warm); box-shadow:0 0 0 3px #fde7b8}
+  .ghi-tt{font-size:14px; color:var(--muted); margin-top:4px}
+  .dung-ngay{margin:10px 0 0; font-size:.92em; color:#4a4f5c}
+  .dung-ngay b{color:var(--purple)}
+  .xem-lai{border:1px dashed #c9b8f3; background:#faf7ff; border-radius:12px; padding:10px 14px; margin:14px 0}
+  .xem-lai .noi{display:none; margin-top:6px; white-space:pre-wrap; background:#fff; border-left:4px solid var(--purple);
+    border-radius:0 8px 8px 0; padding:8px 12px}
+  .xem-lai.mo .noi{display:block; animation:hienra .3s}
+
+  /* 8b. noi theo (data-noi): nghe mau -> noi to N lan -> tu bam tung lan */
+  .noi-theo .noi-cau{font-size:19px; font-weight:600; margin:0 0 8px}
+  .noi-theo .noi-hang{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  .noi-theo .lan{min-height:44px; min-width:92px; border-radius:999px; border:2px dashed #9fc0f5; background:#f5f9ff;
+    color:#1d4fa8; font:inherit; font-size:15px; font-weight:600; cursor:pointer; padding:4px 14px}
+  .noi-theo .lan[disabled]{opacity:.5; cursor:not-allowed}
+  .noi-theo .lan.da{border-style:solid; border-color:#2fa37f; background:#e8f8f1; color:#0b5e47; opacity:1}
+
+  /* bang ron chia buoi hoc + tien do tung buoi */
+  .buoi{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:26px 0 6px; padding:10px 16px; border-radius:14px;
+    background:linear-gradient(90deg,#2f6fdb,#6a4fd8); color:#fff}
+  .buoi .ten{font-size:18px; font-weight:700}
+  .buoi .mo-ta{font-size:14px; opacity:.92; flex:1; min-width:180px}
+  .buoi .dem{font-size:14px; font-weight:700; background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.45);
+    border-radius:999px; padding:2px 12px; white-space:nowrap}
+  .buoi.du .dem{background:#fff; color:#0b7a5c}
+  .lam-lai{font:inherit; font-size:13px; padding:4px 10px; border-radius:8px; cursor:pointer; border:1px solid var(--line);
+    background:#fff; color:var(--muted)}
+  .da-luu{font-size:13px; color:var(--muted)}
+
+  /* ket qua mini-game */
+  .kq-game{display:none; margin:10px 0 4px; padding:10px 14px; border-radius:12px; background:#fff; border:2px solid #d9ccff; font-size:16px}
+  .kq-game.show{display:block; animation:hienra .3s}
+  .kq-game b.so{font-size:20px; color:#5b3fc0}
+  .game.cho-bat-dau [data-mcq] .opts, .game.cho-bat-dau [data-listen] .opts{opacity:.55}
+
+  /* canh nho minh hoa vi tri (gioi tu, chi duong): DO VAT ve bang CSS (giong nhau tren moi may),
+     chi con vat dung emoji (.m). Dat con vat theo do vat: bottom = 10 (san) + chieu cao phan do vat no cham */
+  .canh{position:relative; display:inline-block; width:150px; height:96px; background:#f5f8fc; border:1px dashed #c3cfdf;
+    border-radius:10px; margin:2px 10px 6px 0; vertical-align:middle; overflow:hidden}
+  .canh .san{position:absolute; left:0; right:0; bottom:0; height:10px; background:#e8dcc8; border-top:2px solid #c9b391}
+  .canh .m{position:absolute; font-size:26px; line-height:1; z-index:2}
+  .canh .m.sau{z-index:0}
+  .canh .v{position:absolute; font-size:40px; line-height:1}
+  .canh .hop{position:absolute; left:44px; bottom:10px; width:62px; height:38px; border:3px solid #a8743a; border-top:none;
+    background:rgba(214,166,98,.28); border-radius:0 0 6px 6px; z-index:1}
+  .canh .hop.kin{border-top:3px solid #a8743a; background:#e0b77a}
+  .canh .ghe{position:absolute; left:46px; bottom:10px; width:60px; height:44px; z-index:1}
+  .canh .ghe i, .canh .sofa i, .canh .tv i, .canh .ban i{position:absolute; display:block}
+  .canh .ghe i{background:#8d6a4a; border-radius:2px}
+  .canh .ghe .mat{left:0; right:0; top:16px; height:6px}
+  .canh .ghe .lung{left:0; top:-8px; width:6px; height:30px}
+  .canh .ghe .c1{left:2px; top:22px; width:5px; height:22px}
+  .canh .ghe .c2{right:2px; top:22px; width:5px; height:22px}
+  .canh .sofa{position:absolute; left:33px; bottom:10px; width:84px; height:42px; z-index:1}
+  .canh .sofa .lung{left:8px; right:8px; top:0; height:22px; background:#5a79c4; border-radius:8px 8px 2px 2px}
+  .canh .sofa .dem{left:0; right:0; top:18px; height:16px; background:#7593de; border-radius:6px}
+  .canh .sofa .tay1{left:0; top:10px; width:12px; height:24px; background:#4d6bb5; border-radius:6px}
+  .canh .sofa .tay2{right:0; top:10px; width:12px; height:24px; background:#4d6bb5; border-radius:6px}
+  .canh .sofa .ch1{left:8px; bottom:0; width:6px; height:8px; background:#33415f}
+  .canh .sofa .ch2{right:8px; bottom:0; width:6px; height:8px; background:#33415f}
+  .canh .tv{position:absolute; left:40px; bottom:10px; width:70px; height:56px; z-index:1}
+  .canh .tv .man{left:0; top:0; width:70px; height:44px; background:#34425c; border:4px solid #1c2433; border-radius:5px}
+  .canh .tv .chan{left:28px; bottom:0; width:14px; height:12px; background:#1c2433}
+  .canh .cua{position:absolute; left:52px; bottom:10px; width:46px; height:72px; background:#c98b52; border:3px solid #8a5a2b;
+    border-bottom:none; border-radius:5px 5px 0 0; z-index:1}
+  .canh .cua::after{content:""; position:absolute; left:7px; top:36px; width:7px; height:7px; border-radius:50%; background:#f3d27a}
+  .canh .ban{position:absolute; left:35px; bottom:10px; width:80px; height:40px; z-index:1}
+  .canh .ban .mat{left:0; right:0; top:0; height:7px; background:#9b6b3f; border-radius:2px}
+  .canh .ban .c1{left:6px; top:7px; width:6px; height:33px; background:#7d5430}
+  .canh .ban .c2{right:6px; top:7px; width:6px; height:33px; background:#7d5430}
+  .mcq-canh{display:flex; flex-wrap:wrap; align-items:center; gap:4px}
+
+  @media (max-width:640px){
+    .toolbar .wrap{padding-top:6px; padding-bottom:6px; gap:6px; padding-left:10px; padding-right:10px}
+    .toolbar .chips{flex:1 1 100%; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch;
+      scrollbar-width:none; padding:2px 0}
+    .toolbar .chips::-webkit-scrollbar{display:none}
+    .chip{white-space:nowrap; flex:0 0 auto; padding:5px 10px}
+    .toolbar .tbtn{white-space:nowrap; flex:0 0 auto}
+    .speed{font-size:0; gap:4px}
+    .speed button{font-size:13px; padding:4px 9px}
+    .progress .nv-chu{display:none}
+    .say{min-height:38px}
+    .say.icon{min-width:40px; min-height:40px; justify-content:center}
+    .say.mini{min-height:36px}
+    .fl input{min-height:36px}
+    .fl .btn{min-height:36px}
+    .canh{margin-right:0}
+    .pr-wrap{gap:8px 8px}
+    .pc{padding:6px 8px; font-size:15.5px}
+    .fc-grid{grid-template-columns:repeat(2,1fr); gap:10px}
+    .fc{height:140px}
+    .fc-w{font-size:19px}
+    h2 .nv{float:none; display:inline-block; margin-left:6px}
+    .progress .track{width:64px}
+    #khen{top:auto; bottom:74px; right:50%; transform:translate(50%,8px)}
+    #khen.on{transform:translate(50%,0)}
+  }
+
+  body.no-motion *{animation:none !important; transition:none !important}
+  @media(prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+  @media print{
+    .toolbar,.btn,.tbtn,.fc-bar,#khen,#nowplay,.say::before{display:none !important}
+    .fc-lat,.hd-bam,.pr-dem,.tm,.kq-game,.ghi-tt,.lam-lai,.da-luu,.buoi .dem,.noi-hang,h2 .nv{display:none !important}
+    .od-line:empty::before{content:""}
+    .hide.in-hien{display:block !important}
+    .xem-lai .noi{display:block}
+    .xem-lai .noi:empty{display:none}
+    .buoi{background:none; color:inherit; border:2px solid #999}
+    .say{border:none; background:none; padding:0; color:inherit}
+    .say.icon,.say.big,.say-all{display:none}
+    section,.act{break-inside:avoid; box-shadow:none}
+    .hint{display:block}
+    .fc{height:auto; perspective:none}
+    .fc-in{position:static; transform:none !important}
+    .fc-mat{position:static; transform:none !important; backface-visibility:visible; margin-bottom:4px}
+    .act.done::after{display:none}
+  }
+</style>
+
+<!-- CSS RIÊNG CỦA BÀI — chỉ khi thật sự cần cho một bài. Thứ gì dùng lại được thì đưa vào CSS chung ở trên. -->
+<style>
+  /* Unit 4: ban do luyen chi duong (ve bang CSS grid, khong dung anh) */
+  .ban-do{display:grid; grid-template-columns:repeat(5, minmax(58px, 1fr)); grid-auto-rows:58px; max-width:470px;
+    margin:12px auto 6px; border:2px solid #c3cfdf; border-radius:12px; overflow:hidden; background:#e3f1d8}
+  .ban-do > span{display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
+    font-size:12px; line-height:1.15; padding:2px}
+  .ban-do .e{font-size:22px; line-height:1}
+  .ban-do .noi{background:#fff4cc; box-shadow:inset 0 0 0 1px #e2c86a; font-weight:700; color:#5b4300}
+  .ban-do .nha{color:#6f8a5a; font-size:18px}
+  .ban-do .dg{background:#8d99a6}                                   /* duong doc (pho chinh) */
+  .ban-do .dn{background:#8d99a6; color:#fff; font-size:11px; font-weight:700}   /* duong ngang (nga re) */
+  .ban-do .ng{background:#7b8794}                                   /* nga tu */
+  .ban-do .dau{background:#8d99a6; color:#fff; font-weight:700; font-size:11px}
+  .ban-do .dau .e{font-size:22px}
+  .chu-ban-do{font-size:13px; color:var(--muted); text-align:center; margin:0 auto 10px; max-width:470px}
+  /* sao dich: chon dung loi chi duong -> sao hien o noi khach den (data-mo-sau=".d-xxx" tren tung cau) */
+  .ban-do .noi{position:relative}
+  .ban-do .dich{position:absolute; top:1px; right:3px; font-size:15px; line-height:1}
+  .ban-do .noi:has(> .dich:not(.hide)){background:#cdf1dc; box-shadow:inset 0 0 0 2px #1a9b6c; color:#0b5e40}
+  /* NV21 xep CAU theo nghia: the khong co loa -> an dong huong dan mac dinh 'Bam loa nghe the' cua engine */
+  [data-act="khung-viet"] .so-meo{display:none}
+  @media (max-width:560px){ .ban-do{grid-auto-rows:54px} .ban-do > span{font-size:11px} .ban-do .e{font-size:19px} }
+  @media print{ .ban-do{break-inside:avoid} }
+</style>
+</head>
+<body data-audio-dir="audio-unit-04/">
+
+<header class="top" data-audio-dir="audio-unit-04/">
+  <div class="wrap">
+    <h1>UNIT 4. MY NEIGHBOURHOOD</h1>
+    <p class="sub">Bài giảng Tiếng Anh 6 — Global Success, tập một, trang 38–47</p>
+    <span class="badge">Bấm nút ▶ để nghe phát âm chuẩn</span>
+    <span class="badge">Làm xong nhiệm vụ nào, ⭐ sáng nhiệm vụ đó</span>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="wrap">
+    <a class="chip" href="#s1">Khởi động</a>
+    <a class="chip" href="#s2">Hội thoại</a>
+    <a class="chip" href="#s3">Chỉ đường</a>
+    <a class="chip" href="#s4">Địa điểm</a>
+    <a class="chip" href="#s5">Tính từ</a>
+    <a class="chip" href="#s6">Phát âm</a>
+    <a class="chip" href="#s7">So sánh hơn</a>
+    <a class="chip" href="#s8">Hỏi đường</a>
+    <a class="chip" href="#s9">Đọc</a>
+    <a class="chip" href="#s10">Nghe – Viết</a>
+    <a class="chip" href="#s11">Ôn tập</a>
+    <a class="chip" href="#s12">Mini-game</a>
+    <span class="spacer"></span>
+    <span class="progress" data-progress><span class="track"><i></i></span><span class="txt"></span></span>
+    <span class="speed">
+      Tốc độ:
+      <button id="spd-slow" type="button">Chậm</button>
+      <button id="spd-norm" type="button" class="on">Bình thường</button>
+    </span>
+    <button class="tbtn" type="button" data-motion aria-pressed="false">Tắt chuyển động</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<noscript>
+  <section class="box warn"><span class="label">Trang này cần bật JavaScript</span>
+  Nút nghe và các nhiệm vụ bấm chọn sẽ không chạy. Em đọc bản Markdown cùng tên (đuôi <b>.md</b>) thay thế nhé.</section>
+</noscript>
+
+<!-- ============================== BUỔI 1 ============================== -->
+<div class="buoi"><span class="ten">📅 Buổi 1</span><span class="mo-ta">Khởi động · Lạc đường ở Hội An · Chỉ đường trên bản đồ · Địa điểm · Tính từ tả khu phố — khoảng 45–50 phút (mỏi thì nghỉ ở mốc 🧘 rồi làm tiếp). Làm đến đâu, ⭐ tự lưu đến đó.</span></div>
+
+<!-- ============================== 1. KHỞI ĐỘNG ============================== -->
+<section id="s1">
+  <h2>1. Khởi động — Khu phố của em có gì?</h2>
+
+  <div class="mo-dau">
+    <span class="label">🛵 Trên đường đến trường</span>
+    <p>Sáng nay trên đường đến trường, em đi qua những gì? Một quán phở đang bốc khói, tiệm tạp hoá đầu ngõ, cái công viên có
+    mấy ông bà tập thể dục, ngân hàng ở góc phố, trạm xe buýt đông người… Tất cả những chỗ ấy gộp lại là <b>khu phố của em</b>
+    — tiếng Anh gọi là <b>neighbourhood</b>. Học xong Unit này, em giới thiệu được khu phố của mình, <b>so sánh</b> nó với nơi
+    khác, và <b>chỉ đường</b> cho một người khách lạc đường bằng tiếng Anh!</p>
+  </div>
+
+  <p>Unit 4 dạy em: tên <b>các địa điểm trong khu phố</b>; <b>tính từ</b> để tả khu phố (ồn ào, yên bình, hiện đại…); hai âm
+  <b>/ɪ/</b> và <b>/iː/</b>; <b>so sánh hơn của tính từ</b> (<i>taller than</i>, <i>more expensive than</i>); cách <b>rủ bạn</b>
+  (<i>Let's… / Shall we…?</i>) và cách <b>hỏi đường, chỉ đường</b>.</p>
+
+  <table class="bang-nv">
+    <tr><th>Nhiệm vụ</th><th>Em sẽ làm gì</th></tr>
+    <tr><td colspan="2"><b>Buổi 1 — 8 ⭐</b></td></tr>
+    <tr><td>⭐ 1</td><td>Lật thẻ: bảy chữ đầu tiên về khu phố</td></tr>
+    <tr><td>⭐ 2–3</td><td>Hội thoại "lạc đường ở Hội An": ai đang nói? · rủ bạn bằng <i>Let's / Shall we</i></td></tr>
+    <tr><td>⭐ 4–5</td><td>Chỉ đường: lật thẻ các cụm chỉ đường · đi theo lời chỉ trên bản đồ</td></tr>
+    <tr><td>⭐ 6</td><td>Năm địa điểm mới: lật thẻ rồi giải đố "em cần đi đâu?"</td></tr>
+    <tr><td>⭐ 7–8</td><td>Tính từ tả khu phố: lật thẻ · nối cặp trái nghĩa</td></tr>
+    <tr><td colspan="2"><b>Buổi 2 — 8 ⭐</b></td></tr>
+    <tr><td>⭐ 9–10</td><td>Phát âm /ɪ/ – /iː/: xếp cột · tai thính rồi đọc chant</td></tr>
+    <tr><td>⭐ 11–13</td><td>So sánh hơn: tính từ ngắn hay dài? · điền dạng so sánh · bẫy lỗi và xếp câu</td></tr>
+    <tr><td>⭐ 14–16</td><td>Hỏi đường lịch sự · thám tử nghe bài hướng dẫn · nháp bài hướng dẫn viên của em</td></tr>
+    <tr><td colspan="2"><b>Buổi 3 — 7 ⭐</b></td></tr>
+    <tr><td>⭐ 17–19</td><td>Blog của Khang ở Đà Nẵng: đoán trước · đọc tìm ý · nói theo</td></tr>
+    <tr><td>⭐ 20–22</td><td>Chiến thuật nghe · xếp câu vào khung bài viết · nháp đoạn văn về khu phố của em</td></tr>
+    <tr><td>📒</td><td>Bài về nhà — Ôn tập Looking Back + Project: làm vào vở (30–40 phút), gửi cô chữa</td></tr>
+    <tr><td>⭐ 23</td><td>Mini-game: Ai nhanh hơn đồng hồ? (có kỉ lục để phá!)</td></tr>
+  </table>
+  <p class="small muted">Trang tự lưu ⭐ và chữ em ghi trên máy này — hôm nay làm Buổi 1, mai mở lại làm tiếp. Muốn làm lại từ
+  đầu thì bấm <b>↺</b> trên thanh công cụ.</p>
+
+  <div class="act" data-act="the-khu-pho">
+    <h4><span class="tag">NHIỆM VỤ 1</span> Bảy chữ đầu tiên về khu phố — bấm 🔊 nghe, đoán nghĩa, rồi lật thẻ</h4>
+    <div data-flip>
+      <div class="fc" data-a="thing-neighbourhood" data-t="neighbourhood" data-emo="🏘️">khu phố, khu dân cư quanh nhà em</div>
+      <div class="fc" data-a="thing-cinema" data-t="cinema" data-emo="🎬">rạp chiếu phim</div>
+      <div class="fc" data-a="thing-park" data-t="park" data-emo="🌳">công viên</div>
+      <div class="fc" data-a="thing-cafe" data-t="café" data-emo="☕">quán cà phê</div>
+      <div class="fc" data-a="thing-bank" data-t="bank" data-emo="🏦">ngân hàng</div>
+      <div class="fc" data-a="thing-gym" data-t="gym" data-ipa="/dʒɪm/" data-emo="🏋️">phòng tập thể dục</div>
+      <div class="fc" data-a="thing-bus-stop" data-t="bus stop" data-emo="🚏">trạm xe buýt</div>
+    </div>
+  </div>
+  <p class="small">Để ý chính tả Anh – Anh của sách: <b>neighbourhood</b> có chữ <b>ou</b> (sách Mĩ viết <i>neighborhood</i>). Bài
+  kiểm tra chấm theo sách, nên em viết như sách nhé. Sáu địa điểm còn lại (<i>cinema, park, café, bank, gym, bus stop</i>) em sẽ
+  gặp lại ngay trên bản đồ luyện ở mục 3.</p>
+</section>
+
+<!-- ============================== 2. GETTING STARTED ============================== -->
+<section id="s2">
+  <h2>2. Getting Started — <i>Lost in the old town!</i> 🎧 <span class="muted small">(Track 23, tập một · trang 38)</span></h2>
+
+  <div class="mo-dau"><span class="label">🏮 Lạc đường ở phố cổ</span>
+  <p>Em đã đến <b>Hội An</b> chưa? Phố cổ có những ngôi nhà tường vàng, đèn lồng đỏ, và cây cầu có mái ngói nổi tiếng — Chùa
+  Cầu. Ba bạn Phong, Nick và Khang vừa đến nơi, háo hức lắm… rồi <b>lạc đường</b>! Bấm <b>Nghe cả hội thoại</b> — lần đầu
+  <b>chỉ nghe, chưa có chữ</b>: ba bạn nam và một bạn nữ chỉ đường. Nghe xem các bạn thoát lạc bằng cách nào.</p></div>
+
+  <div class="box tip">
+    <span class="label">Tên người, tên nơi chốn Việt Nam đọc theo tiếng Việt</span>
+    <p>SGK viết không dấu, nhưng khi nói — kể cả nói tiếng Anh — ta vẫn đọc theo tiếng Việt: <i>Khang</i> là "Khang", không phải
+    "khen-gơ"; <i>Hoi An</i> là "Hội An".
+      <button class="say mini" data-a="ten-phong" data-lang="vi-VN" data-t="Phong">Phong</button>
+      <button class="say mini" data-a="ten-khang" data-lang="vi-VN" data-t="Khang">Khang</button>
+      <button class="say mini" data-a="ten-hoi-an" data-lang="vi-VN" data-t="Hội An">Hoi An</button>
+      <button class="say mini" data-a="ten-chua-cau" data-lang="vi-VN" data-t="Chùa Cầu">Chua Cau</button>
+      <button class="say mini" data-a="ten-tan-ky" data-lang="vi-VN" data-t="Tấn Ký">Tan Ky</button>
+      — <i>Nick</i> là tên nước ngoài, đọc theo tiếng Anh.</p>
+  </div>
+
+  <p><button class="say say-all" data-all="#dlg-gs">Nghe cả hội thoại</button></p>
+  <p class="small">🙈 Lời thoại đang được giấu — nghe cả bài trước (nghe hai lần cũng được), làm xong <b>Nhiệm vụ 2</b> ngay dưới thì
+  lời thoại sẽ hiện ra.</p>
+
+  <div class="act" data-act="ai-noi" data-nguon="sgk" data-mo-sau="#dlg-gs">
+    <h4><span class="tag">NHIỆM VỤ 2</span> Tai thính: nghe một câu trong hội thoại — ai đang nói?</h4>
+    <p class="small">Trước hết nghe <b>mẫu giọng</b> (các câu này không có trong câu hỏi):
+      <button class="say mini" data-a="gs-01" data-t="Wow! We're in Hoi An. I'm so excited.">Phong</button>
+      <button class="say mini" data-a="gs-11" data-t="Look, there's a girl. Let's ask her.">Nick</button>
+      <button class="say mini" data-a="gs-03" data-t="Let's go to Chua Cau.">Khang</button>
+      — giọng Phong khác hẳn; giọng máy của Nick và Khang <b>khá giống nhau</b>, nên với hai bạn ấy em phải nghe
+      <b>nội dung</b>: người nói gọi tên ai, đang đáp lại câu nào, có tự nói về mình không.</p>
+    <div data-listen data-a="gs-09" data-t="What's up, Phong?" data-opts="Phong;Khang;The girl" data-answer="Khang"
+         data-hint-sai='{"Phong":"Nghe lại cuối câu: người nói gọi tên Phong. Mình có tự gọi tên mình khi hỏi chuyện không?","The girl":"Giọng này là giọng nam hay giọng nữ? Lúc này các bạn còn chưa gặp cô bạn nào."}'>Câu 1: Ai đang nói?</div>
+    <div data-listen data-a="gs-02" data-t="Me too. It's so beautiful. Where shall we go first?" data-opts="Phong;Nick;The girl" data-answer="Nick"
+         data-hint-sai='{"Phong":"Câu mở bằng Me too — tức là đáp lại người vừa nói mình háo hức (câu đầu tiên của bài). Người nói câu đầu tiên có tự đáp lại chính mình không? So với mẫu giọng.","The girl":"Giọng này là giọng nam hay giọng nữ? Cô bạn chỉ xuất hiện ở cuối bài."}'>Câu 2: Ai đang nói?</div>
+    <div data-listen data-a="gs-13" data-t="Sure. Go straight. Take the second turning on the left, and then turn right." data-opts="Phong;Nick;Khang;The girl" data-answer="The girl"
+         data-hint-sai='{"Phong":"Giọng này là giọng nam hay giọng nữ? Người nói đang chỉ đường — ba bạn nam có biết đường không?","Nick":"Giọng nam hay giọng nữ? Ba bạn đang bị lạc thì có chỉ đường cho nhau được không?","Khang":"Giọng nam hay giọng nữ? Ba bạn đang bị lạc thì có chỉ đường cho nhau được không?"}'>Câu 3: Ai đang nói?</div>
+    <div data-listen data-a="gs-04" data-t="Well, but Tan Ky House is nearer. Shall we go there first?" data-opts="Phong;Nick;The girl" data-answer="Phong"
+         data-hint-sai='{"Nick":"Bấm lại hai mẫu giọng đầu tiên ở trên, rồi nghe câu này lần nữa: giọng này giống mẫu thứ nhất hay mẫu thứ hai?","The girl":"Giọng nam hay giọng nữ? Lúc này các bạn còn chưa gặp cô bạn nào."}'>Câu 4: Ai đang nói?</div>
+  </div>
+
+  <div id="dlg-gs" class="hide in-hien">
+    <p class="small"><b>🔓 Lời thoại đã hiện</b> — đọc lại, bấm loa từng lượt lời, xem em đoán đúng những ai.</p>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Wow! We're in Hoi An. I'm so excited.</span>
+      <button class="say line icon" data-a="gs-01" data-t="Wow! We're in Hoi An. I'm so excited."></button></div>
+    <div class="dlg"><span class="who m3">Nick:</span> <span class="en">Me too. It's so beautiful. Where shall we go first?</span>
+      <button class="say line icon" data-a="gs-02" data-t="Me too. It's so beautiful. Where shall we go first?"></button></div>
+    <div class="dlg"><span class="who m2">Khang:</span> <span class="en">Let's go to Chua Cau.</span>
+      <button class="say line icon" data-a="gs-03" data-t="Let's go to Chua Cau."></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Well, but Tan Ky House is nearer. Shall we go there first?</span>
+      <button class="say line icon" data-a="gs-04" data-t="Well, but Tan Ky House is nearer. Shall we go there first?"></button></div>
+    <div class="dlg"><span class="who m2">Nick &amp; Khang:</span> <span class="en">OK, sure.</span>
+      <button class="say line icon" data-a="gs-05" data-t="OK, sure."></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">First, cross the road, and then turn left.</span>
+      <button class="say line icon" data-a="gs-06" data-t="First, cross the road, and then turn left."></button></div>
+    <div class="dlg"><span class="who m3">Nick:</span> <span class="en">Fine, let's go.</span>
+      <button class="say line icon" data-a="gs-07" data-t="Fine, let's go."></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Wait.</span>
+      <button class="say line icon" data-a="gs-08" data-t="Wait."></button></div>
+    <div class="dlg"><span class="who m2">Khang:</span> <span class="en">What's up, Phong?</span>
+      <button class="say line icon" data-a="gs-09" data-t="What's up, Phong?"></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">I think we're lost.</span>
+      <button class="say line icon" data-a="gs-10" data-t="I think we're lost."></button></div>
+    <div class="dlg"><span class="who m3">Nick:</span> <span class="en">Look, there's a girl. Let's ask her.</span>
+      <button class="say line icon" data-a="gs-11" data-t="Look, there's a girl. Let's ask her."></button></div>
+    <div class="dlg"><span class="who">Phong:</span> <span class="en">Excuse me? Can you tell us the way to Tan Ky House?</span>
+      <button class="say line icon" data-a="gs-12" data-t="Excuse me? Can you tell us the way to Tan Ky House?"></button></div>
+    <div class="dlg"><span class="who f">Girl:</span> <span class="en">Sure. Go straight. Take the second turning on the left, and then turn right.</span>
+      <button class="say line icon" data-a="gs-13" data-t="Sure. Go straight. Take the second turning on the left, and then turn right."></button></div>
+    <div class="dlg"><span class="who">Phong, Nick &amp; Khang:</span> <span class="en">Thank you.</span>
+      <button class="say line icon" data-a="gs-14" data-t="Thank you."></button></div>
+  <p class="small muted">Tranh SGK: Chùa Cầu bắc qua con lạch, phía sau là nhà cổ màu vàng; ba bạn nhỏ, một bạn đeo kính cầm bản đồ.</p>
+
+  <div class="box tip">
+    <span class="label">Cô giải nghĩa nhanh</span>
+    <p class="small"><i>I'm so excited.</i> = "Tớ háo hức quá!" · <i>What's up?</i> = "Có chuyện gì thế?" · <i>I think we're lost.</i>
+    = "Tớ nghĩ là bọn mình lạc đường rồi." · <i>Excuse me?</i> = "Xin lỗi, cho hỏi…" — câu mở đầu lịch sự khi hỏi người lạ.
+    Để ý chữ <i>nearer</i> (gần hơn) trong lời Phong: đó là <b>so sánh hơn</b> — em học kĩ ở mục 7.</p>
+  </div>
+  </div><!-- /dlg-gs -->
+
+  <div class="box remember">
+    <span class="label">📌 Remember! <span class="muted small">— nguyên văn SGK (trang 39)</span></span>
+    <p>We can use <i>shall we</i> and <i>let's</i> to make suggestions.
+      <button class="say line icon" data-a="gr-sg" data-t="We can use shall we and let's to make suggestions."></button></p>
+  </div>
+  <p><b>Giảng bằng tiếng Việt:</b> <i>suggestion</i> là <b>lời rủ, lời đề nghị</b> ("mình đi… đi!", "mình… nhé?"). Có hai cách:
+  <b>Let's + động từ nguyên thể</b> (câu kể, chấm cuối) và <b>Shall we + động từ nguyên thể …?</b> (câu hỏi, dấu hỏi cuối).
+  Trong hội thoại có mấy câu như thế — em tự đi tìm ở bài 2 của sách nhé.</p>
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — thêm <i>to</i> hoặc <i>-ing</i> sau <i>Let's</i></div>
+    <p><span class="x">✗</span> <i>Let's to visit the temple.</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>Shall we visiting the square?</i></p>
+    <p>Tiếng Việt "mình <b>đi</b> thăm đền đi" không đổi dạng động từ, nên em hay "thêm cho chắc" chữ <i>to</i> hoặc đuôi <i>-ing</i>.
+    Nhưng sau <b>Let's</b> và sau <b>Shall we</b> là <b>động từ nguyên thể trần</b> — không <i>to</i>, không <i>-ing</i>:
+    <i>Let's visit… / Shall we visit…?</i></p>
+  </div>
+
+  <div class="act" data-act="ru-ban" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 3</span> Rủ bạn cho đúng — chọn từ còn thiếu</h4>
+    <div data-mcq data-opts="go;to go;going" data-answer="go"
+         data-hint-sai='{"to go":"Sau Let&apos;s có cần chữ to không? Xem lại khung Lỗi hay gặp ngay trên.","going":"Sau Let&apos;s là động từ dạng nào — nguyên thể trần hay V-ing?"}'>1. It's so hot today. Let's ___ to the beach!</div>
+    <div data-mcq data-opts="Shall;Let's;Do" data-answer="Shall"
+         data-hint-sai='{"Let&apos;s":"Câu này có chữ we ngay sau chỗ trống và có dấu ? ở cuối. Let&apos;s có đi với we và dấu ? không?","Do":"Câu này là lời RỦ bạn đi xem phim, không phải hỏi thói quen. Khung Remember! dùng từ nào để rủ?"}'>2. ___ we go to the cinema tonight?</div>
+    <div data-mcq data-opts="OK, sure.;Yes, I do.;Yes, it is." data-answer="OK, sure."
+         data-hint-sai='{"Yes, I do.":"Yes, I do. để trả lời câu hỏi Do you…? Câu hỏi ở đây bắt đầu bằng Shall we. Nghe lại Nick và Khang đồng ý với Phong thế nào.","Yes, it is.":"Yes, it is. để trả lời câu hỏi Is it…? Bạn đang RỦ em đi — em đồng ý bằng câu nào?"}'>3. A: <i>Shall we visit the art gallery?</i> — B: ___</div>
+    <div data-mcq data-opts="Let's;Shall;Let" data-answer="Let's" data-tron="2"
+         data-hint-sai='{"Shall":"Shall phải đi cùng we, và câu phải là câu hỏi có dấu ?. Câu này có không?","Let":"Chữ rủ bạn phải có dấu nháy và s ở cuối (= let us). Thiếu hai chữ đó thì nghĩa khác hẳn."}'>4. It's a nice day. ___ sit in the park.</div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — rủ thật:</b> đứng dậy, chạy ra rủ một người trong nhà
+  bằng tiếng Anh: <i>Let's …!</i> (<i>go to the park, play football, eat pho…</i>) hoặc <i>Shall we …?</i> Người được rủ đồng ý
+  như Nick và Khang: <i>OK, sure.</i><br><b>Ở nhà một mình?</b> Đứng trước gương, rủ "bạn trong gương" ba lời <i>Let's …!</i> khác
+  nhau, mỗi lời một động tác (đá bóng, bơi, ăn phở), rồi tự gật đầu đáp <i>OK, sure.</i></div></div>
+
+  <h3>Bài tập SGK — Getting Started</h3>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 39).</span> <b>Find in the conversation the sentences used to make suggestions.</b></p>
+    <p><b>Example:</b> Let's go to Chua Cau.</p>
+    <button class="btn" type="button" data-hint="#gy-gs2">Gợi ý</button>
+    <div class="hint" id="gy-gs2">Đọc lại từng lượt lời và tìm hai "dấu hiệu" của khung Remember!: câu có <i>Let's</i> hoặc có
+    <i>shall we</i>. Nhớ để ý cả những câu ngắn và cả câu hỏi. Câu ví dụ đã là một câu — em tìm các câu còn lại.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 39).</span> <b>Read the conversation again. Put the actions in order.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">a.</span><span class="tx">The girl shows them the way to Tan Ky House. ☐</span></li>
+      <li><span class="n">b.</span><span class="tx">Nick, Khang and Phong arrive in Hoi An. ☐</span></li>
+      <li><span class="n">c.</span><span class="tx">Nick, Khang and Phong decide to go to Tan Ky House. ☐</span></li>
+      <li><span class="n">d.</span><span class="tx">Nick, Khang and Phong get lost. ☐</span></li>
+      <li><span class="n">e.</span><span class="tx">Phong asks a girl how to get to Tan Ky House. ☐</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-gs3">Gợi ý</button>
+    <div class="hint" id="gy-gs3">Đọc hội thoại từ đầu đến cuối như đọc một câu chuyện. Với mỗi câu a–e, tìm lượt lời trong hội thoại
+    kể đúng việc đó, rồi xem lượt lời ấy nằm ở <b>đầu, giữa hay cuối</b> bài. Việc nào xảy ra trước thì đánh số nhỏ hơn.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 39).</span> <b>Find and underline the following directions in the conversation.</b></p>
+    <p><i>A. turn right · B. cross the road · C. turn left · D. go straight · E. take the second turning on the left</i></p>
+    <p><b>Now match these directions with the diagrams below.</b> <span class="muted small">(SGK: năm sơ đồ mũi tên đánh số 1–5)</span></p>
+    <button class="btn" type="button" data-hint="#gy-gs4">Gợi ý</button>
+    <div class="hint" id="gy-gs4">Học nghĩa từng cụm ở <b>Nhiệm vụ 4</b> (mục 3) trước. Rồi mở SGK trang 39: đặt ngón tay ở gốc mỗi mũi
+    tên và đi theo nó — ngón tay đi thẳng, rẽ, hay băng qua một dải đường? Rẽ thì sang phía tay nào? Sơ đồ nào có <b>hai</b> chỗ rẽ
+    để chọn thì đếm xem mũi tên vào chỗ rẽ thứ mấy.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 5 (trang 39).</span> <b>🎲 GAME — Find places.</b> <b>Work in pairs. Give your partner directions to one of the places on the map, and he / she tries to guess. Then swap.</b></p>
+    <p><button class="say say-all" data-all="#vd-gs5">Nghe ví dụ</button></p>
+    <div id="vd-gs5">
+      <div class="dlg"><span class="who f">A:</span> <span class="en">Go straight. Take the second turning on the left. It's on your right.</span>
+        <button class="say line icon" data-a="sp-05" data-t="Go straight. Take the second turning on the left. It's on your right."></button></div>
+      <div class="dlg"><span class="who">B:</span> <span class="en">Is that the gym?</span>
+        <button class="say line icon" data-a="sp-06" data-t="Is that the gym?"></button></div>
+      <div class="dlg"><span class="who f">A:</span> <span class="en">No, try again.</span>
+        <button class="say line icon" data-a="sp-07" data-t="No, try again."></button></div>
+    </div>
+    <button class="btn" type="button" data-hint="#gy-gs5">Gợi ý</button>
+    <div class="hint" id="gy-gs5">Chơi sau khi làm xong Nhiệm vụ 5 (mục 3) — lúc đó em đã quen đi theo lời chỉ trên bản đồ. Mở bản đồ SGK
+    trang 39 (đứng ở <i>You are here</i>). Người chỉ đường chọn thầm một nơi, nói lời chỉ bằng các cụm vừa học; người kia đi theo bằng ngón
+    tay rồi hỏi <i>Is that the …?</i>. Sai thì <i>No, try again.</i> — đúng thì đổi vai.</div>
+  </div>
+</section>
+
+<!-- ============================== 3. CHỈ ĐƯỜNG ============================== -->
+<section id="s3">
+  <h2>3. Chỉ đường — đi theo lời chỉ trên bản đồ <span class="muted small">(Getting Started bài 4–5 · trang 39)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🧭 Có ai hỏi đường em chưa?</span>
+    <p>Một vị khách nước ngoài đứng ở đầu ngõ nhà em, tay cầm bản đồ, hỏi đường ra hồ. Em biết đường — nhưng nói bằng tiếng Anh
+    thế nào? Chỉ cần <b>vài cụm ngắn</b> như cô bạn ở Hội An: đi thẳng, rẽ trái, rẽ phải, ngã rẽ thứ hai… Học xong mục này, em
+    thành "hướng dẫn viên nhí" luôn!</p>
+  </div>
+
+  <div class="act" data-act="the-chi-duong">
+    <h4><span class="tag">NHIỆM VỤ 4</span> Chín cụm chỉ đường — nghe, làm động tác bằng tay theo nghĩa em đoán, rồi lật thẻ</h4>
+    <div data-flip>
+      <div class="fc" data-a="dir-go-straight" data-t="go straight">đi thẳng</div>
+      <div class="fc" data-a="dir-turn-left" data-t="turn left">rẽ trái</div>
+      <div class="fc" data-a="dir-turn-right" data-t="turn right">rẽ phải</div>
+      <div class="fc" data-a="dir-cross" data-t="cross the road">băng qua đường</div>
+      <div class="fc" data-a="dir-second-left" data-t="take the second turning on the left">vào ngã rẽ thứ hai bên trái</div>
+      <div class="fc" data-a="dir-first-right" data-t="Take the first turning on the right." data-w="take the first turning on the right">vào ngã rẽ thứ nhất bên phải</div>
+      <div class="fc" data-a="dir-along" data-t="Go along this street." data-w="go along this street">đi dọc theo con phố này</div>
+      <div class="fc" data-a="dir-on-left" data-t="It's on your left." data-w="It's on your left.">Nó ở phía bên trái của bạn.</div>
+      <div class="fc" data-a="dir-on-right" data-t="It's on your right." data-w="It's on your right.">Nó ở phía bên phải của bạn.</div>
+    </div>
+    <p class="small"><b>turning</b> /ˈtɜːnɪŋ/ là <b>chỗ ngoặt, chỗ rẽ</b> (Glossary). Ngã rẽ <b>thứ nhất</b> là <i>the <b>first</b>
+  turning</i>, <b>thứ hai</b> là <i>the <b>second</b> turning</i> — dùng <b>số thứ tự</b>, giống như em nói "tầng thứ hai", "bạn thứ nhất".</p>
+  </div>
+
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — dịch từng chữ "ngã rẽ hai", "ở bên trái"</div>
+    <p><span class="x">✗</span> <i>Take the one turning on the right.</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>The café is in your right.</i></p>
+    <p>Tiếng Việt nói "ngã rẽ <b>thứ</b> nhất" nhưng nhiều em chỉ nghĩ "một" nên viết số đếm <i>one</i>. Phải dùng số <b>thứ tự</b>:
+    <i>first, second</i>. Và "<b>ở</b> bên phải" — chữ "ở" làm em nghĩ tới <i>in</i>, nhưng sách dùng <b>on</b>:
+    <i>on your right, on your left</i>. Học cả cụm như một khối, đừng dịch từng chữ.</p>
+  </div>
+
+
+
+  <div class="act" data-act="ban-do" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 5</span> Hướng dẫn viên nhí — khách muốn đến đâu, em chọn lời chỉ đường đúng</h4>
+    <p><b>Bản đồ luyện của cô</b> (không phải bản đồ SGK): em đứng ở <b>🧍 You are here</b>, mặt nhìn <b>lên phía trên</b> bản đồ.
+  Mỗi lần rẽ, hãy tưởng tượng em <b>xoay người</b> theo hướng mới — "bên trái của bạn" là bên trái của <b>người đang đi</b>, không
+  phải bên trái màn hình!</p>
+    <div class="ban-do" aria-label="Bản đồ luyện chỉ đường">
+    <span class="noi"><span class="e">🌳</span>park<b class="dich hide" id="d-park-1">⭐</b></span><span class="nha">🏠</span><span class="dg"></span><span class="nha">🏠</span><span class="noi"><span class="e">🚏</span>bus stop</span>
+    <span class="dn"></span><span class="dn">ngã rẽ 2</span><span class="ng"></span><span class="dn">ngã rẽ 2</span><span class="dn"></span>
+    <span class="noi"><span class="e">🍜</span>restaurant</span><span class="nha">🏡</span><span class="dg"></span><span class="nha">🏡</span><span class="noi"><span class="e">🛒</span>market<b class="dich hide" id="d-market-1">⭐</b></span>
+    <span class="noi"><span class="e">🎬</span>cinema<b class="dich hide" id="d-cinema-1">⭐</b></span><span class="nha">🏠</span><span class="dg"></span><span class="nha">🏠</span><span class="noi"><span class="e">🏦</span>bank<b class="dich hide" id="d-bank-1">⭐</b></span>
+    <span class="dn"></span><span class="dn">ngã rẽ 1</span><span class="ng"></span><span class="dn">ngã rẽ 1</span><span class="dn"></span>
+    <span class="noi"><span class="e">☕</span>café<b class="dich hide" id="d-cafe-1">⭐</b></span><span class="nha">🏡</span><span class="dg"></span><span class="nha">🏡</span><span class="noi"><span class="e">🏋️</span>gym</span>
+    <span class="nha">🌸</span><span class="nha">🌸</span><span class="dau"><span class="e">🧍</span>You are here</span><span class="nha">🌸</span><span class="nha">🌸</span>
+    </div>
+    <p class="chu-ban-do">Ô xám là đường. Phố chính chạy dọc ở giữa; hai ngã rẽ cắt ngang. Mọi lời chỉ đều bắt đầu bằng <i>Go straight.</i>
+    Chọn đúng thì ⭐ hiện ở nơi khách đến.</p>
+    <div data-mcq data-opts="Take the first turning on the right. It's on your left.;Take the first turning on the right. It's on your right.;Take the second turning on the right. It's on your left.;Take the second turning on the right. It's on your right." data-answer="Take the first turning on the right. It's on your left." data-mo-sau="#d-bank-1,#d-bank-2,#d-bank-3"
+         data-hint-sai='{"Take the first turning on the right. It&apos;s on your right.": "Đứng ở ngã rẽ 1, quay mặt sang phải. Ngân hàng nằm ở phía trên bản đồ — lúc đó phía trên là tay trái hay tay phải của em?", "Take the second turning on the right. It&apos;s on your left.": "Ngân hàng nằm cạnh ngã rẽ thứ mấy? Đặt ngón tay ở You are here, đi lên và đếm.", "Take the second turning on the right. It&apos;s on your right.": "Đếm lại: ngân hàng nằm cạnh ngã rẽ thứ mấy? Rồi quay mặt sang phải — phía trên bản đồ là tay nào của em?"}'>1. Khách muốn đến 🏦 <b>bank</b>. (Bắt đầu bằng <i>Go straight.</i>)</div>
+    <div data-mcq data-opts="Take the first turning on the left. It's on your left.;Take the first turning on the left. It's on your right.;Take the second turning on the left. It's on your left.;Take the second turning on the left. It's on your right." data-answer="Take the second turning on the left. It's on your right." data-mo-sau="#d-park-1,#d-park-2,#d-park-3"
+         data-hint-sai='{"Take the first turning on the left. It&apos;s on your left.": "Công viên nằm cạnh ngã rẽ thứ mấy? Đếm từ chỗ You are here đi lên — rồi xem nó ở phía trên hay phía dưới ngã rẽ.", "Take the first turning on the left. It&apos;s on your right.": "Công viên nằm cạnh ngã rẽ thứ mấy? Đặt ngón tay ở You are here, đi lên và đếm.", "Take the second turning on the left. It&apos;s on your left.": "Rẽ trái ở ngã rẽ 2 thì mặt em nhìn sang phía trái bản đồ. Công viên ở phía trên — lúc đó phía trên là tay nào của em?"}'>2. Khách muốn đến 🌳 <b>park</b>.</div>
+    <p class="small"><b>🗺️ Bản đồ nhắc lại</b> — khỏi phải cuộn lên. Các ⭐ em vừa thắp vẫn ở đây.</p>
+    <div class="ban-do" aria-label="Bản đồ luyện chỉ đường (nhắc lại lần 1)">
+    <span class="noi"><span class="e">🌳</span>park<b class="dich hide" id="d-park-2">⭐</b></span><span class="nha">🏠</span><span class="dg"></span><span class="nha">🏠</span><span class="noi"><span class="e">🚏</span>bus stop</span>
+    <span class="dn"></span><span class="dn">ngã rẽ 2</span><span class="ng"></span><span class="dn">ngã rẽ 2</span><span class="dn"></span>
+    <span class="noi"><span class="e">🍜</span>restaurant</span><span class="nha">🏡</span><span class="dg"></span><span class="nha">🏡</span><span class="noi"><span class="e">🛒</span>market<b class="dich hide" id="d-market-2">⭐</b></span>
+    <span class="noi"><span class="e">🎬</span>cinema<b class="dich hide" id="d-cinema-2">⭐</b></span><span class="nha">🏠</span><span class="dg"></span><span class="nha">🏠</span><span class="noi"><span class="e">🏦</span>bank<b class="dich hide" id="d-bank-2">⭐</b></span>
+    <span class="dn"></span><span class="dn">ngã rẽ 1</span><span class="ng"></span><span class="dn">ngã rẽ 1</span><span class="dn"></span>
+    <span class="noi"><span class="e">☕</span>café<b class="dich hide" id="d-cafe-2">⭐</b></span><span class="nha">🏡</span><span class="dg"></span><span class="nha">🏡</span><span class="noi"><span class="e">🏋️</span>gym</span>
+    <span class="nha">🌸</span><span class="nha">🌸</span><span class="dau"><span class="e">🧍</span>You are here</span><span class="nha">🌸</span><span class="nha">🌸</span>
+    </div>
+    <div data-mcq data-opts="Take the first turning on the left. It's on your left.;Take the first turning on the left. It's on your right.;Take the first turning on the right. It's on your left.;Take the first turning on the right. It's on your right." data-answer="Take the first turning on the left. It's on your left." data-mo-sau="#d-cafe-1,#d-cafe-2,#d-cafe-3"
+         data-hint-sai='{"Take the first turning on the left. It&apos;s on your right.": "Rẽ trái rồi, mặt em nhìn sang phía trái bản đồ. Quán cà phê ở phía dưới — phía dưới là tay trái hay tay phải của em?", "Take the first turning on the right. It&apos;s on your left.": "Quán cà phê ở bên trái hay bên phải phố chính? Vậy ở ngã rẽ 1 phải rẽ sang phía nào?", "Take the first turning on the right. It&apos;s on your right.": "Quán cà phê ở bên trái hay bên phải phố chính? Nhìn lại bản đồ rồi chọn phía rẽ."}'>3. Khách muốn đến ☕ <b>café</b>.</div>
+    <div data-mcq data-opts="Take the second turning on the left. It's on your left.;Take the second turning on the left. It's on your right.;Take the second turning on the right. It's on your left.;Take the second turning on the right. It's on your right." data-answer="Take the second turning on the right. It's on your right." data-mo-sau="#d-market-1,#d-market-2,#d-market-3"
+         data-hint-sai='{"Take the second turning on the left. It&apos;s on your left.": "Chợ ở bên trái hay bên phải phố chính? Vậy ở ngã rẽ 2 phải rẽ sang phía nào?", "Take the second turning on the left. It&apos;s on your right.": "Chợ ở bên trái hay bên phải phố chính? Nhìn lại bản đồ rồi chọn phía rẽ.", "Take the second turning on the right. It&apos;s on your left.": "Rẽ phải ở ngã rẽ 2, mặt em nhìn sang phía phải bản đồ. Chợ ở phía dưới — phía dưới là tay trái hay tay phải của em?"}'>4. Khách muốn đến 🛒 <b>market</b>.</div>
+    <p class="small"><b>🗺️ Bản đồ nhắc lại</b> — hai câu cuối.</p>
+    <div class="ban-do" aria-label="Bản đồ luyện chỉ đường (nhắc lại lần 2)">
+    <span class="noi"><span class="e">🌳</span>park<b class="dich hide" id="d-park-3">⭐</b></span><span class="nha">🏠</span><span class="dg"></span><span class="nha">🏠</span><span class="noi"><span class="e">🚏</span>bus stop</span>
+    <span class="dn"></span><span class="dn">ngã rẽ 2</span><span class="ng"></span><span class="dn">ngã rẽ 2</span><span class="dn"></span>
+    <span class="noi"><span class="e">🍜</span>restaurant</span><span class="nha">🏡</span><span class="dg"></span><span class="nha">🏡</span><span class="noi"><span class="e">🛒</span>market<b class="dich hide" id="d-market-3">⭐</b></span>
+    <span class="noi"><span class="e">🎬</span>cinema<b class="dich hide" id="d-cinema-3">⭐</b></span><span class="nha">🏠</span><span class="dg"></span><span class="nha">🏠</span><span class="noi"><span class="e">🏦</span>bank<b class="dich hide" id="d-bank-3">⭐</b></span>
+    <span class="dn"></span><span class="dn">ngã rẽ 1</span><span class="ng"></span><span class="dn">ngã rẽ 1</span><span class="dn"></span>
+    <span class="noi"><span class="e">☕</span>café<b class="dich hide" id="d-cafe-3">⭐</b></span><span class="nha">🏡</span><span class="dg"></span><span class="nha">🏡</span><span class="noi"><span class="e">🏋️</span>gym</span>
+    <span class="nha">🌸</span><span class="nha">🌸</span><span class="dau"><span class="e">🧍</span>You are here</span><span class="nha">🌸</span><span class="nha">🌸</span>
+    </div>
+    <div data-mcq data-opts="Take the first turning on the left. It's on your right.;Take the first turning on the right. It's on your right.;Take the second turning on the left. It's on your right.;Take the second turning on the right. It's on your right." data-answer="Take the first turning on the left. It's on your right." data-mo-sau="#d-cinema-1,#d-cinema-2,#d-cinema-3"
+         data-hint-sai='{"Take the first turning on the right. It&apos;s on your right.": "Rạp chiếu phim ở bên trái hay bên phải phố chính? Vậy phải rẽ sang phía nào?", "Take the second turning on the left. It&apos;s on your right.": "Rạp chiếu phim nằm cạnh ngã rẽ thứ mấy? Đặt ngón tay ở You are here, đi lên và đếm.", "Take the second turning on the right. It&apos;s on your right.": "Đếm lại số ngã rẽ từ chỗ You are here, rồi xem rạp ở bên nào của phố chính."}'>5. Khách muốn đến 🎬 <b>cinema</b>.</div>
+    <div data-mcq data-opts="Take the second turning on the left.;Take the two turning on the left.;Take the second turning in the left.;Take the two turning in the left." data-answer="Take the second turning on the left."
+         data-hint-sai='{"Take the two turning on the left.": "Ngã rẽ THỨ hai — em cần số đếm (one, two) hay số thứ tự (first, second)?", "Take the second turning in the left.": "Ở bên trái — sách dùng in hay on? Xem lại khung Lỗi hay gặp.", "Take the two turning in the left.": "Câu này có hai chỗ cần soát: ngã rẽ THỨ hai dùng số đếm hay số thứ tự? Và ở bên trái — sách dùng in hay on?"}'>6. Câu nào nói đúng "vào ngã rẽ thứ hai bên trái"?</div>
+    <p class="small">Giỏi lắm! Giờ <b>nói theo</b> lời cô bạn ở Hội An chỉ đường cho Phong — đọc to, tay làm động tác theo từng cụm.</p>
+    <div data-noi data-a="gs-13" data-t="Sure. Go straight. Take the second turning on the left, and then turn right." data-lan="3">Sure. Go straight. Take the second turning on the left, and then turn right.</div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — rô-bốt nghe lời:</b> nhờ một người trong nhà làm
+  "rô-bốt". Em đứng ở cửa phòng và chỉ đường tới tủ lạnh bằng tiếng Anh: <i>Go straight. Turn left. …</i> Rô-bốt chỉ được đi đúng
+  từng lời em nói — đến đúng chỗ thì đổi vai!<br><b>Ở nhà một mình?</b> Em tự làm rô-bốt: đứng ở cửa phòng, đọc to từng lời chỉ
+  đường tới bàn học (<i>Go straight. Turn right. …</i>) và chỉ được bước đúng theo lời vừa đọc.</div></div>
+</section>
+
+<!-- ============================== 4. ĐỊA ĐIỂM ============================== -->
+<section id="s4">
+  <h2>4. Từ vựng 1 — Địa điểm trong khu phố <span class="muted small">(A Closer Look 1, bài 1–2 · trang 40)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🗺️ Hà Nội có cả năm nơi này</span>
+    <p>Ở Hà Nội có <b>Nhà thờ Lớn</b> với hai tháp chuông, <b>đền Ngọc Sơn</b> trên Hồ Gươm, <b>ga Hà Nội</b> tàu vào tàu ra, <b>quảng
+    trường Ba Đình</b> rộng mênh mông, và những <b>phòng tranh</b> nhỏ ở phố cổ. Năm thẻ dưới đây là tên tiếng Anh của năm
+    loại địa điểm ấy — nghe rồi đoán xem thẻ nào là nơi nào!</p>
+  </div>
+
+  <div class="act" data-act="dia-diem" data-nguon="luyen" data-mo-sau="#glossary-u4">
+    <h4><span class="tag">NHIỆM VỤ 6</span> Năm địa điểm — nghe, đoán, lật thẻ · rồi giải đố "em cần đi đâu?"</h4>
+    <div data-flip>
+      <div class="fc" data-a="voc-square" data-t="square" data-ipa="/skweə/">quảng trường</div>
+      <div class="fc" data-a="voc-art-gallery" data-t="art gallery" data-ipa="/ɑːt ˈgæləri/">phòng trưng bày các tác phẩm nghệ thuật</div>
+      <div class="fc" data-a="voc-cathedral" data-t="cathedral" data-ipa="/kəˈθiːdrəl/">nhà thờ lớn, thánh đường</div>
+      <div class="fc" data-a="thing-temple" data-t="temple" data-ipa="/ˈtempl/">ngôi đền</div>
+      <div class="fc" data-a="voc-railway-station" data-t="railway station" data-ipa="/ˈreɪlweɪ ˈsteɪʃn/">ga tàu hoả</div>
+    </div>
+    <p class="small"><b>Lật hết thẻ rồi thì giải đố:</b> mỗi chuyện dưới đây, người ta cần đến nơi nào?</p>
+    <div data-mcq data-opts="railway station;bus stop;square" data-answer="railway station"
+         data-hint-sai='{"bus stop":"Chỗ này có đường ray — người ta chờ xe buýt hay chờ tàu hoả?","square":"Quảng trường là khoảng sân rộng để đi dạo, tụ họp — có đường ray và loa báo tàu không?"}'>1. Cả nhà kéo vali đứng chờ bên đường ray; loa báo: "Tàu đi Huế sắp vào".</div>
+    <div data-mcq data-opts="art gallery;cinema;cathedral" data-answer="art gallery"
+         data-hint-sai='{"cinema":"Ở rạp chiếu phim người ta xem phim trên màn ảnh. Còn nơi treo tranh cho khách đi xem là đâu?","cathedral":"Nhà thờ lớn là nơi người ta đi lễ. Còn nơi treo tranh cho khách đi xem là đâu?"}'>2. Trên tường treo những bức hoạ của các hoạ sĩ trẻ, cạnh mỗi bức có biển nhỏ: "Xin đừng chạm tay".</div>
+    <div data-mcq data-opts="square;temple;bank" data-answer="square" data-tron="2"
+         data-hint-sai='{"temple":"Ngôi đền có mái, có bàn thờ. Còn một khoảng trống rất rộng giữa thành phố, cả nghìn người đứng được, gọi là gì?","bank":"Ngân hàng là nơi gửi tiền, ở trong một toà nhà. Còn khoảng trống rất rộng ngoài trời để hàng nghìn người đứng là đâu?"}'>3. Tối Quốc khánh, hàng nghìn người đứng giữa một khoảng đất trống thật rộng, không có mái che, ngay trung tâm thành phố, ngước lên xem pháo hoa.</div>
+    <div data-mcq data-opts="cathedral;temple;café" data-answer="cathedral"
+         data-hint-sai='{"temple":"Nơi có hai tháp chuông, sáng Chủ nhật chuông ngân — ở mục mở đầu, cô kể nơi nào ở Hà Nội có hai tháp chuông?","café":"Quán cà phê là chỗ ngồi uống nước, không có tháp chuông. Nơi có hai tháp chuông là loại công trình gì?"}'>4. Khách du lịch chụp ảnh trước một công trình có hai tháp chuông cao vút; sáng Chủ nhật, tiếng chuông ngân vang khắp phố.</div>
+    <div data-mcq data-opts="temple;art gallery;railway station" data-answer="temple" data-tron="3"
+         data-hint-sai='{"art gallery":"Phòng tranh là nơi xem tranh. Nơi bà thắp hương, chắp tay khấn là loại nơi nào? Ở mục mở đầu, cô kể nơi nào nằm trên Hồ Gươm?","railway station":"Ga tàu là nơi đi tàu. Nơi bà thắp hương, chắp tay khấn là loại nơi nào?"}'>5. Bà dẫn em đi qua cây cầu gỗ sơn đỏ trên Hồ Gươm, vào bên trong khói hương thơm, bà chắp tay khấn.</div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — hướng dẫn viên Hà Nội:</b> đứng dậy, giả vờ cầm
+  cờ dẫn đoàn khách. Chỉ tay về bốn phía trong phòng, mỗi phía gọi to tên một địa điểm tiếng Anh em vừa lật thẻ và nói
+  <i>Let's go to the …!</i> Người nhà đi theo em và đáp <i>OK, sure.</i><br><b>Ở nhà một mình?</b> Xếp gấu bông, đồ chơi thành
+  "đoàn khách", rồi dẫn cả đoàn đi quanh phòng và giới thiệu to từng nơi.</div></div>
+
+  <div id="glossary-u4" class="hide in-hien">
+  <h3>🔓 Glossary Unit 4 <span class="muted small">(phiên âm chính thức của sách — mở ra khi em xong Nhiệm vụ 6)</span></h3>
+  <table>
+    <tr><th style="width:170px">Từ</th><th style="width:50px">Loại</th><th>Phiên âm</th><th>Nghĩa</th></tr>
+    <tr><td><button class="say mini" data-a="voc-art-gallery" data-t="art gallery">art gallery</button></td><td>n</td><td class="ipa">/ɑːt ˈgæləri/</td><td>phòng trưng bày các tác phẩm nghệ thuật</td></tr>
+    <tr><td><button class="say mini" data-a="voc-busy" data-t="busy">busy</button></td><td>adj</td><td class="ipa">/ˈbɪzi/</td><td>nhộn nhịp, náo nhiệt</td></tr>
+    <tr><td><button class="say mini" data-a="voc-cathedral" data-t="cathedral">cathedral</button></td><td>n</td><td class="ipa">/kəˈθiːdrəl/</td><td>nhà thờ lớn, thánh đường</td></tr>
+    <tr><td><button class="say mini" data-a="voc-cross" data-t="cross">cross</button></td><td>v</td><td class="ipa">/krɒs/</td><td>đi ngang qua, qua, vượt</td></tr>
+    <tr><td><button class="say mini" data-a="voc-dislike" data-t="dislike">dislike</button></td><td>v</td><td class="ipa">/dɪsˈlaɪk/</td><td>không thích, ghét</td></tr>
+    <tr><td><button class="say mini" data-a="voc-famous" data-t="famous">famous</button></td><td>adj</td><td class="ipa">/ˈfeɪməs/</td><td>nổi tiếng</td></tr>
+    <tr><td><button class="say mini" data-a="voc-faraway" data-t="faraway">faraway</button></td><td>adj</td><td class="ipa">/ˈfɑːrəweɪ/</td><td>xa xôi, xa</td></tr>
+    <tr><td><button class="say mini" data-a="voc-finally" data-t="finally">finally</button></td><td>adv</td><td class="ipa">/ˈfaɪnəli/</td><td>cuối cùng</td></tr>
+    <tr><td><button class="say mini" data-a="voc-narrow" data-t="narrow">narrow</button></td><td>adj</td><td class="ipa">/ˈnærəʊ/</td><td>hẹp, chật hẹp</td></tr>
+    <tr><td><button class="say mini" data-a="voc-outdoor" data-t="outdoor">outdoor</button></td><td>adj</td><td class="ipa">/ˈaʊtdɔː/</td><td>ngoài trời</td></tr>
+    <tr><td><button class="say mini" data-a="voc-railway-station" data-t="railway station">railway station</button></td><td>n</td><td class="ipa">/ˈreɪlweɪ ˈsteɪʃn/</td><td>ga tàu hoả</td></tr>
+    <tr><td><button class="say mini" data-a="voc-sandy" data-t="sandy">sandy</button></td><td>adj</td><td class="ipa">/ˈsændɪ/</td><td>có cát, phủ cát</td></tr>
+    <tr><td><button class="say mini" data-a="voc-square" data-t="square">square</button></td><td>n</td><td class="ipa">/skweə/</td><td>quảng trường</td></tr>
+    <tr><td><button class="say mini" data-a="voc-suburb" data-t="suburb">suburb</button></td><td>n</td><td class="ipa">/ˈsʌbɜːb/</td><td>khu vực ngoại ô</td></tr>
+    <tr><td><button class="say mini" data-a="voc-turning" data-t="turning">turning</button></td><td>n</td><td class="ipa">/ˈtɜːnɪŋ/</td><td>chỗ ngoặt, chỗ rẽ</td></tr>
+    <tr><td><button class="say mini" data-a="voc-workshop" data-t="workshop">workshop</button></td><td>n</td><td class="ipa">/ˈwɜːkʃɒp/</td><td>phân xưởng (sản xuất, sửa chữa)</td></tr>
+  </table>
+  <p class="small muted"><i>temple</i> không nằm ở Glossary Unit 4 nhưng có ở Glossary Unit 6 của sách: <i>temple</i> (n)
+  <span class="ipa">/ˈtempl/</span> — ngôi đền. <button class="say mini" data-a="thing-temple" data-t="temple">temple</button></p>
+  </div>
+
+  <h3>Bài tập SGK — A Closer Look 1 (Vocabulary)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 1 (trang 40).</span> <b>Match the places below with the pictures. Then listen, check and repeat the words.</b> 🎧 <span class="muted small">(Track 24, tập một)</span></p>
+    <p><i>1. square · 2. art gallery · 3. cathedral · 4. temple · 5. railway station</i> &nbsp;—&nbsp; ảnh <i>a – e</i> trong SGK.</p>
+    <p><b>Name some other places in your neighbourhood.</b></p>
+    <button class="btn" type="button" data-hint="#gy-a1">Gợi ý</button>
+    <div class="hint" id="gy-a1">Mở SGK trang 40. Với mỗi ảnh, tự hỏi: người ta đến nơi này <b>để làm gì</b>? Rồi tìm từ có nghĩa khớp
+    (lật lại thẻ ở Nhiệm vụ 6 nếu quên nghĩa). Nối xong thì bấm loa ở thẻ mà đọc theo từng từ. Câu cuối: kể thêm nơi có trong khu phố
+    em — lật lại Nhiệm vụ 1 xem em đã biết những từ nào.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 40).</span> <b>Work in pairs. Ask and answer questions about where you live.</b></p>
+    <p><button class="say say-all" data-all="#vd-a2">Nghe ví dụ</button></p>
+    <div id="vd-a2">
+      <div class="dlg"><span class="who f">A:</span> <span class="en">Is there a square in your neighbourhood?</span>
+        <button class="say line icon" data-a="sp-01" data-t="Is there a square in your neighbourhood?"></button></div>
+      <div class="dlg"><span class="who">B:</span> <span class="en">Yes, there is. <button class="say line icon" data-a="sp-02" data-t="Yes, there is."></button>
+        / No, there isn't. <button class="say line icon" data-a="sp-02b" data-t="No, there isn't."></button></span></div>
+    </div>
+    <button class="btn" type="button" data-hint="#gy-a2">Gợi ý</button>
+    <div class="hint" id="gy-a2">Thay <i>a square</i> bằng từng địa điểm em đã học (<i>a cinema, a park, a railway station…</i>) và
+    trả lời thật về khu phố nhà em. <i>There is / Is there…?</i> em đã học ở Unit 2 đấy.</div>
+  </div>
+</section>
+
+<!-- ============================== 5. TÍNH TỪ ============================== -->
+<section id="s5">
+  <h2>5. Từ vựng 2 — Tính từ tả khu phố <span class="muted small">(A Closer Look 1, bài 3 · trang 40)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🔊🤫 Khu phố em ồn hay yên?</span>
+    <p>Nhắm mắt lại 5 giây và nghe: ngoài cửa sổ nhà em có tiếng còi xe máy inh ỏi, tiếng rao "bánh mì nóng giòn đây", hay chỉ có
+    tiếng chim hót? Khu phố em <b>ồn ào</b> hay <b>yên tĩnh</b>, <b>đông đúc</b> hay <b>vắng vẻ</b>? Tám tính từ dưới đây giúp em tả
+    đúng khu phố của mình — và ở mục 7 em sẽ dùng chúng để <b>so sánh</b>.</p>
+  </div>
+
+  <div class="act" data-act="tinh-tu-khu-pho">
+    <h4><span class="tag">NHIỆM VỤ 7</span> Tám tính từ trong khung bài 3 — nghe, đoán, lật (bấm ⇄ để tự kiểm ngược)</h4>
+    <div data-flip>
+      <div class="fc" data-a="pr-noisy" data-t="noisy" data-emo="📢">ồn ào</div>
+      <div class="fc" data-a="adj-crowded" data-t="crowded" data-ipa="/ˈkraudɪd/" data-emo="👥">đông đúc, chật ních người</div>
+      <div class="fc" data-a="pr-peaceful" data-t="peaceful" data-emo="🕊️">yên bình</div>
+      <div class="fc" data-a="adj-quiet" data-t="quiet" data-emo="🤫">yên tĩnh</div>
+      <div class="fc" data-a="adj-modern" data-t="modern">hiện đại</div>
+      <div class="fc" data-a="adj-beautiful" data-t="beautiful">đẹp</div>
+      <div class="fc" data-a="voc-busy" data-t="busy" data-ipa="/ˈbɪzi/">nhộn nhịp, náo nhiệt</div>
+      <div class="fc" data-a="adj-boring" data-t="boring" data-emo="🥱">buồn tẻ, chán</div>
+    </div>
+  </div>
+  <p class="small">Để ý: <b>busy</b> em đã biết nghĩa "bận" (<i>I'm busy</i>), nhưng khi tả <b>đường phố, khu phố</b> thì <i>busy</i>
+  là <b>nhộn nhịp, náo nhiệt</b> (Glossary). <b>quiet</b> (yên tĩnh) đừng lẫn với <i>quite</i> (khá) — bấm loa nghe kĩ.</p>
+
+  <p>Ngoài tám từ trên, trong Unit còn nhiều tính từ khác — bấm nghe từng từ. Tám từ trong bảng này có "người anh em trái nghĩa"
+  nằm ngay trong bảng hoặc trong tám thẻ ở trên (riêng <i>friendly</i> và <i>convenient</i> thì chưa có bạn) — em đi tìm cặp ở Nhiệm vụ 8.</p>
+  <table>
+    <tr><th style="width:170px">Từ</th><th>Nghĩa</th></tr>
+    <tr><td><button class="say mini" data-a="pr-exciting" data-t="exciting">exciting</button></td><td>thú vị, sôi động</td></tr>
+    <tr><td><button class="say mini" data-a="pr-clean" data-t="clean">clean</button></td><td>sạch sẽ</td></tr>
+    <tr><td><button class="say mini" data-a="adj-wide" data-t="wide">wide</button></td><td>rộng</td></tr>
+    <tr><td><button class="say mini" data-a="pr-expensive" data-t="expensive">expensive</button></td><td>đắt</td></tr>
+    <tr><td><button class="say mini" data-a="adj-old" data-t="old">old</button></td><td>cũ, cổ (<i>the old town</i> = phố cổ)</td></tr>
+    <tr><td><button class="say mini" data-a="pr-friendly" data-t="friendly">friendly</button></td><td>thân thiện</td></tr>
+    <tr><td><button class="say mini" data-a="pr-cheap" data-t="cheap">cheap</button></td><td>rẻ</td></tr>
+    <tr><td><button class="say mini" data-a="voc-narrow" data-t="narrow">narrow</button></td><td>hẹp, chật hẹp</td></tr>
+    <tr><td><button class="say mini" data-a="adj-dirty" data-t="dirty">dirty</button></td><td>bẩn</td></tr>
+    <tr><td><button class="say mini" data-a="pr-convenient" data-t="convenient">convenient</button></td><td>tiện lợi</td></tr>
+  </table>
+
+  <div class="act" data-act="trai-nghia">
+    <h4><span class="tag">NHIỆM VỤ 8</span> Nối mỗi tính từ với từ TRÁI NGHĨA của nó</h4>
+    <div data-pair data-ok="Chuẩn! Cặp trái nghĩa giúp em so sánh: A ồn ào hơn thì B yên tĩnh hơn. Em đọc to từng cặp nhé.">
+      <div class="cap" data-a="pr-noisy" data-t="noisy"><span>noisy</span><span>quiet</span></div>
+      <div class="cap" data-a="adj-boring" data-t="boring" data-goi-y="boring là buồn tẻ, chán. Ngược lại với chán là gì — thú vị, sôi động?"><span>boring</span><span>exciting</span></div>
+      <div class="cap" data-a="pr-cheap" data-t="cheap"><span>cheap</span><span>expensive</span></div>
+      <div class="cap" data-a="adj-modern" data-t="modern" data-goi-y="modern là hiện đại. Ngược lại với hiện đại là… cũ, cổ — như phố cổ Hội An?"><span>modern</span><span>old</span></div>
+      <div class="cap" data-a="voc-narrow" data-t="narrow" data-goi-y="narrow là hẹp. Ngược lại với hẹp là gì?"><span>narrow</span><span>wide</span></div>
+      <div class="cap" data-a="pr-clean" data-t="clean"><span>clean</span><span>dirty</span></div>
+    </div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — phóng viên cửa sổ:</b> đứng dậy, ra cửa sổ nhìn xuống
+  đường. Hỏi người nhà bằng câu mẫu của sách: <i>Is your neighbourhood quiet?</i> Người nhà nhìn ra rồi đáp <i>Yes, it is.</i> hoặc
+  <i>No, it's noisy.</i> Đổi vai, hỏi thêm với <i>crowded, busy, beautiful</i>.<br><b>Ở nhà một mình?</b> Nhìn ra cửa sổ, tự hỏi to
+  <i>Is my street quiet?</i> rồi tự trả lời đúng điều em đang thấy và nghe. Làm thêm với <i>crowded, busy</i>.</div></div>
+
+  <h3>Bài tập SGK — A Closer Look 1 (bài 3)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 40).</span> <b>Work in groups. Ask and answer about your neighbourhood. You can use the adjectives below.</b></p>
+    <p><i>noisy · crowded · peaceful · quiet · modern · beautiful · busy · boring</i></p>
+    <p><button class="say say-all" data-all="#vd-a3">Nghe ví dụ</button></p>
+    <div id="vd-a3">
+      <div class="dlg"><span class="who f">A:</span> <span class="en">Is your neighbourhood quiet?</span>
+        <button class="say line icon" data-a="sp-03" data-t="Is your neighbourhood quiet?"></button></div>
+      <div class="dlg"><span class="who">B:</span> <span class="en">Yes, it is. <button class="say line icon" data-a="gr-07" data-t="Yes, it is."></button>
+        / No, it's noisy. <button class="say line icon" data-a="sp-04" data-t="No, it's noisy."></button></span></div>
+    </div>
+    <button class="btn" type="button" data-hint="#gy-a3">Gợi ý</button>
+    <div class="hint" id="gy-a3">Hỏi lần lượt với từng tính từ trong khung. Trả lời <b>thật</b> về khu phố em; nếu trả lời <i>No</i> thì
+    thêm một tính từ khác cho đúng, như mẫu <i>No, it's noisy.</i> (dùng cặp trái nghĩa ở Nhiệm vụ 8).</div>
+  </div>
+</section>
+
+<!-- ============================== BUỔI 2 ============================== -->
+<div class="buoi"><span class="ten">📅 Buổi 2</span><span class="mo-ta">Âm /ɪ/ – /iː/ · So sánh hơn của tính từ · Hỏi đường lịch sự — khoảng 50–60 phút; dài thì chia đôi: hôm nay mục 6–7, mai mục 8.</span></div>
+
+<!-- ============================== 6. PHÁT ÂM ============================== -->
+<section id="s6">
+  <h2>6. Phát âm: /ɪ/ và /iː/ <span class="muted small">(A Closer Look 1, bài 4–5 🎧 Track 25–26 · trang 40)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">📸 Cười lên nào — "cheese"!</span>
+    <p>Khi chụp ảnh, người ta bảo nhau nói "<b>cheese</b>" để miệng <b>bè ra như cười</b> — đó chính là âm <b>/iː/</b>: dài, căng,
+    kéo "iii". Còn âm <b>/ɪ/</b> thì <b>ngắn, gọn, lỏng</b> — miệng chỉ hơi mở, như tiếng "i" rất nhanh. Thử đặt ngón tay lên hai
+    khoé miệng: đọc "cheese" thì khoé miệng kéo ra hai bên, đọc thật nhanh "it" thì gần như không kéo.</p>
+  </div>
+
+  <div class="act" data-act="xep-i" data-mo-sau="#bang-i">
+    <h4><span class="tag">NHIỆM VỤ 9</span> Nghe từng thẻ, ngón tay đặt ở khoé miệng đọc theo, rồi xếp vào cột /ɪ/ (ngắn) hay /iː/ (dài)</h4>
+    <p class="small">Tám từ này cô lấy trong bài chant và các bài đọc của Unit — <b>không phải</b> tám từ của bài 4 SGK (bài đó em tự xếp ở cuối mục).</p>
+    <div data-sort data-cols="/ɪ/;/iː/" data-ok="Tai em thính lắm! /iː/ kéo dài, miệng bè ra; /ɪ/ ngắn gọn, miệng lỏng.">
+      <span data-col="/ɪ/" data-a="pr-big" data-t="big">big</span>
+      <span data-col="/iː/" data-a="pr-street" data-t="street" data-goi-y="Đọc lại chậm: có thẻ mà âm i được kéo dài ra, khoé miệng kéo sang hai bên như khi nói cheese.">street</span>
+      <span data-col="/ɪ/" data-a="pr-live" data-t="live">live</span>
+      <span data-col="/iː/" data-a="pr-trees" data-t="trees">trees</span>
+      <span data-col="/ɪ/" data-a="pr-think" data-t="think" data-goi-y="Có hai thẻ cùng bắt đầu bằng th. Nghe thật kĩ: âm i của thẻ nào ngắn gọn, của thẻ nào kéo dài?">think</span>
+      <span data-col="/iː/" data-a="pr-three" data-t="three">three</span>
+      <span data-col="/ɪ/" data-a="pr-village" data-t="village" data-goi-y="Có thẻ hai âm tiết: cả hai âm i trong đó đều ngắn, không kéo dài. Bấm Chậm để nghe rõ.">village</span>
+      <span data-col="/iː/" data-a="pr-see" data-t="see">see</span>
+    </div>
+  </div>
+
+  <div id="bang-i" class="hide in-hien">
+    <p><b>🔓 Mở khoá bảng chốt</b> — bấm từng từ, đọc to theo cả cột:</p>
+    <div class="pron2">
+      <div class="col a">
+        <h4>/ɪ/ — ngắn, gọn, miệng lỏng</h4>
+        <div class="w"><span>b<b>i</b>g</span><button class="say icon" data-a="pr-big" data-t="big"></button></div>
+        <div class="w"><span>l<b>i</b>ve</span><button class="say icon" data-a="pr-live" data-t="live"></button></div>
+        <div class="w"><span>th<b>i</b>nk</span><button class="say icon" data-a="pr-think" data-t="think"></button></div>
+        <div class="w"><span>v<b>i</b>ll<b>a</b>ge</span><button class="say icon" data-a="pr-village" data-t="village"></button></div>
+      </div>
+      <div class="col b">
+        <h4>/iː/ — dài, căng, miệng bè như cười</h4>
+        <div class="w"><span>str<b>ee</b>t</span><button class="say icon" data-a="pr-street" data-t="street"></button></div>
+        <div class="w"><span>tr<b>ee</b>s</span><button class="say icon" data-a="pr-trees" data-t="trees"></button></div>
+        <div class="w"><span>thr<b>ee</b></span><button class="say icon" data-a="pr-three" data-t="three"></button></div>
+        <div class="w"><span>s<b>ee</b></span><button class="say icon" data-a="pr-see" data-t="see"></button></div>
+      </div>
+    </div>
+    <div class="box tip">
+      <span class="label">💡 Mẹo của cô — nhìn chữ đoán âm (đúng với hầu hết từ trong Unit)</span>
+      <ul>
+        <li>Chữ <b>ee</b> (<i>street, see</i>) và nhiều chữ <b>ea</b> thường đọc <b>/iː/</b> dài. Nhưng <b>ea</b> không phải lúc nào cũng
+        vậy — gặp từ mới thì bấm loa nghe trước.</li>
+        <li>Chữ <b>i</b> đứng giữa hai phụ âm trong từ ngắn (<i>big, think</i>) thường đọc <b>/ɪ/</b> ngắn.</li>
+        <li>Tiếng Việt chỉ có một chữ "i", nên em hay đọc mọi âm i dài như nhau. Nhớ: <i>three</i> kéo dài, <i>think</i> thì bật nhanh.</li>
+      </ul>
+      <p class="small">Đây là mẹo cô giảng thêm để em dễ nhớ; sách chỉ cho em nghe, nhắc lại và tự xếp cột.</p>
+    </div>
+  </div>
+
+  <div class="act" data-act="nghe-i" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 10</span> Tai thính: bốn từ mới trong Unit — âm i chính là <i>short /ɪ/</i> (ngắn) hay <i>long /iː/</i> (dài)? Rồi đọc chant</h4>
+    <p class="small">Mỗi câu bấm loa to nghe một từ (không hiện chữ). Đọc theo, ngón tay ở khoé miệng, rồi chọn.</p>
+    <div data-listen data-a="thing-cinema" data-t="cinema" data-opts="short /ɪ/;long /iː/" data-answer="short /ɪ/" data-giu-thu-tu
+         data-hint-sai='{"long /iː/":"Nghe lại âm đầu từ, bấm Chậm: âm i có kéo dài ra, khoé miệng có bè sang hai bên không?"}'>Câu 1: Âm i của từ em nghe?</div>
+    <div data-listen data-a="pr-seafood" data-t="seafood" data-opts="short /ɪ/;long /iː/" data-answer="long /iː/" data-giu-thu-tu
+         data-hint-sai='{"short /ɪ/":"Nghe lại tiếng đầu của từ: ngắn gọn như it, hay kéo dài như cheese?"}'>Câu 2: Âm i của từ em nghe?</div>
+    <div data-listen data-a="pr-please" data-t="please" data-opts="short /ɪ/;long /iː/" data-answer="long /iː/" data-giu-thu-tu
+         data-hint-sai='{"short /ɪ/":"Đọc theo loa thật chậm: khoé miệng kéo sang hai bên và giữ lâu, hay chỉ bật nhanh?"}'>Câu 3: Âm i của từ em nghe?</div>
+    <div data-listen data-a="pr-building" data-t="building" data-opts="short /ɪ/;long /iː/" data-answer="short /ɪ/" data-giu-thu-tu
+         data-hint-sai='{"long /iː/":"Từ này có hai âm i, cả hai đều rất nhanh. Bấm Chậm nghe lại: có âm nào kéo dài như cheese không?"}'>Câu 4: Âm i của từ em nghe?</div>
+    <p class="small">Xong bốn câu thì <b>đọc chant</b> ngay dưới: nghe mẫu khổ 1 rồi đọc TO 3 lần, vỗ tay theo nhịp.</p>
+    <div data-noi data-a="prs-01" data-t="My city is very noisy. There are lots of trees growing. The people here are busy. It's a lively place to live in." data-lan="3">My city is very noisy · There are lots of trees growing · The people here are busy · It's a lively place to live in.</div>
+  </div>
+
+  <h3>Chant — <i>My neighbourhood</i> <span class="muted small">(bài 5, 🎧 Track 26)</span></h3>
+  <p>Khổ 1 tả <b>thành phố</b>, khổ 2 tả <b>làng quê</b> — hai "khu phố" rất khác nhau. Bấm nghe từng khổ, để ý các âm /ɪ/ ngắn và
+  /iː/ dài xen kẽ nhau.</p>
+  <p><button class="say say-all" data-all="#chant">Nghe cả bài chant</button></p>
+  <div class="box quote" id="chant">
+    <p><b>MY NEIGHBOURHOOD</b></p>
+    <p>My city is very noisy.<br>There are lots of trees growing.<br>The people here are busy.<br>It's a lively place to live in.
+      <button class="say line icon" data-a="prs-01" data-t="My city is very noisy. There are lots of trees growing. The people here are busy. It's a lively place to live in."></button></p>
+    <p>My village is very pretty.<br>There are lots of places to see.<br>The people here are friendly.<br>It's a fantastic place to be.
+      <button class="say line icon" data-a="prs-02" data-t="My village is very pretty. There are lots of places to see. The people here are friendly. It's a fantastic place to be."></button></p>
+  </div>
+  <p class="small">Cô giải nghĩa: <i>lively</i> = sôi động, đầy sức sống · <i>pretty</i> = xinh, đẹp · <i>fantastic</i> = tuyệt vời.</p>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — song ca chant:</b> em đọc khổ 1 (thành phố) thật to và
+  nhanh như tiếng còi xe; người nhà đọc khổ 2 (làng quê) thật chậm và nhẹ nhàng. Rồi đổi khổ! Nhớ kéo dài <i>trees, see, people</i>.
+  <br><b>Ở nhà một mình?</b> Em đọc cả hai khổ: khổ 1 thật nhanh, thật to, vừa đọc vừa dậm chân; khổ 2 thật chậm, thật nhẹ, vừa đọc
+  vừa vươn vai.</div></div>
+
+  <h3>Bài tập SGK — A Closer Look 1 (Pronunciation)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 40).</span> <b>Listen and repeat the words. Pay attention to the sounds /ɪ/ and /iː/.</b> 🎧 <span class="muted small">(Track 25, tập một)</span></p>
+    <p>
+      <button class="say mini" data-a="pr-noisy" data-t="noisy">noisy</button>
+      <button class="say mini" data-a="pr-exciting" data-t="exciting">exciting</button>
+      <button class="say mini" data-a="pr-expensive" data-t="expensive">expensive</button>
+      <button class="say mini" data-a="pr-clean" data-t="clean">clean</button>
+      <button class="say mini" data-a="pr-peaceful" data-t="peaceful">peaceful</button>
+      <button class="say mini" data-a="pr-convenient" data-t="convenient">convenient</button>
+      <button class="say mini" data-a="pr-cheap" data-t="cheap">cheap</button>
+      <button class="say mini" data-a="pr-friendly" data-t="friendly">friendly</button></p>
+    <p><b>Now, in pairs put the words in the correct column.</b></p>
+    <table><tr><th>/ɪ/</th><th>/iː/</th></tr>
+      <tr><td>noisy</td><td>convenient</td></tr><tr><td></td><td></td></tr></table>
+    <p class="small muted">(SGK điền sẵn <i>noisy</i> và <i>convenient</i> làm mẫu.)</p>
+    <button class="btn" type="button" data-hint="#gy-a4">Gợi ý</button>
+    <div class="hint" id="gy-a4">Bấm loa từng từ, đọc theo với ngón tay ở khoé miệng. Tìm trong từ âm i <b>nổi rõ nhất</b>: kéo dài hay bật
+    nhanh? Có từ chứa cả hai kiểu âm — nhìn hai từ mẫu của sách: sách xếp chúng theo âm nào?</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 5 (trang 40).</span> <b>Listen and practise the chant. Notice the sounds /ɪ/ and /iː/.</b> 🎧 <span class="muted small">(Track 26, tập một)</span></p>
+    <p class="small">Lời chant SGK có in — ở ngay khung chant phía trên.</p>
+    <button class="btn" type="button" data-hint="#gy-a5">Gợi ý</button>
+    <div class="hint" id="gy-a5">Đọc từng dòng, gạch chân những chỗ em nghe thấy âm i kéo dài bằng một màu, âm i ngắn bằng màu khác. Đọc to cả
+    bài, vỗ tay mỗi dòng bốn nhịp.</div>
+  </div>
+</section>
+
+<!-- ============================== 7. NGỮ PHÁP ============================== -->
+<section id="s7">
+  <h2>7. Ngữ pháp — So sánh hơn của tính từ <span class="muted small">(A Closer Look 2, trang 41–42)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">📏 Ai cao hơn ai?</span>
+    <p>Đứng sát cạnh anh, chị hoặc bố mẹ: ai <b>cao hơn</b>? Hà Nội với quê em, nơi nào <b>ồn ào hơn</b>? Một cân vải ở chợ quê với ở
+    siêu thị, chỗ nào <b>đắt hơn</b>? Tiếng Việt chỉ cần thêm chữ "hơn". Tiếng Anh có <b>hai cách</b> — tuỳ tính từ <b>ngắn</b> hay
+    <b>dài</b>. Nhìn hai ví dụ trong khung Remember! xem em có đoán ra không.</p>
+  </div>
+
+  <div class="box remember">
+    <span class="label">📌 Remember! <span class="muted small">— nguyên văn SGK (trang 41)</span></span>
+    <p>We can use comparative adjectives to compare two people or things.
+      <button class="say line icon" data-a="gr-01" data-t="We can use comparative adjectives to compare two people or things."></button></p>
+    <p><b>Examples:</b><br>– Tom is <b>taller than</b> Mary. <button class="say line icon" data-a="gr-02" data-t="Tom is taller than Mary."></button><br>
+      – A house in a city is normally <b>more expensive than</b> a house in the countryside.
+      <button class="say line icon" data-a="gr-03" data-t="A house in a city is normally more expensive than a house in the countryside."></button></p>
+    <p class="small muted">Tranh SGK: một bạn nam tóc đỏ cao hơn đứng cạnh một bạn nữ; dãy nhà phố nhiều tầng và một nhà sàn gỗ ở nông thôn.</p>
+  </div>
+  <p><b>Giảng bằng tiếng Việt:</b> so sánh <b>hai</b> người hoặc hai vật. <i>tall</i> ngắn → thêm <b>-er</b>: <i>taller</i>;
+  <i>expensive</i> dài → thêm <b>more</b> đằng trước: <i>more expensive</i>. Cả hai cách đều có <b>than</b> ("hơn") đứng sau. Vậy
+  "ngắn" hay "dài" là thế nào? Em tự tìm ra ở Nhiệm vụ 11: <b>đếm số âm tiết</b> (vỗ tay mỗi tiếng một cái).</p>
+
+  <div class="act" data-act="ngan-dai" data-mo-sau="#quy-tac-ss">
+    <h4><span class="tag">NHIỆM VỤ 11</span> Bấm 🔊, vỗ tay đếm số tiếng — tính từ này thêm <i>-er</i> hay dùng <i>more</i>?</h4>
+    <p class="small">Có <b>một thẻ "ngoại lệ"</b> không theo cách đếm tiếng — xếp sai cũng không sao, gợi ý sẽ cho em biết nó là thẻ nào.</p>
+    <div data-sort data-cols="thêm -er;dùng more …" data-ok="Chuẩn! Một tiếng → -er; ba tiếng → more; hai tiếng: phần lớn dùng more, nhưng vài từ như narrow vẫn thêm -er. Bảng quy tắc đầy đủ vừa mở ra bên dưới.">
+      <span data-col="thêm -er" data-a="adj-tall" data-t="tall">tall</span>
+      <span data-col="dùng more …" data-a="voc-famous" data-t="famous" data-goi-y="Có thẻ hai tiếng, không tận cùng bằng y: fa-mous. Phần lớn từ hai tiếng như thế đi với more, giống expensive trong khung Remember!">famous</span>
+      <span data-col="thêm -er" data-a="adj-long" data-t="long">long</span>
+      <span data-col="dùng more …" data-a="pr-convenient" data-t="convenient">convenient</span>
+      <span data-col="thêm -er" data-a="adj-fine" data-t="fine">fine</span>
+      <span data-col="dùng more …" data-a="adj-excited" data-t="excited">excited</span>
+      <span data-col="thêm -er" data-a="pr-clean" data-t="clean" data-goi-y="Có thẻ viết khá dài nhưng đọc chỉ MỘT tiếng. Đừng đếm chữ cái — vỗ tay đếm tiếng.">clean</span>
+      <span data-col="dùng more …" data-a="adj-crowded" data-t="crowded" data-goi-y="Có thẻ hai tiếng tận cùng bằng -ed: crow-ded. Hai tiếng mà không tận cùng bằng y thì dùng cách nào?">crowded</span>
+      <span data-col="thêm -er" data-a="adj-near" data-t="near">near</span>
+      <span data-col="dùng more …" data-a="adj-boring" data-t="boring">boring</span>
+      <span data-col="thêm -er" data-a="voc-narrow" data-t="narrow" data-goi-y="narrow có hai tiếng (nar-row) và không tận cùng bằng y, nhưng nó là NGOẠI LỆ: vẫn thêm -er (narrower). Từ hai tiếng lạ thì tra từ điển hoặc hỏi cô.">narrow</span>
+    </div>
+  </div>
+
+  <div id="quy-tac-ss" class="hide in-hien">
+    <p><b>🔓 Mở khoá bảng quy tắc</b> — cô giảng thêm để em làm đúng chính tả (sách chỉ in hai ví dụ ở khung Remember!):</p>
+    <table>
+      <tr><th>Tính từ</th><th>Cách so sánh hơn</th><th>Ví dụ</th></tr>
+      <tr><td><b>MỘT âm tiết</b></td><td>thêm <b>-er</b> + than</td><td><i>tall → taller</i> (khung Remember!)</td></tr>
+      <tr><td>MỘT âm tiết, tận cùng bằng <b>e</b></td><td>chỉ thêm <b>-r</b></td><td><i>late → later</i></td></tr>
+      <tr><td><b>MỘT âm tiết</b>, ba chữ cuối là <b>phụ âm – MỘT nguyên âm – phụ âm</b></td><td><b>gấp đôi</b> phụ âm cuối rồi thêm -er</td><td><i>sad → sadder</i></td></tr>
+      <tr><td>… nhưng <b>trừ</b> khi chữ cuối là <b>w, x, y</b>; hoặc trước phụ âm cuối có <b>hai</b> nguyên âm</td><td><b>không</b> gấp đôi</td><td><i>new → newer</i> · <i>clean → cleaner</i></td></tr>
+      <tr><td><b>Hai âm tiết tận cùng bằng -y</b></td><td>đổi <b>y → i</b> rồi thêm -er</td><td><i>happy → happier</i> · <i>easy → easier</i></td></tr>
+      <tr><td><b>Ba âm tiết trở lên</b></td><td><b>more</b> + tính từ + than</td><td><i>expensive → more expensive</i> (khung Remember!)</td></tr>
+      <tr><td><b>Hai âm tiết</b>, không tận cùng bằng -y</td><td><b>phần lớn</b> dùng <b>more</b> — nhưng có <b>vài từ ngoại lệ</b> vẫn thêm -er</td><td><i>famous → more famous</i><br>ngoại lệ: <i>narrow → narrower</i> · <i>clever → cleverer</i> (<i>clever</i>: tính từ tính cách ở Unit 3) — gặp từ hai âm tiết lạ thì tra từ điển</td></tr>
+    </table>
+    <p class="small">Chỉ chọn <b>một</b> cách: hoặc <i>-er</i>, hoặc <i>more</i> — không bao giờ cả hai. Có một từ đặc biệt em sẽ gặp trong bài
+    đọc của Khang: <i>good → better</i> (tốt hơn, ngon hơn) — không thêm <i>-er</i>, em chỉ cần hiểu nghĩa khi gặp.</p>
+  </div>
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — quên đổi tính từ, hoặc dùng cả hai cách</div>
+    <p><span class="x">✗</span> <i>My school is new than your school.</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>My room is more clean than your room.</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>more taller</i></p>
+    <p>Tiếng Việt "nhà tớ <b>to hơn</b>" chỉ thêm chữ "hơn", nên em hay chỉ thêm <i>than</i> mà quên đổi tính từ. Tiếng Anh phải đổi
+    tính từ (<b>-er</b> hoặc <b>more</b>) <b>và</b> có <b>than</b>. Tính từ ngắn thì không dùng <i>more</i>; đã thêm <i>-er</i> rồi thì
+    cũng không thêm <i>more</i> nữa.</p>
+  </div>
+
+  <div class="act" data-act="dien-so-sanh" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 12</span> Viết dạng so sánh hơn của tính từ trong ngoặc (nhớ soát chính tả theo bảng quy tắc!)</h4>
+    <p class="cau-fill">1. This road is <span data-fill data-answer="longer" data-w="9"
+       data-goi-y="long có mấy âm tiết? Một âm tiết thì thêm gì?"
+       data-hint-sai='{"long":"Có than ở sau rồi — tính từ đã đổi dạng chưa?","more long":"long chỉ có MỘT âm tiết. Tính từ ngắn dùng more hay -er?","more longer":"Chỉ chọn MỘT cách thôi: -er hoặc more. long ngắn hay dài?","longger":"long tận cùng bằng hai phụ âm n-g, không phải phụ âm – MỘT nguyên âm – phụ âm. Có gấp đôi không?"}'></span> (long) than my road.</p>
+    <p class="cau-fill">2. My cat is <span data-fill data-answer="funnier" data-w="9"
+       data-goi-y="funny: hai âm tiết, tận cùng bằng y. Bảng quy tắc bảo làm gì với chữ y?"
+       data-hint-sai='{"funnyer":"funny tận cùng bằng y. Trước khi thêm -er, chữ y đổi thành chữ gì?","more funny":"funny hai âm tiết nhưng tận cùng bằng -y — theo bảng quy tắc của bài, dùng more hay đổi y rồi thêm -er?","funny":"Có than rồi — tính từ đã đổi dạng chưa?","funyer":"Giữ nguyên hai chữ n. Chỉ chữ cuối y mới đổi."}'></span> (funny) than my dog.</p>
+    <p class="cau-fill">3. My brother is <span data-fill data-answer="slimmer" data-w="9"
+       data-goi-y="slim: MỘT âm tiết, ba chữ cuối l – i – m là phụ âm – MỘT nguyên âm – phụ âm. Vậy chữ m cần gì?"
+       data-hint-sai='{"slimer":"slim là MỘT âm tiết, cuối là phụ âm – MỘT nguyên âm – phụ âm (l-i-m). Khi thêm -er, chữ m có cần gấp đôi không?","more slim":"slim chỉ có MỘT âm tiết. Tính từ ngắn dùng -er hay more?","slim":"Có than rồi — tính từ đã đổi dạng chưa?"}'></span> (slim) than me.</p>
+    <p class="cau-fill">4. My new flat is <span data-fill data-answer="more convenient" data-w="16"
+       data-goi-y="convenient có mấy âm tiết? Bấm loa ở Nhiệm vụ 11 nghe lại."
+       data-hint-sai='{"convenienter":"con-ve-ni-ent — nhiều âm tiết. Tính từ dài thêm -er hay dùng more?","convenient":"Có than rồi — tính từ đã đổi dạng chưa? Tính từ dài thì thêm chữ gì đằng trước?","more convenienter":"Chỉ chọn MỘT cách: đã có more thì tính từ giữ nguyên."}'></span> (convenient) than my old flat.</p>
+    <p class="cau-fill">5. My hands are <span data-fill data-answer="dirtier" data-w="9"
+       data-goi-y="dirty: hai âm tiết, tận cùng bằng y. Đổi y thành gì rồi thêm -er?"
+       data-hint-sai='{"dirtyer":"Trước khi thêm -er, chữ y cuối của dirty đổi thành chữ gì?","more dirty":"dirty hai âm tiết tận cùng -y — theo bảng quy tắc, đổi y rồi thêm -er.","dirty":"Có than rồi — tính từ đã đổi dạng chưa?"}'></span> (dirty) than your hands.</p>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — đo chiều cao cả nhà:</b> đứng xếp hàng với người
+  nhà, đọc to theo mẫu câu của khung Remember!: <i>My dad is taller than me.</i> · <i>I'm taller than my little sister.</i> Ai thấp nhất thì nói
+  câu cuối cùng — nhớ <i>than</i>!<br><b>Ở nhà một mình?</b> Đứng sát cái tủ, cái cửa, cái bàn và so với chính em:
+  <i>I'm taller than the table.</i> · <i>The door is taller than me.</i></div></div>
+
+  <div class="act" data-act="bay-so-sanh" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 13</span> Bẫy lỗi — chọn dạng đúng, rồi xếp một câu so sánh</h4>
+    <div data-mcq data-opts="busier;more busy;busyer" data-answer="busier" data-tron="4"
+         data-hint-sai='{"more busy":"busy hai âm tiết nhưng tận cùng bằng -y. Theo bảng quy tắc của bài, dùng more hay đổi y rồi thêm -er?","busyer":"Tận cùng bằng y thì trước khi thêm -er, y đổi thành chữ gì?"}'>1. The city centre is ___ than my village.</div>
+    <div data-mcq data-opts="more crowded;crowdeder;crowded" data-answer="more crowded"
+         data-hint-sai='{"crowdeder":"crowded có hai âm tiết và không tận cùng bằng y. Tính từ như thế thêm -er hay dùng more?","crowded":"Có than ở sau — tính từ đã đổi sang dạng so sánh chưa?"}'>2. On Sundays, the market is ___ than our park.</div>
+    <div data-mcq data-opts="shorter;more short;more shorter" data-answer="shorter" data-tron="2"
+         data-hint-sai='{"more short":"short có mấy âm tiết? Tính từ MỘT âm tiết dùng more hay -er?","more shorter":"Đã có -er rồi còn cần more không? Chỉ chọn một cách thôi."}'>3. My hair is ___ than Lan's hair.</div>
+    <div data-mcq data-opts="than;that;more" data-answer="than"
+         data-hint-sai='{"that":"that là cái kia. Chữ nghĩa là hơn đứng sau tính từ so sánh là chữ gì? Nhìn lại khung Remember!","more":"nearer đã là dạng so sánh rồi (near + -er). Còn thiếu chữ nghĩa là hơn, đứng trước vật thứ hai được đem ra so (the railway station)."}'>4. The bus stop is nearer to my house ___ the railway station.</div>
+    <p class="small"><b>Xếp thẻ thành câu:</b> "Đà Nẵng nổi tiếng hơn thị trấn của tớ."</p>
+    <div data-order data-answer="Da Nang is more famous than my town."
+         data-hint-sai="famous là tính từ dài: more đứng ngay trước famous, than đứng sau. Chủ ngữ Da Nang và is đứng đầu câu."></div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — so sánh nhanh:</b> nhìn quanh phòng, chọn hai đồ vật
+  và nói một câu so sánh bằng tính từ em đã học: <i>The TV is … than the lamp.</i> (<i>new, old, long, beautiful, expensive…</i>). Người
+  nhà gật đầu nếu đúng thật!<br><b>Ở nhà một mình?</b> Chạm tay vào từng đồ vật khi nói, và nói ba câu với ba cặp đồ vật khác
+  nhau — mỗi câu một tính từ mới.</div></div>
+
+  <h3>Bài tập SGK — A Closer Look 2</h3>
+  <div class="ex">
+    <p><span class="so">Bài 1 (trang 41).</span> <b>Complete the following sentences with the comparative form of the adjectives in brackets. Number 1 is an example.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">This building is <b>taller</b> than that building. (tall) <span class="muted small">(SGK điền sẵn làm mẫu)</span>
+        <button class="say line icon" data-a="gr-04" data-t="This building is taller than that building."></button></span></li>
+      <li><span class="n">2.</span><span class="tx">My neighbourhood is ______ than your neighbourhood. (noisy)</span></li>
+      <li><span class="n">3.</span><span class="tx">The square in Ha Noi is ______ than the square in Hoi An. (big)</span></li>
+      <li><span class="n">4.</span><span class="tx">Living in the countryside is ______ than living in a city. (peaceful)</span></li>
+      <li><span class="n">5.</span><span class="tx">Is living in a city ______ than living in the countryside? (exciting)</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-b1">Gợi ý</button>
+    <div class="hint" id="gy-b1">Mỗi câu làm ba bước: (1) bấm loa hoặc vỗ tay đếm số âm tiết của tính từ trong ngoặc; (2) chọn <i>-er</i> hay
+    <i>more</i> theo bảng quy tắc; (3) soát chính tả — tính từ có tận cùng bằng <i>y</i> không? có phải một âm tiết, phụ âm – một nguyên âm –
+    phụ âm không?</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 42).</span> <b>Use the correct form of the words in brackets to complete the letter.</b></p>
+    <div class="box quote">
+      <p>Dear Nick,</p>
+      <p>How are you?</p>
+      <p>Ha Noi is beautiful but it's too busy for me. I'm having a great time at Cua Lo Beach now. The weather is (1. hot) <b>hotter</b>
+      than that in Ha Noi. The houses and buildings are (2. small) ______ and (3. old) ______ than those in Ha Noi.</p>
+      <p>The streets are (4. wide) ______ with less traffic. The seafood here is (5. delicious) ______ and (6. cheap) ______ than the
+      seafood in Ha Noi.</p>
+      <p>See you soon,<br><i>Vy</i></p>
+    </div>
+    <p class="small muted">(Chỗ (1) SGK điền sẵn <i>hotter</i> làm mẫu.)</p>
+    <button class="btn" type="button" data-hint="#gy-b2">Gợi ý</button>
+    <div class="hint" id="gy-b2">Vy đang ở biển <b>Cửa Lò</b> (Nghệ An) và so sánh với Hà Nội. Với mỗi từ trong ngoặc: ngắn hay dài? có phải đổi
+    chính tả không (tận cùng <i>e</i>? phụ âm – một nguyên âm – phụ âm? hai nguyên âm?). Chỗ (4) không có <i>than</i> ngay sau nhưng vẫn là
+    so sánh với Hà Nội.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 42).</span> <b>Look at the pictures of the two neighbourhoods: Binh Minh and Long Son. Compare two neighbourhoods. You can use the adjectives below.</b></p>
+    <p><i>noisy · crowded · quiet · peaceful · modern · busy · boring</i></p>
+    <p><b>Example:</b> Binh Minh is noisier than Long Son.
+      <button class="say line icon" data-a="gr-05" data-t="Binh Minh is noisier than Long Son."></button>
+      <button class="say mini" data-a="ten-binh-minh" data-lang="vi-VN" data-t="Bình Minh">Binh Minh</button>
+      <button class="say mini" data-a="ten-long-son" data-lang="vi-VN" data-t="Long Sơn">Long Son</button></p>
+    <p class="small muted">Tranh SGK: Bình Minh — khu phố nhà cao tầng, nhà hàng, phòng tập, đường đông xe; Long Sơn — làng quê có đường đất giữa cánh đồng.</p>
+    <button class="btn" type="button" data-hint="#gy-b3">Gợi ý</button>
+    <div class="hint" id="gy-b3">Nhìn tranh SGK trang 42. Với mỗi tính từ trong khung, hỏi: nơi nào <b>"nhiều"</b> tính chất đó hơn? Viết câu theo
+    mẫu, và thử cả chiều ngược lại (<i>Long Son is … than Binh Minh.</i>). Mỗi câu một tính từ; nhớ đổi chính tả khi cần. Để ý: trong khung có <b>một</b> từ hai tiếng là ngoại lệ, cư xử giống
+    <i>narrow</i> ở Nhiệm vụ 11 — các từ hai tiếng còn lại (không tận cùng <i>-y</i>) đi với <i>more</i>.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 42).</span> <b>Work in pairs. Ask and answer questions about Binh Minh and Long Son neighbourhoods using the pictures in 3.</b></p>
+    <p><button class="say say-all" data-all="#vd-b4">Nghe ví dụ</button></p>
+    <div id="vd-b4">
+      <div class="dlg"><span class="who f">A:</span> <span class="en">Is Binh Minh noisier than Long Son?</span>
+        <button class="say line icon" data-a="gr-06" data-t="Is Binh Minh noisier than Long Son?"></button></div>
+      <div class="dlg"><span class="who">B:</span> <span class="en">Yes, it is.</span>
+        <button class="say line icon" data-a="gr-07" data-t="Yes, it is."></button></div>
+      <div class="dlg"><span class="who f">A:</span> <span class="en">Is Long Son more modern than Binh Minh?</span>
+        <button class="say line icon" data-a="gr-08" data-t="Is Long Son more modern than Binh Minh?"></button></div>
+      <div class="dlg"><span class="who">B:</span> <span class="en">No, it isn't.</span>
+        <button class="say line icon" data-a="gr-09" data-t="No, it isn't."></button></div>
+    </div>
+    <button class="btn" type="button" data-hint="#gy-b4">Gợi ý</button>
+    <div class="hint" id="gy-b4">Câu hỏi: đưa <i>Is</i> lên đầu: <i>Is + nơi 1 + tính từ so sánh + than + nơi 2?</i> Trả lời ngắn <i>Yes, it is.</i> /
+    <i>No, it isn't.</i> — nhìn tranh để trả lời thật. Ở nhà: hỏi người nhà về quê nội và quê ngoại của em!</div>
+  </div>
+</section>
+
+<!-- ============================== 8. COMMUNICATION ============================== -->
+<section id="s8">
+  <h2>8. Communication — Hỏi đường và chỉ đường 🎧 <span class="muted small">(Track 27–28, tập một · trang 43)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🙋 Hỏi người lạ sao cho lịch sự?</span>
+    <p>Em đi lạc ở một thành phố lạ và phải hỏi đường một cô chú đang đi bộ. Em sẽ mở lời thế nào để họ vui vẻ giúp? Tiếng Việt có
+    "Cháu chào cô ạ, cô cho cháu hỏi…". Tiếng Anh cũng có câu mở lời lịch sự — và một chữ "phép màu" ở cuối câu. Nghe hai đoạn hội
+    thoại xem đó là chữ gì!</p>
+  </div>
+
+  <p><button class="say say-all" data-all="#dlg-com">Nghe cả hai đoạn</button></p>
+  <div id="dlg-com">
+    <div class="dlg"><span class="who f">A:</span> <span class="en">Excuse me. Could you tell me the way to the cinema, please?</span>
+      <button class="say line icon" data-a="com-01" data-t="Excuse me. Could you tell me the way to the cinema, please?"></button></div>
+    <div class="dlg"><span class="who">B:</span> <span class="en">Go along this street. It's on your left.</span>
+      <button class="say line icon" data-a="com-02" data-t="Go along this street. It's on your left."></button></div>
+    <hr>
+    <div class="dlg"><span class="who f">A:</span> <span class="en">Excuse me. Where's the nearest post office, please?</span>
+      <button class="say line icon" data-a="com-03" data-t="Excuse me. Where's the nearest post office, please?"></button></div>
+    <div class="dlg"><span class="who">B:</span> <span class="en">Go out of the station. Take the first turning on the right.</span>
+      <button class="say line icon" data-a="com-04" data-t="Go out of the station. Take the first turning on the right."></button></div>
+  </div>
+
+  <div class="act" data-act="hoi-duong" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 14</span> Chọn câu hỏi đường, chỉ đường đúng và lịch sự — rồi nói theo</h4>
+    <div data-mcq data-opts="Excuse;Could;please" data-answer="please" data-mo-sau="#bang-hoi-duong"
+         data-hint-sai='{"Excuse":"Excuse me đứng ở ĐẦU câu. Chữ phép màu nằm ở CUỐI câu hỏi — nghe lại cả hai câu hỏi của A, chú ý chữ cuối cùng.","Could":"Could chỉ có ở câu hỏi thứ nhất và đứng gần đầu câu. Chữ phép màu có ở CẢ HAI câu hỏi, ngay trước dấu ?"}'>1. Nghe hai câu hỏi của A: chữ "phép màu" ở cuối cả hai câu là chữ nào?</div>
+    <div id="bang-hoi-duong" class="hide in-hien">
+    <table>
+      <tr><th>Hỏi đường (Everyday English)</th><th>Nghĩa</th></tr>
+      <tr><td><i><b>Excuse me.</b> Could you tell me the way to the …, please?</i></td><td>Xin lỗi, bạn có thể chỉ cho tôi đường đến … được không ạ?</td></tr>
+      <tr><td><i><b>Excuse me.</b> Where's the nearest …, please?</i></td><td>Xin lỗi, … gần nhất ở đâu ạ?</td></tr>
+    </table>
+    <p class="small">Chữ "phép màu" là <b>please</b> — giống chữ "ạ" của tiếng Việt. <i>post office</i> = bưu điện; <i>the nearest</i> = gần
+    nhất; <i>Go out of the station</i> = đi ra khỏi nhà ga.</p>
+    </div>
+    <div data-mcq data-opts="Excuse me. Where's the nearest bank, please?;Where the nearest bank?;Excuse me. What's the nearest bank, please?" data-answer="Excuse me. Where's the nearest bank, please?"
+         data-hint-sai='{"Where the nearest bank?":"Câu này thiếu một chữ nhỏ sau Where (động từ be), và thiếu cả lời mở đầu lịch sự. So với câu thứ hai trong hội thoại.","Excuse me. What&apos;s the nearest bank, please?":"Em muốn biết ngân hàng Ở ĐÂU. Hỏi về nơi chốn thì dùng từ để hỏi nào?"}'>2. Em muốn hỏi ngân hàng gần nhất ở đâu. Em nói:</div>
+    <div data-mcq data-opts="Go along this street. It's on your right.;Go along this street. It's in your right.;Go along this street. It's on your left.;Go along this street. It's in your left." data-answer="Go along this street. It's on your right."
+         data-hint-sai='{"Go along this street. It&apos;s in your right.":"Ở bên phải — sách dùng in hay on? Nhìn lại khung Lỗi hay gặp ở mục 3.","Go along this street. It&apos;s on your left.":"Công viên ở bên PHẢI con phố. left là trái hay phải?","Go along this street. It&apos;s in your left.":"Câu này có hai chỗ cần soát: công viên ở bên nào? Và ở bên … — sách dùng in hay on?"}'>3. Một vị khách hỏi đường ra công viên. Công viên ở <b>bên phải</b> con phố này. Em trả lời:</div>
+    <div data-mcq data-opts="Could you tell me the way to the square, please?;Could you tell me the way to the square?;You tell me the way to the square!" data-answer="Could you tell me the way to the square, please?" data-tron="2"
+         data-hint-sai='{"Could you tell me the way to the square?":"Câu này đúng ngữ pháp nhưng còn thiếu chữ phép màu ở cuối — chữ nghĩa là ạ.","You tell me the way to the square!":"Câu này nghe như ra lệnh. Muốn hỏi lịch sự thì mở đầu bằng Could you và kết thúc bằng chữ gì?"}'>4. Câu nào <b>lịch sự nhất</b> để hỏi đường đến quảng trường?</div>
+    <p class="small">Giờ <b>nói theo</b> câu hỏi đường của sách — em sẽ dùng nó ở mốc nghỉ ngay sau đây.</p>
+    <div data-noi data-a="com-01" data-t="Excuse me. Could you tell me the way to the cinema, please?" data-lan="3">Excuse me. Could you tell me the way to the cinema, please?</div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — khách lạ trong nhà:</b> em đóng vai khách du lịch, hỏi
+  người nhà: <i>Excuse me. Could you tell me the way to the kitchen, please?</i> Người nhà chỉ đường bằng <i>Go along…, Turn left…,
+  It's on your right.</i> Em phải đi đúng theo lời chỉ!<br><b>Ở nhà một mình?</b> Hỏi đường một con gấu bông (<i>Excuse me.
+  Could you tell me the way to the kitchen, please?</i>), rồi tự đáp thay nó bằng giọng khác và đi đúng theo lời "nó" chỉ.</div></div>
+
+  <h3>An audio guide — bài hướng dẫn tham quan Hội An <span class="muted small">(bài 3, 🎧 Track 28)</span></h3>
+  <p>Nick đang đeo tai nghe, nghe một <b>bài hướng dẫn tham quan</b> (<i>audio guide</i>) — giống như ở các bảo tàng lớn, em bấm máy là có
+  giọng nói dẫn em đi từng nơi. 🕵️ <b>Thử thách thám tử nghe:</b> chưa bật băng mà em đã đoán được mỗi chỗ trống cần <b>loại từ</b> gì — cùng
+  thử ở Nhiệm vụ 15!</p>
+
+  <div class="box warn">
+    <span class="label">⛔ Phần nghe: em dùng đĩa / app của NXB</span>
+    <p>Bài 3 (🎧 <b>Track 28</b>) — <b>Tiếng Anh 6 tập một</b>. SGK chỉ in đoạn văn có chỗ trống, <b>không in lời bài nghe</b>, nên cô
+    <b>không có nội dung băng</b> và trang này <b>không có file nghe</b> cho bài đó. Em mở đĩa hoặc ứng dụng học liệu của NXB Giáo dục,
+    nghe đúng Track 28, rồi gửi cô từ em điền — cô cùng em soi lại.</p>
+  </div>
+
+  <div class="act" data-act="tham-tu-guide" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 15</span> Trước khi nghe bài 3: mỗi chỗ trống cần "săn" loại từ nào?</h4>
+    <div data-mcq data-opts="một từ chỉ cách đi (đi thế nào?);một con số (five, ten…);tên một địa điểm (Ong Pagoda…)" data-answer="một từ chỉ cách đi (đi thế nào?)"
+         data-hint-sai='{"một con số (five, ten…)":"Chỗ (1) đứng ngay sau động từ go (đi) và ngay trước chữ along (dọc theo). Đi … dọc theo con phố — đi thế nào?","tên một địa điểm (Ong Pagoda…)":"Sau chỗ (1) là along (dọc theo) — tức là đang tả CÁCH đi, chưa nói tới nơi đến. Lật lại thẻ Nhiệm vụ 4."}'>1. Chỗ (1) đứng ngay sau động từ <i>go</i>, ngay trước chữ <i>along</i> (dọc theo).</div>
+    <div data-mcq data-opts="một số thứ tự (thứ nhất, thứ hai…);một tính từ tả khu phố (quiet, busy…);một động từ (go, turn…)" data-answer="một số thứ tự (thứ nhất, thứ hai…)" data-tron="2"
+         data-hint-sai='{"một tính từ tả khu phố (quiet, busy…)":"Chỗ (2) đứng giữa the và turning (ngã rẽ). Ngã rẽ … — ngã rẽ nào? Nhớ khung Lỗi hay gặp ở mục 3.","một động từ (go, turn…)":"Giữa the và danh từ turning thì không đặt động từ. Ngã rẽ THỨ MẤY?"}'>2. Chỗ (2) đứng giữa chữ <i>the</i> và chữ <i>turning</i> (ngã rẽ).</div>
+    <div data-mcq data-opts="một từ chỉ phía (trái hoặc phải);một số thứ tự (thứ nhất, thứ hai…);tên một con phố (Tran Phu Street…)" data-answer="một từ chỉ phía (trái hoặc phải)" data-tron="3"
+         data-hint-sai='{"một số thứ tự (thứ nhất, thứ hai…)":"Chỗ (3) đứng ngay sau động từ Turn (rẽ). Rẽ … — rẽ về phía nào?","tên một con phố (Tran Phu Street…)":"Chỗ (3) đứng ngay sau Turn (rẽ). Rẽ thì luôn rẽ về một PHÍA nào đó."}'>3. Chỗ (3) đứng ngay sau động từ <i>Turn</i> (rẽ).</div>
+    <div data-mcq data-opts="một từ chỉ vị trí (như next to, near…);một tính từ so sánh hơn (bigger, older…);một động từ (go, turn…)" data-answer="một từ chỉ vị trí (như next to, near…)"
+         data-hint-sai='{"một tính từ so sánh hơn (bigger, older…)":"Chỗ (4) đứng giữa It&apos;s và tên một ngôi nhà cổ. Không có than — đang nói cái xưởng nằm Ở ĐÂU so với ngôi nhà đó.","một động từ (go, turn…)":"Sau It&apos;s (= It is) và trước tên một ngôi nhà — đang nói vị trí. Nhớ Unit 2: next to, behind, in front of…"}'>4. Chỗ (4) đứng giữa <i>It's</i> và tên một ngôi nhà cổ ở Hội An.</div>
+  </div>
+
+  <div class="act" data-act="nhap-guide">
+    <h4><span class="tag">NHIỆM VỤ 16</span> Em là hướng dẫn viên nhí — nháp bài hướng dẫn tham quan TP. Hồ Chí Minh (bài 4)</h4>
+    <div data-ghi data-luu="u4-audio-guide" data-it-nhat="25"
+         data-goi-y="Let's start our tour in Ho Chi Minh City. We are in Hai Ba Trung Street now. First, go to … Then … After that … Finally …"
+         data-ok="Nháp xong rồi! Giờ em đọc to bài của mình như một hướng dẫn viên thật — bấm giờ xem mất bao lâu — rồi chép vào vở cho bài 5.">🎙️ Mở bản đồ SGK
+      trang 43. Viết tiếp lời mở đầu của sách, dẫn khách tới <b>ít nhất ba nơi</b>, nối bằng <i>First, Then, After that, Finally</i>
+      (ít nhất 25 từ — tính cả câu mở đầu).</div>
+  </div>
+  <p class="small">Cô nhắc: <i>finally</i> /ˈfaɪnəli/ = "cuối cùng" (Glossary) — dùng cho nơi <b>cuối</b> của chuyến đi. Mỗi nơi một câu chỉ
+  đường bằng các cụm ở Nhiệm vụ 4.</p>
+
+  <h3>Bài tập SGK — Communication</h3>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 43).</span> <b>Work in pairs. Make similar conversations to ask for and give directions to places near your school.</b></p>
+    <button class="btn" type="button" data-hint="#gy-c2">Gợi ý</button>
+    <div class="hint" id="gy-c2">Nghĩ về con đường quanh trường em: có hiệu sách, bưu điện, công viên, trạm xe buýt nào không? Người hỏi dùng một trong
+    hai câu hỏi đường ở bảng trên; người chỉ dùng các cụm ở Nhiệm vụ 4 (<i>go along, turn left, take the … turning, It's on your …</i>).</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 43).</span> <b>Nick is listening to an audio guide to Hoi An. Listen and fill the blanks.</b> 🎧 <span class="muted small">(Track 28, tập một)</span></p>
+    <div class="box quote">
+      <p><b>CITY TOURS!</b></p>
+      <p>Let's start our tour in Hoi An. We are in Tran Phu Street now. First, go to Ong Pagoda. To get there, go (1) ______ along the
+      street for five minutes. It's on your left. Next, go to the Museum of Sa Huynh Culture. Take the (2) ______ turning on your left.
+      Turn (3) ______ and it's on your right. Finally, go to Hoa Nhap Workshop to buy some presents. Turn left and then right. It's
+      (4) ______ Tan Ky House.</p>
+    </div>
+    <p class="small muted">SGK không in lời bài nghe — xem khối ⛔ ở trên.</p>
+    <button class="btn" type="button" data-hint="#gy-c3">Gợi ý</button>
+    <div class="hint" id="gy-c3">Làm Nhiệm vụ 15 trước để biết mỗi chỗ cần loại từ gì. Khi nghe lần một, chỉ ghi nhanh; lần hai soát chính tả. Cô giải
+    nghĩa: <i>pagoda</i> = chùa, <i>museum</i> = bảo tàng, <i>workshop</i> = phân xưởng (Glossary) — trong bài, khách đến đây để mua quà (<i>buy some presents</i>), <i>presents</i> = quà.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 43).</span> <b>Look at the map below and create an audio guide for the centre of Ho Chi Minh City.</b></p>
+    <p><b>Remember to:</b> give directions to at least three different places; use <i>first</i>, <i>then</i>, <i>after that</i> and <i>finally</i> to link your directions.</p>
+    <div class="box quote"><p>Let's start our tour in Ho Chi Minh City. We are in Hai Ba Trung Street now. First, go to ______</p></div>
+    <p class="small muted">Bản đồ SGK: Thong Nhat Palace, Saigon Notre Dame Cathedral, Ho Chi Minh City Museum, People's Committee of Ho Chi Minh City,
+    Sai Gon Opera House (gần <i>You are here</i>), Ton Duc Thang Museum; các phố Nguyen Du, Le Duan, Le Loi, Nguyen Hue, Dong Khoi, Hai Ba Trung…</p>
+    <button class="btn" type="button" data-hint="#gy-c4">Gợi ý</button>
+    <div class="hint" id="gy-c4">Dùng bản nháp ở Nhiệm vụ 16. Trên bản đồ SGK, đặt ngón tay ở <i>You are here</i>, chọn ba nơi em thích và đi thử
+    bằng ngón tay trước khi viết. Mỗi nơi: một câu <i>go to …</i> + một – hai câu chỉ đường.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 5 (trang 43).</span> <b>Now present your audio guide to your class.</b></p>
+    <button class="btn" type="button" data-hint="#gy-c5">Gợi ý</button>
+    <div class="hint" id="gy-c5">Tập đọc to ở nhà hai lần, nói chậm và rõ như một hướng dẫn viên thật. Khi nói <i>turn left / turn right</i> thì
+    giơ tay chỉ hướng cho cả lớp dễ theo.</div>
+  </div>
+</section>
+
+<!-- ============================== BUỔI 3 ============================== -->
+<div class="buoi"><span class="ten">📅 Buổi 3</span><span class="mo-ta">Blog của Khang ở Đà Nẵng · Nghe và viết về khu phố — khoảng 50–60 phút (phần viết có thể để hôm sau). Mục 11 Ôn tập là <b>bài về nhà</b> làm vào vở (30–40 phút, không cần máy); làm xong mới mở Mini-game.</span></div>
+
+<!-- ============================== 9. SKILLS 1 ============================== -->
+<section id="s9">
+  <h2>9. Skills 1 — Blog của Khang <span class="muted small">(trang 44)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🏖️ Sống cạnh biển thì sao nhỉ?</span>
+    <p>Bạn Khang sống ở <b>Đà Nẵng</b> <button class="say mini" data-a="ten-da-nang" data-lang="vi-VN" data-t="Đà Nẵng">Da Nang</button>, thành phố có cây cầu Rồng phun lửa và bãi biển Mỹ Khê. Khang viết một bài
+    <b>blog</b> (nhật kí đăng lên mạng) về khu phố của mình. Sống gần biển chắc là thích lắm… nhưng có điều gì Khang <b>không thích</b>
+    không nhỉ?</p>
+  </div>
+
+  <div class="act" data-act="doan-blog" data-mo-sau="#blog-khang">
+    <h4><span class="tag">NHIỆM VỤ 17</span> Đoán trước khi đọc — blog của Khang đang được giấu!</h4>
+    <div data-ghi data-luu="u4-du-doan-blog" data-it-nhat="4"
+         data-ok="Em đã ghi dự đoán! Blog của Khang đã mở ra bên dưới — đọc xem em đoán trúng không nhé.">🔮 Khang sống ở Đà Nẵng, một
+      thành phố biển lớn. Em đoán Khang <b>thích</b> điều gì và <b>không thích</b> điều gì ở khu phố của mình? (Viết tiếng Việt cũng được, ít nhất 4 từ.)</div>
+  </div>
+
+  <div id="blog-khang" class="hide in-hien">
+    <p><button class="say say-all" data-all="#blog-doc">Nghe cả bài blog</button></p>
+    <div class="box quote" id="blog-doc">
+      <span class="label">💻 KHANG'S BLOG — <span class="small">http://www.myblog.com.vn/Khang</span></span>
+      <p class="small"><i>Friday, December 23rd …</i></p>
+      <p><b>MY NEIGHBOURHOOD</b><br>I live in the suburbs of Da Nang City. There are many things I like about my neighbourhood.
+        <button class="say line icon" data-a="read-01" data-t="My neighbourhood. I live in the suburbs of Da Nang City. There are many things I like about my neighbourhood."></button></p>
+      <p>It's great for outdoor activities because it has beautiful parks, sandy beaches and fine weather. There's almost everything I
+        need here: shops, restaurants, and markets. The people here are friendlier, and the food is better than in other places.
+        <button class="say line icon" data-a="read-02" data-t="It's great for outdoor activities because it has beautiful parks, sandy beaches and fine weather. There's almost everything I need here: shops, restaurants, and markets. The people here are friendlier, and the food is better than in other places."></button></p>
+      <p>However, there are two things I dislike about it: there are many modern buildings and offices; and the streets are busy and crowded.
+        <button class="say line icon" data-a="read-03" data-t="However, there are two things I dislike about it: there are many modern buildings and offices; and the streets are busy and crowded."></button></p>
+      <p class="small"><i>Posted by Khang at 4:55 P.M.</i></p>
+    </div>
+    <p class="small muted">Tranh SGK: hai ảnh Đà Nẵng — cây cầu và các toà nhà lên đèn bên sông; bãi biển cong hình vòng cung với dãy nhà cao tầng.</p>
+    <p class="small">Blog đọc bằng giọng máy. Ba từ trong khung bài 1 (<i>suburbs, dislike,
+    outdoor</i>) đều có trong Glossary ở mục 4 — nhưng em thử <b>đoán nghĩa theo câu</b> trước đã, rồi mới lật Glossary soát lại.</p>
+    <div class="xem-lai" data-xem-lai="u4-du-doan-blog"><p><b>Đọc xong rồi!</b> Em mở lại dự đoán lúc nãy: em đoán trúng điều gì? Điều Khang
+      không thích có làm em bất ngờ không?</p></div>
+  </div>
+
+  <div class="act" data-act="doc-blog" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 18</span> Đọc tìm ý — thám tử blog</h4>
+    <p class="small">Mỗi câu hỏi có một từ khoá. Tìm từ khoá trong blog rồi đọc kĩ <b>câu chứa nó và câu ngay trước nó</b> — chữ <i>it</i>
+    thường chỉ một thứ đã được nhắc tới ở câu trước.</p>
+    <div data-mcq data-opts="khu phố của Khang;hai điều Khang không thích;những toà nhà hiện đại" data-answer="khu phố của Khang" data-tron="2"
+         data-hint-sai='{"hai điều Khang không thích":"Đọc lại: there are two things I dislike about it — Khang không thích hai điều VỀ cái it. Vậy it không thể là chính hai điều đó. Lùi lên đoạn đầu: Khang đang kể về cái gì?","những toà nhà hiện đại":"Những toà nhà được nhắc SAU chữ it, và chúng là một trong hai điều Khang không thích. it phải là thứ đã nói tới từ trước — tiêu đề blog là gì?"}'>1. Đoạn cuối: <i>two things I dislike about <b>it</b></i> — chữ <b>it</b> chỉ cái gì?</div>
+    <div data-mcq data-opts="However;because;There's" data-answer="However" data-tron="2"
+         data-hint-sai='{"because":"because (vì) dùng để nêu LÍ DO. Tìm chữ đứng đầu đoạn cuối — chữ báo hiệu Khang sắp nói điều trái ngược.","There&apos;s":"There&apos;s (có) chỉ kể ra thứ có ở khu phố. Chữ nào báo hiệu ý TRÁI NGƯỢC với cả đoạn trước?"}'>2. Chữ nào báo hiệu Khang chuyển từ điều <b>thích</b> sang điều <b>không thích</b>?</div>
+    <div data-mcq data-opts="buổi chiều;buổi sáng;buổi trưa" data-answer="buổi chiều"
+         data-hint-sai='{"buổi sáng":"Nhìn dòng cuối cùng của blog: 4:55 và hai chữ viết tắt. P.M. là giờ trước hay sau 12 giờ trưa?","buổi trưa":"4:55 P.M. — P.M. là sau 12 giờ trưa. 4 giờ 55 sau 12 giờ trưa là trưa hay chiều?"}'>3. Khang đăng bài lúc 4:55 P.M. — tức là vào buổi nào?</div>
+    <div data-mcq data-opts="good;bad;fine" data-answer="good" data-tron="3"
+         data-hint-sai='{"bad":"Khang đang kể điều mình THÍCH hay KHÔNG thích ở đoạn này? Đồ ăn ngon hơn hay tệ hơn?","fine":"fine tận cùng bằng e — so sánh hơn chỉ thêm -r, giống late → later. better có giống thế không? Nhìn lại câu ngay dưới bảng quy tắc ở mục 7 — có một từ đặc biệt không theo quy tắc nào."}'>4. <i>the food is <b>better</b> than in other places</i> — <i>better</i> là so sánh hơn của tính từ nào?</div>
+  </div>
+
+  <div class="act" data-act="noi-khu-pho">
+    <h4><span class="tag">NHIỆM VỤ 19</span> Nói theo hai câu hỏi mẫu của bài 5 — rồi hỏi người nhà về khu phố</h4>
+    <div data-noi data-a="sp-10" data-t="What do you like about it?" data-lan="3">What do you like about it?</div>
+    <div data-noi data-a="sp-12" data-t="What do you dislike about it?" data-lan="3">What do you dislike about it?</div>
+    <p class="small">Nói đủ 3 lần mỗi câu rồi thì hỏi thật bố mẹ: <i>Where do you live? — What do you like about it? — What do you dislike about it?</i>
+    Bố mẹ trả lời tiếng Việt cũng được, em thử nói lại một ý bằng tiếng Anh.</p>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — hoạ sĩ bản đồ:</b> vẽ thật nhanh một bản đồ nhỏ của khu
+  phố nhà em: nhà em ở đâu, có công viên, chợ, trường, quán ăn nào xung quanh. Ghi tên tiếng Anh cho ít nhất ba nơi — bản đồ này em sẽ
+  dùng lại ở phần Project!</div></div>
+
+  <h3>Bài tập SGK — Skills 1</h3>
+  <div class="ex">
+    <p><span class="so">Bài 1 (trang 44).</span> <b>Read Khang's blog. Look at the words in the box, then find them in the text and underline them. What do they mean?</b></p>
+    <p><i>suburbs · dislike · outdoor</i></p>
+    <button class="btn" type="button" data-hint="#gy-d1">Gợi ý</button>
+    <div class="hint" id="gy-d1">Tìm câu chứa từng từ, đọc cả câu rồi đoán: <i>suburbs</i> là vùng ở giữa trung tâm, hay ở rìa ngoài một thành phố? <i>dislike</i> có chữ <i>like</i> bên trong — thêm <i>dis-</i> ở đầu thì nghĩa thay đổi thế nào? <i>outdoor</i> có chữ <i>out</i>
+    (ra ngoài) và <i>door</i> (cửa). Đoán xong thì soát với Glossary ở mục 4.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 44).</span> <b>Read Khang's blog again and fill the table with the information.</b></p>
+    <table><tr><th>LIKES</th><th>DISLIKES</th></tr><tr><td>beautiful parks</td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></table>
+    <p class="small muted">(SGK điền sẵn <i>beautiful parks</i> làm mẫu.)</p>
+    <button class="btn" type="button" data-hint="#gy-d2">Gợi ý</button>
+    <div class="hint" id="gy-d2">Chia blog làm hai phần bằng chữ em tìm được ở câu 2 của Nhiệm vụ 18: phần <b>trước</b> chữ đó là điều Khang thích, phần
+    <b>sau</b> là điều Khang không thích. Ghi ngắn gọn thành cụm danh từ như mẫu (<i>beautiful parks</i>).</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 44).</span> <b>Read Khang's blog again. Then answer the questions.</b></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">Where is Khang's neighbourhood?</span></li>
+      <li><span class="n">2.</span><span class="tx">Why is his neighbourhood great for outdoor activities?</span></li>
+      <li><span class="n">3.</span><span class="tx">What are the people in his neighbourhood like?</span></li>
+      <li><span class="n">4.</span><span class="tx">How are the streets in his neighbourhood?</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-d3">Gợi ý</button>
+    <div class="hint" id="gy-d3">Mỗi câu hỏi có một từ khoá (<i>Where, outdoor activities, people, streets</i>). Tìm từ khoá trong blog, chép ý của câu đó
+    và trả lời bằng câu trọn vẹn, đổi <i>I / my</i> thành <i>he / his</i>. Câu 2 hỏi <i>Why</i> — trong blog có chữ nào nêu lí do? Câu 3: nhớ <i>What
+    are they like?</i> hỏi về tính cách như ở Unit 3.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 44).</span> <b>Make notes about your neighbourhood. Think about what you like / dislike about it.</b></p>
+    <table><tr><th>LIKES</th><th>DISLIKES</th></tr><tr><td>• ______</td><td>• ______</td></tr><tr><td>• ______</td><td>• ______</td></tr></table>
+    <button class="btn" type="button" data-hint="#gy-d4">Gợi ý</button>
+    <div class="hint" id="gy-d4">Nhìn bản đồ em vừa vẽ ở mốc nghỉ. Dùng các địa điểm (mục 1, 4) và tính từ (mục 5) để ghi: công viên đẹp? đường đông đúc?
+    người thân thiện? Ghi cụm ngắn, chưa cần câu.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 5 (trang 44).</span> <b>Work in pairs. Ask and answer about what you like and dislike about your neighbourhood.</b></p>
+    <p><button class="say say-all" data-all="#vd-d5">Nghe ví dụ</button></p>
+    <div id="vd-d5">
+      <div class="dlg"><span class="who f">A:</span> <span class="en">Where do you live?</span>
+        <button class="say line icon" data-a="sp-08" data-t="Where do you live?"></button></div>
+      <div class="dlg"><span class="who">B:</span> <span class="en">I live in the suburbs of Da Nang City.</span>
+        <button class="say line icon" data-a="sp-09" data-t="I live in the suburbs of Da Nang City."></button></div>
+      <div class="dlg"><span class="who f">A:</span> <span class="en">What do you like about it?</span>
+        <button class="say line icon" data-a="sp-10" data-t="What do you like about it?"></button></div>
+      <div class="dlg"><span class="who">B:</span> <span class="en">The weather is fine. The people are friendly and the food is good.</span>
+        <button class="say line icon" data-a="sp-11" data-t="The weather is fine. The people are friendly and the food is good."></button></div>
+      <div class="dlg"><span class="who f">A:</span> <span class="en">What do you dislike about it?</span>
+        <button class="say line icon" data-a="sp-12" data-t="What do you dislike about it?"></button></div>
+      <div class="dlg"><span class="who">B:</span> <span class="en">The streets are busy and crowded.</span>
+        <button class="say line icon" data-a="sp-13" data-t="The streets are busy and crowded."></button></div>
+    </div>
+    <button class="btn" type="button" data-hint="#gy-d5">Gợi ý</button>
+    <div class="hint" id="gy-d5">Dùng ghi chú của bài 4. Người hỏi đọc đúng ba câu hỏi mẫu (Nhiệm vụ 19); người trả lời thay nội dung bằng khu phố
+    của mình. Đổi vai.</div>
+  </div>
+</section>
+
+<!-- ============================== 10. SKILLS 2 ============================== -->
+<section id="s10">
+  <h2>10. Skills 2 — Nghe về khu phố của Vy · Viết về khu phố của em <span class="muted small">(trang 45)</span></h2>
+
+  <div class="mo-dau">
+    <span class="label">🎧 Thám tử nghe trở lại!</span>
+    <p>Ở mục 8 em đã đoán loại từ trước khi nghe. Lần này Khang nói chuyện với <b>Vy</b> về khu phố của Vy.
+    Người nghe giỏi đọc kĩ câu hỏi trước, gạch chân từ khoá, đoán chỗ trống cần <b>danh từ</b> hay <b>tính từ</b>, tả điều <b>hay</b> hay
+    điều <b>dở</b> — lúc băng chạy chỉ việc "chờ con mồi". Thử ở Nhiệm vụ 20 nhé!</p>
+  </div>
+
+  <div class="box warn">
+    <span class="label">⛔ Phần nghe: em dùng đĩa / app của NXB</span>
+    <p>Bài 1 (🎧 <b>Track 29</b>) và bài 2 (🎧 <b>Track 30</b>) — <b>Tiếng Anh 6 tập một</b>. SGK không in lời bài nghe, nên cô
+    <b>không có nội dung băng</b> và trang này <b>không có file nghe</b> cho hai bài đó. Em mở đĩa hoặc ứng dụng học liệu của NXB Giáo dục,
+    nghe đúng số Track, rồi gửi cô đáp án em chọn — cô cùng em soi lại.</p>
+  </div>
+
+  <div class="act" data-act="tham-tu-nghe" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 20</span> Trước khi nghe bài 2: mỗi chỗ trống cần "săn" loại từ nào?</h4>
+    <div data-mcq data-opts="một danh từ chỉ nơi chốn;một tính từ tả con người;một con số chỉ số lượng" data-answer="một danh từ chỉ nơi chốn" data-tron="2"
+         data-hint-sai='{"một tính từ tả con người":"Chỗ (1) đứng cuối một danh sách: cửa hàng, nhà hàng và … Hai thứ trước là loại từ gì? Chữ and nối những thứ cùng loại.","một con số chỉ số lượng":"Chỗ (1) đứng cuối danh sách cửa hàng, nhà hàng và … — thứ thứ ba cũng là một NƠI, như hai thứ trước."}'>1. Chỗ (1) đứng cuối danh sách những thứ Vy thích: cửa hàng, nhà hàng, và …</div>
+    <div data-mcq data-opts="một tính từ tả con phố;một danh từ chỉ người;một động từ chỉ việc làm" data-answer="một tính từ tả con phố" data-tron="3"
+         data-hint-sai='{"một danh từ chỉ người":"Chỗ (2) đứng ngay trước chữ streets. Trước một danh từ, ta thường đặt loại từ gì để tả nó?","một động từ chỉ việc làm":"Chỗ (2) đứng ngay trước chữ streets (những con phố). Con phố … — con phố thế nào?"}'>2. Chỗ (2) đứng ngay trước chữ <i>streets</i>.</div>
+    <div data-mcq data-opts="một tính từ tả tính cách;một danh từ chỉ nơi chốn;một con số chỉ số lượng" data-answer="một tính từ tả tính cách"
+         data-hint-sai='{"một danh từ chỉ nơi chốn":"Chỗ (3) được nối bằng and với helpful (hay giúp đỡ). helpful là loại từ gì, tả ai?","một con số chỉ số lượng":"Chỗ (3) nối bằng and với helpful (hay giúp đỡ) — hai từ cùng loại, cùng tả người. Nhớ các tính từ tính cách ở Unit 3."}'>3. Chỗ (3) được nối bằng <i>and</i> với <i>helpful</i> (hay giúp đỡ), đứng trước chữ <i>people</i>.</div>
+    <div data-mcq data-opts="một tính từ mang nghĩa dở;một tính từ mang nghĩa hay;một danh từ chỉ nơi chốn" data-answer="một tính từ mang nghĩa dở" data-tron="3"
+         data-hint-sai='{"một tính từ mang nghĩa hay":"Chỗ (5) nằm ở phần những điều Vy KHÔNG thích, và nối bằng and với noisy (ồn ào). Từ đi cùng noisy trong phần không thích sẽ mang nghĩa hay hay dở?","một danh từ chỉ nơi chốn":"Chỗ (5) nối bằng and với noisy (một tính từ) và đứng trước streets. and nối hai từ cùng loại."}'>4. Chỗ (5) nằm trong phần Vy <b>không thích</b>, được nối bằng <i>and</i> với <i>noisy</i>, đứng trước <i>streets</i>.</div>
+  </div>
+
+  <h3>Bài tập SGK — Skills 2 (Listening)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 1 (trang 45).</span> <b>Listen to the conversation between Khang and Vy and tick (✓) T (True) or F (False).</b> 🎧 <span class="muted small">(Track 29, tập một)</span></p>
+    <table><tr><th></th><th></th><th>T</th><th>F</th></tr>
+      <tr><td>1.</td><td>Vy lives in the centre of Ho Chi Minh City.</td><td></td><td></td></tr>
+      <tr><td>2.</td><td>There is a big market near her house.</td><td></td><td></td></tr>
+      <tr><td>3.</td><td>The streets are narrow.</td><td></td><td></td></tr>
+      <tr><td>4.</td><td>The schools are faraway.</td><td></td><td></td></tr>
+      <tr><td>5.</td><td>There are some factories near her neighbourhood.</td><td></td><td></td></tr></table>
+    <button class="btn" type="button" data-hint="#gy-e1">Gợi ý</button>
+    <div class="hint" id="gy-e1">Trước khi nghe, gạch chân từ khoá mỗi câu (<i>centre, big market, narrow, faraway, factories</i>) và tra nghĩa — <i>narrow,
+    faraway</i> có trong Glossary; <i>factories</i> = nhà máy. Khi nghe, chờ đúng từ khoá (hoặc từ trái nghĩa của nó) xuất hiện.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 2 (trang 45).</span> <b>Listen to the conversation again and fill the blanks.</b> 🎧 <span class="muted small">(Track 30, tập một)</span></p>
+    <div class="box quote">
+      <p><b>What Vy likes</b><br>– many shops, restaurants, and (1) ______ in her neighbourhood<br>– (2) ______ streets<br>– helpful and (3) ______ people</p>
+      <p><b>What Vy dislikes</b><br>– too (4) ______ schools<br>– dirty air<br>– noisy and (5) ______ streets</p>
+    </div>
+    <p class="small muted">Tranh SGK: một khu phố sầm uất — biển hiệu HOTEL, COFFEE SHOP, GYM, CINEMA; xe buýt, xe tải, ô tô, người sang đường.</p>
+    <button class="btn" type="button" data-hint="#gy-e2">Gợi ý</button>
+    <div class="hint" id="gy-e2">Dùng kết quả Nhiệm vụ 20. Chỗ (4) đứng giữa <i>too</i> (quá) và <i>schools</i> — trường học "quá … " thì Vy không thích:
+    em nghe xem quá gì. Nghe lần hai để soát chính tả.</div>
+  </div>
+
+  <h3>Viết đoạn văn về khu phố của em</h3>
+  <p>Bài 4 bảo em dùng <b>blog của Khang làm mẫu</b>. Nhìn kĩ, blog có bố cục rất rõ: nơi em sống → những điều thích → chữ báo hiệu đổi ý →
+  những điều không thích.</p>
+
+  <div class="err">
+    <div class="h">Lỗi hay gặp — đặt tính từ SAU danh từ như tiếng Việt</div>
+    <p><span class="x">✗</span> <i>My street is a street narrow.</i> &nbsp;·&nbsp; <span class="x">✗</span> <i>I like the trees tall in my park.</i></p>
+    <p>Tiếng Việt nói "con phố <b>hẹp</b>", "những cây <b>cao</b>" — tính từ đứng <b>sau</b>. Tiếng Anh ngược lại: tính từ đứng
+    <b>trước</b> danh từ: <i>a narrow street</i>, <i>the tall trees</i>. Viết xong đoạn văn, em soát lại từng cụm "tính từ + danh từ".</p>
+  </div>
+
+  <div class="act" data-act="khung-viet" data-nguon="luyen">
+    <h4><span class="tag">NHIỆM VỤ 21</span> Bạn Lan viết về khu phố của bạn ấy — xếp mỗi câu vào đúng phần của khung bài viết, rồi xếp một câu</h4>
+    <p class="small">Đọc kĩ nghĩa từng câu: câu nào cho biết Lan sống ở đâu, câu nào kể điều Lan <b>thích</b>, câu nào kể điều Lan
+    <b>không thích</b>? Bấm một câu để chọn, rồi bấm vào cột; bấm câu đã xếp để đổi cột.</p>
+    <div data-sort data-cols="📍 Nơi sống;👍 Điều thích;👎 Điều không thích" data-ok="Chuẩn! Đoạn của Lan đi đúng khung: nơi sống → điều thích → điều không thích. Khi viết, em đặt However, … ngay trước phần không thích, như blog của Khang.">
+      <span data-col="📍 Nơi sống">I live in a small village near the sea.</span>
+      <span data-col="👍 Điều thích">People in my village are kind and helpful.</span>
+      <span data-col="👍 Điều thích" data-goi-y="There is a beautiful park near my house — công viên đẹp ở gần nhà thì em thấy vui hay buồn?">There is a beautiful park near my house.</span>
+      <span data-col="👍 Điều thích">The air is fresh and the beach is clean.</span>
+      <span data-col="👎 Điều không thích" data-goi-y="too far = quá xa. Chợ ở quá xa nhà thì tiện hay bất tiện?">The market is too far from my house.</span>
+      <span data-col="👎 Điều không thích" data-goi-y="narrow = hẹp, dirty = bẩn. Em có thích đường vừa hẹp vừa bẩn không?">The roads are narrow and dirty after the rain.</span>
+    </div>
+    <p class="small"><b>Xếp thẻ thành câu</b> (nhớ khung Lỗi hay gặp ngay trên): "Phố của tớ có nhiều cây cao."</p>
+    <div data-order data-answer="My street has many tall trees."
+         data-hint-sai="Tính từ tall đứng trước hay sau danh từ trees? Chủ ngữ My street đứng đầu câu, has đứng ngay sau."></div>
+  </div>
+
+  <div class="act" data-act="nhap-doan-van">
+    <h4><span class="tag">NHIỆM VỤ 22</span> Nháp đoạn văn về khu phố của em (ít nhất 30 từ — bài SGK cần khoảng 50 từ)</h4>
+    <div data-ghi data-luu="u4-doan-van" data-it-nhat="30"
+         data-goi-y="I live in … There are many things I like about my neighbourhood. … However, there are some things I dislike about it. …"
+         data-ok="Nháp xong rồi! Giờ em chép vào vở, thêm vài ý cho đủ khoảng 50 từ, đếm lại từ, rồi gửi cô chữa nhé.">✍️ Viết theo khung ba phần như đoạn của Lan (nơi sống → điều thích → <i>However, …</i> → điều không thích),
+      dùng ghi chú ở bài 4 Skills 1. Muốn khen khu phố em hơn nơi khác thì dùng <b>so sánh hơn</b> (mục 7), như Khang viết <i>… is better than …</i>.</div>
+  </div>
+
+  <div class="moc-nghi"><span class="ic">🧘</span><div><b>Nghỉ 30 giây — đố người nhà:</b> đọc to đoạn nháp nhưng <b>giấu tên
+  khu phố</b> (đọc "I live in … bíp!"). Người nhà có đoán ra em đang tả khu phố nào không? Đoán ra nghĩa là em tả đúng lắm!
+  <br><b>Ở nhà một mình?</b> Đứng dậy đọc to đoạn nháp như đọc bản tin, rồi gạch dưới một câu "chưa đủ để người lạ đoán ra" và
+  thêm vào đó một tính từ hoặc một địa điểm.</div></div>
+
+  <h3>Bài tập SGK — Skills 2 (Writing)</h3>
+  <div class="ex">
+    <p><span class="so">Bài 3 (trang 45).</span> <b>Tick (✓) what you like or dislike about a neighbourhood.</b></p>
+    <table><tr><th></th><th></th><th>Likes</th><th>Dislikes</th></tr>
+      <tr><td>1.</td><td>sandy beaches</td><td></td><td></td></tr><tr><td>2.</td><td>heavy traffic</td><td></td><td></td></tr>
+      <tr><td>3.</td><td>many modern buildings and offices</td><td></td><td></td></tr><tr><td>4.</td><td>peaceful streets</td><td></td><td></td></tr>
+      <tr><td>5.</td><td>good restaurants and cafés</td><td></td><td></td></tr><tr><td>6.</td><td>sunny weather</td><td></td><td></td></tr>
+      <tr><td>7.</td><td>helpful and friendly people</td><td></td><td></td></tr><tr><td>8.</td><td>many shops and markets</td><td></td><td></td></tr></table>
+    <button class="btn" type="button" data-hint="#gy-e3">Gợi ý</button>
+    <div class="hint" id="gy-e3">Bài này <b>không có đáp án duy nhất</b> — em tick theo ý <b>của em</b>. <i>heavy traffic</i> = giao thông đông đúc, tắc
+    đường; <i>sunny weather</i> = trời nắng. Em thích hay không thích điều đó? Vì sao?</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Bài 4 (trang 45).</span> <b>Write a paragraph of about 50 words about your neighbourhood saying what you like and dislike about it. Use Khang's blog as a model.</b></p>
+    <div class="box quote">
+      <p>I live in ______. There are many / some things I like about my neighbourhood.</p>
+      <p>______</p>
+      <p>However, there are some / many / one thing(s) I dislike about it.</p>
+      <p>______</p>
+    </div>
+    <button class="btn" type="button" data-hint="#gy-e4">Gợi ý</button>
+    <div class="hint" id="gy-e4">Chép bản nháp ở Nhiệm vụ 22 vào vở theo khung. Thiếu chữ thì thêm <b>một ý mới</b> (một địa điểm, một tính từ, một câu so
+    sánh) chứ đừng kéo dài câu cũ. Viết xong <b>đếm từ</b> — khoảng 50 là vừa — rồi gửi cô chữa.</div>
+  </div>
+</section>
+
+<!-- ============================== 11. LOOKING BACK + PROJECT ============================== -->
+<section id="s11" class="khong-nv">
+  <h2>11. Ôn tập (bài về nhà): Looking Back + Project — em làm vào vở, gửi cô chữa <span class="muted small">(trang 46–47)</span></h2>
+
+  <div class="ex">
+    <p><span class="so">Looking Back, bài 1 (trang 46).</span> <b>Write the name for each picture.</b></p>
+    <p class="small">SGK: năm ảnh đánh số 1–5 (các địa điểm trong khu phố).</p>
+    <button class="btn" type="button" data-hint="#gy-f1">Gợi ý</button>
+    <div class="hint" id="gy-f1">Nhìn từng ảnh trong SGK trang 46 và tự hỏi: người ta đến nơi này để làm gì? Viết tên tiếng Anh <b>không nhìn</b> thẻ — viết
+    xong mới lật lại thẻ Nhiệm vụ 6 để soát chính tả.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Looking Back, bài 2 (trang 46).</span> <b>Put the following adjectives in the correct column.</b></p>
+    <p><i>fast · noisy · expensive · heavy · large · beautiful · hot · quiet · exciting</i></p>
+    <table><tr><th>One syllable</th><th>Two syllables</th><th>Three syllables</th></tr><tr><td></td><td></td><td></td></tr></table>
+    <button class="btn" type="button" data-hint="#gy-f2">Gợi ý</button>
+    <div class="hint" id="gy-f2">Vỗ tay đếm tiếng như ở Nhiệm vụ 11 — đếm <b>tiếng</b>, không đếm chữ cái. Từ nào em chưa chắc thì đọc chậm, mỗi tiếng vỗ
+    một cái.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Looking Back, bài 3 (trang 46).</span> <b>Now write their comparative forms in the table below.</b></p>
+    <table><tr><th>Adjectives</th><th>Comparative form</th></tr>
+      <tr><td>fast</td><td>faster <span class="muted small">(SGK điền sẵn làm mẫu)</span></td></tr>
+      <tr><td>beautiful</td><td>______</td></tr><tr><td>noisy</td><td>______</td></tr><tr><td>expensive</td><td>______</td></tr>
+      <tr><td>hot</td><td>______</td></tr><tr><td>exciting</td><td>______</td></tr><tr><td>quiet</td><td>______</td></tr>
+      <tr><td>heavy</td><td>______</td></tr><tr><td>large</td><td>______</td></tr></table>
+    <button class="btn" type="button" data-hint="#gy-f3">Gợi ý</button>
+    <div class="hint" id="gy-f3">Dùng kết quả bài 2 và bảng quy tắc ở mục 7: một âm tiết → <i>-er</i> (soát tận cùng <i>e</i>, và điều kiện gấp đôi); hai
+    âm tiết tận cùng <i>-y</i> → đổi <i>y</i>; ba âm tiết → <i>more</i>. Có một từ hai âm tiết <b>không</b> tận cùng bằng <i>-y</i>: từ đó
+    là một <b>ngoại lệ</b>, cư xử giống <i>narrow</i> ở Nhiệm vụ 11 — viết theo cách của <i>narrow</i>.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Looking Back, bài 4 (trang 46).</span> <b>Complete the sentences comparing the pictures. Use the comparative forms of the adjectives below.</b></p>
+    <p><i>expensive · modern · noisy · peaceful</i></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">This street is ______ than that one.</span></li>
+      <li><span class="n">2.</span><span class="tx">A city house is ______ than a country house.</span></li>
+      <li><span class="n">3.</span><span class="tx">Things at a corner shop are ______ than things at a village market.</span></li>
+      <li><span class="n">4.</span><span class="tx">Life in the countryside is ______ than life in the city.</span></li>
+    </ol>
+    <button class="btn" type="button" data-hint="#gy-f4">Gợi ý</button>
+    <div class="hint" id="gy-f4">Mở SGK trang 46, nhìn từng cặp ảnh: ảnh bên trái khác ảnh bên phải ở điểm nào (đông xe? hiện đại? giá cả? yên tĩnh?). Chọn
+    tính từ khớp nhất trong khung — mỗi từ dùng một lần — rồi viết dạng so sánh hơn.</div>
+  </div>
+  <div class="ex">
+    <p><span class="so">Project — MY MAP (trang 47).</span></p>
+    <ol class="sentlist">
+      <li><span class="n">1.</span><span class="tx">Draw a map of a neighbourhood. Write names of at least five places on your map.</span></li>
+      <li><span class="n">2.</span><span class="tx">Work in pairs. Take turns to ask for and give directions to the places on the map.</span></li>
+    </ol>
+    <p class="small muted">Tranh SGK: khung viền chấm để vẽ, có sẵn một ngôi nhà mái đỏ, một khu vui chơi và một ngôi trường màu vàng.</p>
+    <button class="btn" type="button" data-hint="#gy-f5">Gợi ý</button>
+    <div class="hint" id="gy-f5">Vẽ lại bản đồ khu phố em đã nháp ở mốc nghỉ mục 9, thật to và đẹp, ghi ít nhất năm tên tiếng Anh. Rồi chơi như bản đồ
+    luyện ở mục 3: một người hỏi <i>Excuse me. Could you tell me the way to the …, please?</i>, người kia chỉ đường.</div>
+  </div>
+
+  <h3>Now I can … — tự chấm cuối Unit</h3>
+  <p class="small">Đánh dấu vào vở: ✓ (làm được) · ✓✓ (làm tốt) · ✓✓✓ (làm rất tốt).</p>
+  <table>
+    <tr><th>Now I can …</th><th>✓</th><th>✓✓</th><th>✓✓✓</th></tr>
+    <tr><td>use the words to name places in a neighbourhood.</td><td></td><td></td><td></td></tr>
+    <tr><td>pronounce the sounds /ɪ/ and /iː/ correctly.</td><td></td><td></td><td></td></tr>
+    <tr><td>compare two people or things using comparative adjectives.</td><td></td><td></td><td></td></tr>
+    <tr><td>ask for and give directions.</td><td></td><td></td><td></td></tr>
+    <tr><td>read about a neighbourhood.</td><td></td><td></td><td></td></tr>
+    <tr><td>talk about a neighbourhood.</td><td></td><td></td><td></td></tr>
+    <tr><td>listen about a neighbourhood.</td><td></td><td></td><td></td></tr>
+    <tr><td>write a paragraph to describe a neighbourhood.</td><td></td><td></td><td></td></tr>
+  </table>
+</section>
+
+<!-- ============================== 12. TỰ KIỂM TRA ============================== -->
+<section id="s12">
+  <h2>12. Tự kiểm tra 1 phút — Mini-game</h2>
+  <div class="mo-dau"><span class="label">⏱ Ai nhanh hơn đồng hồ?</span>
+  <p>Làm xong phần Ôn tập rồi thì thử sức nhé! Bảy câu <b>mới</b> trộn đủ cả Unit: địa điểm, âm /ɪ/ – /iː/, so sánh hơn (ngắn và dài),
+  chỉ đường, rủ bạn, và chữ đổi ý trong bài viết. Đồng hồ <b>tự chạy khi em bấm câu đầu tiên</b> và tự dừng khi em xong câu cuối — trang
+  ghi lại <b>kỉ lục</b> của em để lần sau phá.</p></div>
+  <div class="act game" data-act="tu-kiem-tra" data-nguon="luyen">
+    <h4><span class="tag">MINI-GAME</span> Ai nhanh hơn đồng hồ? 7 câu — 60 giây</h4>
+    <p><span data-timer="60"></span></p>
+    <div data-mcq data-opts="post office;art gallery;square" data-answer="post office" data-tron="2"
+         data-hint-sai='{"art gallery":"Phòng tranh là nơi xem tranh. Gửi thư thì đến đâu? Nhớ câu hỏi đường thứ hai ở mục 8.","square":"Quảng trường là khoảng sân rộng. Gửi thư thì đến đâu?"}'>1. Em muốn <b>gửi thư</b> cho ông bà ở quê. Em đến ___.</div>
+    <div data-listen data-a="pr-need" data-t="need" data-opts="short /ɪ/;long /iː/" data-answer="long /iː/" data-giu-thu-tu
+         data-hint-sai='{"short /ɪ/":"Nghe lại, ngón tay ở khoé miệng: âm i có kéo dài như cheese không?"}'>2. Nghe một từ mới — âm i là /ɪ/ hay /iː/?</div>
+    <p class="cau-fill">3. Your new bag is <span data-fill data-answer="nicer" data-w="8"
+       data-goi-y="nice: MỘT âm tiết, tận cùng bằng e. Thêm -er thì viết thế nào?"
+       data-hint-sai='{"niceer":"nice đã tận cùng bằng e — chỉ cần thêm chữ gì nữa thôi?","more nice":"nice chỉ có MỘT âm tiết. Tính từ ngắn dùng -er hay more?","nice":"Có than rồi — tính từ đã đổi dạng chưa?"}'></span> (nice) than my bag.</p>
+    <div data-mcq data-opts="more boring;boringer;boring" data-answer="more boring"
+         data-hint-sai='{"boringer":"boring có hai âm tiết, không tận cùng bằng y. Tính từ như thế thêm -er hay dùng more?","boring":"Có than ở sau — tính từ đã đổi sang dạng so sánh chưa?"}'>4. Staying at home is ___ than playing in the park.</div>
+    <div data-mcq data-opts="Take the first turning on the left.;Take the one turning on the left.;Take the first turning in the left.;Take the one turning in the left." data-answer="Take the first turning on the left."
+         data-hint-sai='{"Take the one turning on the left.":"Ngã rẽ THỨ nhất — số đếm hay số thứ tự?","Take the first turning in the left.":"Bên trái — sách dùng in hay on?","Take the one turning in the left.":"Hai chỗ cần soát: ngã rẽ THỨ nhất — số đếm hay số thứ tự? Bên trái — in hay on?"}'>5. "Vào ngã rẽ <b>thứ nhất</b> bên trái" là câu nào?</div>
+    <div data-mcq data-opts="Let's play;Let's to play;Let's playing" data-answer="Let's play" data-tron="3"
+         data-hint-sai='{"Let&apos;s to play":"Sau Let&apos;s có cần to không?","Let&apos;s playing":"Sau Let&apos;s là động từ nguyên thể trần hay V-ing?"}'>6. It's sunny. ___ football in the park!</div>
+    <div data-mcq data-opts="However;Because;And" data-answer="However"
+         data-hint-sai='{"Because":"Câu sau nêu một điều TRÁI NGƯỢC với câu trước (yên tĩnh — nhưng xa trường), không phải lí do. Chữ nào báo hiệu ý trái ngược, như trong blog của Khang?","And":"And nối hai ý cùng chiều. Câu sau là một điều KHÔNG hay, trái với câu trước — em cần chữ mang nghĩa tuy nhiên."}'>7. My street is quiet. ___, it's very far from my school.</div>
+  </div>
+  <div class="chuc-mung hide" data-khi-xong-het><span class="to">🏆</span>
+    Tuyệt vời! Em đã thắp đủ <b>23 ⭐</b> của Unit 4 — địa điểm, tính từ tả khu phố, /ɪ/ – /iː/, so sánh hơn, rủ bạn và chỉ đường, em có đủ
+    cả rồi! Nhớ gửi cô bài SGK ở mục 11 và đoạn văn ở mục 10 để cô chữa. Tối nay dẫn bố mẹ đi một vòng khu phố và làm hướng dẫn viên bằng
+    tiếng Anh nhé: <i>Let's start our tour… First, go straight…</i></div>
+</section>
+
+<footer>
+  <p><b>Về file phát âm:</b> toàn bộ <code>.mp3</code> trong thư mục <code>audio-unit-04/</code> do máy tổng
+  hợp giọng đọc (Microsoft Edge TTS, giọng <b>Anh – Anh</b>: <code>en-GB-SoniaNeural</code> cho các vai nữ, <code>en-GB-RyanNeural</code>
+  và <code>en-GB-ThomasNeural</code> cho các vai nam — giọng Nick là <code>en-GB-ThomasNeural</code> nâng nhẹ cao độ, nghe <b>khá giống</b> giọng Khang;
+  tên riêng Việt Nam đọc bằng giọng <code>vi-VN</code>), đọc câu và từ in trong SGK Tiếng Anh 6. Đây là
+  <b>giọng máy để tham chiếu khi luyện đọc</b>, không phải file nghe chính thức của bộ sách —
+  các bài Listening vẫn phải dùng đĩa/app của NXB vì SGK không in nội dung băng.</p>
+  <p>Các câu có nhãn <i>“Câu luyện của bài giảng”</i> do cô đặt để em luyện, dùng đúng từ và mẫu
+  câu của Unit — <b>không phải câu trong SGK</b>; câu luyện dài không có giọng đọc, riêng các bài nghe âm (Nhiệm vụ 10, câu 2
+  của mini-game) phát từ đơn lấy trong sách. Bản đồ luyện ở mục 3 là bản đồ cô vẽ, không phải bản đồ SGK.
+  Nếu trình duyệt không mở được file mp3, trang sẽ tự chuyển sang đọc bằng giọng máy có sẵn của trình duyệt. Nguồn nội
+  dung: <code>kiến thức/tiếng anh/</code>.</p>
+</footer>
+
+</div><!-- /wrap -->
+
+<div id="nowplay"></div>
+<div id="khen" role="status" aria-live="polite"></div>
+
+<!-- ================= ENGINE DÙNG CHUNG — KHÔNG SỬA CHO TỪNG BÀI ================= -->
+<script>
+/* ---------- A. NUT NGHE (giu nguyen hanh vi cu) ---------- */
+(function(){
+  var DIR = (document.body.dataset.audioDir || '').replace(/\/?$/, '/');
+  var rate = 1;
+  var audio = null, curBtn = null, chain = null;
+  var toast = document.getElementById('nowplay');
+
+  function showToast(t){
+    if(!toast) return;
+    if(!t){ toast.className=''; return; }
+    toast.textContent = '🔊 ' + t;
+    toast.className = 'on';
+  }
+
+  function clearBtn(){
+    if(curBtn){ curBtn.classList.remove('playing'); curBtn = null; }
+  }
+
+  function hardStop(){
+    if(audio){ audio.pause(); audio.onended = null; audio.onerror = null; audio = null; }
+    if(window.speechSynthesis) window.speechSynthesis.cancel();
+    clearBtn();
+    showToast(null);
+  }
+
+  function labelOf(btn){
+    if(btn.hasAttribute('data-an')) return 'Đang phát… em nghe thật kĩ nhé';   // cau do nghe: khong lo chu
+    return btn.dataset.t || btn.textContent.trim() || '…';
+  }
+
+  // Doc bang giong may cua trinh duyet (du phong khi khong mo duoc mp3)
+  function speak(btn, done){
+    var text = btn.dataset.t;
+    if(!window.speechSynthesis || !text){ clearBtn(); showToast(null); if(done) done(); return; }
+    var lang = btn.dataset.lang || 'en-GB';     // data-lang="vi-VN" cho ten rieng Viet
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = lang;
+    u.rate = rate === 1 ? 0.95 : 0.65;
+    var vs = window.speechSynthesis.getVoices() || [];
+    var goc = lang.split('-')[0];
+    var v = vs.filter(function(x){ return x.lang === lang; })[0] ||
+            vs.filter(function(x){ return x.lang.indexOf(goc) === 0; })[0];
+    if(v) u.voice = v;
+    u.onend = function(){ clearBtn(); showToast(null); if(done) done(); };
+    u.onerror = function(){ clearBtn(); showToast(null); if(done) done(); };
+    window.speechSynthesis.speak(u);
+  }
+
+  function play(btn, done){
+    hardStop();
+    curBtn = btn;
+    btn.classList.add('playing');
+    showToast(labelOf(btn));
+
+    var slug = btn.dataset.a;
+    if(!slug){ speak(btn, done); return; }
+
+    audio = new Audio(DIR + slug + '.mp3');
+    audio.playbackRate = rate;
+    if('preservesPitch' in audio) audio.preservesPitch = true;
+    if('mozPreservesPitch' in audio) audio.mozPreservesPitch = true;
+    if('webkitPreservesPitch' in audio) audio.webkitPreservesPitch = true;
+
+    audio.onended = function(){ clearBtn(); showToast(null); if(done) done(); };
+    audio.onerror = function(){ audio = null; speak(btn, done); };
+
+    var p = audio.play();
+    if(p && p.catch) p.catch(function(){ if(audio){ audio = null; } speak(btn, done); });
+  }
+
+  function playChain(list, i){
+    if(i >= list.length){ chain = null; return; }
+    chain = list;
+    play(list[i], function(){
+      if(chain === list) setTimeout(function(){ playChain(list, i + 1); }, 320);
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('.say') : null;
+    if(!btn) return;
+    e.preventDefault();
+
+    // dang phat chinh nut nay -> dung lai
+    if(btn.classList.contains('playing')){ chain = null; hardStop(); return; }
+
+    chain = null;
+
+    if(btn.dataset.all){
+      var host = document.querySelector(btn.dataset.all);
+      if(!host) return;
+      var list = Array.prototype.slice.call(host.querySelectorAll('.say'));
+      if(list.length){ hardStop(); playChain(list, 0); }
+      return;
+    }
+    play(btn, null);
+  });
+
+  // Toc do
+  var bNorm = document.getElementById('spd-norm');
+  var bSlow = document.getElementById('spd-slow');
+  function setRate(r){
+    rate = r;
+    if(bNorm) bNorm.classList.toggle('on', r === 1);
+    if(bSlow) bSlow.classList.toggle('on', r !== 1);
+    if(audio) audio.playbackRate = rate;
+  }
+  if(bNorm) bNorm.addEventListener('click', function(){ setRate(1); });
+  if(bSlow) bSlow.addEventListener('click', function(){ setRate(0.65); });
+
+  // Esc de dung
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ chain = null; hardStop(); }
+  });
+
+  if(window.speechSynthesis) window.speechSynthesis.getVoices();
+})();
+
+/* ---------- B. ENGINE TUONG TAC khai bao bang data-* ---------- */
+(function(){
+  "use strict";
+  var $  = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function list(s){ return (s||'').split(';').map(function(x){ return x.trim(); }).filter(Boolean); }
+  function json(e,name){
+    var raw = e.getAttribute(name);
+    if(!raw) return {};
+    try{ return JSON.parse(raw); }catch(err){ return {}; }
+  }
+  function el(tag,cls,html){
+    var d = document.createElement(tag);
+    if(cls) d.className = cls;
+    if(html != null) d.innerHTML = html;
+    return d;
+  }
+  function nut(text, cls){ var b = el('button', 'btn' + (cls ? ' ' + cls : ''), text); b.type = 'button'; return b; }
+  /* so sanh cau tra loi: khong phan biet hoa thuong, dau nhay cong, khoang trang thua, dau cham cuoi */
+  function norm(s){
+    return String(s == null ? '' : s).replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').trim()
+      .replace(/[.!?]+$/, '').trim().toLowerCase();
+  }
+  function fire(node, name){ try{ node.dispatchEvent(new CustomEvent(name, { bubbles: true })); }catch(e){} }
+  function fbBox(host){
+    var f = null;
+    for(var i = 0; i < host.children.length; i++) if(host.children[i].classList.contains('fb')) f = host.children[i];
+    if(!f){ f = el('div','fb'); f.setAttribute('role','status'); host.appendChild(f); }
+    return f;
+  }
+  function show(f, cls, html){ f.className = 'fb show ' + cls; f.innerHTML = html; }
+  function hideFb(f){ f.className = 'fb'; f.innerHTML = ''; }
+  /* nut loa sinh ra trong widget: cung cu phap voi nut nghe thuong */
+  function loa(src, cls, an){
+    var t = src.getAttribute('data-t'); if(!t) return null;
+    var b = el('button', 'say ' + (cls || 'icon')); b.type = 'button';
+    if(src.getAttribute('data-a')) b.setAttribute('data-a', src.getAttribute('data-a'));
+    b.setAttribute('data-t', t);
+    if(src.getAttribute('data-lang')) b.setAttribute('data-lang', src.getAttribute('data-lang'));
+    if(an) b.setAttribute('data-an', '1');
+    b.setAttribute('aria-label', an ? 'Nghe' : 'Nghe: ' + t);
+    return b;
+  }
+  /* tron co dinh theo chuoi (anh chup on dinh). tronThat = Fisher-Yates co hat giong (co the trung thu tu goc);
+     tron = nhu tronThat nhung KHONG BAO GIO giu nguyen thu tu goc (dung cho the xep, the noi).
+     kiem_tra_bai_giang.py chep DUNG thuat toan nay de tinh vi tri dap an -> doi o day thi doi ca o do. */
+  function tronThat(arr, seed){
+    var a = arr.slice(), h = 7;
+    for(var i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) % 2147483647;
+    for(var j = a.length - 1; j > 0; j--){ h = (h * 16807) % 2147483647; var k = h % (j + 1); var x = a[j]; a[j] = a[k]; a[k] = x; }
+    return a;
+  }
+  function tron(arr, seed){
+    var a = tronThat(arr, seed);
+    if(a.length > 1 && a.every(function(v, i){ return v === arr[i]; })) a.push(a.shift());
+    return a;
+  }
+
+  /* ---------- luu tien do tren may (localStorage), khoa theo duong dan file ---------- */
+  var KHOA = 'ta6:' + location.pathname, kho = {};
+  try{ kho = JSON.parse(localStorage.getItem(KHOA) || '{}') || {}; }catch(e){ kho = {}; }
+  kho.xong = kho.xong || {}; kho.ghi = kho.ghi || {}; kho.game = kho.game || {};
+  function ghiKho(){ try{ localStorage.setItem(KHOA, JSON.stringify(kho)); }catch(e){} }
+
+  /* ---------- thanh cong cu: gom chip vao mot hang (dien thoai cuon ngang), scroll-padding theo chieu cao that ---------- */
+  var tb = $('.toolbar .wrap');
+  if(tb){
+    var chips = $$('.chip', tb), hangChip = el('div', 'chips');
+    if(chips.length){
+      tb.insertBefore(hangChip, chips[0]);
+      chips.forEach(function(c){ hangChip.appendChild(c); });
+      var bmo = $('[data-motion]', tb); if(bmo) hangChip.appendChild(bmo);
+    }
+  }
+  function datPadding(){
+    var t = $('.toolbar'); if(t) document.documentElement.style.scrollPaddingTop = (t.offsetHeight + 8) + 'px';
+  }
+  datPadding(); window.addEventListener('resize', datPadding);
+  var KHEN = ['Giỏi lắm!', 'Chuẩn rồi!', 'Tuyệt vời!', 'Làm tốt lắm!', 'Em nắm bài rồi đấy!', 'Hay quá!'];
+  var MAC_DINH_OK = ['Đúng rồi! ', 'Chính xác! ', 'Giỏi quá! '];
+  function khenNgau(){ return MAC_DINH_OK[Math.floor(Math.random() * MAC_DINH_OK.length)]; }
+
+  /* ---------- tat chuyen dong ---------- */
+  var bm = $('[data-motion]');
+  if(bm) bm.addEventListener('click', function(){
+    var off = document.body.classList.toggle('no-motion');
+    bm.textContent = off ? 'Bật chuyển động' : 'Tắt chuyển động';
+    bm.setAttribute('aria-pressed', off ? 'true' : 'false');
+  });
+
+  /* ---------- nhan nguon cua nhiem vu ---------- */
+  $$('[data-act][data-nguon]').forEach(function(a){
+    var n = a.getAttribute('data-nguon');
+    var t = n === 'sgk' ? '📗 Câu lấy nguyên văn từ SGK' : '✍️ Câu luyện của bài giảng (dùng từ và mẫu câu của Unit — không phải câu SGK)';
+    var h = a.querySelector('h4');
+    var tag = el('div', 'nguon' + (n === 'sgk' ? ' sgk' : ''), t);
+    if(h && h.parentNode === a) a.insertBefore(tag, h.nextSibling); else a.insertBefore(tag, a.firstChild);
+  });
+
+  /* ---------- tien do, sao, loi khen ---------- */
+  var WIDGET = '[data-flip],[data-listen],[data-pair],[data-sort],[data-mcq],[data-fill],[data-order],[data-ghi],[data-noi]';
+  var ACTS = $$('[data-act]'), DONE = {}, box = $('[data-progress]'), khen = $('#khen');
+  var SECS = $$('section').filter(function(s){ return $('[data-act]', s); });
+  SECS.forEach(function(s){
+    var h = $('h2', s); if(!h) return;
+    s._nv = el('span', 'nv'); h.appendChild(s._nv);
+  });
+  /* bang ron buoi hoc: <div class="buoi"><span class="ten">Buổi 1</span><span class="mo-ta">…</span></div>
+     -> engine dem cac nhiem vu tu bang ron nay den bang ron sau, gan "⭐ d/n" */
+  var BUOI = $$('.buoi').map(function(b, i, all){
+    var sau = all[i + 1];
+    var a = ACTS.filter(function(x){
+      return (b.compareDocumentPosition(x) & 4) && (!sau || (sau.compareDocumentPosition(x) & 2));
+    });
+    var d = el('span', 'dem'); b.appendChild(d);
+    return { b: b, a: a, d: d };
+  });
+  function paint(){
+    var n = Object.keys(DONE).length, t = ACTS.length || 1;
+    if(box){
+      var bar = $('.track i', box), txt = $('.txt', box);
+      if(bar) bar.style.width = Math.round(n / t * 100) + '%';
+      if(txt) txt.innerHTML = '⭐ ' + n + '/' + ACTS.length + '<span class="nv-chu"> nhiệm vụ</span>';
+    }
+    SECS.forEach(function(s){
+      if(!s._nv) return;
+      var a = $$('[data-act]', s), d = a.filter(function(x){ return x.classList.contains('done'); }).length;
+      s._nv.textContent = '⭐ ' + d + '/' + a.length;
+      s._nv.classList.toggle('du', d === a.length);
+    });
+    BUOI.forEach(function(o){
+      var d = o.a.filter(function(x){ return x.classList.contains('done'); }).length;
+      o.d.textContent = '⭐ ' + d + '/' + o.a.length + (d === o.a.length && d ? ' — xong buổi!' : '');
+      o.b.classList.toggle('du', d === o.a.length && d > 0);
+    });
+  }
+  function noiKhen(t){
+    if(!khen) return;
+    khen.textContent = t; khen.className = 'on';
+    clearTimeout(khen._t); khen._t = setTimeout(function(){ khen.className = ''; }, 2400);
+  }
+  function moSau(w){
+    var s = w && w.getAttribute ? w.getAttribute('data-mo-sau') : '';
+    if(s) $$(s).forEach(function(t){ t.classList.remove('hide'); t.classList.add('mo-ra'); });
+  }
+  /* widget lam dung -> danh dau; nhiem vu xong khi MOI widget cham diem trong no deu xong */
+  function xong(w){
+    if(w._xong) return;
+    w._xong = true; w.classList.add('xong');
+    moSau(w); fire(w, 'ta6-xong');
+    var a = w.closest('[data-act]');
+    if(!a) return;
+    if(!$$(WIDGET, a).every(function(x){ return x._xong; })) return;
+    dungNgay(a);
+    var k = a.getAttribute('data-act');
+    if(DONE[k]) return;
+    DONE[k] = true; a.classList.add('done'); paint();
+    kho.xong[k] = 1; ghiKho();
+    moSau(a); fire(a, 'ta6-act-xong');
+    var n = Object.keys(DONE).length;
+    if(n === ACTS.length){
+      noiKhen('🏆 Em đã hoàn thành cả ' + n + ' nhiệm vụ!');
+      xongHet();
+    } else {
+      noiKhen('⭐ ' + KHEN[n % KHEN.length] + ' Xong ' + n + '/' + ACTS.length + ' nhiệm vụ');
+    }
+  }
+  /* "Dung ngay lan dau n/k": cau 2 phuong an bam lai khong gioi han thi lan nao cung xong -> cho em thay minh doan
+     trung bao nhieu cau (game da co san trong khoi ket qua dong ho). Chi dem mcq / listen / fill (co _sai). */
+  function dungNgay(a){
+    if(a.classList.contains('game')) return;
+    var ws = $$('[data-mcq],[data-listen],[data-fill]', a);
+    if(ws.length < 2) return;
+    var d = ws.filter(function(w){ return !w._sai; }).length, p = $('.dung-ngay', a);
+    if(!p){ p = el('p', 'dung-ngay'); a.appendChild(p); }
+    p.innerHTML = '🎯 Đúng ngay lần đầu: <b>' + d + '/' + ws.length + '</b> câu.' +
+      (d < ws.length ? ' Câu nào phải chọn lại, em đọc lại gợi ý của câu đó một lần nữa nhé.' : ' Không cần đoán lần nào — giỏi quá!');
+  }
+  function xongHet(){ $$('[data-khi-xong-het]').forEach(function(t){ t.classList.remove('hide'); t.classList.add('mo-ra'); }); }
+
+  /* nap lai nhiem vu da xong lan truoc: ⭐ giu nguyen, widget van lam lai duoc (lam lai khong tinh them) */
+  ACTS.forEach(function(a){
+    var k = a.getAttribute('data-act');
+    if(!kho.xong[k]) return;
+    DONE[k] = true; a.classList.add('done'); moSau(a);
+    var h = $('h4', a);
+    if(h && h.parentNode === a) h.appendChild(el('span', 'da-luu', ' · ⭐ đã xong lần trước'));
+  });
+  if(ACTS.length && Object.keys(DONE).length === ACTS.length) xongHet();
+  paint();
+  if(box && ACTS.length){
+    var bLai = el('button', 'lam-lai', '↺<span class="nv-chu"> Làm lại</span>'); bLai.type = 'button';
+    bLai.setAttribute('aria-label', 'Làm lại từ đầu');
+    bLai.title = 'Xoá ⭐ và chữ em đã ghi trên máy này, làm lại từ đầu';
+    bLai.addEventListener('click', function(){
+      if(window.confirm && !window.confirm('Xoá hết ⭐ và ghi chép đã lưu trên máy này để làm lại từ đầu?')) return;
+      try{ localStorage.removeItem(KHOA); }catch(e){}
+      location.reload();
+    });
+    box.parentNode.insertBefore(bLai, box.nextSibling);
+  }
+
+  /* ---------- the div role=button bam duoc bang ban phim ---------- */
+  document.addEventListener('keydown', function(e){
+    var t = e.target;
+    if(!t || !t.getAttribute || t.getAttribute('role') !== 'button' || t.tagName === 'BUTTON') return;
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); t.click(); }
+  });
+
+  /* ---------- 1. THE TU LAT: data-flip ---------- */
+  $$('[data-flip]').forEach(function(deck){
+    var cards = $$('.fc', deck);
+    var bar = el('div', 'fc-bar'), dem = el('span', '', ''), grid = el('div', 'fc-grid');
+    var bTron = nut('🔀 Trộn thẻ'), bNguoc = nut('⇄ Nhìn nghĩa, đoán từ');
+    bar.appendChild(bTron); bar.appendChild(bNguoc); bar.appendChild(dem);
+    function capNhat(){
+      var d = cards.filter(function(c){ return c._xem; }).length;
+      dem.textContent = 'Đã lật ' + d + '/' + cards.length + ' thẻ';
+      if(d === cards.length){ show(fbBox(deck), 'good', deck.getAttribute('data-ok') ||
+        'Em đã xem hết thẻ! Thử bấm <b>⇄ Nhìn nghĩa, đoán từ</b> để tự kiểm tra nhé.'); xong(deck); }
+    }
+    cards.forEach(function(c){
+      var w = c.getAttribute('data-w') || c.getAttribute('data-t') || '';
+      var nghia = c.innerHTML.trim(), emo = c.getAttribute('data-emo') || '', ipa = c.getAttribute('data-ipa') || '';
+      c.innerHTML = '';
+      c.setAttribute('tabindex', '0'); c.setAttribute('role', 'button');
+      c.setAttribute('aria-label', 'Thẻ từ ' + w + ', bấm để lật');
+      var inn = el('div', 'fc-in'), tr = el('div', 'fc-mat truoc'), sau = el('div', 'fc-mat sau');
+      tr.appendChild(el('span', 'fc-w', esc(w)));
+      if(ipa) tr.appendChild(el('span', 'fc-ipa', esc(ipa)));
+      var b = loa(c, 'icon'); if(b) tr.appendChild(b);
+      tr.appendChild(el('span', 'fc-lat', 'lật ↻'));
+      if(emo) sau.appendChild(el('span', 'fc-emo', esc(emo)));
+      sau.appendChild(el('span', 'fc-nghia', nghia));
+      inn.appendChild(tr); inn.appendChild(sau); c.appendChild(inn); grid.appendChild(c);
+      c.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.say')) return;       // bam loa khong lat the
+        c.classList.toggle('lat');
+        if(!c._xem){ c._xem = true; c.classList.add('da-xem'); capNhat(); }
+      });
+    });
+    deck.innerHTML = ''; deck.appendChild(bar); deck.appendChild(grid);
+    bTron.addEventListener('click', function(){
+      cards.slice().sort(function(){ return Math.random() - .5; }).forEach(function(c){ grid.appendChild(c); });
+    });
+    bNguoc.addEventListener('click', function(){
+      var ng = deck.classList.toggle('nguoc');
+      cards.forEach(function(c){ c.classList.toggle('lat', ng); });
+      bNguoc.textContent = ng ? '⇄ Nhìn từ, đoán nghĩa' : '⇄ Nhìn nghĩa, đoán từ';
+    });
+    capNhat();
+  });
+
+  /* ---------- phuong an bam chon dung chung cho mcq va listen ---------- */
+  /* Thu tu hien phuong an: TRON co dinh (anh chup on dinh) de vi tri dap an khong co quy luat.
+     Hat giong = data-opts | data-answer | data-a | data-tron | so thu tu cua cau trong nhiem vu.
+     data-giu-thu-tu  -> giu dung thu tu viet (cap co thu tu tu nhien: /s/;/z/, sink;sinks).
+     data-tron="2"    -> doi hat giong (kiem_tra_bai_giang.py canh bao vi tri lap lai thi doi so nay). */
+  var PA_SEL = '[data-mcq],[data-listen]';
+  function hatGiong(host){
+    var a = host.closest('[data-act]'), i = a ? $$(PA_SEL, a).indexOf(host) : 0;
+    return [host.getAttribute('data-opts') || '', host.getAttribute('data-answer') || '',
+            host.getAttribute('data-a') || '', host.getAttribute('data-tron') || '', i].join('|');
+  }
+  function phuongAn(host, macDinhSai){
+    var opts = list(host.getAttribute('data-opts')), ans = host.getAttribute('data-answer') || '';
+    var hs0 = json(host, 'data-hint-sai'), hs = {}, row = el('div', 'opts'), f;
+    Object.keys(hs0).forEach(function(k){ hs[norm(k)] = hs0[k]; });   /* khoa JSON khong phan biet hoa thuong, nhu data-fill */
+    var hien = host.hasAttribute('data-giu-thu-tu') ? opts : tronThat(opts, hatGiong(host));
+    host._sai = 0;
+    hien.forEach(function(o){
+      var b = el('button', 'opt', esc(o)); b.type = 'button';
+      b.addEventListener('click', function(){
+        if(host._xong) return;
+        fire(host, 'ta6-bam');
+        f = fbBox(host);
+        if(norm(o) === norm(ans)){
+          b.classList.add('dung');
+          $$('.opt', row).forEach(function(x){ x.disabled = true; x.classList.remove('sai'); });
+          show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em làm tiếp nhé.'));
+          xong(host);
+        } else {
+          host._sai++;
+          b.classList.remove('sai'); void b.offsetWidth; b.classList.add('sai');
+          show(f, 'bad', hs[norm(o)] || host.getAttribute('data-goi-y') || macDinhSai);
+        }
+      });
+      row.appendChild(b);
+    });
+    host._reset = function(){
+      host._xong = false; host._sai = 0; host.classList.remove('xong');
+      $$('.opt', row).forEach(function(x){ x.disabled = false; x.classList.remove('sai'); x.classList.remove('dung'); });
+      hideFb(fbBox(host));
+    };
+    return row;
+  }
+
+  /* ---------- 2. NGHE ROI CHON: data-listen ---------- */
+  $$('[data-listen]').forEach(function(host){
+    var q = el('div', 'ls-q'), b = loa(host, 'big', true);
+    if(b){ b.textContent = 'Nghe'; q.appendChild(b); }
+    var hoi = host.innerHTML.trim() || host.getAttribute('data-hoi') || 'Em nghe thấy từ nào?';
+    q.appendChild(el('span', 'ls-hoi', hoi));
+    host.innerHTML = '';
+    host.appendChild(q);
+    host.appendChild(phuongAn(host, 'Chưa phải từ đó. Em bấm 🔊 nghe lại — thử bấm <b>Chậm</b> trên thanh công cụ — rồi chọn lại nhé.'));
+  });
+
+  /* ---------- 3. TRAC NGHIEM NHANH: data-mcq ---------- */
+  $$('[data-mcq]').forEach(function(host){
+    var q = el('div', 'mcq-q', host.innerHTML.trim());
+    host.innerHTML = ''; host.appendChild(q);
+    host.appendChild(phuongAn(host, 'Chưa đúng. Em đọc lại cả câu, nhìn chủ ngữ và khung <b>Remember!</b> rồi chọn lại nhé.'));
+  });
+
+  /* ---------- 4. NOI CAP: data-pair ---------- */
+  $$('[data-pair]').forEach(function(host){
+    var rows = $$('.cap', host), sel = { L: null, R: null }, khop = 0;
+    var wrap = el('div', 'pr-wrap'), cL = el('div', 'pr-col'), cR = el('div', 'pr-col');
+    var dem = el('div', 'pr-dem');
+    function the(html, k, side, src){
+      var d = el('div', 'pc', '<span>' + html + '</span>');
+      d.setAttribute('role', 'button'); d.setAttribute('tabindex', '0');
+      d._k = k; d._s = side; d.setAttribute('data-k', k);
+      if(src){ var b = loa(src, 'icon'); if(b) d.appendChild(b); }
+      d.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.say')) return;
+        if(d.classList.contains('khop')) return;
+        if(sel[side] === d){ d.classList.remove('chon'); sel[side] = null; return; }
+        if(sel[side]) sel[side].classList.remove('chon');
+        sel[side] = d; d.classList.add('chon');
+        if(sel.L && sel.R) thu();
+      });
+      return d;
+    }
+    var goi = rows.map(function(r){ return r.getAttribute('data-goi-y') || ''; });
+    var trai = rows.map(function(r, i){ return the(r.children[0] ? r.children[0].innerHTML : '', i, 'L', r); });
+    var phai = rows.map(function(r, i){ return the(r.children[1] ? r.children[1].innerHTML : '', i, 'R', null); });
+    trai.forEach(function(d){ cL.appendChild(d); });
+    tron(phai, host.textContent).forEach(function(d){ cR.appendChild(d); });
+    function capNhat(){ dem.textContent = 'Đã nối ' + khop + '/' + rows.length + ' cặp'; }
+    function thu(){
+      var l = sel.L, r = sel.R, f = fbBox(host);
+      sel.L = sel.R = null;
+      l.classList.remove('chon'); r.classList.remove('chon');
+      if(l._k === r._k){
+        l.classList.add('khop'); r.classList.add('khop'); khop++; capNhat();
+        if(khop === rows.length){ show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em nối đúng hết rồi.')); xong(host); }
+        else show(f, 'good', '✓ Khớp rồi! Còn ' + (rows.length - khop) + ' cặp.');
+      } else {
+        [l, r].forEach(function(x){ x.classList.remove('sai'); void x.offsetWidth; x.classList.add('sai'); });
+        setTimeout(function(){ l.classList.remove('sai'); r.classList.remove('sai'); }, 700);
+        show(f, 'bad', goi[l._k] || host.getAttribute('data-goi-y') ||
+          'Chưa khớp. Em bấm 🔊 nghe lại từ bên trái, đọc lại nghĩa bên phải, rồi thử cặp khác nhé.');
+      }
+    }
+    host.innerHTML = '';
+    wrap.appendChild(cL); wrap.appendChild(cR);
+    host.appendChild(wrap); host.appendChild(dem); capNhat();
+  });
+
+  /* ---------- 5. XEP VAO COT: data-sort ---------- */
+  $$('[data-sort]').forEach(function(host){
+    var cols = list(host.getAttribute('data-cols'));
+    var goc = $$('[data-col]', host), sel = null;
+    var meo = el('p', 'so-meo hd-bam', 'Bấm 🔊 nghe thẻ → bấm thẻ để chọn → bấm vào cột. Bấm thẻ đã xếp để đổi cột.');
+    var pool = el('div', 'so-pool'), bang = el('div', 'so-cols'), zones = [];
+    var chips = goc.map(function(s){
+      var d = el('div', 'sc', '<span>' + s.innerHTML + '</span>');
+      d.setAttribute('role', 'button'); d.setAttribute('tabindex', '0');
+      d._col = s.getAttribute('data-col'); d._goi = s.getAttribute('data-goi-y') || '';
+      var b = loa(s, 'icon'); if(b) d.appendChild(b);
+      d.addEventListener('click', function(e){
+        if(e.target.closest && e.target.closest('.say')) return;
+        if(host._xong) return;
+        e.stopPropagation();
+        if(sel === d){ d.classList.remove('chon'); sel = null; return; }
+        if(sel) sel.classList.remove('chon');
+        sel = d; d.classList.add('chon');
+      });
+      return d;
+    });
+    function dat(zone, e){
+      if(e && e.target.closest && e.target.closest('.say')) return;   // bam loa cua the khong lam di chuyen the
+      if(!sel || host._xong) return;
+      zone.appendChild(sel); sel.classList.remove('chon'); sel = null; hideFb(fbBox(host));
+    }
+    pool.addEventListener('click', function(e){ dat(pool, e); });
+    cols.forEach(function(c){
+      var col = el('div', 'so-col'), h = el('div', 'so-h', esc(c)), z = el('div', 'so-z');
+      col.setAttribute('role', 'button'); col.setAttribute('tabindex', '0');
+      col.setAttribute('aria-label', 'Cột ' + c); col.setAttribute('data-cot', c);
+      z._ten = c; col.appendChild(h); col.appendChild(z); bang.appendChild(col); zones.push(z);
+      col.addEventListener('click', function(e){ dat(z, e); });
+    });
+    tron(chips, host.textContent).forEach(function(d){ pool.appendChild(d); });
+    var bK = nut('Kiểm tra', 'chinh'), bL = nut('Xếp lại từ đầu'), hang = el('div', '');
+    hang.appendChild(bK); hang.appendChild(bL);
+    bK.addEventListener('click', function(){
+      if(host._xong) return;
+      var f = fbBox(host), con = $$('.sc', pool).length;
+      if(con){ show(f, 'bad', 'Còn ' + con + ' thẻ chưa xếp. Em nghe rồi xếp nốt nhé.'); return; }
+      var sai = chips.filter(function(d){ return d.parentNode._ten !== d._col; });
+      if(!sai.length){
+        host.classList.add('khoa');
+        show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em xếp đúng hết rồi.'));
+        xong(host);
+      } else {
+        show(f, 'bad', 'Có <b>' + sai.length + '</b> thẻ chưa nằm đúng cột. ' +
+          (chips.some(function(d){ return $('.say', d); }) ? 'Em bấm 🔊 nghe lại từng thẻ, ' : 'Em đọc lại nghĩa từng thẻ, ') +
+          'so với từ mẫu của mỗi cột, rồi đổi chỗ thẻ đó.' +
+          (function(){ var g = sai.filter(function(d){ return d._goi; })[0]; return g ? '<br>💡 ' + g._goi : ''; })());
+      }
+    });
+    bL.addEventListener('click', function(){
+      if(host._xong) return;
+      chips.forEach(function(d){ d.classList.remove('chon'); pool.appendChild(d); }); sel = null; hideFb(fbBox(host));
+    });
+    host.innerHTML = '';
+    host.appendChild(meo); host.appendChild(pool); host.appendChild(bang); host.appendChild(hang);
+  });
+
+  /* ---------- 6. DIEN TU: data-fill (dat ngay trong cau) ---------- */
+  $$('[data-fill]').forEach(function(host){
+    var dap = (host.getAttribute('data-answer') || '').split('|').map(norm).filter(Boolean);
+    var hs = json(host, 'data-hint-sai'), hsN = {};
+    Object.keys(hs).forEach(function(k){ hsN[norm(k)] = hs[k]; });
+    var rong = +(host.getAttribute('data-w') || 0) ||
+      Math.max(5, Math.max.apply(null, dap.map(function(d){ return d.length; }).concat([4])) + 2);
+    host.classList.add('fl');
+    var inp = el('input'); inp.type = 'text'; inp.size = rong; inp.setAttribute('autocomplete', 'off');
+    inp.setAttribute('autocapitalize', 'off'); inp.setAttribute('spellcheck', 'false');
+    inp.setAttribute('aria-label', 'Ô điền từ');
+    var b = nut('Kiểm'), f = el('span', 'fb-in');
+    host.innerHTML = ''; host.appendChild(inp);
+    /* dong tu goi y "(eat)" viet NGAY SAU o dien: keo vao truoc nut Kiem, de em thay dong tu truoc khi thay nut
+       (tren dien thoai nut day "(eat)" xuong dong duoi) */
+    var sau = host.nextSibling, mNg = sau && sau.nodeType === 3 && sau.nodeValue.match(/^\s*\([^()]*\)/);
+    if(mNg){
+      var ng = el('span', 'fl-ngoac'); ng.textContent = mNg[0];
+      sau.nodeValue = sau.nodeValue.slice(mNg[0].length); host.appendChild(ng);
+    }
+    host.appendChild(b); host.appendChild(f);
+    host._sai = 0;
+    host._reset = function(){
+      host._xong = false; host._sai = 0; host.classList.remove('xong'); host.classList.remove('dung');
+      inp.readOnly = false; inp.value = ''; b.disabled = false; f.className = 'fb-in'; f.innerHTML = '';
+    };
+    inp.addEventListener('focus', function(){ fire(host, 'ta6-bam'); });
+    function kiem(){
+      if(host._xong) return;
+      fire(host, 'ta6-bam');
+      var v = norm(inp.value);
+      if(!v){ f.className = 'fb-in bad'; f.textContent = 'Em chưa điền gì.'; return; }
+      if(dap.indexOf(v) < 0) host._sai++;
+      if(dap.indexOf(v) >= 0){
+        host.classList.add('dung'); inp.readOnly = true; b.disabled = true;
+        f.className = 'fb-in good'; f.innerHTML = host.getAttribute('data-ok') || '✓ Đúng rồi!';
+        xong(host);
+      } else {
+        f.className = 'fb-in bad';
+        f.innerHTML = hsN[v] || host.getAttribute('data-goi-y') || 'Chưa đúng — em xem lại chủ ngữ và mẫu câu, rồi sửa nhé.';
+      }
+    }
+    b.addEventListener('click', kiem);
+    inp.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); kiem(); } });
+  });
+
+  /* ---------- 7. SAP XEP TU THANH CAU: data-order ---------- */
+  $$('[data-order]').forEach(function(host){
+    var cau = (host.getAttribute('data-answer') || '').trim();
+    var m = cau.match(/^(.*?)([.!?]+)$/), than = m ? m[1] : cau, dau = m ? m[2] : '';
+    var tu = than.split(/\s+/).filter(Boolean);
+    host.classList.add('od');
+    var hoi = host.innerHTML.trim();
+    var line = el('div', 'od-line'), pool = el('div', 'od-pool'), dauEl = el('span', 'od-dau', esc(dau));
+    var hang = el('div', ''), bK = nut('Kiểm tra', 'chinh'), bL = nut('Làm lại');
+    hang.appendChild(bK); hang.appendChild(bL);
+    var tks = tu.map(function(w, i){
+      var t = el('button', 'tk', esc(w)); t.type = 'button'; t._i = i; t._w = w;
+      t.addEventListener('click', function(){
+        if(host._xong) return;
+        (t.parentNode === pool ? line : pool).appendChild(t);
+        hideFb(fbBox(host));
+      });
+      return t;
+    });
+    function datLai(){ tron(tks, cau).forEach(function(t){ pool.appendChild(t); }); }
+    host.innerHTML = '';
+    if(hoi) host.appendChild(el('div', 'od-hoi', hoi));
+    var o = el('div', ''); o.style.display = 'flex'; o.style.alignItems = 'flex-end'; o.style.gap = '4px';
+    line.style.flex = '1'; o.appendChild(line); o.appendChild(dauEl);
+    host.appendChild(o); host.appendChild(pool); host.appendChild(hang);
+    datLai();
+    bL.addEventListener('click', function(){ if(!host._xong){ datLai(); hideFb(fbBox(host)); } });
+    bK.addEventListener('click', function(){
+      if(host._xong) return;
+      var f = fbBox(host), dang = $$('.tk', line).map(function(t){ return t._w; });
+      if(dang.length < tu.length){ show(f, 'bad', 'Còn ' + (tu.length - dang.length) + ' thẻ chưa dùng. Câu cần đủ tất cả các thẻ.'); return; }
+      if(norm(dang.join(' ')) === norm(than)){
+        host.classList.add('dung');
+        var html = host.getAttribute('data-ok') || (khenNgau() + 'Em đọc to cả câu một lần nhé.');
+        show(f, 'good', html);
+        var b = loa(host, 'mini'); if(b){ b.textContent = 'Nghe cả câu'; f.appendChild(document.createTextNode(' ')); f.appendChild(b); }
+        xong(host);
+      } else {
+        var dung = 0; while(dung < dang.length && norm(dang[dung]) === norm(tu[dung])) dung++;
+        show(f, 'bad', (host.getAttribute('data-hint-sai') || 'Chưa đúng thứ tự. Em đọc to câu lên: nghe đã tự nhiên chưa?') +
+          (dung > 0 ? '<br>💡 ' + dung + ' thẻ đầu tiên của em đã đúng chỗ.' : '<br>💡 Thẻ đầu câu chưa đúng — chữ nào được viết hoa?'));
+      }
+    });
+  });
+
+  /* ---------- 8. GOI Y / DOI CHIEU ---------- */
+  $$('[data-hint]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-hint')); if(!t) return;
+      b.textContent = t.classList.toggle('open') ? 'Ẩn gợi ý' : (b.getAttribute('data-open') || 'Gợi ý');
+    });
+  });
+  $$('[data-reveal]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var t = $(b.getAttribute('data-reveal')); if(!t) return;
+      var open = t.classList.toggle('open');
+      b.textContent = open ? (b.getAttribute('data-close') || 'Ẩn phần đối chiếu')
+                           : (b.getAttribute('data-open') || 'Em làm xong rồi — xem đối chiếu');
+    });
+  });
+
+  /* ---------- 9. O GHI DU DOAN: data-ghi (khong cham dung sai; viet du N tu la xong) ---------- */
+  $$('[data-ghi]').forEach(function(host){
+    var k = host.getAttribute('data-luu') || ('ghi-' + $$('[data-ghi]').indexOf(host));
+    var can = +(host.getAttribute('data-it-nhat') || 3);
+    var hoi = host.innerHTML.trim();
+    host.classList.add('ghi');
+    var ta = el('textarea'); ta.rows = 3; ta.placeholder = host.getAttribute('data-goi-y') || 'Em gõ vào đây — tiếng Việt cũng được…';
+    ta.setAttribute('aria-label', hoi.replace(/<[^>]+>/g, '') || 'Ô ghi của em');
+    var tt = el('div', 'ghi-tt');
+    host.innerHTML = '';
+    if(hoi) host.appendChild(el('p', 'ghi-q', hoi));
+    host.appendChild(ta); host.appendChild(tt);
+    function soTu(){ return ta.value.trim() ? ta.value.trim().split(/\s+/).length : 0; }
+    function capNhat(){
+      var n = soTu();
+      tt.textContent = n >= can ? '✓ Đã lưu trên máy này — không chấm đúng sai.'
+                                : 'Không chấm đúng sai. Viết ít nhất ' + can + ' từ là xong (chữ em gõ tự lưu trên máy này).';
+      if(n >= can && !host._xong){
+        show(fbBox(host), 'good', host.getAttribute('data-ok') || 'Em đã ghi dự đoán! Giờ đọc xem em đoán trúng không nhé.');
+        xong(host);
+      }
+    }
+    ta.value = kho.ghi[k] || '';
+    ta.addEventListener('input', function(){ kho.ghi[k] = ta.value; ghiKho(); capNhat(); });
+    host._reset = function(){};
+    capNhat();
+  });
+  $$('[data-xem-lai]').forEach(function(host){
+    var k = host.getAttribute('data-xem-lai');
+    var b = nut(host.getAttribute('data-nhan') || '🔮 Mở lại điều em đoán lúc trước'), noi = el('div', 'noi');
+    host.appendChild(b); host.appendChild(noi);
+    b.addEventListener('click', function(){
+      var t = (kho.ghi[k] || '').trim();
+      noi.textContent = t || '(Em chưa ghi gì ở ô dự đoán.)';
+      b.textContent = host.classList.toggle('mo') ? 'Ẩn lại' : (host.getAttribute('data-nhan') || '🔮 Mở lại điều em đoán lúc trước');
+    });
+  });
+
+  /* ---------- 9b. NOI THEO: data-noi (nghe mau -> noi TO N lan -> tu bam tung lan; khong cham giong) ----------
+     <div data-noi data-a="gs-03" data-t="There's a living room…" data-lan="3">There's a living room…</div>
+     Nut "Lan 1" chi mo sau khi em bam 🔊 nghe mau; bam theo thu tu; du N lan la xong. */
+  $$('[data-noi]').forEach(function(host){
+    var can = Math.max(1, +(host.getAttribute('data-lan') || 3)), da = 0;
+    var cau = host.innerHTML.trim() || esc(host.getAttribute('data-t') || '');
+    host.classList.add('noi-theo');
+    host.innerHTML = '';
+    host.appendChild(el('div', 'nguon sgk', '📗 Câu mẫu SGK — nghe rồi nói theo'));
+    host.appendChild(el('p', 'noi-cau', cau));
+    var hang = el('div', 'noi-hang'), l = loa(host, 'big'), daNghe = !l, nuts = [];
+    if(l){ l.textContent = 'Nghe mẫu'; hang.appendChild(l); l.addEventListener('click', function(){ daNghe = true; moKhoa(); }); }
+    function moKhoa(){ nuts.forEach(function(b, i){ b.disabled = !daNghe || i !== da; }); }
+    for(var i = 0; i < can; i++) (function(i){
+      var b = el('button', 'lan', '🗣️ Lần ' + (i + 1)); b.type = 'button';
+      b.setAttribute('aria-label', 'Em đã nói to lần ' + (i + 1));
+      b.addEventListener('click', function(){
+        if(b.disabled || i !== da) return;
+        fire(host, 'ta6-bam');
+        da++; b.classList.add('da'); b.textContent = '✓ Lần ' + (i + 1); moKhoa();
+        if(da >= can){
+          show(fbBox(host), 'good', host.getAttribute('data-ok') ||
+               ('Em đã nói to ' + can + ' lần! Bấm 🔊 nghe lại một lần nữa — giọng em đã giống mẫu chưa?'));
+          xong(host);
+        }
+      });
+      nuts.push(b); hang.appendChild(b);
+    })(i);
+    host.appendChild(hang);
+    host.appendChild(el('div', 'ghi-tt', 'Bấm 🔊 nghe mẫu, rồi nói TO theo. Nói xong mỗi lần thì bấm một nút. ' +
+                                          'Máy không chấm giọng — em tự làm thật nhé.'));
+    host._reset = function(){
+      da = 0; daNghe = !l; host._xong = false; host.classList.remove('xong');
+      nuts.forEach(function(b, i){ b.classList.remove('da'); b.textContent = '🗣️ Lần ' + (i + 1); });
+      moKhoa(); hideFb(fbBox(host));
+    };
+    moKhoa();
+  });
+
+  /* ---------- 10. DONG HO: data-timer (khong cham diem) ----------
+     Dat trong .act.game: dong ho TU CHAY khi em bam cau dau tien, TU DUNG khi xong moi cau,
+     bao "Em xong trong N giay", so cau dung ngay lan dau, ki luc (luu tren may), nut Choi lai. */
+  function mmss(g){ var p = Math.floor(g / 60), s = g % 60; return p + ':' + (s < 10 ? '0' : '') + s; }
+  $$('[data-timer]').forEach(function(host){
+    var tong = +(host.getAttribute('data-timer') || 60), con = tong, id = null, daChay = 0, daXong = false;
+    var game = host.closest('.act.game');
+    var ws = game ? $$(WIDGET, game) : [];
+    var kGame = game ? (game.getAttribute('data-act') || 'game') : '';
+    host.classList.add('tm');
+    var so = el('span', 'tm-so'), b = nut('⏱ Bắt đầu', 'chinh'), ghi = el('span', 'muted small', '');
+    var kq = el('div', 'kq-game'); kq.setAttribute('role', 'status');
+    function ve(){ so.textContent = mmss(Math.max(0, con)); }
+    host.innerHTML = ''; host.appendChild(b); host.appendChild(so); host.appendChild(ghi); ve();
+    if(game){
+      game.appendChild(kq);
+      ghi.textContent = 'Đồng hồ tự chạy khi em bấm câu đầu tiên.';
+      if(kho.game[kGame]) ghi.textContent += ' Kỉ lục của em: ' + mmss(kho.game[kGame]) + '.';
+    }
+    function dung(){ if(id){ clearInterval(id); id = null; } }
+    function tick(){
+      daChay++;
+      if(con > 0){ con--; ve(); }
+      if(con <= 0 && !host.classList.contains('het')){
+        host.classList.add('het');
+        ghi.textContent = 'Hết giờ! Em làm được mấy câu? Làm tiếp cho xong nhé — không sao cả.';
+        if(!game){ dung(); b.textContent = '↺ Chơi lại'; }
+      }
+    }
+    function chay(){ if(id || daXong) return; b.textContent = '⏸ Dừng'; id = setInterval(tick, 1000); }
+    function choiLai(){
+      dung(); ws.forEach(function(w){ if(w._reset) w._reset(); });
+      con = tong; daChay = 0; daXong = false; host.classList.remove('het');
+      ghi.textContent = game ? 'Đồng hồ tự chạy khi em bấm câu đầu tiên.' : '';
+      if(game && kho.game[kGame]) ghi.textContent += ' Kỉ lục của em: ' + mmss(kho.game[kGame]) + ' — thử phá kỉ lục nhé!';
+      kq.className = 'kq-game'; kq.innerHTML = ''; b.textContent = '⏱ Bắt đầu'; ve();
+    }
+    b.addEventListener('click', function(){
+      if(daXong || (!game && con <= 0)){ choiLai(); if(!game) chay(); return; }
+      if(id){ dung(); b.textContent = '⏱ Chạy tiếp'; return; }
+      chay();
+    });
+    if(!game) return;
+    game.addEventListener('ta6-bam', function(){ if(!id && !daXong && daChay === 0) chay(); });
+    game.addEventListener('ta6-xong', function(){
+      if(daXong || !ws.every(function(w){ return w._xong; })) return;
+      daXong = true; dung();
+      daChay = Math.max(1, daChay);
+      var dungNgay = ws.filter(function(w){ return !w._sai; }).length;
+      var cu = kho.game[kGame], moi = !cu || daChay < cu;
+      if(daChay > 0 && moi){ kho.game[kGame] = daChay; ghiKho(); }
+      var html = (con > 0 ? '🏁 Em xong trong <b class="so">' + daChay + ' giây</b> — nhanh hơn đồng hồ!'
+                          : '🏁 Xong rồi! Lần này em cần <b class="so">' + daChay + ' giây</b> — lần sau thử nhanh hơn nhé.') +
+                 '<br>Đúng ngay lần đầu: <b>' + dungNgay + '/' + ws.length + '</b> câu.' +
+                 (daChay > 0 ? (moi ? (cu ? ' 🎉 Kỉ lục mới! (lần trước ' + mmss(cu) + ')' : '')
+                                    : ' Kỉ lục của em: ' + mmss(cu) + ' — thử phá kỉ lục nhé!') : '');
+      kq.innerHTML = html; kq.className = 'kq-game show';
+      var bl = nut('↺ Chơi lại'); bl.addEventListener('click', choiLai);
+      kq.appendChild(document.createElement('br')); kq.appendChild(bl);
+      b.textContent = '↺ Chơi lại'; ghi.textContent = '';
+    });
+  });
+})();
+</script>
+</body>
+</html>

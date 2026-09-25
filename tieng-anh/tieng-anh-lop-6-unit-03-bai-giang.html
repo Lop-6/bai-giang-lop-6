@@ -41,7 +41,10 @@
   }
   .chip:hover{background:var(--brand-soft); border-color:#c8dbff; color:var(--brand)}
   /* engine tu gom moi .chip (va nut Tat chuyen dong) vao .chips: dien thoai thi mot hang cuon ngang */
-  .toolbar .chips{display:flex; flex-wrap:wrap; gap:8px; align-items:center}
+  /* moi co man: chip MOT hang cuon ngang (review Unit 4: 12 chip xuong 2 hang, thanh cao 138 px o 1050 px) */
+  .toolbar .chips{display:flex; flex-wrap:nowrap; gap:8px; align-items:center; flex:1 1 320px; min-width:0;
+    overflow-x:auto; scrollbar-width:thin; padding:2px 0}
+  .toolbar .chips .chip, .toolbar .chips .tbtn{white-space:nowrap; flex:0 0 auto}
   .spacer{flex:1}
   .speed{display:flex; align-items:center; gap:6px; font-size:14px; color:var(--muted)}
   .speed button{
@@ -78,8 +81,13 @@
   .say.playing::before{content:"■"}
   .say.mini{font-size:14px; padding:3px 10px 3px 8px}
   .say.icon{padding:4px 9px; font-size:13px}
-  .say.icon::before{content:"🔊"; font-size:14px; opacity:1}
-  .say.icon.playing::before{content:"■"}
+  /* bieu tuong loa ve bang SVG (mask) -> to mau duoc; emoji 🔊 tren Windows ra mau xam nhat, tuong phan < 3:1 */
+  .say.icon::before, .say.big::before{content:""; display:inline-block; width:17px; height:17px; opacity:1;
+    background:var(--brand);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3Cpath d='M14 7.5v9a4.5 4.5 0 0 0 0-9z'/%3E%3Cpath d='M14 3v2.1a7 7 0 0 1 0 13.8V21a9 9 0 0 0 0-18z'/%3E%3C/svg%3E") center/contain no-repeat;
+            mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3Cpath d='M14 7.5v9a4.5 4.5 0 0 0 0-9z'/%3E%3Cpath d='M14 3v2.1a7 7 0 0 1 0 13.8V21a9 9 0 0 0 0-18z'/%3E%3C/svg%3E") center/contain no-repeat}
+  .say.icon.playing::before, .say.big.playing::before{content:"■"; width:auto; height:auto; background:none;
+    -webkit-mask:none; mask:none}
   .say.line{background:#fff; border-color:#9dbcf3; color:var(--muted)}
   .say.line:hover{background:var(--brand-soft); color:var(--brand)}
   .say.line.playing{background:var(--green); border-color:var(--green); color:#fff}
@@ -104,6 +112,8 @@
   .dlg .who.f{color:#c2408f}
   .dlg .who.f2{color:#b3541e}        /* vai nu thu hai (giong F2 = en-GB-LibbyNeural): Mum, co giao... */
   .dlg .who.m2{color:#0f7a8a}        /* vai nam thu hai neu co */
+  .dlg .who.m3{color:#6b4fbf}        /* vai nam thu ba (giong M3 = giong nam co san + nang cao do, vd "en-GB-ThomasNeural@+20Hz") */
+  .dlg .who.f3{color:#8a6d00}        /* vai nu thu ba */
   .dlg.ba-cham{color:var(--muted); letter-spacing:2px}
   .wordgrid{display:flex; flex-wrap:wrap; gap:6px; margin:10px 0}
   .pron2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:12px 0}
@@ -222,7 +232,7 @@
   /* 2. nghe rồi chọn */
   .ls-q{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
   .say.big{font-size:17px; font-weight:700; padding:9px 20px 9px 16px; background:var(--brand); color:#fff; border-color:var(--brand)}
-  .say.big::before{content:"🔊"; font-size:18px; opacity:1}
+  .say.big::before{width:20px; height:20px; background:#fff}
   .say.big:hover{background:#2560c4}
   .say.big.playing::before{content:"■"}
   [data-listen]{margin:10px 0 16px}
@@ -1706,11 +1716,11 @@
   <p><b>Về file phát âm:</b> toàn bộ <code>.mp3</code> trong thư mục <code>audio-unit-03/</code> do máy tổng
   hợp giọng đọc (Microsoft Edge TTS, giọng <b>Anh – Anh</b>: <code>en-GB-SoniaNeural</code> và <code>en-GB-LibbyNeural</code> cho
   các vai nữ, <code>en-GB-RyanNeural</code> và <code>en-GB-ThomasNeural</code> cho các vai nam; tên riêng Việt Nam đọc
-  bằng giọng <code>vi-VN</code>), sinh từ đúng ngữ liệu in trong SGK. Đây là
+  bằng giọng <code>vi-VN</code>), đọc từ, câu và đoạn in trong SGK Tiếng Anh 6; riêng vài bài nghe luyện âm thì máy đọc <b>một từ đơn</b> lấy trong sách. Đây là
   <b>giọng máy để tham chiếu khi luyện đọc</b>, không phải file nghe chính thức của bộ sách —
   các bài Listening vẫn phải dùng đĩa/app của NXB vì SGK không in nội dung băng.</p>
   <p>Các câu có nhãn <i>“Câu luyện của bài giảng”</i> do cô đặt để em luyện, dùng đúng từ và mẫu
-  câu của Unit — <b>không phải câu trong SGK</b> và không có giọng đọc. Nếu trình duyệt không mở
+  câu của Unit — <b>không phải câu trong SGK</b>; máy không đọc các câu luyện dài. Nếu trình duyệt không mở
   được file mp3, trang sẽ tự chuyển sang đọc bằng giọng máy có sẵn của trình duyệt. Nguồn nội
   dung: <code>kiến thức/tiếng anh/</code>.</p>
 </footer>
@@ -2249,7 +2259,8 @@
         show(f, 'good', host.getAttribute('data-ok') || (khenNgau() + 'Em xếp đúng hết rồi.'));
         xong(host);
       } else {
-        show(f, 'bad', 'Có <b>' + sai.length + '</b> thẻ chưa nằm đúng cột. Em bấm 🔊 nghe lại từng thẻ, ' +
+        show(f, 'bad', 'Có <b>' + sai.length + '</b> thẻ chưa nằm đúng cột. ' +
+          (chips.some(function(d){ return $('.say', d); }) ? 'Em bấm 🔊 nghe lại từng thẻ, ' : 'Em đọc lại nghĩa từng thẻ, ') +
           'so với từ mẫu của mỗi cột, rồi đổi chỗ thẻ đó.' +
           (function(){ var g = sai.filter(function(d){ return d._goi; })[0]; return g ? '<br>💡 ' + g._goi : ''; })());
       }

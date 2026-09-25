@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BÀI 7. THỨ TỰ THỰC HIỆN CÁC PHÉP TÍNH — Bài giảng tương tác Toán 6 (Kết nối tri thức)</title>
+<title>LUYỆN TẬP CHUNG (sau Bài 5) — ÔN BÀI 1 ĐẾN BÀI 5 — Bài giảng tương tác Toán 6 (Kết nối tri thức)</title>
 <style>
   :root{
     --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
@@ -690,156 +690,29 @@
 <!-- CSS RIÊNG CỦA BÀI — chỉ dùng cho hoạt ảnh của hình minh hoạ riêng bài này
      (cá bơi, bong bóng, quầng sáng…). Thứ gì dùng lại được thì đưa vào CSS chung ở trên. -->
 <style>
-  /* BẢNG MÀU RIÊNG của bài "thứ tự thực hiện phép tính" — ba BẬC phép tính (cầu thang) + ba loại ngoặc.
-     Không dùng màu hàng h0–h6, không mượn chàm/vàng/rêu (Bài 3), xám đậm/cam/nâu/đỏ mận (Bài 4).
-     bậc 1 luỹ thừa = hồng sen · bậc 2 nhân, chia = xanh cổ vịt · bậc 3 cộng, trừ = vàng nghệ
-     ngoặc + hộp lồng = thang xám đá (trung tính, trong đậm ngoài nhạt) · chữ chưa thay số = viền đứt xám
-     giá trị cuối của biểu thức = nền xanh lá của template · Mở đầu: trung tính hết (chưa học quy ước)
-     Máy EM TỰ BẤM (có chấm): dấu để trắng — màu bậc chỉ hiện khi em đã chọn đúng (màu không được là gợi ý) */
-  :root{--l1:#be185d; --l1-nen:#fce7f3; --l2:#0f766e; --l2-nen:#ccfbf1; --l3:#a16207; --l3-nen:#fef3c7;
-    --ngoac:#475569; --k1:#cbd5e1; --k2:#e2e8f0; --k3:#f1f5f9; --chu:#64748b; --kem:#fef9e7}
-  .c-ngoac{color:var(--ngoac); font-weight:700}
-  .doan-nut{text-align:center; margin:4px 0}
-  .doan-nut .btn.tg-da-chon{background:var(--brand-soft); border-color:var(--brand); color:var(--brand)}
+  /* Luyện tập chung sau Bài 5. Thẻ hệ thống kiến thức dùng CSS chung .ht-* của template (màu trung tính).
+     Riêng bài: hình Ví dụ 3 (Mặt Trời – Trái Đất) và thanh km taxi — bậc 1 vàng, bậc 2 xanh bạc hà (không mượn màu hàng). */
+  .vd3-hinh{margin:4px 0}
+  .vd3-hinh svg{display:block; width:100%; max-width:560px; margin:0 auto}
+  .vd3-chu{font:600 14px "Segoe UI",sans-serif; text-anchor:middle; fill:#334155}
+  .vd3-chu.dam{font-weight:700; fill:#92400e}
+  .vd3-tia{fill:none; stroke:#b45309; stroke-width:3; stroke-dasharray:10 7; animation:vd3-chay 1.2s linear infinite}
+  @keyframes vd3-chay{to{stroke-dashoffset:-34}}
+  body.no-motion .vd3-tia{animation:none}
 
-  /* ---------- chú giải màu ---------- */
-  .mau-hop{display:inline-flex; align-items:center; gap:3px; padding:3px 5px; border-radius:9px; border:1.5px solid #94a3b8; background:var(--k3);
-    font:700 18px "Cambria Math","Times New Roman",serif; color:var(--ngoac)}
-  .mau-hop .mau-hop{background:var(--k2)} .mau-hop .mau-hop .mau-hop{background:var(--k1); border-color:#64748b}
-  .mau-chu{display:inline-block; min-width:26px; text-align:center; border:2px dashed var(--chu); border-radius:6px; color:var(--chu); font:italic 700 18px "Cambria Math","Times New Roman",serif}
-  .mau-cuoi{display:inline-block; padding:0 9px; border:2px solid var(--green); background:var(--green-soft); border-radius:8px; color:#0b6b52; font:700 18px "Cambria Math","Times New Roman",serif}
-  .mau-trang{display:inline-flex; align-items:center; justify-content:center; width:30px; height:30px; border-radius:50%; border:2px solid #94a3b8; background:#fff;
-    font:700 20px "Cambria Math","Times New Roman",serif; color:#1f2937}
+  .bg-hinh{display:block; width:100%; max-width:600px; margin:4px auto}
+  .bg-o1{fill:#fde68a; stroke:#a16207; stroke-width:2}
+  .bg-o2{fill:#d1fae5; stroke:#047857; stroke-width:2}
+  .bg-so{font:700 17px "Cambria Math","Times New Roman",serif; text-anchor:middle; dominant-baseline:central; fill:#1f2937}
+  .bg-chu{font:600 13px "Segoe UI",sans-serif; text-anchor:middle; fill:#334155}
+  .bg-ngoac{fill:none; stroke:#475569; stroke-width:2}
+  .bg-kq{display:none}
+  #bg-so-do.xong .bg-kq{display:inline; fill:#166534}
+  #bg-so-do.xong .bg-hoi{display:none}
 
-
-  /* ---------- Mở đầu: Tròn và Vuông ---------- */
-  .md-hai{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-  .md-ban{border:1px solid var(--line); border-radius:12px; background:#fff; padding:8px 12px}
-  .md-dau{display:flex; align-items:center; gap:10px}
-  .md-dau svg{flex:0 0 auto; width:64px; height:64px}
-  .md-thoai{position:relative; background:#f1f5f9; border-radius:12px; padding:6px 10px; font-size:15.5px}
-  .md-thoai::before{content:""; position:absolute; left:-8px; top:18px; border:8px solid transparent; border-right-color:#f1f5f9; border-left:0}
-  .md-ban .tg-hang{font-size:23px; min-height:50px}
-  .md-cau{text-align:center; font:700 28px "Cambria Math","Times New Roman",serif; margin:4px 0 10px; animation:fadein .5s ease both}
-
-  /* ---------- HĐ5: cầu thang nhỏ đặt ngay tại câu hỏi ---------- */
-  .ch-thang{display:flex; flex-wrap:wrap; align-items:flex-start; gap:6px; margin:4px 0 8px}
-  .ch-thang .mau-bac[data-bac="2"]{margin-top:8px} .ch-thang .mau-bac[data-bac="3"]{margin-top:16px}
-
-  /* ---------- Kiến thức trọng tâm: cầu thang + hộp lồng (em bấm để mở) ---------- */
-  .kt-hinh{display:flex; flex-wrap:wrap; gap:10px 26px; justify-content:center; margin:10px 0 2px}
-  .kt-hinh figure{margin:0}
-  .kt-hinh figcaption{font-size:13.5px; text-align:center}
-  .kt-bac{stroke-width:2}
-  .kt-chu{font:700 15px "Segoe UI",sans-serif; dominant-baseline:central}
-  .kt-so{font:700 17px "Cambria Math","Times New Roman",serif; text-anchor:middle; dominant-baseline:central; fill:var(--ngoac)}
-  .kt-hop g{cursor:pointer; transform-box:fill-box; transform-origin:50% 50%}
-  .kt-hop g:focus-visible rect{stroke:var(--brand); stroke-width:3}
-  .kt-hop g:focus{outline:none}
-  .kt-hop g.tan{pointer-events:none}
-  .kt-hop g.tan rect{fill:#fff; stroke-dasharray:6 4; transition:fill .4s}
-  .kt-hop g.tan text{opacity:.5}
-  .kt-hop g.kt-rung{animation:kt-rung .4s}
-  @keyframes kt-rung{25%{transform:translateX(-5px)} 75%{transform:translateX(5px)}}
-  .kt-ghi{font-size:13.5px; text-align:center; margin:2px 0 0; min-height:20px}
-
-  /* ---------- Vận dụng: sơ đồ 5 ô giờ ---------- */
-  .vd-hinh{display:block; width:100%; max-width:640px; margin:6px auto}
-  .vd-o{fill:var(--kem); stroke:#94a3b8; stroke-width:2; animation:pop .4s ease both; transform-box:fill-box; transform-origin:50% 50%}
-  .vd-chu{font:700 18px "Cambria Math","Times New Roman",serif; text-anchor:middle; dominant-baseline:central; fill:#1f2937}
-  .vd-chu.nho{font:600 13px "Segoe UI",sans-serif; fill:#475569}
-  .vd-ng2{fill:none; stroke:var(--l2); stroke-width:3} .vd-ng3{fill:none; stroke:var(--l3); stroke-width:3}
-  .vd-chu.l2{fill:var(--l2)} .vd-chu.l3{fill:var(--l3)}
-  /* chưa trả lời câu b: ngoặc trung tính (màu nhân / cộng sẽ là đáp án của câu chọn biểu thức) */
-  #vd-so-do.chua-to .vd-ng2,#vd-so-do.chua-to .vd-ng3{stroke:#64748b}
-  #vd-so-do.chua-to .vd-chu.l2,#vd-so-do.chua-to .vd-chu.l3{fill:#334155}
-  .vd-kq{opacity:0} .vd-hoi{transition:opacity .3s}
-  #vd-so-do.xong-a .vd-kq.a{opacity:1; animation:pop .4s ease both; transform-box:fill-box; transform-origin:50% 50%}
-  #vd-so-do.xong-a .vd-hoi.a{opacity:0}
-  #vd-so-do.xong-b .vd-kq.b{opacity:1; animation:pop .4s ease both; transform-box:fill-box; transform-origin:50% 50%}
-  #vd-so-do.xong-b .vd-hoi.b{opacity:0}
-  #vd-so-do.nhay-3 .vd-o.g3,#vd-so-do.nhay-2 .vd-o.g2{animation:vd-nhay .6s ease 2 both}
-  @keyframes vd-nhay{50%{fill:#fde68a; stroke:#a16207; stroke-width:3}}
-
-  /* ---------- Chú ý: thẻ chữ lật ---------- */
-  .the-hang{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:5px; font:700 26px "Cambria Math","Times New Roman",serif; margin:8px 0}
-  .the-so{display:inline-block; padding:2px 9px; border:2px solid #cbd5e1; border-radius:8px; background:#fff}
-  .the-lat{display:inline-block; width:46px; height:44px; perspective:400px}
-  .the-lat-trong{position:relative; display:block; width:100%; height:100%; transition:transform .7s; transform-style:preserve-3d}
-  .the-mat{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border-radius:8px; backface-visibility:hidden}
-  .the-mat.chu{border:2px dashed var(--chu); color:var(--chu); font-style:italic; background:#fff}
-  .the-mat.so{border:2px solid #cbd5e1; background:#fff; transform:rotateY(180deg)}
-  #the-lat.lat .the-lat-trong{transform:rotateY(180deg)}
-  /* dấu nhân viết ẩn: lật thẻ thì hiện thành một vòng tròn xanh cổ vịt như nút dấu nhân của máy thu gọn */
-  .the-nhan{display:inline-flex; align-items:center; justify-content:center; width:0; height:40px; overflow:hidden; opacity:0; color:var(--l2);
-    border:0 solid var(--l2); border-radius:50%; background:var(--l2-nen); font-size:36px; font-weight:900; transition:width .5s, opacity .5s}
-  #the-lat.lat .the-nhan{width:40px; opacity:1; border-width:2px; animation:pop .5s ease both}
-  .the-ng{color:var(--ngoac); font-size:30px}
-  body.no-motion #the-lat.lat .the-mat.chu{display:none}
-  body.no-motion #the-lat.lat .the-lat-trong{transform:none}
-  body.no-motion #the-lat.lat .the-mat.so{transform:none}
-  @media(prefers-reduced-motion:reduce){#the-lat.lat .the-mat.chu{display:none} #the-lat.lat .the-lat-trong,#the-lat.lat .the-mat.so{transform:none}}
-
-  /* ---------- Luyện tập 2: hình chữ nhật ABCD, lưới ô vuông 1 cm², thanh trượt ---------- */
-  .lt2-hinh{display:block; width:100%; max-width:460px; margin:6px auto}
-  .lt2-nen{fill:var(--kem); stroke:#475569; stroke-width:2.5}
-  .lt2-chia{stroke:#475569; stroke-width:2; stroke-dasharray:6 4; fill:none}
-  .lt2-chu{font:italic 700 19px "Cambria Math","Times New Roman",serif; text-anchor:middle; fill:#1f2937}
-  .lt2-chu.dinh,.lt2-chu.so{font-style:normal}
-  .lt2-chu.nho{font:600 14px "Segoe UI",sans-serif; font-style:normal; fill:#475569}
-  .lt2-luoi{stroke:#94a3b8; stroke-width:1.2; opacity:0}
-  #lt2-hcn.xong .lt2-luoi{opacity:1; animation:fadein .4s ease both}
-  .lt2-o{fill:var(--kem); stroke:#94a3b8; stroke-width:1.2; animation:fadein .35s ease both}
-  .lt2-vien{fill:none; stroke:#475569; stroke-width:2.5}
-  .lt2-to{fill:#fbcfe8; fill-opacity:.8; stroke:var(--l1); stroke-width:2}
-  .lt2-do{fill:none; stroke:var(--red); stroke-width:6; stroke-linecap:round}
-  .lt2-chu.lt2-do-chu{fill:var(--red)}
-  #lt2-sai{animation:fadein .35s ease both}
-  #lt2-hcn.nhay-sai #lt2-sai{animation:vd-nhay-mo .5s ease 2}
-  @keyframes vd-nhay-mo{50%{opacity:.3}}
-  #lt2-ve svg{display:block; width:100%; max-width:600px; margin:0 auto}
-  .lt2-dk{display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; font-size:17px}
-  .lt2-dk input[type=range]{width:220px}
-
-  /* ---------- bài toán lời văn: sơ đồ ngày, thanh 40 ô ---------- */
-  .lv-hinh{display:block; width:100%; max-width:600px; margin:6px auto}
-  .lv-o{fill:var(--kem); stroke:#94a3b8; stroke-width:2}
-  .lv-chu{font:700 17px "Cambria Math","Times New Roman",serif; text-anchor:middle; dominant-baseline:central; fill:#1f2937}
-  .lv-chu.nho{font:600 13px "Segoe UI",sans-serif; fill:#475569}
-  .lv-chu.halo{paint-order:stroke; stroke:var(--kem); stroke-width:8px; stroke-linejoin:round}
-  .lv-ng{fill:none; stroke:#475569; stroke-width:2.5}
-  .lv-vach{stroke:#64748b; stroke-width:1.8; stroke-dasharray:5 4}
-  .lv-nua{fill:transparent}
-  .lv-deu-hinh .lv-o{fill:#e7f6ef; stroke:var(--green); animation:pop .4s ease both; transform-box:fill-box; transform-origin:50% 50%}
-  .lv-deu-hinh .lv-chu{animation:pop .4s ease both; transform-box:fill-box; transform-origin:50% 50%}
-  .lv-tong-kq{opacity:0}
-  #lv-so-do.xong-a .lv-tong-kq{opacity:1} #lv-so-do.xong-a .lv-tong-hoi{opacity:0}
-  #lv-so-do.nhay-hai .lv-nua{animation:lv-nhay .6s ease 2 both}
-  #lv-so-do.nhay-bon .lv-bon{animation:vd-nhay .6s ease 2 both}
-  @keyframes lv-nhay{50%{fill:#fde68a}}
-  #mua-vo-hinh svg{display:block; width:100%; max-width:600px; margin:6px auto}
-  #mua-vo-hinh .mv-hep{display:none; max-width:420px}
-  .mv-o0{fill:#d1d5db; stroke:#6b7280; stroke-width:1.5}
-  .mv-o1{fill:var(--kem); stroke:#475569; stroke-width:1.5}
-  .mv-o2{fill:#fff; stroke:var(--chu); stroke-width:1.5; stroke-dasharray:3 2}
-  .mv-ngoac,.mv-ngoac1,.mv-ngoac2{fill:none; stroke:#475569; stroke-width:2}
-  .mv-ngoac2{stroke-dasharray:5 3}
-  .mv-chu{font:600 12.5px "Segoe UI",sans-serif; text-anchor:middle; fill:#334155}
-  .mv-chu.trai{text-anchor:start; dominant-baseline:central}
-  .mv-kq{display:none} #mua-vo-hinh.xong .mv-kq{display:inline} #mua-vo-hinh.xong .mv-hoi{display:none}
-  #mua-vo-hinh.xong .mv-o2{fill:#e7f6ef; stroke:var(--green); stroke-dasharray:none}
-  #mua-vo-hinh.xong .mv-ngoac2{stroke:var(--green); stroke-dasharray:none}
-  #mua-vo-hinh.xong .mv-kq{fill:#166534}
-
-  /* ---------- màn hẹp ---------- */
   @media(max-width:640px){
-    .md-hai{grid-template-columns:1fr}
-    .vd-chu{font-size:26px} .vd-chu.nho{font-size:24px}
-    .lv-chu{font-size:24px} .lv-chu.nho{font-size:22px}
-    #mua-vo-hinh .mv-rong{display:none} #mua-vo-hinh .mv-hep{display:block}
-    .mv-chu{font-size:15px}
-    #lt2-ve .lt2-chu{font-size:28px} #lt2-ve .lt2-chu.nho{font-size:21px}
-    .lt2-hinh .lt2-chu{font-size:24px}
+    .vd3-chu{font-size:20px}
+    .bg-chu{font-size:21px} .bg-so{font-size:26px}
   }
 </style>
 </head>
@@ -847,19 +720,19 @@
 
 <header class="top">
   <div class="wrap">
-    <h1>BÀI 7. THỨ TỰ THỰC HIỆN CÁC PHÉP TÍNH</h1>
+    <h1>LUYỆN TẬP CHUNG (sau Bài 5) — ÔN BÀI 1 ĐẾN BÀI 5</h1>
     <p class="sub">Toán 6 · Chương I. Tập hợp các số tự nhiên · Kết nối tri thức với cuộc sống</p>
-    <span class="badge">Bài giảng tương tác</span>
-    <span class="badge">Máy thu gọn biểu thức · cầu thang ba bậc · hộp ngoặc lồng nhau · thẻ chữ lật · lưới ô vuông</span>
-    <span class="badge">Bài tập 1.46–1.49 chỉ có gợi ý, không có đáp án</span>
+    <span class="badge">Bài ôn tương tác</span>
+    <span class="badge">Hệ thống kiến thức Bài 1–5 · ghép tính chất · tập các chữ số · sơ đồ đoạn thẳng · bậc giá</span>
+    <span class="badge">Bài tập 1.31–1.35 chỉ có gợi ý, không có đáp án</span>
   </div>
 </header>
 
 <nav class="toolbar">
   <div class="wrap">
-    <a class="chip" href="#mo-dau">Mở đầu</a>
-    <a class="chip" href="#thu-tu">1. Thứ tự thực hiện</a>
-    <a class="chip" href="#van-dung">2. Vận dụng · biểu thức có chữ</a>
+    <a class="chip" href="#he-thong">1. Hệ thống kiến thức</a>
+    <a class="chip" href="#vi-du">2. Ba ví dụ SGK</a>
+    <a class="chip" href="#chuan-bi">3. Ba dạng mới</a>
     <a class="chip" href="#bai-tap">Bài tập</a>
     <a class="chip" href="#chot-bai">Chốt bài</a>
     <span class="spacer"></span>
@@ -873,589 +746,307 @@
 <noscript>
   <section class="box warn"><span class="label">Trang này cần bật JavaScript</span>
   Các hoạt động bấm sẽ không chạy. Em đọc bản Markdown
-  <b>toan-lop-6-chuong-01-bai-07-thu-tu-thuc-hien-cac-phep-tinh-bai-giang.md</b> thay thế nhé.</section>
+  <b>toan-lop-6-chuong-01-luyen-tap-chung-01-bai-giang.md</b> thay thế nhé.</section>
 </noscript>
 
-<!-- ============================ MỞ ĐẦU ============================ -->
-<section id="mo-dau">
-  <h2>Mở đầu — Tròn và Vuông cãi nhau</h2>
-  <div class="act" data-act="mo-dau">
-    <h4><span class="tag">HOẠT ĐỘNG 1</span> 5 + 3 × 2 bằng mấy?</h4>
-    <p class="md-cau">5 + 3 × 2 = ?</p>
-    <div class="md-hai">
-      <div class="md-ban">
-        <div class="md-dau">
-          <svg viewBox="0 0 64 64" role="img" aria-label="bạn Tròn">
-            <circle cx="32" cy="34" r="26" fill="#f6d5b5" stroke="#8a6a4a" stroke-width="2"/>
-            <path d="M8 30 q2 -24 24 -24 q22 0 24 24 q-8 -12 -24 -13 q-16 1 -24 13 Z" fill="#2b2d42"/>
-            <circle cx="23" cy="36" r="3" fill="#1f2430"/><circle cx="41" cy="36" r="3" fill="#1f2430"/>
-            <path d="M24 46 q8 7 16 0" fill="none" stroke="#9f1239" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-          <div class="md-thoai"><b>Tròn:</b> Bằng 16, mình cộng trước, nhân sau.</div>
-        </div>
-        <div data-tg-may data-demo data-trung-tinh="1" data-lich="phep" data-nhan-cuoi="kết quả theo cách của Tròn" data-bt="⟨5 + 3⟩ × 2"
-             data-loi="Tròn làm phép cộng trước (vì nó đứng trước)|Rồi Tròn nhân" data-cuoi="Theo cách của Tròn: <b>16</b>."></div>
-      </div>
-      <div class="md-ban">
-        <div class="md-dau">
-          <svg viewBox="0 0 64 64" role="img" aria-label="bạn Vuông">
-            <rect x="7" y="9" width="50" height="50" rx="9" fill="#f6d5b5" stroke="#8a6a4a" stroke-width="2"/>
-            <path d="M7 24 v-7 q0 -8 9 -8 h32 q9 0 9 8 v7 q-10 -6 -25 -6 q-15 0 -25 6 Z" fill="#2b2d42"/>
-            <rect x="19" y="32" width="6" height="6" fill="#1f2430"/><rect x="39" y="32" width="6" height="6" fill="#1f2430"/>
-            <path d="M24 47 h16" stroke="#9f1239" stroke-width="2.4" stroke-linecap="round"/>
-          </svg>
-          <div class="md-thoai"><b>Vuông:</b> Bằng 11, mình nhân trước, cộng sau.</div>
-        </div>
-        <div data-tg-may data-demo data-trung-tinh="1" data-lich="phep" data-nhan-cuoi="kết quả theo cách của Vuông" data-bt="5 + 3 × 2"
-             data-loi="Vuông làm phép nhân trước|Rồi Vuông cộng" data-cuoi="Theo cách của Vuông: <b>11</b>."></div>
-      </div>
+<!-- ======================= 1. HỆ THỐNG KIẾN THỨC ======================= -->
+<section id="he-thong">
+  <h2>1. Hệ thống kiến thức — Bài 1 đến Bài 5</h2>
+  <div class="box tip"><span class="label">Buổi ôn này để làm gì?</span>
+    SGK không có bài học mới ở đây: chỉ có <b>3 ví dụ</b> và <b>5 bài tập</b> (1.31–1.35) dùng lại kiến thức của năm bài đầu.
+    Em đọc lướt năm thẻ dưới (khung vàng là lời <b>nguyên văn SGK</b>), làm hai hoạt động nhớ nhanh, rồi mới sang ví dụ.</div>
+
+  <div class="ht-luoi">
+    <div class="ht-the">
+      <h4><span class="ht-so">Bài 1</span>Tập hợp</h4>
+      <div class="ht-kt"><span class="ht-nguon">📌 SGK</span>
+        <p>Một <b>tập hợp</b> (gọi tắt là <b>tập</b>) bao gồm những đối tượng nhất định. Các đối tượng ấy được gọi là những <b>phần tử</b> của tập hợp.</p>
+        <p><i>x</i> là một phần tử của tập <i>A</i>, kí hiệu là <span class="m"><i>x</i> ∈ <i>A</i></span>; <i>y</i> <b>không</b> là phần tử của tập <i>A</i>, kí hiệu là <span class="m"><i>y</i> ∉ <i>A</i></span>.</p></div>
+      <p class="ht-vd"><b>Hai cách mô tả:</b> liệt kê trong <span class="m">{ }</span> — thứ tự tuỳ ý, <b>mỗi phần tử chỉ được viết một lần</b>, ngăn bởi dấu ";"
+        · nêu dấu hiệu đặc trưng: <span class="m"><i>P</i> = {<i>n</i> ∈ ℕ | <i>n</i> &lt; 6}</span>.
+        <span class="nowrap"><span class="m">ℕ = {0; 1; 2; 3; …}</span>,</span> <span class="nowrap"><span class="m">ℕ<sup>*</sup> = {1; 2; 3; …}</span>.</span></p>
+      <p class="ht-loi"><b>Hay sai:</b> viết một phần tử hai lần · dùng dấu "," · quên số 0 thuộc ℕ nhưng không thuộc ℕ<sup>*</sup>.</p>
     </div>
-    <p class="muted small">Bấm «Bước tiếp» ở từng bạn để xem bạn ấy thu gọn biểu thức, rồi so sánh hai máy. (Hai máy chỉ ghi lại <b>cách làm</b> của
-    mỗi bạn — chưa nói cách nào đúng.)</p>
-    <p>Để tránh tình trạng trên, ta cần có quy ước thống nhất về thứ tự thực hiện các phép tính. <span class="muted small">(SGK)</span></p>
-
-    <p class="p-dong"><b>Em đoán nhanh:</b> em đồng ý với bạn nào? <span class="muted small">(cô ghi lại, chưa chấm — em tự kiểm ở mục 1.5)</span></p>
-    <p class="doan-nut" id="doan-md">
-      <button type="button" class="btn ghost" data-doan="tron">Đồng ý với Tròn (16)</button>
-      <button type="button" class="btn ghost" data-doan="vuong">Đồng ý với Vuông (11)</button>
-      <button type="button" class="btn ghost" data-doan="chua">Em chưa chắc</button>
-    </p>
-    <div class="fb" id="doan-fb"></div>
-
-    <p class="p-dong"><b>Em nghĩ thử (có chấm):</b> hai bạn dùng <b>cùng</b> ba số 5, 3, 2 và <b>cùng</b> hai phép tính. Vậy hai bạn khác nhau ở chỗ nào?<br>
-      <span data-mcq data-options="Một bạn tính nhầm 3 × 2;Một bạn bỏ sót một số;Làm phép tính nào trước;Một bạn chép nhầm đề" data-answer="Làm phép tính nào trước"
-            data-fb-sai="Cô vừa gạch chân bước 1 ở cả hai máy — hai đường gạch chân nằm ở đâu?"
-            data-fb-lua-chon='{"Một bạn tính nhầm 3 × 2":"Soát lại hai máy: 3 × 2 = 6 và 5 + 3 = 8 — cả hai bạn đều tính đúng từng phép. Cô vừa gạch chân bước 1 ở cả hai máy (chỗ đang nháy): hai đường gạch chân nằm ở đâu?","Một bạn bỏ sót một số":"Đếm lại: máy nào cũng dùng đủ ba số 5, 3, 2. Cô vừa gạch chân bước 1 ở cả hai máy (chỗ đang nháy) — so hai chỗ gạch chân.","Một bạn chép nhầm đề":"Hai máy đều bắt đầu từ cùng một dòng 5 + 3 × 2 — không ai chép nhầm. Cô vừa gạch chân bước 1 ở cả hai máy (chỗ đang nháy) — so hai chỗ gạch chân."}'></span></p>
-    <div class="fb fb-mcq"></div>
+    <div class="ht-the">
+      <h4><span class="ht-so">Bài 2</span>Cách ghi số tự nhiên</h4>
+      <div class="ht-kt"><span class="ht-nguon">📌 SGK</span>
+        <p>Mỗi số tự nhiên viết trong hệ thập phân đều biểu diễn được thành <i>tổng giá trị các chữ số của nó</i>.</p></div>
+      <p class="ht-vd">Cứ 10 đơn vị ở một hàng thì bằng 1 đơn vị ở hàng liền trước nó. Ví dụ SGK: <span class="m">236 = (2 × 100) + (3 × 10) + 6</span>.
+        Chữ số đầu tiên của số khác 0 thì khác 0. Số La Mã: I = 1, V = 5, X = 10, IV = 4, IX = 9; không có số La Mã nào biểu diễn số 0.</p>
+      <p class="ht-loi"><b>Hay sai:</b> lẫn <b>chữ số</b> (5) với <b>giá trị</b> của nó (500) · đếm hàng từ trái sang.</p>
+    </div>
+    <div class="ht-the">
+      <h4><span class="ht-so">Bài 3</span>Thứ tự trong tập hợp các số tự nhiên</h4>
+      <div class="ht-kt"><span class="ht-nguon">📌 SGK (trích)</span>
+        <p>Nếu số <i>a</i> nhỏ hơn số <i>b</i> thì trên tia số nằm ngang điểm <i>a</i> nằm bên trái điểm <i>b</i>. (…)</p>
+        <p>Mỗi số tự nhiên có đúng một số liền sau (…).</p>
+        <p>Nếu <span class="m"><i>a</i> &lt; <i>b</i></span> và <span class="m"><i>b</i> &lt; <i>c</i></span> thì <span class="m"><i>a</i> &lt; <i>c</i></span> (<i>tính chất bắc cầu</i>).</p></div>
+      <p class="ht-vd"><b>Chú ý (SGK).</b> Số 0 không có số tự nhiên liền trước và là số tự nhiên nhỏ nhất.
+        <span class="m"><i>a</i> ≤ <i>b</i></span> nghĩa là "<span class="m"><i>a</i> &lt; <i>b</i></span> hoặc <span class="m"><i>a</i> = <i>b</i></span>".</p>
+      <p class="ht-loi"><b>Hay sai:</b> đề ghi "&lt; 7" mà vẫn lấy số 7 · quên số 0 khi liệt kê.</p>
+    </div>
+    <div class="ht-the">
+      <h4><span class="ht-so">Bài 4</span>Phép cộng và phép trừ</h4>
+      <div class="ht-kt"><span class="ht-nguon">📌 SGK</span>
+        <p>Phép cộng số tự nhiên có các tính chất: <b>Giao hoán:</b> <span class="m"><i>a</i> + <i>b</i> = <i>b</i> + <i>a</i></span>.
+          <b>Kết hợp:</b> <span class="m">(<i>a</i> + <i>b</i>) + <i>c</i> = <i>a</i> + (<i>b</i> + <i>c</i>)</span>.</p></div>
+      <p class="ht-vd"><span class="m"><i>a</i> + 0 = 0 + <i>a</i> = <i>a</i></span>. Pi: "Trong tập hợp ℕ, phép trừ <span class="m"><i>a</i> − <i>b</i></span> chỉ thực hiện được nếu
+        <span class="m"><i>a</i> ≥ <i>b</i></span>." Cộng nhiều số: nhóm các số hạng có tổng tròn chục, tròn trăm (nếu có).</p>
+      <p class="ht-loi"><b>Hay sai:</b> đặt tính lệch cột · trừ có nhớ mà quên nhớ · "tìm <i>x</i>" chọn nhầm phép ngược.</p>
+    </div>
+    <div class="ht-the">
+      <h4><span class="ht-so">Bài 5</span>Phép nhân và phép chia</h4>
+      <div class="ht-kt"><span class="ht-nguon">📌 SGK</span>
+        <p>Phép nhân có các tính chất: <b>Giao hoán:</b> <span class="m"><i>ab</i> = <i>ba</i></span>. <b>Kết hợp:</b> <span class="m">(<i>ab</i>)<i>c</i> = <i>a</i>(<i>bc</i>)</span>.
+          <b>Phân phối</b> của phép nhân đối với phép cộng: <span class="m"><i>a</i>(<i>b</i> + <i>c</i>) = <i>ab</i> + <i>ac</i></span>.</p>
+        <p>Với hai số tự nhiên <i>a</i> và <i>b</i> đã cho (<i>b</i> khác 0), ta luôn tìm được đúng hai số tự nhiên <i>q</i> và <i>r</i> sao cho
+          <span class="m"><i>a</i> = <i>bq</i> + <i>r</i></span>, trong đó <span class="m">0 ≤ <i>r</i> &lt; <i>b</i></span>. (<i>r</i> = 0: phép chia hết; <i>r</i> ≠ 0: phép chia có dư.)</p></div>
+      <p class="ht-vd"><span class="m"><i>a</i> · 1 = <i>a</i></span>; <span class="m"><i>a</i> · 0 = 0</span>. Pi: "Trong phép chia có dư, số dư bao giờ cũng nhỏ hơn số chia."</p>
+      <p class="ht-loi"><b>Hay sai:</b> tích riêng quên lùi cột · quên chữ số 0 ở thương · bài "ít nhất bao nhiêu xe" quên thêm xe cho số dư.</p>
+    </div>
   </div>
 
-  <div class="box tip"><span class="label">Mục tiêu của bài (SGK)</span>
-    <table class="muc-tieu">
-      <tr><th>KHÁI NIỆM, THUẬT NGỮ</th><th>KIẾN THỨC, KĨ NĂNG</th></tr>
-      <tr><td>Biểu thức<br>Giá trị của một biểu thức</td>
-        <td>• Nhận biết thứ tự thực hiện các phép tính.<br>• Tính giá trị của một biểu thức.</td></tr>
-    </table>
-    Hết bài này, em phải: nói được <b>phép tính nào làm trước</b> trong một biểu thức (có hoặc không có dấu ngoặc); tính đúng
-    <b>giá trị của biểu thức</b> từng bước, mỗi bước một dòng; <b>thay số vào chữ</b> rồi tính; và viết được <b>một biểu thức</b> cho
-    một bài toán có lời văn.
+  <div class="act" data-act="ghep-tinh-chat">
+    <h4><span class="tag">HOẠT ĐỘNG 1</span> Nhớ nhanh: mỗi đẳng thức dùng tính chất nào?</h4>
+    <p>Kéo thẻ (hoặc bấm thẻ rồi bấm ô) để ghép. Có <b>hai thẻ thừa</b>.</p>
+    <div data-match data-khong-to="1" data-xao="1"
+         data-tokens="Giao hoán (phép cộng);Kết hợp (phép cộng);Giao hoán (phép nhân);Kết hợp (phép nhân);Phân phối;Nhân với 0;Nhân với 1;Cộng với 0"
+         data-ok="Chính xác cả sáu! Đổi <b>chỗ</b> hai số là giao hoán; đổi <b>cách nhóm</b> (ngoặc dời chỗ) là kết hợp; nhân với một <b>tổng</b> là phân phối.">
+      <table class="bang-loi">
+        <tr><th>Đẳng thức</th><th>Tính chất</th></tr>
+        <tr><td><span class="m">58 + 37 = 37 + 58</span></td><td><span data-slot="Giao hoán (phép cộng)" data-slot-hint="Cái gì thay đổi giữa hai vế: chỗ đứng của hai số, hay chỗ đặt ngoặc? Dấu ở đây là dấu gì?"
+            data-hint-sai='{"Kết hợp (phép cộng)":"Ở đây không có ngoặc nào dời chỗ — chỉ có hai số đổi chỗ cho nhau.","Giao hoán (phép nhân)":"Dấu ở đây là dấu cộng."}'></span></td></tr>
+        <tr><td><span class="m">(19 + 6) + 4 = 19 + (6 + 4)</span></td><td><span data-slot="Kết hợp (phép cộng)" data-slot-hint="Ba số vẫn đứng đúng thứ tự cũ. Cái gì dời chỗ?"
+            data-hint-sai='{"Giao hoán (phép cộng)":"19, 6, 4 vẫn đứng đúng thứ tự cũ — chỉ có ngoặc dời chỗ. Tính chất nào nói về cách nhóm?"}'></span></td></tr>
+        <tr><td><span class="m">12 · 5 = 5 · 12</span></td><td><span data-slot="Giao hoán (phép nhân)" data-slot-hint="Dấu ở đây là dấu nhân. Hai thừa số làm gì?"
+            data-hint-sai='{"Giao hoán (phép cộng)":"Dấu ở đây là dấu nhân, không phải dấu cộng."}'></span></td></tr>
+        <tr><td><span class="m">(7 · 25) · 4 = 7 · (25 · 4)</span></td><td><span data-slot="Kết hợp (phép nhân)" data-slot-hint="Thứ tự 7, 25, 4 có đổi không? Ngoặc thì sao?"
+            data-hint-sai='{"Giao hoán (phép nhân)":"Thứ tự 7, 25, 4 không đổi — chỉ ngoặc dời chỗ.","Phân phối":"Phân phối cần có cả phép nhân lẫn phép cộng. Ở đây chỉ có phép nhân."}'></span></td></tr>
+        <tr><td><span class="m">9 · (10 + 2) = 9 · 10 + 9 · 2</span></td><td><span data-slot="Phân phối" data-slot-hint="Số 9 nhân với cả một tổng, rồi thành tổng của hai tích."
+            data-hint-sai='{"Kết hợp (phép nhân)":"Trong ngoặc là phép cộng. 9 nhân với từng số hạng của tổng — tính chất nào?","Kết hợp (phép cộng)":"Vế phải có hai phép nhân mới xuất hiện — tính chất nào nói «nhân với một tổng»?"}'></span></td></tr>
+        <tr><td><span class="m">64 · 0 = 0</span></td><td><span data-slot="Nhân với 0" data-slot-hint="Thừa số thứ hai là số mấy?"
+            data-hint-sai='{"Nhân với 1":"Thừa số ở đây là 0, không phải 1.","Cộng với 0":"Dấu ở đây là dấu nhân."}'></span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="act" data-act="dung-sai-nhanh">
+    <h4><span class="tag">HOẠT ĐỘNG 2</span> Trắc nghiệm nhanh: chọn <b>tất cả</b> câu đúng</h4>
+    <p>Mỗi câu dùng một ý của một thẻ phía trên. Chọn xong bấm <b>Kiểm tra</b>.</p>
+    <div data-picks data-chon-lai-sau="2"
+         data-ok="Đúng rồi! Ba câu đúng: chữ số 3 ở hàng trăm (giá trị 300); bắc cầu a &lt; 9 &lt; b; 36 · 101 = 36 · (100 + 1) (phân phối). Các câu sai: 0 ∉ ℕ*; 4 − 6 không làm được trong ℕ; số dư 5 không nhỏ hơn số chia 4; XIV = 10 + 4 = 14.">
+      <div data-pick data-name="Đ" data-nhan="Soát lại" data-dai
+           data-items="0 ∈ ℕ*;Chữ số 3 trong số 7 305 có giá trị là 300;Nếu a &lt; 9 và 9 &lt; b thì a &lt; b;Phép trừ 4 − 6 thực hiện được trong ℕ;29 : 4 được thương 6, dư 5;XIV biểu diễn số 16;36 · 101 = 36 · 100 + 36"
+           data-answer="Chữ số 3 trong số 7 305 có giá trị là 300;Nếu a &lt; 9 và 9 &lt; b thì a &lt; b;36 · 101 = 36 · 100 + 36"
+           data-hint-thua='{"0 ∈ ℕ*":"«0 ∈ ℕ*»: ℕ* là tập các số tự nhiên khác 0 hay có cả số 0? Xem thẻ Bài 1.","Phép trừ 4 − 6 thực hiện được trong ℕ":"«4 − 6»: Pi ở thẻ Bài 4 nói phép trừ a − b chỉ thực hiện được khi nào?","29 : 4 được thương 6, dư 5":"«29 : 4 được 6, dư 5»: 4 · 6 + 5 đúng là 29, nhưng số dư 5 so với số chia 4 thì sao? Xem điều kiện của r ở thẻ Bài 5.","XIV biểu diễn số 16":"«XIV»: gồm hai thành phần X và IV. IV có giá trị bao nhiêu?"}'
+           data-hint-thieu='{"Chữ số 3 trong số 7 305 có giá trị là 300":"Còn sót ít nhất một câu đúng — em soát lại từng câu với thẻ tóm tắt.","Nếu a &lt; 9 và 9 &lt; b thì a &lt; b":"Còn sót ít nhất một câu đúng — em soát lại từng câu với thẻ tóm tắt.","36 · 101 = 36 · 100 + 36":"Còn sót ít nhất một câu đúng — em soát lại từng câu với thẻ tóm tắt."}'></div>
+    </div>
   </div>
 </section>
 
-<!-- ============== 1. THỨ TỰ THỰC HIỆN CÁC PHÉP TÍNH ============== -->
-<section id="thu-tu">
-  <h2>1. Thứ tự thực hiện các phép tính trong một biểu thức</h2>
+<div class="moc-nghi">☕ Nghỉ một phút rồi sang ba ví dụ SGK.</div>
 
-  <div class="box"><span class="label">Mã màu của bài — ba bậc của cầu thang</span>
-    <div class="ma-mau">
-      <span class="mau-bac tg-l1">1 · Luỹ thừa</span><span class="mau-bac tg-l2">2 · Nhân và chia</span><span class="mau-bac tg-l3">3 · Cộng và trừ</span>
-    </div>
-    <div class="ma-mau">
-      <span><b class="c-l1">hồng sen</b> = bậc 1: luỹ thừa (số mũ) · <b class="c-l2">xanh cổ vịt</b> = bậc 2: nhân, chia · <b class="c-l3">vàng nghệ</b> = bậc 3: cộng, trừ</span>
-    </div>
-    <div class="ma-mau">
-      <span class="mau-trang">+</span>
-      <span>Trong <b>máy cô làm mẫu</b>, dấu mang màu bậc của nó. Trong <b>máy em tự bấm</b>, dấu để <b>trắng</b> — em chọn đúng phép làm trước
-        thì dấu ấy mới hiện màu.</span>
-    </div>
-    <div class="ma-mau">
-      <span class="mau-hop">{<span class="mau-hop">[<span class="mau-hop">( )</span>]</span>}</span>
-      <span><b class="c-ngoac">hộp xám</b> = dấu ngoặc (hộp trong cùng xám đậm nhất) · <span class="mau-chu">m</span> viền đứt = chữ chưa thay số ·
-        <span class="mau-cuoi">19</span> nền xanh lá = giá trị của biểu thức</span>
-    </div>
-  </div>
+<!-- ======================= 2. BA VÍ DỤ SGK ======================= -->
+<section id="vi-du">
+  <h2>2. Ba ví dụ của SGK — em tự làm trước, rồi mới xem lời giải</h2>
 
-  <h3>1.1. Biểu thức và giá trị của biểu thức <span class="muted small">(cô nói cho dễ hiểu)</span></h3>
-  <p>Những dãy như <span class="m">5 + 3 × 2</span>, <span class="m">42 − 30 + 8</span>, <span class="m">(10 + 5) : 5</span> — các số nối với nhau bởi
-  dấu phép tính (cộng, trừ, nhân, chia, nâng lên luỹ thừa), có thể có dấu ngoặc — là các <b>biểu thức</b>. Tính xong, cả dãy
-  <b>thu gọn lại còn một số</b>: số đó là <b>giá trị của biểu thức</b>. Biểu thức còn có thể <b>chứa chữ</b> (Chú ý của SGK, mục 2.2).
-  <span class="muted small">(Đây là lời cô giải thích; SGK Bài 7 chỉ nêu hai thuật ngữ này trong bảng mục tiêu.)</span></p>
-  <p>Mỗi bước tính, em chỉ làm phép tính được phép làm trước, chép lại phần còn lại y nguyên, xuống dòng, viết dấu "=" ở đầu dòng.
-  Trong trang này, biểu thức hiện thành một <b>hàng thẻ</b>; mỗi lần tính, hai số và dấu ở giữa <b>co lại</b> thành một thẻ mới; khi
-  chỉ còn một thẻ, thẻ ấy sáng <b>nền xanh lá</b>.</p>
-
-  <h3>1.2. 📖 Đọc hiểu – Nghe hiểu: Thứ tự thực hiện các phép tính trong một biểu thức <span class="muted small">(SGK) — phần 1: không có dấu ngoặc</span></h3>
-  <div class="box key"><span class="label">📖 SGK</span>
-    <p><b>Đối với các biểu thức không có dấu ngoặc:</b></p>
-    Nếu chỉ có phép cộng và phép trừ (hoặc chỉ có phép nhân và phép chia) thì thực hiện các phép tính từ trái qua phải, chẳng hạn:
-    <p class="setline">42 − 30 + 8 = 20; &nbsp;&nbsp;&nbsp; 100 : 5 · 2 = 20 · 2 = 40.</p>
-  </div>
-  <div class="box"><span class="label">Cô nói lại</span>
-    Khi các phép tính <b>cùng một bậc</b> (chỉ có cộng, trừ — hoặc chỉ có nhân, chia), "từ trái qua phải" nghĩa là làm <b>phép đứng bên trái</b>
-    trước, được một số mới, rồi làm tiếp phép bên phải — như đọc một dòng chữ.
-    Không được "chọn" phép cộng làm trước chỉ vì nó dễ. Tương tự <span class="m">100 : 5 · 2 = 20 · 2 = 40</span>, <b>không</b> phải
-    <span class="m">100 : 10 = 10</span>.
-  </div>
-  <div class="act">
-    <h4><span class="tag">SO SÁNH TRƯỚC / SAU</span> Hai cách tính 42 − 30 + 8</h4>
-    <p class="muted small">Bấm «Bước tiếp» trong máy để xem từng bước. Bấm nút thứ hai: hai cách nằm cạnh nhau. Không chấm điểm.</p>
-    <div data-t2 data-t2-mo="0" data-t2-giu="1" id="ts-4230">
-      <button class="btn" data-t2-btn="0">Đúng: từ trái qua phải ✓</button>
-      <button class="btn ghost" data-t2-btn="1">Sai: cộng trước ✗</button>
-      <div class="setline" data-t2-empty><span class="muted small">Bấm một nút…</span></div>
-      <div class="hide" data-t2-pane="0">
-        <div data-tg-may data-demo data-quet="1" data-bt="42 − 30 + 8"
-             data-cuoi="Đúng như SGK: <span class=&quot;m&quot;>42 − 30 + 8 = 12 + 8 = 20</span>."></div>
+  <div class="act" data-act="vi-du-1" data-can-het data-mo-sau="#vd1-dc">
+    <h4><span class="tag">HOẠT ĐỘNG 3</span> Ví dụ 1 (SGK) — số <span class="m"><i>n</i> = 280&nbsp;650</span></h4>
+    <p class="setline"><i>n</i> = 280&nbsp;650</p>
+    <div data-mo-khi="#vd1-b">
+      <p><b>a)</b> Chữ số hàng nghìn của <i>n</i> là <span data-fill data-gon="1" data-answer="0"
+          data-hint-sai='{"5":"5 ở hàng chục. Em đếm hàng từ phải sang: đơn vị, chục, trăm, nghìn…","6":"6 ở hàng trăm — đếm tiếp sang trái một hàng nữa.","8":"8 ở hàng chục nghìn — em đếm quá một hàng.","2":"2 ở hàng cao nhất của số. Đếm hàng từ phải sang."}'
+          data-fb-sai="Đếm hàng từ phải sang trái: đơn vị, chục, trăm, nghìn, chục nghìn, trăm nghìn."
+          data-ok="Đúng hết các ô của câu a, c, d!"></span>;
+        chữ số hàng trăm nghìn của <i>n</i> là <span data-fill data-gon="1" data-answer="2"
+          data-hint-sai='{"8":"8 ở hàng chục nghìn. Hàng trăm nghìn còn ở bên trái nữa.","0":"Số 0 cuối cùng ở hàng đơn vị; số 0 thứ hai ở hàng nghìn. Hàng trăm nghìn là hàng thứ sáu, đếm từ phải sang."}'
+          data-fb-sai="Hàng trăm nghìn là hàng thứ sáu, đếm từ phải sang."></span>.</p>
+    </div>
+    <div class="hide" id="vd1-b">
+      <p><b>b)</b> Viết tập hợp <i>M</i> các chữ số của <i>n</i>: bấm lần lượt từng chữ số của <i>n</i>.</p>
+      <div data-uniq data-loai="so" data-word="280650" data-name="M" data-mo-sau="#vd1-c"></div>
+    </div>
+    <div class="hide" id="vd1-c">
+      <div data-mo-khi="#vd1-d">
+        <p><b>c)</b> Chữ số 8 trong số <i>n</i> có giá trị bằng <span data-fill data-gon="1" data-answer="80000"
+            data-hint-sai='{"8":"8 là chữ số. Giá trị của nó phụ thuộc hàng: 8 đứng ở hàng nào?","8000":"8 ở hàng chục nghìn, không phải hàng nghìn. Chục nghìn = 10 000 — có mấy chữ số 0?","800000":"8 ở hàng chục nghìn chứ không phải trăm nghìn."}'
+            data-fb-sai="Giá trị = chữ số · giá trị của hàng (8 · 10 000)."></span>;
+          chữ số 6 có giá trị bằng <span data-fill data-gon="1" data-answer="600"
+            data-hint-sai='{"6":"6 là chữ số — giá trị của nó phụ thuộc hàng. 6 đứng ở hàng nào?","60":"6 ở hàng trăm, không phải hàng chục.","6000":"6 ở hàng trăm, không phải hàng nghìn."}'
+            data-fb-sai="Giá trị = chữ số · giá trị của hàng."></span>.</p>
       </div>
-      <div class="hide" data-t2-pane="1">
-        <div data-tg-may data-demo data-sai="1" data-lich="phep" data-bt="42 − ⟨30 + 8⟩"
-             data-loi="Cộng trước (sai!): gộp 30 + 8 trước|Rồi mới trừ"
-             data-cuoi="Ra <b>4</b> — sai! Chỉ có cộng và trừ thì làm từ trái qua phải: 42 − 30 trước."></div>
+      <div class="hide" id="vd1-d">
+        <p><b>d)</b> Biểu diễn <i>n</i> thành tổng giá trị các chữ số (viết gọn — bỏ các số hạng có chữ số 0): điền giá trị của mỗi hàng.</p>
+        <p class="p-dong m">280&nbsp;650 = 2 · <span data-fill data-gon="1" data-answer="100000"
+            data-hint-sai='{"10000":"Chữ số 2 ở hàng trăm nghìn. Trăm nghìn viết là 1 và mấy chữ số 0?","1000000":"Đó là một triệu — em đếm thừa một hàng."}'
+            data-fb-sai="Chữ số 2 ở hàng trăm nghìn."></span>
+          + 8 · <span data-fill data-gon="1" data-answer="10000" data-fb-sai="Chữ số 8 ở hàng chục nghìn — câu c) em đã tìm."></span>
+          + 6 · <span data-fill data-gon="1" data-answer="100" data-fb-sai="Chữ số 6 ở hàng trăm."></span>
+          + 5 · <span data-fill data-gon="1" data-answer="10" data-fb-sai="Chữ số 5 ở hàng chục."></span></p>
+        <p class="muted small">Vì sao được bỏ <span class="m">0 · 1&nbsp;000</span> và <span class="m">0 · 1</span>? Vì <span class="m"><i>a</i> · 0 = 0</span> (Chú ý Bài 5) và cộng với 0 thì tổng không đổi (Chú ý Bài 4).</p>
       </div>
-      <p class="hide small" data-t2-note="0"><b>Đúng:</b> mũi tên đọc từ trái sang — gộp <span class="m">42 − 30</span> trước.</p>
-      <p class="hide small" data-t2-note="1"><b>Sai:</b> gạch đỏ (và dòng đỏ ghi lại ở dưới máy) là chỗ gộp sai thứ tự — <span class="m">30 + 8</span> bị làm trước nên kết quả lệch hẳn.</p>
     </div>
-  </div>
-
-  <div class="act" data-act="trai-sang-phai">
-    <h4><span class="tag">HOẠT ĐỘNG 2</span> Em tính (số riêng của cô)</h4>
-    <p class="muted small">Gõ kết quả vào từng ô rồi bấm <b>Kiểm</b> (hoặc Enter).</p>
-    <p class="p-dong">a) <span class="m">50 − 20 + 10 =</span>
-      <span data-fill data-answer="40"
-            data-hint-sai='{"20":"Em đã cộng 20 + 10 trước rồi mới trừ. Chỉ có cộng và trừ thì làm theo chiều nào? Xem lại máy «trước / sau» ở trên.","60":"Soát lại: bước đầu là 50 − 20. Lấy kết quả đó cộng tiếp 10."}'
-            data-fb-sai="Chỉ có cộng và trừ: làm từ trái qua phải — 50 − 20 trước, rồi cộng 10."
-            data-ok="Đúng cả hai! 50 − 20 + 10 = 30 + 10 = 40 và 48 : 4 · 2 = 12 · 2 = 24 — cùng bậc thì đi từ trái qua phải."></span></p>
-    <p class="p-dong">b) <span class="m">48 : 4 · 2 =</span>
-      <span data-fill data-answer="24"
-            data-hint-sai='{"6":"Em đã nhân 4 · 2 trước. Nhân và chia cùng bậc — cùng bậc thì làm từ trái qua phải: phép nào đứng trước?","96":"Soát lại: bước đầu là 48 : 4 (phép đứng trước), rồi mới nhân 2."}'
-            data-fb-sai="Chỉ có nhân và chia: làm từ trái qua phải — 48 : 4 trước, rồi nhân 2."
-            data-ok="Đúng cả hai! 50 − 20 + 10 = 30 + 10 = 40 và 48 : 4 · 2 = 12 · 2 = 24 — cùng bậc thì đi từ trái qua phải."></span></p>
-  </div>
-
-  <div class="box key"><span class="label">📖 SGK (tiếp — vẫn là biểu thức không có dấu ngoặc)</span>
-    Nếu có các phép tính cộng, trừ, nhân, chia, nâng lên luỹ thừa thì ta thực hiện phép nâng lên luỹ thừa trước, rồi đến nhân và chia,
-    cuối cùng đến cộng và trừ. Chẳng hạn:
-    <p class="setline">1 + 2 · 3<sup>2</sup> = 1 + 2 · 9 = 1 + 18 = 19.</p>
-  </div>
-  <div class="box"><span class="label">Cô nói lại bằng cầu thang ba bậc — đi từ bậc trên cùng xuống</span>
-    <b class="c-l1">Bậc 1 (làm đầu tiên): nâng lên luỹ thừa</b> → <b class="c-l2">bậc 2: nhân và chia</b> (cùng bậc: trái qua phải) →
-    <b class="c-l3">bậc 3 (làm sau cùng): cộng và trừ</b> (cùng bậc: trái qua phải).
-  </div>
-  <div class="box tip"><span class="label">Nhớ lại Bài 6</span>
-    <span class="m"><i>a</i><sup><i>n</i></sup></span> là tích của <i>n</i> thừa số bằng nhau, mỗi thừa số bằng <i>a</i>. Vậy
-    <span class="m">6<sup>2</sup> = 6 · 6 = 36</span> — <b>không</b> phải 6 · 2 = 12; <span class="m">3<sup>4</sup> = 3 · 3 · 3 · 3 = 81</span> — không phải 3 · 4 = 12.<br>
-    ⚠️ Trong <span class="m">2 · 3<sup>2</sup></span>, số mũ 2 chỉ "dính" vào <b>số 3</b> thôi: <span class="m">2 · 3<sup>2</sup> = 2 · 9 = 18</span>,
-    <b>không</b> phải <span class="m">(2 · 3)<sup>2</sup> = 36</span>.
-  </div>
-  <div class="act">
-    <h4><span class="tag">CÔ LÀM MẪU</span> Máy thu gọn chạy ví dụ của SGK: 1 + 2 · 3²</h4>
-    <p class="muted small">Dấu mỗi phép tính mang màu bậc của nó. Trước mỗi lần bấm, em đoán xem phép nào làm trước. Bậc nào hết phép tính thì
-    <b>mờ đi</b> trên cầu thang. Không chấm điểm.</p>
-    <div data-tg-may data-demo data-bt="1 + 2 · 3²"></div>
-  </div>
-
-  <div class="act" data-act="ba-tang" data-can-het data-mo-sau="#ba-tang-sau">
-    <h4><span class="tag">HOẠT ĐỘNG 3</span> Em bấm phép tính làm trước (số riêng của cô)</h4>
-    <p class="muted small">Ở mỗi bước: bấm vào <b>dấu</b> (hoặc <b>số mũ</b>) của phép tính được làm trước, rồi gõ kết quả của phép ấy. Dấu để trắng —
-    em chọn đúng thì dấu mới hiện màu bậc. Bấm nhầm thì dấu lắc; nhầm lần nữa cô mới nhắc lí do. Một lượt mà bấm nhầm từ 3 lần trở lên thì em
-    làm lại lượt mới.</p>
-    <p class="p-dong"><b>a)</b> <span class="m">7 + 4 · 5<sup>2</sup></span></p>
-    <div data-tg-may id="tg-3a" data-bt="7 + 4 · 5²"
-         data-ok="Giỏi! 7 + 4 · 5² = 7 + 4 · 25 = 7 + 100 = 107: luỹ thừa → nhân → cộng."></div>
-    <p class="p-dong"><b>b)</b> <span class="m">90 : 3 · 2 − 2<sup>4</sup></span></p>
-    <div data-tg-may id="tg-3b" data-bt="90 : 3 · 2 − 2⁴"
-         data-ok="Giỏi! 90 : 3 · 2 − 2⁴ = 90 : 3 · 2 − 16 = 30 · 2 − 16 = 60 − 16 = 44. Chia và nhân cùng bậc: 90 : 3 đứng trước nên làm trước."></div>
-    <div class="hide" id="ba-tang-sau">
-      <p class="small"><b>Để ý:</b> ở câu b, nếu làm 3 · 2 trước thì được 90 : 6 − 16 = 15 − 16 — phép trừ không thực hiện được trong ℕ. Gặp chỗ
-      "không trừ được" như thế là dấu hiệu em đã làm sai thứ tự.</p>
-    </div>
-  </div>
-
-  <h3>1.3. 📖 Đọc hiểu – Nghe hiểu <span class="muted small">(SGK, tiếp) — phần 2: có dấu ngoặc</span></h3>
-  <div class="box key"><span class="label">📖 SGK</span>
-    <p><b>Đối với biểu thức có dấu ngoặc:</b></p>
-    <ul>
-      <li>Nếu chỉ có một dấu ngoặc thì ta thực hiện phép tính trong dấu ngoặc trước. Chẳng hạn:
-        <p class="setline">(10 + 5) : 5 = 15 : 5 = 3.</p></li>
-      <li>Nếu có các dấu ngoặc tròn ( ), dấu ngoặc vuông [ ], dấu ngoặc nhọn { } thì ta thực hiện các phép tính trong dấu ngoặc tròn trước,
-        rồi thực hiện các phép tính trong các dấu ngoặc vuông, cuối cùng thực hiện các phép tính trong dấu ngoặc nhọn. Chẳng hạn:
-        <p class="setline">{15 + 2 · [8 − (5 − 3)]} : 9 = {15 + 2 · [8 − 2]} : 9<br>= {15 + 2 · 6} : 9 = {15 + 12} : 9 = 27 : 9 = 3.</p></li>
-    </ul>
-  </div>
-  <div class="box"><span class="label">Cô nói lại bằng hộp lồng nhau</span>
-    Ngoặc tròn là hộp <b>trong cùng</b> ①, ngoặc vuông bọc ngoài nó ②, ngoặc nhọn bọc ngoài cùng ③. Mở hộp trong cùng trước. Trong
-    <b>mỗi</b> hộp vẫn theo cầu thang ba bậc: trong <span class="m">{15 + 2 · 6}</span> phải nhân <span class="m">2 · 6</span> trước rồi mới cộng.
-  </div>
-  <div class="act">
-    <h4><span class="tag">CÔ LÀM MẪU</span> Hai ví dụ của SGK — hộp trong cùng tan trước</h4>
-    <p class="muted small">Khi trong ngoặc chỉ còn một số, dấu ngoặc bung ra rồi biến mất. Không chấm điểm.</p>
-    <div data-tg-may data-demo data-bt="(10 + 5) : 5"></div>
-    <div data-tg-may data-demo data-bt="{15 + 2 · [8 − (5 − 3)]} : 9"></div>
-  </div>
-
-  <div class="box"><span class="label">Luỹ thừa của cả một ngoặc <span class="muted small">(cô soạn thêm — chuẩn bị cho Bài tập 1.46c)</span></span>
-    Số mũ viết sát <b>dấu ngoặc đóng</b> là số mũ của <b>cả ngoặc</b>: làm trong ngoặc trước, rồi mới nâng kết quả lên luỹ thừa. Máy dưới đây
-    chạy <span class="m">(1 + 3)<sup>2</sup></span>; còn <span class="m">1 + 3<sup>2</sup> = 1 + 9 = 10</span> là một biểu thức <b>khác</b>.
-    <div data-tg-may data-demo data-bt="(1 + 3)²"></div>
-  </div>
-
-  <div class="act" data-act="ngoac" data-can-het>
-    <h4><span class="tag">HOẠT ĐỘNG 4</span> Em mở hộp (số riêng của cô)</h4>
-    <p class="muted small">Máy em tự bấm: dấu để trắng, chọn đúng mới hiện màu. Bấm nhầm từ 3 lần trở lên trong một lượt thì làm lại lượt mới.</p>
-    <p class="p-dong"><b>a)</b> <span class="m">{20 − [3 + (6 − 2) · 2]} : 3</span> — bấm phép làm trước ở mỗi bước, rồi gõ kết quả.</p>
-    <div data-tg-may id="tg-4a" data-bt="{20 − [3 + (6 − 2) · 2]} : 3"
-         data-ok="Giỏi! ( ) trước: 6 − 2 = 4; trong [ ] nhân trước cộng: 4 · 2 = 8, 3 + 8 = 11; rồi { }: 20 − 11 = 9; cuối cùng 9 : 3 = 3."></div>
-    <p class="p-dong"><b>b)</b> <span class="m">[20 − (1 + 2)<sup>2</sup>] · 2</span> — số mũ 2 viết sát dấu ngoặc đóng. Bấm phép làm trước ở mỗi bước.</p>
-    <div data-tg-may id="tg-4b" data-bt="[20 − (1 + 2)²] · 2"
-         data-ok="Giỏi! [20 − (1 + 2)²] · 2 = [20 − 3²] · 2 = [20 − 9] · 2 = 11 · 2 = 22 — số mũ 2 là của cả ngoặc (1 + 2), nên tính trong ngoặc trước rồi mới nâng lên luỹ thừa."></div>
-  </div>
-
-  <h3>1.4. 📌 Kiến thức trọng tâm</h3>
-  <div class="box key"><span class="label">📌 Kiến thức trọng tâm (SGK)</span>
-    <p>❶ Với các biểu thức không có dấu ngoặc: <b>Luỹ thừa → Nhân và chia → Cộng và trừ.</b></p>
-    <p>❷ Với các biểu thức có dấu ngoặc: trong ngoặc trước, ngoài ngoặc sau</p>
-    <p class="setline">( ) → [ ] → { }.</p>
-    <div class="kt-hinh">
-      <figure>
-        <svg viewBox="0 0 250 124" width="250" height="124" role="img" aria-label="Cầu thang ba bậc: bậc 1 luỹ thừa, bậc 2 nhân và chia, bậc 3 cộng và trừ">
-          <rect class="kt-bac" x="6" y="6" width="150" height="32" rx="7" fill="var(--l1-nen)" stroke="var(--l1)"/>
-          <text class="kt-chu" x="16" y="22" fill="var(--l1)">1 · Luỹ thừa</text>
-          <rect class="kt-bac" x="40" y="46" width="170" height="32" rx="7" fill="var(--l2-nen)" stroke="var(--l2)"/>
-          <text class="kt-chu" x="50" y="62" fill="var(--l2)">2 · Nhân và chia</text>
-          <rect class="kt-bac" x="74" y="86" width="170" height="32" rx="7" fill="var(--l3-nen)" stroke="var(--l3)"/>
-          <text class="kt-chu" x="84" y="102" fill="var(--l3)">3 · Cộng và trừ</text>
-        </svg>
-        <figcaption>❶ Không có ngoặc: đi <b>xuống</b> cầu thang — bậc trên làm trước</figcaption>
-      </figure>
-      <figure>
-        <svg class="kt-hop" id="kt-hop" viewBox="0 0 300 130" width="300" height="130" role="group" aria-label="Ba hộp lồng nhau bấm được: ngoặc tròn trong cùng, ngoặc vuông, ngoặc nhọn ngoài cùng">
-          <g class="kt-h3" tabindex="0" role="button" aria-label="hộp ngoặc nhọn ③"><rect x="4" y="4" width="292" height="122" rx="14" fill="var(--k3)" stroke="#94a3b8" stroke-width="1.5"/>
-            <text class="kt-so" x="36" y="20">③ { }</text></g>
-          <g class="kt-h2" tabindex="0" role="button" aria-label="hộp ngoặc vuông ②"><rect x="46" y="30" width="208" height="86" rx="12" fill="var(--k2)" stroke="#94a3b8" stroke-width="1.5"/>
-            <text class="kt-so" x="80" y="45">② [ ]</text></g>
-          <g class="kt-h1" tabindex="0" role="button" aria-label="hộp ngoặc tròn ①"><rect x="90" y="60" width="120" height="44" rx="10" fill="var(--k1)" stroke="#64748b" stroke-width="1.5"/>
-            <text class="kt-so" x="150" y="82">① ( )</text></g>
-        </svg>
-        <figcaption>❷ Có ngoặc: <b>bấm vào hộp</b> để mở — hộp nào mở trước? (mở rồi thì còn viền đứt)</figcaption>
-        <p class="kt-ghi" id="kt-ghi" aria-live="polite">Bấm vào một hộp để mở — hộp nào mở trước?</p>
-        <p class="kt-ghi"><button type="button" class="btn ghost hide" id="kt-lai">Đóng hộp lại</button></p>
-      </figure>
-    </div>
-  </div>
-
-  <h3>1.5. ❓ Câu hỏi (SGK)</h3>
-  <div class="act" data-act="cau-hoi" data-can-het>
-    <h4><span class="tag">HOẠT ĐỘNG 5</span> Trong tình huống mở đầu, bạn nào làm đúng theo quy ước trên?</h4>
-    <div class="ch-thang" id="ch-thang" aria-hidden="true">
-      <span class="mau-bac tg-l1" data-bac="1">1 · Luỹ thừa</span><span class="mau-bac tg-l2" data-bac="2">2 · Nhân và chia</span><span class="mau-bac tg-l3" data-bac="3">3 · Cộng và trừ</span>
-    </div>
-    <p class="p-dong"><b>①</b>
-      <span data-mcq id="ch-q1" data-options="Tròn;Vuông;Cả hai bạn đều đúng" data-answer="Vuông" data-mo-sau="#ch-vi" data-fb-o="#fb-ch1"
-            data-fb-sai="Nhìn cầu thang: phép cộng ở bậc nào, phép nhân ở bậc nào?"
-            data-fb-lua-chon='{"Tròn":"Tròn cộng trước. Nhìn cầu thang ngay trên (hai bậc đang nháy): phép nhân ở bậc nào, phép cộng ở bậc nào? Bậc nào đi trước?","Cả hai bạn đều đúng":"Quy ước sinh ra để làm gì — để một biểu thức có MỘT kết quả hay hai? Theo ❶, phép nào làm trước?"}'></span></p>
-    <div class="fb" id="fb-ch1"></div>
-    <div class="hide" id="ch-vi">
-      <p class="p-dong"><b>②</b> Vì sao Vuông làm đúng?<br>
-        <span data-mcq data-options="Vì 11 nhỏ hơn 16 — kết quả nhỏ hơn là đúng;Vì phép nhân ở bậc 2, phải làm trước phép cộng ở bậc 3;Vì cứ tính lần lượt từ trái sang phải;Vì Vuông tính cẩn thận hơn Tròn"
-              data-answer="Vì phép nhân ở bậc 2, phải làm trước phép cộng ở bậc 3" data-mo-sau="#ch-b"
-              data-fb-sai="Quy ước ❶ nói về điều gì: kết quả, hay phép nào làm trước?"
-              data-fb-lua-chon='{"Vì 11 nhỏ hơn 16 — kết quả nhỏ hơn là đúng":"Quy ước không so kết quả lớn hay nhỏ — nó nói phép nào làm trước. Nhìn cầu thang.","Vì cứ tính lần lượt từ trái sang phải":"Tính lần lượt từ trái sang phải thì phải cộng 5 + 3 trước — đó lại là cách của Tròn. «Từ trái qua phải» chỉ dùng khi các phép tính cùng một bậc.","Vì Vuông tính cẩn thận hơn Tròn":"Cả hai bạn đều tính đúng từng phép (5 + 3 = 8, 3 × 2 = 6). Chỗ khác nhau là thứ tự — quy ước ❶ nói gì?"}'></span></p>
-      <div class="fb fb-mcq"></div>
-    </div>
-    <div class="hide" id="ch-b">
-      <p class="small" id="nhac-doan">Ở Mở đầu em chưa bấm đoán — không sao, giờ em biết rồi.</p>
-      <p class="p-dong"><b>③</b> Một biểu thức cùng kiểu, số khác — tính theo quy ước: <span class="m">7 + 2 × 4 =</span>
-        <span data-fill data-answer="15"
-              data-hint-sai='{"36":"Em đang cộng 7 + 2 trước giống Tròn. Phép nhân ở bậc nào, phép cộng ở bậc nào?","13":"Giữa 2 và 4 là dấu nhân, không phải dấu cộng.","14":"Soát lại: 2 × 4 bằng mấy? Rồi cộng với 7."}'
-              data-fb-sai="Nhân trước, cộng sau: 2 × 4 trước, rồi cộng với 7."
-              data-ok="Đúng! 7 + 2 × 4 = 7 + 8 = 15 — nhân trước, cộng sau, đúng như Vuông làm ở Mở đầu (5 + 3 × 2 = 5 + 6 = 11)."></span></p>
-    </div>
-  </div>
-
-  <h3>1.6. Ví dụ (SGK)</h3>
-  <p>Tính giá trị của các biểu thức sau: a) <span class="m">8 + 36 : 3 · 2</span>; &nbsp; b) <span class="m">[1 + 2 · (5 · 3 − 2<sup>3</sup>)] · 7</span>.</p>
-  <div class="act">
-    <h4><span class="tag">CÔ LÀM MẪU</span> Lời giải hiện dần — phép sắp làm được gạch chân bằng màu bậc của nó</h4>
-    <p class="muted small"><b>Trước khi bấm:</b> ở câu a, phép tính nào làm <b>đầu tiên</b> — <span class="m">36 : 3</span> hay <span class="m">3 · 2</span>? Đoán
-    rồi bấm «Bước tiếp» để đối chiếu. Không chấm điểm.</p>
-    <p class="p-dong"><b>a)</b></p>
-    <div data-tg-may data-demo data-bt="8 + 36 : 3 · 2"
-         data-cuoi="Giá trị của biểu thức là <b>32</b> (SGK: nhân, chia từ trái sang phải trước, cộng sau). Nếu làm 3 · 2 trước thì ra 8 + 6 = 14 — sai."></div>
-    <p class="p-dong"><b>b)</b></p>
-    <div data-tg-may data-demo data-bt="[1 + 2 · (5 · 3 − 2³)] · 7"
-         data-cuoi="Giá trị của biểu thức là <b>105</b> (SGK: thực hiện trong ngoặc trước; trong ngoặc: luỹ thừa → nhân → cộng)."></div>
-    <button class="btn" data-reveal="#rv-vi-du" data-open="Em chạy xong hai máy rồi — xem lời giải SGK" data-close="Ẩn lời giải SGK">Em chạy xong hai máy rồi — xem lời giải SGK</button>
-    <div class="reveal" id="rv-vi-du">
-      <p><b>Giải</b> <span class="muted small">(nguyên văn SGK)</span></p>
-      <p class="setline">a) 8 + 36 : 3 · 2 = 8 + 12 · 2 = 8 + 24 = 32. &nbsp; <span class="muted small">← <i>Nhân, chia từ trái sang phải trước, cộng sau</i></span></p>
-      <p class="setline">b) [1 + 2 · (5 · 3 − 2<sup>3</sup>)] · 7 = [1 + 2 · (5 · 3 − 8)] · 7 &nbsp; <span class="muted small">← <i>Thực hiện trong ngoặc trước; trong ngoặc: luỹ thừa → nhân → cộng</i></span></p>
-      <p class="setline">= [1 + 2 · (15 − 8)] · 7 = [1 + 2 · 7] · 7</p>
-      <p class="setline">= [1 + 14] · 7 = 15 · 7 = 105.</p>
-    </div>
-  </div>
-
-  <h3>1.7. Luyện tập 1 (SGK)</h3>
-  <div class="act" data-act="luyen-tap-1" data-mo-sau="#lt1-dc">
-    <h4><span class="tag">HOẠT ĐỘNG 6</span> Tính giá trị của các biểu thức sau</h4>
-    <p class="muted small">Làm ra nháp từng bước (mỗi bước một dòng), rồi gõ giá trị vào ô.</p>
-    <p class="p-dong">a) <span class="m">25 · 2<sup>3</sup> − 3<sup>2</sup> + 125 =</span>
-      <span data-fill data-answer="316"
-            data-hint-sai='{"266":"Soát lại 2³: 2³ là tích của mấy thừa số 2? (2³ không phải 2 · 3.)","319":"Soát lại 3²: 3² = 3 · 3, không phải 3 · 2.","269":"Soát lại cả hai luỹ thừa 2³ và 3²: mỗi luỹ thừa là tích của các thừa số bằng nhau.","66":"Em đã cộng 9 + 125 trước rồi mới trừ. Tính xong luỹ thừa và nhân thì chỉ còn trừ và cộng: làm theo chiều nào? (Máy bên dưới chạy lại đúng cách em đã làm.)"}'
-            data-may-sai='{"66":{"bt":"⟨25 · 2³⟩ − ⟨3² + 125⟩","ghi":"Ra 66 vì phép cộng 9 + 125 bị làm trước phép trừ. Sau luỹ thừa và nhân chỉ còn trừ, cộng (cùng bậc): từ trái qua phải."}}'
-            data-fb-sai="Soát lại từng bước: luỹ thừa trước (2³ và 3²), rồi nhân, cuối cùng trừ và cộng từ trái qua phải."></span></p>
-    <p class="p-dong">b) <span class="m">2 · 3<sup>2</sup> + 5 · (2 + 3) =</span>
-      <span data-fill data-answer="43"
-            data-hint-sai='{"61":"Em đã tính (2 · 3)². Số mũ 2 chỉ «dính» vào số 3 thôi — luỹ thừa làm trước phép nhân. (Máy bên dưới chạy lại cách em đã làm.)","37":"Soát lại 3²: 3² = 3 · 3, không phải 3 · 2.","31":"Em đã bỏ ngoặc: 5 · (2 + 3) phải tính trong ngoặc trước thành 5 · 5 — không phải 5 · 2 + 3. (Máy bên dưới chạy lại cách em đã làm.)","205":"Em đã nhân 2 · 3 trước khi nâng lên luỹ thừa, rồi cộng 5 trước khi nhân. Luỹ thừa trước nhân, nhân trước cộng. (Máy bên dưới chạy lại cách em đã làm.)"}'
-            data-may-sai='{"61":{"bt":"⟨2 · 3⟩² + 5 · (2 + 3)","ghi":"Ra 61 vì 2 · 3 bị làm trước luỹ thừa: số mũ 2 chỉ của số 3."},"31":{"bt":"2 · 3² + 5 · 2 + 3","nhan":"kết quả khi bỏ mất ngoặc","ghi":"Máy tính đúng thứ tự — nhưng trên biểu thức đã mất ngoặc: 5 chỉ nhân với 2. Đúng ra 5 nhân với CẢ (2 + 3)."},"205":{"bt":"⟨⟨2 · 3⟩² + 5⟩ · (2 + 3)","ghi":"Ra 205 vì đi lần lượt từ trái sang: 2 · 3 trước luỹ thừa, cộng 5 trước phép nhân."}}'
-            data-fb-sai="Soát lại: trong ngoặc trước, rồi luỹ thừa, rồi hai phép nhân, cuối cùng cộng."
-            data-ok="Đúng cả hai! a) 316; b) 43. Em bấm «xem đối chiếu» để so từng dòng với bài của mình."></span></p>
     <div class="fb fb-dien"></div>
-    <div class="hide" id="lt1-dc">
-      <button class="btn" data-reveal="#rv-lt1" data-open="Em làm xong rồi — xem đối chiếu" data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
-      <div class="reveal" id="rv-lt1">
-        <p class="setline">a) 25 · 2<sup>3</sup> − 3<sup>2</sup> + 125 = 25 · 8 − 9 + 125 = 200 − 9 + 125 = 191 + 125 = 316.</p>
-        <p class="setline">b) 2 · 3<sup>2</sup> + 5 · (2 + 3) = 2 · 3<sup>2</sup> + 5 · 5 = 2 · 9 + 5 · 5 = 18 + 25 = 43.</p>
+    <div class="hide" id="vd1-dc">
+      <button class="btn" data-reveal="#rv-vd1" data-open="Em làm xong rồi — xem lời giải SGK" data-close="Ẩn lời giải SGK">Em làm xong rồi — xem lời giải SGK</button>
+      <div class="reveal" id="rv-vd1">
+        <p><b>Giải (SGK).</b> a) Chữ số hàng nghìn của <i>n</i> là 0; chữ số hàng trăm nghìn của <i>n</i> là 2.</p>
+        <p>b) <span class="m"><i>M</i> = {2; 8; 0; 6; 5}</span>.</p>
+        <p>c) Chữ số 8 nằm ở hàng chục nghìn nên có giá trị bằng <span class="m">8 · 10&nbsp;000 = 80&nbsp;000</span>; chữ số 6 nằm ở hàng trăm nên có giá trị bằng
+          <span class="m">6 · 100 = 600</span>.</p>
+        <p>d) <span class="m">280&nbsp;650 = 2 · 100&nbsp;000 + 8 · 10&nbsp;000 + 0 · 1&nbsp;000 + 6 · 100 + 5 · 10 + 0 · 1</span>, viết gọn là
+          <span class="m">280&nbsp;650 = 2 · 100&nbsp;000 + 8 · 10&nbsp;000 + 6 · 100 + 5 · 10</span>.</p>
+        <p class="muted small">Để ý: số <i>n</i> có <b>6 chữ số</b> nhưng tập <i>M</i> chỉ có <b>5 phần tử</b> — chữ số 0 có mặt hai lần, chỉ viết một lần.</p>
       </div>
     </div>
   </div>
 
-  <div class="moc-nghi" role="note"><b>✔ Xong phần quy ước!</b> Em đã biết: cầu thang ba bậc, từ trái qua phải khi cùng bậc, hộp ngoặc mở từ trong ra
-    ngoài. Đứng dậy vươn vai một phút rồi sang phần sau: dùng quy ước để giải bài toán thực tế và tính biểu thức có chữ.</div>
+  <div class="act" data-act="vi-du-2" data-can-het data-mo-sau="#vd2-dc">
+    <h4><span class="tag">HOẠT ĐỘNG 4</span> Ví dụ 2 (SGK) — khách du lịch quốc tế</h4>
+    <p>Số khách du lịch quốc tế đến nước ta trong quý I và quý II của một năm lần lượt là 6&nbsp;526&nbsp;300 người và 3&nbsp;514&nbsp;500 người. Để hoàn thành kế hoạch cả
+      năm đón 22&nbsp;000&nbsp;000 khách du lịch quốc tế, hai quý cuối năm đó ngành du lịch Việt Nam phải phấn đấu có bao nhiêu khách du lịch quốc tế đến thăm
+      đất nước ta?</p>
+    <div data-mo-khi="#vd2-b">
+      <p><b>①</b> Hai quý đầu năm: <span class="m">6&nbsp;526&nbsp;300 + 3&nbsp;514&nbsp;500 =</span> <span data-fill data-answer="10040800" data-unit="người"
+          data-hint-sai='{"9040800":"Cột hàng triệu: 6 + 3 cộng thêm số nhớ từ hàng trăm nghìn (5 + 5 = 10, viết 0 nhớ 1) — em quên nhớ 1?","10040000":"Soát lại cột hàng trăm: 3 + 5 = ?"}'
+          data-ok="Đúng! Hai quý đầu đã đón 10 040 800 người. Sang bước ②."></span></p>
+    </div>
+    <div class="hide" id="vd2-b">
+      <p><b>②</b> Cả năm là <b>cả thanh</b> 22&nbsp;000&nbsp;000; hai quý đầu là <b>một phần</b>. Gọi <i>x</i> là số khách hai quý cuối — em chọn cách tìm <i>x</i> rồi tính.</p>
+      <div data-timx>
+        <div data-cau="10 040 800 + x = 22 000 000" data-x="11959200"
+             data-hint-sai='{"12040800":"Trừ từng cột từ phải sang, có nhớ: soát lại cột hàng triệu và hàng trăm nghìn.","11960800":"Soát lại cột hàng nghìn và hàng trăm (trừ có nhớ)."}'></div>
+      </div>
+    </div>
+    <div class="hide" id="vd2-dc">
+      <button class="btn" data-reveal="#rv-vd2" data-open="Em làm xong rồi — xem lời giải SGK" data-close="Ẩn lời giải SGK">Em làm xong rồi — xem lời giải SGK</button>
+      <div class="reveal" id="rv-vd2">
+        <p><b>Giải (SGK).</b> Trong hai quý đầu năm, số khách du lịch quốc tế đến Việt Nam là <span class="m">6&nbsp;526&nbsp;300 + 3&nbsp;514&nbsp;500 = 10&nbsp;040&nbsp;800</span> (người).</p>
+        <p>Để đạt kế hoạch 22&nbsp;000&nbsp;000 du khách, số khách du lịch quốc tế đến Việt Nam trong hai quý cuối năm cần đạt là
+          <span class="m">22&nbsp;000&nbsp;000 − 10&nbsp;040&nbsp;800 = 11&nbsp;959&nbsp;200</span> (người).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="act" data-act="vi-du-3" data-mo-sau="#vd3-dc">
+    <h4><span class="tag">HOẠT ĐỘNG 5</span> Ví dụ 3 (SGK) — ánh sáng từ Mặt Trời</h4>
+    <figure class="vd3-hinh">
+      <svg viewBox="0 0 560 130" role="img" aria-label="Mặt Trời bên trái, Trái Đất bên phải, tia sáng đi từ Mặt Trời tới Trái Đất hết 8 phút 19 giây; mỗi giây đi khoảng 300 000 km">
+        <defs><radialGradient id="vd3-quang"><stop offset="0" stop-color="#fde047" stop-opacity=".9"/><stop offset="1" stop-color="#fde047" stop-opacity="0"/></radialGradient></defs>
+        <circle cx="62" cy="62" r="58" fill="url(#vd3-quang)"/>
+        <circle cx="62" cy="62" r="34" fill="#f59e0b"/>
+        <text class="vd3-chu" x="62" y="118">Mặt Trời</text>
+        <circle cx="500" cy="62" r="18" fill="#3b82f6"/><path d="M486 56 q8 -8 16 -2 q6 4 12 0" fill="none" stroke="#22c55e" stroke-width="4"/>
+        <text class="vd3-chu" x="500" y="104">Trái Đất</text>
+        <path class="vd3-tia" d="M104 62 H470"/><path d="M462 55 L476 62 L462 69 Z" fill="#b45309"/>
+        <text class="vd3-chu dam" x="287" y="46">8 phút 19 giây</text>
+        <text class="vd3-chu" x="287" y="88">mỗi giây ≈ 300&nbsp;000 km</text>
+      </svg>
+    </figure>
+    <p>Ánh sáng đi từ Mặt Trời đến Trái Đất hết khoảng 8 phút 19 giây, mỗi giây ánh sáng đi được khoảng 300&nbsp;000 km (theo <i>vnexpress.net</i>). Hỏi Trái Đất
+      cách Mặt Trời khoảng bao nhiêu kilômet?</p>
+    <div data-mo-khi="#vd3-b">
+      <p><b>①</b> 1 phút = 60 giây, nên 8 phút = <span data-fill data-gon="1" data-answer="480" data-unit="giây"
+          data-hint-sai='{"800":"1 phút là 60 giây chứ không phải 100 giây.","68":"8 phút là 8 lần 60 giây — nhân, không cộng.","8":"Đổi ra giây: 8 phút gồm 8 lần 60 giây."}'
+          data-fb-sai="8 phút = 60 giây · 8."
+          data-ok="Đúng cả ba bước — xem lời giải SGK ở dưới."></span></p>
+    </div>
+    <div class="hide" id="vd3-b" data-mo-khi="#vd3-c">
+      <p><b>②</b> Thời gian ánh sáng đi: 8 phút 19 giây = <span data-fill data-gon="1" data-answer="499" data-unit="giây"
+          data-hint-sai='{"819":"8 phút 19 giây không viết liền thành 819 — đổi 8 phút ra giây ở bước ① rồi cộng thêm 19 giây.","480":"Còn 19 giây nữa.","79":"Em cộng 60 + 19 — nhưng có 8 phút chứ không phải 1 phút."}'
+          data-fb-sai="Lấy số giây của 8 phút (bước ①) cộng 19 giây."></span></p>
+    </div>
+    <div class="hide" id="vd3-c">
+      <div class="box tip"><span class="label">Nhớ lại (lớp dưới)</span>
+        Nhân với số có tận cùng là chữ số 0: nhân phần khác 0 trước, rồi <b>viết thêm vào bên phải</b> bấy nhiêu chữ số 0.</div>
+      <p><b>③</b> Khoảng cách: <span class="m">499 · 300&nbsp;000 =</span> <span data-fill data-answer="149700000" data-unit="km"
+          data-hint-sai='{"14970000":"300 000 có mấy chữ số 0? Tích của em có mấy chữ số 0 ở cuối? Đếm lại.","1497000000":"300 000 có mấy chữ số 0? Tích của em có mấy chữ số 0 ở cuối? Đếm lại.","1497":"Còn các chữ số 0 của 300 000 — viết thêm vào bên phải.","1497000":"300 000 có mấy chữ số 0? Tích của em có mấy chữ số 0 ở cuối? Đếm lại.","243900000":"Em đã nhân 813 hay 819 với 300 000? Dùng số giây ở bước ②."}'
+          data-fb-sai="Tính 499 · 3 trước, rồi viết thêm các chữ số 0 của 300 000."></span></p>
+    </div>
+    <div class="fb fb-dien"></div>
+    <div class="hide" id="vd3-dc">
+      <button class="btn" data-reveal="#rv-vd3" data-open="Em làm xong rồi — xem lời giải SGK" data-close="Ẩn lời giải SGK">Em làm xong rồi — xem lời giải SGK</button>
+      <div class="reveal" id="rv-vd3">
+        <p><b>Giải (SGK).</b> 1 phút = 60 giây; 8 phút = 60 giây · 8 = 480 (giây). Thời gian ánh sáng đi từ Mặt Trời đến Trái Đất khoảng
+          <span class="m">480 + 19 = 499</span> (giây). Mỗi giây ánh sáng đi được khoảng 300&nbsp;000 km nên Mặt Trời cách Trái Đất khoảng
+          <span class="m">499 · 300&nbsp;000 = 149&nbsp;700&nbsp;000</span> (km).</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- ========= 2. VẬN DỤNG — BIỂU THỨC CÓ CHỮ — BÀI TOÁN LỜI VĂN ========= -->
-<section id="van-dung">
-  <h2>2. Vận dụng — biểu thức có chữ — bài toán lời văn</h2>
+<!-- ======================= 3. BA DẠNG MỚI ======================= -->
+<section id="chuan-bi">
+  <h2>3. Trước khi làm bài tập — ba dạng mới (số riêng của cô)</h2>
+  <p class="muted">Bài tập 1.31, 1.32, 1.35 có ba dạng mà các bài trước chưa làm mẫu. Cô soạn ba câu cùng kiểu nhưng khác số, khác cách hỏi.</p>
 
-  <h3>2.1. Vận dụng (SGK)</h3>
-  <p>Một người đi xe đạp trong 5 giờ. Trong 3 giờ đầu, người đó đi với vận tốc 14 km/h; 2 giờ sau, người đó đi với vận tốc 9 km/h.</p>
-  <p>a) Tính quãng đường người đó đi được trong 3 giờ đầu; trong 2 giờ sau. &nbsp; b) Tính quãng đường người đó đi được trong 5 giờ.</p>
-  <div class="box tip"><span class="label">Nhớ lại (lớp dưới)</span>
-    <b>Quãng đường = vận tốc × thời gian.</b> Vận tốc 14 km/h nghĩa là <b>mỗi giờ</b> đi được 14 km.
-  </div>
-  <div class="act" data-act="van-dung" data-can-het id="act-van-dung" data-mo-sau="#vd-dc">
-    <h4><span class="tag">HOẠT ĐỘNG 7</span> Quãng đường xe đạp</h4>
-    <figure style="margin:6px 0">
-      <svg class="vd-hinh chua-to" id="vd-so-do" viewBox="0 0 640 176" role="img" aria-label="Sơ đồ 5 ô, mỗi ô là một giờ: ba ô 14 km, hai ô 9 km">
-        <path class="vd-ng3" d="M40 50 v-10 h560 v10"/>
-        <text class="vd-chu nho" x="316" y="24" style="text-anchor:end">cả 5 giờ:</text>
-        <text class="vd-chu l3 vd-hoi b" x="324" y="24" style="text-anchor:start">? km</text><text class="vd-chu l3 vd-kq b" x="324" y="24" style="text-anchor:start">60 km</text>
-        <rect class="vd-o g3" x="40" y="56" width="112" height="46" rx="6" style="animation-delay:0s"/><text class="vd-chu" x="96" y="79">14 km</text>
-        <rect class="vd-o g3" x="152" y="56" width="112" height="46" rx="6" style="animation-delay:.25s"/><text class="vd-chu" x="208" y="79">14 km</text>
-        <rect class="vd-o g3" x="264" y="56" width="112" height="46" rx="6" style="animation-delay:.5s"/><text class="vd-chu" x="320" y="79">14 km</text>
-        <rect class="vd-o g2" x="376" y="56" width="112" height="46" rx="6" style="animation-delay:.75s"/><text class="vd-chu" x="432" y="79">9 km</text>
-        <rect class="vd-o g2" x="488" y="56" width="112" height="46" rx="6" style="animation-delay:1s"/><text class="vd-chu" x="544" y="79">9 km</text>
-        <path class="vd-ng2" d="M40 110 v10 h336 v-10"/>
-        <text class="vd-chu nho" x="208" y="133">3 giờ đầu</text>
-        <text class="vd-chu l2 vd-hoi a" x="208" y="162">? km</text><text class="vd-chu l2 vd-kq a" x="208" y="162">42 km</text>
-        <path class="vd-ng2" d="M376 110 v10 h224 v-10"/>
-        <text class="vd-chu nho" x="488" y="133">2 giờ sau</text>
-        <text class="vd-chu l2 vd-hoi a" x="488" y="162">? km</text><text class="vd-chu l2 vd-kq a" x="488" y="162">18 km</text>
-      </svg>
-      <figcaption>Mỗi ô là <b>một giờ</b>; trong ô ghi số km đi được trong giờ đó.</figcaption>
-    </figure>
-    <div id="vd-a" data-mo-khi="#vd-b">
-      <p class="p-dong">a) Quãng đường 3 giờ đầu:
-        <span data-fill data-answer="42" data-unit="km"
-              data-hint-sai='{"17":"Em đã cộng 14 + 3. Vận tốc 14 km/h nghĩa là MỖI giờ đi 14 km — nhìn 3 ô đang nháy trên sơ đồ: 3 giờ thì sao?"}'
-              data-fb-sai="Quãng đường = vận tốc × thời gian: 14 km mỗi giờ, trong 3 giờ."></span></p>
-      <p class="p-dong">&nbsp;&nbsp;&nbsp; Quãng đường 2 giờ sau:
-        <span data-fill data-answer="18" data-unit="km"
-              data-hint-sai='{"11":"9 km/h trong 2 giờ: mỗi giờ 9 km — nhìn 2 ô đang nháy: hai giờ là…? (không phải 9 + 2)"}'
-              data-fb-sai="Quãng đường = vận tốc × thời gian: 9 km mỗi giờ, trong 2 giờ."></span></p>
-    </div>
-    <div class="hide" id="vd-b">
-      <p class="p-dong">b) Chọn biểu thức tính quãng đường đi được trong 5 giờ:<br>
-        <span data-mcq data-options="(14 + 9) · 5;14 · 3 + 9 · 2;14 · 3 + 9;14 + 9" data-answer="14 · 3 + 9 · 2" data-mo-sau="#vd-b2"
-              data-fb-sai="Nhìn sơ đồ 5 ô: cả quãng đường gồm hai đoạn nào?"
-              data-fb-lua-chon='{"(14 + 9) · 5":"Biểu thức này tính như thể MỖI giờ người đó đi (14 + 9) km, suốt 5 giờ. Nhìn sơ đồ: có ô nào ghi 23 km không?","14 · 3 + 9":"14 · 3 là quãng đường 3 giờ đầu. Còn 2 giờ sau, mỗi giờ 9 km — chỉ cộng 9 là mới tính một giờ.","14 + 9":"14 + 9 mới là hai ô của sơ đồ (một giờ đầu và một giờ sau). Cả 5 ô thì sao?"}'></span></p>
-      <div class="fb fb-mcq"></div>
-      <div class="hide" id="vd-b2">
-        <p class="small">Nhìn lại sơ đồ: ngoặc <b class="c-l2">xanh cổ vịt</b> — mỗi đoạn là một phép <b>nhân</b> (số km mỗi giờ × số giờ); ngoặc
-        <b class="c-l3">vàng nghệ</b> — <b>cộng</b> hai đoạn lại.</p>
-        <p class="p-dong">Tính: <span class="m">14 · 3 + 9 · 2 =</span>
-          <span data-fill data-answer="60" data-unit="km"
-                data-hint-sai='{"115":"Có giờ nào người đó đi được 14 + 9 = 23 km không? Nhìn từng ô của sơ đồ.","23":"23 = 14 + 9 — mới chỉ là hai ô của sơ đồ.","42":"42 km mới là 3 giờ đầu. Còn 2 giờ sau nữa.","18":"18 km mới là 2 giờ sau. Còn 3 giờ đầu nữa.","102":"Em đang tính lần lượt từ trái sang (14 · 3 + 9 rồi mới nhân 2). Hai phép nhân làm trước, rồi mới cộng.","336":"Em đã cộng 3 + 9 trước. Phép nhân ở bậc 2, phép cộng ở bậc 3 — phép nào trước?","294":"Em đã cộng 3 với 9 · 2 trước rồi mới nhân 14. Hai phép nhân 14 · 3 và 9 · 2 làm trước, rồi mới cộng."}'
-                data-fb-sai="Nhân trước, cộng sau: tính 14 · 3 và 9 · 2, rồi cộng hai kết quả."
-                data-ok="Đúng rồi! Quãng đường 5 giờ: 14 · 3 + 9 · 2 = 42 + 18 = 60 (km)."></span></p>
-      </div>
-    </div>
-    <div class="hide" id="vd-dc">
-      <button class="btn" data-reveal="#rv-vd" data-open="Em làm xong rồi — xem đối chiếu" data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
-      <div class="reveal" id="rv-vd">
-        <p>a) Quãng đường đi trong 3 giờ đầu: <span class="m">14 · 3 = 42</span> (km). Quãng đường đi trong 2 giờ sau: <span class="m">9 · 2 = 18</span> (km).</p>
-        <p>b) Quãng đường đi trong 5 giờ: <span class="m">14 · 3 + 9 · 2 = 42 + 18 = 60</span> (km).</p>
-        <p>Đáp số: a) 42 km; 18 km. b) 60 km.</p>
-        <p class="small">⚠️ Bẫy hay gặp: cộng hai vận tốc rồi nhân với 5 giờ, <span class="m">(14 + 9) · 5 = 115</span> — như thể mỗi giờ đi 23 km. Người đó có đi
-        23 km trong giờ nào đâu!</p>
-      </div>
-    </div>
-  </div>
-
-  <h3>2.2. Chú ý (SGK) — biểu thức có chứa chữ</h3>
-  <div class="box key"><span class="label">📖 Chú ý (SGK)</span>
-    Trong một biểu thức có thể có chứa chữ. Để tính giá trị của biểu thức đó khi <i>cho giá trị của các chữ</i>, ta thay thế giá trị đã cho vào
-    biểu thức rồi tính giá trị của biểu thức nhận được.
-  </div>
-  <div class="box tip"><span class="label">Nhớ lại Bài 5 (Chú ý, SGK)</span>
-    "Nếu các thừa số đều bằng chữ, hoặc chỉ có một thừa số bằng số thì ta có thể không viết dấu nhân giữa các thừa số. Chẳng hạn,
-    <span class="m"><i>a</i> · <i>b</i> = <i>ab</i></span>; <span class="m">2 · <i>m</i> = 2<i>m</i></span>."<br>
-    <b>Cô nói thêm:</b> dấu nhân đứng trước một dấu ngoặc cũng được viết ẩn như thế — giống <span class="m"><i>a</i>(<i>b</i> + <i>c</i>)</span> trong
-    tính chất phân phối ở Bài 5; nên <span class="m">3(<i>m</i> + <i>n</i>)</span> nghĩa là <span class="m">3 · (<i>m</i> + <i>n</i>)</span>.
-    Khi thay số vào, <b>phải viết lại dấu nhân</b> và <b>giữ nguyên ngoặc</b>.
-  </div>
-  <div class="act" data-act="thay-chu" data-can-het>
-    <h4><span class="tag">HOẠT ĐỘNG 8</span> Em thay chữ (cô soạn thêm — chuẩn bị cho Bài tập 1.47)</h4>
-    <p>Tính giá trị của biểu thức <span class="m">60 − 3(<i>m</i> + <i>n</i>)</span> khi <span class="m"><i>m</i> = 7</span>; <span class="m"><i>n</i> = 5</span>.</p>
-    <p class="p-dong"><b>① Trước khi tính:</b> <span class="m">3(<i>m</i> + <i>n</i>)</span> nghĩa là gì?<br>
-      <span data-mcq data-options="3 · m + n;ghép chữ số 3 với số m + n (như 312);3 · (m + n)" data-answer="3 · (m + n)" data-mo-sau="#tc-b"
-            data-fb-sai="Nhớ lại Bài 5: 2 · m viết gọn là 2m."
-            data-fb-lua-chon='{"3 · m + n":"Dấu ngoặc vẫn còn đó: 3 nhân với CẢ ngoặc (m + n), không chỉ nhân với m.","ghép chữ số 3 với số m + n (như 312)":"Nhớ Chú ý của Bài 5: 2 · m viết gọn là 2m — dấu NHÂN được viết ẩn, không phải ghép chữ số. Trước dấu ngoặc cũng vậy (xem hộp «Nhớ lại Bài 5» ở trên)."}'></span></p>
+  <div class="act" data-act="khong-nho-hon" data-can-het>
+    <h4><span class="tag">HOẠT ĐỘNG 6</span> "Không nhỏ hơn", "không lớn hơn" — chuẩn bị cho 1.31</h4>
+    <p>Gọi <i>B</i> là tập hợp các số tự nhiên <b>không nhỏ hơn 5</b> và nhỏ hơn 9.</p>
+    <p><b>①</b> "<i>x</i> không nhỏ hơn 5" viết bằng kí hiệu là
+      <span data-mcq data-options="x &gt; 5;x ≥ 5;x &lt; 5;x ≤ 5" data-answer="x ≥ 5" data-mo-sau="#knh-2"
+            data-fb-sai="«Không nhỏ hơn 5» nghĩa là lớn hơn 5 hoặc bằng 5."
+            data-fb-lua-chon='{"x &gt; 5":"x &gt; 5 bỏ mất số 5. Mà 5 có nhỏ hơn 5 không? Vậy 5 có «không nhỏ hơn 5» không?","x &lt; 5":"Đó là «nhỏ hơn 5» — ngược với «không nhỏ hơn 5».","x ≤ 5":"x ≤ 5 là «không lớn hơn 5». Đề nói «không nhỏ hơn»."}'></span></p>
     <div class="fb fb-mcq"></div>
-    <div class="hide" id="tc-b">
-      <div class="the-hang" id="the-lat" aria-live="polite">
-        <span class="the-so">60</span><span>−</span><span class="the-so">3</span><span class="the-nhan">·</span><span class="the-ng">(</span>
-        <span class="the-lat"><span class="the-lat-trong"><span class="the-mat chu">m</span><span class="the-mat so">7</span></span></span>
-        <span>+</span>
-        <span class="the-lat"><span class="the-lat-trong"><span class="the-mat chu">n</span><span class="the-mat so">5</span></span></span>
-        <span class="the-ng">)</span>
-      </div>
-      <p class="small" style="text-align:center" id="the-lat-chu"><span class="m">60 − 3(<i>m</i> + <i>n</i>)</span> — dấu nhân giữa 3 và ngoặc được viết ẩn.</p>
-      <p style="text-align:center"><button type="button" class="btn ghost" id="nut-lat">Thay m = 7, n = 5 (lật thẻ)</button></p>
-      <p class="p-dong"><b>② Tính:</b> khi <span class="m"><i>m</i> = 7</span>, <span class="m"><i>n</i> = 5</span> thì <span class="m">60 − 3(<i>m</i> + <i>n</i>) =</span>
-        <span data-fill data-answer="24"
-              data-hint-sai='{"34":"Em đã tính 3 · 7 + 5 rồi lấy 60 trừ đi. 3 phải nhân với cả (7 + 5) — trong ngoặc trước. (Máy bên dưới chạy lại cách em đã làm.)","44":"Em đã bỏ ngoặc: 60 − 3 · 7 + 5. Giữ nguyên ngoặc: 60 − 3 · (7 + 5). (Máy bên dưới chạy lại cách em đã làm.)","684":"Em đã làm 60 − 3 trước. Phép nhân ở bậc 2, phép trừ ở bậc 3 — phép nào trước? (Máy bên dưới chạy lại cách em đã làm.)","36":"36 mới là 3 · (7 + 5). Còn phép trừ 60 − … nữa."}'
-              data-may-sai='{"34":{"bt":"60 − ⟨3 · 7 + 5⟩","ghi":"Ra 34 vì 21 + 5 bị làm trước phép trừ — em đã coi như 3 · 7 + 5 nằm chung một ngoặc. Ngoặc đúng là (7 + 5): 3 nhân với CẢ 7 + 5."},"44":{"bt":"60 − 3 · 7 + 5","nhan":"kết quả khi bỏ mất ngoặc","ghi":"Máy tính đúng thứ tự — nhưng đây là một biểu thức KHÁC: em đã bỏ mất ngoặc của (7 + 5)."},"684":{"bt":"⟨60 − 3⟩ · (7 + 5)","ghi":"Ra 684 vì phép trừ 60 − 3 bị làm trước phép nhân."}}'
-              data-fb-sai="Thay số, viết lại dấu nhân và giữ ngoặc: 60 − 3 · (7 + 5). Rồi: trong ngoặc → nhân → trừ."
-              data-ok="Đúng! 60 − 3 · (7 + 5) = 60 − 3 · 12 = 60 − 36 = 24."></span></p>
+    <div class="hide" id="knh-2">
+      <p><b>②</b> Bấm chọn trên tia số các điểm của tập <span class="m"><i>B</i> = {<i>x</i> ∈ ℕ | 5 ≤ <i>x</i> &lt; 9}</span>, rồi bấm <b>Kiểm tra</b>.</p>
+      <div data-numline data-from="0" data-to="13" data-tia="1" data-answer="5;6;7;8"
+           data-hint-thua='{"9":"«nhỏ hơn 9»: 9 có nhỏ hơn 9 không?","4":"4 nhỏ hơn 5 — mà đề cần số không nhỏ hơn 5."}'
+           data-hint-thieu='{"5":"5 ≤ 5 có đúng không? «Không nhỏ hơn 5» thì số 5 có được không?","8":"8 có nhỏ hơn 9 không?"}'
+           data-hint-thieu-nhieu="Còn sót nhiều điểm: B gồm mọi số tự nhiên từ 5 trở đi và nhỏ hơn 9 — không chỉ một số."
+           data-ok="Đúng! B = {5; 6; 7; 8}: có 5 (vì 5 ≤ 5), không có 9 (vì 9 &lt; 9 là sai)."></div>
     </div>
   </div>
 
-  <h3>2.3. Luyện tập 2 (SGK)</h3>
-  <p>a) Lập biểu thức tính diện tích của hình chữ nhật <i>ABCD</i> (hình bên). &nbsp; b) Tính diện tích của hình chữ nhật đó khi <span class="m"><i>a</i> = 3</span> cm.</p>
-  <figure style="margin:6px 0">
-    <svg class="lt2-hinh" id="lt2-hcn" viewBox="0 0 440 224" role="img" aria-label="Hình chữ nhật ABCD: chiều rộng AD = a; chiều dài AB gồm ba đoạn a, a và 1">
-      <rect class="lt2-nen" x="50" y="40" width="350" height="150"/>
-      <g class="lt2-luoi">
-        <path d="M100 40 V190 M150 40 V190 M250 40 V190 M300 40 V190 M50 90 H400 M50 140 H400"/>
-      </g>
-      <path class="lt2-chia" d="M200 40 V190 M350 40 V190"/>
-      <text class="lt2-chu" x="125" y="30">a</text><text class="lt2-chu" x="275" y="30">a</text><text class="lt2-chu so" x="375" y="30">1</text>
-      <text class="lt2-chu" x="32" y="121">a</text>
-      <text class="lt2-chu dinh" x="40" y="30" text-anchor="end">A</text><text class="lt2-chu dinh" x="410" y="30" text-anchor="start">B</text>
-      <text class="lt2-chu dinh" x="410" y="210" text-anchor="start">C</text><text class="lt2-chu dinh" x="40" y="210" text-anchor="end">D</text>
-      <g id="lt2-sai"></g>
-    </svg>
-    <figcaption>Cô vẽ lại hình của SGK: chiều rộng <i>AD</i> = <i>a</i>; chiều dài <i>AB</i> chia thành ba đoạn <i>a</i>, <i>a</i> và 1 (nét đứt là chỗ chia).</figcaption>
-  </figure>
-  <div class="box tip"><span class="label">Nhớ lại (lớp dưới)</span>
-    Diện tích hình chữ nhật = chiều dài × chiều rộng (cùng đơn vị đo). Chiều dài ở đây là <b>cả</b> đoạn <i>AB</i> — gồm ba đoạn nối tiếp.
-  </div>
-  <div class="act" data-act="luyen-tap-2" data-can-het data-mo-sau="#lt2-sau">
-    <h4><span class="tag">HOẠT ĐỘNG 9</span> Luyện tập 2 — diện tích hình chữ nhật ABCD</h4>
-    <p class="p-dong"><b>a)</b> Chọn <b>tất cả</b> các biểu thức tính đúng diện tích hình chữ nhật <i>ABCD</i>, rồi bấm Kiểm tra:</p>
-    <p class="small hide" id="lt2-sai-chu" aria-live="polite"></p>
-    <div data-picks data-mo-sau="#lt2-b"
-         data-ok="Đúng! Chiều dài AB = a + a + 1 là một tổng nên phải có ngoặc, chiều rộng AD = a: S = a · (a + a + 1). Cộng diện tích ba hình nhỏ cũng được: a · a + a · a + a · 1.">
-      <div data-pick data-name="S" data-nhan="Soát lại"
-           data-items="a · a + a + 1;a · (a + a + 1);a + a + a + 1;2 · (a + a + a + 1);a · a + a · a + a · 1;(a + a + 1) + a"
-           data-answer="a · (a + a + 1);a · a + a · a + a · 1"
-           data-hint-thua='{"a · a + a + 1":"«a · a + a + 1»: phép nhân làm trước, nên biểu thức này chỉ nhân a với a (xem phần tô trên hình). Chiều dài là CẢ tổng a + a + 1 — cần gì bao tổng ấy lại?","a + a + a + 1":"«a + a + a + 1»: đây là cộng các độ dài. Diện tích = chiều dài × chiều rộng.","2 · (a + a + a + 1)":"«2 · (a + a + a + 1)» là chu vi (đi vòng quanh), không phải diện tích (phủ kín).","(a + a + 1) + a":"«(a + a + 1) + a»: chiều dài CỘNG chiều rộng — diện tích phải NHÂN."}'
-           data-hint-thieu='{"a · a + a · a + a · 1":"Còn một biểu thức đúng nữa: hình lớn gồm ba hình chữ nhật nhỏ (nét đứt chia). Cộng diện tích ba hình ấy thì được biểu thức nào?","a · (a + a + 1)":"Còn sót cách viết «chiều dài × chiều rộng» với chiều dài là cả tổng a + a + 1 (nhớ có ngoặc)."}'></div>
-    </div>
-    <div class="hide" id="lt2-b">
-      <p class="p-dong"><b>b)</b> Khi <span class="m"><i>a</i> = 3</span> cm, diện tích hình chữ nhật <i>ABCD</i> là
-        <span data-fill data-answer="21" data-unit="cm²"
-              data-hint-sai='{"13":"Em tính 3 · 3 + 3 + 1: quên ngoặc bao chiều dài. S = a · (a + a + 1) — thay a = 3, giữ ngoặc.","10":"10 là tổng các độ dài (3 + 3 + 3 + 1). Diện tích = chiều dài × chiều rộng.","20":"20 là chu vi. Diện tích là phần phủ kín bên trong.","7":"7 cm mới là chiều dài AB. Còn nhân với chiều rộng."}'
-              data-fb-sai="Thay a = 3 vào a · (a + a + 1), giữ ngoặc: trong ngoặc trước, rồi nhân."
-              data-ok="Đúng! 3 · (3 + 3 + 1) = 3 · 7 = 21 (cm²). Nhìn hình: lưới ô vuông 1 cm² hiện ra — đếm thử xem có đúng 21 ô không."></span></p>
-    </div>
-    <div class="hide" id="lt2-sau">
-      <p class="small"><b>Đếm để kiểm:</b> hình ở trên đã hiện lưới ô vuông (vẽ theo <i>a</i> = 3): 3 hàng, 7 cột. Kéo thanh trượt để thử các giá trị
-      khác của <i>a</i> (không chấm điểm):</p>
-      <div id="lt2-truot">
-        <p class="lt2-dk"><label for="lt2-a-in"><i>a</i> =</label> <input type="range" id="lt2-a-in" min="1" max="5" value="2" step="1"> <b id="lt2-a">2</b> cm</p>
-        <div id="lt2-ve"></div>
-        <p style="text-align:center; font-size:17px" id="lt2-cau"></p>
-      </div>
-    </div>
+  <div class="act" data-act="so-lon-nho-nhat">
+    <h4><span class="tag">HOẠT ĐỘNG 7</span> Số lớn nhất, số nhỏ nhất có các chữ số khác nhau — chuẩn bị cho 1.32</h4>
+    <div class="box"><span class="label">Cô nói lại</span>
+      Muốn số <b>lớn nhất</b>: hàng cao nhất đặt chữ số <b>lớn nhất</b> được phép, rồi từ trái sang phải cứ thế chọn chữ số lớn nhất còn lại. Muốn số
+      <b>nhỏ nhất</b>: làm ngược lại — nhưng nhớ Chú ý 1 (Bài 2): <b>chữ số đầu tiên khác 0</b>. "Các chữ số khác nhau" thì mỗi chữ số dùng một lần.</div>
+    <p class="p-dong"><b>①</b> Số lớn nhất có ba chữ số khác nhau và đều là số chẵn:
+      <span data-fill data-gon="1" data-answer="864"
+            data-hint-sai='{"888":"Ba chữ số phải khác nhau.","886":"Ba chữ số phải khác nhau.","868":"Ba chữ số phải khác nhau.","986":"9 là số lẻ.","987":"9 và 7 là số lẻ.","998":"Ba chữ số phải khác nhau, và 9 là số lẻ.","842":"Hàng đơn vị còn chữ số chẵn nào lớn hơn 2 mà chưa dùng?","846":"Hàng chục: 4 hay 6 lớn hơn?","468":"Hàng cao nhất phải là chữ số chẵn lớn nhất."}'
+            data-fb-sai="Các chữ số chẵn: 0; 2; 4; 6; 8. Từ trái sang phải, chọn chữ số chẵn lớn nhất chưa dùng."
+            data-ok="Đúng cả hai! Chọn từ hàng cao nhất; số nhỏ nhất thì chữ số 0 không được đứng đầu nhưng đứng ở hàng chục được."></span></p>
+    <p class="p-dong"><b>②</b> Số nhỏ nhất có ba chữ số khác nhau, trong đó có chữ số 7:
+      <span data-fill data-gon="1" data-answer="107"
+            data-hint-sai='{"017":"017 bắt đầu bằng 0 — đó chỉ là số 17, có hai chữ số (Chú ý 1 Bài 2).","17":"17 chỉ có hai chữ số.","127":"Hàng chục có thể đặt chữ số nào nhỏ hơn 2 mà chưa dùng?","170":"Hàng chục và hàng đơn vị: xếp thế nào thì số nhỏ hơn?","100":"Ba chữ số phải khác nhau, và phải có chữ số 7.","701":"Hàng trăm phải là chữ số nhỏ nhất được phép — 7 có nhỏ nhất không?","117":"Ba chữ số phải khác nhau."}'
+            data-fb-sai="Hàng trăm: chữ số nhỏ nhất khác 0. Hàng chục: chữ số nhỏ nhất chưa dùng. Còn chữ số 7 đặt ở đâu?"></span></p>
+    <div class="fb fb-dien"></div>
   </div>
 
-  <h3>2.4. Bài toán lời văn → một biểu thức <span class="muted small">(cô soạn thêm — chuẩn bị cho Bài tập 1.48, 1.49)</span></h3>
-  <div class="box"><span class="label">Cô nói lại</span>
-    Bài tập 1.48 và 1.49 bắt em <b>viết một biểu thức</b> cho cả bài toán. Cách làm: tìm xem cần <b>gộp những phần nào trước</b> — phần đó đặt
-    trong <b>ngoặc</b>. Gặp chữ "ngoại trừ …", "phần còn lại": phép trừ làm trước, nằm trong ngoặc; và để ý <b>mỗi khoản tiền tính trên phần
-    nào</b>. Cô dùng số khác với bài tập.
-  </div>
-  <div class="act" data-act="loi-van" data-can-het data-mo-sau="#lv-dc">
-    <h4><span class="tag">HOẠT ĐỘNG 10</span> Hai bài toán, mỗi bài một biểu thức</h4>
-    <p><b>A. Đọc sách.</b> Trong 4 ngày đầu, mỗi ngày Lan đọc 15 trang sách. Trong 2 ngày tiếp theo, Lan đọc được tất cả 36 trang. Hỏi trong
-    những ngày ấy, trung bình mỗi ngày Lan đọc được bao nhiêu trang? Viết biểu thức tính kết quả.</p>
-    <figure style="margin:4px 0">
-      <svg class="lv-hinh" id="lv-so-do" viewBox="0 0 600 140" role="img" aria-label="Sơ đồ ô, mỗi ô là một ngày: bốn ô đầu mỗi ô 15 trang, hai ô sau gộp lại 36 trang">
-        <path class="lv-ng" d="M30 44 v-10 h540 v10"/>
-        <text class="lv-chu nho lv-tong-hoi" x="300" y="18">tất cả các ngày: ? trang</text>
-        <text class="lv-chu nho lv-tong-kq" x="300" y="18">tất cả các ngày: 96 trang</text>
-        <rect class="lv-o lv-bon" x="30" y="50" width="90" height="44" rx="6"/><text class="lv-chu" x="75" y="72">15</text>
-        <rect class="lv-o lv-bon" x="120" y="50" width="90" height="44" rx="6"/><text class="lv-chu" x="165" y="72">15</text>
-        <rect class="lv-o lv-bon" x="210" y="50" width="90" height="44" rx="6"/><text class="lv-chu" x="255" y="72">15</text>
-        <rect class="lv-o lv-bon" x="300" y="50" width="90" height="44" rx="6"/><text class="lv-chu" x="345" y="72">15</text>
-        <rect class="lv-o" x="390" y="50" width="180" height="44" rx="6"/>
-        <rect class="lv-nua" x="392" y="52" width="87" height="40" rx="5"/><rect class="lv-nua" x="481" y="52" width="87" height="40" rx="5"/>
-        <path class="lv-vach" d="M480 50 V94"/>
-        <text class="lv-chu halo" x="480" y="72">36 trang</text>
-        <path class="lv-ng" d="M30 100 v10 h360 v-10"/><text class="lv-chu nho" x="210" y="128">4 ngày đầu, mỗi ngày 15 trang</text>
-        <path class="lv-ng" d="M390 100 v10 h180 v-10"/><text class="lv-chu nho" x="480" y="128">2 ngày sau</text>
+  <div class="act" data-act="bac-gia" data-mo-sau="#bg-sau">
+    <h4><span class="tag">HOẠT ĐỘNG 8</span> Giá tính theo bậc — chuẩn bị cho 1.35</h4>
+    <p>Giá cước một hãng taxi: km thứ nhất giá 12&nbsp;000 đồng; từ km thứ hai trở đi, mỗi km giá 9&nbsp;000 đồng. Bạn Lan đi taxi 7 km. Hỏi Lan phải trả bao
+      nhiêu tiền?</p>
+    <figure>
+      <svg class="bg-hinh" id="bg-so-do" viewBox="0 0 600 150" role="img" aria-label="Thanh 7 ô, mỗi ô là 1 km: ô thứ nhất màu vàng giá 12 000 đồng, sáu ô sau màu xanh bạc hà giá 9 000 đồng mỗi ô">
+        <path class="bg-ngoac" d="M30 34 v-8 h540 v8"/><text class="bg-chu" x="300" y="16">cả quãng đường: 7 km — mỗi ô 1 km</text>
+        <rect class="bg-o1" x="30" y="40" width="72" height="40" rx="4"/>
+        <rect class="bg-o2" x="108" y="40" width="72" height="40" rx="4"/><rect class="bg-o2" x="186" y="40" width="72" height="40" rx="4"/>
+        <rect class="bg-o2" x="264" y="40" width="72" height="40" rx="4"/><rect class="bg-o2" x="342" y="40" width="72" height="40" rx="4"/>
+        <rect class="bg-o2" x="420" y="40" width="72" height="40" rx="4"/><rect class="bg-o2" x="498" y="40" width="72" height="40" rx="4"/>
+        <text class="bg-so" x="66" y="61">1</text><text class="bg-so" x="144" y="61">2</text><text class="bg-so" x="222" y="61">3</text><text class="bg-so" x="300" y="61">4</text>
+        <text class="bg-so" x="378" y="61">5</text><text class="bg-so" x="456" y="61">6</text><text class="bg-so" x="534" y="61">7</text>
+        <path class="bg-ngoac" d="M30 86 v8 h72 v-8"/><text class="bg-chu" x="66" y="116">bậc 1:</text><text class="bg-chu" x="66" y="140">12&nbsp;000 đ</text>
+        <path class="bg-ngoac" d="M108 86 v8 h462 v-8"/><text class="bg-chu bg-hoi" x="339" y="116">bậc 2: ? km, mỗi km 9&nbsp;000 đ</text>
+        <text class="bg-chu bg-kq" x="339" y="116">bậc 2: 6 km, mỗi km 9&nbsp;000 đ</text>
       </svg>
-      <div class="hide" id="lv-deu">
-      <svg class="lv-hinh lv-deu-hinh" viewBox="0 0 600 76" role="img" aria-label="Chia đều: sáu ô bằng nhau, mỗi ô 16 trang">
-        
-          <text class="lv-chu nho" x="300" y="12">chia đều cho các ngày: mỗi ô bằng nhau</text>
-          <rect class="lv-o" x="30" y="32" width="88" height="40" rx="6" style="animation-delay:0s"/><text class="lv-chu" x="74" y="52" style="animation-delay:0s">16</text>
-          <rect class="lv-o" x="120" y="32" width="88" height="40" rx="6" style="animation-delay:.15s"/><text class="lv-chu" x="164" y="52" style="animation-delay:.15s">16</text>
-          <rect class="lv-o" x="210" y="32" width="88" height="40" rx="6" style="animation-delay:.3s"/><text class="lv-chu" x="254" y="52" style="animation-delay:.3s">16</text>
-          <rect class="lv-o" x="300" y="32" width="88" height="40" rx="6" style="animation-delay:.45s"/><text class="lv-chu" x="344" y="52" style="animation-delay:.45s">16</text>
-          <rect class="lv-o" x="390" y="32" width="88" height="40" rx="6" style="animation-delay:.6s"/><text class="lv-chu" x="434" y="52" style="animation-delay:.6s">16</text>
-          <rect class="lv-o" x="480" y="32" width="90" height="40" rx="6" style="animation-delay:.75s"/><text class="lv-chu" x="525" y="52" style="animation-delay:.75s">16</text>
-      </svg>
-      </div>
-      <figcaption>Mỗi ô là <b>một ngày</b> (nét đứt chia ô 36 trang thành hai ngày). Hai ngày sau chỉ biết tổng số trang (36), nên hai ô ấy ghi chung.
-      Đếm ô để biết có tất cả mấy ngày.</figcaption>
+      <figcaption>Mỗi ô là 1 km. Ô vàng tính giá bậc 1, các ô xanh bạc hà tính giá bậc 2.</figcaption>
     </figure>
-    <p class="p-dong"><b>① Chọn biểu thức:</b><br>
-      <span data-mcq data-options="4 · 15 + 36 : 6;(4 · 15 + 2 · 36) : 6;(4 · 15 + 36) : 6;(4 · 15 + 36) : 4" data-answer="(4 · 15 + 36) : 6"
-            data-mo-sau="#la-a2" data-fb-o="#fb-la-a"
-            data-fb-sai="Tổng số trang của tất cả các ngày gồm hai phần nào? Phải gộp trước rồi mới chia."
-            data-fb-lua-chon='{"4 · 15 + 36 : 6":"Không có ngoặc thì phép chia làm trước phép cộng — biểu thức này chỉ chia 36 trang của 2 ngày sau. Muốn chia CẢ tổng số trang thì tổng phải nằm ở đâu?","(4 · 15 + 36) : 4":"Tổng số trang là của tất cả mấy ngày? Đếm các ô trên sơ đồ — kể cả hai ngày sau.","(4 · 15 + 2 · 36) : 6":"Đọc lại đề: 2 ngày sau đọc TẤT CẢ 36 trang (cả hai ngày cộng lại), không phải mỗi ngày 36 trang."}'></span></p>
-    <div class="fb" id="fb-la-a"></div>
-    <div class="hide" id="la-a2" data-mo-khi="#la-b">
-      <p class="p-dong"><b>② Tính:</b> <span class="m">(4 · 15 + 36) : 6 =</span>
-        <span data-fill data-answer="16" data-unit="trang"
-              data-hint-sai='{"66":"Em chỉ chia 36 trang của 2 ngày sau — còn 4 ngày đầu (4 ô đang nháy) thì sao? Muốn chia cả tổng thì tính trong ngoặc trước.","24":"Em đã chia cho 4 — còn 2 ngày sau (ô đang nháy) thì sao? Có tất cả mấy ngày?","22":"2 ngày sau đọc TẤT CẢ 36 trang, không phải mỗi ngày 36 trang.","96":"96 là tổng số trang của tất cả các ngày. Còn chia cho số ngày nữa."}'
-              data-fb-sai="Trong ngoặc trước (trong ngoặc: nhân trước, cộng sau), rồi mới chia cho 6."></span></p>
+    <div data-mo-khi="#bg-2">
+      <p><b>①</b> Số km tính theo giá 9&nbsp;000 đồng là <span data-fill data-gon="1" data-answer="6" data-unit="km"
+          data-hint-sai='{"7":"Km thứ nhất đã tính giá 12 000 đồng rồi — nó có tính thêm giá 9 000 đồng nữa không? Đếm các ô xanh.","8":"Đếm các ô xanh trên hình."}'
+          data-fb-sai="Đếm các ô xanh bạc hà: từ km thứ hai đến km thứ bảy."
+          data-ok="Đúng cả hai! 7 km tách thành 1 km (bậc 1) và 6 km (bậc 2): 12 000 + 6 · 9 000 = 12 000 + 54 000 = 66 000 (đồng)."></span></p>
     </div>
-    <div class="hide" id="la-b">
-      <p><b>B. Mua vở.</b> Lớp 6A có 40 bạn. Ngoại trừ 4 bạn đã có vở, cô mua cho mỗi bạn còn lại một quyển vở: 15 quyển loại 2 giá 8 nghìn đồng
-      một quyển, số quyển còn lại là vở loại 1 giá 12 nghìn đồng một quyển. Vở loại 2 đã có bìa sẵn; mỗi quyển vở loại 1 cô bọc thêm bìa, tiền bọc
-      là 2 nghìn đồng một quyển.
-      Viết biểu thức tính tổng số tiền cô phải trả và tính giá trị của biểu thức đó.</p>
-      <div id="mua-vo-hinh"></div>
-      <p class="muted small" style="text-align:center">Mỗi ô là một bạn. Ô xám: bạn đã có vở. Ô viền đứt: vở loại 1 — "số còn lại".</p>
-      <p class="small hide" id="mv-ghi-xong" style="text-align:center">Vở loại 1: <span class="m">40 − 4 − 15 = 21</span> quyển — ô viền đứt đã thành nét liền.</p>
-      <p class="p-dong"><b>① Chọn biểu thức:</b><br>
-        <span data-mcq data-options="15 · 8 + (40 − 15) · 12 + (40 − 15) · 2;15 · 8 + (40 − 4 − 15) · 12 + (40 − 4) · 2;15 · 8 + (40 − 4 − 15) · 12 + (40 − 4 − 15) · 2;15 · 8 + (40 − 4 − 15) · 12"
-              data-answer="15 · 8 + (40 − 4 − 15) · 12 + (40 − 4 − 15) · 2" data-mo-sau="#la-b2"
-              data-fb-sai="Có ba khoản tiền: vở loại 2, vở loại 1 (số còn lại), bọc bìa. Mỗi khoản tính cho bao nhiêu quyển?"
-              data-fb-lua-chon='{"15 · 8 + (40 − 15) · 12 + (40 − 15) · 2":"4 bạn đã có vở — cô có mua vở cho các bạn ấy không? Nhìn các ô xám: số vở loại 1 là «số còn lại» sau khi đã bỏ ra những ai?","15 · 8 + (40 − 4 − 15) · 12 + (40 − 4) · 2":"Cô bọc bìa những quyển nào — mọi quyển cô mua, hay chỉ vở loại 1? Đọc lại câu «Vở loại 2 đã có bìa sẵn».","15 · 8 + (40 − 4 − 15) · 12":"Còn một khoản nữa: tiền bọc bìa. Đọc lại câu cuối của đề."}'></span></p>
-      <div class="fb fb-mcq"></div>
-      <div class="hide" id="la-b2" data-mo-khi="#mv-ghi-xong">
-        <p class="p-dong"><b>② Tính:</b> <span class="m">15 · 8 + (40 − 4 − 15) · 12 + (40 − 4 − 15) · 2 =</span>
-          <span data-fill data-answer="414" data-unit="nghìn đồng"
-                data-hint-sai='{"470":"Em quên bỏ 4 bạn đã có vở (ở cả vở loại 1 lẫn tiền bọc bìa).","444":"Bọc bìa chỉ cho vở loại 1 — vở loại 2 đã có bìa sẵn.","452":"Bọc bìa chỉ cho vở loại 1 — không phải cho cả 40 bạn.","402":"Tiền bọc bìa tính cho vở loại 1 (số còn lại), không phải cho 15 quyển loại 2.","624":"Số vở loại 1: phải bỏ ra cả 4 bạn đã có vở lẫn 15 quyển loại 2.","372":"Còn tiền bọc bìa.","252":"252 nghìn đồng mới là tiền vở loại 1.","120":"120 nghìn đồng mới là tiền vở loại 2.","42":"42 nghìn đồng mới là tiền bọc bìa."}'
-                data-fb-sai="Trong ngoặc trước (40 − 4 − 15: từ trái qua phải), rồi ba phép nhân, cuối cùng cộng từ trái qua phải."
-                data-ok="Đúng cả hai bài! A: (4 · 15 + 36) : 6 = 96 : 6 = 16 (trang). B: 15 · 8 + (40 − 4 − 15) · 12 + (40 − 4 − 15) · 2 = 120 + 21 · 12 + 21 · 2 = 120 + 252 + 42 = 414 (nghìn đồng)."></span></p>
-      </div>
+    <div class="hide" id="bg-2">
+      <p><b>②</b> Số tiền Lan phải trả: <span data-fill data-answer="66000" data-unit="đồng"
+          data-hint-sai='{"75000":"Em lấy 7 · 9 000 rồi cộng 12 000 — km thứ nhất bị tính hai lần.","63000":"7 · 9 000: km thứ nhất giá 12 000 đồng, không phải 9 000 đồng.","84000":"7 · 12 000: chỉ km thứ nhất giá 12 000 đồng.","21000":"12 000 + 9 000 chỉ là tiền của 2 km.","54000":"Đó là tiền 6 km bậc 2 — còn km thứ nhất."}'
+          data-fb-sai="Tiền bậc 1 cộng tiền bậc 2 (số km bậc 2 nhân 9 000)."></span></p>
     </div>
-    <div class="hide" id="lv-dc">
-      <button class="btn" data-reveal="#rv-lv" data-open="Em làm xong rồi — xem đối chiếu" data-close="Ẩn phần đối chiếu">Em làm xong rồi — xem đối chiếu</button>
-      <div class="reveal" id="rv-lv">
-        <p><b>A.</b> Có tất cả 4 + 2 = 6 ngày. Số trang của 6 ngày gồm hai phần: 4 · 15 và 36. Phải <b>cộng hai phần trước</b> rồi mới chia cho số ngày,
-        nên tổng nằm trong ngoặc: <span class="m">(4 · 15 + 36) : 6 = (60 + 36) : 6 = 96 : 6 = 16</span> (trang).</p>
-        <p><b>B.</b> Ngoại trừ 4 bạn đã có vở, cô mua <span class="m">40 − 4</span> quyển. Số vở loại 1 là <b>phần còn lại</b> sau 15 quyển loại 2:
-        <span class="m">40 − 4 − 15</span> (quyển) — nằm trong ngoặc vì phải trừ trước rồi mới nhân với giá. Tiền bọc bìa chỉ tính cho <b>vở loại 1</b>
-        (vở loại 2 có bìa sẵn), nên cũng nhân với <span class="m">(40 − 4 − 15)</span>:
-        <span class="m">15 · 8 + (40 − 4 − 15) · 12 + (40 − 4 − 15) · 2 = 120 + 21 · 12 + 21 · 2 = 120 + 252 + 42 = 414</span> (nghìn đồng).</p>
-      </div>
-    </div>
+    <div class="fb fb-dien"></div>
+    <p class="hide muted small" id="bg-sau">Bài 1.35 cũng vậy: tách 115 số điện thành từng bậc (mỗi bậc bao nhiêu số?), tính tiền từng bậc rồi cộng lại.</p>
   </div>
 </section>
 
@@ -1466,162 +1057,102 @@
     Cô chỉ để lại <b>gợi ý</b>, không có lời giải sẵn. Làm xong em gửi lại bài, cô chữa từng câu.</div>
 
   <div class="ex">
-    <p><span class="no">1.46.</span> Tính:</p>
-    <p>a) <span class="m">235 + 78 − 142</span>; &nbsp;&nbsp; b) <span class="m">14 + 2 · 8<sup>2</sup></span>; &nbsp;&nbsp; c) <span class="m">{2<sup>3</sup> + [1 + (3 − 1)<sup>2</sup>]} : 13</span>.</p>
-    <button class="btn ghost" data-hint="#h146">Gợi ý</button>
-    <div class="hint" id="h146">a) Chỉ có cộng và trừ — làm theo chiều nào? b) Bậc nào của cầu thang đi trước? <span class="m">8<sup>2</sup></span> là tích của mấy
-      thừa số 8? c) Mở hộp trong cùng trước; số mũ 2 viết sát dấu ngoặc đóng là của <b>cả</b> ngoặc (3 − 1) — xem Hoạt động 4. Mỗi bước một dòng.</div>
+    <p><span class="no">1.31.</span> Gọi <i>A</i> là tập hợp các số tự nhiên lớn hơn 3 và không lớn hơn 7.</p>
+    <p>a) Viết tập hợp <i>A</i> bằng hai cách: Liệt kê các phần tử và nêu dấu hiệu đặc trưng cho các phần tử;</p>
+    <p>b) Trong các số tự nhiên nhỏ hơn 10, những số nào <b>không phải</b> là phần tử của tập <i>A</i>?</p>
+    <button class="btn ghost" data-hint="#h131">Gợi ý</button>
+    <div class="hint" id="h131">"Không lớn hơn 7" nghĩa là <span class="m">&lt; 7</span> hay <span class="m">≤ 7</span>? (Hoạt động 6 làm với "không nhỏ hơn".) Số 3 và số 7,
+      số nào thuộc <i>A</i>? a) Cách 2 viết như <span class="m">{<i>x</i> ∈ ℕ | … }</span> với hai dấu so sánh. b) Viết đủ các số tự nhiên nhỏ hơn 10 (đừng quên
+      số 0), rồi gạch bỏ những số thuộc <i>A</i>.</div>
   </div>
 
   <div class="ex">
-    <p><span class="no">1.47.</span> Tính giá trị của biểu thức: <span class="m">1 + 2(<i>a</i> + <i>b</i>) − 4<sup>3</sup></span> khi <span class="m"><i>a</i> = 25</span>; <span class="m"><i>b</i> = 9</span>.</p>
-    <button class="btn ghost" data-hint="#h147">Gợi ý</button>
-    <div class="hint" id="h147"><span class="m">2(<i>a</i> + <i>b</i>)</span> nghĩa là <span class="m">2 · (<i>a</i> + <i>b</i>)</span>. Thay số, <b>viết lại dấu nhân, giữ ngoặc</b>
-      (xem Hoạt động 8), rồi làm theo thứ tự: trong ngoặc → luỹ thừa → nhân → cộng, trừ từ trái qua phải.</div>
+    <p><span class="no">1.32.</span></p>
+    <p>a) Viết số tự nhiên nhỏ nhất có bốn chữ số;</p>
+    <p>b) Viết số tự nhiên nhỏ nhất có bốn chữ số khác nhau;</p>
+    <p>c) Viết số tự nhiên nhỏ nhất có bốn chữ số khác nhau và đều là số chẵn;</p>
+    <p>d) Viết số tự nhiên nhỏ nhất có bốn chữ số khác nhau và đều là số lẻ.</p>
+    <button class="btn ghost" data-hint="#h132">Gợi ý</button>
+    <div class="hint" id="h132">Chọn từ hàng cao nhất sang phải, mỗi hàng chữ số <b>nhỏ nhất được phép</b>. Hàng cao nhất khác 0; câu a được lặp chữ số, câu b, c,
+      d thì không. Câu c: liệt kê trước các chữ số chẵn; câu d: các chữ số lẻ — trong mỗi nhóm có chữ số 0 không?</div>
   </div>
 
   <div class="ex">
-    <p><span class="no">1.48.</span> Trong 8 tháng đầu năm, một cửa hàng bán được 1&nbsp;264 chiếc ti vi. Trong 4 tháng cuối năm, trung bình mỗi tháng cửa hàng
-    bán được 164 chiếc ti vi. Hỏi trong cả năm, trung bình mỗi tháng cửa hàng đó bán được bao nhiêu chiếc ti vi? Viết biểu thức tính kết quả.</p>
-    <button class="btn ghost" data-hint="#h148">Gợi ý</button>
-    <div class="hint" id="h148">Cả năm có mấy tháng? (Đề không ghi — em tự nhớ.) Số ti vi cả năm gồm <b>hai phần</b> nào? Phần nào phải tính trước, nên
-      đặt trong ngoặc? Vẽ sơ đồ mỗi ô một tháng.</div>
+    <p><span class="no">1.33.</span> Ta đã biết: Giá trị của mỗi chữ số của một số tự nhiên viết trong hệ thập phân phụ thuộc vào vị trí của nó. Chẳng hạn,
+      chữ số 2 có giá trị bằng 2 nếu nó nằm ở hàng đơn vị, có giá trị bằng 20 nếu nó nằm ở hàng chục, … Tuy nhiên, có một chữ số mà giá trị của nó không
+      thay đổi dù nó nằm ở bất kì vị trí nào, đó là chữ số nào?</p>
+    <button class="btn ghost" data-hint="#h133">Gợi ý</button>
+    <div class="hint" id="h133">Giá trị của chữ số <i>c</i> ở hàng chục là <span class="m"><i>c</i> · 10</span>, ở hàng trăm là <span class="m"><i>c</i> · 100</span>.
+      Em thử lần lượt từng chữ số: với chữ số nào thì <span class="m"><i>c</i> · 1</span>, <span class="m"><i>c</i> · 10</span>, <span class="m"><i>c</i> · 100</span>
+      bằng nhau? Viết câu trả lời kèm lí do.</div>
   </div>
 
   <div class="ex">
-    <p><span class="no">1.49.</span> Căn hộ nhà bác Cường diện tích 105 m². Ngoại trừ bếp và nhà vệ sinh diện tích 30 m², toàn bộ diện tích sàn còn lại được
-    lát gỗ như sau: 18 m² được lát bằng gỗ loại 1 giá 350 nghìn đồng/m²; phần còn lại dùng gỗ loại 2 có giá 170 nghìn đồng/m². Công lát là 30 nghìn
-    đồng/m².</p>
-    <p>Viết biểu thức tính tổng chi phí bác Cường cần trả để lát sàn căn hộ như trên. Tính giá trị của biểu thức đó.</p>
-    <button class="btn ghost" data-hint="#h149">Gợi ý</button>
-    <div class="hint" id="h149">Trả lời ba câu trước khi viết biểu thức: diện tích <b>được lát gỗ</b> là bao nhiêu mét vuông? Diện tích lát gỗ loại 2 là
-      "phần còn lại" của phần nào? Công lát tính trên diện tích nào — cả căn hộ hay chỉ phần lát gỗ? Phép trừ nào phải làm trước thì đặt trong
-      ngoặc.</div>
+    <p><span class="no">1.34.</span> Một xe ô tô chở 30 bao gạo và 40 bao ngô. Biết rằng mỗi bao gạo nặng 50 kg, mỗi bao ngô nặng 60 kg. Hỏi xe ô tô đó chở tất cả
+      bao nhiêu kilôgam gạo và ngô?</p>
+    <button class="btn ghost" data-hint="#h134">Gợi ý</button>
+    <div class="hint" id="h134">Hai loại bao, mỗi loại một khối lượng — đừng cộng số bao rồi nhân một lần. Tính khối lượng gạo, khối lượng ngô (nhân số tròn chục: nhân
+      phần khác 0 rồi viết thêm chữ số 0), rồi cộng lại.</div>
+  </div>
+
+  <div class="ex">
+    <p><span class="no">1.35.</span> Trong tháng 7 nhà ông Khánh dùng hết 115 số điện. Hỏi ông Khánh phải trả bao nhiêu tiền điện? Cho biết đơn giá điện như sau:</p>
+    <p>Giá tiền cho 50 số đầu tiên là 1&nbsp;678 đồng/số;</p>
+    <p>Giá tiền cho 50 số tiếp theo (từ số 51 đến số 100) là 1&nbsp;734 đồng/số;</p>
+    <p>Giá tiền cho 100 số tiếp theo (từ số 101 đến số 200) là 2&nbsp;014 đồng/số.</p>
+    <button class="btn ghost" data-hint="#h135">Gợi ý</button>
+    <div class="hint" id="h135">Làm như Hoạt động 8: vẽ một thanh 115 số, chia thành các bậc. 115 số rơi vào những bậc nào, mỗi bậc <b>bao nhiêu số</b>? (Bậc 3 có tới 100
+      số, nhưng ông Khánh có dùng hết không?) Tính tiền từng bậc bằng đặt tính nhân thẳng cột, rồi cộng.</div>
   </div>
 </section>
 
 <!-- =========================== CHỐT BÀI =========================== -->
 <section id="chot-bai">
   <h2>Chốt bài</h2>
-  <figure>
-    <div class="mm-wrap">
-    <svg viewBox="0 0 960 390" role="img" aria-label="Sơ đồ tư duy: Thứ tự thực hiện các phép tính — ô giữa có hàng thẻ thu gọn thành giá trị của biểu thức; bốn ô: không có ngoặc, có ngoặc, biểu thức có chữ, bài toán lời văn; mỗi ô có một hình nhỏ">
-      <path class="mm-line draw" d="M420 138 V130" stroke="var(--brand)"/>
-      <path class="mm-line draw" d="M540 138 V130" stroke="var(--brand)"/>
-      <path class="mm-line draw" d="M420 248 V256" stroke="var(--brand)" style="animation-delay:.3s"/>
-      <path class="mm-line draw" d="M540 248 V256" stroke="var(--brand)" style="animation-delay:.3s"/>
-      <g class="mm-node" style="animation-delay:0s"><rect x="320" y="138" width="320" height="110" rx="26" fill="#fff6e5" stroke="#f59e0b"/>
-        <text class="mm-t b" x="480" y="156">THỨ TỰ THỰC HIỆN</text><text class="mm-t b" x="480" y="176">CÁC PHÉP TÍNH</text>
-        <rect x="352" y="192" width="44" height="42" rx="7" fill="#fff" stroke="#94a3b8" stroke-width="2"/><text class="mm-ic" x="374" y="213" style="font-size:17px; fill:#1f2937">12</text>
-        <text class="mm-ic" x="408" y="213" style="font-size:18px; fill:#1f2937">+</text>
-        <rect x="420" y="192" width="34" height="42" rx="7" fill="#fff" stroke="#94a3b8" stroke-width="2"/><text class="mm-ic" x="437" y="213" style="font-size:17px; fill:#1f2937">8</text>
-        <path d="M462 213 h22" stroke="#475569" stroke-width="2"/><path d="M479 207 l7 6 l-7 6" fill="none" stroke="#475569" stroke-width="2"/>
-        <rect x="492" y="190" width="50" height="46" rx="8" fill="var(--green-soft)" stroke="var(--green)" stroke-width="2.5"/><text class="mm-ic" x="517" y="213" style="font-size:19px; fill:#0b6b52">20</text>
-        <text class="mm-ic s" x="550" y="213" style="font-size:13px; fill:#0b6b52">giá trị</text></g>
-      <!-- trên trái: không có ngoặc -->
-      <g class="mm-node" style="animation-delay:.4s"><rect x="20" y="10" width="430" height="120" rx="12" fill="#fff" stroke="#c8dbff"/>
-        <rect x="32" y="26" width="70" height="20" rx="4" fill="var(--l1-nen)" stroke="var(--l1)" stroke-width="1.5"/><text class="mm-ic" x="67" y="36" style="fill:var(--l1)">luỹ thừa</text>
-        <rect x="44" y="52" width="70" height="20" rx="4" fill="var(--l2-nen)" stroke="var(--l2)" stroke-width="1.5"/><text class="mm-ic" x="79" y="62" style="fill:var(--l2)">· và :</text>
-        <rect x="56" y="78" width="70" height="20" rx="4" fill="var(--l3-nen)" stroke="var(--l3)" stroke-width="1.5"/><text class="mm-ic" x="91" y="88" style="fill:var(--l3)">+ và −</text>
-        <text class="mm-t b" x="290" y="30">Không có ngoặc</text>
-        <text class="mm-t s" x="142" y="56">Luỹ thừa → Nhân, chia → Cộng, trừ</text>
-        <text class="mm-t s" x="142" y="80" style="font-weight:400">Cùng bậc: làm từ trái qua phải</text>
-        <text class="mm-t s" x="142" y="104" style="font-weight:400">1 + 2 · 3² = 1 + 2 · 9 = 1 + 18 = 19</text></g>
-      <!-- trên phải: có ngoặc -->
-      <g class="mm-node" style="animation-delay:.6s"><rect x="510" y="10" width="430" height="120" rx="12" fill="#fff" stroke="#c8dbff"/>
-        <rect x="522" y="18" width="104" height="102" rx="10" fill="var(--k3)" stroke="#cbd5e1"/>
-        <rect x="536" y="36" width="76" height="70" rx="8" fill="var(--k2)" stroke="#cbd5e1"/>
-        <rect x="550" y="58" width="48" height="32" rx="6" fill="var(--k1)" stroke="#94a3b8"/>
-        <text class="mm-ic" x="574" y="27" style="fill:#475569">{ }</text><text class="mm-ic" x="574" y="46" style="fill:#475569">[ ]</text>
-        <text class="mm-ic" x="574" y="74" style="fill:#475569">( )</text>
-        <text class="mm-t b" x="787" y="30">Có ngoặc</text>
-        <text class="mm-t s" x="642" y="56">( ) → [ ] → { }: trong trước, ngoài sau</text>
-        <text class="mm-t s" x="642" y="80" style="font-weight:400">Trong ngoặc vẫn theo cầu thang</text>
-        <text class="mm-t s" x="642" y="104" style="font-weight:400">Số mũ sát ngoặc đóng: của cả ngoặc</text></g>
-      <!-- dưới trái: biểu thức có chữ -->
-      <g class="mm-node" style="animation-delay:.8s"><rect x="20" y="256" width="430" height="120" rx="12" fill="#fff" stroke="#c8dbff"/>
-        <rect x="30" y="294" width="46" height="46" rx="7" fill="#fff" stroke="var(--chu)" stroke-width="2" stroke-dasharray="4 3"/><text class="mm-ic" x="53" y="317" style="fill:var(--chu); font-style:italic; font-size:22px">m</text>
-        <path d="M82 317 h20" stroke="#475569" stroke-width="2"/><path d="M97 311 l7 6 l-7 6" fill="none" stroke="#475569" stroke-width="2"/>
-        <rect x="110" y="294" width="46" height="46" rx="7" fill="#fff" stroke="#94a3b8" stroke-width="2"/><text class="mm-ic" x="133" y="317" style="fill:#1f2937; font-size:22px">7</text>
-        <text class="mm-t b" x="300" y="276">Biểu thức có chữ</text>
-        <text class="mm-t s" x="168" y="302">Thay số vào chữ rồi tính</text>
-        <text class="mm-t s" x="168" y="326" style="font-weight:400">3(m + n) = 3 · (m + n)</text>
-        <text class="mm-t s" x="168" y="350" style="font-weight:400">viết lại dấu nhân, giữ ngoặc</text></g>
-      <!-- dưới phải: bài toán lời văn -->
-      <g class="mm-node" style="animation-delay:1s"><rect x="510" y="256" width="430" height="120" rx="12" fill="#fff" stroke="#c8dbff"/>
-        <path d="M520 296 v-6 h110 v6" fill="none" stroke="#475569" stroke-width="2"/><text class="mm-ic" x="575" y="282" style="fill:#475569">5 giờ</text>
-        <rect x="520" y="300" width="22" height="42" rx="3" fill="var(--kem)" stroke="#94a3b8"/><text class="mm-ic" x="531" y="321" style="fill:#1f2937; font-size:11px">14</text>
-        <rect x="542" y="300" width="22" height="42" rx="3" fill="var(--kem)" stroke="#94a3b8"/><text class="mm-ic" x="553" y="321" style="fill:#1f2937; font-size:11px">14</text>
-        <rect x="564" y="300" width="22" height="42" rx="3" fill="var(--kem)" stroke="#94a3b8"/><text class="mm-ic" x="575" y="321" style="fill:#1f2937; font-size:11px">14</text>
-        <rect x="586" y="300" width="22" height="42" rx="3" fill="var(--kem)" stroke="#94a3b8"/><text class="mm-ic" x="597" y="321" style="fill:#1f2937; font-size:11px">9</text>
-        <rect x="608" y="300" width="22" height="42" rx="3" fill="var(--kem)" stroke="#94a3b8"/><text class="mm-ic" x="619" y="321" style="fill:#1f2937; font-size:11px">9</text>
-        <path d="M520 346 v6 h66 v-6 M586 346 v6 h44 v-6" fill="none" stroke="var(--l2)" stroke-width="2"/>
-        <text class="mm-ic" x="553" y="362" style="fill:var(--l2); font-size:11px">14 · 3</text><text class="mm-ic" x="608" y="362" style="fill:var(--l2); font-size:11px">9 · 2</text>
-        <text class="mm-t b" x="792" y="276">Bài toán lời văn</text>
-        <text class="mm-t s" x="646" y="302">Phần gộp trước → đặt trong ngoặc</text>
-        <text class="mm-t s" x="646" y="326" style="font-weight:400">14 · 3 + 9 · 2 — không cộng vận tốc</text>
-        <text class="mm-t s" x="646" y="350" style="font-weight:400">«Ngoại trừ», «còn lại»: trừ trước</text></g>
-    </svg>
-    </div>
-    <figcaption>Sơ đồ tư duy của cả bài — mỗi ô có một hình nhỏ nhắc lại hoạt động em đã làm. Em chép vào vở, tự vẽ thêm ví dụ.</figcaption>
-  </figure>
   <ol>
-    <li><b>Biểu thức</b> là các số (có thể có cả chữ — Chú ý SGK) nối với nhau bởi dấu phép tính (có thể có ngoặc); tính xong còn một số — <b>giá trị
-      của biểu thức</b>. Mỗi bước tính một dòng, đầu dòng là dấu "=".</li>
-    <li>Không có ngoặc: <b><span class="c-l1">Luỹ thừa</span> → <span class="c-l2">Nhân và chia</span> → <span class="c-l3">Cộng và trừ</span></b> (cầu thang ba bậc).
-      Cùng một bậc thì làm <b>từ trái qua phải</b>.</li>
-    <li>Có ngoặc: <b>trong ngoặc trước, ngoài ngoặc sau</b>: ( ) → [ ] → { } (mở hộp trong cùng trước). Trong mỗi ngoặc vẫn theo cầu thang. Số mũ viết
-      sát dấu ngoặc đóng là của <b>cả</b> ngoặc.</li>
-    <li>Biểu thức có chữ: <b>thay số vào chữ</b>, viết lại dấu nhân ẩn (<span class="m">3(<i>m</i> + <i>n</i>) = 3 · (<i>m</i> + <i>n</i>)</span>), giữ ngoặc, rồi tính.</li>
-    <li>Bài toán lời văn: phần nào phải <b>gộp trước</b> (kể cả phép trừ "ngoại trừ …", "phần còn lại") thì đặt trong <b>ngoặc</b>.</li>
+    <li><b>Tập hợp:</b> mỗi phần tử viết một lần, ngăn bởi dấu ";"; <span class="m">0 ∈ ℕ</span>, <span class="m">0 ∉ ℕ<sup>*</sup></span>.</li>
+    <li><b>Số tự nhiên:</b> giá trị chữ số = chữ số · giá trị của hàng; mỗi số là tổng giá trị các chữ số của nó.</li>
+    <li><b>Thứ tự:</b> "không nhỏ hơn" là ≥, "không lớn hơn" là ≤; số 0 nhỏ nhất, không có số liền trước.</li>
+    <li><b>Tính chất:</b> giao hoán đổi chỗ, kết hợp đổi cách nhóm, phân phối nhân với một tổng; phép chia có dư: <span class="m">0 &lt; <i>r</i> &lt; <i>b</i></span>.</li>
+    <li><b>Lời văn:</b> tách bài toán thành từng phần (từng bậc giá, từng loại bao, từng quý), tính từng phần rồi gộp.</li>
   </ol>
 
-  <div class="act" data-act="tu-kiem" data-can-het
-       data-ok-act="Giỏi! Em đã nắm chắc thứ tự thực hiện các phép tính. Sang làm Bài tập 1.46 – 1.49 nhé.">
-    <h4><span class="tag">HOẠT ĐỘNG 11</span> Tự kiểm tra 1 phút — em đã nắm bài chưa?</h4>
-    <p class="muted small">Bốn câu nhỏ, số khác với bài tập. Làm đúng hết rồi mới sang Bài tập 1.46 – 1.49.</p>
-    <p class="p-dong"><b>①</b> <span class="m">90 : 5 · 3<sup>2</sup> =</span>
-      <span data-fill data-gon="1" data-answer="162"
-            data-hint-sai='{"2":"Em đã nhân 5 · 9 trước. Chia và nhân cùng bậc — cùng bậc thì làm theo chiều nào?","108":"3² = 3 · 3, không phải 3 · 2.","2916":"Em đã tính 90 : 5 · 3 trước rồi mới nâng lên luỹ thừa. Số mũ 2 chỉ của số 3 — luỹ thừa làm trước.","54":"Còn số mũ 2 của số 3 — luỹ thừa làm trước."}'
-            data-fb-sai="Luỹ thừa trước (3² = 3 · 3), rồi chia và nhân cùng bậc: từ trái qua phải."
-            data-ok="Đúng cả ba câu tính!"></span></p>
-    <p class="p-dong"><b>②</b> <span class="m">3 · [10 − (2 + 5)] =</span>
-      <span data-fill data-gon="1" data-answer="9"
-            data-hint-sai='{"23":"Em đã bỏ ngoặc vuông: 3 · 10 − 7. Ngoặc vuông: tính cả [10 − 7] trước rồi mới nhân 3.","33":"Em bỏ hết ngoặc. Ngoặc tròn trước, rồi ngoặc vuông, rồi mới nhân.","39":"Em đã bỏ ngoặc tròn: 10 − 2 + 5. Phải tính (2 + 5) trước."}'
-            data-fb-sai="( ) trước, rồi [ ], rồi mới nhân 3."
-            data-ok="Đúng cả ba câu tính!"></span></p>
-    <p class="p-dong"><b>③</b> Khi <span class="m"><i>m</i> = 3</span>, giá trị của <span class="m">2(<i>m</i> + 4)</span> là
-      <span data-fill data-gon="1" data-answer="14"
-            data-hint-sai='{"10":"Em đã tính 2 · 3 + 4: quên ngoặc. 2(m + 4) nghĩa là 2 · (m + 4) — thay số, giữ ngoặc.","27":"2(m + 4) không phải ghép chữ số 2 với 7 — giữa 2 và ngoặc là dấu nhân viết ẩn.","9":"Giữa 2 và ngoặc là dấu nhân, không phải dấu cộng."}'
-            data-fb-sai="Thay m = 3, viết lại dấu nhân, giữ ngoặc: 2 · (3 + 4)."
-            data-ok="Đúng cả ba câu tính!"></span></p>
-    <p class="p-dong"><b>④</b> Trong biểu thức <span class="m">6 + 2 · (9 − 4)<sup>2</sup></span>, phép tính nào làm <b>đầu tiên</b>?<br>
-      <span data-mcq data-options="6 + 2;2 · (9 − 4);9 − 4;4²" data-answer="9 − 4"
-            data-fb-sai="Biểu thức có ngoặc: trong ngoặc trước."
-            data-fb-lua-chon='{"6 + 2":"Cộng ở bậc 3 — làm sau cùng. Mà biểu thức còn có ngoặc.","2 · (9 − 4)":"Còn ngoặc tròn chưa tính — trong ngoặc trước.","4²":"Số mũ 2 viết sát dấu ngoặc đóng: nó là của CẢ ngoặc (9 − 4), không chỉ của số 4."}'></span></p>
-    <div class="fb fb-mcq"></div>
-    <div class="fb fb-xong" id="tk-xong" aria-live="polite"></div>
+  <div class="act" data-act="tu-kiem" data-ok-act="Giỏi! Em đã ôn chắc Bài 1–5. Sang làm Bài tập 1.31 – 1.35 nhé.">
+    <h4><span class="tag">HOẠT ĐỘNG 9</span> Tự kiểm tra 1 phút</h4>
+    <p class="muted small">Bốn câu nhỏ, số khác với bài tập.</p>
+    <p class="p-dong"><b>①</b> Tập hợp các chữ số của số 5&nbsp;050 có <span data-fill data-gon="1" data-answer="2"
+        data-hint-sai='{"4":"5 050 có 4 chữ số, nhưng mỗi phần tử của tập hợp chỉ viết một lần.","3":"Soát lại: số 5 050 được viết từ những chữ số nào? Mỗi chữ số chỉ tính một lần."}'
+        data-fb-sai="Liệt kê các chữ số của 5 050, mỗi chữ số một lần." data-ok="Đúng cả bốn câu!"></span> phần tử.</p>
+    <p class="p-dong"><b>②</b> Chữ số 4 trong số 24&nbsp;813 có giá trị là <span data-fill data-gon="1" data-answer="4000"
+        data-hint-sai='{"4":"4 là chữ số — giá trị phụ thuộc hàng.","400":"Đếm hàng từ phải sang: 3 đơn vị, 1 chục, 8 trăm, rồi đến 4.","40000":"Đếm hàng từ phải sang: chữ số 4 ở hàng thứ tư."}'
+        data-fb-sai="Giá trị = chữ số · giá trị của hàng."></span></p>
+    <p class="p-dong"><b>③</b> Tính hợp lí: <span class="m">23 · 17 + 23 · 83 =</span> <span data-fill data-gon="1" data-answer="2300"
+        data-hint-sai='{"230":"23 · 100 bằng bao nhiêu? Đếm chữ số 0.","23000":"23 · 100 bằng bao nhiêu? Đếm chữ số 0."}'
+        data-fb-sai="Hai tích có chung thừa số 23 — dùng tính chất phân phối để đưa về 23 nhân với một tổng tròn trăm."></span></p>
+    <p class="p-dong"><b>④</b> Chia 37 cho 5 được thương 7, số dư là <span data-fill data-gon="1" data-answer="2"
+        data-hint-sai='{"7":"7 là thương. Số dư là phần còn lại sau khi lấy 37 bớt đi 5 · 7.","5":"5 là số chia; số dư phải nhỏ hơn số chia."}'
+        data-fb-sai="37 = 5 · 7 + r: tính 5 · 7 rồi lấy 37 trừ đi."></span></p>
+    <div class="fb fb-dien"></div>
+    <div class="fb fb-xong" aria-live="polite"></div>
   </div>
 
-  <h3>Bảy lỗi hay gặp nhất ở bài này</h3>
+  <h3>Sáu lỗi hay gặp khi ôn Bài 1–5</h3>
   <table class="bang-loi"><tr><th>Lỗi</th><th>Sai</th><th>Đúng</th></tr>
-    <tr><td>Tính từ trái sang phải bất kể dấu</td><td class="o-sai"><span class="m">5 + 3 × 2 = 8 × 2 = 16</span></td><td class="o-dung"><span class="m">5 + 3 × 2 = 5 + 6 = 11</span> (nhân trước, cộng sau)</td></tr>
-    <tr><td>Cùng bậc mà không đi từ trái qua phải</td><td class="o-sai"><span class="m">48 : 4 · 2 = 48 : 8 = 6</span></td><td class="o-dung"><span class="m">48 : 4 · 2 = 12 · 2 = 24</span></td></tr>
-    <tr><td>Luỹ thừa tính thành "cơ số nhân số mũ"</td><td class="o-sai"><span class="m">3<sup>2</sup> = 6</span>, nên <span class="m">2 · 3<sup>2</sup> + 5 · 5 = 37</span></td><td class="o-dung"><span class="m">3<sup>2</sup> = 3 · 3 = 9</span>: <span class="m">2 · 9 + 25 = 43</span></td></tr>
-    <tr><td>Nhân trước khi nâng lên luỹ thừa</td><td class="o-sai"><span class="m">2 · 3<sup>2</sup> = 6<sup>2</sup> = 36</span></td><td class="o-dung"><span class="m">2 · 3<sup>2</sup> = 2 · 9 = 18</span> (số mũ chỉ của số 3)</td></tr>
-    <tr><td>Bỏ qua dấu ngoặc</td><td class="o-sai"><span class="m">2 · 3<sup>2</sup> + 5 · (2 + 3) = 18 + 5 · 2 + 3 = 31</span></td><td class="o-dung"><span class="m">18 + 5 · 5 = 43</span> (trong ngoặc trước)</td></tr>
-    <tr><td>Số mũ của ngoặc chỉ tính cho số cuối</td><td class="o-sai"><span class="m">(1 + 2)<sup>2</sup> = 1 + 2<sup>2</sup> = 5</span></td><td class="o-dung"><span class="m">(1 + 2)<sup>2</sup> = 3<sup>2</sup> = 9</span> (số mũ của cả ngoặc)</td></tr>
-    <tr><td>Lời văn: cộng vận tốc rồi nhân cả thời gian</td><td class="o-sai"><span class="m">(14 + 9) · 5 = 115</span> (km)</td><td class="o-dung"><span class="m">14 · 3 + 9 · 2 = 60</span> (km)</td></tr>
+    <tr><td>Viết lặp phần tử</td><td class="o-sai"><span class="m"><i>M</i> = {2; 8; 0; 6; 5; 0}</span></td><td class="o-dung"><span class="m"><i>M</i> = {2; 8; 0; 6; 5}</span></td></tr>
+    <tr><td>Lẫn chữ số với giá trị</td><td class="o-sai">chữ số 8 trong 280&nbsp;650 có giá trị 8</td><td class="o-dung"><span class="m">8 · 10&nbsp;000 = 80&nbsp;000</span></td></tr>
+    <tr><td>"Không nhỏ hơn" hiểu thành "lớn hơn"</td><td class="o-sai"><span class="m">5 ∉ {<i>x</i> ∈ ℕ | 5 ≤ <i>x</i> &lt; 9}</span></td><td class="o-dung">5 thuộc tập ấy vì <span class="m">5 ≤ 5</span></td></tr>
+    <tr><td>Đổi 1 phút thành 100 giây</td><td class="o-sai">8 phút 19 giây = 819 giây</td><td class="o-dung"><span class="m">8 · 60 + 19 = 499</span> (giây)</td></tr>
+    <tr><td>Số nhỏ nhất bắt đầu bằng 0</td><td class="o-sai">017</td><td class="o-dung">107 (chữ số đầu khác 0)</td></tr>
+    <tr><td>Giá theo bậc: tính cả quãng một giá</td><td class="o-sai"><span class="m">7 · 9&nbsp;000 = 63&nbsp;000</span></td><td class="o-dung"><span class="m">12&nbsp;000 + 6 · 9&nbsp;000 = 66&nbsp;000</span></td></tr>
   </table>
   <div class="box tip"><span class="label">Làm tiếp</span>
-    Bài tập <b>1.46 → 1.49</b> trong SGK. Làm xong gửi lại, cô chữa. Bài sau: <b>Luyện tập chung</b> (sau Bài 7), rồi <b>Bài tập cuối chương I</b>.</div>
+    Bài tập <b>1.31 → 1.35</b> trong SGK. Bài sau: <b>Bài 6. Luỹ thừa với số mũ tự nhiên</b>; sau Bài 7 là <b>Luyện tập chung</b> thứ hai.</div>
 
   <footer>
-    Bài giảng do agent <b>giao-vien-toan</b> soạn, bám nguyên văn SGK Toán 6
-    <i>Kết nối tri thức với cuộc sống</i> — nguồn:
-    <span class="kbd">kiến thức/toán/toan-lop-6-chuong-01-bai-07-thu-tu-thuc-hien-cac-phep-tinh.md</span>.<br>
-    Bản đọc/in: <span class="kbd">toan-lop-6-chuong-01-bai-07-thu-tu-thuc-hien-cac-phep-tinh-bai-giang.md</span>.
-    Các phần "đối chiếu" chỉ mở sau khi em đã tự làm; phần Bài tập cuối bài cố ý không có đáp án.
+    Bài ôn do agent <b>giao-vien-toan</b> soạn, bám nguyên văn SGK Toán 6 <i>Kết nối tri thức với cuộc sống</i> — nguồn:
+    <span class="kbd">kiến thức/toán/toan-lop-6-chuong-01-luyen-tap-chung-01.md</span> và phần 📌 của Bài 1–5.<br>
+    Bản đọc/in: <span class="kbd">toan-lop-6-chuong-01-luyen-tap-chung-01-bai-giang.md</span>.
+    Lời giải ví dụ chỉ mở sau khi em đã tự làm; phần Bài tập cố ý không có đáp án.
   </footer>
 </section>
 
@@ -4691,249 +4222,13 @@
 })();
 </script>
 
-<!-- ================= JS RIÊNG CỦA BÀI — May thu gon bieu thuc (bam phep lam truoc, go ket qua, ngoac tan; ban mau data-demo), doan Mo dau, mcq cau go theo tung lua chon, mo khoi khi dien xong, so do 5 o gio, the chu lat, luoi o vuong + thanh truot a, thanh 40 quyen vo ================= -->
+<!-- ================= JS RIÊNG CỦA BÀI — Luyện tập chung sau Bài 5: nhãn thanh taxi đổi khi xong ================= -->
 <script>
 (function(){
   "use strict";
-  var T6 = window.Toan6;
-  if(!T6) return;
-  var nhom = T6.nhom;
-  function $(s, r){ return (r || document).querySelector(s); }
-  function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
-  function moRa(e){ if(e && e.classList.contains('hide')){ e.classList.remove('hide'); e.classList.add('mo-ra'); } }
-  function chayLai(e, cls){ if(!e) return; e.classList.remove(cls); void e.getBoundingClientRect(); e.classList.add(cls); }
-  function chuanSo(v){ return String(v || '').replace(/[\s .]/g, ''); }
-
-  /* 1. Máy thu gọn biểu thức (data-tg-may) và 1b. data-may-sai: đã chuyển vào engine của template (bo-khoi-tuong-tac.md mục 22) */
-  var HUY = { 1: '①', 2: '②', 3: '③' };
-
-
-  /* ===================== 2. Mở đầu: em đồng ý với bạn nào (ghi lại, không chấm) ===================== */
-  var DOAN = null, dmd = $('#doan-md');
-  if(dmd){
-    var fbD = $('#doan-fb'), TEN_D = { tron: 'đồng ý với <b>Tròn</b> (16)', vuong: 'đồng ý với <b>Vuông</b> (11)', chua: '<b>chưa chắc</b>' };
-    $$('[data-doan]', dmd).forEach(function(b){
-      b.addEventListener('click', function(){
-        var k = b.getAttribute('data-doan');
-        DOAN = k;
-        $$('[data-doan]', dmd).forEach(function(x){ x.className = 'btn ghost'; });
-        b.className = 'btn ghost tg-da-chon';
-        T6.show(fbD, 'good', 'Cô ghi lại rồi: em ' + TEN_D[k] + '. Chưa ai đúng ai sai vội — em sẽ tự kiểm ở <b>Câu hỏi</b> (mục 1.5), sau khi đọc quy ước.');
-        var nh = $('#nhac-doan');
-        if(nh) nh.innerHTML = 'Ở Mở đầu em đã ' + TEN_D[k] + '. ' + (k === 'vuong' ? 'Em đoán đúng rồi đấy!' :
-          (k === 'tron' ? 'Giờ em thấy vì sao Tròn chưa đúng quy ước chưa?' : 'Giờ thì em đã chắc chắn rồi.'));
-      });
-    });
-  }
-  /* Mở đầu: chọn sai câu có chấm → hai máy tự gạch chân bước 1 để em so hai chỗ gạch chân */
-  var mdAct = $('[data-act="mo-dau"]');
-  if(mdAct){
-    var mdQ = $('[data-mcq]', mdAct);
-    if(mdQ) mdQ.addEventListener('click', function(e){
-      if(!(e.target.closest && e.target.closest('button'))) return;
-      if(!$('.mark .x', mdQ)) return;
-      $$('[data-tg-may]', mdAct).forEach(function(h){ if(h._gachBuoc1) h._gachBuoc1(); });
-    });
-  }
-
-  /* 3. câu gỡ riêng cho từng lựa chọn mcq (data-fb-lua-chon, data-fb-o): đã chuyển vào engine của template */
-  /* mcq vừa bấm có đúng không (engine gắn ✓ vào .mark) */
-  function mcqDung(h){ return !!$('.mark .ok', h); }
-  function mcqChon(h){ var b = $$('button', h).filter(function(x){ return x.className === 'btn'; })[0]; return b ? b.textContent.trim() : ''; }
-
-  /* 4. data-mo-khi="#id" (MỌI ô điền trong khối đúng thì mở #id, phát sự kiện t6-nhom-xong): đã chuyển vào engine */
-  /* lời khen ngắn vào ô phản hồi của ô điền cuối trong khối (engine chỉ khen khi xong CẢ hoạt động) */
-  function khen(k, html){ var f = $$('.fb-fill', k); f = f[f.length - 1]; if(f) T6.show(f, 'good', html); }
-
-  /* ===================== 5. HĐ5 Câu hỏi: cầu thang nhỏ nháy tại chỗ khi chọn Tròn ===================== */
-  var chQ = $('#ch-q1'), chT = $('#ch-thang');
-  if(chQ && chT) chQ.addEventListener('click', function(e){
-    if(!(e.target.closest && e.target.closest('button'))) return;
-    if(mcqChon(chQ) === 'Tròn') ['2', '3'].forEach(function(b){ chayLai($('[data-bac="' + b + '"]', chT), 'tg-nhac'); });
-  });
-
-  /* ===================== 6. Vận dụng: sơ đồ 5 ô giờ (hiện từ đầu; sai 17 / 11 thì các ô giờ nháy; ngoặc tô màu sau câu b) ===================== */
-  var vdA = $('#vd-a'), vdS = $('#vd-so-do');
-  if(vdA && vdS){
-    var fa = $$('[data-fill]', vdA);
-    function soatVd(){
-      var v0 = chuanSo($('input', fa[0]).value), v1 = chuanSo($('input', fa[1]).value);
-      if(v0 === '17' && $('.mark .x', fa[0])) chayLai(vdS, 'nhay-3');
-      else if(v1 === '11' && $('.mark .x', fa[1])) chayLai(vdS, 'nhay-2');
-    }
-    vdA.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('button')) soatVd(); });
-    vdA.addEventListener('keydown', function(e){ if(e.key === 'Enter') soatVd(); });
-    vdA.addEventListener('t6-nhom-xong', function(){
-      vdS.classList.add('xong-a');
-      khen(vdA, 'Đúng! Mỗi giờ 14 km, trong 3 giờ: <span class="m">14 · 3 = 42</span> (km); mỗi giờ 9 km, trong 2 giờ: <span class="m">9 · 2 = 18</span> (km). Sang câu b.');
-    });
-    var vdQ = $('#vd-b [data-mcq]');
-    if(vdQ) vdQ.addEventListener('click', function(e){
-      if(e.target.closest && e.target.closest('button') && mcqDung(vdQ)) vdS.classList.remove('chua-to');
-    });
-  }
-  var actVd = $('#act-van-dung');
-  if(actVd) actVd.addEventListener('t6-act-xong', function(){ if(vdS) vdS.classList.add('xong-b'); });
-
-  /* ===================== 7. Thẻ chữ lật thành số (Chú ý: thay giá trị của chữ) ===================== */
-  var nutLat = $('#nut-lat'), theLat = $('#the-lat');
-  if(nutLat && theLat){
-    nutLat.addEventListener('click', function(){
-      var lat = theLat.classList.toggle('lat');
-      nutLat.textContent = lat ? 'Úp lại thẻ chữ' : 'Thay m = 7, n = 5 (lật thẻ)';
-      $('#the-lat-chu').innerHTML = lat
-        ? '<span class="m">60 − 3 · (7 + 5)</span> — thay số vào chữ, <b>viết lại dấu nhân</b> (vòng xanh cổ vịt) và <b>giữ nguyên ngoặc</b>.'
-        : '<span class="m">60 − 3(<i>m</i> + <i>n</i>)</span> — dấu nhân giữa 3 và ngoặc được viết ẩn.';
-    });
-  }
-
-  /* ===================== 8. Luyện tập 2: hình ABCD — chọn nhầm biểu thức thì hình vẽ đúng phần biểu thức ấy tính;
-                              làm xong: lưới ô vuông 1 cm² + thanh trượt a ===================== */
-  var hcn = $('#lt2-hcn'), lt2Sai = $('#lt2-sai'), lt2SaiChu = $('#lt2-sai-chu');
-  var HINH_SAI = {
-    'a · a + a + 1': { ve: '<rect class="lt2-to" x="50" y="40" width="150" height="150"/><path class="lt2-do" d="M200 204 H350 M354 204 H400"/>' +
-        '<text class="lt2-chu nho" x="125" y="120">a · a</text><text class="lt2-chu nho lt2-do-chu" x="275" y="222">a</text><text class="lt2-chu nho lt2-do-chu so" x="377" y="222">1</text>',
-      chu: 'Hình: <span class="m"><i>a</i> · <i>a</i></span> chỉ phủ ô vuông tô hồng; còn «+ <i>a</i> + 1» chỉ là hai <b>độ dài</b> (nét đỏ) — phần còn lại của hình chưa được phủ.' },
-    'a + a + a + 1': { ve: '<path class="lt2-do" d="M50 40 H400 M50 40 V190"/>',
-      chu: 'Hình: <span class="m"><i>a</i> + <i>a</i> + <i>a</i> + 1</span> là cộng các <b>độ dài</b> (nét đỏ: AB và AD) — không phủ phần nào bên trong.' },
-    '2 · (a + a + a + 1)': { ve: '<rect class="lt2-do" x="50" y="40" width="350" height="150" fill="none"/>',
-      chu: 'Hình: <span class="m">2 · (<i>a</i> + <i>a</i> + <i>a</i> + 1)</span> là đi <b>vòng quanh</b> hình (nét đỏ) — chu vi, không phải phần phủ kín.' },
-    '(a + a + 1) + a': { ve: '<path class="lt2-do" d="M50 40 H400 M50 40 V190"/>',
-      chu: 'Hình: chiều dài <b>cộng</b> chiều rộng chỉ là hai đoạn nét đỏ — chưa phủ kín hình.' }
-  };
-  var lt2Pk = $('[data-act="luyen-tap-2"] [data-picks]'), thuTuChon = [];
-  if(lt2Pk && lt2Sai){
-    var DUNG = ['a · (a + a + 1)', 'a · a + a · a + a · 1'];
-    function xoaHinh(){ lt2Sai.innerHTML = ''; if(lt2SaiChu){ lt2SaiChu.innerHTML = ''; lt2SaiChu.classList.add('hide'); } }
-    lt2Pk.addEventListener('click', function(e){
-      var b = e.target.closest && e.target.closest('button');
-      if(!b) return;
-      var t = b.textContent.trim();
-      if(b.classList.contains('num')){
-        var i = thuTuChon.indexOf(t);
-        if(b.classList.contains('on')){ if(i < 0) thuTuChon.push(t); } else if(i >= 0) thuTuChon.splice(i, 1);
-        return;
-      }
-      if(t === 'Chọn lại'){ thuTuChon = []; xoaHinh(); return; }
-      if(t === 'Kiểm tra'){
-        var thua = thuTuChon.filter(function(x){ return DUNG.indexOf(x) < 0; })[0];
-        if(thua && HINH_SAI[thua]){
-          lt2Sai.innerHTML = HINH_SAI[thua].ve;
-          if(lt2SaiChu){ lt2SaiChu.innerHTML = HINH_SAI[thua].chu; lt2SaiChu.classList.remove('hide'); }
-          chayLai(hcn, 'nhay-sai');
-        } else xoaHinh();
-      }
-    });
-  }
-  function luoi(a, w){
-    var n = a + a + 1, o = Math.min(40, Math.floor((w - 60) / n)), W = n * o, H = a * o, x0 = Math.round((w - W) / 2), y0 = 34, h = '';
-    h += '<svg viewBox="0 0 ' + w + ' ' + (H + 70) + '" role="img" aria-label="hình chữ nhật ' + a + ' hàng, ' + n + ' cột ô vuông; nét đứt chia chiều dài thành a, a và 1">';
-    for(var i = 0; i < a; i++) for(var j = 0; j < n; j++){
-      h += '<rect class="lt2-o" x="' + (x0 + j * o) + '" y="' + (y0 + i * o) + '" width="' + o + '" height="' + o + '" style="animation-delay:' + (j * 0.07) + 's"/>';
-    }
-    h += '<rect x="' + x0 + '" y="' + y0 + '" width="' + W + '" height="' + H + '" class="lt2-vien"/>';
-    h += '<path class="lt2-chia" d="M' + (x0 + a * o) + ' ' + y0 + ' V' + (y0 + H) + ' M' + (x0 + 2 * a * o) + ' ' + y0 + ' V' + (y0 + H) + '"/>';
-    h += '<text class="lt2-chu" x="' + (x0 + a * o / 2) + '" y="' + (y0 - 10) + '">a</text><text class="lt2-chu" x="' + (x0 + a * o * 1.5) + '" y="' + (y0 - 10) + '">a</text>' +
-         '<text class="lt2-chu so" x="' + (x0 + 2 * a * o + o / 2) + '" y="' + (y0 - 10) + '">1</text>' +
-         '<text class="lt2-chu" x="' + (x0 - 14) + '" y="' + (y0 + H / 2 + 5) + '">a</text>';
-    h += '<text class="lt2-chu nho" x="' + (x0 + W / 2) + '" y="' + (y0 + H + 26) + '">' + a + ' hàng × ' + n + ' cột = ' + (a * n) + ' ô vuông</text></svg>';
-    return h;
-  }
-  var actLt2 = $('[data-act="luyen-tap-2"]');
-  if(actLt2) actLt2.addEventListener('t6-act-xong', function(){ if(hcn) hcn.classList.add('xong'); if(lt2Sai) lt2Sai.innerHTML = ''; if(lt2SaiChu) lt2SaiChu.classList.add('hide'); });
-  var lt2 = $('#lt2-truot');
-  if(lt2){
-    var inpA = $('input', lt2), veA = $('#lt2-ve'), cauA = $('#lt2-cau');
-    function capNhat(){
-      var a = +inpA.value, n = a + a + 1;
-      $('#lt2-a').textContent = a;
-      veA.innerHTML = luoi(a, 560);
-      cauA.innerHTML = '<span class="m"><i>a</i> = ' + a + ': <i>S</i> = ' + a + ' · (' + a + ' + ' + a + ' + 1) = ' + a + ' · ' + n + ' = ' + (a * n) + '</span> (cm²)';
-    }
-    inpA.addEventListener('input', capNhat);
-    capNhat();
-  }
-
-  /* ===================== 9. Bài toán lời văn A: sơ đồ ngày — chia đều hiện sau khi tính đúng; sai 24 / 66 thì nháy phần tương ứng ===================== */
-  var laA2 = $('#la-a2'), lvS = $('#lv-so-do');
-  if(laA2 && lvS){
-    var fA = $('[data-fill]', laA2);
-    function soatA(){
-      var v = chuanSo($('input', fA).value);
-      if(!$('.mark .x', fA)) return;
-      if(v === '24') chayLai(lvS, 'nhay-hai');        /* chia cho 4: quên 2 ngày sau */
-      else if(v === '66') chayLai(lvS, 'nhay-bon');   /* không ngoặc: 4 ngày đầu không được chia */
-    }
-    laA2.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('button')) soatA(); });
-    laA2.addEventListener('keydown', function(e){ if(e.key === 'Enter') soatA(); });
-    laA2.addEventListener('t6-nhom-xong', function(){
-      lvS.classList.add('xong-a'); moRa($('#lv-deu'));
-      khen(laA2, 'Đúng! Cả 4 + 2 = 6 ngày đọc <span class="m">4 · 15 + 36 = 96</span> trang — tổng nằm trong ngoặc nên chia <b>cả</b> tổng cho 6: mỗi ngày 16 trang (xem sơ đồ: 6 ô bằng nhau). Sang bài B.');
-    });
-  }
-
-  /* ===================== 10. Bài toán mua vở: 40 ô (4 bạn đã có vở, 15 quyển loại 2, phần còn lại = loại 1 viền đứt) — bản rộng + bản hẹp 2 hàng.
-     Tính đúng 414 → ô viền đứt thành nét liền nền xanh lá, nhãn '? quyển' thành '21 quyển' (SKILL ý 32). ===================== */
-  var mv = $('#mua-vo-hinh');
-  if(mv){
-    function loai(i){ return i < 4 ? 'mv-o0' : (i < 19 ? 'mv-o1' : 'mv-o2'); }
-    /* bản rộng: 1 hàng 40 ô, ba ngoặc dưới */
-    var o = 14, x0 = 20, y0 = 40, s = '';
-    for(var i = 0; i < 40; i++) s += '<rect class="' + loai(i) + '" x="' + (x0 + i * o) + '" y="' + y0 + '" width="' + (o - 2) + '" height="26" rx="2"/>';
-    var xa = x0, xb = x0 + 4 * o - 2, xc = x0 + 19 * o - 2, xd = x0 + 40 * o - 2;
-    s += '<path class="mv-ngoac" d="M' + xa + ' 34 v-8 h' + (xd - xa) + ' v8"/><text class="mv-chu" x="' + ((xa + xd) / 2) + '" y="16">cả lớp: 40 bạn — mỗi ô một bạn</text>';
-    s += '<path class="mv-ngoac1" d="M' + xa + ' 74 v8 h' + (xb - xa) + ' v-8"/><text class="mv-chu" x="' + ((xa + xb) / 2 + 6) + '" y="100">đã có vở</text>';
-    s += '<path class="mv-ngoac1" d="M' + (xb + 2) + ' 74 v8 h' + (xc - xb - 2) + ' v-8"/><text class="mv-chu" x="' + ((xb + xc) / 2) + '" y="100">15 quyển loại 2</text>';
-    s += '<path class="mv-ngoac2" d="M' + (xc + 2) + ' 74 v8 h' + (xd - xc - 2) + ' v-8"/><text class="mv-chu mv-hoi" x="' + ((xc + xd) / 2) + '" y="100">số còn lại: loại 1 — ? quyển</text>' +
-         '<text class="mv-chu mv-kq" x="' + ((xc + xd) / 2) + '" y="100">số còn lại: loại 1 — 21 quyển</text>';
-    var rong = '<svg class="mv-rong" viewBox="0 0 ' + (xd + 22) + ' 112" role="img" aria-label="40 ô là 40 bạn: 4 bạn đã có vở, 15 quyển loại 2, số còn lại là loại 1">' + s + '</svg>';
-    /* bản hẹp: 2 hàng × 20 ô, chú giải bên dưới */
-    var o2 = 16, s2 = '';
-    for(var k = 0; k < 40; k++){
-      var r = Math.floor(k / 20), c = k % 20;
-      s2 += '<rect class="' + loai(k) + '" x="' + (20 + c * o2) + '" y="' + (30 + r * 34) + '" width="' + (o2 - 3) + '" height="28" rx="2"/>';
-    }
-    s2 += '<text class="mv-chu" x="180" y="16">cả lớp: 40 bạn — mỗi ô một bạn</text>';
-    s2 += '<rect class="mv-o0" x="24" y="110" width="13" height="20" rx="2"/><text class="mv-chu trai" x="44" y="125">đã có vở</text>';
-    s2 += '<rect class="mv-o1" x="150" y="110" width="13" height="20" rx="2"/><text class="mv-chu trai" x="170" y="125">15 quyển loại 2</text>';
-    s2 += '<rect class="mv-o2" x="24" y="140" width="13" height="20" rx="2"/><text class="mv-chu trai mv-hoi" x="44" y="155">số còn lại: loại 1 — ? quyển</text>' +
-          '<text class="mv-chu trai mv-kq" x="44" y="155">số còn lại: loại 1 — 21 quyển</text>';
-    var hep = '<svg class="mv-hep" viewBox="0 0 360 170" role="img" aria-label="40 ô là 40 bạn, hai hàng: 4 bạn đã có vở, 15 quyển loại 2, số còn lại là loại 1">' + s2 + '</svg>';
-    mv.innerHTML = rong + hep;
-    var laB2 = $('#la-b2');
-    if(laB2) laB2.addEventListener('t6-nhom-xong', function(){ mv.classList.add('xong'); });
-  }
-
-  /* ===================== 11. Kiến thức trọng tâm: ba hộp lồng — em bấm để mở, hộp ngoài mà bấm trước thì rung ===================== */
-  var ktH = $('#kt-hop'), ktGhi = $('#kt-ghi'), ktLai = $('#kt-lai');
-  if(ktH){
-    var mo = { 1: false, 2: false, 3: false };
-    function moHop(k){
-      var g = $('.kt-h' + k, ktH);
-      if(mo[k]) return;
-      if(k > 1 && !mo[k - 1]){
-        chayLai(g, 'kt-rung');
-        ktGhi.innerHTML = 'Hộp ' + HUY[k] + ' còn bọc hộp ' + HUY[k - 1] + ' chưa mở — mở hộp <b>trong cùng</b> trước.';
-        return;
-      }
-      mo[k] = true; g.classList.add('tan');
-      ktGhi.innerHTML = k < 3 ? 'Hộp ' + HUY[k] + ' đã mở. Hộp nào tiếp theo?' : 'Xong: ① → ② → ③ — trong ngoặc trước, ngoài ngoặc sau.';
-      if(k === 3 && ktLai) ktLai.classList.remove('hide');
-    }
-    [1, 2, 3].forEach(function(k){
-      var g = $('.kt-h' + k, ktH);
-      g.addEventListener('click', function(){ moHop(k); });
-      g.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); moHop(k); } });
-    });
-    if(ktLai) ktLai.addEventListener('click', function(){
-      mo = { 1: false, 2: false, 3: false };
-      $$('.tan', ktH).forEach(function(g){ g.classList.remove('tan'); });
-      ktGhi.innerHTML = 'Bấm vào một hộp để mở — hộp nào mở trước?';
-      ktLai.classList.add('hide');
-    });
-  }
-
-  /* 12. Tự kiểm tra: lời khen tổng kết khi xong CẢ hoạt động — data-ok-act trên .act (engine) */
+  /* Hoạt động 8: làm xong thì nhãn "? km" trên thanh taxi đổi thành "6 km" (ô chưa biết đã tìm được) */
+  var act = document.querySelector('[data-act="bac-gia"]'), hinh = document.getElementById('bg-so-do');
+  if(act && hinh) act.addEventListener('t6-act-xong', function(){ hinh.classList.add('xong'); });
 })();
 </script>
 </body>

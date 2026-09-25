@@ -128,9 +128,9 @@
   .huy-hieu-cuoi{font-size:18px; text-align:center; padding:14px 12px; margin:10px 0}
   .huy-hieu-cuoi .khen{display:block; font-weight:400; font-size:15.5px; margin-top:4px; color:#6b4e16}
   /* nút xoá: kín đáo, phải bấm hai lần mới xoá (chống chạm nhầm) */
-  #resetQuiz{background:#fff; border-color:var(--line); color:var(--muted); font-size:13.5px; padding:4px 12px}
-  #resetQuiz:hover{border-color:#f0a8a8; color:var(--red)}
-  .xac-nhan,#resetQuiz.xac-nhan{background:var(--red-soft) !important; border-color:#f0a8a8 !important; color:#a02b2b !important; font-weight:600}
+  #resetQuiz,#xoaGhiHet{background:#fff; border-color:var(--line); color:var(--muted); font-size:13.5px; padding:4px 12px}
+  #resetQuiz:hover,#xoaGhiHet:hover{border-color:#f0a8a8; color:var(--red)}
+  .xac-nhan,#resetQuiz.xac-nhan,#xoaGhiHet.xac-nhan{background:var(--red-soft) !important; border-color:#f0a8a8 !important; color:#a02b2b !important; font-weight:600}
   .dong-lam-lai{margin-top:14px; text-align:right}
   .ht-chu{font-size:13px; color:var(--muted); margin:6px 0 0}
   /* mục tiêu chặng: KHÔNG dùng flex (flex biến mỗi <i>, <b> thành một cột riêng, vỡ chữ ở màn hẹp) */
@@ -220,15 +220,27 @@
   /* tô sáng trong đoạn trích */
   .tosang .doan{background:#fff; border-left:5px solid var(--purple); border-radius:0 10px 10px 0; padding:10px 14px; line-height:2}
   /* vùng chạm >= 36 px, không ngắt giữa cụm */
-  .tosang .t{display:inline-block; white-space:nowrap; line-height:1.5; padding:5px 5px; margin:2px 1px; min-height:36px;
+  .tosang .t{display:inline-block; white-space:nowrap; line-height:1.5; padding:5px 2px; margin:2px 0; min-height:36px;
     border-bottom:2px dotted #b9a7e6; border-radius:6px; cursor:pointer}
   .tosang .t:hover{background:#f3eeff}
   .tosang .t.chon{background:#fde68a; border-bottom:2px solid var(--warm)}
   .tosang.done .t{cursor:default}
   .tosang.done .t.chon{background:#bbf0da; border-bottom-color:var(--green)}
   /* tô sáng theo CÂU (đoạn văn dài): .doan.theo-cau — cụm được xuống dòng tự nhiên */
-  .tosang .doan.theo-cau .t{display:inline; white-space:normal; min-height:0; padding:3px 2px; margin:0; line-height:2.1;
+  /* mỗi dòng của cụm xuống dòng cao >= 32 px (padding dọc 7px + chữ), dòng cách dòng đủ để không đè nhau */
+  .tosang .doan.theo-cau{line-height:2.35}
+  .tosang .doan.theo-cau .t{display:inline; white-space:normal; min-height:0; padding:7px 2px; margin:0; line-height:2.35;
     -webkit-box-decoration-break:clone; box-decoration-break:clone}
+  /* tô sáng NHIỀU NHÃN (data-tosang="khoá:Tên|…"): mỗi lần bấm đổi nhãn; màu + tên nhãn hiện ngay sau cụm */
+  .tosang .chu-giai{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px; font-size:14px}
+  .tosang .chu-giai span{border-radius:999px; padding:2px 10px; border:1px solid #d9deea; font-weight:600}
+  .tosang.done .chu-giai{display:none}
+  .tosang .t[data-mau="0"],.tosang .chu-giai [data-mau="0"]{background:#fde68a}
+  .tosang .t[data-mau="1"],.tosang .chu-giai [data-mau="1"]{background:#c7dbff}
+  .tosang .t[data-mau="2"],.tosang .chu-giai [data-mau="2"]{background:#fbd0e6}
+  .tosang .t[data-mau="3"],.tosang .chu-giai [data-mau="3"]{background:#c9f2dc}
+  .tosang .t[data-ten]::after{content:attr(data-ten); display:inline-block; margin-left:4px; font-size:11.5px; font-weight:700; font-style:normal; line-height:1.25;
+    padding:1px 5px; border-radius:6px; background:rgba(255,255,255,.8); color:#37405a; vertical-align:1px; white-space:nowrap}
   /* ghi chép của em: dự đoán, nhật kí cảm xúc */
   .ghichep{border:1px solid #f3d79a; background:#fffcf3; border-radius:12px; padding:12px 16px; margin:14px 0}
   .ghichep .hoi{font-weight:600; margin:0 0 6px}
@@ -263,6 +275,7 @@
     .the{min-height:88px; padding:8px}
     .ngans{grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px}
     .xep .dk button{width:36px}
+    .btn.nho{min-height:34px}
   }
   @media (prefers-reduced-motion:reduce){
     *{animation:none !important; transition:none !important} html{scroll-behavior:auto}
@@ -284,6 +297,9 @@
     .cots > .cot:first-child > button::before{content:counter(ghepT) !important}
     .cots > .cot:last-child > button::before{content:counter(ghepP, lower-alpha) !important}
     .cot > button{border-color:#bbb !important}
+    /* sắp xếp: bỏ số 1, 2, 3… (dễ tưởng là thứ tự đúng), in nhãn (a) (b) (c)… và một dòng để em ghi thứ tự */
+    .xep li::before{content:"(" counter(xep, lower-alpha) ")" !important; background:#fff !important; color:#333 !important; border:0 !important; flex-basis:30px !important}
+    .xep:not(.done) ol::after,.xep:not(.done) ul::after{content:"Thứ tự đúng (ghi các chữ cái): ................................................"; display:block; margin-top:10px; font-size:15px; color:#333}
     .khay-o .ngan-dau,.camxuc,.ghi-dong,.huy-hieu-cuoi,.dong-lam-lai{display:none !important}
   }
 </style>
@@ -534,7 +550,7 @@
 <div class="dung"><p>🔎 <i>Hình dung:</i> Khung cảnh mái trường thân yêu. Cái bảng, cục phấn được tả thế nào? Thầy viết chữ gì đầu tiên?</p></div>
 
 <div class="xep" data-xep data-sai="Em lướt lại từ khổ 1 đến khổ 6: mỗi khổ mở đầu bằng một người hoặc một thứ mới xuất hiện.">
-  <h4>V3. 🔎 Theo dõi: xếp các nhân vật, sự việc theo đúng thứ tự xuất hiện trong bài thơ (luyện thêm)</h4>
+  <h4>V3. 🔎 Theo dõi: Các nhân vật, sự việc được kể trong bài thơ. Xếp chúng theo đúng thứ tự xuất hiện (luyện thêm)</h4>
   <ol>
     <li>Trẻ con được sinh ra trước nhất</li>
     <li>Mặt trời nhô cao cho trẻ nhìn rõ</li>
@@ -760,19 +776,16 @@
 </div>
 
 <h3>4.2. Trong khi đọc</h3>
-<div class="tablewrap"><table>
-<tr><th>Thẻ trong SGK</th><th>Dừng ở đâu</th><th>Câu hỏi gợi mở của cô</th></tr>
-<tr><td>🔎 <i>Hình dung:</i> Cảnh em bé trò chuyện với những người "trên mây" và "trong sóng".</td><td>Hết đoạn mây</td><td>Ai gọi, gọi đi đâu, hứa hẹn gì? Em bé trả lời ra sao?</td></tr>
-<tr><td>🔎 <i>Hình dung:</i> Niềm vui của em bé trong trò chơi với mẹ.</td><td>Hết bài</td><td>Trong trò chơi, con là gì, mẹ là gì? Con làm gì với mẹ?</td></tr>
-</table></div>
+<p>SGK đặt <b>2 thẻ 🔎</b> bên lề bài thơ. Em sẽ gặp từng thẻ ngay dưới đoạn thơ của nó.</p>
 
 <h4>Đoạn mây</h4>
 <p class="poem">Mẹ ơi, trên mây có người gọi con:<br>"Bọn tớ chơi từ khi thức dậy cho đến lúc chiều tà.<br>Bọn tớ chơi với bình minh vàng, bọn tớ chơi với vầng trăng bạc".<br>Con hỏi: "Nhưng làm thế nào mình lên đó được?".<br>Họ đáp: "Hãy đến nơi tận cùng trái đất, đưa tay lên trời, cậu sẽ được nhấc bổng lên tận tầng mây".<br>"Mẹ mình đang đợi ở nhà" – con bảo – "Làm sao có thể rời mẹ mà đến được?".<br>Thế là họ mỉm cười bay đi.<br>Nhưng con biết có trò chơi thú vị hơn, mẹ ạ.<br>Con là mây và mẹ sẽ là trăng.<br>Hai bàn tay con ôm lấy mẹ, và mái nhà ta sẽ là bầu trời xanh thẳm.</p>
 
-<div class="dung" data-giay="30"><p>🔎 <i>Hình dung:</i> Lời mời thật hấp dẫn. Vì sao em bé vẫn không đi? Tìm câu em bé nói ra lí do.</p></div>
+<div class="dung" data-giay="30"><p>🔎 <i>Hình dung:</i> Cảnh em bé trò chuyện với những người "trên mây" và "trong sóng".</p><p>Ai gọi, gọi đi đâu, hứa hẹn gì? Lời mời thật hấp dẫn — vậy vì sao em bé vẫn không đi? Tìm câu em bé nói ra lí do.</p></div>
 
 <h4>Đoạn sóng</h4>
 <p class="poem">Trong sóng có người gọi con:<br>"Bọn tớ ca hát từ sáng sớm cho đến hoàng hôn.<br>Bọn tớ ngao du nơi này nơi nọ mà không biết từng đến nơi nao".<br>Con hỏi: "Nhưng làm thế nào mình ra ngoài đó được?".<br>Họ nói: "Hãy đến rìa biển cả, nhắm nghiền mắt lại, cậu sẽ được làn sóng nâng đi".<br>Con bảo: "Buổi chiều mẹ luôn muốn mình ở nhà, làm sao có thể rời mẹ mà đi được?".<br>Thế là họ mỉm cười, nhảy múa lướt qua.<br>Nhưng con biết trò chơi khác hay hơn.<br>Con là sóng và mẹ sẽ là bến bờ kì lạ,<br>Con lăn, lăn, lăn mãi rồi sẽ cười vang vỡ tan vào lòng mẹ.<br>Và không ai trên thế gian này biết mẹ con ta ở chốn nào.</p>
+<div class="dung"><p>🔎 <i>Hình dung:</i> Niềm vui của em bé trong trò chơi với mẹ.</p><p>Trong trò chơi, con là gì, mẹ là gì? Con làm gì với mẹ?</p></div>
 <p class="small muted">(Nguyễn Khắc Phi <i>dịch</i> (có tham khảo bản dịch của Đào Xuân Quý trong <i>Thơ Ta-go</i>, NXB Văn hoá – Thông tin, Hà Nội, 2000, tr. 137 – 138), <i>Ngữ văn 9</i>, tập hai, NXB Giáo dục Việt Nam, 2011, tr. 86 – 87)</p>
 <p class="small muted"><i>Tranh trong SGK trang 44 vẽ:</i> những đám mây trắng có mắt đang mỉm cười; phía dưới là những con sóng xanh có mắt, ngọn sóng bạc đầu cuộn lên.</p>
 
@@ -790,7 +803,7 @@
 </div>
 
 <div class="nhom" data-nhom="moi:Lời mời gọi|tu:Lời từ chối|choi:Trò chơi em bé nghĩ ra" data-sai="Em hỏi từng thẻ: ai nói câu này, và nói để làm gì — rủ đi, không đi, hay bày trò chơi với mẹ?">
-  <h4>M2. 🔎 Hình dung: mỗi câu này là lời mời, lời từ chối hay trò chơi em bé nghĩ ra? (luyện thêm)</h4>
+  <h4>M2. Mỗi câu này là lời mời, lời từ chối hay trò chơi em bé nghĩ ra? (luyện thêm)</h4>
   <div class="nguon"><span data-vao="moi">Bọn tớ chơi với bình minh vàng, bọn tớ chơi với vầng trăng bạc</span><span data-vao="tu">Làm sao có thể rời mẹ mà đến được?</span><span data-vao="choi">Con là mây và mẹ sẽ là trăng.</span><span data-vao="moi">Hãy đến nơi tận cùng trái đất, đưa tay lên trời, cậu sẽ được nhấc bổng lên tận tầng mây</span><span data-vao="choi">Con là sóng và mẹ sẽ là bến bờ kì lạ,</span><span data-vao="tu">Mẹ mình đang đợi ở nhà</span></div>
   <div class="why">Em đã thấy cả câu chuyện đi theo ba bước: được mời gọi → từ chối vì mẹ → nghĩ ra trò chơi được ở bên mẹ. Để ý: trò chơi nào em bé nghĩ ra cũng có mẹ ở ngay cạnh con. Tự kiểm tra: 2 + 2 + 2 = 6.</div>
 </div>
@@ -1426,10 +1439,16 @@
   function tao(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
   function nut(cls, html){ var b = tao("button", cls, html); b.type = "button"; return b; }
   function tron(a){ for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
-  function khacGoc(a, goc){ return a.some(function(x, i){ return x !== goc[i]; }); }
+  function soLech(a, goc){ return a.filter(function(x, i){ return x !== goc[i]; }).length; }
+  /* xáo sao cho ít nhất một nửa số thẻ lệch chỗ (chỉ đổi 2 thẻ thì gần như đã xếp sẵn) */
   function tronKhacGoc(goc){
     if(goc.length < 2) return goc.slice();
-    for(var k = 0; k < 30; k++){ var b = tron(goc.slice()); if(khacGoc(b, goc)) return b; }
+    var can = Math.max(2, Math.ceil(goc.length / 2)), tot = null;
+    for(var k = 0; k < 60; k++){
+      var b = tron(goc.slice()), l = soLech(b, goc);
+      if(l >= can) return b;
+      if(l && (!tot || l > soLech(tot, goc))) tot = b;
+    }
     return goc.slice(1).concat(goc[0]);
   }
   function nhay(e){ e.classList.remove("moi"); void e.offsetWidth; e.classList.add("moi"); }
@@ -1697,29 +1716,61 @@
     }, veLai);
   });
 
-  /* ---- 5. tô sáng trong đoạn trích [data-tosang] ---- */
+  /* ---- 5. tô sáng trong đoạn trích [data-tosang] ----
+     data-tosang rỗng  = một nhãn: bấm để tô / bỏ; cụm đúng mang data-dung.
+     data-tosang="k:Tên|…" = NHIỀU NHÃN: mỗi lần bấm đổi sang nhãn kế tiếp rồi về "chưa gán";
+     cụm đúng mang data-dung="k"; cụm không có data-dung là cụm nhiễu (phải để trống). */
   $$("[data-tosang]").forEach(function(root){
     var ts = $$(".t", root);
-    function dat(t, on){ t.classList.toggle("chon", on); t.setAttribute("aria-pressed", on ? "true" : "false"); }
+    var nhan = (root.getAttribute("data-tosang") || "").split("|").map(function(x){
+      var i = x.indexOf(":"); return i > 0 ? {k: x.slice(0, i).trim(), ten: x.slice(i + 1).trim()} : null;
+    }).filter(function(g){ return g && g.k; });
+    var nhieu = nhan.length >= 2;
+    function viTri(k){ for(var i = 0; i < nhan.length; i++){ if(nhan[i].k === k) return i; } return -1; }
+    function canCo(t){ return nhieu ? (t.getAttribute("data-dung") || "") : (t.hasAttribute("data-dung") ? "1" : ""); }
+    function dangCo(t){ return t.getAttribute("data-chon") || ""; }
+    function dat(t, k){
+      k = k || ""; t.setAttribute("data-chon", k); t.classList.toggle("chon", !!k);
+      t.setAttribute("aria-pressed", k ? "true" : "false");
+      if(nhieu){
+        var i = viTri(k);
+        if(i >= 0){ t.setAttribute("data-mau", i); t.setAttribute("data-ten", nhan[i].ten); }
+        else { t.removeAttribute("data-mau"); t.removeAttribute("data-ten"); }
+        t.setAttribute("aria-label", t.textContent.trim() + (i >= 0 ? " — " + nhan[i].ten : " — chưa gán nhãn"));
+      }
+    }
     ts.forEach(function(t){
-      t.setAttribute("role", "button"); t.setAttribute("tabindex", "0"); t.setAttribute("aria-pressed", "false");
-      var bam = function(){ if(!root.classList.contains("done")) dat(t, !t.classList.contains("chon")); };
+      t.setAttribute("role", "button"); t.setAttribute("tabindex", "0"); dat(t, "");
+      var bam = function(){
+        if(root.classList.contains("done")) return;
+        if(!nhieu){ dat(t, dangCo(t) ? "" : "1"); return; }
+        var i = viTri(dangCo(t)); dat(t, i + 1 < nhan.length ? nhan[i + 1].k : "");
+      };
       t.addEventListener("click", bam);
       t.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); bam(); } });
     });
     var doan = root.querySelector(".doan") || (ts[0] && ts[0].parentNode);
-    if(doan && doan.parentNode === root) huongDan(root, doan, "Bấm vào từ, cụm từ có gạch chấm để tô sáng; bấm lần nữa để bỏ. Chọn xong bấm Kiểm tra.");
+    if(doan && doan.parentNode === root){
+      if(nhieu){
+        var cg = tao("p", "chu-giai"); cg.setAttribute("aria-hidden", "true");
+        nhan.forEach(function(g, i){ var x = tao("span"); x.setAttribute("data-mau", i); x.textContent = (i + 1) + " lần bấm: " + g.ten; cg.appendChild(x); });
+        root.insertBefore(cg, doan);
+        huongDan(root, cg, "Bấm vào từ có gạch chấm để gán nhãn; bấm tiếp để đổi nhãn (" + nhan.map(function(g){ return g.ten; }).join(" → ") + " → bỏ). Gán xong bấm Kiểm tra.");
+      } else huongDan(root, doan, "Bấm vào từ, cụm từ có gạch chấm để tô sáng; bấm lần nữa để bỏ. Chọn xong bấm Kiểm tra.");
+    }
     nutKiemTra(root, function(){
-      var thua = ts.filter(function(t){ return t.classList.contains("chon") && !t.hasAttribute("data-dung"); }).length;
-      var thieu = ts.filter(function(t){ return !t.classList.contains("chon") && t.hasAttribute("data-dung"); }).length;
-      if(!thua && !thieu){ xong(root); return; }
+      var thua = ts.filter(function(t){ return dangCo(t) && !canCo(t); }).length;
+      var thieu = ts.filter(function(t){ return !dangCo(t) && canCo(t); }).length;
+      var lech = ts.filter(function(t){ return dangCo(t) && canCo(t) && dangCo(t) !== canCo(t); }).length;
+      if(!thua && !thieu && !lech){ xong(root); return; }
       var y = [];
-      if(thua) y.push("em đang tô thừa " + thua + " chỗ");
-      if(thieu) y.push("còn " + thieu + " chỗ em chưa tô");
-      baoSai(root, "Chưa đúng: " + y.join(", ") + ".", "Em đọc lại yêu cầu và đoạn trích rồi thử lại nhé.", thua + thieu === 1);
+      if(lech) y.push(lech + " chỗ gán chưa đúng nhãn");
+      if(thua) y.push("em đang " + (nhieu ? "gán nhãn" : "tô") + " thừa " + thua + " chỗ");
+      if(thieu) y.push("còn " + thieu + " chỗ em chưa " + (nhieu ? "gán nhãn" : "tô"));
+      baoSai(root, "Chưa đúng: " + y.join(", ") + ".", "Em đọc lại yêu cầu và đoạn trích rồi thử lại nhé.", thua + thieu + lech === 1);
     });
-    dangKy(root, "tosang", function(){ ts.forEach(function(t){ dat(t, t.hasAttribute("data-dung")); }); xong(root); },
-      function(){ ts.forEach(function(t){ dat(t, false); }); });
+    dangKy(root, "tosang", function(){ ts.forEach(function(t){ dat(t, canCo(t)); }); xong(root); },
+      function(){ ts.forEach(function(t){ dat(t, ""); }); });
   });
 
   /* ---- 6. thẻ lật (không chấm) ---- */
@@ -1732,7 +1783,7 @@
   });
 
   /* ---- 7. ghi chép của em: dự đoán, nhật kí cảm xúc (không chấm) ---- */
-  var xemLai = {};
+  var xemLai = {}, xoaGhi = [];
   function veXemLai(k){ (xemLai[k] || []).forEach(function(f){ f(); }); }
   $$("[data-luu]").forEach(function(root){
     var k = root.getAttribute("data-luu");
@@ -1758,7 +1809,9 @@
     dong.appendChild(trangThai); dong.appendChild(xoa); root.appendChild(dong);
     function tt(){ trangThai.textContent = (ta.value.trim() || kho.cx[k]) ? "✓ Đã lưu trên máy này" : "Không chấm điểm — chữ em gõ tự lưu trên máy này."; }
     ta.addEventListener("input", function(){ kho.ghi[k] = ta.value; ghiKho(); tt(); veXemLai(k); });
-    haiLan(xoa, "Bấm lần nữa để xoá", function(){ ta.value = ""; kho.ghi[k] = ""; kho.cx[k] = ""; veCx(); ghiKho(); tt(); veXemLai(k); });
+    function xoaO(){ ta.value = ""; kho.ghi[k] = ""; kho.cx[k] = ""; veCx(); tt(); veXemLai(k); }
+    xoaGhi.push(xoaO);
+    haiLan(xoa, "Bấm lần nữa để xoá", function(){ xoaO(); ghiKho(); });
     veCx(); tt();
   });
   $$("[data-xem-lai]").forEach(function(root){
@@ -1891,6 +1944,15 @@
       xoaGiaoDien(); kho.done = []; kho.sao = {}; kho.tong = units.length; ghiKho(); capNhatChang(false);
       bao("Đã làm lại từ đầu. Cố lên nhé! 💪");
     });
+    /* xoá mọi ghi chép (khi đưa máy cho bạn khác dùng) — cũng phải bấm hai lần */
+    if(xoaGhi.length){
+      var xg = nut("btn", "Xoá mọi ghi chép của em"); xg.id = "xoaGhiHet";
+      rs.parentNode.appendChild(document.createTextNode(" ")); rs.parentNode.appendChild(xg);
+      haiLan(xg, "Bấm lần nữa để xoá mọi ghi chép", function(){
+        xoaGhi.forEach(function(f){ f(); }); kho.ghi = {}; kho.cx = {}; ghiKho();
+        bao("Đã xoá mọi ghi chép trên máy này.");
+      });
+    }
   })();
 
   /* ================= nút Hiện/Ẩn gợi ý ================= */

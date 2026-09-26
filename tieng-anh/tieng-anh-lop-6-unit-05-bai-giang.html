@@ -517,9 +517,11 @@
   /* kết quả đang GIỮ (GV chưa bấm 👁): ô phản hồi chỉ báo "đã ghi nhận", màu đúng / sai về trung tính.
      Widget khám phá (danh sách MIEN trong JS) không bị giữ. */
   #tc-san.tc-giu .fb.show:is(.good,.bad):not(:is([data-flip],[data-ghi],[data-noi],[data-timer],[data-xem-lai],.game,[data-chieu-cham="ngay"]) .fb){
-    position:relative; visibility:hidden; height:2.9em; overflow:hidden}
+    visibility:hidden; font-size:0 !important; line-height:0; padding:0; border:0; background:none}
+  /* chữ thật bị ẩn và KHÔNG chiếm chỗ; ô "đã ghi nhận" cao theo chữ của nó (cột hẹp thì xuống dòng, không bị cắt — lỗi Toán Bài 11, 26/9) */
+  #tc-san.tc-giu .fb.show:is(.good,.bad):not(:is([data-flip],[data-ghi],[data-noi],[data-timer],[data-xem-lai],.game,[data-chieu-cham="ngay"]) .fb) > *{display:none !important}
   #tc-san.tc-giu .fb.show:is(.good,.bad):not(:is([data-flip],[data-ghi],[data-noi],[data-timer],[data-xem-lai],.game,[data-chieu-cham="ngay"]) .fb)::before{
-    content:"✔ Đã ghi nhận — chờ thầy / cô bấm 👁 Hiện kết quả"; visibility:visible; position:absolute; inset:0;
+    content:"✔ Đã ghi nhận — chờ thầy / cô bấm 👁 Hiện kết quả"; visibility:visible; display:block; font-size:15.5px; line-height:1.5;
     padding:10px 14px; border:1px dashed #8d96aa; border-radius:10px; background:#f1f3f8; color:#3d4558; font-weight:600}
   #tc-san.tc-giu :is(.dung,.sai,.sai-o):not(:is([data-flip],[data-ghi],[data-noi],[data-timer],[data-xem-lai],.game,[data-chieu-cham="ngay"]) *){
     background:#fff !important; border-color:#8d96aa !important; color:inherit !important; animation:none !important}

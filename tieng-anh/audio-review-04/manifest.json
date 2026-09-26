@@ -1,0 +1,706 @@
+{
+  "voc-dishwasher": {
+    "file": "voc-dishwasher.mp3",
+    "kieu": "don",
+    "text": "dishwasher",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "57c91a702eb6d34c"
+  },
+  "voc-solar-energy": {
+    "file": "voc-solar-energy.mp3",
+    "kieu": "don",
+    "text": "solar energy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "762807089a698d6a"
+  },
+  "voc-ufo": {
+    "file": "voc-ufo.mp3",
+    "kieu": "don",
+    "text": "UFO",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f53933a9d1908c38"
+  },
+  "voc-plastic-bag": {
+    "file": "voc-plastic-bag.mp3",
+    "kieu": "don",
+    "text": "plastic bag",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cc3d4586e7740e5b"
+  },
+  "voc-charity": {
+    "file": "voc-charity.mp3",
+    "kieu": "don",
+    "text": "charity",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bd7f7162b54c9513"
+  },
+  "voc-fair": {
+    "file": "voc-fair.mp3",
+    "kieu": "don",
+    "text": "fair",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3b3602610453aa29"
+  },
+  "voc-weight": {
+    "file": "voc-weight.mp3",
+    "kieu": "don",
+    "text": "weight",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d75f718e9c7fd164"
+  },
+  "voc-broken": {
+    "file": "voc-broken.mp3",
+    "kieu": "don",
+    "text": "broken",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3d209d89b3a1b1f2"
+  },
+  "voc-price": {
+    "file": "voc-price.mp3",
+    "kieu": "don",
+    "text": "price",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "009b01568e5ecada"
+  },
+  "pr-kitchen": {
+    "file": "pr-kitchen.mp3",
+    "kieu": "don",
+    "text": "kitchen",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8e0510314587bb92"
+  },
+  "pr-tonight": {
+    "file": "pr-tonight.mp3",
+    "kieu": "don",
+    "text": "tonight",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8f704e5777291458"
+  },
+  "pr-rule": {
+    "file": "pr-rule.mp3",
+    "kieu": "don",
+    "text": "In a sentence, the stressed and unstressed syllables combine to make rhythm.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2f1ce14089bf0fbe"
+  },
+  "prs-happy": {
+    "file": "prs-happy.mp3",
+    "kieu": "don",
+    "text": "We are happy to walk to school.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb915e9986608ffd"
+  },
+  "pr-rem-1": {
+    "file": "pr-rem-1.mp3",
+    "kieu": "don",
+    "text": "Our voice often goes down at the end of a statement.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "397680a9a906f6f5"
+  },
+  "pr-rem-2": {
+    "file": "pr-rem-2.mp3",
+    "kieu": "don",
+    "text": "We go to school every morning.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9f4dbb72e965d3fd"
+  },
+  "pr-window": {
+    "file": "pr-window.mp3",
+    "kieu": "don",
+    "text": "window",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1930e38ed9089c87"
+  },
+  "pr-sister": {
+    "file": "pr-sister.mp3",
+    "kieu": "don",
+    "text": "sister",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "85a1a8c7c5cccb64"
+  },
+  "pr-pencil": {
+    "file": "pr-pencil.mp3",
+    "kieu": "don",
+    "text": "pencil",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c14dac8ef41f4b68"
+  },
+  "pr-dinner": {
+    "file": "pr-dinner.mp3",
+    "kieu": "don",
+    "text": "dinner",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "64d6ba66d37ede7d"
+  },
+  "pr-hotel": {
+    "file": "pr-hotel.mp3",
+    "kieu": "don",
+    "text": "hotel",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6a93598597f9396a"
+  },
+  "pr-behind": {
+    "file": "pr-behind.mp3",
+    "kieu": "don",
+    "text": "behind",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "237812c3209d2786"
+  },
+  "pr-enjoy": {
+    "file": "pr-enjoy.mp3",
+    "kieu": "don",
+    "text": "enjoy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "80b55f2fbaf12c0e"
+  },
+  "pr-today": {
+    "file": "pr-today.mp3",
+    "kieu": "don",
+    "text": "today",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "261e2b0e50088697"
+  },
+  "pr-yellow": {
+    "file": "pr-yellow.mp3",
+    "kieu": "don",
+    "text": "yellow",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a9ae4f370ad33bf7"
+  },
+  "pr-again": {
+    "file": "pr-again.mp3",
+    "kieu": "don",
+    "text": "again",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "33a061a936c1b432"
+  },
+  "pr-homework": {
+    "file": "pr-homework.mp3",
+    "kieu": "don",
+    "text": "homework",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "373c215dbb66ed7d"
+  },
+  "pr-between": {
+    "file": "pr-between.mp3",
+    "kieu": "don",
+    "text": "between",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "867b2a96e547be82"
+  },
+  "prb-1": {
+    "file": "prb-1.mp3",
+    "kieu": "don",
+    "text": "My robot helped me repair the broken cooker.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "91eadf33481e7f68"
+  },
+  "prb-2": {
+    "file": "prb-2.mp3",
+    "kieu": "don",
+    "text": "It's better to reuse these shopping bags.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "479372a4e646639b"
+  },
+  "prb-3": {
+    "file": "prb-3.mp3",
+    "kieu": "don",
+    "text": "My future house will have solar energy.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2ab6084d0863701e"
+  },
+  "voc-cottage": {
+    "file": "voc-cottage.mp3",
+    "kieu": "don",
+    "text": "cottage",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "92b69ef06319a1a1"
+  },
+  "voc-washing-machine": {
+    "file": "voc-washing-machine.mp3",
+    "kieu": "don",
+    "text": "washing machine",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "80c3c236a27e0423"
+  },
+  "voc-smart-clock": {
+    "file": "voc-smart-clock.mp3",
+    "kieu": "don",
+    "text": "smart clock",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "22c16a626f7940bc"
+  },
+  "voc-plastic-bottle": {
+    "file": "voc-plastic-bottle.mp3",
+    "kieu": "don",
+    "text": "plastic bottle",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0995c155d42372f2"
+  },
+  "voc-recycling-bin": {
+    "file": "voc-recycling-bin.mp3",
+    "kieu": "don",
+    "text": "recycling bin",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "67e33736ac06a0b0"
+  },
+  "voc-height": {
+    "file": "voc-height.mp3",
+    "kieu": "don",
+    "text": "height",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dfc8dadc7a283741"
+  },
+  "voc-choice": {
+    "file": "voc-choice.mp3",
+    "kieu": "don",
+    "text": "choice",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3c6c7442fdae6497"
+  },
+  "voc-appliance": {
+    "file": "voc-appliance.mp3",
+    "kieu": "don",
+    "text": "appliance",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3bcae3dd6152d807"
+  },
+  "voc-hi-tech": {
+    "file": "voc-hi-tech.mp3",
+    "kieu": "don",
+    "text": "hi-tech",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d1294fcf5a31cf37"
+  },
+  "voc-wireless": {
+    "file": "voc-wireless.mp3",
+    "kieu": "don",
+    "text": "wireless",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a70e01d65b382734"
+  },
+  "voc-environment": {
+    "file": "voc-environment.mp3",
+    "kieu": "don",
+    "text": "environment",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "14545fdd5e5b2153"
+  },
+  "voc-planet": {
+    "file": "voc-planet.mp3",
+    "kieu": "don",
+    "text": "planet",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "aa56374ca7f61711"
+  },
+  "voc-space-station": {
+    "file": "voc-space-station.mp3",
+    "kieu": "don",
+    "text": "space station",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d47f78e761c7101a"
+  },
+  "voc-pick-up": {
+    "file": "voc-pick-up.mp3",
+    "kieu": "don",
+    "text": "pick up",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d9984f4baae7cf02"
+  },
+  "voc-put-away": {
+    "file": "voc-put-away.mp3",
+    "kieu": "don",
+    "text": "put away",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3bb6a0736b92e173"
+  },
+  "voc-look-after": {
+    "file": "voc-look-after.mp3",
+    "kieu": "don",
+    "text": "look after",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c06ccd7800245731"
+  },
+  "voc-go-green": {
+    "file": "voc-go-green.mp3",
+    "kieu": "don",
+    "text": "go green",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f39570f069438356"
+  },
+  "voc-be-in-need": {
+    "file": "voc-be-in-need.mp3",
+    "kieu": "don",
+    "text": "be in need",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "296476ee4a15e418"
+  },
+  "voc-do-a-survey": {
+    "file": "voc-do-a-survey.mp3",
+    "kieu": "don",
+    "text": "do a survey",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fb6750e8785ee035"
+  },
+  "gr-u4-1": {
+    "file": "gr-u4-1.mp3",
+    "kieu": "don",
+    "text": "We can use comparative adjectives to compare two people or things.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb208e8f687f681a"
+  },
+  "gr-u4-2": {
+    "file": "gr-u4-2.mp3",
+    "kieu": "don",
+    "text": "Tom is taller than Mary.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fd6b54064b835d9f"
+  },
+  "gr-u12-1": {
+    "file": "gr-u12-1.mp3",
+    "kieu": "don",
+    "text": "We use superlative adjectives to compare three or more people or things.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "00b3ba12fabdafb3"
+  },
+  "gr-u12-2": {
+    "file": "gr-u12-2.mp3",
+    "kieu": "don",
+    "text": "Tom is the tallest in his class.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a19ffc8f7dd6177c"
+  },
+  "gr-u12-3": {
+    "file": "gr-u12-3.mp3",
+    "kieu": "don",
+    "text": "This is the biggest of the three bags.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bd12e3b9aab6ed43"
+  },
+  "gr-a1": {
+    "file": "gr-a1.mp3",
+    "kieu": "don",
+    "text": "There are two kinds of articles in English: the indefinite article (a / an) and the definite article (the).",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "58665ef8ee77ba48"
+  },
+  "gr-a2": {
+    "file": "gr-a2.mp3",
+    "kieu": "don",
+    "text": "We use a / an",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3cb6ccd1fa811699"
+  },
+  "gr-a3": {
+    "file": "gr-a3.mp3",
+    "kieu": "don",
+    "text": "with singular countable nouns when we are talking about them in general.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f5b25bc87c53e3df"
+  },
+  "gr-a4": {
+    "file": "gr-a4.mp3",
+    "kieu": "don",
+    "text": "An ant is a tiny animal.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c235cd5a14ce87e8"
+  },
+  "gr-a5": {
+    "file": "gr-a5.mp3",
+    "kieu": "don",
+    "text": "after the verbs to be and to have.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "eb07bcf45e113e74"
+  },
+  "gr-a6": {
+    "file": "gr-a6.mp3",
+    "kieu": "don",
+    "text": "I'm a student.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8ed976bd1dd8c8f8"
+  },
+  "gr-a7": {
+    "file": "gr-a7.mp3",
+    "kieu": "don",
+    "text": "I have an eraser.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "29b11f454b827497"
+  },
+  "gr-a8": {
+    "file": "gr-a8.mp3",
+    "kieu": "don",
+    "text": "We use the",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2d06fb9eee1048cf"
+  },
+  "gr-a9": {
+    "file": "gr-a9.mp3",
+    "kieu": "don",
+    "text": "with singular or plural nouns when we already know them or when they are mentioned for the second time.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9d5df93a08b1eded"
+  },
+  "gr-a10": {
+    "file": "gr-a10.mp3",
+    "kieu": "don",
+    "text": "The bike in front of her house is nice.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7ebacdd1e276fe50"
+  },
+  "gr-a11": {
+    "file": "gr-a11.mp3",
+    "kieu": "don",
+    "text": "with nouns which are unique.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3b5052b51b9c4bf0"
+  },
+  "gr-a12": {
+    "file": "gr-a12.mp3",
+    "kieu": "don",
+    "text": "The air is dirty.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0cc140fc6e9b5560"
+  },
+  "gr-f1": {
+    "file": "gr-f1.mp3",
+    "kieu": "don",
+    "text": "We use the future simple to talk about an action that happens in the future.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e5e2ec618df1b2fa"
+  },
+  "gr-f2": {
+    "file": "gr-f2.mp3",
+    "kieu": "don",
+    "text": "My father will travel on the Moon in a super car in the future.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4890e4e7a53483f8"
+  },
+  "gr-f3": {
+    "file": "gr-f3.mp3",
+    "kieu": "don",
+    "text": "We'll live in that cottage next year.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f11a5dd3bcba601a"
+  },
+  "gr-f4": {
+    "file": "gr-f4.mp3",
+    "kieu": "don",
+    "text": "We won't live in that cottage anytime soon.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8fe17dad40d95bfa"
+  },
+  "gr-f5": {
+    "file": "gr-f5.mp3",
+    "kieu": "don",
+    "text": "Will they live on the Moon?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1a5a2e762ffc1f49"
+  },
+  "gr-f6": {
+    "file": "gr-f6.mp3",
+    "kieu": "don",
+    "text": "Yes, they will.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e3334f30f11b3a3e"
+  },
+  "gr-f7": {
+    "file": "gr-f7.mp3",
+    "kieu": "don",
+    "text": "No, they won't.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "974acfd67d89b75b"
+  },
+  "gr-m1": {
+    "file": "gr-m1.mp3",
+    "kieu": "don",
+    "text": "We use might + V to talk about actions that are possible in the future (we are not sure if they will happen or not).",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7cd05cdd3c2d403e"
+  },
+  "gr-m2": {
+    "file": "gr-m2.mp3",
+    "kieu": "don",
+    "text": "We might live in a UFO.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9f84c7ed9480ae8d"
+  },
+  "gr-m3": {
+    "file": "gr-m3.mp3",
+    "kieu": "don",
+    "text": "They might not travel in cars.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0f451dc43ea473e9"
+  },
+  "gr-c1": {
+    "file": "gr-c1.mp3",
+    "kieu": "don",
+    "text": "First conditional sentences describe things which are possible and likely to happen in the present or the future.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a0e686bf9ad40201"
+  },
+  "gr-c2": {
+    "file": "gr-c2.mp3",
+    "kieu": "don",
+    "text": "If you use less paper, you will save a lot of trees.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "006f545145cdf838"
+  },
+  "ten-nguyen-du": {
+    "file": "ten-nguyen-du.mp3",
+    "kieu": "don",
+    "text": "Nguyễn Du",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "2413411a7a5773e6"
+  },
+  "rd-eco-friendly": {
+    "file": "rd-eco-friendly.mp3",
+    "kieu": "don",
+    "text": "eco-friendly",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "00705ea2a894acbd"
+  },
+  "rd-wind-energy": {
+    "file": "rd-wind-energy.mp3",
+    "kieu": "don",
+    "text": "wind energy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c41071c5f0419d9a"
+  },
+  "rd-underground": {
+    "file": "rd-underground.mp3",
+    "kieu": "don",
+    "text": "underground",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3a50c7e72105e56e"
+  },
+  "rd-comfortable": {
+    "file": "rd-comfortable.mp3",
+    "kieu": "don",
+    "text": "comfortable",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1b64d2324c616330"
+  },
+  "rd-land": {
+    "file": "rd-land.mp3",
+    "kieu": "don",
+    "text": "land",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a7b3e7a93c020a9a"
+  },
+  "read-01": {
+    "file": "read-01.mp3",
+    "kieu": "don",
+    "text": "What will our houses in the future be like? In the future, the places we live in and the ways we live will change a lot. Our houses will be more eco-friendly. We will use wind energy or solar energy. We will use our voices to control our houses. It will make our lives more comfortable. There will be underground cities. There will be cities in the air and on other planets, too. We will have to build cities there because there will be too many people and not enough land for houses or buildings.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d8951417d65c4b4e"
+  },
+  "sp-1": {
+    "file": "sp-1.mp3",
+    "kieu": "don",
+    "text": "My future house will be a palace.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "24d752e71e1487b4"
+  },
+  "sp-2": {
+    "file": "sp-2.mp3",
+    "kieu": "don",
+    "text": "There'll be a super smart TV in the house.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a04fb4707dab8f6c"
+  },
+  "pr-machine": {
+    "file": "pr-machine.mp3",
+    "kieu": "don",
+    "text": "machine",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5ef00c2816f7cecb"
+  }
+}

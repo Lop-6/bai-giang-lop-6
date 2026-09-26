@@ -659,6 +659,160 @@
   .tr-3c{font:700 16px "Segoe UI",sans-serif; fill:#8a93a6}
   @media(max-width:640px){ .tr-so{font-size:20px} .tr-so.nho{font-size:14px} }
 
+  /* ----- SỐ NGUYÊN — bảng màu Chương III (Bài 13–17, mọi bài có số âm): âm xanh dương đậm · dương cam · 0 tím.
+     .h6-am / .h6-duong / .h6-khong tô chữ HTML và chữ SVG (nhãn data-numline data-to-dau, Toan6.tia.truc(…, {toDau:1})).
+     Trục số bấm chọn có data-to-dau="1": điểm em đang chọn XÁM, làm đúng rồi (sau 👁 khi chiếu) mới tô theo dấu ----- */
+  :root{ --h6-am:#1e40af; --h6-am-nen:#dbeafe; --h6-duong:#c2410c; --h6-duong-nen:#ffedd5; --h6-khong:#7e22ce; --h6-khong-nen:#f3e8ff; --h6-chon:#5c6577 }
+  .h6-am, .numline .lbl.h6-am{color:var(--h6-am); fill:var(--h6-am); font-weight:700}
+  .h6-duong, .numline .lbl.h6-duong{color:var(--h6-duong); fill:var(--h6-duong); font-weight:700}
+  .h6-khong, .numline .lbl.h6-khong{color:var(--h6-khong); fill:var(--h6-khong); font-weight:700}
+  .numline.h6-dau .pt{stroke:var(--h6-chon)}
+  .numline.h6-dau .pt.on{fill:var(--h6-chon); stroke:var(--h6-chon)}
+  .numline.h6-dau.h6-xong .pt.on[data-v^="-"], .numline.h6-dau .pt.fixed[data-v^="-"]{fill:var(--h6-am); stroke:var(--h6-am)}
+  .numline.h6-dau.h6-xong .pt.on[data-v="0"], .numline.h6-dau .pt.fixed[data-v="0"]{fill:var(--h6-khong); stroke:var(--h6-khong)}
+  .numline.h6-dau.h6-xong .pt.on:not([data-v^="-"]):not([data-v="0"]), .numline.h6-dau .pt.fixed:not([data-v^="-"]):not([data-v="0"]){fill:var(--h6-duong); stroke:var(--h6-duong)}
+
+  /* ----- THƯ VIỆN HÌNH CHƯƠNG II (Toan6.hinh / khối data-h6="…", bo-khoi-tuong-tac.md mục 25) — tiền tố h6- riêng,
+     không trùng lớp của bài cũ (các bài cũ vẫn dùng rieng.js tiền tố l22- / b11- … của chúng).
+     Bảng màu Chương II: cam = số nguyên tố, hàng đầy · xám đậm = hợp số · nâu = số hàng · đỏ mận = cái lẻ, vạch lệch, số em gõ chưa đúng ·
+     xanh lơ = số đang xét · tím hồng = CHUNG, ƯCLN · chàm = BỘI CHUNG, BCNN, mẫu chung · thanh gỗ be, viền xám đá ----- */
+  :root{ --h6-hs:#334155; --h6-nt:#c2410c; --h6-nt-dam:#9a3412; --h6-nt-nen:#ffedd5; --h6-uoc-nen:#fed7c3; --h6-k:#7c4a1e;
+         --h6-le:#9f1239; --h6-xet:#0e7490; --h6-xet-nen:#ecfeff; --h6-trung:#94a3b8; --h6-cham:#475569;
+         --h6-chung:#a21caf; --h6-chung-nen:#fae8ff; --h6-boi:#4338ca; --h6-boi-nen:#e0e7ff;
+         --h6-go:#f3e3c3; --h6-go2:#e9d3a6; --h6-go-vien:#78716c; --h6-o:46px }
+  .h6-svg{display:block; width:100%; max-width:100%; height:auto; margin:6px auto}
+  .h6-t{font-size:14px; fill:#1f2937; dominant-baseline:middle}
+  .h6-t-le{fill:var(--h6-le); font-weight:700}
+  .h6-t-dam{fill:#334155; font-weight:700}
+  .h6-t-boi{fill:var(--h6-boi); font-weight:800}
+  .h6-t-nt{fill:var(--h6-nt); font-weight:700}
+  .h6-t-k{fill:var(--h6-k); font-weight:700}
+  .h6-t-so{font-size:13px}
+  .h6-t-ps{font-size:17px}
+  .h6-chu{text-align:center; font-size:15px; margin:2px 0 8px}
+  .c-h6-le{color:var(--h6-le); font-weight:700}
+  [data-h6-go]{margin:4px 0 10px}
+  [data-h6-go]:empty{display:none}
+  [data-h6-go] .h6-svg{max-width:520px}
+  /* xếp hàng */
+  .h6-cham{fill:var(--h6-cham)}
+  .h6-le{fill:var(--h6-le)}
+  .h6-trong{fill:none; stroke:var(--h6-trung); stroke-width:1.3; stroke-dasharray:3 3}
+  .h6-hang{fill:var(--h6-uoc-nen); fill-opacity:.35; stroke:var(--h6-nt); stroke-width:1.6}
+  .h6-hang-le{fill:none; stroke:var(--h6-le); stroke-width:1.6; stroke-dasharray:5 4}
+  .h6-ngoac{fill:none; stroke:var(--h6-k); stroke-width:2}
+  /* nối thanh */
+  .h6-thanh.h6-a{fill:var(--h6-go); stroke:var(--h6-go-vien); stroke-width:1.3}
+  .h6-thanh.h6-b{fill:var(--h6-go2); stroke:var(--h6-go-vien); stroke-width:1.3}
+  .h6-truc{stroke:#475569; stroke-width:1.6}
+  .h6-vach{stroke:#475569; stroke-width:1.4}
+  .h6-vach-boi{stroke:var(--h6-boi); stroke-width:2.4; stroke-dasharray:6 3}
+  .h6-vach-danh{stroke:var(--h6-le); stroke-width:2; stroke-dasharray:4 3}
+  .h6-khoanh{fill:none; stroke:var(--h6-boi); stroke-width:2.2}
+  /* bảng thẻ thừa số */
+  .h6-bt-khung{overflow-x:auto; padding:2px 0}
+  .h6-bt{display:grid; gap:6px 4px; align-items:center; justify-content:center; margin:6px auto; width:max-content}
+  .h6-bt-dau{font-size:13px; text-align:center; color:#475569; border-bottom:2px solid #cbd5e1; padding-bottom:2px; margin-left:10px; white-space:nowrap}
+  .h6-bt-dau small{display:block; font-size:11px; line-height:1.1}
+  .h6-bt-dau.h6-chung{color:var(--h6-chung); border-bottom-color:var(--h6-chung); font-weight:700; background:var(--h6-chung-nen); border-radius:6px 6px 0 0}
+  .h6-bt-dau.h6-rieng{color:#334155; border-bottom-color:#475569; font-weight:700; background:#f1f5f9; border-radius:6px 6px 0 0}
+  .h6-bt-dau.h6-khong-chung{color:#94a3b8; border-bottom-style:dashed}
+  .h6-bt-ten{font-size:18px; font-weight:700; color:#334155; text-align:right; padding-right:4px; white-space:nowrap}
+  .h6-bt-ten.h6-kq{color:var(--h6-chung)}
+  .h6-bt-ten.h6-kqb{color:var(--h6-boi)}
+  .h6-bt-o{display:flex; justify-content:center; align-items:center; height:var(--h6-o)}
+  .h6-bt-o.h6-dau-cot{margin-left:10px}
+  .h6-the-nt{display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; box-sizing:border-box; border-radius:50%;
+    border:2px solid var(--h6-nt); background:var(--h6-nt-nen); color:var(--h6-nt-dam); font-size:18px; font-weight:800}
+  .h6-the-nt.h6-cap{border-color:var(--h6-chung); background:var(--h6-chung-nen); color:var(--h6-chung); box-shadow:0 0 0 3px #f5d0fe; animation:pop .45s both}
+  .h6-the-nt.h6-max{box-shadow:0 0 0 3px var(--h6-boi)}
+  .h6-the-nt.h6-boi{border-color:var(--h6-boi); background:var(--h6-boi-nen); color:var(--h6-boi); animation:pop .45s both}
+  .h6-the-nt.h6-mo{opacity:.4}
+  .h6-the-rong{display:inline-block; width:36px; height:36px; box-sizing:border-box; border-radius:50%; border:2px dashed #cbd5e1}
+  .h6-bt-kqd{text-align:center; font-size:17px; font-weight:700; color:var(--h6-chung); margin:0 0 6px}
+  .h6-bt-kqd.h6-boi{color:var(--h6-boi)}
+  .h6-bt-kq{font-size:17px; font-weight:700; color:#334155; padding-left:10px; white-space:nowrap}
+  [data-h6-go]{--h6-o:38px}
+  [data-h6-go] .h6-the-nt{width:34px; height:34px; font-size:16px}
+  [data-h6-go] .h6-the-rong{width:30px; height:30px}
+  /* máy sơ đồ cột */
+  table.h6-cot{border-collapse:collapse; margin:4px auto; font-size:19px; width:auto}
+  table.h6-cot td{padding:2px 10px; height:28px; border:0 none; vertical-align:middle}
+  table.h6-cot td.h6-so{text-align:right; border-right:3px solid var(--h6-hs); min-width:66px; font-weight:700; color:var(--h6-hs)}
+  table.h6-cot td.h6-p{text-align:left; min-width:44px; font-weight:700; color:var(--h6-nt-dam)}
+  table.h6-cot tr.h6-dang td.h6-so span{outline:2px solid var(--h6-xet); outline-offset:3px; border-radius:4px; background:var(--h6-xet-nen); padding:0 3px}
+  table.h6-cot tr.h6-moi{animation:fadein .45s both}
+  .h6-dk{text-align:center; font-size:15px; margin:2px 0}
+  .h6-dk .btn{margin:2px 3px; min-width:40px}
+  .h6-dk .btn.h6-dang{outline:3px solid var(--h6-xet); outline-offset:1px}
+  .h6-dk input{font:inherit; width:64px; padding:4px 6px; border:2px solid var(--h6-xet); border-radius:8px; text-align:center}
+  /* thanh phân số */
+  .h6-ps-to{fill:#94a3b8}
+  .h6-ps-khung{fill:none; stroke:#334155; stroke-width:2}
+  .h6-ps-vach{stroke:#334155; stroke-width:2.4}
+  .h6-ps-nho{stroke:var(--h6-boi); stroke-width:1.1; stroke-dasharray:4 3}
+  .h6-ps-lech{stroke:var(--h6-le); stroke-width:1.1; stroke-dasharray:4 3}
+  /* máy rút gọn phân số */
+  .h6-ps{display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; font-weight:800; font-size:22px; line-height:1.15; margin:0 4px}
+  .h6-ps .h6-tu{padding:0 6px 2px}
+  .h6-ps .h6-mau{padding:2px 6px 0; border-top:2.5px solid currentColor}
+  .h6-ps.h6-cuoi{color:#1f2937}
+  [data-h6="rut-gon"]{border:1px dashed #cbd5e1; border-radius:12px; padding:8px 12px; margin:6px 0 10px; background:#fbfcfe}
+  .h6-rg-day{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; min-height:70px; gap:2px; color:#475569}
+  .h6-rg-bang{display:inline-flex; flex-direction:column; align-items:center; font-size:22px; font-weight:700; color:#475569; margin:0 2px}
+  .h6-rg-chia{font-size:13px; color:var(--h6-chung); font-weight:700; line-height:1}
+  .h6-dk.h6-rg input{border-color:var(--h6-chung)}
+  /* lịch hai năm */
+  .h6-lich-o{fill:#fff; stroke:#94a3b8; stroke-width:1.3}
+  .h6-lich-o.h6-sau{fill:#f8fafc}
+  .h6-lich-o.h6-ca{fill:var(--h6-boi-nen); stroke:var(--h6-boi); stroke-width:2.6}
+  .h6-t-lich{font-size:13px; font-weight:700; fill:#334155}
+  .h6-t-lich-n{font-size:13px; fill:#475569; font-weight:600}
+  .h6-lich-a{fill:#334155}
+  .h6-lich-b{fill:#fff; stroke:#7c4a1e; stroke-width:2.2}
+  .h6-lich-ngoac{fill:none; stroke:#94a3b8; stroke-width:1.6}
+  /* sơ đồ cây "em tự tách" */
+  .h6-cay{overflow-x:auto; padding:4px 0}
+  .h6-cay ul{display:flex; justify-content:center; margin:0; padding:16px 0 0; position:relative}
+  .h6-cay > ul{padding-top:0}
+  .h6-cay li{list-style:none; position:relative; padding:16px 4px 0; text-align:center}
+  .h6-cay li::before, .h6-cay li::after{content:""; position:absolute; top:0; right:50%; width:50%; height:16px; border-top:2px solid var(--h6-trung)}
+  .h6-cay li::after{right:auto; left:50%; border-left:2px solid var(--h6-trung)}
+  .h6-cay li:only-child::before, .h6-cay li:only-child::after{display:none}
+  .h6-cay li:only-child{padding-top:0}
+  .h6-cay li:first-child::before, .h6-cay li:last-child::after{border:0 none}
+  .h6-cay li:last-child::before{border-right:2px solid var(--h6-trung); border-radius:0 6px 0 0}
+  .h6-cay li:first-child::after{border-radius:6px 0 0 0}
+  .h6-cay ul ul::before{content:""; position:absolute; top:0; left:50%; height:16px; border-left:2px solid var(--h6-trung)}
+  .h6-nut{display:inline-flex; align-items:center; justify-content:center; min-width:44px; height:44px; padding:0 6px; box-sizing:border-box;
+    font-size:18px; font-weight:800}
+  .h6-nut.h6-hs{border:2px solid var(--h6-hs); border-radius:9px; background:#f1f5f9; color:var(--h6-hs)}
+  .h6-nut.h6-sn{border:2px solid var(--h6-nt); border-radius:50%; background:var(--h6-nt-nen); color:var(--h6-nt-dam); width:44px}
+  .h6-nut.h6-bam{cursor:pointer; box-shadow:0 0 0 3px #e2e8f0}
+  .h6-nut.h6-bam:hover, .h6-nut.h6-chon{box-shadow:0 0 0 3px var(--h6-xet)}
+  .h6-nut.h6-moi{animation:pop .45s both}
+  .h6-cay-chon{text-align:center; font-size:15px; margin:4px 0; min-height:1.2em}
+  .h6-cay-chon .btn{margin:2px 3px}
+  .h6-cay-loi{text-align:center; font-size:15px; margin:4px 0; color:#334155}
+  .h6-cay-loi:empty{display:none}
+  @media(max-width:640px){
+    .h6-t{font-size:24px} .h6-t-so{font-size:26px} .h6-t-so.h6-phu{display:none} .h6-t-ps{font-size:26px}
+    .h6-t-lich, .h6-t-lich-n{font-size:17px}
+    .h6-svg.h6-xep .h6-t{font-size:14px}
+    :root{--h6-o:31px}
+    .h6-the-nt{width:28px; height:28px; font-size:13px}
+    .h6-the-rong{width:24px; height:24px}
+    .h6-bt{gap:4px 2px}
+    .h6-bt-dau, .h6-bt-o.h6-dau-cot{margin-left:5px}
+    .h6-bt-kq{padding-left:4px}
+    .h6-bt-ten, .h6-bt-kq{font-size:15px}
+    .h6-bt-dau{font-size:11px}
+    .h6-ps{font-size:19px}
+    .h6-nut{min-width:40px; height:40px; font-size:16px} .h6-nut.h6-sn{width:40px}
+  }
+  /* chế độ chiếu: hình gỡ khi gõ nhầm chờ GV bấm 👁 (engine chỉ vẽ sau lần chấm thật — lớp này là lưới an toàn) */
+  #tc-san.tc-giu [data-h6-go]{display:none}
+
   /* ----- sơ đồ tư duy rộng: màn hẹp thì cuộn ngang thay vì thu nhỏ chữ còn 8 px ----- */
   @media(max-width:640px){ .mm-wrap{overflow-x:auto} .mm-wrap svg{min-width:900px}
     /* báo cho học sinh biết sơ đồ còn phần bên phải (dòng chữ dính mép trái khi cuộn) */
@@ -670,6 +824,9 @@
     .numline[data-answer]{overflow-x:auto}
     .numline[data-answer] > svg{display:block; min-width:560px}
     .numline[data-answer] .pt{r:11px}
+    /* cuộn ngang mà không nhắc thì em không thấy nửa bên phải của trục (Bài 13, Luyện tập 2) — dòng nhắc dính mép trái */
+    .numline[data-answer]::before{content:"← kéo ngang để xem hết trục số →"; display:block; position:sticky; left:0; width:max-content;
+      font-size:13px; color:var(--muted); background:#fff8e1; border:1px dashed #e0c36a; border-radius:8px; padding:2px 8px; margin:0 0 4px}
     .cp-h button{font-size:9px; padding:2px 0; letter-spacing:-.2px}
   }
 
@@ -808,15 +965,6 @@
   .b13-hai{display:flex; flex-wrap:wrap; gap:14px; justify-content:center; align-items:flex-start}
   .b13-hai > figure{flex:1 1 280px; margin:0}
 
-  /* ---- trục số của engine (data-numline) trong bài: điểm đang chọn xám; đúng rồi mới tô theo dấu; điểm vẽ sẵn tô theo dấu ---- */
-  .b13-nl .pt{stroke:var(--b13-chon)}
-  .b13-nl .pt.on{fill:var(--b13-chon); stroke:var(--b13-chon)}
-  .b13-nl.b13-xong .pt.on[data-v^="-"]{fill:var(--b13-am); stroke:var(--b13-am)}
-  .b13-nl.b13-xong .pt.on[data-v="0"]{fill:var(--b13-khong); stroke:var(--b13-khong)}
-  .b13-nl.b13-xong .pt.on:not([data-v^="-"]):not([data-v="0"]){fill:var(--b13-duong); stroke:var(--b13-duong)}
-  .b13-nl .pt.fixed{fill:var(--b13-duong); stroke:var(--b13-duong)}
-  .b13-nl .pt.fixed[data-v^="-"]{fill:var(--b13-am); stroke:var(--b13-am)}
-  .b13-nl .pt.fixed[data-v="0"]{fill:var(--b13-khong); stroke:var(--b13-khong)}
 
   /* chọn trong data-picks: xám đá (xanh brand dễ đọc thành «số âm») */
   .b13-pk .num.on{background:#475569; border-color:#475569; color:#fff}
@@ -896,9 +1044,6 @@
   @media(max-width:640px){
     .b13-t{font-size:24px} .b13-t-nho{font-size:21px} .b13-t-to{font-size:26px}
     .b13-svg .tr-so{font-size:24px}
-    /* trục số bấm chọn của engine cuộn ngang trên màn hẹp (min-width 560) — nhắc em kéo ngang, kẻo không thấy nửa bên phải */
-    .b13-nl[data-answer]::before{content:"← kéo ngang để xem hết trục số →"; display:block; position:sticky; left:0; width:max-content;
-      font-size:13px; color:var(--muted); background:#fff8e1; border:1px dashed #e0c36a; border-radius:8px; padding:2px 8px; margin:0 0 4px}
     .b13-lt1 input.b13-o{width:70px}
   }
 </style>
@@ -907,7 +1052,7 @@
 
 <header class="top">
   <div class="wrap">
-    <h1>BÀI 13. TẬP HỢP CÁC SỐ NGUYÊN</h1>
+    <h1 data-nhieu-hd="bài mở Chương III: 12 chỗ hỏi của SGK + 5 hoạt động cho dạng mới của bài tập 3.1–3.8">BÀI 13. TẬP HỢP CÁC SỐ NGUYÊN</h1>
     <p class="sub">Toán 6 · Chương III. Số nguyên · Kết nối tri thức với cuộc sống</p>
     <span class="badge">Bài giảng tương tác</span>
     <span class="badge">Trục số · nhiệt kế · mặt cắt độ cao · tập ℤ · hai điểm kéo được</span>
@@ -1005,10 +1150,10 @@
     <p class="p-dong"><b>HĐ2.</b> Bằng cách sử dụng dấu "−", hãy viết các số âm được nói đến trong Hình 3.3.</p>
     <div class="box" style="margin:6px 0"><b>Hình 3.3.</b><br>– Độ cao trung bình của thềm lục địa Việt Nam so với mực nước biển là âm 65 mét.<br>
       – Độ cao của đáy vịnh Cam Ranh so với mực nước biển là khoảng âm 30 mét.</div>
-    <p class="p-dong">Âm 65 mét viết là <span data-fill data-gon="1" data-answer="-65|−65" data-unit="m"
+    <p class="p-dong">Âm 65 mét viết là <span data-fill data-gon="1" data-answer="-65" data-unit="m"
         data-hint-sai='{"65": "«Âm 65» — em còn thiếu dấu gì đứng trước 65?", "+65": "Dấu «+» dùng cho số dương. «Âm» thì dùng dấu nào?", "-56": "Em đảo chữ số rồi: âm sáu mươi lăm.", "−56": "Em đảo chữ số rồi: âm sáu mươi lăm."}'
         data-fb-sai="Số âm viết bằng dấu «−» đứng ngay trước số, chẳng hạn âm 3 viết là −3." data-ok="Đúng: −65 m và −30 m."></span>
-      &nbsp;&nbsp; Âm 30 mét viết là <span data-fill data-gon="1" data-answer="-30|−30" data-unit="m"
+      &nbsp;&nbsp; Âm 30 mét viết là <span data-fill data-gon="1" data-answer="-30" data-unit="m"
         data-hint-sai='{"30": "«Âm 30» — em còn thiếu dấu gì đứng trước 30?", "+30": "Dấu «+» dùng cho số dương. «Âm» thì dùng dấu nào?", "-3": "Âm ba mươi, không phải âm ba.", "−3": "Âm ba mươi, không phải âm ba."}'
         data-fb-sai="Số âm viết bằng dấu «−» đứng ngay trước số."></span></p>
     <div class="fb fb-dien"></div>
@@ -1059,13 +1204,13 @@
     <h4><span class="tag">HOẠT ĐỘNG 5</span> Mỗi nhiệt kế chỉ bao nhiêu độ C? <span class="muted small">(số khác với Bài tập 3.1)</span></h4>
     <p class="small">Mỗi vạch nhỏ ứng với 1 °C, vạch dài vừa ứng với 5 °C, số ghi ở các vạch dài nhất. Đọc chỗ <b>đỉnh cột chất lỏng</b> (màu xám).</p>
     <div class="b13-nk" data-v="-13;22;-4" data-lo="-20" data-hi="30" data-ten="①;②;③" data-nhan="Ba nhiệt kế thang từ −20 đến 30 độ C, mỗi vạch nhỏ 1 độ"></div>
-    <p class="p-dong" style="text-align:center">① <span data-fill data-gon="1" data-answer="-13|−13" data-unit="°C"
+    <p class="p-dong" style="text-align:center">① <span data-fill data-gon="1" data-answer="-13" data-unit="°C"
         data-hint-sai='{"13": "Đỉnh cột chất lỏng ở trên hay dưới vạch 0? Dưới vạch 0 thì nhiệt độ viết bằng số gì?", "-7": "Em đếm từ vạch −10 đi lên phía vạch 0? Nhìn lại: đỉnh cột ở trên hay dưới vạch −10?", "−7": "Em đếm từ vạch −10 đi lên phía vạch 0? Nhìn lại: đỉnh cột ở trên hay dưới vạch −10?", "-17": "Em đếm từ vạch −20? Từ −20 đi lên mỗi vạch là ấm thêm 1 °C: −20, −19, −18, … Đếm lại, hoặc đếm từ vạch −10 cho gần.", "−17": "Em đếm từ vạch −20? Từ −20 đi lên mỗi vạch là ấm thêm 1 °C: −20, −19, −18, … Đếm lại, hoặc đếm từ vạch −10 cho gần.", "-12": "Đếm lại từng vạch nhỏ từ vạch −10 xuống tới đỉnh cột.", "−12": "Đếm lại từng vạch nhỏ từ vạch −10 xuống tới đỉnh cột.", "-14": "Đếm lại từng vạch nhỏ từ vạch −10 xuống tới đỉnh cột.", "−14": "Đếm lại từng vạch nhỏ từ vạch −10 xuống tới đỉnh cột."}'
         data-fb-sai="Tìm vạch có ghi số gần đỉnh cột nhất, rồi đếm từng vạch nhỏ (mỗi vạch 1 °C)." data-ok="Đúng cả ba: −13 °C; 22 °C; −4 °C."></span>
       &nbsp;&nbsp; ② <span data-fill data-gon="1" data-answer="22" data-unit="°C"
         data-hint-sai='{"-22": "Đỉnh cột ở trên vạch 0 — nhiệt độ trên 0 °C là số dương, không có dấu «−».", "−22": "Đỉnh cột ở trên vạch 0 — nhiệt độ trên 0 °C là số dương, không có dấu «−».", "18": "Em đếm từ vạch 20 đi xuống? Đỉnh cột ở trên hay dưới vạch 20?", "21": "Đếm lại từng vạch nhỏ từ vạch 20 lên.", "23": "Đếm lại từng vạch nhỏ từ vạch 20 lên."}'
         data-fb-sai="Tìm vạch có ghi số gần đỉnh cột nhất, rồi đếm từng vạch nhỏ (mỗi vạch 1 °C)."></span>
-      &nbsp;&nbsp; ③ <span data-fill data-gon="1" data-answer="-4|−4" data-unit="°C"
+      &nbsp;&nbsp; ③ <span data-fill data-gon="1" data-answer="-4" data-unit="°C"
         data-hint-sai='{"4": "Đỉnh cột ở trên hay dưới vạch 0? Dưới vạch 0 thì nhiệt độ viết bằng số gì?", "-6": "Em đếm từ vạch −10 lên? Đếm từ vạch 0 đi xuống thì gần hơn.", "−6": "Em đếm từ vạch −10 lên? Đếm từ vạch 0 đi xuống thì gần hơn.", "-3": "Đếm lại từng vạch nhỏ từ vạch 0 xuống.", "−3": "Đếm lại từng vạch nhỏ từ vạch 0 xuống.", "-5": "Vạch −5 là vạch dài vừa — đỉnh cột có đúng ở vạch dài vừa không?", "−5": "Vạch −5 là vạch dài vừa — đỉnh cột có đúng ở vạch dài vừa không?"}'
         data-fb-sai="Đếm từng vạch nhỏ từ vạch 0 xuống tới đỉnh cột."></span></p>
     <div class="fb fb-dien"></div>
@@ -1171,15 +1316,15 @@
   <div class="act" data-act="bieu-dien-doc-diem" data-can-het data-ok-act="Giỏi! Em biểu diễn và đọc được điểm trên trục số — tìm gốc O trước, rồi đếm từng đơn vị.">
     <h4><span class="tag">HOẠT ĐỘNG 8</span> Cô soạn thêm — biểu diễn số trên trục số, đọc số từ điểm <span class="muted small">(số khác Bài tập 3.4, 3.5)</span></h4>
     <p class="p-dong"><b>①</b> Bấm các điểm biểu diễn các số: −7; 2; −2; 8.</p>
-    <div data-numline class="b13-nl" data-from="-8" data-to="8" data-answer="-7;2;-2;8" data-mo-sau="#bd-2"
+    <div data-numline class="b13-nl" data-to-dau="1" data-from="-8" data-to="8" data-answer="-7;2;-2;8" data-mo-sau="#bd-2"
          data-hint-thua='{"7":"7 là số dương, nằm bên phải O. Đề cần điểm −7: số nguyên âm nằm bên nào của O?","-8":"Đếm lại: từ O sang trái 7 bước thì dừng ở đâu?","-6":"Đếm lại: từ O sang trái 7 bước thì dừng ở đâu?","-3":"Đếm lại: từ O sang trái 2 bước.","-1":"Đếm lại: từ O sang trái 2 bước.","0":"Gốc O biểu diễn số 0 — đề không có số 0.","1":"Đếm lại từ O sang phải.","3":"Đếm lại từ O sang phải.","7":"7 là số dương, bên phải O — đề có −7 và 8.","6":"Đếm lại từ O sang phải."}'
          data-hint-thieu='{"-7":"còn sót một điểm — soát lại từng số của đề.","2":"còn sót một điểm — soát lại từng số của đề.","-2":"còn sót một điểm: đề có cả 2 và −2 — hai điểm khác nhau, ở hai phía của O.","8":"còn sót một điểm — soát lại từng số của đề."}'
          data-ok="Đúng bốn điểm: 2 và −2 cách O bằng nhau nhưng nằm ở hai phía."></div>
     <div class="hide" id="bd-2">
       <p class="p-dong"><b>②</b> Trên trục số dưới đây cô chỉ ghi hai số 0 và 1. Các điểm <i>M</i>, <i>N</i>, <i>P</i>, <i>Q</i> biểu diễn những số nào?</p>
       <div class="b13-chu-truc" data-diem="M:-6;N:-3;P:2;Q:7"></div>
-      <p class="p-dong" style="text-align:center"><i>M</i>: <span data-fill data-gon="1" data-answer="-6|−6" data-hint-sai='{"6": "M nằm bên trái O — số đó có dấu gì?", "-5": "Đếm số đoạn (khoảng giữa hai vạch) từ O sang M, đừng đếm vạch.", "−5": "Đếm số đoạn (khoảng giữa hai vạch) từ O sang M, đừng đếm vạch.", "-7": "Đếm số đoạn từ O sang M, đừng đếm cả vạch O.", "−7": "Đếm số đoạn từ O sang M, đừng đếm cả vạch O."}' data-fb-sai="Độ dài một đơn vị là khoảng từ 0 đến 1. Đếm từ O sang M có mấy đơn vị, rồi xem M ở bên nào của O." data-ok="Đúng: M là −6, N là −3, P là 2, Q là 7."></span>
-        &nbsp; <i>N</i>: <span data-fill data-gon="1" data-answer="-3|−3" data-hint-sai='{"3": "N nằm bên trái O — số đó có dấu gì?", "-2": "Đếm số đoạn từ O sang N, đừng đếm vạch.", "−2": "Đếm số đoạn từ O sang N, đừng đếm vạch.", "-4": "Đếm số đoạn từ O sang N, đừng đếm cả vạch O.", "−4": "Đếm số đoạn từ O sang N, đừng đếm cả vạch O."}' data-fb-sai="Đếm từ O sang N có mấy đơn vị, rồi xem N ở bên nào của O."></span>
+      <p class="p-dong" style="text-align:center"><i>M</i>: <span data-fill data-gon="1" data-answer="-6" data-hint-sai='{"6": "M nằm bên trái O — số đó có dấu gì?", "-5": "Đếm số đoạn (khoảng giữa hai vạch) từ O sang M, đừng đếm vạch.", "−5": "Đếm số đoạn (khoảng giữa hai vạch) từ O sang M, đừng đếm vạch.", "-7": "Đếm số đoạn từ O sang M, đừng đếm cả vạch O.", "−7": "Đếm số đoạn từ O sang M, đừng đếm cả vạch O."}' data-fb-sai="Độ dài một đơn vị là khoảng từ 0 đến 1. Đếm từ O sang M có mấy đơn vị, rồi xem M ở bên nào của O." data-ok="Đúng: M là −6, N là −3, P là 2, Q là 7."></span>
+        &nbsp; <i>N</i>: <span data-fill data-gon="1" data-answer="-3" data-hint-sai='{"3": "N nằm bên trái O — số đó có dấu gì?", "-2": "Đếm số đoạn từ O sang N, đừng đếm vạch.", "−2": "Đếm số đoạn từ O sang N, đừng đếm vạch.", "-4": "Đếm số đoạn từ O sang N, đừng đếm cả vạch O.", "−4": "Đếm số đoạn từ O sang N, đừng đếm cả vạch O."}' data-fb-sai="Đếm từ O sang N có mấy đơn vị, rồi xem N ở bên nào của O."></span>
         &nbsp; <i>P</i>: <span data-fill data-gon="1" data-answer="2" data-hint-sai='{"-2": "P nằm bên phải O — số dương, không có dấu «−».", "−2": "P nằm bên phải O — số dương, không có dấu «−».", "1": "1 là vạch có ghi số. P ở xa O hơn vạch 1.", "3": "Đếm số đoạn từ O sang P, đừng đếm cả vạch O."}' data-fb-sai="Đếm từ O sang P có mấy đơn vị."></span>
         &nbsp; <i>Q</i>: <span data-fill data-gon="1" data-answer="7" data-hint-sai='{"-7": "Q nằm bên phải O — số dương, không có dấu «−».", "−7": "Q nằm bên phải O — số dương, không có dấu «−».", "6": "Đếm số đoạn từ O sang Q, đừng đếm vạch.", "8": "Đếm số đoạn từ O sang Q, đừng đếm cả vạch O."}' data-fb-sai="Đếm từ O sang Q có mấy đơn vị."></span></p>
       <div class="fb fb-dien"></div>
@@ -1191,7 +1336,7 @@
   <div class="act" data-act="cau-hoi-khoang-cach" data-ok-act="Đúng: điểm 2 cách O 2 đơn vị, điểm −4 cách O 4 đơn vị. Khoảng cách là số đơn vị đếm được — không có dấu «−».">
     <h4><span class="tag">HOẠT ĐỘNG 9</span> Câu hỏi (SGK) — mỗi điểm cách gốc O bao nhiêu đơn vị?</h4>
     <p class="p-dong">Trên trục số, mỗi điểm sau nằm cách gốc <i>O</i> bao nhiêu đơn vị?</p>
-    <div data-numline class="b13-nl" data-from="-6" data-to="6" data-mark="-4;2"></div>
+    <div data-numline class="b13-nl" data-to-dau="1" data-from="-6" data-to="6" data-mark="-4;2"></div>
     <p class="p-dong" style="text-align:center">a) Điểm 2 cách <i>O</i> <span data-fill data-gon="1" data-answer="2" data-unit="đơn vị"
         data-hint-sai='{"1": "Đếm số đoạn (bước nhảy) từ O tới điểm 2, không đếm vạch O.", "3": "Đếm số đoạn (bước nhảy) từ O tới điểm 2, không đếm cả vạch O.", "-2": "Điểm 2 ở bên phải O. Mà khoảng cách là số bước đếm được — số bước có dấu «−» không?", "−2": "Điểm 2 ở bên phải O. Mà khoảng cách là số bước đếm được — số bước có dấu «−» không?"}'
         data-fb-sai="Đếm số bước nhảy một đơn vị từ O tới điểm đó." data-ok="Đúng cả hai câu."></span>
@@ -1205,12 +1350,12 @@
   <div class="act" data-act="luyen-tap-2" data-can-het data-mo-sau="#lt2-hinh" data-ok-act="Đúng cả hai câu: đi 5 đơn vị theo chiều dương tới điểm 5, theo chiều âm tới điểm −5.">
     <h4><span class="tag">HOẠT ĐỘNG 10</span> Luyện tập 2 (SGK) — đi từ gốc O</h4>
     <p class="p-dong">Xuất phát từ gốc <i>O</i>, ta sẽ đi đến điểm nào nếu: &nbsp; <b>a)</b> Di chuyển 5 đơn vị theo chiều dương? <span class="muted small">(bấm điểm dừng)</span></p>
-    <div data-numline class="b13-nl" data-from="-7" data-to="7" data-answer="5" data-mo-sau="#lt2-b"
+    <div data-numline class="b13-nl" data-to-dau="1" data-from="-7" data-to="7" data-answer="5" data-mo-sau="#lt2-b"
          data-hint-thua='{"-5":"Chiều dương là chiều từ trái sang phải — em vừa đi sang trái.","4":"Đếm lại: mỗi bước một đơn vị, đủ 5 bước kể từ O.","6":"Đếm lại: mỗi bước một đơn vị, đủ 5 bước kể từ O (không đếm vạch O).","0":"Đó là chỗ xuất phát. Em đi tiếp 5 đơn vị."}'
          data-ok="Đúng câu a). Sang câu b)."></div>
     <div class="hide" id="lt2-b">
       <p class="p-dong"><b>b)</b> Di chuyển 5 đơn vị theo chiều âm?</p>
-      <div data-numline class="b13-nl" data-from="-7" data-to="7" data-answer="-5"
+      <div data-numline class="b13-nl" data-to-dau="1" data-from="-7" data-to="7" data-answer="-5"
            data-hint-thua='{"5":"Chiều âm là chiều ngược với chiều dương — từ phải sang trái.","-4":"Đếm lại: đủ 5 bước kể từ O.","-6":"Đếm lại: đủ 5 bước kể từ O (không đếm vạch O).","0":"Đó là chỗ xuất phát."}'
            data-ok="Đúng câu b)."></div>
     </div>
@@ -1245,7 +1390,7 @@
     <div class="hide" id="hd4-khoi">
       <p class="p-dong"><b>HĐ4.</b> Quan sát trên trục số (H.3.6), ta thấy: <span class="b13-to">3 &lt; 5</span> nhưng <span class="b13-to">−3 &gt; −5</span>;
         &nbsp; <span class="b13-to">4 &gt; 1</span> nhưng <span class="b13-to">−4 &lt; −1</span>.</p>
-      <div data-numline class="b13-nl" data-from="-6" data-to="6" data-mark="-5;-4;-3;-1;1;3;4;5"></div>
+      <div data-numline class="b13-nl" data-to-dau="1" data-from="-6" data-to="6" data-mark="-5;-4;-3;-1;1;3;4;5"></div>
       <p>Theo em, trong hai số −12 và −15, số nào lớn hơn?<br>
         <span data-mcq data-options="−12;−15;hai số bằng nhau;không so sánh được vì không có trên trục số" data-answer="−12"
               data-fb-lua-chon='{"−15":"15 &gt; 12 — nhưng nhìn dòng trên: 5 &gt; 3 thì −5 lớn hơn hay nhỏ hơn −3?","hai số bằng nhau":"−12 và −15 là hai điểm khác nhau trên trục số — có trùng nhau không?","không so sánh được vì không có trên trục số":"Trục số kéo dài mãi về hai phía, chỉ là hình vẽ không đủ chỗ. Theo mẫu «3 &lt; 5 nhưng −3 &gt; −5» thì sao?"}'></span></p>
@@ -1308,14 +1453,14 @@
     <h4><span class="tag">HOẠT ĐỘNG 14</span> Luyện tập 3 ❷ (SGK) — tập hợp cho bằng dấu hiệu đặc trưng</h4>
     <p class="p-dong">❷ Trong tập {<i>x</i> ∈ ℤ | −5 &lt; <i>x</i> ≤ 2}, những số nào lớn hơn −1?</p>
     <p class="p-dong"><b>Bước 1.</b> Bấm mọi điểm thuộc tập {<i>x</i> ∈ ℤ | −5 &lt; <i>x</i> ≤ 2}.</p>
-    <div data-numline class="b13-nl" data-from="-7" data-to="4" data-answer="-4;-3;-2;-1;0;1;2" data-mo-sau="#lt3b-2"
+    <div data-numline class="b13-nl" data-to-dau="1" data-from="-7" data-to="4" data-answer="-4;-3;-2;-1;0;1;2" data-mo-sau="#lt3b-2"
          data-hint-thua='{"-5":"−5 &lt; x: dấu &lt; không có «hoặc bằng» — x có được bằng −5 không?","-6":"−6 có lớn hơn −5 không? Điểm −6 nằm trước hay sau điểm −5?","-7":"−7 có lớn hơn −5 không? Điểm −7 nằm trước hay sau điểm −5?","3":"x ≤ 2: 3 có nhỏ hơn hoặc bằng 2 không?","4":"x ≤ 2: 4 có nhỏ hơn hoặc bằng 2 không?"}'
          data-hint-thieu='{"2":"còn sót một điểm: x ≤ 2 nghĩa là x &lt; 2 <b>hoặc</b> x = 2 (Chú ý) — xem lại đầu mút bên phải.","-4":"còn sót một điểm — soát lại các điểm ngay sau −5.","0":"còn sót một điểm: 0 có phải số nguyên không? Có thoả −5 &lt; 0 ≤ 2 không?","-1":"còn sót một điểm — soát lại từng điểm từ −5 sang phải.","-2":"còn sót một điểm — soát lại từng điểm từ −5 sang phải.","-3":"còn sót một điểm — soát lại từng điểm từ −5 sang phải.","1":"còn sót một điểm — soát lại từng điểm từ −5 sang phải."}'
          data-hint-thieu-nhieu="Còn sót nhiều điểm. Tập gồm các số nguyên <i>x</i> lớn hơn −5 và nhỏ hơn hoặc bằng 2 — soát lần lượt từng điểm từ −5 sang phải, dừng ở 2."
          data-ok="Đúng: {x ∈ ℤ | −5 &lt; x ≤ 2} = {−4; −3; −2; −1; 0; 1; 2}. Sang bước 2."></div>
     <div class="hide" id="lt3b-2">
       <p class="p-dong"><b>Bước 2.</b> Trong các số vừa tìm, bấm những số <b>lớn hơn −1</b>.</p>
-      <div data-numline class="b13-nl" data-from="-7" data-to="4" data-answer="0;1;2"
+      <div data-numline class="b13-nl" data-to-dau="1" data-from="-7" data-to="4" data-answer="0;1;2"
            data-hint-thua='{"-1":"«Lớn hơn −1»: −1 có lớn hơn chính nó không?","-2":"Điểm −2 nằm trước hay sau điểm −1? Nằm trước thì nhỏ hơn hay lớn hơn?","-3":"Điểm −3 nằm trước hay sau điểm −1?","-4":"Điểm −4 nằm trước hay sau điểm −1?","3":"3 lớn hơn −1, nhưng 3 có thuộc tập ở bước 1 không (x ≤ 2)?","4":"4 có thuộc tập ở bước 1 không?","-5":"−5 có thuộc tập ở bước 1 không?"}'
            data-hint-thieu='{"0":"còn sót một số — mọi số nguyên dương và cả số 0 đều lớn hơn số nguyên âm (quy tắc ❶).","1":"còn sót một số — soát các điểm nằm sau điểm −1.","2":"còn sót một số — soát các điểm nằm sau điểm −1, tới hết tập."}'
            data-ok="Đúng: 0; 1; 2 — các điểm của tập nằm sau điểm −1."></div>
@@ -1518,13 +1663,13 @@
           data-slot-hint="Ô cuối là số lớn nhất."></span></p>
     </div>
     <p class="p-dong"><b>②</b> Bấm mọi điểm thuộc tập {<i>x</i> ∈ ℤ | −3 ≤ <i>x</i> &lt; 1}.</p>
-    <div data-numline class="b13-nl" data-from="-6" data-to="4" data-answer="-3;-2;-1;0"
+    <div data-numline class="b13-nl" data-to-dau="1" data-from="-6" data-to="4" data-answer="-3;-2;-1;0"
          data-hint-thua='{"1":"x &lt; 1: 1 có nhỏ hơn 1 không?","2":"x &lt; 1: 2 có nhỏ hơn 1 không?","-4":"−3 ≤ x: −4 có lớn hơn hoặc bằng −3 không? Điểm −4 nằm trước hay sau điểm −3?","-5":"−5 có lớn hơn hoặc bằng −3 không?"}'
          data-hint-thieu='{"-3":"còn sót một điểm: −3 ≤ x nghĩa là x &gt; −3 <b>hoặc</b> x = −3 — xem lại đầu mút bên trái.","0":"còn sót một điểm: 0 có thoả −3 ≤ 0 &lt; 1 không?","-1":"còn sót một điểm.","-2":"còn sót một điểm."}'
          data-hint-thieu-nhieu="Còn sót nhiều điểm — soát lần lượt từ −3 sang phải, dừng trước 1."
          data-ok="Đúng: {−3; −2; −1; 0}."></div>
     <p class="p-dong"><b>③</b> −105 <span data-mcq data-options="&lt;;&gt;;=" data-answer="&lt;" data-fb-sai="Hai số âm: 105 &gt; 98, rồi dùng quy tắc ❷."></span> −98
-      &nbsp;&nbsp; <b>④</b> Nhiệt độ 14 °C dưới 0 °C viết là <span data-fill data-gon="1" data-answer="-14|−14" data-unit="°C"
+      &nbsp;&nbsp; <b>④</b> Nhiệt độ 14 °C dưới 0 °C viết là <span data-fill data-gon="1" data-answer="-14" data-unit="°C"
         data-hint-sai='{"14": "«Dưới 0 °C» thì nhiệt độ là số gì? Viết thêm dấu nào?", "+14": "Dấu «+» là của số dương — nhiệt độ dưới 0 °C là số âm."}' data-fb-sai="Nhiệt độ dưới 0 °C viết bằng số nguyên âm." data-ok="Đúng: −14 °C."></span></p>
     <div class="fb fb-mcq"></div>
     <div class="fb fb-dien"></div>
@@ -1611,7 +1756,8 @@
     if(txt) txt.textContent = n + '/' + ACTS.length + ' hoạt động';
   }
   var WIDGET_CHAM = '[data-venn],[data-lab],[data-picks],[data-mcq],[data-uniq],[data-numline][data-answer],' +
-    '[data-fill],[data-abacus][data-answer],[data-expand],[data-match],[data-placetable][data-ask],[data-placetable][data-ask-gt],[data-compare]:not([data-demo]),[data-gomcap]:not([data-demo]),[data-dattinh]:not([data-demo]),[data-timx],[data-tg-may]:not([data-demo]),[data-custom]';
+    '[data-fill],[data-abacus][data-answer],[data-expand],[data-match],[data-placetable][data-ask],[data-placetable][data-ask-gt],[data-compare]:not([data-demo]),[data-gomcap]:not([data-demo]),[data-dattinh]:not([data-demo]),[data-timx],[data-tg-may]:not([data-demo]),[data-custom],' +
+    '[data-h6="may-cot"],[data-h6="rut-gon"],[data-h6="cay-tach"]';
   /* Mở các khối data-mo-sau="#id" (vd. câu hỏi tiếp theo) khi widget chứa thuộc tính này làm đúng.
      Nhận nhiều selector: data-mo-sau="#hinh,#kttt" (khung Kiến thức trọng tâm NGOÀI .act cũng mở được).
      data-an-sau="#id" (cùng chỗ đặt): lúc ấy ẩn khối đó đi (dòng giữ chỗ "khung này mở khi em làm xong…"). Rút từ Bài 5, 6. */
@@ -2147,14 +2293,19 @@
   /* ---------- 9. Trục số ---------- */
   $$('[data-numline]').forEach(function(host){
     var from = +host.getAttribute('data-from'), to = +host.getAttribute('data-to');
-    var fixed  = list(host.getAttribute('data-mark'));
-    var answer = list(host.getAttribute('data-answer'));
+    /* "−3" (U+2212) / "–3" viết trong data-mark / data-answer được hiểu là -3 (dấu trừ chuẩn hoá, 26/9) */
+    var tru = function(x){ return x.replace(/[−–]/g, '-'); };
+    var fixed  = list(host.getAttribute('data-mark')).map(tru);
+    var answer = list(host.getAttribute('data-answer')).map(tru);
     var okMsg  = host.getAttribute('data-ok') || 'Đúng rồi.';
+    /* data-to-dau="1": chữ số tô theo dấu (bảng màu Chương III), điểm đang chọn xám, đúng rồi mới tô theo dấu */
+    var toDau = host.getAttribute('data-to-dau') === '1';
+    if(toDau) host.classList.add('h6-dau');
     var n = to - from, W = 640, PAD = 34, step = (W - 2*PAD) / (n || 1), H = 92, Y = 54;
     /* data-tia="1": TIA số gốc O (Toán 6, Chương I) — nét bắt đầu đúng ở điểm 0, có chữ O ở gốc */
     var tia = host.getAttribute('data-tia') === '1' && from === 0;
     var svg = ['<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="' + (tia ? 'tia số gốc O, các điểm từ ' : 'trục số từ ') +
-               from + ' đến ' + to + '">'];
+               soDau(from) + ' đến ' + soDau(to) + '">'];
     svg.push('<line class="axis" x1="' + (tia ? PAD : 10) + '" y1="' + Y + '" x2="' + (W-10) + '" y2="' + Y + '"/>');
     if(tia) svg.push('<text class="lbl" x="' + PAD + '" y="' + (Y-16) + '" style="font-style:italic; font-weight:700">O</text>');
     svg.push('<path class="axis" fill="none" d="M' + (W-22) + ' ' + (Y-7) + ' L' + (W-8) + ' ' + Y +
@@ -2162,12 +2313,13 @@
     for(var i = 0; i <= n; i++){
       var x = PAD + i * step, v = from + i;
       svg.push('<line class="tick" x1="' + x + '" y1="' + (Y-7) + '" x2="' + x + '" y2="' + (Y+7) + '"/>');
-      svg.push('<text class="lbl" x="' + x + '" y="' + (Y+28) + '">' + v + '</text>');
+      /* số âm in dấu "−" (U+2212) như SGK, không phải dấu gạch nối */
+      svg.push('<text class="lbl' + (toDau ? ' h6-' + loaiDau(v) : '') + '" x="' + x + '" y="' + (Y+28) + '">' + (v < 0 ? '−' + (-v) : v) + '</text>');
       var isFixed = fixed.indexOf(String(v)) >= 0;
       if(isFixed || answer.length)
         svg.push('<circle class="pt' + (isFixed ? ' fixed' : '') + '" data-v="' + v +
                  '" cx="' + x + '" cy="' + Y + '" r="8"' +
-                 (isFixed ? '' : ' tabindex="0" role="button" aria-label="điểm ' + v + '"') + '/>');
+                 (isFixed ? '' : ' tabindex="0" role="button" aria-label="điểm ' + soDau(v) + '"') + '/>');
     }
     svg.push('</svg>');
     host.innerHTML = svg.join('');
@@ -2194,7 +2346,7 @@
       if(giuCham(host, kiemTruc, null, fb)) return;
       var a = sel.slice().sort(function(x,y){ return x-y; }).join(';');
       var b = answer.slice().sort(function(x,y){ return x-y; }).join(';');
-      if(a === b){ show(fb,'good', okMsg); done(host); return; }
+      if(a === b){ host.classList.add('h6-xong'); show(fb,'good', okMsg); done(host); return; }
       /* data-hint-thua / data-hint-thieu: câu hỏi gỡ cho từng điểm chọn thừa / bỏ sót (như data-pick) —
          không bao giờ in ra đáp án */
       var th = json(host,'data-hint-thua'), tk = json(host,'data-hint-thieu');
@@ -2211,6 +2363,7 @@
     });
     bRst.addEventListener('click', function(){
       sel = [];
+      host.classList.remove('h6-xong');
       $$('.pt.on', host).forEach(function(c){ c.classList.remove('on'); });
       fb.className = 'fb';
     });
@@ -2220,8 +2373,9 @@
      Sửa theo Bài 5, 6, 7: ô thường (có nút Kiểm) cũng chấm khi rời ô · ô đúng nền xanh lá (class "dat") · sai 3 giá trị khác
      nhau thì khoá ô 3 giây kèm câu "tính ra giấy rồi gõ lại" (ý 31) · data-fb-o="#id" = ô phản hồi riêng của ô điền ·
      nhiều ô dùng chung .fb-dien thì câu gỡ của các ô đang sai được gộp, không ô nào ghi đè ô nào. */
+  /* dấu trừ: "−" (U+2212, dấu của SGK / bàn phím toán) và "–" (U+2013) được coi là "-" — đáp án âm chỉ cần ghi "-5" (26/9) */
   function chuan(s){
-    return String(s).trim().replace(/\s| /g,'').replace(',', '.').toLowerCase();
+    return String(s).trim().replace(/\s| /g,'').replace(/[−–]/g, '-').replace(',', '.').toLowerCase();
   }
   $$('[data-fill]').forEach(function(host){
     var answers = (host.getAttribute('data-answer') || '').split('|').map(chuan);
@@ -2353,6 +2507,9 @@
   var LOP  = ['đơn vị','nghìn','triệu','tỉ'];
   /* khoảng trắng không ngắt (U+00A0): số không bị bẻ đôi giữa hai lớp khi xuống dòng */
   function nhom(s){ return String(s).replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0'); }
+  /* s\u1ed1 nguy\u00ean vi\u1ebft nh\u01b0 SGK: d\u1ea5u "\u2212" (U+2212) + nh\u00f3m ngh\u00ecn; lo\u1ea1i d\u1ea5u cho b\u1ea3ng m\u00e0u Ch\u01b0\u01a1ng III (.h6-am / .h6-duong / .h6-khong) */
+  function soDau(v){ v = +v; return v < 0 ? '\u2212' + nhom(-v) : nhom(v); }
+  function loaiDau(v){ v = +v; return v < 0 ? 'am' : (v > 0 ? 'duong' : 'khong'); }
   function zeros(k){ return new Array(k + 1).join('0'); }
   function mu10(k){ return nhom('1' + zeros(k)); }
   function hoa(s){ s = String(s || ''); return s.charAt(0).toUpperCase() + s.slice(1); }
@@ -4145,35 +4302,52 @@
   /* ---------- Toan6.tia — tia số cho HÌNH RIÊNG (rút từ Bài 3, dùng lại cho cộng/trừ trên tia số, số nguyên…) ----------
      Toạ độ khớp data-numline: viewBox rộng 640, PAD 34, bước 44, 14 điểm s … s + 13.
        truc(s, Y[, soDiem])        → chuỗi SVG: trục, vạch, chữ số (.tr-so); s = 0 thì có gốc O, s > 0 thì có "…" bên trái;
-                                     soDiem = số điểm (mặc định 14) — ít điểm thì trục ngắn lại, thu viewBox cho vừa
-       X(v, s)                     → hoành độ của số v khi tia bắt đầu từ s
-       muiTen(v1, v2, s, Y, mau)   → mũi tên thẳng từ v1 tới v2 ở độ cao Y; ĐẦU MŨI TÊN LÀ <path> RIÊNG (class tia-dau)
+                                     soDiem = số điểm (mặc định 14) — ít điểm thì trục ngắn lại, thu viewBox cho vừa.
+                                     Gọi 3 đối số: kết quả GIỮ NGUYÊN như trước 26/9 (bài cũ, JS riêng bọc lại vẫn đúng)
+       truc(s, Y, soDiem, opt)     → TRỤC SỐ NGUYÊN (thêm 26/9, Chương III): số âm in "−" (U+2212), s < 0 có chữ O ở điểm 0;
+                                     opt.toDau = tô chữ số theo dấu (.h6-am / .h6-duong / .h6-khong); opt.chiSo = [0, 1] chỉ ghi các số
+                                     này (hình đọc điểm); opt.buoc = giá trị của mỗi khoảng (mặc định 1; 5, 10… cho trục dài: số s, s+buoc…)
+                                     — khi đó X / muiTen / giaTri nhận thêm đối số buoc ở cuối. soDiem = null → 14 điểm
+       X(v, s[, buoc])             → hoành độ của số v khi tia bắt đầu từ s
+       muiTen(v1, v2, s, Y, mau[, buoc]) → mũi tên thẳng từ v1 tới v2 ở độ cao Y; ĐẦU MŨI TÊN LÀ <path> RIÊNG (class tia-dau)
                                      nên thân (class tia-than) vẽ dần bằng stroke-dasharray được mà đầu không hiện trước
-       toaDo(svg, e) · giaTri(svg, e, s, lo, hi) → đổi toạ độ chuột ra số gần nhất (kẹp trong [lo; hi])
-       keoDuoc(g, svg, lay, dat)   → kéo nhóm <g> dọc tia (Pointer Events, capture trên svg) + phím ◀ ▶: dat(v) hoặc dat(null, ±1) */
+       toaDo(svg, e) · giaTri(svg, e, s, lo, hi[, buoc]) → đổi toạ độ chuột ra số gần nhất (kẹp trong [lo; hi])
+       keoDuoc(g, svg, lay, dat)   → kéo nhóm <g> dọc tia (Pointer Events, capture trên svg) + phím ◀ ▶: dat(v) hoặc dat(null, ±1)
+       so(v) = "−3" · loai(v) = "am" | "duong" | "khong" */
   var TIA = (function(){
     var PAD = 34, BUOC = 44, SO = 14;
-    function X(v, s){ return PAD + (v - (s || 0)) * BUOC; }
+    function X(v, s, buoc){ return PAD + (v - (s || 0)) / (buoc || 1) * BUOC; }
     /* soDiem (tuỳ chọn, mặc định 14): tia ngắn hơn cho hình chỉ cần ít điểm (Bài 4 HĐ: 0 … 10) — mũi tên trục
        kết thúc ở X(s + soDiem − 1) + 50; đặt viewBox rộng = X(s + soDiem − 1) + 56 để hình vừa màn hẹp, khỏi cuộn ngang */
-    function truc(s, Y, soDiem){
+    function truc(s, Y, soDiem, opt){
       s = s || 0;
-      var nD = soDiem || SO, xe = soDiem ? X(s + nD - 1, s) + 50 : 634;
+      var nguyen = !!opt; opt = opt || {};
+      var bu = nguyen && opt.buoc ? opt.buoc : 1;
+      var nD = soDiem || SO, xe = soDiem ? X(s + (nD - 1) * bu, s, bu) + 50 : 634;
       var h = '', x0 = s === 0 ? PAD : 8;
       h += '<line x1="' + x0 + '" y1="' + Y + '" x2="' + (xe - 4) + '" y2="' + Y + '" stroke="#1f2430" stroke-width="2"/>' +
            '<path d="M' + (xe - 14) + ' ' + (Y - 7) + ' L' + xe + ' ' + Y + ' L' + (xe - 14) + ' ' + (Y + 7) + '" fill="none" stroke="#1f2430" stroke-width="2"/>';
       if(s === 0) h += '<text x="' + PAD + '" y="' + (Y - 16) + '" class="tr-o">O</text>';
       else h += '<text x="14" y="' + (Y + 5) + '" class="tr-3c">…</text>';
+      /* trục số nguyên: gốc O ở điểm 0 (khi 0 nằm trên trục) */
+      if(nguyen && s < 0 && s + (nD - 1) * bu >= 0 && (-s) % bu === 0)
+        h += '<text x="' + X(0, s, bu) + '" y="' + (Y - 16) + '" class="tr-o">O</text>';
       for(var i = 0; i < nD; i++){
-        var v = s + i, x = X(v, s);
-        h += '<line x1="' + x + '" y1="' + (Y - 7) + '" x2="' + x + '" y2="' + (Y + 7) + '" stroke="#5c6577" stroke-width="1.5"/>' +
-             '<text x="' + x + '" y="' + (Y + 28) + '" class="tr-so' + (v > 999 ? ' nho' : '') + '">' + nhom(v) + '</text>';
+        var v = s + i * bu, x = X(v, s, bu);
+        h += '<line x1="' + x + '" y1="' + (Y - 7) + '" x2="' + x + '" y2="' + (Y + 7) + '" stroke="#5c6577" stroke-width="1.5"/>';
+        if(!nguyen){
+          h += '<text x="' + x + '" y="' + (Y + 28) + '" class="tr-so' + (v > 999 ? ' nho' : '') + '">' + nhom(v) + '</text>';
+          continue;
+        }
+        if(opt.chiSo && opt.chiSo.indexOf(v) < 0) continue;
+        h += '<text x="' + x + '" y="' + (Y + 28) + '" class="tr-so' + (Math.abs(v) > 999 ? ' nho' : '') +
+             (opt.toDau ? ' h6-' + loaiDau(v) : '') + '">' + soDau(v) + '</text>';
       }
       return h;
     }
-    function muiTen(v1, v2, s, Y, mau){
+    function muiTen(v1, v2, s, Y, mau, buoc){
       mau = mau || '#1f2430';
-      var x1 = X(v1, s), x2 = X(v2, s), d = x2 >= x1 ? 1 : -1;
+      var x1 = X(v1, s, buoc), x2 = X(v2, s, buoc), d = x2 >= x1 ? 1 : -1;
       return '<line class="tia-than" x1="' + x1 + '" y1="' + Y + '" x2="' + (x2 - 4 * d) + '" y2="' + Y + '" stroke="' + mau +
              '" stroke-width="3" stroke-linecap="round"/>' +
              '<path class="tia-dau" d="M' + (x2 - 11 * d) + ' ' + (Y - 6) + ' L' + x2 + ' ' + Y + ' L' + (x2 - 11 * d) + ' ' + (Y + 6) +
@@ -4184,8 +4358,8 @@
       var m = svg.getScreenCTM();
       return m ? p.matrixTransform(m.inverse()) : { x: 0, y: 0 };
     }
-    function giaTri(svg, e, s, lo, hi){
-      var v = Math.round((toaDo(svg, e).x - PAD) / BUOC) + (s || 0);
+    function giaTri(svg, e, s, lo, hi, buoc){
+      var v = Math.round((toaDo(svg, e).x - PAD) / BUOC) * (buoc || 1) + (s || 0);
       return Math.max(lo, Math.min(hi, v));
     }
     function keoDuoc(g, svg, lay, dat){
@@ -4204,7 +4378,8 @@
         if(e.key === 'ArrowRight'){ e.preventDefault(); dat(null, 1); }
       });
     }
-    return { PAD: PAD, BUOC: BUOC, SO: SO, X: X, truc: truc, muiTen: muiTen, toaDo: toaDo, giaTri: giaTri, keoDuoc: keoDuoc };
+    return { PAD: PAD, BUOC: BUOC, SO: SO, X: X, truc: truc, muiTen: muiTen, toaDo: toaDo, giaTri: giaTri, keoDuoc: keoDuoc,
+             so: soDau, loai: loaiDau };
   })();
 
   /* ---------- data-tg-may — MÁY THU GỌN BIỂU THỨC + data-may-sai (rút từ JS riêng của Bài 7, đưa vào template
@@ -4219,7 +4394,7 @@
   var TG = (function(){
     var T6 = { nhom: nhom, esc: esc, show: show, done: done, giu: giuCham };
     function chayLai(e, cls){ if(!e) return; e.classList.remove(cls); void e.getBoundingClientRect(); e.classList.add(cls); }
-    function chuanSo(v){ return String(v || '').replace(/[\s .]/g, ''); }
+    function chuanSo(v){ return String(v || '').replace(/[\s .]/g, '').replace(/[−–]/g, '-'); }
     /* =====================================================================================
        1. MÁY THU GỌN BIỂU THỨC  (data-tg-may, data-bt="7 + 4 · 5²")
           - Biểu thức hiện thành hàng thẻ: thẻ số, nút dấu phép tính, số mũ là nút nhỏ, ngoặc là hộp lồng nhau (xám,
@@ -4666,12 +4841,470 @@
     return { taoMay: taoMay, docBt: docBt, theoThuTu: theoThuTu, lechQuyUoc: lechQuyUoc };
   })();
 
+  /* ---------- Toan6.hinh — THƯ VIỆN HÌNH CHƯƠNG II (rút từ JS riêng Bài 8 – 12, hai Luyện tập chung, Bài tập cuối Chương II;
+     đưa vào template 26/9 trước Chương VI). Cú pháp + ví dụ: references/bo-khoi-tuong-tac.md mục 25. Lớp CSS tiền tố h6-.
+       KHỐI KHAI BÁO (không viết JS):
+         <div data-h6="xep"   data-so="23;5" [data-ten] [data-cai="bạn"] [data-p="16"] [data-le-chu="thiếu 1 mới đầy"]>  xếp hàng
+         <div data-h6="noi"   data-so="4;6" data-l="24" [data-ten="thanh 4;thanh 6"] [data-chung] [data-nho-nhat]>   nối thanh
+         <div data-h6="the"   data-so="12;18" data-che="uoc|boi" [data-buoc="1|2|3"] [data-nhan] [data-khong-kq]>   bảng thẻ thừa số
+         <div data-h6="thanh" data-ps="7/10;5/12" [data-m="60"]>                                             thanh phân số
+         <div data-h6="lich"  data-so="3;20;4;5" [data-hien]>                           lịch hai năm (tháng đầu; số tháng; a; b)
+       MÁY CHẤM (widget chấm của engine — KHÔNG cần data-custom / Toan6.tuLam; khi chiếu tự giữ tới 👁):
+         <div data-h6="may-cot" data-so="120" data-chon="2;3;5;7">   máy sơ đồ cột: em chọn ước nguyên tố nhỏ nhất, gõ thương
+         <div data-h6="rut-gon" data-ps="90/27">                        máy rút gọn phân số: chia cả tử và mẫu, tự báo "đã tối giản"
+         <div data-h6="cay-tach" data-goc="140">                        sơ đồ cây em tự chọn cách tách (khám phá: chiếu không giữ)
+       KHỐI GỠ Ô ĐIỀN (chỉ vẽ khi ô data-fill #id bị chấm SAI thật — sau 👁 khi chiếu; tự dời xuống NGAY DƯỚI ô phản hồi của ô ấy,
+       nên câu gỡ luôn nói "hình bên dưới"; data-giu-cho = để nguyên chỗ người soạn đặt):
+         <div data-h6-go="noi" data-o="#id" data-so="4;6" data-l="30" [data-ten]>   vạch ở số em gõ trên hình nối thanh
+         <div data-h6-go="the" data-o="#id" data-so="12;18" data-che="uoc" [data-buoc] [data-chu="câu dưới bảng"]>  bảng thẻ
+         <div data-h6-go="mau" data-o="#id" data-ps="7/10;5/12">   hai thanh chia theo số em gõ: "khớp" / "lệch" (không in phân số mới)
+       JS: Toan6.hinh.xepHang(n, m, opt) · noiThanh(dong, L, opt) · dongDu(ns, L, ten) · bangThe(so, opt) · thanh(tu, mau, opt)
+           · haiThanh(ps, m, anSo) · lich(bd, n, a, b, hien) → chuỗi SVG/HTML; mayCot(host) · mayRutGon(host) · cayTach(host) · ve(goc)
+           · so: laNT, uocNTnn, ucln, bcnn, phanTich, luyThua */
+  var H6 = (function(){
+    function chu(x, y, t, cls, neo){
+      return '<text class="h6-t ' + (cls || '') + '" x="' + x + '" y="' + y + '"' + (neo ? ' text-anchor="' + neo + '"' : '') + '>' + t + '</text>';
+    }
+    function svg(w, h, noi, nhan, maxW, cls){
+      return '<svg class="h6-svg' + (cls ? ' ' + cls : '') + '" viewBox="0 0 ' + Math.round(w) + ' ' + Math.round(h) + '" style="max-width:' +
+        Math.round(maxW || w * 1.2) + 'px" role="img" aria-label="' + esc(nhan) + '">' + noi + '</svg>';
+    }
+    function giu(host){ return !!(window.T6Chieu && T6Chieu.dangGiu && T6Chieu.dangGiu(host)); }
+    function laNT(n){ if(n < 2) return false; for(var d = 2; d * d <= n; d++) if(n % d === 0) return false; return true; }
+    function uocNTnn(n){ for(var d = 2; d <= n; d++) if(n % d === 0) return d; return n; }
+    function ucln(a, b){ while(b){ var t = a % b; a = b; b = t; } return a; }
+    function bcnn(a, b){ return a / ucln(a, b) * b; }
+    function phanTich(n){ var r = {}, d = 2; while(n > 1){ while(n % d === 0){ r[d] = (r[d] || 0) + 1; n /= d; } d++; } return r; }
+    var SO_MU = { 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹' };
+    function luyThua(p, k){ return k > 1 ? p + (SO_MU[k] || '^' + k) : String(p); }
+    function giaTriO(f){ var ip = $('input', f); return ((ip && ip.value) || '').replace(/\s/g, '').replace(/[−–]/g, '-'); }
+    function so(e, a){ return list(e.getAttribute(a)).map(Number); }
+
+    /* ===== 1. Xếp hàng: n cái, mỗi hàng m cái — hàng đầy khung cam; hàng chưa đầy khung đứt đỏ mận, chỗ trống vòng đứt ===== */
+    function xepHang(n, m, opt){
+      opt = opt || {};
+      var P = opt.P || 18, r = P * 0.3, q = Math.floor(n / m), du = n % m, rows = q + (du ? 1 : 0), c, i;
+      var cai = opt.cai || 'cái', moi = opt.moi || 'mỗi hàng', hang = opt.hang || 'hàng';
+      var x0 = (opt.trai || 62) + P / 2, y0 = 30 + P / 2, h = '';
+      for(var hg = 0; hg < q; hg++) h += '<rect class="h6-hang" x="' + (x0 - P / 2 + 1) + '" y="' + (y0 + hg * P - P / 2 + 1) + '" width="' + (m * P - 2) +
+        '" height="' + (P - 2) + '" rx="' + (P / 2 - 1) + '"/>';
+      if(du){
+        h += '<rect class="h6-hang-le" x="' + (x0 - P / 2 + 1) + '" y="' + (y0 + q * P - P / 2 + 1) + '" width="' + (m * P - 2) + '" height="' + (P - 2) +
+          '" rx="' + (P / 2 - 1) + '"/>';
+        for(c = du; c < m; c++) h += '<circle class="h6-trong" cx="' + (x0 + c * P) + '" cy="' + (y0 + q * P) + '" r="' + r.toFixed(1) + '"/>';
+      }
+      for(i = 0; i < n; i++){
+        var x = x0 + (i % m) * P, y = y0 + Math.floor(i / m) * P;
+        h += '<circle class="' + (Math.floor(i / m) >= q ? 'h6-le' : 'h6-cham') + '" cx="' + x + '" cy="' + y + '" r="' + r.toFixed(1) + '"/>';
+      }
+      h += chu(x0 - P / 2, 14, (opt.ten ? opt.ten + ': ' : '') + moi + ' ' + m + ' ' + cai, 'h6-t-nt', 'start');
+      if(q){
+        h += '<path class="h6-ngoac" d="M' + (x0 - P / 2 - 5) + ' ' + (y0 - P / 2 + 2) + ' h-5 v' + (q * P - 4) + ' h5"/>';
+        h += chu(x0 - P / 2 - 14, y0 + (q - 1) * P / 2, q + ' ' + hang, 'h6-t-k', 'end');
+      }
+      if(du && opt.leChu !== false) h += chu(x0 + m * P - P / 2 + 6, y0 + q * P, opt.leChu || ('lẻ ' + du), 'h6-t-le', 'start');
+      var W = Math.max(x0 + m * P + 70, x0 - P / 2 + 190), H = y0 + rows * P + 2;
+      return svg(W, H, h, n + ' ' + cai + ', ' + moi + ' ' + m + ' ' + cai + (du ? ', hàng cuối có ' + du : ', vừa đủ ' + q + ' ' + hang), opt.maxW || W * 1.25, 'h6-xep');
+    }
+
+    /* ===== 2. Nối thanh: mỗi dòng nối tiếp các thanh dài n từ vạch 0 — vạch mà MỌI dòng cùng có điểm cuối thanh = bội chung (chàm).
+       dong = [{ n: 4, k: 6, ten: 'thanh 4' }, …] · opt.chung: vẽ vạch bội chung · opt.nhoNhat: khoanh BCNN · opt.danh: vạch đỏ mận ở số em gõ ===== */
+    function noiThanh(rows, L, opt){
+      opt = opt || {};
+      var X0 = opt.trai || 104, S = opt.S || Math.min(16, 560 / L), CAO = 22, GAP = 10, Y0 = opt.danh !== undefined ? 30 : 12, h = '', y = Y0, i;
+      var ns = rows.map(function(r){ return r.n; });
+      var boi = function(v){ return rows.every(function(r){ return v % r.n === 0 && v <= r.n * r.k; }); };
+      rows.forEach(function(r){
+        for(var k = 0; k < r.k; k++)
+          h += '<rect class="h6-thanh ' + (k % 2 ? 'h6-b' : 'h6-a') + '" x="' + (X0 + k * r.n * S) + '" y="' + y + '" width="' + (r.n * S) + '" height="' + CAO + '" rx="2"/>';
+        h += chu(X0 - 8, y + CAO / 2, r.ten || ('thanh ' + r.n), 'h6-t-dam', 'end');
+        y += CAO + GAP;
+      });
+      var yTruc = y + 2, top = Y0 - 4;
+      h += '<line class="h6-truc" x1="' + X0 + '" y1="' + yTruc + '" x2="' + (X0 + L * S) + '" y2="' + yTruc + '"/>';
+      var nhan = {}, ds, nMax = Math.max.apply(null, ns);
+      rows.forEach(function(r){ for(var v = 0; v <= r.n * r.k && v <= L; v += r.n) nhan[v] = 1; });
+      ds = Object.keys(nhan).map(Number).sort(function(a, b){ return a - b; });
+      if(ds.some(function(v, j){ return j && (v - ds[j - 1]) * S < 24; })) ds = ds.filter(function(v){ return v % nMax === 0; });
+      ds.forEach(function(v){
+        var x = X0 + v * S, c = opt.chung && boi(v);
+        h += '<line class="h6-vach" x1="' + x + '" y1="' + (yTruc - 4) + '" x2="' + x + '" y2="' + (yTruc + 4) + '"/>';
+        var phu = !c && v % nMax !== 0 ? ' h6-phu' : '';
+        h += chu(x, yTruc + 16, nhom(v), (c ? 'h6-t-boi h6-t-so' : 'h6-t-so') + phu, 'middle');
+      });
+      if(opt.chung){
+        var dau = true;
+        for(i = 0; i <= L; i++) if(boi(i)){
+          var xc = X0 + i * S;
+          h += '<line class="h6-vach-boi" x1="' + xc + '" y1="' + top + '" x2="' + xc + '" y2="' + (yTruc + 2) + '"/>';
+          if(i > 0 && dau && opt.nhoNhat){ h += '<circle class="h6-khoanh" cx="' + xc + '" cy="' + (yTruc + 16) + '" r="15"/>'; dau = false; }
+        }
+      }
+      if(opt.danh !== undefined){
+        var xd = X0 + opt.danh * S;
+        h += '<line class="h6-vach-danh" x1="' + xd + '" y1="' + (top - 6) + '" x2="' + xd + '" y2="' + (yTruc + 2) + '"/>' +
+          chu(xd, 12, 'số ' + nhom(opt.danh), 'h6-t-le', 'middle');
+      }
+      var W = X0 + L * S + 24, H = yTruc + 35;
+      return svg(W, H, h, 'Nối các thanh dài ' + ns.join(', ') + ' bắt đầu từ vạch 0', opt.maxW || W * 1.15);
+    }
+    function dongDu(ns, L, ten){ return ns.map(function(n, i){ return { n: n, k: Math.floor(L / n), ten: ten ? ten[i] : null }; }); }
+
+    /* ===== 3. Bảng thẻ thừa số: mỗi số một dòng, thẻ cùng số nguyên tố xếp cùng cột.
+       opt.che "uoc": buoc 2 làm mờ cột không chung · buoc 3 ghép thẻ có ở MỌI dòng → ƯCLN (tím hồng)
+       opt.che "boi": buoc 2 tên cột chung / riêng · buoc 3 mỗi cột lấy số thẻ của dòng NHIỀU nhất → BCNN (chàm)
+       opt.nhan = nhãn từng dòng (thay cho số) · opt.ketQua === false: không in dòng "ƯCLN = …" ===== */
+    function bangThe(nums, opt){
+      opt = opt || {};
+      var buoc = opt.buoc || 1, nhanDong = opt.nhan || null, boi = opt.che === 'boi', pts = nums.map(phanTich), P = [];
+      pts.forEach(function(r){ Object.keys(r).forEach(function(p){ p = +p; if(P.indexOf(p) < 0) P.push(p); }); });
+      P.sort(function(a, b){ return a - b; });
+      var maxE = {}, minE = {}, chung = {}, dongMax = {};
+      P.forEach(function(p){
+        var es = pts.map(function(r){ return r[p] || 0; });
+        maxE[p] = Math.max.apply(null, es); minE[p] = Math.min.apply(null, es); chung[p] = minE[p] > 0;
+        dongMax[p] = es.indexOf(maxE[p]);
+      });
+      var cot = []; P.forEach(function(p){ for(var k = 0; k < maxE[p]; k++) cot.push({ p: p, k: k, dau: k === 0 }); });
+      var h = '<div class="h6-bt" style="grid-template-columns:auto repeat(' + cot.length + ', var(--h6-o)) auto">';
+      h += '<span></span>';
+      P.forEach(function(p){
+        var cls = buoc >= 2 ? (chung[p] ? ' h6-chung' : (boi ? ' h6-rieng' : ' h6-khong-chung')) : '';
+        h += '<span class="h6-bt-dau' + cls + '" style="grid-column:span ' + maxE[p] + '">cột ' + p + (buoc >= 2 && boi ? '<small>' + (chung[p] ? 'chung' : 'riêng') + '</small>' : '') + '</span>';
+      });
+      h += '<span></span>';
+      nums.forEach(function(n, i){
+        var r = pts[i];
+        h += '<span class="h6-bt-ten">' + (nhanDong ? nhanDong[i] : nhom(n)) + ' =</span>';
+        cot.forEach(function(c){
+          var co = (r[c.p] || 0) > c.k, cls = '';
+          if(boi){ if(buoc >= 3 && dongMax[c.p] === i) cls = ' h6-max'; }
+          else { if(buoc >= 3 && chung[c.p] && c.k < minE[c.p]) cls = ' h6-cap'; if(buoc >= 2 && !chung[c.p]) cls += ' h6-mo'; }
+          h += '<span class="h6-bt-o' + (c.dau ? ' h6-dau-cot' : '') + '">' + (co ? '<span class="h6-the-nt' + cls + '">' + c.p + '</span>' : '<span class="h6-the-rong"></span>') + '</span>';
+        });
+        h += '<span class="h6-bt-kq">' + (P.filter(function(p){ return r[p]; }).map(function(p){ return luyThua(p, r[p]); }).join(' · ') || '1') + '</span>';
+      });
+      if(buoc >= 3){
+        var co2 = boi ? P : P.filter(function(p){ return chung[p]; });
+        h += '<span class="h6-bt-ten ' + (boi ? 'h6-kqb' : 'h6-kq') + '">' + (boi ? 'BCNN' : 'ƯCLN') + ' =</span>';
+        cot.forEach(function(c){
+          var lay = boi ? true : (chung[c.p] && c.k < minE[c.p]);
+          h += '<span class="h6-bt-o' + (c.dau ? ' h6-dau-cot' : '') + '">' + (lay ? '<span class="h6-the-nt ' + (boi ? 'h6-boi' : 'h6-cap') + '">' + c.p + '</span>' : '') + '</span>';
+        });
+        h += '<span></span></div>';
+        if(opt.ketQua !== false){
+          var gt = boi ? nums.reduce(bcnn) : nums.reduce(ucln);
+          var bt = co2.map(function(p){ return luyThua(p, boi ? maxE[p] : minE[p]); }).join(' · ');
+          h += '<p class="h6-bt-kqd' + (boi ? ' h6-boi' : '') + '">' + (boi ? 'BCNN' : 'ƯCLN') + ' = ' +
+            (co2.length ? bt + (bt === String(gt) ? '' : ' = ' + nhom(gt)) : '1 — không có cột chung') + '</p>';
+        }
+        return '<div class="h6-bt-khung">' + h + '</div>';
+      }
+      return '<div class="h6-bt-khung">' + h + '</div></div>';
+    }
+
+    /* ===== 4. Thanh phân số: thanh chia mau phần bằng nhau, tô tu phần (0 < tu ≤ mau).
+       opt.m: chia CẢ thanh thành m phần nhỏ — m là bội của mẫu thì vạch nhỏ nét chàm (khớp vạch cũ), không thì đỏ mận (lệch) ===== */
+    function thanh(tu, mau, opt){
+      opt = opt || {};
+      var W = opt.W || 440, X0 = opt.trai || 70, CAO = 30, y = 6, h = '', i, m = opt.m || 0;
+      var khop = m && m % mau === 0;
+      h += '<rect class="h6-ps-to" x="' + X0 + '" y="' + y + '" width="' + (W * tu / mau) + '" height="' + CAO + '"/>';
+      h += '<rect class="h6-ps-khung" x="' + X0 + '" y="' + y + '" width="' + W + '" height="' + CAO + '"/>';
+      if(m) for(i = 1; i < m; i++){
+        var xm = X0 + W * i / m;
+        h += '<line class="' + (khop ? 'h6-ps-nho' : 'h6-ps-lech') + '" x1="' + xm.toFixed(1) + '" y1="' + (y + 1) + '" x2="' + xm.toFixed(1) + '" y2="' + (y + CAO - 1) + '"/>';
+      }
+      for(i = 1; i < mau; i++){ var x = X0 + W * i / mau; h += '<line class="h6-ps-vach" x1="' + x.toFixed(1) + '" y1="' + (y - 3) + '" x2="' + x.toFixed(1) + '" y2="' + (y + CAO + 3) + '"/>'; }
+      h += chu(X0 - 10, y + CAO / 2, opt.ten || (tu + '/' + mau), 'h6-t-dam h6-t-ps', 'end');
+      if(opt.sau) h += chu(X0 + W + 10, y + CAO / 2, opt.sau, opt.sauCls || 'h6-t-boi h6-t-ps', 'start');
+      var WW = X0 + W + (opt.sau ? 96 : 12);
+      return svg(WW, y + CAO + 8, h, 'Thanh chia ' + mau + ' phần, tô ' + tu + ' phần' + (m ? ', chia thành ' + m + ' phần nhỏ' : ''), opt.maxW || WW * 1.15);
+    }
+    /* anSo = true (hình gỡ): KHÔNG in phân số mới — đó là việc em đang phải làm; chỉ ghi "khớp" / "lệch" (luật "hình gỡ không in bước kế tiếp") */
+    function haiThanh(PS, m, anSo){
+      return PS.map(function(f){
+        var ok = m && m % f[1] === 0;
+        return thanh(f[0], f[1], { m: m, sau: m ? (ok ? (anSo ? 'khớp' : '= ' + (f[0] * m / f[1]) + '/' + m) : 'lệch') : '', sauCls: ok ? null : 'h6-t-le h6-t-ps' });
+      }).join('');
+    }
+    function docPS(s){ return list(s).map(function(x){ return x.split('/').map(Number); }); }
+
+    /* ===== 5. Lịch hai năm: mỗi ô một tháng, từ tháng bd năm nay, n tháng sau đó.
+       hien: chấm tròn = việc A (mỗi a tháng) · ô vuông = việc B (mỗi b tháng) · khung chàm = tháng làm cả hai việc ===== */
+    function lich(bd, n, a, b, hien){
+      var C = 27, X0 = 16, Y = hien ? 34 : 8, h = '', i;
+      for(i = 0; i <= n; i++){
+        var th = (bd - 1 + i) % 12 + 1, x = X0 + i * C, ca = hien && i % a === 0 && i % b === 0;
+        h += '<rect class="h6-lich-o' + (ca ? ' h6-ca' : '') + (Math.floor((bd - 1 + i) / 12) ? ' h6-sau' : '') + '" x="' + x + '" y="' + Y + '" width="' + (C - 3) + '" height="26" rx="4"/>';
+        h += chu(x + (C - 3) / 2, Y + 13, th, 'h6-t-lich', 'middle');
+        if(hien && i % a === 0) h += '<circle class="h6-lich-a" cx="' + (x + (C - 3) / 2) + '" cy="' + (Y - 16) + '" r="6"/>';
+        if(hien && i % b === 0) h += '<rect class="h6-lich-b" x="' + (x + (C - 3) / 2 - 6) + '" y="' + (Y + 34) + '" width="12" height="12" rx="2"/>';
+      }
+      var cuoiNay = 12 - bd, xa = X0, xb = X0 + (cuoiNay + 1) * C, xc = X0 + (n + 1) * C - 3, yN = Y + (hien ? 62 : 40);
+      h += '<path class="h6-lich-ngoac" d="M' + xa + ' ' + (yN - 6) + ' v6 H' + (xb - 5) + ' v-6"/>' + chu((xa + xb - 5) / 2, yN + 12, 'năm nay', 'h6-t-lich-n', 'middle');
+      if(n > cuoiNay)
+        h += '<path class="h6-lich-ngoac" d="M' + xb + ' ' + (yN - 6) + ' v6 H' + xc + ' v-6"/>' + chu((xb + xc) / 2, yN + 12, 'năm sau', 'h6-t-lich-n', 'middle');
+      return svg(xc + 16, yN + 24, h, 'Lịch từ tháng ' + bd + ' năm nay, ' + n + ' tháng tiếp theo', (xc + 16) * 1.25);
+    }
+
+    /* ===== 6. Máy sơ đồ cột: em chọn ước nguyên tố nhỏ nhất (nút data-chon), rồi gõ thương. Khi chiếu: giữ tới 👁 ===== */
+    function mayCot(host){
+      if(host._h6) return; host._h6 = 1;
+      var N = +host.getAttribute('data-so'), CH = so(host, 'data-chon');
+      var rows = [], cur = N, buoc = 'chon', xong = false, pDang = 0;
+      host.innerHTML = '<table class="h6-cot"><tbody></tbody></table><div class="h6-dk"></div>';
+      var fb = el('div', 'fb'); host.appendChild(fb);
+      function ve(){
+        var h = '';
+        rows.forEach(function(r){ h += '<tr><td class="h6-so">' + nhom(r[0]) + '</td><td class="h6-p">' + r[1] + '</td></tr>'; });
+        if(xong) h += '<tr class="h6-moi"><td class="h6-so">1</td><td class="h6-p"></td></tr>';
+        else if(buoc === 'chon') h += '<tr class="h6-dang"><td class="h6-so"><span>' + nhom(cur) + '</span></td><td class="h6-p">?</td></tr>';
+        else h += '<tr><td class="h6-so">?</td><td class="h6-p"></td></tr>';
+        $('tbody', host).innerHTML = h;
+        var dk = $('.h6-dk', host);
+        if(xong){ dk.innerHTML = ''; return; }
+        if(buoc === 'chon') dk.innerHTML = 'Ước nguyên tố nhỏ nhất của <b>' + nhom(cur) + '</b>:<br>' +
+          CH.map(function(p){ return '<button type="button" class="btn ghost" data-p="' + p + '">' + p + '</button>'; }).join('');
+        else dk.innerHTML = '<span class="m">' + nhom(cur) + ' : ' + pDang + ' =</span> <input type="text" inputmode="numeric" aria-label="Thương ' + cur + ' : ' + pDang +
+          '"> <button type="button" class="btn" data-lam="ghi">Ghi</button>';
+      }
+      function danhGia(t){
+        if(xong) return;
+        if(t.k === 'p'){
+          var p = t.v;
+          if(cur % p){ show(fb, 'bad', nhom(cur) + ' có chia hết cho ' + p + ' không? Dùng dấu hiệu chia hết (Bài 9) hoặc chia thử.'); return; }
+          if(!laNT(p)){ show(fb, 'bad', p + ' có phải số nguyên tố không? Sơ đồ cột chỉ chia cho <b>số nguyên tố</b>.'); return; }
+          if(p !== uocNTnn(cur)){ show(fb, 'bad', p + ' đúng là ước nguyên tố của ' + nhom(cur) + ' — nhưng sơ đồ cột lấy ước nguyên tố <b>nhỏ nhất</b> trước. Thử các số nguyên tố nhỏ hơn ' + p + '.'); return; }
+          pDang = p; buoc = 'thuong'; fb.className = 'fb'; ve();
+          var ip = $('input', host); if(ip && !giu(host)) ip.focus();
+          return;
+        }
+        if(t.v * pDang !== cur){ show(fb, 'bad', 'Chưa đúng: tính lại <b>' + nhom(cur) + ' : ' + pDang + '</b> — nhân ngược lại: ' + pDang + ' nhân với số em gõ có bằng ' + nhom(cur) + ' không?'); return; }
+        rows.push([cur, pDang]); cur = t.v; buoc = 'chon'; fb.className = 'fb';
+        if(cur === 1){
+          xong = true; ve();
+          var r = phanTich(N);
+          show(fb, 'good', host.getAttribute('data-ok') || ('Xong sơ đồ cột: <span class="m">' + nhom(N) + ' = ' + Object.keys(r).map(function(p){ return luyThua(p, r[p]); }).join(' · ') + '</span>.'));
+          done(host);
+          return;
+        }
+        ve();
+      }
+      function nhan(t, nut){ if(xong) return; if(giuCham(host, function(){ danhGia(t); }, nut, fb)) return; danhGia(t); }
+      host.addEventListener('click', function(e){
+        var b = e.target.closest('[data-p]');
+        if(b){ $$('[data-p]', host).forEach(function(x){ x.classList.toggle('h6-dang', x === b); }); nhan({ k: 'p', v: +b.getAttribute('data-p') }, b); return; }
+        if(e.target.closest('[data-lam="ghi"]')){
+          var ip = $('input', host), v = (ip && ip.value || '').replace(/\s/g, '');
+          if(!/^\d+$/.test(v)){ show(fb, 'bad', 'Em gõ thương là một số tự nhiên nhé.'); return; }
+          nhan({ k: 'q', v: +v }, ip);
+        }
+      });
+      host.addEventListener('keydown', function(e){ if(e.key === 'Enter' && e.target.matches('input')){ e.preventDefault(); var g = $('[data-lam="ghi"]', host); if(g) g.click(); } });
+      ve();
+    }
+
+    /* ===== 7. Máy rút gọn phân số: em gõ số để chia CẢ tử và mẫu (phải là ước chung khác 1), tự bấm "đã tối giản". Khi chiếu: giữ tới 👁 ===== */
+    function veps(t, m, cls){ return '<span class="h6-ps' + (cls ? ' ' + cls : '') + '"><span class="h6-tu">' + nhom(t) + '</span><span class="h6-mau">' + nhom(m) + '</span></span>'; }
+    function mayRutGon(host){
+      if(host._h6) return; host._h6 = 1;
+      var AB = String(host.getAttribute('data-ps')).split('/').map(Number), ds = [[AB[0], AB[1], 0]], xong = false;
+      host.innerHTML = '<div class="h6-rg-day" aria-live="polite"></div>' +
+        '<p class="h6-dk h6-rg">Chia cả tử và mẫu cho <input type="text" inputmode="numeric" aria-label="Số để chia cả tử và mẫu"> ' +
+        '<button type="button" class="btn" data-lam="chia">Chia</button> ' +
+        '<button type="button" class="btn go" data-lam="xong">Phân số cuối đã tối giản</button> <button type="button" class="btn ghost" data-lam="lai">Làm lại</button></p>';
+      var fb = el('div', 'fb'); host.appendChild(fb);
+      function ve(){
+        $('.h6-rg-day', host).innerHTML = ds.map(function(f, i){
+          return (i ? '<span class="h6-rg-bang"><span class="h6-rg-chia">: ' + f[2] + '</span>=</span>' : '') + veps(f[0], f[1], i === ds.length - 1 ? 'h6-cuoi' : '');
+        }).join('');
+      }
+      function danhGia(t){
+        if(xong) return;
+        var f = ds[ds.length - 1], a = f[0], b = f[1];
+        if(t.k === 'chia'){
+          var d = t.v;
+          if(d === 0){ show(fb, 'bad', 'Không chia được cho 0. Em chọn một <b>ước chung</b> khác 1 của tử và mẫu.'); return; }
+          if(d === 1){ show(fb, 'bad', 'Chia cho 1 thì phân số không đổi. Em chọn một <b>ước chung khác 1</b> của ' + nhom(a) + ' và ' + nhom(b) + '.'); return; }
+          if(a % d || b % d){ show(fb, 'bad', d + ' có phải ước chung của ' + nhom(a) + ' và ' + nhom(b) + ' không? Kiểm lại: ' + nhom(a) + ' : ' + d + ' và ' + nhom(b) + ' : ' + d +
+            ' có đều hết không? Chỉ chia được cho một <b>ước chung</b> của tử và mẫu.'); return; }
+          ds.push([a / d, b / d, d]); fb.className = 'fb'; ve();
+          var ip = $('input', host); if(ip){ ip.value = ''; if(!giu(host)) ip.focus(); }
+          return;
+        }
+        if(ucln(a, b) !== 1){
+          show(fb, 'bad', (ds.length > 1 ? 'Còn rút gọn tiếp được: ' : 'Chưa tối giản: ') + nhom(a) + ' và ' + nhom(b) +
+            ' còn ước chung khác 1. Thử các dấu hiệu chia hết cho 2, 3, 5, 9 (Bài 9), hoặc tìm ƯCLN của tử và mẫu rồi chia.');
+          return;
+        }
+        xong = true;
+        var g = ucln(AB[0], AB[1]);
+        show(fb, 'good', host.getAttribute('data-ok') || ('Đúng: <span class="m">' + nhom(a) + '/' + nhom(b) + '</span> là phân số tối giản vì <span class="m">ƯCLN(' + nhom(a) + ', ' + nhom(b) + ') = 1</span>.' +
+          (ds.length > 2 ? ' Em chia ' + (ds.length - 1) + ' lần. SGK: chia một lần cho <span class="m">ƯCLN(' + nhom(AB[0]) + ', ' + nhom(AB[1]) + ') = ' + g + '</span> là tới ngay phân số tối giản.'
+            : (ds.length === 2 ? ' Em chia một lần cho <span class="m">ƯCLN(' + nhom(AB[0]) + ', ' + nhom(AB[1]) + ') = ' + g + '</span> — đúng cách SGK.' : ''))));
+        done(host);
+      }
+      function nhan(t, nut){ if(xong) return; if(giuCham(host, function(){ danhGia(t); }, nut, fb)) return; danhGia(t); }
+      host.addEventListener('click', function(e){
+        var b;
+        if((b = e.target.closest('[data-lam="chia"]'))){
+          var v = ($('input', host).value || '').replace(/\s/g, '');
+          if(!/^\d+$/.test(v)){ show(fb, 'bad', 'Em gõ một số tự nhiên để chia cả tử và mẫu nhé.'); return; }
+          nhan({ k: 'chia', v: +v }, b); return;
+        }
+        if((b = e.target.closest('[data-lam="xong"]'))){ nhan({ k: 'xong' }, b); return; }
+        if(e.target.closest('[data-lam="lai"]')){ if(xong) return; ds = [ds[0]]; fb.className = 'fb'; ve(); }
+      });
+      host.addEventListener('keydown', function(e){ if(e.key === 'Enter' && e.target.matches('input')){ e.preventDefault(); $('[data-lam="chia"]', host).click(); } });
+      ve();
+    }
+
+    /* ===== 8. Sơ đồ cây em tự tách: bấm lá là hợp số (ô vuông xám), chọn một cách tách a × b; mọi lá là số nguyên tố (vòng cam) thì xong.
+       Khám phá (mọi cách tách đều đúng) → engine đặt data-chieu-cham="ngay": chiếu không giữ. ===== */
+    var ID = 0;
+    function nut(v){ return { v: v, c: null, id: ++ID }; }
+    function veNut(nd, opt){
+      var cls = laNT(nd.v) ? 'h6-sn' : 'h6-hs';
+      if(opt.tach && !nd.c) cls += ' h6-bam';
+      if(nd.moi) cls += ' h6-moi';
+      if(opt.chon === nd.id) cls += ' h6-chon';
+      return '<li><span class="h6-nut ' + cls + '" data-id="' + nd.id + '"' + (opt.tach && !nd.c ? ' role="button" tabindex="0"' : '') + '>' + nhom(nd.v) + '</span>' +
+        (nd.c ? '<ul>' + nd.c.map(function(k){ return veNut(k, opt); }).join('') + '</ul>' : '') + '</li>';
+    }
+    function la(nd, ds){ ds = ds || []; if(!nd.c) ds.push(nd); else nd.c.forEach(function(k){ la(k, ds); }); return ds; }
+    function timId(nd, id){ if(nd.id === id) return nd; if(!nd.c) return null; for(var i = 0; i < nd.c.length; i++){ var t = timId(nd.c[i], id); if(t) return t; } return null; }
+    function boMoi(nd){ nd.moi = false; if(nd.c) nd.c.forEach(boMoi); }
+    function cayTach(host){
+      if(host._h6) return; host._h6 = 1;
+      if(!host.hasAttribute('data-chieu-cham')) host.setAttribute('data-chieu-cham', 'ngay');
+      var goc = nut(+host.getAttribute('data-goc')), chonId = 0, xong = false;
+      host.innerHTML = '<div class="h6-cay"></div><div class="h6-cay-chon"></div><p class="h6-cay-loi" aria-live="polite"></p>' +
+        '<p style="text-align:center"><button type="button" class="btn ghost" data-lam="lai">Tách lại từ đầu</button></p>';
+      var ve = function(){ $('.h6-cay', host).innerHTML = '<ul>' + veNut(goc, { tach: !xong, chon: chonId }) + '</ul>'; boMoi(goc); };
+      var loi = function(t){ $('.h6-cay-loi', host).innerHTML = t; };
+      host.addEventListener('click', function(e){
+        if(e.target.closest('[data-lam="lai"]')){
+          if(xong) return;
+          goc = nut(goc.v); chonId = 0; $('.h6-cay-chon', host).innerHTML = ''; loi(''); ve(); return;
+        }
+        var tn = e.target.closest('.h6-nut.h6-bam'), tb = e.target.closest('[data-tach]');
+        if(tb){
+          var nd = timId(goc, chonId), ab = tb.getAttribute('data-tach').split('x');
+          if(!nd) return;
+          nd.c = [nut(+ab[0]), nut(+ab[1])]; nd.c[0].moi = nd.c[1].moi = true; chonId = 0;
+          $('.h6-cay-chon', host).innerHTML = '';
+          var con = la(goc).filter(function(x){ return !laNT(x.v); });
+          if(con.length) loi('Còn lá là <b style="color:var(--h6-hs)">hợp số</b> (ô vuông xám) — bấm vào để tách tiếp.');
+          else {
+            xong = true;
+            loi(host.getAttribute('data-ok') || 'Mọi lá đều là <b style="color:var(--h6-nt)">số nguyên tố</b> (vòng tròn cam) — cây xong.');
+            done(host);
+          }
+          ve(); return;
+        }
+        if(!tn || xong) return;
+        var n = timId(goc, +tn.getAttribute('data-id'));
+        if(!n) return;
+        if(laNT(n.v)){ chonId = 0; $('.h6-cay-chon', host).innerHTML = ''; loi(n.v + ' là số nguyên tố — không tách nữa.'); ve(); return; }
+        chonId = n.id; var cap = [];
+        for(var a = 2; a * a <= n.v; a++) if(n.v % a === 0) cap.push(a + 'x' + (n.v / a));
+        $('.h6-cay-chon', host).innerHTML = 'Tách <b>' + nhom(n.v) + '</b> thành: ' + cap.map(function(c){ return '<button type="button" class="btn ghost" data-tach="' + c + '">' + c.replace('x', ' × ') + '</button>'; }).join('');
+        loi(''); ve();
+      });
+      host.addEventListener('keydown', function(e){ if((e.key === 'Enter' || e.key === ' ') && e.target.closest('.h6-nut.h6-bam')){ e.preventDefault(); e.target.click(); } });
+      ve();
+      loi('Bấm vào ô <b style="color:var(--h6-hs)">' + nhom(goc.v) + '</b> để chọn cách tách đầu tiên.');
+    }
+
+    /* ===== 9. Khối gỡ ô điền: đặt ngay dưới ô phản hồi của ô ấy; vẽ khi engine chấm SAI thật (sự kiện t6-dien-cham) ===== */
+    function oPhanHoi(f){
+      var r = f.getAttribute('data-fb-o'); if(r){ var e = $(r); if(e) return e; }
+      var act = f.closest('[data-act]'), c = act && (act._fbDien || $('.fb-dien', act));
+      if(c) return c;
+      var d = f.closest('p,td,li,.act');
+      return d ? $('.fb-fill', d) : null;
+    }
+    function datDuoi(o, f){
+      if(o.hasAttribute('data-giu-cho')) return;
+      var fb = oPhanHoi(f); if(!fb || !fb.parentNode) return;
+      var moc = fb.parentNode.tagName === 'P' ? fb.parentNode : fb, n;
+      /* nhiều khối gỡ dùng chung một ô phản hồi (.fb-dien): giữ đúng thứ tự người soạn viết */
+      while((n = moc.nextElementSibling) && n !== o && n._h6Thu !== undefined && n._h6Thu < o._h6Thu) moc = n;
+      if(moc.nextElementSibling !== o) moc.parentNode.insertBefore(o, moc.nextSibling);
+    }
+    var THU_GO = 0;
+    function goO(o){
+      if(o._h6) return; o._h6 = 1; o._h6Thu = ++THU_GO;
+      var f = $(o.getAttribute('data-o') || ''), loai = o.getAttribute('data-h6-go');
+      if(!f) return;
+      datDuoi(o, f);
+      f.addEventListener('t6-dien-cham', function(e){
+        datDuoi(o, f);
+        var ok = e.detail && e.detail.ok, s = giaTriO(f), v = +s;
+        var chuO = o.getAttribute('data-chu');
+        if(ok || !/^\d+$/.test(s)){ o.innerHTML = ''; return; }
+        if(loai === 'noi'){
+          var ns = so(o, 'data-so'), L = +o.getAttribute('data-l'), ten = o.hasAttribute('data-ten') ? list(o.getAttribute('data-ten')) : null;
+          if(!(v > 0) || v > L){ o.innerHTML = ''; return; }
+          var laBoi = ns.every(function(n){ return v % n === 0; }), moi = ns.length === 2 ? 'cả hai dòng' : 'mọi dòng';
+          o.innerHTML = noiThanh(dongDu(ns, L, ten), L, { danh: v, S: Math.min(20, 520 / L), trai: 150 }) + '<p class="h6-chu">' + (chuO ? chuO.replace(/\{v\}/g, nhom(v)) :
+            'Vạch <b class="c-h6-le">số ' + nhom(v) + '</b>: ' + (laBoi ? moi + ' đều có điểm cuối thanh ở đó — nhưng từ vạch 0 đi sang phải, có vạch nào <b>sớm hơn</b> mà ' + moi + ' cùng kết thúc không?'
+              : moi + ' có <b>cùng</b> một điểm cuối thanh ở đó không?')) + '</p>';
+        } else if(loai === 'the'){
+          o.innerHTML = bangThe(so(o, 'data-so'), { buoc: +(o.getAttribute('data-buoc') || 1), che: o.getAttribute('data-che') || 'uoc' }) +
+            (chuO ? '<p class="h6-chu">' + chuO.replace(/\{v\}/g, nhom(v)) + '</p>' : '');
+        } else if(loai === 'mau'){
+          var PS = docPS(o.getAttribute('data-ps'));
+          if(!(v > 1) || v > 150){ o.innerHTML = ''; return; }
+          var sai = PS.filter(function(p){ return v % p[1]; });
+          o.innerHTML = haiThanh(PS, v, true) + '<p class="h6-chu">' + (chuO ? chuO.replace(/\{v\}/g, nhom(v)) : (sai.length
+            ? 'Chia các thanh thành ' + v + ' phần nhỏ: thanh ' + sai.map(function(p){ return p[1] + ' phần'; }).join(', thanh ') + ' có vạch cũ nằm <b class="c-h6-le">giữa</b> một phần nhỏ. Mẫu chung phải là <b>bội</b> của mọi mẫu.'
+            : v + ' là một bội chung của các mẫu — vạch mới khớp mọi vạch cũ. Nhưng có bội chung nào <b>nhỏ hơn</b> (khác 0) không?')) + '</p>';
+        }
+      });
+    }
+
+    /* ===== khởi tạo mọi khối data-h6 / data-h6-go trong goc (mặc định cả trang); gọi lại được cho khối JS riêng mới chèn ===== */
+    function ve(goc){
+      $$('[data-h6]', goc).forEach(function(e){
+        var k = e.getAttribute('data-h6');
+        if(k === 'may-cot') return mayCot(e);
+        if(k === 'rut-gon') return mayRutGon(e);
+        if(k === 'cay-tach') return cayTach(e);
+        if(e._h6) return; e._h6 = 1;
+        if(k === 'xep'){ var a = so(e, 'data-so'); e.innerHTML = xepHang(a[0], a[1], { ten: e.getAttribute('data-ten') || '', cai: e.getAttribute('data-cai') || 'cái',
+          P: +(e.getAttribute('data-p') || 16), trai: +(e.getAttribute('data-trai') || 62), maxW: +(e.getAttribute('data-max') || 0) || null,
+          leChu: e.hasAttribute('data-le-chu') ? e.getAttribute('data-le-chu') : undefined }); }
+        else if(k === 'noi'){
+          var ns = so(e, 'data-so'), L = +e.getAttribute('data-l'), ks = so(e, 'data-k'), ten = e.hasAttribute('data-ten') ? list(e.getAttribute('data-ten')) : null;
+          var rows = dongDu(ns, L, ten); if(ks.length) rows.forEach(function(r, i){ if(ks[i] >= 0) r.k = ks[i]; });
+          e.innerHTML = noiThanh(rows, L, { chung: e.hasAttribute('data-chung'), nhoNhat: e.hasAttribute('data-nho-nhat') });
+        }
+        else if(k === 'the') e.innerHTML = bangThe(so(e, 'data-so'), { buoc: +(e.getAttribute('data-buoc') || 1), che: e.getAttribute('data-che') || 'uoc',
+          nhan: e.hasAttribute('data-nhan') ? list(e.getAttribute('data-nhan')) : null, ketQua: !e.hasAttribute('data-khong-kq') });
+        else if(k === 'thanh') e.innerHTML = haiThanh(docPS(e.getAttribute('data-ps')), +(e.getAttribute('data-m') || 0));
+        else if(k === 'lich'){ var l = so(e, 'data-so'); e.innerHTML = lich(l[0], l[1], l[2], l[3], e.hasAttribute('data-hien')); }
+      });
+      $$('[data-h6-go]', goc).forEach(goO);
+    }
+    ve();
+    return { xepHang: xepHang, noiThanh: noiThanh, dongDu: dongDu, bangThe: bangThe, thanh: thanh, haiThanh: haiThanh, lich: lich,
+             mayCot: mayCot, mayRutGon: mayRutGon, cayTach: cayTach, ve: ve,
+             so: { laNT: laNT, uocNTnn: uocNTnn, ucln: ucln, bcnn: bcnn, phanTich: phanTich, luyThua: luyThua } };
+  })();
+
   window.Toan6 = { done: done, show: show, fbBox: fbBox, esc: esc, list: list, el: el,
                    nhom: nhom, HANG: HANG, itDong: itDong, tia: TIA, tuLam: [],
                    khiDienDung: khiDienDung, moSau: moSau, tgMay: TG.taoMay, WIDGET_CHAM: WIDGET_CHAM,
                    /* JS riêng phản ứng theo lần trả lời (vẽ hình gỡ khi sai, tô màu khi đúng — đọc host._ok, .num.on…): gọi qua đây.
                       Chế độ chiếu đang giữ → hoãn tới khi GV bấm 👁 (chạy SAU lần chấm thật của engine); trang thường → chạy ngay. */
-                   sauCham: function(node, fn){ if(window.T6Chieu && T6Chieu.hoan(node, fn)) return; fn(); } };
+                   sauCham: function(node, fn){ if(window.T6Chieu && T6Chieu.hoan(node, fn)) return; fn(); },
+                   /* khối data-custom TỰ CHẤM của JS riêng: if(Toan6.giu(host, cham)) return; — đang chiếu và giữ thì ghi nhận lần bấm
+                      cuối (hiện "✔ Đã ghi nhận" ở ô phản hồi .fb của host; truyền f = false để tự hiện), GV bấm 👁 mới chạy cham();
+                      trang thường trả false → chấm ngay. Bí danh của T6Chieu.giu kèm ô "đã ghi nhận" như widget của engine (26/9) */
+                   giu: function(host, fn, chon, f){ return giuCham(host, fn, chon, f); },
+                   soDau: soDau, loaiDau: loaiDau, hinh: H6 };
 })();
 </script>
 
@@ -5067,34 +5700,9 @@
       !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   }
 
-  /* ================= 0. Trục số của engine (data-numline): dấu "−" thật + chữ số tô theo dấu ================= */
-  $$('.numline').forEach(function(n){
-    $$('text.lbl', n).forEach(function(t){
-      var v = +t.textContent.replace('−', '-');
-      if(isNaN(v)) return;
-      t.textContent = so(v); t.classList.add('b13-l-' + loai(v));
-    });
-    $$('.pt', n).forEach(function(c){
-      var a = c.getAttribute('aria-label'); if(a) c.setAttribute('aria-label', a.replace('-', '−'));
-    });
-    var s = $('svg', n); if(s) s.setAttribute('aria-label', (s.getAttribute('aria-label') || '').replace(/-/g, '−'));
-    /* điểm em chọn: xám khi đang chọn; làm đúng thì tô màu theo dấu (màu là phần thưởng) — t6-xong chỉ phát khi chấm thật */
-    n.addEventListener('t6-xong', function(){ n.classList.add('b13-xong'); });
-  });
-
-  /* ================= 1. Trục số nguyên cho hình riêng (dùng Toan6.tia, không vẽ lại) =================
-     s = số đầu (âm được), 14 điểm s … s + 13. opt.chiSo = chỉ ghi các số này (hình đọc điểm); luôn có chữ O ở điểm 0. */
-  function truc(s, Y, soDiem, opt){
-    opt = opt || {};
-    var h = TR.truc(s, Y, soDiem);
-    h = h.replace(/<text x="([\d.]+)" y="([\d.]+)" class="tr-so( nho)?">([^<]*)<\/text>/g, function(m, x, y, nh, t){
-      var v = +t.replace(/ /g, '');
-      if(opt.chiSo && opt.chiSo.indexOf(v) < 0) return '';
-      return '<text x="' + x + '" y="' + y + '" class="tr-so b13-l-' + loai(v) + '">' + so(v) + '</text>';
-    });
-    if(s <= 0 && s + (soDiem || 14) - 1 >= 0 && s !== 0) h += '<text x="' + TR.X(0, s) + '" y="' + (Y - 16) + '" class="tr-o">O</text>';
-    return h;
-  }
+  /* ================= 0 – 1. Trục số: dấu "−", tô theo dấu, chữ O — nay do template làm (data-numline data-to-dau="1";
+     Toan6.tia.truc(s, Y, soDiem, { toDau: 1, chiSo })). Hàm truc() giữ tên cũ cho các hình bên dưới. ================= */
+  function truc(s, Y, soDiem, opt){ return TR.truc(s, Y, soDiem, { toDau: 1, chiSo: opt && opt.chiSo }); }
   function svgBoc(w, h, noi, nhan, cls){
     return '<svg class="b13-svg ' + (cls || '') + '" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + nhan + '">' + noi + '</svg>';
   }
@@ -5431,11 +6039,8 @@
       T6.show(fb, 'good', 'Đúng cả sáu số! Em đọc to từng số rồi so với dòng bên dưới.');
       T6.done(host);
     }
-    /* Toan6 không có giu() — gọi thẳng T6Chieu.giu (như máy cột Bài 12) và tự hiện ô "đã ghi nhận" */
-    function bam(){
-      if(window.T6Chieu && T6Chieu.giu && T6Chieu.giu(host, cham)){ T6.show(fb, 'cho', '✔ Đã ghi nhận — chờ thầy / cô bấm 👁 Hiện kết quả'); return; }
-      cham();
-    }
+    /* Toan6.giu: đang chiếu thì ghi nhận lần bấm cuối + ô "đã ghi nhận", GV bấm 👁 mới chấm */
+    function bam(){ if(T6.giu(host, cham)) return; cham(); }
     $('[data-lam="kiem"]', host).addEventListener('click', bam);
     ip.forEach(function(x){ x.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); bam(); } }); });
     T6.tuLam.push(function(){

@@ -1,0 +1,912 @@
+{
+  "ten-mi": {
+    "file": "ten-mi.mp3",
+    "kieu": "don",
+    "text": "Mi",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "791ca9d9872c8e64"
+  },
+  "ten-vy": {
+    "file": "ten-vy.mp3",
+    "kieu": "don",
+    "text": "Vy",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "00df8967417358d3"
+  },
+  "ten-nam": {
+    "file": "ten-nam.mp3",
+    "kieu": "don",
+    "text": "Nam",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f4be55c18d730e8e"
+  },
+  "voc-be-in-need": {
+    "file": "voc-be-in-need.mp3",
+    "kieu": "don",
+    "text": "be in need",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "296476ee4a15e418"
+  },
+  "voc-charity": {
+    "file": "voc-charity.mp3",
+    "kieu": "don",
+    "text": "charity",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bd7f7162b54c9513"
+  },
+  "voc-container": {
+    "file": "voc-container.mp3",
+    "kieu": "don",
+    "text": "container",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e352d7663d96d31c"
+  },
+  "voc-do-a-survey": {
+    "file": "voc-do-a-survey.mp3",
+    "kieu": "don",
+    "text": "do a survey",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fb6750e8785ee035"
+  },
+  "voc-environment": {
+    "file": "voc-environment.mp3",
+    "kieu": "don",
+    "text": "environment",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "14545fdd5e5b2153"
+  },
+  "voc-exchange": {
+    "file": "voc-exchange.mp3",
+    "kieu": "don",
+    "text": "exchange",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9c4ccc6b472dadd0"
+  },
+  "voc-fair": {
+    "file": "voc-fair.mp3",
+    "kieu": "don",
+    "text": "fair",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3b3602610453aa29"
+  },
+  "voc-go-green": {
+    "file": "voc-go-green.mp3",
+    "kieu": "don",
+    "text": "go green",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f39570f069438356"
+  },
+  "voc-instead-of": {
+    "file": "voc-instead-of.mp3",
+    "kieu": "don",
+    "text": "instead of",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ac0f4ce23bb59205"
+  },
+  "voc-pick-up": {
+    "file": "voc-pick-up.mp3",
+    "kieu": "don",
+    "text": "pick up",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d9984f4baae7cf02"
+  },
+  "voc-president": {
+    "file": "voc-president.mp3",
+    "kieu": "don",
+    "text": "president",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "31efd7870280bf40"
+  },
+  "voc-recycle": {
+    "file": "voc-recycle.mp3",
+    "kieu": "don",
+    "text": "recycle",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "72ca8a284d3027c6"
+  },
+  "voc-recycling-bin": {
+    "file": "voc-recycling-bin.mp3",
+    "kieu": "don",
+    "text": "recycling bin",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "67e33736ac06a0b0"
+  },
+  "voc-reduce": {
+    "file": "voc-reduce.mp3",
+    "kieu": "don",
+    "text": "reduce",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "79a40dc29c129d47"
+  },
+  "voc-reuse": {
+    "file": "voc-reuse.mp3",
+    "kieu": "don",
+    "text": "reuse",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c36c14c17112981a"
+  },
+  "voc-reusable": {
+    "file": "voc-reusable.mp3",
+    "kieu": "don",
+    "text": "reusable",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ba75940fa76a7ff3"
+  },
+  "voc-rubbish": {
+    "file": "voc-rubbish.mp3",
+    "kieu": "don",
+    "text": "rubbish",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4fc0baa370264a89"
+  },
+  "voc-tip": {
+    "file": "voc-tip.mp3",
+    "kieu": "don",
+    "text": "tip",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cbde3abc85a7fa22"
+  },
+  "voc-wrap": {
+    "file": "voc-wrap.mp3",
+    "kieu": "don",
+    "text": "wrap",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1787439a9cabf531"
+  },
+  "thing-plastic-bottle": {
+    "file": "thing-plastic-bottle.mp3",
+    "kieu": "don",
+    "text": "plastic bottle",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0995c155d42372f2"
+  },
+  "thing-glass": {
+    "file": "thing-glass.mp3",
+    "kieu": "don",
+    "text": "glass",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c660afcc778f5d58"
+  },
+  "thing-noise": {
+    "file": "thing-noise.mp3",
+    "kieu": "don",
+    "text": "noise",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fa3160725ebd9f34"
+  },
+  "thing-plastic-bag": {
+    "file": "thing-plastic-bag.mp3",
+    "kieu": "don",
+    "text": "plastic bag",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cc3d4586e7740e5b"
+  },
+  "thing-paper": {
+    "file": "thing-paper.mp3",
+    "kieu": "don",
+    "text": "paper",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "de9de5bdd738fa7f"
+  },
+  "thing-water": {
+    "file": "thing-water.mp3",
+    "kieu": "don",
+    "text": "water",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "049b05aa935a16fb"
+  },
+  "thing-clothes": {
+    "file": "thing-clothes.mp3",
+    "kieu": "don",
+    "text": "clothes",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cafc5036b6c305a4"
+  },
+  "s1-recycling-bins": {
+    "file": "s1-recycling-bins.mp3",
+    "kieu": "don",
+    "text": "recycling bins",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6273284061a37b3b"
+  },
+  "aan-uniform": {
+    "file": "aan-uniform.mp3",
+    "kieu": "don",
+    "text": "uniform",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "37bbdaf78abc87c7"
+  },
+  "aan-useful": {
+    "file": "aan-useful.mp3",
+    "kieu": "don",
+    "text": "useful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d54151d6ff90ed01"
+  },
+  "aan-hotel": {
+    "file": "aan-hotel.mp3",
+    "kieu": "don",
+    "text": "hotel",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6a93598597f9396a"
+  },
+  "aan-house": {
+    "file": "aan-house.mp3",
+    "kieu": "don",
+    "text": "house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5e75533da82a0cbb"
+  },
+  "aan-hour": {
+    "file": "aan-hour.mp3",
+    "kieu": "don",
+    "text": "hour",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "35cb044280359988"
+  },
+  "aan-island": {
+    "file": "aan-island.mp3",
+    "kieu": "don",
+    "text": "island",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bd2bbcd635e23f76"
+  },
+  "aan-email": {
+    "file": "aan-email.mp3",
+    "kieu": "don",
+    "text": "email",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "10562644185d8042"
+  },
+  "aan-idea": {
+    "file": "aan-idea.mp3",
+    "kieu": "don",
+    "text": "idea",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "84a88c6a09287077"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "don",
+    "text": "Hi, Nick.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b5d18c2231bbde27"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "ten",
+    "text": "Hello, Mi.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mi",
+        "doc": "Mi",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "7b83b74580e885cf"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "don",
+    "text": "You've bought a lot of things.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1bb80f0ad298ad05"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "ten",
+    "text": "Yes. We're going on a picnic tomorrow. What are you doing at the supermarket, Mi?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mi",
+        "doc": "Mi",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "2fe815ec6082785e"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "don",
+    "text": "I'm buying some eggs. Hey, what's this?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "681f11c16fa4036b"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "don",
+    "text": "It's a reusable shopping bag.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "e26abf5a61b2212d"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "don",
+    "text": "Do you always use it?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2df191c8f3e3c013"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "Yes. It's better than a plastic one. If we all use this kind of bag, we will help the environment.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "d86dd9a7719e958b"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "don",
+    "text": "I see. I'll buy one for my mum. Where can I buy one?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4d9a30c4b253de7d"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "don",
+    "text": "At the check-out. By the way, you're also green. You're cycling.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "0670ebf81091364a"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "don",
+    "text": "You're right. If more people cycle, the air will be cleaner. Right?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "94db2f3821bfe6fa"
+  },
+  "gs-12": {
+    "file": "gs-12.mp3",
+    "kieu": "don",
+    "text": "Yes. Oh, it's five o'clock already. I have to go now. See you later.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "463c224e0700a251"
+  },
+  "gs-13": {
+    "file": "gs-13.mp3",
+    "kieu": "don",
+    "text": "See you, Nick. Bye.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4618e8d50df73e9a"
+  },
+  "g4-a": {
+    "file": "g4-a.mp3",
+    "kieu": "don",
+    "text": "planting trees and flowers",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1cba39a34bc1c2bb"
+  },
+  "g4-b": {
+    "file": "g4-b.mp3",
+    "kieu": "don",
+    "text": "picking up rubbish",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9d187097c1a4b428"
+  },
+  "g4-c": {
+    "file": "g4-c.mp3",
+    "kieu": "don",
+    "text": "cycling",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a36437914f3f23dc"
+  },
+  "g4-d": {
+    "file": "g4-d.mp3",
+    "kieu": "don",
+    "text": "walking to school",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "67d16925f5bbe861"
+  },
+  "g4-e": {
+    "file": "g4-e.mp3",
+    "kieu": "don",
+    "text": "using reusable bags when shopping",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "09277f87d575e86a"
+  },
+  "g5-01": {
+    "file": "g5-01.mp3",
+    "kieu": "don",
+    "text": "Do you plant trees?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "42a3ad8901aac3fc"
+  },
+  "g5-02": {
+    "file": "g5-02.mp3",
+    "kieu": "don",
+    "text": "No, I don't.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "ac57567f219bd49d"
+  },
+  "g5-03": {
+    "file": "g5-03.mp3",
+    "kieu": "don",
+    "text": "Do you pick up rubbish?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b53ca5de54bd7b7d"
+  },
+  "g5-04": {
+    "file": "g5-04.mp3",
+    "kieu": "don",
+    "text": "Yes, I do.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "679017714b428265"
+  },
+  "pr-rule": {
+    "file": "pr-rule.mp3",
+    "kieu": "don",
+    "text": "In a sentence, the stressed and unstressed syllables combine to make rhythm.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2f1ce14089bf0fbe"
+  },
+  "prs-1": {
+    "file": "prs-1.mp3",
+    "kieu": "don",
+    "text": "If you cycle, it'll help the Earth.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a593de767cdb6c3a"
+  },
+  "prs-2": {
+    "file": "prs-2.mp3",
+    "kieu": "don",
+    "text": "Water is good for your body.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7881d106ef81c05d"
+  },
+  "prs-3": {
+    "file": "prs-3.mp3",
+    "kieu": "don",
+    "text": "The students are planting trees in the garden.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8fa291728d40e44b"
+  },
+  "prs-4": {
+    "file": "prs-4.mp3",
+    "kieu": "don",
+    "text": "Is it better to use paper bags?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7f1f46a863850fc8"
+  },
+  "prs-5": {
+    "file": "prs-5.mp3",
+    "kieu": "don",
+    "text": "We are happy to walk to school.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb915e9986608ffd"
+  },
+  "prd-01": {
+    "file": "prd-01.mp3",
+    "kieu": "don",
+    "text": "What are you doing?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "e388954cc2af15d1"
+  },
+  "prd-02": {
+    "file": "prd-02.mp3",
+    "kieu": "don",
+    "text": "I'm writing an article about going green.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6ff17d636add7710"
+  },
+  "prd-03": {
+    "file": "prd-03.mp3",
+    "kieu": "don",
+    "text": "Great! I'm writing a poem about the three Rs.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "9a5ff9eeb8f283df"
+  },
+  "prd-04": {
+    "file": "prd-04.mp3",
+    "kieu": "don",
+    "text": "Let me read it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dcef9df015aaa918"
+  },
+  "prd-05": {
+    "file": "prd-05.mp3",
+    "kieu": "don",
+    "text": "I'm still writing. Wait for a minute.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "07a38b9eeb679443"
+  },
+  "gr-a1": {
+    "file": "gr-a1.mp3",
+    "kieu": "don",
+    "text": "There are two kinds of articles in English: the indefinite article (a / an) and the definite article (the).",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "58665ef8ee77ba48"
+  },
+  "gr-a2": {
+    "file": "gr-a2.mp3",
+    "kieu": "don",
+    "text": "We use a / an",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3cb6ccd1fa811699"
+  },
+  "gr-a3": {
+    "file": "gr-a3.mp3",
+    "kieu": "don",
+    "text": "with singular countable nouns when we are talking about them in general.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f5b25bc87c53e3df"
+  },
+  "gr-a4": {
+    "file": "gr-a4.mp3",
+    "kieu": "don",
+    "text": "An ant is a tiny animal.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c235cd5a14ce87e8"
+  },
+  "gr-a5": {
+    "file": "gr-a5.mp3",
+    "kieu": "don",
+    "text": "after the verbs to be and to have.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "eb07bcf45e113e74"
+  },
+  "gr-a6": {
+    "file": "gr-a6.mp3",
+    "kieu": "don",
+    "text": "I'm a student.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8ed976bd1dd8c8f8"
+  },
+  "gr-a7": {
+    "file": "gr-a7.mp3",
+    "kieu": "don",
+    "text": "I have an eraser.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "29b11f454b827497"
+  },
+  "gr-a8": {
+    "file": "gr-a8.mp3",
+    "kieu": "don",
+    "text": "We use the",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2d06fb9eee1048cf"
+  },
+  "gr-a9": {
+    "file": "gr-a9.mp3",
+    "kieu": "don",
+    "text": "with singular or plural nouns when we already know them or when they are mentioned for the second time.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9d5df93a08b1eded"
+  },
+  "gr-a10": {
+    "file": "gr-a10.mp3",
+    "kieu": "don",
+    "text": "The bike in front of her house is nice.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7ebacdd1e276fe50"
+  },
+  "gr-a11": {
+    "file": "gr-a11.mp3",
+    "kieu": "don",
+    "text": "with nouns which are unique.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3b5052b51b9c4bf0"
+  },
+  "gr-a12": {
+    "file": "gr-a12.mp3",
+    "kieu": "don",
+    "text": "The air is dirty.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0cc140fc6e9b5560"
+  },
+  "gr-c1": {
+    "file": "gr-c1.mp3",
+    "kieu": "don",
+    "text": "First conditional sentences describe things which are possible and likely to happen in the present or the future.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a0e686bf9ad40201"
+  },
+  "gr-c2": {
+    "file": "gr-c2.mp3",
+    "kieu": "don",
+    "text": "If you use less paper, you will save a lot of trees.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "006f545145cdf838"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "don",
+    "text": "You are giving the goldfish too much food. Don't do that.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "62d6751eef9d4347"
+  },
+  "com-01b": {
+    "file": "com-01b.mp3",
+    "kieu": "don",
+    "text": "Don't do that.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d850ef712392f600"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "Why?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "e0b113adb6e2b34d"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "don",
+    "text": "If you give them too much food, they will die.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f3c044439df6b057"
+  },
+  "com-04": {
+    "file": "com-04.mp3",
+    "kieu": "don",
+    "text": "I see. Thank you.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "96ab0f231ea87fc6"
+  },
+  "com-05": {
+    "file": "com-05.mp3",
+    "kieu": "don",
+    "text": "What's your answer to Question one?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "677bc8ba8f948b51"
+  },
+  "com-06": {
+    "file": "com-06.mp3",
+    "kieu": "don",
+    "text": "It's A. What's your answer?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "b061486ff732ca40"
+  },
+  "read-01": {
+    "file": "read-01.mp3",
+    "kieu": "don",
+    "text": "Can you share with us some tips to make your school greener?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "a274ffacb0b35ba6"
+  },
+  "read-02": {
+    "file": "read-02.mp3",
+    "kieu": "don",
+    "text": "Sure. Firstly, we put recycling bins in every classroom.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "d484daf1ed54ca23"
+  },
+  "read-03": {
+    "file": "read-03.mp3",
+    "kieu": "don",
+    "text": "What about old books and uniforms?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "d0ab27c394f3417b"
+  },
+  "read-04": {
+    "file": "read-04.mp3",
+    "kieu": "don",
+    "text": "We exchange them with our friends or give them to charity. We don't throw them away.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "167cfc943484c6fc"
+  },
+  "read-05": {
+    "file": "read-05.mp3",
+    "kieu": "don",
+    "text": "Anything else?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "2040d00e64879973"
+  },
+  "read-06": {
+    "file": "read-06.mp3",
+    "kieu": "don",
+    "text": "We borrow books from the school library instead of buying new ones.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "7ca206a70c4299cf"
+  },
+  "read-07": {
+    "file": "read-07.mp3",
+    "kieu": "don",
+    "text": "Great! You can save much paper.",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "d0b1a201eb2aa3a7"
+  },
+  "read-08": {
+    "file": "read-08.mp3",
+    "kieu": "don",
+    "text": "And there's another tip. We bring reusable water bottles to school.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "1300742f2477ee57"
+  },
+  "read-09": {
+    "file": "read-09.mp3",
+    "kieu": "don",
+    "text": "I see lots of trees in your school. Is planting trees a good tip?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "5c3c93b3ae4cd5bb"
+  },
+  "read-10": {
+    "file": "read-10.mp3",
+    "kieu": "don",
+    "text": "Yeah. It makes our school greener.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "210ea7adebced961"
+  },
+  "read-11": {
+    "file": "read-11.mp3",
+    "kieu": "don",
+    "text": "Thanks for sharing. Do you want to add anything?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "bda3cb7af7768a3e"
+  },
+  "read-12": {
+    "file": "read-12.mp3",
+    "kieu": "don",
+    "text": "Finally, we usually find creative ways to reuse old items before throwing them away.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "bc1799f23212df1e"
+  },
+  "pst-01": {
+    "file": "pst-01.mp3",
+    "kieu": "don",
+    "text": "Are you creative?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8e685d46c5f8ddfd"
+  },
+  "pst-02": {
+    "file": "pst-02.mp3",
+    "kieu": "don",
+    "text": "Do you want our school to be a green place?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "99dd76bd9c22d896"
+  },
+  "pst-03": {
+    "file": "pst-03.mp3",
+    "kieu": "don",
+    "text": "What will you do if you become our president?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "86d95deb5ece83a6"
+  },
+  "pst-04": {
+    "file": "pst-04.mp3",
+    "kieu": "don",
+    "text": "Raise your voice and become our president!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "de114cf5e47ee6fe"
+  },
+  "w-00a": {
+    "file": "w-00a.mp3",
+    "kieu": "don",
+    "text": "Giving explanations and / or examples is an important writing skill.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0004399bdf1fb3a3"
+  },
+  "w-00b": {
+    "file": "w-00b.mp3",
+    "kieu": "don",
+    "text": "You should give explanations and / or examples to support your ideas.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8cdcad4cf14d1270"
+  },
+  "w-01": {
+    "file": "w-01.mp3",
+    "kieu": "don",
+    "text": "Secondly, I'll organise some book fairs.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ac0f4d46e511ad76"
+  },
+  "w-02": {
+    "file": "w-02.mp3",
+    "kieu": "don",
+    "text": "At these events students can exchange their used books.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a3e4c71cbcc39e07"
+  }
+}

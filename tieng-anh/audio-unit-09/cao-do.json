@@ -1,0 +1,13 @@
+{
+ "ghi_chu": "F0 trung vi (Hz) tung ma giong, do tu clip that cua bai (do_cao_do.py)",
+ "hz": {
+  "F": 212,
+  "F2": 220,
+  "M": 142
+ },
+ "voices": {
+  "F": "en-GB-SoniaNeural",
+  "F2": "en-GB-LibbyNeural",
+  "M": "en-GB-RyanNeural"
+ }
+}

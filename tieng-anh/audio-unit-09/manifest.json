@@ -1,0 +1,841 @@
+{
+  "voc-river-bank": {
+    "file": "voc-river-bank.mp3",
+    "kieu": "don",
+    "text": "river bank",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "039b77ba204fa0c9"
+  },
+  "voc-crowded": {
+    "file": "voc-crowded.mp3",
+    "kieu": "don",
+    "text": "crowded",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c84a33f8daeeb9e9"
+  },
+  "voc-floating-market": {
+    "file": "voc-floating-market.mp3",
+    "kieu": "don",
+    "text": "floating market",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "715ebad36e08a44e"
+  },
+  "voc-helpful": {
+    "file": "voc-helpful.mp3",
+    "kieu": "don",
+    "text": "helpful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3f1254f64a7e7ca9"
+  },
+  "voc-helmet": {
+    "file": "voc-helmet.mp3",
+    "kieu": "don",
+    "text": "helmet",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8ced2e477d6f347a"
+  },
+  "voc-landmark": {
+    "file": "voc-landmark.mp3",
+    "kieu": "don",
+    "text": "landmark",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e9f2f3ba38464634"
+  },
+  "voc-city-map": {
+    "file": "voc-city-map.mp3",
+    "kieu": "don",
+    "text": "city map",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "842a16b7798e5e74"
+  },
+  "voc-palace": {
+    "file": "voc-palace.mp3",
+    "kieu": "don",
+    "text": "palace",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "beeb33ce99538314"
+  },
+  "voc-postcard": {
+    "file": "voc-postcard.mp3",
+    "kieu": "don",
+    "text": "postcard",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4f6ff40f7866a22b"
+  },
+  "voc-rent": {
+    "file": "voc-rent.mp3",
+    "kieu": "don",
+    "text": "rent",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c12febf12f008a6f"
+  },
+  "voc-royal-palace": {
+    "file": "voc-royal-palace.mp3",
+    "kieu": "don",
+    "text": "Royal Palace",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "71048d9bad08ff19"
+  },
+  "voc-shell": {
+    "file": "voc-shell.mp3",
+    "kieu": "don",
+    "text": "shell",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "db2d236a09d49b42"
+  },
+  "voc-stall": {
+    "file": "voc-stall.mp3",
+    "kieu": "don",
+    "text": "stall",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f809fbe9859f17bd"
+  },
+  "voc-street-food": {
+    "file": "voc-street-food.mp3",
+    "kieu": "don",
+    "text": "street food",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "945a88a991a4fc36"
+  },
+  "voc-times-square": {
+    "file": "voc-times-square.mp3",
+    "kieu": "don",
+    "text": "Times Square",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "527ab874f64457ce"
+  },
+  "voc-tower": {
+    "file": "voc-tower.mp3",
+    "kieu": "don",
+    "text": "tower",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0cabd4ff68ef3e94"
+  },
+  "thing-rainy": {
+    "file": "thing-rainy.mp3",
+    "kieu": "don",
+    "text": "rainy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "461d489e18e7378b"
+  },
+  "thing-friendly": {
+    "file": "thing-friendly.mp3",
+    "kieu": "don",
+    "text": "friendly",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "628c5f0e0b0a1005"
+  },
+  "thing-tasty": {
+    "file": "thing-tasty.mp3",
+    "kieu": "don",
+    "text": "tasty",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0d77789828a9e2fb"
+  },
+  "thing-old": {
+    "file": "thing-old.mp3",
+    "kieu": "don",
+    "text": "old",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ddba55b2ac499782"
+  },
+  "thing-exciting": {
+    "file": "thing-exciting.mp3",
+    "kieu": "don",
+    "text": "exciting",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9d48b7950a323913"
+  },
+  "thing-delicious": {
+    "file": "thing-delicious.mp3",
+    "kieu": "don",
+    "text": "delicious",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "eefddc10a2bdc60c"
+  },
+  "thing-sunny": {
+    "file": "thing-sunny.mp3",
+    "kieu": "don",
+    "text": "sunny",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a78ded961bb4a633"
+  },
+  "thing-sydney": {
+    "file": "thing-sydney.mp3",
+    "kieu": "don",
+    "text": "Sydney",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "83e1a1fa86c79d25"
+  },
+  "thing-london": {
+    "file": "thing-london.mp3",
+    "kieu": "don",
+    "text": "London",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7cc93b79020f803e"
+  },
+  "thing-new-york": {
+    "file": "thing-new-york.mp3",
+    "kieu": "don",
+    "text": "New York",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8bc0a55930b6b983"
+  },
+  "thing-stockholm": {
+    "file": "thing-stockholm.mp3",
+    "kieu": "don",
+    "text": "Stockholm",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "07ab6f7ccd38268a"
+  },
+  "thing-bangkok": {
+    "file": "thing-bangkok.mp3",
+    "kieu": "don",
+    "text": "Bangkok",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f5a4e537546009ee"
+  },
+  "thing-big-ben": {
+    "file": "thing-big-ben.mp3",
+    "kieu": "don",
+    "text": "Big Ben",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8eb26ec67c46473e"
+  },
+  "thing-eiffel-tower": {
+    "file": "thing-eiffel-tower.mp3",
+    "kieu": "don",
+    "text": "Eiffel Tower",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "67110a33b7c9b6bf"
+  },
+  "thing-sydney-opera-house": {
+    "file": "thing-sydney-opera-house.mp3",
+    "kieu": "don",
+    "text": "Sydney Opera House",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "766b662c1d8eba45"
+  },
+  "thing-merlion": {
+    "file": "thing-merlion.mp3",
+    "kieu": "don",
+    "text": "Merlion",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5fb3bffd68bc84cf"
+  },
+  "ten-mai": {
+    "file": "ten-mai.mp3",
+    "kieu": "don",
+    "text": "Mai",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "0aef0243b233b0bb"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "don",
+    "text": "Tom, are these photos from your holidays?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "36c1d7c127bbd9e1"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "don",
+    "text": "Yes, they are. This is Sydney, a city in Australia.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "c13f7870db612772"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "don",
+    "text": "What's it like?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dc467711bff21fec"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "don",
+    "text": "It's exciting with a lot of beaches.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "25e9a7976561be3e"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "don",
+    "text": "What a beautiful place!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4ec5d83a97a0c487"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "don",
+    "text": "Yes, its beaches are very clean.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "d210598b6204d735"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "don",
+    "text": "Wonderful. Oh, this is London. Isn't it raining? What bad weather!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2da271f41d7af880"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "Yes, it rains all the time. Can you see Big Ben?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "96488314d16073cd"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "don",
+    "text": "Yeah … on the River Thames. It's a landmark of London.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bcbacccdd82b4913"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "don",
+    "text": "It is. And this is Times Square in New York, crowded but interesting.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "0b8b24c651b16955"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "don",
+    "text": "You're lucky to visit many places.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b724242eb1e60ca0"
+  },
+  "gs-12": {
+    "file": "gs-12.mp3",
+    "kieu": "don",
+    "text": "I am. What about your holidays?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "2c630a72059f3747"
+  },
+  "gs-13": {
+    "file": "gs-13.mp3",
+    "kieu": "don",
+    "text": "Here are some photos of mine. This is …",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c7118b01f838167e"
+  },
+  "g5-01": {
+    "file": "g5-01.mp3",
+    "kieu": "don",
+    "text": "What's it like?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dc467711bff21fec"
+  },
+  "g5-02": {
+    "file": "g5-02.mp3",
+    "kieu": "don",
+    "text": "It has beautiful beaches.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "e5557aa501dbf68f"
+  },
+  "g5-03": {
+    "file": "g5-03.mp3",
+    "kieu": "don",
+    "text": "Is it in Australia?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "9a7d46383a559ec7"
+  },
+  "g5-04": {
+    "file": "g5-04.mp3",
+    "kieu": "don",
+    "text": "Yes, it is.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "972ce2e9bbde55d9"
+  },
+  "g5-05": {
+    "file": "g5-05.mp3",
+    "kieu": "don",
+    "text": "It's Sydney.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1d8763e6707a439b"
+  },
+  "g5-06": {
+    "file": "g5-06.mp3",
+    "kieu": "don",
+    "text": "Right.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "9a12f72668b2203b"
+  },
+  "pr-window": {
+    "file": "pr-window.mp3",
+    "kieu": "don",
+    "text": "window",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1930e38ed9089c87"
+  },
+  "pr-show": {
+    "file": "pr-show.mp3",
+    "kieu": "don",
+    "text": "show",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8caae31810e6ce36"
+  },
+  "pr-yellow": {
+    "file": "pr-yellow.mp3",
+    "kieu": "don",
+    "text": "yellow",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a9ae4f370ad33bf7"
+  },
+  "pr-know": {
+    "file": "pr-know.mp3",
+    "kieu": "don",
+    "text": "know",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "35c9c55745a25656"
+  },
+  "pr-now": {
+    "file": "pr-now.mp3",
+    "kieu": "don",
+    "text": "now",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cedb10f8ed0f700a"
+  },
+  "pr-down": {
+    "file": "pr-down.mp3",
+    "kieu": "don",
+    "text": "down",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2f70f404b5c760af"
+  },
+  "pr-brown": {
+    "file": "pr-brown.mp3",
+    "kieu": "don",
+    "text": "brown",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "af481571f197032d"
+  },
+  "pr-flower": {
+    "file": "pr-flower.mp3",
+    "kieu": "don",
+    "text": "flower",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b5264fd1d05669ec"
+  },
+  "pr-hotel": {
+    "file": "pr-hotel.mp3",
+    "kieu": "don",
+    "text": "hotel",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6a93598597f9396a"
+  },
+  "pr-mountain": {
+    "file": "pr-mountain.mp3",
+    "kieu": "don",
+    "text": "mountain",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8270feb162a1ba4d"
+  },
+  "pr-shop": {
+    "file": "pr-shop.mp3",
+    "kieu": "don",
+    "text": "shop",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7023db83f0fc4f7c"
+  },
+  "pr-no": {
+    "file": "pr-no.mp3",
+    "kieu": "don",
+    "text": "no",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a5c5cc23f0c26aa5"
+  },
+  "pr-home": {
+    "file": "pr-home.mp3",
+    "kieu": "don",
+    "text": "home",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4017b4765afd6ff8"
+  },
+  "pr-boat": {
+    "file": "pr-boat.mp3",
+    "kieu": "don",
+    "text": "boat",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c022b66e3a9f00e4"
+  },
+  "pr-house": {
+    "file": "pr-house.mp3",
+    "kieu": "don",
+    "text": "house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5e75533da82a0cbb"
+  },
+  "pr-town": {
+    "file": "pr-town.mp3",
+    "kieu": "don",
+    "text": "town",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d648908ec2b0e9a0"
+  },
+  "pr-coast": {
+    "file": "pr-coast.mp3",
+    "kieu": "don",
+    "text": "coast",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "77231c7b9a85ed96"
+  },
+  "pr-pagoda": {
+    "file": "pr-pagoda.mp3",
+    "kieu": "don",
+    "text": "pagoda",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d806558c155c736c"
+  },
+  "prs-1": {
+    "file": "prs-1.mp3",
+    "kieu": "don",
+    "text": "The town is crowded at the weekend.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4e051dc561f96504"
+  },
+  "prs-2": {
+    "file": "prs-2.mp3",
+    "kieu": "don",
+    "text": "There's lots of snow in Tokyo in winter.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "33c7a9a656a930c9"
+  },
+  "prs-3": {
+    "file": "prs-3.mp3",
+    "kieu": "don",
+    "text": "It's very cold on the boat.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fc0f55a7aba692d9"
+  },
+  "prs-4": {
+    "file": "prs-4.mp3",
+    "kieu": "don",
+    "text": "He's running around the house.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9bd308851568cc7b"
+  },
+  "gr-01": {
+    "file": "gr-01.mp3",
+    "kieu": "don",
+    "text": "A possessive adjective is used only when there's a noun following it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e21837472108691c"
+  },
+  "gr-02": {
+    "file": "gr-02.mp3",
+    "kieu": "don",
+    "text": "I have a pen.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b2430d7cfea575b0"
+  },
+  "gr-03": {
+    "file": "gr-03.mp3",
+    "kieu": "don",
+    "text": "This is my pen.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2aec089b2f283a47"
+  },
+  "gr-04": {
+    "file": "gr-04.mp3",
+    "kieu": "don",
+    "text": "A possessive pronoun is used alone, without a noun following it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f305a16c4755dcfd"
+  },
+  "gr-05": {
+    "file": "gr-05.mp3",
+    "kieu": "don",
+    "text": "This book is my book, not your book.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "70cd30b8518b9385"
+  },
+  "gr-06": {
+    "file": "gr-06.mp3",
+    "kieu": "don",
+    "text": "This book is mine, not yours.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0a2919e45aef6d79"
+  },
+  "so-my": {
+    "file": "so-my.mp3",
+    "kieu": "don",
+    "text": "my",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f4731be2440749fc"
+  },
+  "so-your": {
+    "file": "so-your.mp3",
+    "kieu": "don",
+    "text": "your",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "17e0516579d46616"
+  },
+  "so-his": {
+    "file": "so-his.mp3",
+    "kieu": "don",
+    "text": "his",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "be7626a6fe1dd2cf"
+  },
+  "so-her": {
+    "file": "so-her.mp3",
+    "kieu": "don",
+    "text": "her",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fc24b619cd3eff7a"
+  },
+  "so-its": {
+    "file": "so-its.mp3",
+    "kieu": "don",
+    "text": "its",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ff86760e158c4b21"
+  },
+  "so-our": {
+    "file": "so-our.mp3",
+    "kieu": "don",
+    "text": "our",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7ba9e7c83f402ca9"
+  },
+  "so-their": {
+    "file": "so-their.mp3",
+    "kieu": "don",
+    "text": "their",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8bbdcd81a08958b1"
+  },
+  "so-mine": {
+    "file": "so-mine.mp3",
+    "kieu": "don",
+    "text": "mine",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4e21470ee9faad8d"
+  },
+  "so-hers": {
+    "file": "so-hers.mp3",
+    "kieu": "don",
+    "text": "hers",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "908f94e3f3cfc265"
+  },
+  "so-ours": {
+    "file": "so-ours.mp3",
+    "kieu": "don",
+    "text": "ours",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "72b6689c79262dcc"
+  },
+  "so-theirs": {
+    "file": "so-theirs.mp3",
+    "kieu": "don",
+    "text": "theirs",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "53f4d016b88320d9"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "don",
+    "text": "What a nice city!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "72ac292f6e6f180f"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "What a clear sky!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "200f6ff1408f4456"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "don",
+    "text": "What tall buildings!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a64cfa3069cf08fc"
+  },
+  "read-01": {
+    "file": "read-01.mp3",
+    "kieu": "don",
+    "text": "Dear Grandpa and Grandma,",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ecd853114a723b05"
+  },
+  "read-02": {
+    "file": "read-02.mp3",
+    "kieu": "don",
+    "text": "Stockholm is fantastic! Its weather is perfect, sunny all the time! Our hotel is good. It has a swimming pool and a gym. It offers delicious breakfast.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "39a0ebfb3c705376"
+  },
+  "read-03": {
+    "file": "read-03.mp3",
+    "kieu": "don",
+    "text": "Yesterday Mum, Dad and I rented three bikes and cycled to the Old Town. My parents wore their helmets and I wore mine.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0c9abd76dd0603fe"
+  },
+  "read-04": {
+    "file": "read-04.mp3",
+    "kieu": "don",
+    "text": "We visited the Royal Palace first. What a beautiful place! Mum loved it. She said, \"Swedish art is amazing.\" After that, we had \"fika\", a coffee break, in a traditional café. Everything is so wonderful!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "800fc237398a63d3"
+  },
+  "read-05": {
+    "file": "read-05.mp3",
+    "kieu": "don",
+    "text": "Wish you were here!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1967472b12840f46"
+  },
+  "read-06": {
+    "file": "read-06.mp3",
+    "kieu": "ten",
+    "text": "Love, Mai",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mai",
+        "doc": "Mai",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "09c398f87494a8b5"
+  },
+  "read-02a": {
+    "file": "read-02a.mp3",
+    "kieu": "don",
+    "text": "Stockholm is fantastic!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0caaf4a631d2831d"
+  },
+  "read-02b": {
+    "file": "read-02b.mp3",
+    "kieu": "don",
+    "text": "Our hotel is good.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e05da58f2202737b"
+  },
+  "read-03a": {
+    "file": "read-03a.mp3",
+    "kieu": "don",
+    "text": "Yesterday Mum, Dad and I rented three bikes and cycled to the Old Town.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "46b12df96b803e41"
+  },
+  "sp-01": {
+    "file": "sp-01.mp3",
+    "kieu": "don",
+    "text": "We're going to tell you about …",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3cbe1638a292fae5"
+  }
+}

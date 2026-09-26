@@ -1,0 +1,859 @@
+{
+  "voc-aerobics": {
+    "file": "voc-aerobics.mp3",
+    "kieu": "don",
+    "text": "aerobics",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "667aa385c4534db4"
+  },
+  "voc-career": {
+    "file": "voc-career.mp3",
+    "kieu": "don",
+    "text": "career",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "78e540ba1c17d423"
+  },
+  "voc-competition": {
+    "file": "voc-competition.mp3",
+    "kieu": "don",
+    "text": "competition",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "06da75dd4f8e209f"
+  },
+  "voc-congratulation": {
+    "file": "voc-congratulation.mp3",
+    "kieu": "don",
+    "text": "congratulation",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c94e5c39604c966c"
+  },
+  "voc-equipment": {
+    "file": "voc-equipment.mp3",
+    "kieu": "don",
+    "text": "equipment",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e57c47cec24993ad"
+  },
+  "voc-fantastic": {
+    "file": "voc-fantastic.mp3",
+    "kieu": "don",
+    "text": "fantastic",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "14e8d358a9482532"
+  },
+  "voc-fit": {
+    "file": "voc-fit.mp3",
+    "kieu": "don",
+    "text": "fit",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "909c053787794ccd"
+  },
+  "voc-goggles": {
+    "file": "voc-goggles.mp3",
+    "kieu": "don",
+    "text": "goggles",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1668bc9e24cb1a2b"
+  },
+  "voc-gym": {
+    "file": "voc-gym.mp3",
+    "kieu": "don",
+    "text": "gym",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "67935e4f398f52e6"
+  },
+  "voc-karate": {
+    "file": "voc-karate.mp3",
+    "kieu": "don",
+    "text": "karate",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "42dda8b28c519d46"
+  },
+  "voc-last": {
+    "file": "voc-last.mp3",
+    "kieu": "don",
+    "text": "last",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "13a56b6438c9ead1"
+  },
+  "voc-marathon": {
+    "file": "voc-marathon.mp3",
+    "kieu": "don",
+    "text": "marathon",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "526982c0a33abdae"
+  },
+  "voc-racket": {
+    "file": "voc-racket.mp3",
+    "kieu": "don",
+    "text": "racket",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e61671730a00e36a"
+  },
+  "voc-score": {
+    "file": "voc-score.mp3",
+    "kieu": "don",
+    "text": "score",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0adbe1a58b1a3e84"
+  },
+  "voc-shoot": {
+    "file": "voc-shoot.mp3",
+    "kieu": "don",
+    "text": "shoot",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b7236cd6fba713dc"
+  },
+  "voc-sporty": {
+    "file": "voc-sporty.mp3",
+    "kieu": "don",
+    "text": "sporty",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b24cd8c78d8ad156"
+  },
+  "voc-take-place": {
+    "file": "voc-take-place.mp3",
+    "kieu": "don",
+    "text": "take place",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e37020ea5c24b3df"
+  },
+  "voc-tournament": {
+    "file": "voc-tournament.mp3",
+    "kieu": "don",
+    "text": "tournament",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1b4cd844832ba8ac"
+  },
+  "thing-chess": {
+    "file": "thing-chess.mp3",
+    "kieu": "don",
+    "text": "chess",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "476f4401b1fe6c41"
+  },
+  "thing-table-tennis": {
+    "file": "thing-table-tennis.mp3",
+    "kieu": "don",
+    "text": "table tennis",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1dfc79a910a7ddd1"
+  },
+  "thing-cycling": {
+    "file": "thing-cycling.mp3",
+    "kieu": "don",
+    "text": "cycling",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a36437914f3f23dc"
+  },
+  "thing-swimming": {
+    "file": "thing-swimming.mp3",
+    "kieu": "don",
+    "text": "swimming",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8d941adfed7319c9"
+  },
+  "thing-volleyball": {
+    "file": "thing-volleyball.mp3",
+    "kieu": "don",
+    "text": "volleyball",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "064af3795cf3e6b0"
+  },
+  "thing-badminton": {
+    "file": "thing-badminton.mp3",
+    "kieu": "don",
+    "text": "badminton",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b1f51e5df49c2d2c"
+  },
+  "thing-football": {
+    "file": "thing-football.mp3",
+    "kieu": "don",
+    "text": "football",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9340b12c52b64d59"
+  },
+  "thing-judo": {
+    "file": "thing-judo.mp3",
+    "kieu": "don",
+    "text": "judo",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "472e988b163ca225"
+  },
+  "thing-running": {
+    "file": "thing-running.mp3",
+    "kieu": "don",
+    "text": "running",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5843e8a7457b50ec"
+  },
+  "thing-skiing": {
+    "file": "thing-skiing.mp3",
+    "kieu": "don",
+    "text": "skiing",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "186cc5274d71a4f8"
+  },
+  "thing-exercise": {
+    "file": "thing-exercise.mp3",
+    "kieu": "don",
+    "text": "exercise",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0f31e9ddb9004809"
+  },
+  "thing-champion": {
+    "file": "thing-champion.mp3",
+    "kieu": "don",
+    "text": "champion",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3c008b26496e5abd"
+  },
+  "thing-ball": {
+    "file": "thing-ball.mp3",
+    "kieu": "don",
+    "text": "ball",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "31549489e0a117c3"
+  },
+  "thing-boat": {
+    "file": "thing-boat.mp3",
+    "kieu": "don",
+    "text": "boat",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c022b66e3a9f00e4"
+  },
+  "thing-sports-shoes": {
+    "file": "thing-sports-shoes.mp3",
+    "kieu": "don",
+    "text": "sports shoes",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9c59fd8e3980ce25"
+  },
+  "thing-bicycle": {
+    "file": "thing-bicycle.mp3",
+    "kieu": "don",
+    "text": "bicycle",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c0bfa1663a835bd7"
+  },
+  "pr-tennis": {
+    "file": "pr-tennis.mp3",
+    "kieu": "don",
+    "text": "tennis",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e620a651d72e1db9"
+  },
+  "pr-contest": {
+    "file": "pr-contest.mp3",
+    "kieu": "don",
+    "text": "contest",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "14a6b027f3bf4fad"
+  },
+  "pr-medal": {
+    "file": "pr-medal.mp3",
+    "kieu": "don",
+    "text": "medal",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c24b41e9deb514fa"
+  },
+  "pr-active": {
+    "file": "pr-active.mp3",
+    "kieu": "don",
+    "text": "active",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a676abbd79a5b669"
+  },
+  "pr-match": {
+    "file": "pr-match.mp3",
+    "kieu": "don",
+    "text": "match",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2767354be6a0f1db"
+  },
+  "pr-bed": {
+    "file": "pr-bed.mp3",
+    "kieu": "don",
+    "text": "bed",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "740e70e675228f79"
+  },
+  "pr-bad": {
+    "file": "pr-bad.mp3",
+    "kieu": "don",
+    "text": "bad",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "84700448a5a96b2a"
+  },
+  "prs-1": {
+    "file": "prs-1.mp3",
+    "kieu": "don",
+    "text": "They cannot take part in this contest.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c78ee8585739a99e"
+  },
+  "prs-2": {
+    "file": "prs-2.mp3",
+    "kieu": "don",
+    "text": "They began the match very late.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bcc22f76483300fd"
+  },
+  "prs-3": {
+    "file": "prs-3.mp3",
+    "kieu": "don",
+    "text": "Please get the racket for me.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ae24656f15e88639"
+  },
+  "prs-4": {
+    "file": "prs-4.mp3",
+    "kieu": "don",
+    "text": "We play chess every Saturday.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87fb666a8e2288a0"
+  },
+  "prs-5": {
+    "file": "prs-5.mp3",
+    "kieu": "don",
+    "text": "My grandpa is old, but he's active.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0c88863747153d9f"
+  },
+  "vb-be": {
+    "file": "vb-be.mp3",
+    "kieu": "don",
+    "text": "be",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d4a4473e07c6da26"
+  },
+  "vb-teach": {
+    "file": "vb-teach.mp3",
+    "kieu": "don",
+    "text": "teach",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d0587bc4a75dd6f0"
+  },
+  "vb-begin": {
+    "file": "vb-begin.mp3",
+    "kieu": "don",
+    "text": "begin",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9535d45ecb23e0f2"
+  },
+  "vb-become": {
+    "file": "vb-become.mp3",
+    "kieu": "don",
+    "text": "become",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "69a2c8685a30e4a9"
+  },
+  "vb-buy": {
+    "file": "vb-buy.mp3",
+    "kieu": "don",
+    "text": "buy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c14ac91c177f266a"
+  },
+  "vb-make": {
+    "file": "vb-make.mp3",
+    "kieu": "don",
+    "text": "make",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7c53bd0ba4d672f9"
+  },
+  "vb-run": {
+    "file": "vb-run.mp3",
+    "kieu": "don",
+    "text": "run",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9fdefaa491a63fe5"
+  },
+  "vb-get": {
+    "file": "vb-get.mp3",
+    "kieu": "don",
+    "text": "get",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "35f66ec37a93c54b"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "don",
+    "text": "Wow! This gym is big!",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "c0461b446686bb6f"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "ten",
+    "text": "Yeah. The equipment is great. What sports do you do, Duong?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Duong",
+        "doc": "Dương",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "ab053142dad46b76"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "ten",
+    "text": "Well, I do karate, and I play table tennis. Yesterday I played with Duy, and I won!",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Duy",
+        "doc": "Duy",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "1b40331494d90efa"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "don",
+    "text": "Congratulations! You look fit! I'm not good at sports.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c6bf567ad33bcca3"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "don",
+    "text": "I have an idea – you can go to the karate club with me.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "719eb730bd1f5b18"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "don",
+    "text": "No, I can't do karate.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "07f7bc7ba44fa7fe"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "don",
+    "text": "But you can learn! You'll love it.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "4cfab616852dfff9"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "Well … OK.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "88ca580d8cd8e7e9"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "don",
+    "text": "Great! I'll meet you there at ten a.m. on Sunday.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "826ff4204fca7aff"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "don",
+    "text": "Where's the club?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5373537b98a11a5c"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "ten",
+    "text": "It's Superfit Club, in Pham Hung  Road. You can cycle there.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Pham Hung",
+        "doc": "Phạm Hùng",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "8e406a1e8d8ed48b"
+  },
+  "gs-12": {
+    "file": "gs-12.mp3",
+    "kieu": "don",
+    "text": "OK. See you then.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "914b0b97a08b6e7b"
+  },
+  "ten-duong": {
+    "file": "ten-duong.mp3",
+    "kieu": "don",
+    "text": "Dương",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "881ec8efb1adc663"
+  },
+  "ten-mai": {
+    "file": "ten-mai.mp3",
+    "kieu": "don",
+    "text": "Mai",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "0aef0243b233b0bb"
+  },
+  "ten-duy": {
+    "file": "ten-duy.mp3",
+    "kieu": "don",
+    "text": "Duy",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "052e89004ca5a339"
+  },
+  "ten-phong": {
+    "file": "ten-phong.mp3",
+    "kieu": "don",
+    "text": "Phong",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
+  },
+  "ten-pham-hung": {
+    "file": "ten-pham-hung.mp3",
+    "kieu": "don",
+    "text": "Phạm Hùng",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "0a68b44585e679cb"
+  },
+  "ten-hoang-giang": {
+    "file": "ten-hoang-giang.mp3",
+    "kieu": "don",
+    "text": "Hoàng Giang",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "51df64ecb9c8ac22"
+  },
+  "gr-01": {
+    "file": "gr-01.mp3",
+    "kieu": "don",
+    "text": "We use the past simple to talk about something that happened in the past.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "53f7000329604ff2"
+  },
+  "gr-02": {
+    "file": "gr-02.mp3",
+    "kieu": "ten",
+    "text": "I played badminton with Phong yesterday.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "ca7e20d3279f9cbd"
+  },
+  "gr-03": {
+    "file": "gr-03.mp3",
+    "kieu": "don",
+    "text": "Did you do any sport last weekend?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4d07ad0b112b27fd"
+  },
+  "gr-04": {
+    "file": "gr-04.mp3",
+    "kieu": "don",
+    "text": "Oh yes, and I was exhausted.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "8f6cccfffdfe1db2"
+  },
+  "gr-05": {
+    "file": "gr-05.mp3",
+    "kieu": "don",
+    "text": "Really? What did you do?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "f2a69c855ddf8526"
+  },
+  "gr-06": {
+    "file": "gr-06.mp3",
+    "kieu": "don",
+    "text": "We use imperatives to tell someone to do something, or to give a direct order.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "91f71a7b61db8b49"
+  },
+  "gr-07": {
+    "file": "gr-07.mp3",
+    "kieu": "don",
+    "text": "It's a chewing gum.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7892ffc284b955ab"
+  },
+  "gr-08": {
+    "file": "gr-08.mp3",
+    "kieu": "don",
+    "text": "Chew it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1c6b272a808e18b8"
+  },
+  "gr-09": {
+    "file": "gr-09.mp3",
+    "kieu": "don",
+    "text": "Don't swallow it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c545322c27ceaeb3"
+  },
+  "gr-10": {
+    "file": "gr-10.mp3",
+    "kieu": "don",
+    "text": "Change your clothes.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "77ac7a1f348f06f4"
+  },
+  "gr-11": {
+    "file": "gr-11.mp3",
+    "kieu": "don",
+    "text": "Don't speak loudly.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fe2e1299c28f8dbc"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "ten",
+    "text": "Last week I played table tennis with Duy, and I won for the first time.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Duy",
+        "doc": "Duy",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "0560b883feb3639f"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "Congratulations!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d64aadc52b95fedc"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "ten",
+    "text": "Thank you, Mai.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mai",
+        "doc": "Mai",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "23973b2dd882e144"
+  },
+  "com-04": {
+    "file": "com-04.mp3",
+    "kieu": "don",
+    "text": "So you're our class champion now.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7ae45d4e4d5360e8"
+  },
+  "read-00": {
+    "file": "read-00.mp3",
+    "kieu": "don",
+    "text": "The PE teacher is talking to her students about Pelé.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "84c36af41cb90602"
+  },
+  "read-01": {
+    "file": "read-01.mp3",
+    "kieu": "don",
+    "text": "Today we're going to talk about Pelé. Do you know him?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3cd3fbcaec817d7b"
+  },
+  "read-02": {
+    "file": "read-02.mp3",
+    "kieu": "don",
+    "text": "Yes, I think he's the best footballer of all time.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "60ff115039333854"
+  },
+  "read-03": {
+    "file": "read-03.mp3",
+    "kieu": "don",
+    "text": "Right. He was born in nineteen forty in Brazil. His father taught him to play football at a very young age.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "45ce075827eb43ef"
+  },
+  "read-04": {
+    "file": "read-04.mp3",
+    "kieu": "don",
+    "text": "Oh. When did he begin his career in football?",
+    "voice": "en-GB-LibbyNeural",
+    "rate": "+0%",
+    "bam": "420aa0a1ff5f45de"
+  },
+  "read-05": {
+    "file": "read-05.mp3",
+    "kieu": "don",
+    "text": "At fifteen, when he started playing for Santos Football Club. In nineteen fifty-eight, he won his first World Cup.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d0e429db8fc98446"
+  },
+  "read-06": {
+    "file": "read-06.mp3",
+    "kieu": "don",
+    "text": "How many goals did he score in his career?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "7de9fa447341f472"
+  },
+  "read-07": {
+    "file": "read-07.mp3",
+    "kieu": "don",
+    "text": "One thousand two hundred and eighty-one goals in total, I think.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8dcb71b7d4a93ca1"
+  },
+  "read-08": {
+    "file": "read-08.mp3",
+    "kieu": "don",
+    "text": "Wow! Amazing!",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "285d88ce6837f3f4"
+  },
+  "read-09": {
+    "file": "read-09.mp3",
+    "kieu": "don",
+    "text": "And he became \"Football Player of the Century\" in nineteen ninety-nine.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c12f0716651af053"
+  },
+  "read-10": {
+    "file": "read-10.mp3",
+    "kieu": "don",
+    "text": "Surely Pelé's a national hero in Brazil.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "96d038af80c34434"
+  },
+  "read-11": {
+    "file": "read-11.mp3",
+    "kieu": "don",
+    "text": "Yes, and he's known around the world as \"The King of Football\".",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bfbcad1314977fc2"
+  },
+  "sp-01": {
+    "file": "sp-01.mp3",
+    "kieu": "ten",
+    "text": "Hoang Giang – number one sportsman in shooting",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Hoang Giang",
+        "doc": "Hoàng Giang",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "9def44cafa24a8b2"
+  },
+  "sp-02": {
+    "file": "sp-02.mp3",
+    "kieu": "don",
+    "text": "Jenny Green – one of the best female golfers in history",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bed4ed84bbc5194b"
+  }
+}

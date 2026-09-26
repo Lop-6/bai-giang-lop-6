@@ -1,0 +1,2396 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 10. Cuốn sách tôi yêu — Bài giảng Ngữ văn 6 (Kết nối tri thức)</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --muted:#5c6577;
+    --line:#e3e7f0; --brand:#c2410c; --brand-soft:#fff1e8;
+    --blue:#2f6fdb; --blue-soft:#e8f0ff;
+    --warm:#f59e0b; --warm-soft:#fff6e5; --green:#0f9d76; --green-soft:#e6f7f1;
+    --red:#d64545; --red-soft:#fdeceb; --purple:#7c5cd6; --purple-soft:#f1ecff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:120px}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Segoe UI","Noto Sans",system-ui,-apple-system,Arial,sans-serif;
+    font-size:17px; line-height:1.65}
+  .wrap{max-width:920px; margin:0 auto; padding:0 16px 80px}
+  header.top{background:linear-gradient(135deg,#c2410c,#b4235a); color:#fff; padding:26px 16px 22px}
+  header.top .wrap{padding-bottom:0}
+  header.top h1{margin:0 0 4px; font-size:30px; letter-spacing:.3px}
+  header.top .sub{opacity:.92; font-size:15px; margin:0}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+    padding:2px 10px; border-radius:999px; font-size:13px; margin:8px 6px 0 0}
+  .toolbar{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.96);
+    backdrop-filter:blur(6px); border-bottom:1px solid var(--line)}
+  .toolbar .wrap{padding-top:10px; padding-bottom:10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+  .toolbar .chips{display:flex; flex-wrap:wrap; gap:6px; align-items:center; flex:1 1 auto}
+  .chip{display:inline-block; padding:4px 10px; border-radius:999px; font-size:13.5px;
+    background:#eef1f7; color:#3a4152; text-decoration:none; border:1px solid transparent}
+  .chip:hover{background:var(--brand-soft); border-color:#fcd3bb; color:var(--brand)}
+  .chip.xong{background:#fff6d6; border-color:#f7d57a; color:#8a5a06}
+  .chip.xong::after{content:" ⭐"}
+  /* chip của mục đang đọc (JS tự đặt khi cuộn; điện thoại: dải chip tự cuộn ngang tới chip này) */
+  .chip.dang{border-color:var(--brand); box-shadow:inset 0 0 0 1px var(--brand); color:var(--brand); font-weight:600}
+  .spacer{flex:1}
+  .tbtn{font:inherit; font-size:13.5px; padding:4px 10px; border-radius:999px; cursor:pointer;
+    border:1px solid var(--line); background:#fff; color:var(--muted)}
+  .tbtn:hover{border-color:#fcd3bb; color:var(--brand)}
+  .progress{display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted)}
+  .progress .track{width:110px; height:7px; border-radius:99px; background:#e7ebf3; overflow:hidden}
+  .progress .track i{display:block; height:100%; width:0; background:var(--green); transition:width .4s}
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px;
+    padding:20px 22px; margin:20px 0; box-shadow:0 1px 2px rgba(20,30,60,.04)}
+  h2{font-size:22px; margin:0 0 14px; padding-bottom:8px; border-bottom:2px solid var(--brand-soft)}
+  h3{font-size:18.5px; margin:24px 0 8px; color:#243049}
+  h4{font-size:16.5px; margin:16px 0 6px; color:#37405a}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 22px; padding:0}
+  li{margin:4px 0}
+  table{border-collapse:collapse; width:100%; margin:10px 0; font-size:15.5px}
+  th,td{border:1px solid var(--line); padding:7px 10px; text-align:left; vertical-align:top}
+  th{background:#f7f3f0; font-weight:600}
+  .tablewrap{overflow-x:auto}
+  /* bảng rộng hơn khung (JS đo): dòng nhắc "vuốt ngang" ngay trên, để em không bỏ sót cột khuất */
+  .vuot-ngang{font-size:13px; color:var(--muted); margin:6px 0 -4px}
+  /* sơ đồ / dòng thời gian dọc: mỗi ô một li, mũi tên ↓ giữa các ô (thay bảng SGK nhiều ô ngang ở màn hẹp) */
+  ol.sodo{list-style:none; margin:10px 0; padding:0}
+  ol.sodo > li{position:relative; background:#fff; border:1px solid #d9deea; border-radius:10px; padding:8px 12px; margin:0}
+  ol.sodo > li + li{margin-top:28px}
+  ol.sodo > li + li::before{content:"↓"; position:absolute; top:-27px; left:0; right:0; text-align:center; font-size:19px; line-height:26px; font-weight:700; color:var(--brand)}
+  .box{border-left:5px solid var(--blue); background:#f8faff; border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:14px 0}
+  .box.key{border-left-color:var(--warm); background:var(--warm-soft)}
+  .box.tip{border-left-color:var(--green); background:var(--green-soft)}
+  .box.warn{border-left-color:var(--red); background:var(--red-soft)}
+  .box.quote{border-left-color:var(--purple); background:var(--purple-soft)}
+  .box .label{font-weight:700; display:block; margin-bottom:4px}
+  .box p:first-child{margin-top:0} .box p:last-child{margin-bottom:0}
+  .muted{color:var(--muted)} .small{font-size:15px}
+  .poem{font-style:italic; line-height:1.8; margin:10px 0 10px 12px}
+  .poem-cach{text-align:center; color:var(--muted); letter-spacing:.5em; margin:2px 0}   /* dấu ngăn đoạn thơ * / * * của SGK */
+  .sgkq{margin:14px 0 4px; font-weight:600}
+  .sgkq .n{display:inline-block; min-width:26px; color:var(--brand)}
+  .steps{margin:4px 0 10px 26px; color:#37405a; font-size:16px}
+  .gm{color:#6b4e16; background:#fffaf0; border:1px dashed #f3d79a; border-radius:8px; padding:6px 10px; margin:6px 0; font-size:16px}
+  .gm b{color:#8a5a06}
+  .btn{font:inherit; font-size:15px; cursor:pointer; border-radius:999px; padding:6px 14px;
+    border:1px solid #fcd3bb; background:var(--brand-soft); color:var(--brand); margin:3px 4px 3px 0}
+  .btn:hover{background:#ffe3d1}
+  .btn:active{transform:scale(.97)}
+  .btn:disabled{opacity:.7; cursor:default}
+  .btn.nho{font-size:13px; padding:3px 10px}
+  .btn.show-ans{background:var(--green-soft); border-color:#b8e5d7; color:#0b7a5c; font-weight:600}
+  .reveal{display:none; margin-top:12px; border-top:1px dashed var(--line); padding-top:12px}
+  .reveal.open{display:block; animation:fadein .3s ease}
+  .answers{background:#fbfefd; border:1px solid #cdeee2; border-radius:12px; padding:12px 16px; margin-top:16px}
+  .answers > h3{margin-top:0; color:#0b7a5c}
+  @keyframes fadein{from{opacity:0; transform:translateY(-4px)} to{opacity:1; transform:none}}
+  @keyframes pop{0%{transform:scale(.9)} 60%{transform:scale(1.04)} 100%{transform:none}}
+  @keyframes lat{from{transform:perspective(600px) rotateY(90deg)} to{transform:none}}
+  button:focus-visible,a:focus-visible,[role=button]:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--blue); outline-offset:2px}
+  /* ----- câu hỏi tự chấm ----- */
+  .quiz{border:1px solid #cddcf7; background:#fbfcff; border-radius:12px; padding:12px 16px; margin:14px 0}
+  .quiz > h4{margin-top:0; color:var(--blue)}
+  .q{padding:10px 0; border-bottom:1px dashed var(--line)}
+  .q:last-child{border-bottom:0}
+  .q .stem{margin-bottom:6px}
+  .q .src{font-size:14px; color:var(--muted)}
+  .opt{font:inherit; font-size:15px; cursor:pointer; border-radius:10px; padding:5px 12px;
+    border:1px solid #cfd8ea; background:#fff; color:#2b3347; margin:3px 6px 3px 0}
+  .opt:hover{border-color:var(--blue); color:var(--blue)}
+  .opt.right{background:var(--green-soft); border-color:#7fd1b6; color:#0b6b52; font-weight:600}
+  .opt.wrong{background:var(--red-soft); border-color:#f0a8a8; color:#a02b2b; text-decoration:line-through}
+  .q.done .opt{cursor:default}
+  .q input[type=text]{font:inherit; font-size:16px; padding:5px 10px; border-radius:8px; border:1px solid #cfd8ea; width:170px; max-width:100%}
+  .q.done input[type=text]{background:var(--green-soft); border-color:#7fd1b6}
+  .fb{margin-top:6px; padding:7px 12px; border-radius:8px; font-size:15.5px; display:none}
+  .fb.show{display:block}
+  .fb.good{background:var(--green-soft); border:1px solid #b8e5d7; color:#0b6b52}
+  .fb.bad{background:var(--warm-soft); border:1px solid #f3d79a; color:#8a5a06}
+  .why{display:none}
+  .score{font-weight:600; color:var(--blue)}
+  .vua-xong{animation:pop .45s ease}
+  footer{color:var(--muted); font-size:14px; text-align:center; margin-top:30px}
+
+  /* ===================== KHỐI SINH ĐỘNG (bản 2) ===================== */
+  /* --- Hành trình các chặng --- */
+  .hanhtrinh{background:linear-gradient(135deg,#fff7ed,#fdf2f8); border:1px solid #fbd5c0; border-radius:14px; padding:14px 16px; margin:18px 0}
+  .ht-dau{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px}
+  .ht-ten{font-weight:700; color:var(--brand); font-size:17px}
+  .ht-dem{font-size:14px; color:var(--muted); font-weight:600}
+  /* bản đồ xuống hàng (không cuộn ngang): em luôn thấy đủ các chặng và đích */
+  .ht-duong{display:flex; flex-wrap:wrap; row-gap:12px; overflow:hidden; padding:12px 2px 6px; margin:0 -4px}
+  .tram{flex:1 1 72px; min-width:72px; max-width:120px; text-align:center; text-decoration:none; color:#3a4152; position:relative; font-size:12.5px; line-height:1.3; padding:0 2px}
+  .tram::before{content:""; position:absolute; top:22px; right:50%; width:100%; height:4px; background:#f3d2bf; z-index:0}
+  .tram:first-child::before,.tram.dau-hang::before{display:none}
+  .tram .o{position:relative; z-index:1; display:flex; align-items:center; justify-content:center; width:46px; height:46px; margin:0 auto 5px; border-radius:50%; background:#fff; border:3px solid #f3d2bf; font-size:21px}
+  .tram:hover .o{border-color:var(--brand)}
+  .tram .sao{position:absolute; top:-6px; left:calc(50% + 10px); z-index:2; font-size:16px; display:none}
+  .tram.xong .o{border-color:var(--warm); background:#fff6d6; box-shadow:0 0 0 4px rgba(245,158,11,.18)}
+  .tram.xong::before{background:var(--warm)}
+  .tram.xong .sao{display:block; animation:pop .5s}
+  .huy-hieu{display:none; margin-top:8px; padding:8px 12px; border-radius:10px; background:#fff6d6; border:1px dashed var(--warm); font-weight:700; color:#8a5a06}
+  .huy-hieu.hien{display:block; animation:pop .6s}
+  .huy-hieu-cuoi{font-size:18px; text-align:center; padding:14px 12px; margin:10px 0}
+  .huy-hieu-cuoi .khen{display:block; font-weight:400; font-size:15.5px; margin-top:4px; color:#6b4e16}
+  /* nút xoá: kín đáo, phải bấm hai lần mới xoá (chống chạm nhầm) */
+  #resetQuiz,#xoaGhiHet{background:#fff; border-color:var(--line); color:var(--muted); font-size:13.5px; padding:4px 12px}
+  #resetQuiz:hover,#xoaGhiHet:hover{border-color:#f0a8a8; color:var(--red)}
+  .xac-nhan,#resetQuiz.xac-nhan,#xoaGhiHet.xac-nhan{background:var(--red-soft) !important; border-color:#f0a8a8 !important; color:#a02b2b !important; font-weight:600}
+  .dong-lam-lai{margin-top:14px; text-align:right}
+  .ht-chu{font-size:13px; color:var(--muted); margin:6px 0 0}
+  /* mục tiêu chặng: KHÔNG dùng flex (flex biến mỗi <i>, <b> thành một cột riêng, vỡ chữ ở màn hẹp) */
+  .muctieu{position:relative; background:#fff7ed; border:1px solid #fbd5c0; border-radius:10px; padding:8px 12px 8px 40px; margin:0 0 14px; font-size:15.5px}
+  .muctieu::before{content:"🎯"; position:absolute; left:12px; top:7px; font-size:18px; line-height:1.4}
+  .chang-cuoi{margin-top:20px; padding:10px 14px; border-radius:10px; background:#f7f8fc; border:1px dashed #d9deea; font-size:15px; display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center}
+  .chang-cuoi .cc-chu{flex:1 1 220px}
+  .chang-cuoi a{color:var(--brand); font-weight:600; text-decoration:none}
+  .chang-cuoi.xong{background:#fff6d6; border:1px solid #f7d57a; color:#8a5a06}
+  /* --- Nhân vật dẫn dắt + dừng lại nghĩ --- */
+  .dan{display:flex; gap:10px; align-items:flex-start; margin:14px 0}
+  .dan .av{flex:0 0 46px; height:46px; border-radius:50%; background:var(--brand-soft); display:flex; align-items:center; justify-content:center; font-size:25px; border:2px solid #fcd3bb}
+  .dan .loi{position:relative; flex:1; background:#fff; border:1px solid #fcd3bb; border-radius:14px; padding:8px 14px; font-size:16px}
+  .dan .loi::before{content:""; position:absolute; left:-9px; top:14px; border-style:solid; border-width:8px 9px 8px 0; border-color:transparent #fcd3bb transparent transparent}
+  .dan .loi > b:first-child{color:var(--brand)}
+  .dan.ban .av{background:var(--blue-soft); border-color:#bcd0f5}
+  .dan.ban .loi{border-color:#bcd0f5}
+  .dan.ban .loi::before{border-right-color:#bcd0f5}
+  .dan.ban .loi > b:first-child{color:var(--blue)}
+  .dung{border:2px dashed #c9b8f3; background:#faf7ff; border-radius:12px; padding:10px 14px; margin:14px 0}
+  .dung::before{content:"⏸️ Dừng lại nghĩ một chút"; display:block; font-weight:700; color:var(--purple); font-size:15px; margin-bottom:2px}
+  .dung p:last-of-type{margin-bottom:4px}
+  /* --- Thẻ lật --- */
+  .thelat{display:grid; grid-template-columns:repeat(auto-fill,minmax(165px,1fr)); gap:10px; margin:12px 0}
+  .the{font:inherit; cursor:pointer; min-height:100px; border-radius:14px; border:2px solid #cfd8ea; background:#fff; padding:10px 12px; text-align:center; color:#2b3347;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; box-shadow:0 3px 0 #dfe5f1}
+  .the:hover{border-color:var(--purple)}
+  .the .mt{font-weight:700; font-size:17px}
+  .the .mt::after{content:"👆 bấm để lật"; display:block; font-weight:400; font-size:12px; color:var(--muted); margin-top:3px}
+  .the .ms{display:none; font-size:14.5px; line-height:1.45}
+  .the.lat{background:var(--purple-soft); border-color:#c9b8f3; box-shadow:0 3px 0 #ddd2f7; animation:lat .35s ease}
+  .the.lat .mt{font-size:13.5px; color:var(--purple)}
+  .the.lat .mt::after{display:none}
+  .the.lat .ms{display:block}
+  /* --- Khung chung các khối tự chấm mới --- */
+  .ghep,.xep,.nhom,.tosang{border:1px solid #cddcf7; background:#fbfcff; border-radius:12px; padding:12px 16px; margin:14px 0}
+  .ghep > h4,.xep > h4,.nhom > h4,.tosang > h4{margin-top:0; color:var(--blue)}
+  .hd{font-size:14px; color:var(--muted); margin:2px 0 8px}
+  .hd::before{content:"🖱️ "}
+  .done > .hd{display:none}
+  .ghep.done,.xep.done,.nhom.done,.tosang.done{border-color:#9fdcc6; background:#f6fdfa}
+  /* ghép cặp */
+  .cots{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .cot{display:flex; flex-direction:column; gap:8px}
+  .cot > button{font:inherit; font-size:15px; line-height:1.4; text-align:left; cursor:pointer; border-radius:10px; border:2px solid #cfd8ea; background:#fff; color:#2b3347;
+    padding:7px 10px 7px 36px; position:relative; min-height:44px}
+  .cot > button::before{content:attr(data-so); position:absolute; left:8px; top:50%; transform:translateY(-50%); width:21px; height:21px; border-radius:50%;
+    background:#eef1f7; color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center}
+  .cot > button.chon{border-color:var(--blue); box-shadow:0 0 0 3px rgba(47,111,219,.2)}
+  .cot > button.chon::before{background:var(--blue); content:"?"}
+  .cot > button[data-mau="0"]{border-color:#f59e0b} .cot > button[data-mau="0"]::before{background:#f59e0b}
+  .cot > button[data-mau="1"]{border-color:#7c5cd6} .cot > button[data-mau="1"]::before{background:#7c5cd6}
+  .cot > button[data-mau="2"]{border-color:#0f9d76} .cot > button[data-mau="2"]::before{background:#0f9d76}
+  .cot > button[data-mau="3"]{border-color:#d63f7a} .cot > button[data-mau="3"]::before{background:#d63f7a}
+  .cot > button[data-mau="4"]{border-color:#2f6fdb} .cot > button[data-mau="4"]::before{background:#2f6fdb}
+  .cot > button[data-mau="5"]{border-color:#8a6d1f} .cot > button[data-mau="5"]::before{background:#8a6d1f}
+  .ghep.done .cot > button{cursor:default; background:var(--green-soft)}
+  /* sắp xếp */
+  .xep ol,.xep ul{list-style:none; margin:8px 0; padding:0; counter-reset:xep}
+  .xep li{counter-increment:xep; display:flex; align-items:center; gap:8px; background:#fff; border:2px solid #cfd8ea; border-radius:10px; padding:6px 8px; margin:6px 0}
+  .xep li::before{content:counter(xep); flex:0 0 26px; height:26px; border-radius:50%; background:var(--blue-soft); color:var(--blue); font-weight:700; font-size:14px;
+    display:flex; align-items:center; justify-content:center}
+  .xep li .nd{flex:1; font-size:15.5px; line-height:1.45}
+  .xep .dk{display:flex; gap:4px; flex:0 0 auto}
+  .xep .dk button{font:inherit; font-size:14px; width:40px; height:38px; border-radius:8px; border:1px solid #cfd8ea; background:#f7f9fd; color:#3a4152; cursor:pointer}
+  .xep .dk button:hover{border-color:var(--blue); color:var(--blue)}
+  .xep li.moi{animation:pop .3s ease}
+  .xep.done li{border-color:#7fd1b6; background:var(--green-soft)}
+  .xep.done li::before{background:#bcebd9; color:#0b6b52}
+  .xep.done .dk{display:none}
+  /* phân loại vào nhóm */
+  .khay-o{border-radius:10px; background:#f3f5fa; border:1px dashed #cfd8ea; padding:8px}
+  .nhom-o{display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; min-height:36px}
+  .ngans{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:10px; margin-top:10px}
+  .ngan{border:2px dashed #bcd0f5; border-radius:12px; background:#fff; padding:8px; min-height:92px; cursor:pointer}
+  .ngan-dau{font:inherit; font-size:15px; font-weight:700; width:100%; border:0; background:var(--blue-soft); color:var(--blue); border-radius:8px; padding:6px 8px; cursor:pointer}
+  .khay-o .ngan-dau{background:#e7ebf3; color:#5c6577; font-weight:600}
+  .nhom.co-chon .ngan{border-color:var(--blue); background:#f7faff}
+  .nhom.co-chon .ngan-dau{box-shadow:0 0 0 2px rgba(47,111,219,.25)}
+  .the-nhom{font:inherit; font-size:15px; border-radius:999px; border:2px solid #cfd8ea; background:#fff; color:#2b3347; padding:4px 12px; cursor:pointer}
+  .the-nhom.chon{border-color:var(--blue); background:var(--blue-soft); transform:translateY(-2px); box-shadow:0 3px 0 #bcd0f5}
+  .the-nhom.moi{animation:pop .3s ease}
+  .nhom.done .the-nhom{border-color:#7fd1b6; background:var(--green-soft); cursor:default}
+  .nhom.done .ngan{cursor:default}
+  .nhom.done .khay-o{display:none}
+  .nguon{display:none}
+  /* tô sáng trong đoạn trích */
+  .tosang .doan{background:#fff; border-left:5px solid var(--purple); border-radius:0 10px 10px 0; padding:10px 14px; line-height:2}
+  /* vùng chạm >= 36 px; inline-block tự không ngắt giữa cụm — chỉ cụm dài hơn cả dòng (màn 320 px) mới gập trong hộp của nó */
+  .tosang .t{display:inline-block; white-space:normal; max-width:100%; line-height:1.5; padding:5px 2px; margin:2px 0; min-height:36px;
+    border-bottom:2px dotted #b9a7e6; border-radius:6px; cursor:pointer}
+  .tosang .t:hover{background:#f3eeff}
+  .tosang .t.chon{background:#fde68a; border-bottom:2px solid var(--warm)}
+  .tosang.done .t{cursor:default}
+  .tosang.done .t.chon{background:#bbf0da; border-bottom-color:var(--green)}
+  /* dấu câu đứng liền trước / sau cụm (JS bọc vào .t-dinh): không bị rơi xuống đầu dòng sau */
+  .tosang .t-dinh{white-space:nowrap}
+  .tosang .t-dinh > .t{padding-right:1px}
+  .tosang .t-dinh.co-mo > .t{padding-left:0}   /* ngoặc mở dính sát chữ đầu cụm, không hở */
+  /* tô sáng theo CÂU (đoạn văn dài): .doan.theo-cau — cụm được xuống dòng tự nhiên */
+  /* mỗi dòng của cụm xuống dòng cao >= 32 px (padding dọc 7px + chữ), dòng cách dòng đủ để không đè nhau */
+  .tosang .doan.theo-cau{line-height:2.35}
+  .tosang .doan.theo-cau .t{display:inline; white-space:normal; min-height:0; padding:7px 2px; margin:0; line-height:2.35;
+    -webkit-box-decoration-break:clone; box-decoration-break:clone}
+  /* tô sáng NHIỀU NHÃN (data-tosang="khoá:Tên|…"): mỗi lần bấm đổi nhãn; màu + tên nhãn hiện ngay sau cụm */
+  .tosang .chu-giai{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px; font-size:14px}
+  /* chú giải = các "bút nhãn": chọn một bút rồi bấm các từ (nhanh hơn bấm vòng); không chọn bút thì bấm vòng */
+  .tosang .chu-giai button{font:inherit; font-size:14px; border-radius:999px; padding:3px 11px; min-height:32px; border:1px solid #d9deea; font-weight:600; color:#2b3347; cursor:pointer}
+  .tosang .chu-giai button[aria-pressed="true"]{border-color:#37405a; box-shadow:0 0 0 2px #37405a}
+  .tosang.done .chu-giai{display:none}
+  /* đã làm xong: vẫn giữ màu từng nhãn (viền xanh báo đúng) để em nhìn lại mình đã gán gì */
+  .tosang .t[data-mau="0"],.tosang .chu-giai [data-mau="0"],.tosang.done .t.chon[data-mau="0"]{background:#fde68a}
+  .tosang .t[data-mau="1"],.tosang .chu-giai [data-mau="1"],.tosang.done .t.chon[data-mau="1"]{background:#c7dbff}
+  .tosang .t[data-mau="2"],.tosang .chu-giai [data-mau="2"],.tosang.done .t.chon[data-mau="2"]{background:#fbd0e6}
+  .tosang .t[data-mau="3"],.tosang .chu-giai [data-mau="3"],.tosang.done .t.chon[data-mau="3"]{background:#c9f2dc}
+  .tosang .t[data-ten]::after{content:attr(data-ten); display:inline-block; margin-left:4px; font-size:11.5px; font-weight:700; font-style:normal; line-height:1.25;
+    padding:1px 5px; border-radius:6px; background:rgba(255,255,255,.8); color:#37405a; vertical-align:1px; white-space:nowrap}
+  /* ghi chép của em: dự đoán, nhật kí cảm xúc */
+  .ghichep{border:1px solid #f3d79a; background:#fffcf3; border-radius:12px; padding:12px 16px; margin:14px 0}
+  .ghichep .hoi{font-weight:600; margin:0 0 6px}
+  .ghichep textarea{display:block; width:100%; min-height:84px; font:inherit; font-size:16px; line-height:1.5; padding:8px 10px; border-radius:10px; border:1px solid #e6cf9b; background:#fff; resize:vertical}
+  /* bảng điền theo ô (.bangdien[data-bang]): mỗi td[data-o] một ô gõ, lưu từng ô; KHÔNG chấm */
+  .bangdien{border:1px solid #f3d79a; background:#fffcf3; border-radius:12px; padding:12px 16px; margin:14px 0}
+  .bangdien .hoi{font-weight:600; margin:0 0 6px}
+  .bangdien table{background:#fff; margin:6px 0; table-layout:fixed}
+  .bangdien tr > th:first-child{width:30%}
+  .bangdien td[data-o]{padding:4px}
+  .bangdien [data-o] textarea{display:block; width:100%; min-height:64px; font:inherit; font-size:15px; line-height:1.45; padding:6px 8px; border-radius:8px; border:1px solid #e6cf9b; background:#fff; resize:vertical}
+  .bangdien ol.sodo [data-o] textarea{margin-top:4px}
+  /* ô tự đánh giá (td[data-tick]) của bảng kiểm: bấm để đánh dấu, lưu trên máy; KHÔNG chấm */
+  .bangdien .tick{font:inherit; font-size:14px; min-height:34px; border-radius:999px; border:1px solid #e6cf9b; background:#fff; color:#6b4e16; padding:3px 11px; cursor:pointer; white-space:nowrap}
+  .bangdien .tick[aria-pressed="true"]{background:var(--green-soft); border-color:#7fd1b6; color:#0b6b52; font-weight:700}
+  .ghi-dong{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px; margin-top:4px}
+  .luu-tt{font-size:13px; color:var(--muted)}
+  .camxuc{display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 8px}
+  .camxuc button{font:inherit; font-size:14.5px; border-radius:999px; border:1px solid #e6cf9b; background:#fff; color:#3a4152; padding:4px 11px; cursor:pointer}
+  .camxuc button[aria-pressed="true"]{background:#fde68a; border-color:var(--warm); font-weight:700; color:#6b4e16}
+  /* máy soát luật lục bát trên bài thơ em gõ (.ghichep[data-luc-bat]): đếm tiếng, thanh tiếng 4-6-8; KHÔNG chấm */
+  .lb-soat{margin-top:8px; padding:8px 10px; border-radius:10px; border:1px dashed #e6cf9b; background:#fff; font-size:15px}
+  .lb-soat:empty{display:none}
+  .lb-soat .lb-dau{margin:0 0 4px; color:var(--muted); font-size:13.5px}
+  .lb-soat .lb-dong{margin:6px 0 0}
+  .lb-soat .lb-dong > b{display:block; font-size:14px}
+  .lb-tieng{display:inline-block; padding:0 4px; margin:1px 1px; border-radius:6px; line-height:1.5}
+  .lb-tieng[data-vt]{background:#eef1f7}
+  .lb-tieng[data-vt]::after{content:attr(data-vt); font-size:11px; font-weight:700; vertical-align:super; margin-left:2px; color:#5c6577}
+  .lb-tieng.dat{background:var(--green-soft)}
+  .lb-tieng.lech{background:var(--red-soft); box-shadow:inset 0 0 0 1px #f0a8a8}
+  .lb-soat .lb-ghi{display:block; font-size:13.5px; color:#6b4e16}
+  .xemlai{border:1px dashed #c9b8f3; background:#faf7ff; border-radius:12px; padding:10px 14px; margin:14px 0}
+  .xemlai .noi{display:none; margin-top:6px}
+  .xemlai.mo .noi{display:block; animation:fadein .3s ease}
+  .xemlai .box.quote{white-space:pre-wrap; margin:6px 0}
+  /* thông báo nhỏ */
+  .toast{position:fixed; left:50%; bottom:22px; transform:translate(-50%,24px); background:#1f2430; color:#fff; padding:10px 18px; border-radius:999px;
+    font-size:15px; opacity:0; pointer-events:none; transition:opacity .3s, transform .3s; z-index:99; max-width:92vw; text-align:center; box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .toast.hien{opacity:1; transform:translate(-50%,0)}
+
+  @media (max-width:600px){
+    body{font-size:16px} header.top h1{font-size:24px} section{padding:16px 14px}
+    /* điện thoại: hàng 1 = điểm + sao (luôn thấy), hàng 2 = chip cuộn ngang */
+    .toolbar .wrap{flex-direction:column; flex-wrap:nowrap; align-items:stretch; gap:6px; padding:8px 10px}
+    .toolbar .progress{order:-1; flex:0 0 auto}
+    .toolbar .progress .track{flex:1 1 auto; width:auto; min-width:60px}
+    .toolbar .chips{flex-wrap:nowrap; overflow-x:auto; flex:0 0 auto; min-width:0; max-width:100%; padding-bottom:2px}
+    .toolbar .chips > *{flex:0 0 auto}
+    .spacer{display:none}
+    .cots{gap:8px}
+    .cot > button{font-size:14.5px; padding-left:32px}
+    .ghep,.xep,.nhom,.tosang,.ghichep,.bangdien,.quiz{padding:10px 12px}
+    .bangdien th,.bangdien td{padding:5px 6px; font-size:14.5px}
+    /* bảng điền >= 3 cột ô (hoặc data-xoay): mỗi hàng thành một thẻ dọc, mỗi ô một dòng rộng có nhãn cột */
+    .bangdien.xoay table,.bangdien.xoay tbody,.bangdien.xoay tr,.bangdien.xoay th,.bangdien.xoay td{display:block; width:auto !important}
+    .bangdien.xoay table{background:transparent}
+    .bangdien.xoay tr.dau-bang{display:none}
+    .bangdien.xoay tr{background:#fff; border:1px solid #f0dcae; border-radius:10px; margin:8px 0; padding:2px}
+    .bangdien.xoay th,.bangdien.xoay td{border:0}
+    .bangdien.xoay tr > th:first-child{background:#fff6dd; border-radius:8px}
+    .bangdien.xoay td[data-nhan]::before{content:attr(data-nhan); display:block; font-size:13px; font-weight:600; color:#8a5a06; margin:2px 0}
+    .thelat{grid-template-columns:repeat(auto-fill,minmax(125px,1fr)); gap:8px}
+    .the{min-height:88px; padding:8px}
+    .ngans{grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px}
+    .xep .dk button{width:36px}
+    .btn.nho{min-height:34px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important; transition:none !important} html{scroll-behavior:auto}
+  }
+  @media print{
+    .toolbar,.btn,.tbtn,.hanhtrinh,.chang-cuoi,.toast,.hd,.xep .dk,.luu-tt,.lb-soat,.vuot-ngang{display:none !important}
+    .reveal{display:block !important}
+    body{background:#fff} section{box-shadow:none; break-inside:auto}
+    .the{min-height:0; box-shadow:none; break-inside:avoid}
+    .the .ms{display:block !important} .the .mt::after{display:none !important}
+    .xemlai .noi{display:block !important}
+    .ghep,.xep,.nhom,.tosang,.ghichep,.xemlai,.dan,.dung,.muctieu,.q{break-inside:avoid}
+    .ngan{min-height:80px}
+    .ghichep textarea{border:1px solid #999; min-height:110px}
+    .bangdien [data-o] textarea{border:0; min-height:70px}
+    /* bản in = phiếu bài tập làm bằng bút: ghép cặp đánh 1, 2, 3… / a, b, c…; bỏ phần chỉ để bấm */
+    .cots > .cot:first-child{counter-reset:ghepT} .cots > .cot:last-child{counter-reset:ghepP}
+    .cots > .cot:first-child > button{counter-increment:ghepT} .cots > .cot:last-child > button{counter-increment:ghepP}
+    .cots > .cot > button::before{background:#fff !important; color:#333 !important; border:1px solid #888}
+    .cots > .cot:first-child > button::before{content:counter(ghepT) !important}
+    .cots > .cot:last-child > button::before{content:counter(ghepP, lower-alpha) !important}
+    .cot > button{border-color:#bbb !important}
+    /* sắp xếp: bỏ số 1, 2, 3… (dễ tưởng là thứ tự đúng), in nhãn (a) (b) (c)… và một dòng để em ghi thứ tự */
+    .xep li::before{content:"(" counter(xep, lower-alpha) ")" !important; background:#fff !important; color:#333 !important; border:0 !important; flex-basis:30px !important}
+    .xep:not(.done) ol::after,.xep:not(.done) ul::after{content:"Thứ tự đúng (ghi các chữ cái): ................................................"; display:block; margin-top:10px; font-size:15px; color:#333}
+    .khay-o .ngan-dau,.camxuc,.ghi-dong,.huy-hieu-cuoi,.dong-lam-lai{display:none !important}
+  }
+
+  /* ----- CHẾ ĐỘ CHIẾU (GV chiếu một phần lên máy chiếu) — JS ở khối "CHẾ ĐỘ CHIẾU" cuối trang -----
+     Sân #tc-san phủ kín màn hình; khối được chuyển vào .tc-noi và phóng bằng zoom cho vừa khung.
+     Màu trên sân đậm hơn (máy chiếu làm nhạt màu), con trỏ to (cả lớp nhìn theo được). */
+  .tc-mo{float:right; margin:-4px -6px 6px 10px; font:inherit; font-size:13px; line-height:1.4; cursor:pointer;
+    padding:3px 10px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--muted)}
+  .tc-mo:hover{border-color:#c8dbff; color:var(--brand); background:var(--brand-soft)}
+  /* nút nằm trong khối của bài: CSS của khối (vd. ".khối button{…}") không được làm nút to / méo */
+  button.tc-mo.tc-mo{width:auto; height:auto; min-width:0; min-height:0; max-width:none; aspect-ratio:auto; flex:none;
+    box-shadow:none; text-transform:none; font-weight:400; letter-spacing:0; vertical-align:baseline}
+  .tc-mo-hang{display:flex; justify-content:flex-end; margin:10px 0 -6px}
+  .tc-mo-hang .tc-mo{float:none; margin:0}
+  /* chiếu là việc của GV trên máy tính / máy chiếu: màn hẹp (điện thoại của em) không hiện nút chiếu */
+  @media(max-width:700px){.tc-mo,.tc-mo-hang,.tc-tb{display:none !important}}
+  body.tc-dang{overflow:hidden}
+  #tc-san{position:fixed; inset:0; z-index:9000; background:#fff; color:#141a26;
+    --ink:#141a26; --muted:#3d4558; --line:#b9c1d3; --brand:#b03a0a; --green:#08805f}
+  #tc-san[hidden],#tc-san [hidden]{display:none !important}
+  .tc-khung{position:absolute; left:0; right:0; top:0; bottom:60px; overflow:auto; padding:12px 28px;
+    display:flex; flex-direction:column; outline:none; overscroll-behavior:contain;
+    cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M4 2v30l8-7 6 13 5-2-6-13h11z' fill='%23fff' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, default}
+  .tc-khung :is(button,a,label,select,[role=button],[tabindex]:not(.tc-khung)){
+    cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M4 2v30l8-7 6 13 5-2-6-13h11z' fill='%23f59e0b' stroke='%23000' stroke-width='2' stroke-linejoin='round'/%3E%3C/svg%3E") 4 2, pointer}
+  .tc-khung :is(input[type=text],input:not([type]),textarea){cursor:text}
+  #tc-san.tc-nghi .tc-khung, #tc-san.tc-nghi .tc-khung *{cursor:none !important}
+  .tc-noi{margin:auto; max-width:100%}
+  /* khung hoạt động / bài tập đã là cả màn hình → bỏ viền thẻ; khung [data-chieu] (vd. Kiến thức trọng tâm) giữ màu nhận diện */
+  .tc-noi > .tc-trang:is(.act,.ex){border:0 !important; background:transparent !important; box-shadow:none !important;
+    padding:0 !important; margin:0 !important; border-radius:0 !important}
+  .tc-noi .tc-mo{display:none}
+  .tc-mo + h4{margin-top:0}
+  .tc-noi > .tc-trang::after{display:none}
+  .tc-noi .act > h4{font-size:20px}
+  .tc-noi .act > h4 .tag{font-size:13px}
+  .tc-noi .small{font-size:16px}
+  .tc-noi svg{max-height:var(--tc-svg, none)}
+  .tc-de{margin-bottom:12px; padding-bottom:6px; border-bottom:2px dashed var(--line)}
+  .tc-de:empty{display:none}
+  .tc-de p{margin:6px 0}
+  /* kết quả đang GIỮ (GV chưa bấm 👁): ô phản hồi chỉ báo "đã ghi nhận", màu đúng / sai về trung tính.
+     Widget khám phá (danh sách MIEN trong JS) không bị giữ. */
+  #tc-san.tc-giu .fb.show:is(.good,.bad):not(:is(.thelat,.ghichep,[data-chieu-cham="ngay"]) .fb){
+    visibility:hidden; font-size:0 !important; line-height:0; padding:0; border:0; background:none}
+  /* chữ thật bị ẩn và KHÔNG chiếm chỗ; ô "đã ghi nhận" cao theo chữ của nó (cột hẹp thì xuống dòng, không bị cắt — lỗi Toán Bài 11, 26/9) */
+  #tc-san.tc-giu .fb.show:is(.good,.bad):not(:is(.thelat,.ghichep,[data-chieu-cham="ngay"]) .fb) > *{display:none !important}
+  #tc-san.tc-giu .fb.show:is(.good,.bad):not(:is(.thelat,.ghichep,[data-chieu-cham="ngay"]) .fb)::before{
+    content:"✔ Đã ghi nhận — chờ thầy / cô bấm 👁 Hiện kết quả"; visibility:visible; display:block; font-size:15.5px; line-height:1.5;
+    padding:10px 14px; border:1px dashed #8d96aa; border-radius:10px; background:#f1f3f8; color:#3d4558; font-weight:600}
+  #tc-san.tc-giu :is(.right,.wrong):not(:is(.thelat,.ghichep,[data-chieu-cham="ngay"]) *){
+    background:#fff !important; border-color:#8d96aa !important; color:inherit !important; animation:none !important}
+  #tc-san.tc-giu .fb-in:is(.good,.bad):not(:is(.thelat,.ghichep,[data-chieu-cham="ngay"]) .fb-in){visibility:hidden}
+  /* chấm HOÃN: lựa chọn đang chờ, ô báo "đã ghi nhận" */
+  .fb.cho,.fb-in.cho{background:#f1f3f8; color:#3d4558; border:1px dashed #8d96aa; font-weight:600}
+  .opt.tc-chon{border-color:#1f5fcc; background:#e8f0ff; box-shadow:0 0 0 3px #c8dbff; font-weight:700; color:#1f2430}
+  #tc-san.tc-giu .act.done > h4 .tag{background:var(--brand)}
+  /* thanh điều khiển: tối, chữ trắng, luôn có nhãn chữ (GV không phải đoán biểu tượng) */
+  .tc-thanh{position:absolute; left:0; right:0; bottom:0; height:60px; display:flex; align-items:center;
+    justify-content:center; gap:6px; padding:0 10px; background:#1d2433; color:#fff; transition:opacity .35s;
+    font-family:"Segoe UI","Noto Sans",system-ui,sans-serif}
+  .tc-thanh button,.tc-hen button{font:inherit; font-size:15px; line-height:1.2; color:#fff; background:#2e3749;
+    border:1px solid #4a5570; border-radius:10px; padding:8px 12px; cursor:pointer; white-space:nowrap}
+  .tc-thanh button:hover,.tc-hen button:hover{background:#3c4862}
+  .tc-thanh button:disabled{opacity:.35; cursor:default}
+  .tc-thanh button[aria-pressed="true"]{background:#f59e0b; border-color:#f59e0b; color:#1d2433; font-weight:600}
+  .tc-thanh button.tc-hoi{background:#d64545; border-color:#d64545}
+  .tc-so{min-width:64px; text-align:center; font-weight:600; font-size:15px}
+  .tc-ten{max-width:240px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:13px; opacity:.75}
+  .tc-vach{width:1px; height:30px; background:#4a5570; margin:0 4px}
+  #tc-san.tc-nghi .tc-thanh{opacity:0}
+  @media(max-width:1180px){.tc-ten{display:none}}
+  .tc-hen{position:absolute; bottom:70px; left:50%; transform:translateX(-50%); z-index:3; display:flex; gap:6px;
+    align-items:center; background:#1d2433; color:#fff; padding:10px 14px; border-radius:14px; white-space:nowrap}
+  .tc-giay{position:absolute; top:12px; right:16px; z-index:3; font:700 30px/1.2 "Segoe UI",sans-serif;
+    background:#1d2433; color:#fff; border:0; border-radius:14px; padding:6px 18px; cursor:pointer}
+  .tc-giay.het{background:#d64545; animation:pulse 1s ease-in-out infinite}
+  .tc-bao{position:absolute; top:14px; left:50%; transform:translateX(-50%); z-index:3; background:#1d2433;
+    color:#fff; padding:8px 18px; border-radius:999px; font-size:15px; box-shadow:0 4px 18px rgba(0,0,0,.25)}
+  .tc-den{position:absolute; inset:0; z-index:5; background:#000; cursor:none}
+
+  @media print{.tc-mo,.tc-mo-hang,#tc-san{display:none !important}}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <h1>Bài 10. Cuốn sách tôi yêu</h1>
+    <p class="sub">Bài giảng Ngữ văn 6 — Kết nối tri thức với cuộc sống — Tập hai (SGK trang 98 – 107)</p>
+    <span class="badge">Năm học 2026 – 2027</span><span class="badge">Dự án đọc sách</span><span class="badge">Văn bản nghị luận văn học</span><span class="badge">Trình bày ý kiến về hiện tượng đời sống</span>
+  </div>
+</header>
+
+<nav class="toolbar">
+  <div class="wrap">
+    <a class="chip" href="#s0">Giới thiệu</a>
+    <a class="chip" href="#s1">Tri thức</a>
+    <a class="chip" href="#s2">Sách hay cùng đọc</a>
+    <a class="chip" href="#s3">Cuốn sách yêu thích</a>
+    <a class="chip" href="#s4">Gặp gỡ tác giả</a>
+    <a class="chip" href="#s5">Phiêu lưu cùng trang sách</a>
+    <a class="chip" href="#s6">Sáng tạo sản phẩm</a>
+    <a class="chip" href="#s7">Viết bài văn</a>
+    <a class="chip" href="#s8">Ngày hội với sách</a>
+    <span class="spacer"></span>
+    <span class="progress"><span class="track"><i id="bar"></i></span><span id="scoreTop">0/0</span></span>
+    <button class="tbtn" id="openAll" type="button">Hiện mọi gợi ý</button>
+    <button class="tbtn" id="closeAll" type="button">Ẩn mọi gợi ý</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<div class="box tip">
+  <span class="label">Cách dùng bài giảng này</span>
+  <ul>
+    <li>Gặp câu hỏi, em <b>tự trả lời vào vở trước</b>, rồi mới bấm <b>Hiện gợi ý trả lời</b> để đối chiếu.</li>
+    <li>Khung <b>màu xanh dương</b> là bài tự chấm: làm xong bấm <i>Kiểm tra</i>, máy báo ngay.</li>
+    <li>Xong mỗi chặng em được một ⭐. Đủ 9 sao là nhận huy hiệu 🏅.</li>
+  </ul>
+  <button class="btn nho" type="button" data-toggle="cach-dung-them">Hiện thêm cách dùng</button>
+  <div class="reveal" id="cach-dung-them">
+  <ul>
+    <li>Bài 10 là một <b>dự án đọc sách</b>, đi theo ba "thách thức" của SGK: Tri thức ngữ văn → Thách thức đầu tiên <i>Mỗi ngày một cuốn sách</i> (Sách hay cùng đọc → Cuốn sách yêu thích → Gặp gỡ tác giả → Phiêu lưu cùng trang sách) → Thách thức thứ hai <i>Sáng tạo cùng tác giả</i> (Sáng tạo sản phẩm nghệ thuật → Viết bài văn) → Về đích <i>Ngày hội với sách</i>.</li>
+    <li>Bài này không có Thực hành tiếng Việt. Phần lớn việc là <b>em tự đọc một cuốn sách</b> rồi ghi chép, sáng tạo, viết và nói về nó.</li>
+    <li>Câu hỏi đánh số <b>1., 2., 3.…</b> hoặc <b>a., b., c.…</b> là câu hỏi của SGK. Câu đánh dấu <b>(gợi mở)</b> hoặc <b>(luyện thêm)</b> là câu cô thêm vào để giúp em đi từng bước.</li>
+    <li>Các hộp <b>📌</b> màu vàng là phần chốt kiến thức của SGK, chép đúng nguyên văn — khi làm bài em dùng đúng những chữ này.</li>
+    <li>Câu hỏi hỏi suy nghĩ riêng của em không có một đáp án duy nhất. Câu trả lời tốt là câu <b>dẫn được chi tiết cụ thể trong văn bản, trong cuốn sách em đọc</b>.</li>
+    <li>Ô <b>ghi chép</b> và <b>bảng điền</b> màu kem chỉ để em nghĩ và ghi lại — không chấm điểm. Chữ em gõ và tiến độ tự lưu trên máy này.</li>
+  </ul>
+  </div>
+</div>
+
+<div class="hanhtrinh" id="hanhTrinh" data-ten="🗺️ Hành trình Bài 10: Cuốn sách tôi yêu" data-huy-hieu="🏅 Bạn đọc về đích" data-loi-khen="Em đã tự chọn sách, giữ nhật kí đọc, tìm ra vấn đề và bằng chứng trong một bài nghị luận văn học, rồi sáng tạo, viết và nói về cuốn sách của mình. Từ nay mỗi cuốn sách mới là một chuyến đi của em!"></div>
+
+<!-- ============================ 0 ============================ -->
+<section id="s0" data-chang="🚪|Khởi hành">
+<h2>0. Giới thiệu bài học và yêu cầu cần đạt</h2>
+<p class="muctieu">Sau chặng này, em biết Bài 10 là một dự án đọc sách gồm ba thách thức, em cần học được gì, và em mang theo một câu nói để nghĩ suốt cả bài.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Chín bài vừa qua, em đã đọc rất nhiều <b>đoạn trích</b>. Bài 10 là lúc em cầm lên <b>cả một cuốn sách</b>, tự đọc, rồi kể cho mọi người nghe về nó.</div></div>
+
+<p><b>📚 Ba cuốn sách SGK gợi ý em đọc trọn vẹn.</b> Em đã đọc một đoạn của mỗi cuốn ở bài nào? Nhớ thử rồi mới lật thẻ:</p>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">🦗 <i>Dế Mèn phiêu lưu kí</i><br>(Tô Hoài)</span><span class="ms">Bài 1 — đoạn trích <i>Bài học đường đời đầu tiên</i>.</span></button>
+  <button class="the" type="button"><span class="mt">🌞 <i>Ra vườn nhặt nắng</i><br>(Nguyễn Thế Hoàng Linh)</span><span class="ms">Bài 1 — bài thơ <i>Bắt nạt</i> in trong tập thơ này.</span></button>
+  <button class="the" type="button"><span class="mt">🌹 <i>Hoàng tử bé</i><br>(Ăng-toan đơ Xanh-tơ Ê-xu-pe-ri)</span><span class="ms">Bài 1 — đoạn trích <i>Nếu cậu muốn có một người bạn…</i></span></button>
+</div>
+
+<p>Bài học mở đầu bằng một câu nói:</p>
+<div class="box quote"><p><i>Thiên nhiên và sách thuộc về những đôi mắt thấy chúng.</i></p><p class="small muted">(Ơ-mơ-sơn (R.W. Emerson))</p></div>
+
+<div class="ghichep" data-luu="de-tu">
+  <p class="hoi">🔮 <b>Câu nói mở đầu Bài 10.</b> Ai cũng có mắt. Vậy "những đôi mắt thấy chúng" là những đôi mắt thế nào? Vì sao sách chỉ "thuộc về" những đôi mắt ấy? Học xong Bài 10, em xem lại nhé.</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<p>Phần giới thiệu của SGK:</p>
+<div class="box quote">
+<p>Trong những bài học trước, em đã được tìm hiểu các tác phẩm văn học về nhiều chủ đề. Những tác phẩm đó đã giúp em cảm nhận sâu sắc hơn về tình bạn, tình cảm gia đình, tình yêu quê hương đất nước,… Để có thể hiểu đầy đủ hơn về các đoạn trích, tác phẩm, tác giả, em hãy tìm đọc trọn vẹn một số cuốn sách như: <i>Dế Mèn phiêu lưu kí</i> (Tô Hoài), <i>Ra vườn nhặt nắng</i> (Nguyễn Thế Hoàng Linh), <i>Hoàng tử bé</i> (Ăng-toan đơ Xanh-tơ Ê-xu-pe-ri),… Em cũng có thể tìm đọc thêm một số tác phẩm văn học phù hợp với những chủ đề đã học.</p>
+<p>Các văn bản nghị luận, văn bản thông tin đã học cũng giúp em hiểu biết nhiều hơn về đời sống xã hội, thiên nhiên: ý nghĩa của sự khác biệt và tôn trọng sự khác biệt, sự cần thiết của việc khẳng định cái riêng ở mỗi người, môi trường sống và vấn đề bảo vệ môi trường. Em hãy cùng các bạn tìm đọc thêm một số văn bản nghị luận và văn bản thông tin có nội dung tương tự.</p>
+<p>Qua những trang sách mới, em sẽ được tự mình khám phá thế giới và cảm nhận niềm vui của việc đọc sách.</p>
+</div>
+
+<p>Bài có ba thách thức: <b>Thách thức đầu tiên</b> <i>Mỗi ngày một cuốn sách</i> (đọc — trong đó có bài đọc <i>Nhà thơ Lò Ngân Sủn – người con của núi</i> của Minh Khoa), <b>Thách thức thứ hai</b> <i>Sáng tạo cùng tác giả</i> (viết), và <b>Về đích</b> <i>Ngày hội với sách</i> (nói và nghe).</p>
+
+<button class="btn nho" type="button" data-toggle="yccd">Hiện Yêu cầu cần đạt (dành cho bố mẹ, thầy cô)</button>
+<div class="reveal" id="yccd">
+<p><b>Học xong bài này, em cần (theo mục Yêu cầu cần đạt của SGK):</b></p>
+<ul>
+<li>Phát triển kĩ năng tự đọc sách trên cơ sở vận dụng những điều đã học.</li>
+<li>Nhận ra được đặc điểm của bài nghị luận văn học.</li>
+<li>Viết được bài văn trình bày ý kiến về một hiện tượng đời sống.</li>
+<li>Biết trình bày ý kiến về một vấn đề trong đời sống được gợi ra từ cuốn sách đã đọc.</li>
+<li>Yêu thích đọc sách và có ý thức giữ gìn sách.</li>
+</ul>
+</div>
+</section>
+
+<!-- ============================ 1 ============================ -->
+<section id="s1" data-chang="📘|Tri thức">
+<h2>1. Tri thức ngữ văn</h2>
+<p class="muctieu">Sau chặng này, em biết văn bản nghị luận văn học bàn về điều gì, và trong loại văn bản này lí lẽ, bằng chứng là gì.</p>
+<p class="small muted">SGK trang 99.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Bài 8 em đã gặp văn bản nghị luận: người viết đưa lí lẽ, bằng chứng để thuyết phục mình. Bài 10 có một loại nghị luận riêng — loại bàn về chính những trang văn, trang thơ em đọc.</div></div>
+
+<p><b>Nhớ lại Bài 8</b> — em nói to câu trả lời rồi mới lật thẻ (mặt sau chép Tri thức ngữ văn Bài 8):</p>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">Văn bản nghị luận chủ yếu dùng để làm gì?</span><span class="ms">"Văn bản nghị luận là loại văn bản chủ yếu dùng để thuyết phục người đọc (người nghe) về một vấn đề."</span></button>
+  <button class="the" type="button"><span class="mt">Lí lẽ là gì? Bằng chứng là gì?</span><span class="ms">"Lí lẽ là những lời diễn giải có lí mà người viết (người nói) đưa ra để khẳng định ý kiến của mình. Bằng chứng là những ví dụ được lấy từ thực tế đời sống hoặc từ các nguồn khác để chứng minh cho lí lẽ."</span></button>
+</div>
+
+<div class="box key" data-chieu="hop-van-ban-nghi-luan-van-hoc"><span class="label">📌 Văn bản nghị luận văn học</span>
+<ul>
+<li>Là một loại của văn nghị luận, có nội dung bàn về một vấn đề văn học như tác giả, tác phẩm, thể loại,… Nghị luận văn học sử dụng lí lẽ và bằng chứng để làm sáng tỏ vấn đề văn học được nói tới.</li>
+<li>Lí lẽ trong nghị luận văn học chính là những nhận xét cụ thể của người viết về tác giả, tác phẩm, thể loại,… Bằng chứng thường được lấy từ tác phẩm văn học.</li>
+</ul></div>
+
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Tớ tưởng cứ bài nào có nhắc tên một cuốn sách là bài nghị luận văn học, đúng không cô?</div></div>
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Hộp 📌 nói nghị luận văn học <b>bàn về</b> cái gì? Một bài nhắc tên cuốn sách nhưng lại bàn về chuyện rác thải ngoài bãi biển thì nó đang bàn về vấn đề văn học, hay về đời sống?</div></div>
+
+<div class="nhom" data-loi-co data-nhom="vh:Bàn về một vấn đề văn học|ds:Bàn về một hiện tượng đời sống" data-sai="Với mỗi thẻ, đừng nhìn xem có tên sách hay không. Em hỏi: bài viết này bàn về một tác giả, một tác phẩm, một thể loại — hay về một chuyện đang xảy ra ngoài đời?">
+  <h4>K1. Mỗi thẻ là nhan đề một bài viết do cô đặt. Xếp vào nhóm theo điều bài viết bàn về (luyện thêm)</h4>
+  <div class="nguon"><span data-vao="vh">Tình mẹ con trong bài thơ Mây và sóng</span><span data-vao="ds">Có nên dành nửa giờ đọc sách mỗi ngày?</span><span data-vao="vh">Tô Hoài – nhà văn viết nhiều truyện cho thiếu nhi</span><span data-vao="ds">Rác thải nhựa trên các bãi biển</span><span data-vao="vh">Vì sao truyện cổ tích thường kết thúc có hậu?</span><span data-vao="ds">Từ chuyện hải âu Ken-ga, nghĩ về nạn dầu tràn trên biển</span><span data-vao="vh">Hình ảnh cây tre trong bài Cây tre Việt Nam</span><span data-vao="ds">Trò chơi điện tử và giấc ngủ của học trò</span></div>
+  <div class="why">Ba "vấn đề văn học" của hộp 📌 đều có mặt: tác phẩm (<i>Mây và sóng</i>, <i>Cây tre Việt Nam</i>), tác giả (Tô Hoài), thể loại (truyện cổ tích). Thẻ Ken-ga nhắc một nhân vật trong sách nhưng điều nó <b>bàn</b> là nạn dầu tràn ngoài đời — đó là một hiện tượng đời sống.</div>
+</div>
+
+<div class="tosang" data-tosang data-sai="Lí lẽ là lời NHẬN XÉT của người viết — câu nói người viết nghĩ gì về em bé, về bài thơ. Câu kể lại điều trong bài thơ, hay dẫn nguyên văn câu thơ, là bằng chứng. Có ba câu lí lẽ.">
+  <h4>K2. Đoạn văn của cô bàn về bài thơ Mây và sóng (Bài 2). Bấm vào ba câu là lí lẽ — ba câu còn lại là bằng chứng (luyện thêm)</h4>
+  <div class="doan theo-cau"><p><span class="t" data-dung>Em bé trong bài thơ Mây và sóng yêu mẹ hơn mọi trò chơi thú vị.</span> <span class="t">Người trên mây rủ em chơi với bình minh vàng, vầng trăng bạc; người trong sóng rủ em đi ngao du khắp nơi.</span> <span class="t">Em bé từ chối người trên mây: "Làm sao có thể rời mẹ mà đến được?".</span> <span class="t" data-dung>Những chi tiết ấy cho thấy với em bé, được ở bên mẹ còn vui hơn mọi chuyến đi xa.</span> <span class="t">Em bé tự nghĩ ra một trò chơi mới: "Con là mây và mẹ sẽ là trăng."</span> <span class="t" data-dung>Chính tình yêu mẹ đã giúp em bé sáng tạo ra trò chơi đẹp nhất.</span></p></div>
+  <div class="why">Câu thứ hai không có ngoặc kép mà vẫn là bằng chứng: nó kể lại chi tiết lấy từ bài thơ. Bằng chứng không cần ngoặc kép — cần được <b>lấy từ tác phẩm</b>. Còn lí lẽ là điều người viết rút ra từ những chi tiết ấy.</div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Tri thức ngữ văn</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-tri-thuc">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-tri-thuc">
+<ul>
+<li><b>K1.</b> <i>Vấn đề văn học:</i> Tình mẹ con trong bài thơ <i>Mây và sóng</i> (tác phẩm); Tô Hoài – nhà văn viết nhiều truyện cho thiếu nhi (tác giả); Vì sao truyện cổ tích thường kết thúc có hậu? (thể loại); Hình ảnh cây tre trong bài <i>Cây tre Việt Nam</i> (tác phẩm). <i>Hiện tượng đời sống:</i> đọc sách mỗi ngày; rác thải nhựa; dầu tràn trên biển; trò chơi điện tử và giấc ngủ. Bẫy là thẻ <i>Ken-ga</i>: bài có nhắc một nhân vật trong sách, nhưng điều nó <b>bàn</b> là nạn dầu tràn ngoài đời — em sẽ gặp đúng kiểu bài này ở chặng 7.</li>
+<li><b>K2.</b> Lí lẽ: câu 1, 4, 6 — đó là <b>nhận xét</b> của người viết về em bé và bài thơ. Bằng chứng: câu 2, 3, 5 — lấy từ bài thơ, có câu kể lại chi tiết (câu 2), có câu dẫn nguyên văn trong ngoặc kép (câu 3, 5). Bằng chứng không nhất thiết phải có ngoặc kép; điều quan trọng là nó được <b>lấy từ tác phẩm</b>.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 2 ============================ -->
+<section id="s2" data-chang="📚|Sách hay cùng đọc">
+<h2>2. Thách thức đầu tiên: Trước khi đọc — Sách hay cùng đọc</h2>
+<p class="muctieu">Sau chặng này, em chọn được hai chủ đề và hai cuốn sách để cùng đọc với các bạn, biết một tấm pô-xtơ giới thiệu sách cần có những gì, và ghi được nội dung pô-xtơ của em.</p>
+<p class="small muted">SGK trang 99 – 100.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Thách thức đầu tiên tên là <i>Mỗi ngày một cuốn sách</i>. Việc đầu tiên không phải là đọc ngay — mà là tìm sách, chọn sách, và rủ bạn đọc cùng.</div></div>
+
+<h3>2.1. Trước khi đọc</h3>
+<p class="sgkq"><span class="n">1.</span>Cùng thiết kế một góc đọc sách nhỏ trong lớp học. Hãy mang đến lớp một vài cuốn sách mà em muốn cùng đọc với các bạn.</p>
+<p class="gm"><b>(gợi mở)</b> Tối nay em đứng trước giá sách ở nhà (hoặc hỏi bố mẹ, anh chị). Cuốn nào em đã đọc và muốn bạn cũng đọc? Cuốn nào em chưa đọc nhưng tò mò? Chọn hai cuốn, nhớ giữ sách sạch, không quăn góc khi mang đi.</p>
+<p class="sgkq"><span class="n">2.</span>Chia sẻ những điều thú vị nhất mà em cảm nhận được từ cuốn sách mới đọc.</p>
+<p class="gm"><b>(gợi mở)</b> Nghĩ về cuốn sách gần đây nhất em đọc (truyện, thơ, sách khoa học đều được). Có một chi tiết, một nhân vật hay một điều em mới biết khiến em muốn kể ngay cho người khác không? Đó chính là "điều thú vị nhất".</p>
+<p class="sgkq"><span class="n">3.</span>Kể tên một cuốn sách mà em cho là cần đọc trong tuần này và thuyết phục các bạn cùng đọc.</p>
+<p class="gm"><b>(gợi mở)</b> Muốn bạn nghe theo, em cần một lí do (vì sao nên đọc) và một bằng chứng (một chi tiết hấp dẫn trong sách) — đúng như cách người viết nghị luận làm ở Bài 8.</p>
+<div class="ghichep" data-luu="thuyet-phuc-ban">
+  <p class="hoi">📣 Cuốn sách em muốn rủ các bạn đọc tuần này: tên sách, một lí do nên đọc, một chi tiết hấp dẫn trong sách.</p>
+  <textarea rows="3"></textarea>
+</div>
+
+<h3>2.2. Cùng đọc và trải nghiệm — Sách hay cùng đọc</h3>
+<p class="sgkq"><span class="n">1.</span>Chọn hai trong số các chủ đề sau để định hướng cho việc đọc sách: <i>Tôi và các bạn</i>, <i>Gõ cửa trái tim</i>, <i>Yêu thương và chia sẻ</i>, <i>Quê hương yêu dấu</i>, <i>Những nẻo đường xứ sở</i>, <i>Chuyện kể về những người anh hùng</i>, <i>Thế giới cổ tích</i>, <i>Khác biệt và gần gũi</i>, <i>Trái Đất – ngôi nhà chung</i>.</p>
+<p class="gm"><b>(gợi mở)</b> Chín chủ đề này chính là tên chín bài em đã học. Chủ đề nào em nhớ nhất? Văn bản nào ở chủ đề ấy làm em muốn đọc thêm những cuốn sách cùng loại?</p>
+
+<!-- kt-chap-nhan: the khong co o dau tren trang | G1 la khoi on: cau 1 SGK bat chon chu de trong chin bai da hoc; the la ten van ban cac Bai 4 - 7 em da doc (luat 2, ngoai le cau SGK tu doi do lai van ban da hoc) -->
+<div class="nhom" data-nhom="qh:Quê hương yêu dấu|nd:Những nẻo đường xứ sở|ah:Chuyện kể về những người anh hùng|ct:Thế giới cổ tích" data-sai="Có hai bẫy: một văn bản có chữ gợi tới truyện cổ nhưng thật ra là một bài thơ; một truyện có thần, có phép lạ nhưng không phải truyện cổ tích. Em nhớ lại mỗi văn bản học ở bài nào.">
+  <h4>G1. Mỗi thẻ là tên một văn bản em đã đọc. Xếp vào đúng chủ đề (bài) có văn bản ấy (luyện thêm)</h4>
+  <div class="nguon"><span data-vao="qh">Cây tre Việt Nam</span><span data-vao="ct">Thạch Sanh</span><span data-vao="nd">Cửu Long Giang ta ơi</span><span data-vao="ah">Sơn Tinh, Thuỷ Tinh</span><span data-vao="qh">Chuyện cổ nước mình</span><span data-vao="nd">Cô Tô</span><span data-vao="ct">Vua chích choè</span><span data-vao="ah">Thánh Gióng</span></div>
+  <div class="why">Tên bài học là "cái nhãn" giúp em tìm sách: muốn đọc thêm về người anh hùng thì tìm truyền thuyết như <i>Thánh Gióng</i>, <i>Sơn Tinh, Thuỷ Tinh</i>; muốn đi thêm những nẻo đường thì tìm những trang viết về các vùng đất như <i>Cô Tô</i> (kí), <i>Cửu Long Giang ta ơi</i> (thơ). <i>Chuyện cổ nước mình</i> có chữ "cổ" nhưng là bài thơ về quê hương của Bài 4.</div>
+</div>
+
+<p class="sgkq"><span class="n">2.</span>Với mỗi chủ đề đã chọn, tìm một cuốn sách có nội dung liên quan, cùng đọc và giới thiệu về cuốn sách đó bằng pô-xtơ theo gợi ý:</p>
+<ol class="steps" style="list-style:none">
+<li>a. Nêu rõ tên sách, tên tác giả, nhà xuất bản, năm xuất bản hoặc tái bản,…</li>
+<li>b. Tóm tắt nội dung: đề tài, chủ đề, bố cục, nhân vật, sự kiện, chi tiết,…</li>
+<li>c. Liệt kê những câu văn, đoạn văn yêu thích được trích dẫn từ cuốn sách hoặc những câu nhận định về cuốn sách.</li>
+</ol>
+<p class="small muted">Chữ <i>pô-xtơ</i> có chú thích ở trang 99 của SGK — em lật thẻ.</p>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">pô-xtơ</span><span class="ms">(tiếng Anh: <i>poster</i>): bản viết bằng chữ to trên giấy, bìa, gỗ,… với những hình thức thiết kế, vẽ phù hợp nhằm giới thiệu hay quảng bá về một sản phẩm nào đó (ở đây là sách).</span></button>
+</div>
+<p class="gm"><b>(gợi mở)</b> Tên nhà xuất bản, năm xuất bản thường in ở trang bìa lót hoặc trang cuối cuốn sách — em lật tìm thử. Câu văn yêu thích thì chép <b>đúng từng chữ</b>, ghi cả số trang.</p>
+<div class="bangdien" data-bang="po-xto" data-xoay>
+  <p class="hoi">🗂️ Pô-xtơ của em — mỗi ô vài chữ.</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Cuốn sách 1</th><th>Cuốn sách 2</th></tr>
+    <tr><th>a. Tên sách, tác giả, nhà xuất bản, năm</th><td data-o></td><td data-o></td></tr>
+    <tr><th>b. Tóm tắt: nhân vật, sự kiện chính</th><td data-o></td><td data-o></td></tr>
+    <tr><th>c. Câu văn yêu thích (ghi số trang)</th><td data-o></td><td data-o></td></tr>
+  </table></div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Sách hay cùng đọc</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-sach-hay">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-sach-hay">
+<ul>
+<li><b>Trước khi đọc, câu 1 – 3:</b> không có đáp án chung. Câu 3 trả lời tốt khi có <b>tên sách</b>, <b>một lí do</b> nên đọc và <b>một chi tiết</b> cụ thể trong sách làm bằng chứng.</li>
+<li><b>Câu 1 (chọn chủ đề):</b> em chọn chủ đề nào cũng được; nên chọn chủ đề em thích nhất và chủ đề em muốn hiểu thêm.</li>
+<li><b>G1.</b> <i>Quê hương yêu dấu:</i> <i>Cây tre Việt Nam</i>, <i>Chuyện cổ nước mình</i> (Bài 4). <i>Những nẻo đường xứ sở:</i> <i>Cô Tô</i>, <i>Cửu Long Giang ta ơi</i> (Bài 5). <i>Chuyện kể về những người anh hùng:</i> <i>Thánh Gióng</i>, <i>Sơn Tinh, Thuỷ Tinh</i> (Bài 6 — hai truyền thuyết). <i>Thế giới cổ tích:</i> <i>Thạch Sanh</i>, <i>Vua chích choè</i> (Bài 7). Hai bẫy: <i>Chuyện cổ nước mình</i> có chữ <i>cổ</i> nhưng là bài thơ của Bài 4; <i>Sơn Tinh, Thuỷ Tinh</i> có thần, có phép lạ nhưng là truyền thuyết, không phải truyện cổ tích.</li>
+<li><b>Câu 2 (pô-xtơ):</b> không có đáp án chung. Pô-xtơ tốt có đủ ba phần a, b, c; câu trích dẫn chép đúng từng chữ.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 3 ============================ -->
+<section id="s3" data-chang="📖|Cuốn sách yêu thích">
+<h2>3. Thách thức đầu tiên: Cuốn sách yêu thích</h2>
+<p class="muctieu">Sau chặng này, em biết vừa đọc vừa nghĩ về bốn điều SGK gợi ý (nhan đề, mở đầu, thế giới từ trang sách, bài học từ trang sách) và giữ được một cuốn nhật kí đọc sách của riêng em.</p>
+<p class="small muted">SGK trang 100.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Đọc một mình thì dễ đọc lướt cho xong. Mẹo của người đọc giỏi là vừa đọc vừa hỏi, và ghi lại vài dòng sau mỗi buổi đọc.</div></div>
+
+<p>Chọn đọc một cuốn sách yêu thích, có thể là sách văn học hoặc sách khoa học. Trong quá trình đọc, có thể suy nghĩ về những điều sau:</p>
+<p class="sgkq"><span class="n">1.</span>Nhan đề: Vì sao cuốn sách có nhan đề như vậy?</p>
+<div class="ghichep" data-luu="doan-nhan-de">
+  <p class="hoi">🔮 Trước khi đọc: nhìn nhan đề cuốn sách em chọn, em đoán sách sẽ kể hay viết về điều gì? Đọc xong, em ghi vào nhật kí xem mình đoán đúng không.</p>
+  <textarea rows="2"></textarea>
+</div>
+<p class="sgkq"><span class="n">2.</span>Mở đầu: Phần mở đầu của cuốn sách có điều gì đáng chú ý? Vì sao?</p>
+<p class="sgkq"><span class="n">3.</span>Thế giới từ trang sách: Em đã gặp những ai và đến nơi đâu qua trang sách đã đọc?</p>
+<p class="sgkq"><span class="n">4.</span>Bài học từ trang sách: Những gì còn đọng lại trong tâm trí em? Vì sao em thích cuốn sách này?</p>
+<p class="gm"><b>(gợi mở)</b> Câu 1 em nghĩ <b>trước</b> khi đọc (đoán) và <b>sau</b> khi đọc (xem mình đoán đúng không). Câu 2 em ghi ngay sau buổi đọc đầu tiên. Câu 3 em ghi dần: gặp nhân vật mới, đến nơi mới thì ghi thêm một dòng. Câu 4 để dành lúc đọc xong.</p>
+
+<div class="nhom" data-loi-co data-nhom="nd:Nhan đề|md:Mở đầu|tg:Thế giới từ trang sách|bh:Bài học từ trang sách" data-sai="Đọc lại bốn câu hỏi của SGK ngay trên. Với mỗi dòng nhật kí, em hỏi: dòng này nói về cái tên của sách, về những trang đầu, về những ai và nơi nào em gặp, hay về điều em nhớ và vì sao em thích?">
+  <h4>Y1. Tám dòng nhật kí của một bạn đọc Dế Mèn phiêu lưu kí (cô viết). Mỗi dòng trả lời cho điều gợi ý nào của SGK? (luyện thêm)</h4>
+  <div class="nguon"><span data-vao="nd">Tên truyện có chữ "phiêu lưu", mình đoán Dế Mèn sẽ đi rất xa.</span><span data-vao="md">Chương 1 đã có ngay một chuyện buồn, mình phải đọc tiếp cho biết.</span><span data-vao="tg">Mình gặp Dế Choắt, chị Cốc, và về sau là Dế Trũi.</span><span data-vao="bh">Mình nhớ mãi lời Dế Choắt dặn trước khi tắt thở.</span><span data-vao="nd">Sao tên sách lại gọi một chú dế là "Dế Mèn" nhỉ?</span><span data-vao="md">Câu văn thứ nhất của sách, mình chép ngay vào sổ vì thấy lạ.</span><span data-vao="tg">Theo chân Dế Mèn, mình ra tận đầm nước rồi đi phiêu lưu.</span><span data-vao="bh">Mình thích cuốn sách vì nó dạy mình nghĩ kĩ trước khi đùa bạn.</span></div>
+  <div class="why">Câu 3 của SGK hỏi hai điều: gặp <b>những ai</b> (Dế Choắt, chị Cốc, Dế Trũi) và đến <b>nơi đâu</b> (đầm nước, những chuyến phiêu lưu). Câu 4 cũng hai điều: điều còn đọng lại, và vì sao em thích. Nhật kí đủ ý là nhật kí trả lời trọn cả hai vế.</div>
+</div>
+
+<div class="bangdien" data-bang="nhat-ki-doc-sach">
+  <p class="hoi">📓 Nhật kí đọc sách của em — ghi dần sau mỗi buổi đọc, có tên nhân vật, tên nơi chốn, số trang.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Điều ghi lại</th><th>Ghi chép của em</th></tr>
+    <tr><th>Tên sách, tác giả</th><td data-o></td></tr>
+    <tr><th>Nhan đề: vì sao sách có tên như vậy?</th><td data-o></td></tr>
+    <tr><th>Mở đầu: điều gì đáng chú ý? Vì sao?</th><td data-o></td></tr>
+    <tr><th>Thế giới từ trang sách: gặp ai, đến đâu?</th><td data-o></td></tr>
+    <tr><th>Bài học: điều còn đọng lại; vì sao em thích?</th><td data-o></td></tr>
+  </table></div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Cuốn sách yêu thích</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-yeu-thich">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-yeu-thich">
+<ul>
+<li><b>Câu 1 – 4:</b> không có đáp án chung — đó là suy nghĩ của em về cuốn sách của em. Ghi chép tốt là ghi chép có <b>chi tiết cụ thể</b> (tên nhân vật, tên nơi chốn, một câu văn, số trang), không chỉ ghi "hay", "thích".</li>
+<li><b>Y1.</b> <i>Nhan đề:</i> dòng về chữ "phiêu lưu" và dòng hỏi vì sao gọi là "Dế Mèn". <i>Mở đầu:</i> dòng về chương 1 và dòng chép câu văn thứ nhất. <i>Thế giới từ trang sách:</i> dòng gặp Dế Choắt, chị Cốc, Dế Trũi (những <b>ai</b>) và dòng ra đầm nước, đi phiêu lưu (đến <b>nơi đâu</b>). <i>Bài học từ trang sách:</i> dòng nhớ lời Dế Choắt (điều còn đọng lại) và dòng "mình thích cuốn sách vì…" (vì sao em thích).</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 4 ============================ -->
+<section id="s4" data-chang="🌄|Gặp gỡ tác giả">
+<h2>4. Thách thức đầu tiên: Gặp gỡ tác giả — <i>Nhà thơ Lò Ngân Sủn – người con của núi</i></h2>
+<p class="muctieu">Sau chặng này, em đọc được một bài nghị luận văn học thật: tìm được vấn đề người viết đặt ra, thấy người viết dựa vào đâu để thuyết phục người đọc, và nhìn ra mối nối giữa câu đầu bài với câu cuối bài.</p>
+<p class="small muted">SGK trang 100 – 102.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Em đã bao giờ tự hỏi: vì sao nhà thơ viết được những câu thơ như thế? Bài đọc này là một cách trả lời — về một nhà thơ lớn lên giữa núi rừng biên giới.</div></div>
+
+<h3>4.1. Trước khi đọc</h3>
+<p>SGK dẫn vào bài đọc:</p>
+<div class="box quote">
+<p>Thật thú vị khi được gặp nhà văn, nhà thơ mà mình yêu thích ngoài đời phải không? Nhưng nếu chưa có dịp đó, chúng ta vẫn vẹn nguyên niềm hạnh phúc khi được tiếp xúc, giao lưu với tác giả qua những trang sách. Tác phẩm chính là đời sống tâm hồn, là gương mặt tinh thần của nhà văn, nhà thơ. Để viết được một tác phẩm khiến bạn đọc yêu thích, luôn nhớ tới, thật chẳng dễ dàng. Mỗi khi phải trăn trở với bài viết của mình, chắc hẳn em thường tự hỏi: Làm thế nào mà nhà văn, nhà thơ có thể viết được những tác phẩm như vậy? Đã có nhiều câu hỏi tương tự và cũng có vô vàn câu trả lời khác nhau. Nhưng điều đó vẫn còn là một bí ẩn.</p>
+<p>Bài đọc sau đây là một cách trả lời câu hỏi đó. Điều gì đã khiến một chú bé sinh ra ở một bản làng biên giới, một "người con của núi" trở thành nhà thơ Lò Ngân Sủn với những bài thơ vang vọng mãi trong tâm trí người đọc: <i>Chiều biên giới</i>, <i>Trời và đất</i>, <i>Đi trên chín khúc Bản Xèo</i>, <i>Ngôi nhà rông</i>,…?</p>
+</div>
+<div class="ghichep" data-luu="du-doan-vb">
+  <p class="hoi">🔮 Một chú bé ở bản làng biên giới trở thành nhà thơ. Theo em, điều gì đã giúp chú ấy? Đọc xong bài, em đối chiếu lại.</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<h3>4.2. Đọc văn bản</h3>
+<p>Bài viết không chia đề mục. Có hai thẻ 🔎 <i>Theo dõi</i>; cô chép thẻ ngay sau đoạn của nó. Ba đoạn thơ được dẫn in thụt vào, dưới mỗi đoạn có tên bài thơ.</p>
+
+<div class="box quote">
+<p><b>Nhà thơ Lò Ngân Sủn – người con của núi</b></p>
+<p class="small muted">MINH KHOA</p>
+<p>Đọc thơ Lò Ngân Sủn ta như được khám phá những đỉnh núi xa thơ mộng và mãnh liệt. Núi không chỉ là hình ảnh thường được nói đến trong thơ ông mà còn hiện lên như là một phần hồn thơ Lò Ngân Sủn.</p>
+<p>Những bài thơ tiêu biểu của Lò Ngân Sủn như <i>Chiều biên giới</i>, <i>Trời và đất</i>, <i>Đi trên chín khúc Bản Xèo</i>, <i>Ngôi nhà rông</i>,… đều mang âm vọng của núi, mênh mang lời của núi. Vậy điều gì đã nuôi dưỡng và bồi đắp nên vẻ đẹp thơ mộng và mãnh liệt ấy trong thơ ông?</p>
+</div>
+<div class="dung"><p>🔎 <i>Theo dõi:</i> Vấn đề được nêu ra để bàn luận.</p><p><b>(Dừng lại nghĩ)</b> Người viết đặt ra điều gì để cả bài đi tìm câu trả lời? Em nhớ lấy điều ấy — lát nữa có câu hỏi về nó.</p></div>
+
+<div class="box quote">
+<p>Trước khi trở thành nhà thơ, Lò Ngân Sủn đích thực là một "người con của núi". Ông sinh ra và lớn lên ở Bản Qua, huyện Bát Xát, tỉnh Lào Cai. Từ nhỏ, chú bé Lò Ngân Sủn đã đắm mình trong hơi thở của cỏ cây, hoa lá núi rừng biên cương, đã biết thả hồn cùng vẻ đẹp thanh thoát, hùng vĩ của dốc dựng, thác đổ, suối tuôn,… nơi "tận cùng bờ cõi":</p>
+<p class="poem">Những đỉnh núi xa<br>Rừng thông gọi đàn dê hiện gọi mơ núi<br>Nâng niu hạt mạch<br>Rừng sa mộc vạm vỡ<br>Quay mình những vòng đường.</p>
+<p class="small muted">(<i>Đỉnh núi xa vùng mãnh liệt</i>)</p>
+</div>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">Bản Qua, huyện Bát Xát</span><span class="ms">nay thuộc xã Bát Xát.</span></button>
+</div>
+<div class="dung"><p>🔎 <i>Theo dõi:</i> Những bằng chứng để làm rõ vấn đề.</p><p><b>(Dừng lại nghĩ)</b> Đoạn thơ vừa rồi đứng ngay sau câu văn nào? Nó giúp em "thấy" điều gì mà câu văn ấy vừa nói?</p></div>
+
+<div class="tosang" data-tosang data-sai="Đọc to đề: chất THƠ của ông, thứ mà vùng đất Hoàng Liên Sơn nuôi dưỡng, bồi đắp. Có từ ngữ nói về tâm hồn ông, có từ ngữ tả vùng đất — những từ ấy không bấm. Tìm ba từ đứng ngay trước mấy chữ của thơ ông.">
+  <h4>A1. Em đọc tiếp đoạn văn ngay trong khung. Bấm vào ba từ ngữ nói về chất thơ của Lò Ngân Sủn mà vùng đất Hoàng Liên Sơn đã nuôi dưỡng, bồi đắp (luyện thêm)</h4>
+  <div class="doan"><p>Khi lớn lên, thế giới của cậu bé sinh ra từ Bản Qua không chỉ giới hạn ở bản làng biên giới. Mặt đất và bầu trời đã rộng mở, muôn dặm non sông từ bắc vào nam, từ miền ngược đến miền xuôi, từ đầu non đến cuối bể,… đã ùa vào tâm hồn <span class="t">mộc mạc</span>, <span class="t">thiết tha</span>, <span class="t">phóng khoáng</span> của Lò Ngân Sủn. Nhưng vùng đất Hoàng Liên Sơn <span class="t">hùng vĩ</span>, miền biên cương phía bắc của Tổ quốc vẫn là mảnh đất mẹ nuôi dưỡng, bồi đắp nên chất <span class="t" data-dung>hào sảng</span>, <span class="t" data-dung>trầm hùng</span> và <span class="t" data-dung>mãnh liệt</span> của thơ ông, mà <i>Chiều biên giới</i> là một ví dụ tiêu biểu:</p></div>
+  <div class="why">Cùng một câu văn dài mà người viết nói về ba thứ khác nhau: tâm hồn ông (mộc mạc, thiết tha, phóng khoáng), vùng đất (hùng vĩ), và chất thơ (hào sảng, trầm hùng, mãnh liệt). Đoạn thơ <i>Chiều biên giới</i> ngay sau đó được đưa ra để người đọc nghe thấy chất thơ ấy.</div>
+</div>
+
+<div class="box quote">
+<p class="poem">Chiều biên giới em ơi<br>Có nơi nào cao hơn<br>Như đầu sông đầu suối<br>Như đầu mây đầu gió<br>Như quê ta ngọn núi<br>Như đất trời biên cương.</p>
+<p class="small muted">(<i>Chiều biên giới</i>)</p>
+<p>Dù có đi khắp mọi nẻo đường, những sườn non, dốc núi, những miền thác đổ réo sôi, vắt vẻo như dây leo của quê hương vẫn là con đường quyến rũ nhất với người con của núi. Dường như đó cũng chính là con đường thơ ca của Lò Ngân Sủn:</p>
+<p class="poem">Ta đi trên chín khúc Bản Xèo<br>con đường là cái hạt ta gieo<br>con đường là cái rễ lan toả<br>dệt nên hoa trái, tiếng chim ca.</p>
+<p class="small muted">(<i>Đi trên chín khúc Bản Xèo</i>)</p>
+<p>Núi rừng xứ sở muốn cất tiếng bằng thơ và nhà thơ Lò Ngân Sủn đã phần nào đáp ứng được mong mỏi ấy, bằng tình yêu thương thuần khiết của mình.</p>
+<p>Không có tình yêu tha thiết với núi rừng, với quê hương, với "chồi non cỏ biếc", với "đầu sông đầu suối", với những "bậc thang mây",… chắc hẳn không thể có nhà thơ Lò Ngân Sủn với những câu thơ "vạm vỡ" mà âm vang như "con suối thác đổ", khiến trái tim của bao độc giả phải bồi hồi.</p>
+<p class="small muted">(<i>Theo</i> Minh Khoa, báo điện tử <i>Giáo dục Việt Nam</i>, tháng 12/2020)</p>
+</div>
+
+<h3>4.3. Sau khi đọc</h3>
+<div class="xemlai" data-xem-lai="du-doan-vb"><p>Em đã đoán điều gì giúp chú bé trở thành nhà thơ. Câu cuối bài nói điều gì? Em đoán trúng chỗ nào?</p></div>
+<div class="ghichep" data-luu="nhat-ki-vb" data-cam-xuc="🌄 Muốn đến vùng núi ấy|😍 Thích thơ ông|🤔 Tò mò|🥰 Bồi hồi|😐 Chưa thấy gì">
+  <p class="hoi">💭 Đọc xong, em cảm thấy thế nào về vùng núi quê Lò Ngân Sủn? Đoạn thơ nào em muốn đọc to lên nhất?</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<p><b>Trả lời câu hỏi (SGK) — đi từng bước</b></p>
+<p class="sgkq"><span class="n">a.</span>Vì sao nhà thơ Lò Ngân Sủn được tác giả bài viết gọi là "người con của núi"?</p>
+<p class="gm"><b>(gợi mở)</b> Tìm câu có cụm "người con của núi" ở đoạn thứ ba. Ngay sau câu ấy, người viết kể gì về nơi ông sinh ra và tuổi thơ của ông? Để ý mấy chữ mở đầu câu: "Trước khi trở thành nhà thơ" — vậy lí do có nằm ở những bài thơ ông viết sau này không?</p>
+
+<div class="tosang" data-tosang data-sai="Đề hỏi VÌ SAO. Câu chỉ nhắc lại cách gọi thì chưa nói lí do. Câu nói về núi trong thơ ông thì sao — người viết bảo ông là người con của núi từ trước khi làm thơ cơ mà. Có hai câu đúng.">
+  <h4>A2. Cô chép bốn câu của bài (không liền nhau). Bấm vào hai câu cho biết vì sao ông được gọi là "người con của núi" (luyện thêm)</h4>
+  <div class="doan theo-cau"><p><span class="t">Núi không chỉ là hình ảnh thường được nói đến trong thơ ông mà còn hiện lên như là một phần hồn thơ Lò Ngân Sủn.</span></p>
+  <p><span class="t">Trước khi trở thành nhà thơ, Lò Ngân Sủn đích thực là một "người con của núi".</span> <span class="t" data-dung>Ông sinh ra và lớn lên ở Bản Qua, huyện Bát Xát, tỉnh Lào Cai.</span> <span class="t" data-dung>Từ nhỏ, chú bé Lò Ngân Sủn đã đắm mình trong hơi thở của cỏ cây, hoa lá núi rừng biên cương, đã biết thả hồn cùng vẻ đẹp thanh thoát, hùng vĩ của dốc dựng, thác đổ, suối tuôn,… nơi "tận cùng bờ cõi":</span></p></div>
+  <div class="why">Lí do nằm ở <b>con người</b> ông trước khi là nhà thơ: sinh ra, lớn lên ở một bản làng biên giới, tuổi thơ đắm mình trong núi rừng. Câu "đích thực là một người con của núi" chỉ khẳng định; hai câu sau mới giải thích — lí lẽ đi trước, lời giải thích theo ngay sau.</div>
+</div>
+
+<p class="sgkq"><span class="n">b.</span>Xác định câu văn nêu vấn đề chính được bàn luận trong bài.</p>
+<p class="gm"><b>(gợi mở)</b> Thẻ 🔎 <i>Theo dõi</i> thứ nhất ("Vấn đề được nêu ra để bàn luận") đứng cạnh đoạn thứ hai. Trong đoạn ấy, câu nào đặt ra một điều mà cả phần sau của bài phải trả lời?</p>
+
+<div class="tosang" data-tosang data-sai="Vấn đề là điều cả bài đi tìm lời giải. Ba câu kia nói thơ ông đẹp thế nào — đó là điều người viết đã coi là có sẵn. Câu nào đặt ra điều mà phần sau của bài phải trả lời?">
+  <h4>A3. Hai đoạn mở đầu bài viết nằm trong khung. Bấm vào câu văn nêu vấn đề được bàn luận trong bài (luyện thêm)</h4>
+  <div class="doan theo-cau"><p><span class="t">Đọc thơ Lò Ngân Sủn ta như được khám phá những đỉnh núi xa thơ mộng và mãnh liệt.</span> <span class="t">Núi không chỉ là hình ảnh thường được nói đến trong thơ ông mà còn hiện lên như là một phần hồn thơ Lò Ngân Sủn.</span></p>
+  <p><span class="t">Những bài thơ tiêu biểu của Lò Ngân Sủn như Chiều biên giới, Trời và đất, Đi trên chín khúc Bản Xèo, Ngôi nhà rông,… đều mang âm vọng của núi, mênh mang lời của núi.</span> <span class="t" data-dung>Vậy điều gì đã nuôi dưỡng và bồi đắp nên vẻ đẹp thơ mộng và mãnh liệt ấy trong thơ ông?</span></p></div>
+  <div class="why">Chữ <i>Vậy</i> nối câu hỏi với câu đứng trước: câu trước nói "vẻ đẹp ấy" là gì (âm vọng của núi, lời của núi), câu hỏi hỏi cái gì đã làm nên nó. Từ đoạn thứ ba trở đi, mọi đoạn đều góp phần trả lời câu hỏi này.</div>
+</div>
+
+<p class="sgkq"><span class="n">c.</span>Những đoạn thơ được dẫn đóng vai trò gì trong bài viết?</p>
+<p class="gm"><b>(gợi mở)</b> Nhớ lại hộp 📌 <i>Văn bản nghị luận văn học</i>: trong nghị luận văn học, cái gì "thường được lấy từ tác phẩm văn học"? Rồi xem mỗi đoạn thơ đứng ngay sau câu văn nào và làm rõ điều gì câu văn ấy vừa nói.</p>
+
+<div class="xep" data-xep data-loi-co data-sai="Đọc lại bài từ đoạn thứ hai: mỗi lần người viết nói một nhận xét về ông, ngay sau đó là gì? Để ý tên bài thơ in dưới mỗi đoạn thơ.">
+  <h4>A4. Xếp các ý theo đúng thứ tự trong bài viết (luyện thêm — thẻ là lời cô tóm tắt)</h4>
+  <ol><li>Câu hỏi: điều gì đã nuôi dưỡng vẻ đẹp thơ ông?</li><li>Ông sinh ra, lớn lên ở Bản Qua, đắm mình trong núi rừng</li><li>Đoạn thơ trích từ Đỉnh núi xa vùng mãnh liệt</li><li>Vùng đất Hoàng Liên Sơn bồi đắp chất thơ của ông</li><li>Đoạn thơ trích từ Chiều biên giới</li><li>Con đường quê hương cũng là con đường thơ của ông</li><li>Đoạn thơ trích từ Đi trên chín khúc Bản Xèo</li></ol>
+  <div class="why">Nhận xét – đoạn thơ – nhận xét – đoạn thơ: bài viết đi theo nhịp ấy. Mỗi đoạn thơ đứng ngay sau một nhận xét của người viết và làm cho nhận xét ấy có căn cứ, người đọc tin được.</div>
+</div>
+
+<p class="sgkq"><span class="n">d.</span>Câu cuối cùng của bài viết có mối quan hệ như thế nào với câu nêu vấn đề ở phần mở đầu?</p>
+<p class="gm"><b>(gợi mở)</b> Đặt hai câu cạnh nhau: câu nêu vấn đề (em đã tìm ở câu b) là một câu hỏi "điều gì…?". Câu cuối bài bắt đầu bằng "Không có tình yêu tha thiết với…". Câu cuối có trả lời câu hỏi ấy không? Trả lời bằng điều gì?</p>
+
+<div id="de-a5">
+<p class="small muted">Câu nêu vấn đề ở đầu bài và câu cuối bài:</p>
+<div class="box quote"><p>Vậy điều gì đã nuôi dưỡng và bồi đắp nên vẻ đẹp thơ mộng và mãnh liệt ấy trong thơ ông?</p>
+<p>Không có tình yêu tha thiết với núi rừng, với quê hương, với "chồi non cỏ biếc", với "đầu sông đầu suối", với những "bậc thang mây",… chắc hẳn không thể có nhà thơ Lò Ngân Sủn với những câu thơ "vạm vỡ" mà âm vang như "con suối thác đổ", khiến trái tim của bao độc giả phải bồi hồi.</p></div>
+</div>
+<div class="quiz" data-chieu-de="#de-a5">
+  <div class="q" data-ans="c" data-sai="Câu đầu hỏi: điều gì đã nuôi dưỡng thơ ông? Em đọc câu cuối và tìm: có cụm từ nào nói ra cái đã nuôi dưỡng ấy không?"><div class="stem"><b>A5.</b> Câu cuối có quan hệ thế nào với câu nêu vấn đề? (luyện thêm)</div>
+    <button class="opt" type="button" data-v="a">(a) Câu cuối nhắc lại câu hỏi ở đầu bài nhưng chưa trả lời, để người đọc tự nghĩ tiếp.</button><button class="opt" type="button" data-v="b">(b) Câu cuối gác lại câu hỏi ở đầu bài và chuyển sang bàn về một bài thơ khác.</button><button class="opt" type="button" data-v="c">(c) Câu cuối trả lời câu hỏi ở đầu bài, gói lại điều cả bài đã bàn.</button>
+    <div class="why">Đầu bài hỏi, cuối bài đáp: chính <b>tình yêu tha thiết với núi rừng, với quê hương</b> đã làm nên thơ ông. Câu cuối còn gom lại những hình ảnh núi rừng đã gặp trong bài ("đầu sông đầu suối", câu thơ "vạm vỡ") — đó là câu tổng hợp, kết luận.</div></div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Gặp gỡ tác giả</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-gap-go">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-gap-go">
+<ul>
+<li><b>Xem lại dự đoán:</b> câu cuối bài trả lời: chính <b>tình yêu tha thiết với núi rừng, với quê hương</b>. Em đoán "vì ông sống giữa núi rừng", "vì ông yêu quê" là đã chạm đúng ý bài.</li>
+<li><b>A1.</b> Ba từ ngữ: <i>hào sảng</i>, <i>trầm hùng</i>, <i>mãnh liệt</i> — người viết gọi đó là "chất… của thơ ông". <i>Mộc mạc, thiết tha, phóng khoáng</i> nói về <b>tâm hồn</b> Lò Ngân Sủn; <i>hùng vĩ</i> tả <b>vùng đất</b> Hoàng Liên Sơn.</li>
+<li><b>Câu a — A2.</b> Câu thứ ba và thứ tư của khung. Ông được gọi là "người con của núi" vì ông <b>sinh ra và lớn lên ở Bản Qua, huyện Bát Xát, tỉnh Lào Cai</b> — một bản làng miền núi biên giới, và <b>từ nhỏ đã đắm mình trong hơi thở của cỏ cây, hoa lá núi rừng biên cương</b>, thả hồn cùng dốc dựng, thác đổ, suối tuôn. Câu "đích thực là một người con của núi" chỉ khẳng định lại cách gọi, chưa nói vì sao; câu đầu khung nói về núi trong thơ ông — mà chính người viết đã nói ông là người con của núi từ "trước khi trở thành nhà thơ".</li>
+<li><b>Câu b — A3.</b> "Vậy điều gì đã nuôi dưỡng và bồi đắp nên vẻ đẹp thơ mộng và mãnh liệt ấy trong thơ ông?" Thẻ 🔎 thứ nhất đứng đúng đoạn này. Câu đứng trước nói "vẻ đẹp ấy" là gì (âm vọng của núi, lời của núi) để dẫn vào câu hỏi; cả phần sau của bài đi tìm câu trả lời cho câu hỏi này.</li>
+<li><b>Câu c — A4.</b> Thứ tự: câu hỏi → sinh ra, lớn lên ở Bản Qua → đoạn thơ <i>Đỉnh núi xa vùng mãnh liệt</i> → vùng đất Hoàng Liên Sơn → đoạn thơ <i>Chiều biên giới</i> → con đường quê hương là con đường thơ → đoạn thơ <i>Đi trên chín khúc Bản Xèo</i>. Những đoạn thơ được dẫn là <b>bằng chứng</b> — lấy từ chính tác phẩm của Lò Ngân Sủn, đúng như hộp 📌: "Bằng chứng thường được lấy từ tác phẩm văn học". Mỗi đoạn thơ đứng <b>ngay sau</b> một nhận xét của người viết (lí lẽ) và làm rõ nhận xét ấy: <i>Đỉnh núi xa vùng mãnh liệt</i> cho thấy núi rừng của tuổi thơ ông; <i>Chiều biên giới</i> cho thấy chất hào sảng, trầm hùng, mãnh liệt; <i>Đi trên chín khúc Bản Xèo</i> cho thấy con đường quê hương thành con đường thơ. Nhờ đó người đọc tin lời người viết.</li>
+<li><b>Câu d — A5.</b> <b>(c)</b>. Câu cuối <b>trả lời</b> câu hỏi nêu vấn đề ở đầu bài: chính tình yêu tha thiết với núi rừng, quê hương đã nuôi dưỡng, bồi đắp nên thơ ông ("không có tình yêu… chắc hẳn không thể có nhà thơ Lò Ngân Sủn…"). Đó là câu tổng hợp, kết luận: đầu bài hỏi, cuối bài đáp, nên bài viết chặt chẽ, trọn vẹn.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 5 ============================ -->
+<section id="s5" data-chang="🎬|Phiêu lưu cùng trang sách">
+<h2>5. Thách thức đầu tiên: Phiêu lưu cùng trang sách</h2>
+<p class="muctieu">Sau chặng này, em biết so sánh một cuốn sách với bộ phim làm từ nó — giống nhau, khác nhau ở nội dung và hình thức — và lên ý tưởng cho một tấm pô-xtơ.</p>
+<p class="small muted">SGK trang 102.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Có những cuốn sách được làm thành phim. Xem phim rồi đọc sách (hoặc ngược lại), em sẽ thấy hai "phiên bản" của cùng một câu chuyện — và thú vị nhất là chỗ chúng khác nhau.</div></div>
+
+<p class="sgkq"><span class="n">1.</span>Cùng xem một bộ phim được chuyển thể từ một cuốn sách hoặc tác phẩm văn học có nội dung liên quan đến các chủ đề đã học.</p>
+<p class="sgkq"><span class="n">2.</span>Thảo luận và so sánh để thấy những điểm tương đồng, khác biệt giữa nội dung, hình thức của phim và sách (hoặc tác phẩm đã đọc).</p>
+<p class="sgkq"><span class="n">3.</span>Cùng thiết kế một pô-xtơ nhằm giới thiệu bộ phim đã xem hoặc vẽ lại bìa cuốn sách yêu thích.</p>
+<p class="gm"><b>(gợi mở)</b> Hỏi thầy cô, bố mẹ tên một bộ phim (hoặc phim hoạt hình) làm từ một truyện em đã đọc. Khi so sánh, em hỏi hai loại câu: <b>nội dung</b> (nhân vật, sự việc có giống không, phim có thêm hay bớt đoạn nào không?) và <b>hình thức</b> (sách kể bằng chữ; phim kể bằng gì?).</p>
+
+<div class="nhom" data-loi-co data-nhom="phim:Chỉ có ở phim|sach:Chỉ có ở sách|ca:Cả phim và sách đều có" data-sai="Với mỗi thẻ, em hình dung: lúc ngồi đọc sách, em có gặp thứ này không? Lúc ngồi xem phim, em có gặp không? Gặp ở cả hai thì xếp vào nhóm thứ ba.">
+  <h4>P1. Xếp mỗi thẻ vào đúng nhóm (luyện thêm — thẻ là lời cô)</h4>
+  <div class="nguon"><span data-vao="phim">Tiếng nhạc nền vang lên lúc nhân vật buồn</span><span data-vao="sach">Chú thích giải nghĩa từ khó ở chân trang</span><span data-vao="ca">Nhân vật chính và các sự việc xảy ra</span><span data-vao="phim">Diễn viên đóng vai các nhân vật</span><span data-vao="sach">Số trang để em đánh dấu chỗ đang đọc</span><span data-vao="ca">Lời nói qua lại giữa các nhân vật</span></div>
+  <div class="why">Chỗ giống nằm ở câu chuyện (nhân vật, sự việc, lời thoại); chỗ khác nằm ở cách kể: sách kể bằng chữ và để em tự tưởng tượng giọng nói, khuôn mặt; phim kể bằng hình ảnh, âm nhạc, diễn viên. So sánh nội dung và hình thức, như SGK dặn, là nhìn vào hai chỗ ấy.</div>
+</div>
+
+<div class="bangdien" data-bang="sach-va-phim" data-xoay>
+  <p class="hoi">🗂️ Sách và phim — mỗi ô một hai ví dụ cụ thể.</p>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>Giống nhau</th><th>Khác nhau</th></tr>
+    <tr><th>Nội dung (nhân vật, sự việc)</th><td data-o></td><td data-o></td></tr>
+    <tr><th>Hình thức (cách kể, hình ảnh, âm thanh)</th><td data-o></td><td data-o></td></tr>
+  </table></div>
+</div>
+<div class="ghichep" data-luu="y-tuong-po-xto-phim">
+  <p class="hoi">🎨 Pô-xtơ của em giới thiệu phim nào hay vẽ lại bìa sách nào? Ở giữa em vẽ gì? Dòng chữ to nhất ghi gì?</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Phiêu lưu cùng trang sách</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-phieu-luu">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-phieu-luu">
+<ul>
+<li><b>Câu 1 – 3:</b> không có đáp án chung. So sánh tốt là so sánh có <b>ví dụ cụ thể</b> ("trong sách, đoạn này nhân vật chỉ nghĩ thầm; trong phim, nhân vật nói thành lời").</li>
+<li><b>P1.</b> <i>Chỉ có ở phim:</i> tiếng nhạc nền; diễn viên đóng vai. <i>Chỉ có ở sách:</i> chú thích ở chân trang; số trang. <i>Cả hai:</i> nhân vật chính và các sự việc; lời nói qua lại giữa các nhân vật. Vì phim và sách <b>cùng kể một câu chuyện</b> nên nội dung có nhiều chỗ giống; khác nhau nhiều nhất là <b>hình thức</b>: sách kể bằng chữ, em tự tưởng tượng; phim kể bằng hình ảnh, âm thanh, diễn viên.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 6 ============================ -->
+<section id="s6" data-chang="🎨|Sáng tạo sản phẩm">
+<h2>6. Thách thức thứ hai: Sáng tạo sản phẩm nghệ thuật</h2>
+<p class="muctieu">Sau chặng này, em biết từ một cuốn sách có thể làm ra những sản phẩm nghệ thuật nào, nhận ra hai sản phẩm tham khảo của các bạn học sinh, và lên được ý tưởng cho sản phẩm của em.</p>
+<p class="small muted">SGK trang 103.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Đọc xong một cuốn sách, em không chỉ "cất lên giá". Em có thể làm thơ, kể lại theo cách của mình, vẽ tranh — tức là <b>sáng tạo cùng tác giả</b>.</div></div>
+
+<div class="ghichep" data-luu="sang-tao-dau-tien">
+  <p class="hoi">✏️ Em giỏi cách nào nhất: làm thơ, kể chuyện, hay vẽ? Cuốn sách nào em muốn "làm lại" theo cách của mình?</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<p>SGK viết:</p>
+<div class="box quote">
+<p>Để có được một cuốn sách thú vị, cuốn hút người đọc, tác giả không chỉ cần tài năng mà còn phải rất đam mê, có cảm hứng, tâm huyết và dành nhiều thời gian, công sức vào việc viết. Cuốn sách là đứa con tinh thần của tác giả. Đọc sách là để hiểu biết về con người, đời sống xã hội, thế giới tự nhiên và cũng là để hiểu thêm về người viết.</p>
+<p>Khi đọc sách, chúng ta không chỉ thưởng thức, cảm nhận mà còn có thể sáng tạo cùng tác giả hay chia sẻ suy nghĩ về một vấn đề đời sống mà cuốn sách gợi ra. Có nhiều cách thể hiện kết quả mà em và các bạn thu hoạch được sau khi đọc sách. Hãy lựa chọn một hoạt động phù hợp:</p>
+<p>– Sáng tạo sản phẩm nghệ thuật lấy ý tưởng từ cuốn sách đã đọc.</p>
+<p>– Viết bài văn trình bày ý kiến về một hiện tượng đời sống được gợi ra từ cuốn sách.</p>
+</div>
+<p>Chặng này là hoạt động thứ nhất; chặng 7 là hoạt động thứ hai.</p>
+<div class="box quote">
+<p>Từ cuốn sách yêu thích, có thể sáng tạo những sản phẩm nghệ thuật mới, chẳng hạn: sáng tác thơ, kể chuyện sáng tạo, vẽ tranh thể hiện một số chi tiết, nhân vật đáng nhớ hoặc minh hoạ cho chuỗi sự kiện (truyện tranh).</p>
+</div>
+
+<p><b>Tham khảo một số sản phẩm của các bạn học sinh.</b> <i>Tranh trong SGK trang 103</i> là hai tấm pô-xtơ vẽ tay:</p>
+<ul>
+<li>Tấm thứ nhất nền xanh lá, giữa là một vùng trắng hình đám mây ghi tiêu đề "Nhóc Nicolas" cùng đoạn viết tay; xung quanh là các ô tam giác vẽ cảnh sân trường, lớp học, cậu bé mặc áo đỏ cầm cặp đang chạy, bàn ăn, sân bóng. Chú thích: "Một cách cảm nhận, sáng tạo cùng <i>Nhóc Ni-cô-la: những chuyện chưa kể</i> của Rơ-nê Gô-xi-nhi và Giăng-giắc Xăng-pê (Nguyễn Duy Bảo Minh)".</li>
+<li>Tấm thứ hai nền vàng, tiêu đề viết tay "Dế Mèn phiêu lưu kí – Bài học đường đời đầu tiên – Tô Hoài"; xung quanh vẽ con cò bên đầm sen, chuồn chuồn, bụi cỏ xanh và hai chú dế; giữa là trang viết tay. Chú thích: "Một cách cảm nhận, sáng tạo cùng <i>Dế Mèn phiêu lưu kí</i> của Tô Hoài (Nguyễn Thị Mai Phương)".</li>
+</ul>
+<p><b>Nhớ lại:</b> hai cuốn sách trên, em đã đọc một đoạn ở bài nào? Nhớ thử rồi mới lật thẻ.</p>
+<div class="thelat">
+  <button class="the" type="button"><span class="mt">📒 <i>Nhóc Ni-cô-la: những chuyện chưa kể</i></span><span class="ms">Bài 8 — đoạn trích <i>Bài tập làm văn</i>.</span></button>
+  <button class="the" type="button"><span class="mt">🦗 <i>Dế Mèn phiêu lưu kí</i></span><span class="ms">Bài 1 — đoạn trích <i>Bài học đường đời đầu tiên</i>.</span></button>
+</div>
+<p class="gm"><b>(gợi mở)</b> Hai bạn đều làm pô-xtơ có cả tranh lẫn chữ viết tay. Tranh vẽ những gì trong truyện? Em thấy tranh giúp người xem "gặp" truyện nhanh hơn ở chỗ nào?</p>
+
+<div class="nhom" data-loi-co data-nhom="tho:Sáng tác thơ|ke:Kể chuyện sáng tạo|ve:Vẽ tranh chi tiết, nhân vật|tt:Truyện tranh (chuỗi sự kiện)" data-sai="Với mỗi ý tưởng, em hỏi: sản phẩm làm ra là những dòng có vần, là một câu chuyện kể bằng lời, là MỘT bức tranh, hay NHIỀU khung tranh nối tiếp nhau kể một chuỗi việc?">
+  <h4>S1. Mỗi ý tưởng của các bạn (cô viết) thuộc cách sáng tạo nào SGK vừa kể? (luyện thêm)</h4>
+  <div class="nguon"><span data-vao="tho">Soạn bốn dòng sáu – tám tiếng về Dế Choắt</span><span data-vao="ke">Đóng vai Dế Choắt, xưng "tôi", nói lại chuyện hôm ấy</span><span data-vao="ve">Vẽ chân dung Dế Mèn với đôi càng mẫm bóng</span><span data-vao="tt">Chia tờ giấy thành sáu ô, vẽ lần lượt từ lúc trêu chị Cốc đến khi Dế Choắt tắt thở</span><span data-vao="tho">Viết mấy dòng có vần, mỗi dòng năm tiếng, gửi Ni-cô-la</span><span data-vao="ke">Nghĩ thêm một chuyến đi mới của Dế Mèn và viết thành truyện</span><span data-vao="ve">Vẽ phòng khách nhà Ni-cô-la, cậu bé ngồi cắm cúi viết</span><span data-vao="tt">Vẽ bốn khung tranh nối tiếp: bố và ông Blê-đúc tranh nhau làm hộ bài văn</span></div>
+  <div class="why">Tranh và truyện tranh đều là vẽ, nhưng truyện tranh kể <b>một chuỗi việc</b> qua nhiều khung nối tiếp, còn một bức tranh chỉ giữ lại một chi tiết, một nhân vật. Bốn dòng sáu – tám tiếng chính là thơ lục bát em đã tập làm ở Bài 4.</div>
+</div>
+
+<div class="bangdien" data-bang="y-tuong-san-pham">
+  <p class="hoi">🖌️ Ý tưởng sản phẩm của em — mỗi ô vài chữ.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Điều cần nghĩ</th><th>Ý tưởng của em</th></tr>
+    <tr><th>Cuốn sách</th><td data-o></td></tr>
+    <tr><th>Chi tiết, nhân vật em chọn</th><td data-o></td></tr>
+    <tr><th>Cách sáng tạo (thơ / kể chuyện / tranh / truyện tranh)</th><td data-o></td></tr>
+    <tr><th>Vì sao em chọn chi tiết ấy</th><td data-o></td></tr>
+  </table></div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Sáng tạo sản phẩm nghệ thuật</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-sang-tao">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-sang-tao">
+<ul>
+<li><b>Nhớ lại:</b> <i>Nhóc Ni-cô-la</i> — Bài 8 (<i>Bài tập làm văn</i>); <i>Dế Mèn phiêu lưu kí</i> — Bài 1 (<i>Bài học đường đời đầu tiên</i>). Tranh của bạn thứ hai có hai chú dế, cảnh đầm nước và bụi cỏ — gợi lại khung cảnh của đoạn trích Bài 1.</li>
+<li><b>S1.</b> <i>Sáng tác thơ:</i> bốn dòng sáu – tám (thơ lục bát, Bài 4); mấy dòng có vần năm tiếng. <i>Kể chuyện sáng tạo:</i> đóng vai Dế Choắt kể lại; nghĩ thêm một chuyến đi mới. <i>Vẽ tranh chi tiết, nhân vật:</i> chân dung Dế Mèn; phòng khách nhà Ni-cô-la (một cảnh). <i>Truyện tranh:</i> sáu ô từ lúc trêu chị Cốc đến khi Dế Choắt tắt thở; bốn khung tranh nối tiếp về bài văn làm hộ. Truyện tranh khác tranh thường ở chỗ nó kể <b>một chuỗi việc nối tiếp nhau</b>, không chỉ một cảnh.</li>
+<li><b>Ý tưởng của em:</b> không có đáp án chung. Ý tưởng tốt chọn <b>một chi tiết cụ thể</b> trong sách và nói được vì sao chi tiết ấy đáng nhớ với em.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 7 ============================ -->
+<section id="s7" data-chang="📝|Viết bài văn">
+<h2>7. Thách thức thứ hai: Viết bài văn trình bày ý kiến về một hiện tượng đời sống được gợi ra từ cuốn sách đã đọc</h2>
+<p class="muctieu">Sau chặng này, em biết bài văn cần đạt ba yêu cầu nào, nhìn ra từng phần của bài tham khảo, phân biệt được chuyện trong sách với hiện tượng ngoài đời, lập được dàn ý và tự soát bài của mình.</p>
+<p class="small muted">SGK trang 104 – 106.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Bài 8 em đã viết về một hiện tượng em quan tâm. Lần này hiện tượng ấy đến <b>từ một cuốn sách</b>: một chi tiết trong sách làm em nghĩ tới chuyện đang xảy ra ngoài đời.</div></div>
+
+<div class="ghichep" data-luu="viet-dau-tien">
+  <p class="hoi">✏️ Cuốn sách em định viết là cuốn nào? Chi tiết nào trong sách làm em nghĩ nhiều nhất?</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<div class="box key" data-chieu="hop-yeu-cau-bai-van"><span class="label">📌 Yêu cầu đối với bài văn trình bày ý kiến về một hiện tượng đời sống được gợi ra từ cuốn sách đã đọc</span>
+<ul>
+<li>Nêu được tên sách và tác giả.</li>
+<li>Nêu được hiện tượng đời sống gợi ra từ cuốn sách và ý kiến của em về hiện tượng đó.</li>
+<li>Sử dụng được lí lẽ và bằng chứng để làm rõ hiện tượng.</li>
+</ul></div>
+
+<div class="quiz">
+  <div class="q" data-ans="b" data-sai="Soát đoạn văn với từng dòng của hộp 📌: có hiện tượng chưa? Có câu nói ý kiến của bạn chưa? Người đọc có biết đó là cuốn sách nào, ai viết không?"><div class="stem"><b>W1.</b> Đoạn mở bài của một bạn (cô viết): <i>"Em vừa đọc xong một cuốn truyện kể về một chú dế tuổi trẻ ngông cuồng. Câu chuyện làm em nghĩ nhiều về chuyện trêu chọc bạn bè cho vui. Theo em, trêu chọc bạn có khi gây ra những chuyện rất đau lòng."</i> Đoạn này <b>chưa đạt</b> yêu cầu nào của hộp 📌? (Lí lẽ, bằng chứng thì để dành cho thân bài.) (luyện thêm)</div>
+    <button class="opt" type="button" data-v="a">(a) Nêu được hiện tượng đời sống gợi ra từ cuốn sách</button><button class="opt" type="button" data-v="b">(b) Nêu được tên sách và tác giả</button><button class="opt" type="button" data-v="c">(c) Nêu được ý kiến của em về hiện tượng đó</button>
+    <div class="why">"Một cuốn truyện kể về một chú dế" — người đọc phải tự đoán là cuốn nào. Chỉ cần thêm <i>Dế Mèn phiêu lưu kí</i> của nhà văn Tô Hoài là đoạn mở bài đủ cả ba điều: sách, hiện tượng, ý kiến.</div></div>
+</div>
+
+<h3>7.1. Phân tích bài viết tham khảo</h3>
+<p>Bên lề bài, SGK có <b>năm lời ghi chú</b> chỉ ra người viết làm gì ở từng chỗ. Cô cất các ghi chú xuống khối ghép cặp sau bài để em tự tìm trước.</p>
+
+<div class="box quote">
+<p><b>Nỗi đau của Ken-ga (Kengah) và trách nhiệm của con người với môi trường</b></p>
+<p>Trong học kì vừa qua, em đã đạt được kết quả học tập tốt. Bố mẹ rất vui và thưởng cho em cuốn sách <i>Chuyện con mèo dạy hải âu bay</i> của nhà văn Lu-i Xe-pun-ve-da. Câu chuyện về cái chết do ngộ độc váng dầu của chim hải âu Ken-ga đã gợi cho em nhiều suy nghĩ về trách nhiệm của con người đối với môi trường sống trên Trái Đất.</p>
+</div>
+
+<p class="small muted">Câu để chữ thường (câu thứ ba) nối chuyện trong sách với chuyện ngoài đời — em không cần xét.</p>
+<div class="tosang" data-tosang data-sai="Với mỗi câu, em hỏi: điều này xảy ra với Ken-ga, ở vùng vịnh trong truyện — hay đang xảy ra ở biển, ở Trái Đất thật ngoài đời? Có hai câu kể chuyện trong sách.">
+  <h4>W2. Em đọc tiếp đoạn 2 của bài ngay trong khung. Bấm vào hai câu kể lại điều xảy ra trong cuốn sách (luyện thêm)</h4>
+  <div class="doan theo-cau"><p><span class="t" data-dung>Em không thể quên được hình ảnh Ken-ga vùng vẫy, tuyệt vọng, toàn thân ngập trong lớp váng dầu: "Thứ chất lỏng dính như keo mà loài hải âu coi như tử thần màu đen của chúng giờ đây đang ép chặt đôi cánh vào mạng sườn của cô".</span> <span class="t" data-dung>Con người đã vô tình để dầu tràn từ một con tàu nào đó ra vịnh.</span> Điều này không chỉ xảy ra với vùng biển nơi Ken-ga và đàn hải âu Hải Đăng Cát Đỏ sinh sống. <span class="t">Ở rất nhiều nơi khác biển đã bị ô nhiễm vì dầu tràn, rác thải nhựa, nước thải,…</span> <span class="t">Khi môi trường bị ô nhiễm, sự sống của tất cả các sinh vật trên Trái Đất đều bị đe doạ nghiêm trọng.</span> <span class="t">Mặt biển, bầu trời, không khí, cánh rừng,… là môi trường sống của con người nhưng cũng là ngôi nhà chung của muôn loài.</span></p></div>
+  <div class="why">Chữ "Điều này không chỉ xảy ra với vùng biển nơi Ken-ga…" là cây cầu: người viết đi từ một chi tiết trong sách ra một hiện tượng ngoài đời. Kiểu bài này cần đúng bước ấy — không chỉ kể lại truyện, mà nhìn từ truyện ra cuộc sống.</div>
+</div>
+
+<div class="box quote">
+<p>Mỗi người cần làm gì để môi trường sống trên Trái Đất luôn trong lành và sự sống của mọi sinh vật được bảo vệ? Mùa hè vừa qua, khi đi biển, em đã cố gắng không dùng bao gói và ống hút bằng nhựa, không vứt rác ra bãi biển,… Ở nhà và ở trường, em luôn có ý thức cùng các bạn giữ gìn môi trường xanh, sạch, đẹp, sử dụng tiết kiệm năng lượng,… Mỗi người trong chúng ta cần cố gắng hạn chế xả rác, khí thải, hoá chất độc hại vào môi trường. Đó có lẽ là cách mà ai cũng có thể làm được và là cách ứng xử đúng đắn nhất vì sự sống trên Trái Đất – hành tinh xanh.</p>
+<p>Cuốn sách <i>Chuyện con mèo dạy hải âu bay</i> đã mang đến cho em những hiểu biết thú vị về thế giới thiên nhiên, những bài học sâu sắc về tình yêu thương, sự sẻ chia. Đặc biệt, cuốn sách đã giúp em hiểu rõ hơn những điều em có thể làm để góp phần gìn giữ ngôi nhà Trái Đất của chúng ta.</p>
+<p class="small muted">(<i>Bài làm của học sinh</i>)</p>
+</div>
+
+<p class="gm"><b>(gợi mở)</b> Với mỗi mẩu câu, em tìm nó trong bài: nó ở đoạn mấy? Đoạn ấy người viết đang làm gì — giới thiệu sách, nêu điều mình nghĩ, đưa bằng chứng, kể việc mình làm ngoài đời, hay nói cuốn sách có ý nghĩa gì với mình?</p>
+<div class="ghep" data-ghep data-loi-co data-sai="Mỗi mẩu câu nằm ở đúng một chỗ trong bài. Em tìm mẩu câu ấy, xem nó ở đoạn nào, rồi hỏi: ở đoạn đó người viết đang làm gì?">
+  <h4>W3. Ghép mỗi lời ghi chú bên lề của SGK (cô viết gọn) với một mẩu câu của bài nằm ở đúng chỗ ghi chú ấy (luyện thêm)</h4>
+  <div class="cot">
+    <button type="button" data-cap="a">Giới thiệu tên sách, tác giả</button>
+    <button type="button" data-cap="b">Nêu hiện tượng đời sống và suy nghĩ về nó</button>
+    <button type="button" data-cap="c">Lí lẽ và bằng chứng làm rõ hiện tượng</button>
+    <button type="button" data-cap="d">Liên hệ với thực tế đời sống</button>
+    <button type="button" data-cap="e">Tầm quan trọng, ý nghĩa của hiện tượng</button>
+  </div>
+  <div class="cot">
+    <button type="button" data-cap="a">…của nhà văn Lu-i Xe-pun-ve-da.</button>
+    <button type="button" data-cap="b">…cái chết do ngộ độc váng dầu của chim hải âu Ken-ga…</button>
+    <button type="button" data-cap="c">"Thứ chất lỏng dính như keo…"</button>
+    <button type="button" data-cap="d">…em đã cố gắng không dùng bao gói và ống hút bằng nhựa…</button>
+    <button type="button" data-cap="e">…những bài học sâu sắc về tình yêu thương, sự sẻ chia.</button>
+  </div>
+  <div class="why">Bài tham khảo đi đúng thứ tự: sách → hiện tượng và suy nghĩ → lí lẽ, bằng chứng → việc em làm ngoài đời → ý nghĩa. Câu dẫn nguyên văn từ cuốn sách là bằng chứng; việc bạn ấy tự làm khi đi biển là liên hệ với đời sống của chính mình.</div>
+</div>
+
+<h3>7.2. Thực hành viết theo các bước</h3>
+<p><b>1. Trước khi viết</b></p>
+<div class="box">
+<p><b>Mục đích viết:</b> Trình bày ý kiến để chia sẻ về hiện tượng đời sống được gợi ra từ cuốn sách.</p>
+<p><b>Người đọc:</b> Thầy cô, bạn bè và những người quan tâm đến hiện tượng đời sống mà em đề cập.</p>
+</div>
+<p>a. <i>Lựa chọn đề tài</i>: Chọn một cuốn sách em yêu thích và suy nghĩ về một hiện tượng đời sống mà cuốn sách gợi ra.</p>
+<p>b. <i>Tìm ý</i>:</p>
+<ul>
+<li>Điều em muốn viết liên quan tới cuốn sách nào? Ai là tác giả của cuốn sách đó?</li>
+<li>Chi tiết, sự việc, nhân vật nào trong sách để lại cho em ấn tượng sâu sắc nhất?</li>
+<li>Chi tiết, sự việc, nhân vật đó khiến em suy nghĩ đến hiện tượng đời sống nào?</li>
+<li>Em có ý kiến như thế nào về hiện tượng đó?</li>
+</ul>
+<div class="bangdien" data-bang="viet-tim-y">
+  <p class="hoi">🗂️ Bảng tìm ý của em — mỗi ô vài chữ, không viết thành đoạn.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Câu hỏi tìm ý</th><th>Ý của em</th></tr>
+    <tr><th>Cuốn sách nào? Tác giả là ai?</th><td data-o></td></tr>
+    <tr><th>Chi tiết, sự việc, nhân vật ấn tượng nhất</th><td data-o></td></tr>
+    <tr><th>Khiến em nghĩ đến hiện tượng đời sống nào?</th><td data-o></td></tr>
+    <tr><th>Ý kiến của em về hiện tượng đó</th><td data-o></td></tr>
+  </table></div>
+</div>
+<p>c. <i>Lập dàn ý</i>: Sắp xếp các thông tin và ý tưởng theo một trật tự phù hợp.</p>
+<div class="box"><span class="label">Dàn ý (SGK)</span>
+<ul>
+<li>Mở bài: Giới thiệu tên sách, tác giả và hiện tượng đời sống mà cuốn sách gợi ra.</li>
+<li>Thân bài:
+  <ul><li>Nêu ý kiến (suy nghĩ) về hiện tượng.</li>
+  <li>Nêu lí lẽ và bằng chứng để làm rõ ý kiến về hiện tượng cần bàn luận.</li>
+  <li>Trình bày cụ thể về chi tiết, sự việc, nhân vật gợi lên hiện tượng cần bàn.</li></ul></li>
+<li>Kết bài: Nêu tầm quan trọng, ý nghĩa thực tế của hiện tượng đời sống được gợi ra từ cuốn sách.</li>
+</ul></div>
+
+<p><b>2. Viết bài</b></p>
+<p>Khi viết bài văn trình bày ý kiến về một hiện tượng đời sống được gợi ra từ cuốn sách đã đọc, em cần lưu ý: triển khai cụ thể các ý đã nêu trong dàn ý; phân biệt các phần Mở bài, Thân bài, Kết bài; có thể tách ý chính trong thân bài thành các đoạn văn.</p>
+<p class="gm"><b>(gợi mở)</b> Bài của em là bài <b>của em</b>: cuốn sách em đọc, chi tiết em nhớ, việc em làm. Bài tham khảo chỉ để em thấy mỗi phần cần làm gì — đừng chép câu của bạn ấy.</p>
+
+<p><b>3. Chỉnh sửa bài viết</b></p>
+<p>Đọc lại bài văn đã viết để bảo đảm:</p>
+<ul>
+<li>Tính chính xác của tên sách, tên tác giả và các chi tiết, sự việc, nhân vật.</li>
+<li>Viết đúng chính tả, dùng từ ngữ và câu phù hợp, sắp xếp các ý chặt chẽ.</li>
+</ul>
+
+<div class="dan ban"><span class="av" aria-hidden="true">🧒</span><div class="loi"><b>Bạn nhỏ:</b> Tớ viết lại đoạn mở bài của bài tham khảo theo trí nhớ, không nhìn sách. Chắc là đúng hết rồi cô nhỉ?</div></div>
+<button class="btn nho" type="button" data-toggle="goc-mo-bai">Hiện lại đoạn mở bài của bài tham khảo để so</button>
+<div class="reveal" id="goc-mo-bai"><div class="box quote"><p>Bố mẹ rất vui và thưởng cho em cuốn sách <i>Chuyện con mèo dạy hải âu bay</i> của nhà văn Lu-i Xe-pun-ve-da. Câu chuyện về cái chết do ngộ độc váng dầu của chim hải âu Ken-ga đã gợi cho em nhiều suy nghĩ về trách nhiệm của con người đối với môi trường sống trên Trái Đất.</p></div></div>
+<div class="tosang" data-tosang data-co-y-sai data-sai="Mở đoạn gốc ra, so từng cụm có thể bấm: tên sách từng chữ một, tên nhà văn từng tiếng một, cái chết của Ken-ga do đâu. Có ba chỗ sai.">
+  <h4>W4. Thám tử chính xác: đoạn bạn nhỏ viết lại nằm trong khung. Bấm vào ba chỗ bạn ấy viết sai tên sách, tên tác giả hoặc chi tiết (luyện thêm)</h4>
+  <div class="doan"><p>Bố mẹ rất vui và thưởng cho em cuốn sách Chuyện con mèo <span class="t" data-dung>dạy hải âu bơi</span> của nhà văn <span class="t" data-dung>Lu-i Xe-va-pun-đa</span>. Câu chuyện về cái chết do <span class="t" data-dung>mắc lưới đánh cá</span> của <span class="t">chim hải âu Ken-ga</span> đã gợi cho em nhiều suy nghĩ về <span class="t">trách nhiệm của con người</span> đối với môi trường sống trên Trái Đất.</p></div>
+  <div class="why">Ba chữ sai nhỏ mà làm hỏng cả đoạn: sách tên là <i>Chuyện con mèo dạy hải âu bay</i>, nhà văn là Lu-i Xe-pun-ve-da, Ken-ga chết do ngộ độc váng dầu. Vì thế SGK dặn soát "tính chính xác" trước tiên — viết theo trí nhớ thì phải đối chiếu lại với cuốn sách.</div>
+</div>
+
+<div class="bangdien" data-bang="viet-tu-soat">
+  <p class="hoi">✅ Bảng tự soát bài của em — gộp ba yêu cầu của hộp 📌 và hai điều SGK dặn khi chỉnh sửa. Bấm vào ô để đánh dấu.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Điều cần soát</th><th>Đạt?</th></tr>
+    <tr><th>Nêu được tên sách và tác giả</th><td data-tick="Đạt"></td></tr>
+    <tr><th>Nêu được hiện tượng đời sống gợi ra từ cuốn sách và ý kiến của em về hiện tượng đó</th><td data-tick="Đạt"></td></tr>
+    <tr><th>Sử dụng được lí lẽ và bằng chứng để làm rõ hiện tượng</th><td data-tick="Đạt"></td></tr>
+    <tr><th>Tên sách, tên tác giả, chi tiết, sự việc, nhân vật chính xác</th><td data-tick="Đạt"></td></tr>
+    <tr><th>Đúng chính tả, dùng từ và câu phù hợp, các ý sắp xếp chặt chẽ</th><td data-tick="Đạt"></td></tr>
+  </table></div>
+</div>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Viết bài văn</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-viet">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-viet">
+<ul>
+<li><b>W1.</b> <b>(b)</b>. Đoạn có hiện tượng (trêu chọc bạn bè cho vui) và có ý kiến ("trêu chọc bạn có khi gây ra những chuyện rất đau lòng"), nhưng chỉ nói "một cuốn truyện kể về một chú dế" — <b>không có tên sách, tên tác giả</b>. Sửa: nêu rõ <i>Dế Mèn phiêu lưu kí</i> của nhà văn Tô Hoài.</li>
+<li><b>W2.</b> Hai câu đầu kể điều xảy ra trong sách: Ken-ga ngập trong váng dầu, dầu tràn từ một con tàu ra vịnh. Ba câu cuối nói về đời sống thật: biển ở nhiều nơi bị ô nhiễm, sự sống bị đe doạ, môi trường là ngôi nhà chung. Câu thứ ba là <b>câu nối</b>: "Điều này không chỉ xảy ra với vùng biển nơi Ken-ga…" — người viết đi từ chuyện trong sách ra ngoài đời. Kiểu bài này cần đúng bước ấy: từ một chi tiết trong sách, nhìn ra một hiện tượng đời sống.</li>
+<li><b>W3.</b> Giới thiệu tên sách, tác giả ↔ "…của nhà văn Lu-i Xe-pun-ve-da."; Nêu hiện tượng và suy nghĩ ↔ "…cái chết do ngộ độc váng dầu…"; Lí lẽ và bằng chứng ↔ "Thứ chất lỏng dính như keo…"; Liên hệ thực tế ↔ "…không dùng bao gói và ống hút bằng nhựa…"; Tầm quan trọng, ý nghĩa ↔ "…những bài học sâu sắc về tình yêu thương, sự sẻ chia." Đoạn 1 có hai ghi chú (giới thiệu sách; nêu hiện tượng và suy nghĩ), đoạn 2: lí lẽ và bằng chứng, đoạn 3: liên hệ thực tế, đoạn 4: tầm quan trọng, ý nghĩa.</li>
+<li><b>W4.</b> Ba chỗ sai: <i>dạy hải âu bơi</i> (đúng: <i>dạy hải âu bay</i>), <i>Lu-i Xe-va-pun-đa</i> (đúng: <i>Lu-i Xe-pun-ve-da</i>), <i>mắc lưới đánh cá</i> (đúng: <i>ngộ độc váng dầu</i>). <i>Chim hải âu Ken-ga</i> và <i>trách nhiệm của con người</i> viết đúng. Sai tên sách, tên tác giả hay chi tiết thì người đọc mất lòng tin vào cả bài — đó là lí do SGK dặn soát "tính chính xác" trước tiên.</li>
+<li><b>Bài viết của em:</b> không có đáp án chung — em tự soát theo bảng trên. Bài tốt: nêu rõ tên sách, tác giả; có một chi tiết cụ thể trong sách; từ chi tiết ấy nói được một hiện tượng ngoài đời và ý kiến của em; có lí lẽ, bằng chứng; kết bài nói được ý nghĩa của hiện tượng.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- ============================ 8 ============================ -->
+<section id="s8" data-chang="🏁|Ngày hội với sách">
+<h2>8. Về đích: Ngày hội với sách (Nói và nghe)</h2>
+<p class="muctieu">Sau chặng này, em chuẩn bị được bài nói trình bày ý kiến về một vấn đề đời sống gợi ra từ cuốn sách: tìm ý, sắp xếp ý, tập nói trong một phút, và biết người nghe, người nói trao đổi với nhau thế nào.</p>
+<p class="small muted">SGK trang 106 – 107.</p>
+
+<div class="dan"><span class="av" aria-hidden="true">👩</span><div class="loi"><b>Cô:</b> Về đích rồi! Ngày hội với sách là lúc em mang sản phẩm, mang ý kiến của mình ra giới thiệu với cả lớp.</div></div>
+
+<div class="ghichep" data-luu="ngay-hoi-chon">
+  <p class="hoi">🏁 Ở ngày hội, em chọn việc nào — giới thiệu sản phẩm minh hoạ sách, hay trình bày ý kiến về một vấn đề cuốn sách gợi ra? Vì sao?</p>
+  <textarea rows="2"></textarea>
+</div>
+
+<div class="box quote"><p>Trong phần này, em và các bạn có thể giới thiệu sản phẩm minh hoạ sách hoặc trình bày ý kiến về một vấn đề trong đời sống được gợi ra từ cuốn sách đã đọc.</p></div>
+
+<h3>8.1. Giới thiệu sản phẩm minh hoạ sách</h3>
+<div class="box quote"><p>Mỗi cá nhân, nhóm, lớp có thể đăng kí tham gia trưng bày, giới thiệu pô-xtơ, tranh ảnh, mô hình minh hoạ cho các nội dung của sách tại lớp học, thư viện hoặc một không gian phù hợp khác trong trường học.</p></div>
+<p class="gm"><b>(gợi mở)</b> Khi giới thiệu sản phẩm, em nói ba điều: sản phẩm minh hoạ cho cuốn sách nào, chi tiết nào; em làm nó bằng cách nào; em muốn người xem cảm nhận được điều gì.</p>
+
+<h3>8.2. Trình bày ý kiến về một vấn đề trong đời sống được gợi ra từ cuốn sách đã đọc</h3>
+<div class="box quote"><p>Sau khi đọc một cuốn sách, có bao vấn đề đời sống được gợi lên, cần chia sẻ, trao đổi. Trong bài này, em sẽ tập trình bày ý kiến về một vấn đề như vậy.</p></div>
+<div class="box">
+<p><b>Mục đích nói:</b> Chia sẻ để mọi người hiểu rõ hơn về vấn đề đời sống được gợi ra từ cuốn sách đã đọc.</p>
+<p><b>Người nghe:</b> Thầy cô, các bạn trong nhóm, lớp và những người quan tâm.</p>
+</div>
+
+<p><b>1. Trước khi nói — a. Chuẩn bị nội dung nói</b></p>
+<ul>
+<li><i>Lựa chọn vấn đề</i>: Trong các vấn đề đời sống mà cuốn sách đã gợi lên, em hãy chọn một vấn đề mà mình có nhiều ý kiến muốn chia sẻ nhất để chuẩn bị bài nói.</li>
+<li><i>Tìm ý</i>: Để tìm ý cho bài nói, cần tự đặt ra và trả lời các câu hỏi như:
+  <ul><li><i>Vấn đề đời sống được gợi ra từ cuốn sách là gì?</i></li>
+  <li><i>Chi tiết, sự việc nào trong cuốn sách cho thấy rõ vấn đề ấy?</i></li>
+  <li><i>Ý kiến của em về vấn đề đó: Em đồng ý hay không đồng ý? Vì sao?</i></li>
+  <li><i>Hành động của em trước vấn đề cuốn sách đặt ra?</i></li>
+  <li><i>Em muốn nói gì với người nghe, với tác giả cuốn sách và những người đọc khác?</i></li></ul></li>
+</ul>
+
+<div class="ghep" data-ghep data-loi-co data-sai="Với mỗi ý bên phải, em hỏi: đây là một chuyện chung ngoài đời, một chi tiết trong truyện, một ý kiến có lí do, một việc em sẽ làm, hay một lời nhắn gửi?">
+  <h4>N1. Cột trái cô viết gọn năm câu hỏi tìm ý của SGK; cột phải là ý của một bạn nói về Chuyện con mèo dạy hải âu bay (lấy từ bài tham khảo). Ghép mỗi câu hỏi với ý trả lời cho nó (luyện thêm)</h4>
+  <div class="cot">
+    <button type="button" data-cap="a">Vấn đề đời sống cuốn sách gợi ra là gì?</button>
+    <button type="button" data-cap="b">Chi tiết nào trong sách cho thấy rõ vấn đề?</button>
+    <button type="button" data-cap="c">Em đồng ý hay không? Vì sao?</button>
+    <button type="button" data-cap="d">Em sẽ làm gì trước vấn đề ấy?</button>
+    <button type="button" data-cap="e">Em muốn nhắn gì tới người nghe, tác giả?</button>
+  </div>
+  <div class="cot">
+    <button type="button" data-cap="a">Trách nhiệm của con người với môi trường sống trên Trái Đất</button>
+    <button type="button" data-cap="b">Ken-ga toàn thân ngập trong lớp váng dầu</button>
+    <button type="button" data-cap="c">Rất đúng, vì biển và bầu trời là ngôi nhà chung của muôn loài</button>
+    <button type="button" data-cap="d">Không dùng ống hút nhựa, không vứt rác ra bãi biển</button>
+    <button type="button" data-cap="e">Mời các bạn cùng đọc; cảm ơn nhà văn Lu-i Xe-pun-ve-da</button>
+  </div>
+  <div class="why">Vấn đề là chuyện chung ngoài đời, chi tiết là điều trong sách, ý kiến phải có "vì sao", hành động là việc em làm được. Năm câu hỏi của SGK giúp bài nói đi từ cuốn sách ra cuộc sống, rồi trở về chính em.</div>
+</div>
+
+<ul>
+<li><i>Sắp xếp ý</i>: Sắp xếp các ý đã tìm được ở trên theo một trật tự lô-gíc và bổ sung, sửa chữa nếu cần để tạo thành dàn ý của bài nói với các thông tin cụ thể sau:
+  <ul><li>Tên sách và tác giả của cuốn sách đã gợi lên vấn đề đời sống mà em muốn bày tỏ ý kiến.</li>
+  <li>Vấn đề đời sống mà em muốn bàn.</li>
+  <li>Ý nghĩa của cuốn sách trong việc giúp em có cái nhìn sâu sắc, toàn diện hơn về các vấn đề đời sống.</li></ul></li>
+</ul>
+<div class="bangdien" data-bang="noi-dan-y">
+  <p class="hoi">🗂️ Dàn ý bài nói của em — nói khác viết: chỉ ghi ý, không viết thành câu dài.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Phần</th><th>Ý em sẽ nói</th></tr>
+    <tr><th>Tên sách và tác giả</th><td data-o></td></tr>
+    <tr><th>Vấn đề đời sống em muốn bàn (kèm chi tiết trong sách, ý kiến, hành động của em)</th><td data-o></td></tr>
+    <tr><th>Ý nghĩa của cuốn sách với em</th><td data-o></td></tr>
+  </table></div>
+</div>
+
+<p><b>b. Tập luyện</b></p>
+<div class="box quote"><p>Em có thể luyện nói một mình hoặc cùng các bạn trong nhóm. Nếu tập luyện theo nhóm, cần góp ý với nhau về nội dung và cách trình bày để bài nói được xây dựng hoàn chỉnh và khả năng thuyết trình của mỗi người được nâng lên.</p></div>
+<div class="dung" data-giay="60"><p>⏱️ <b>Thử thách một phút.</b> Nhìn dàn ý, em nói to phần đầu bài nói — tên sách, tác giả và vấn đề em muốn bàn — trong đúng một phút, mắt nhìn người nghe (hoặc nhìn gương). Nói xong, em tự hỏi: mình có đọc thuộc lòng không, hay đang nói với người nghe?</p></div>
+
+<p><b>2. Trình bày bài nói</b></p>
+<ul>
+<li>Trình bày lần lượt các ý đã được xác định trong dàn ý bài nói.</li>
+<li>Sử dụng lí lẽ và bằng chứng cụ thể (dẫn từ sách hoặc đời sống thực) để làm rõ vấn đề.</li>
+<li>Bộc lộ được cảm xúc, thái độ phù hợp.</li>
+</ul>
+<div class="bangdien" data-bang="noi-tu-danh-gia">
+  <p class="hoi">✅ Tự đánh giá sau khi nói — bấm vào ô để đánh dấu.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Điều SGK dặn khi trình bày</th><th>Đạt?</th></tr>
+    <tr><th>Trình bày lần lượt các ý trong dàn ý bài nói</th><td data-tick="Đạt"></td></tr>
+    <tr><th>Dùng lí lẽ và bằng chứng cụ thể (dẫn từ sách hoặc đời sống thực)</th><td data-tick="Đạt"></td></tr>
+    <tr><th>Bộc lộ được cảm xúc, thái độ phù hợp</th><td data-tick="Đạt"></td></tr>
+  </table></div>
+</div>
+
+<p><b>3. Sau khi nói</b></p>
+<p>Trao đổi về bài nói theo một số gợi ý sau:</p>
+<div class="tablewrap"><table>
+<tr><th>Người nghe</th><th>Người nói</th></tr>
+<tr><td>– Lắng nghe những chia sẻ của người nói và có thể ghi lại những điểm cần trao đổi, tranh luận.<br>– Có thể nêu ý kiến, đặt câu hỏi để tìm hiểu rõ hơn về vấn đề đời sống được gợi ra từ cuốn sách.</td><td>– Lắng nghe ý kiến, câu hỏi mà người nghe nêu ra.<br>– Trả lời để làm rõ hơn vấn đề được nêu hoặc có thể thảo luận để tìm hiểu thêm.</td></tr>
+</table></div>
+<p class="gm"><b>(gợi mở)</b> Khi nghe bạn nói, em ghi một câu hỏi thật sự muốn hỏi (bạn chọn chi tiết ấy vì sao? bạn đã làm gì chưa?). Khi bạn hỏi mình, em trả lời bằng một chi tiết trong sách hoặc một việc có thật.</p>
+
+<div class="answers">
+<h3>Gợi ý trả lời — Ngày hội với sách</h3>
+<button class="btn show-ans" type="button" data-toggle="ans-noi">Hiện gợi ý trả lời</button>
+<div class="reveal" id="ans-noi">
+<ul>
+<li><b>N1.</b> Vấn đề ↔ trách nhiệm của con người với môi trường sống; chi tiết ↔ Ken-ga ngập trong váng dầu; đồng ý hay không ↔ "Rất đúng, vì biển và bầu trời là ngôi nhà chung của muôn loài"; hành động ↔ không dùng ống hút nhựa, không vứt rác; lời nhắn ↔ mời các bạn cùng đọc, cảm ơn nhà văn. Để ý: vấn đề là điều <b>chung</b> ngoài đời; chi tiết là điều <b>trong sách</b>; ý kiến phải có <b>vì sao</b>; hành động là việc <b>em làm được</b>. Các ý bên phải đều lấy từ bài tham khảo — bài nói của em thì dùng cuốn sách của em.</li>
+<li><b>Bài nói của em:</b> không có đáp án chung. Bài nói tốt có đủ ba thông tin của dàn ý SGK, có ít nhất một chi tiết trong sách làm bằng chứng, và em nói với người nghe chứ không đọc thuộc.</li>
+</ul>
+</div>
+</div>
+
+<div class="xemlai" data-xem-lai="de-tu"><p>Lúc khởi hành, em đã nghĩ "những đôi mắt thấy chúng" là những đôi mắt thế nào. Bấm xem lại: sau khi tự đọc một cuốn sách, ghi nhật kí, sáng tạo, viết và nói về nó, em có muốn đổi hay thêm ý không?</p></div>
+<div class="ghichep" data-luu="de-tu-sau">
+  <p class="hoi">📜 Sau Bài 10, "những đôi mắt thấy" sách với em là…</p>
+  <textarea rows="2"></textarea>
+</div>
+<div class="box tip"><p><b>Hết Bài 10.</b> Cuốn sách em vừa đọc xong, em đặt lên góc đọc sách của lớp kèm một tờ giấy nhỏ ghi một câu văn em thích — để bạn tiếp theo có lí do mở nó ra.</p>
+<p>Điểm câu hỏi tự chấm của em: <span class="score" id="scoreEnd">0/0</span> <button class="btn" type="button" id="resetQuiz">Làm lại từ đầu (câu tự chấm và sao)</button></p></div>
+</section>
+
+<footer>Bài giảng soạn theo SGK Ngữ văn 6 – Kết nối tri thức với cuộc sống, Tập hai, Bài 10 <i>Cuốn sách tôi yêu</i> (trang 98 – 107). Các đoạn trích chép đúng theo SGK.</footer>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  /* ================= tiện ích ================= */
+  function $$(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
+  function tao(tag, cls, html){ var e = document.createElement(tag); if(cls) e.className = cls; if(html != null) e.innerHTML = html; return e; }
+  function nut(cls, html){ var b = tao("button", cls, html); b.type = "button"; return b; }
+  /* viết hoa chữ cái đầu (thẻ phân loại data-hoa): mọi thẻ cùng một hình thức mà người soạn không phải cắt chữ SGK */
+  function hoaChuDau(el){
+    var w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n, m;
+    while((n = w.nextNode())){
+      m = /[^\s"'“‘(\[–—-]/.exec(n.nodeValue);
+      if(m){ n.nodeValue = n.nodeValue.slice(0, m.index) + n.nodeValue.charAt(m.index).toUpperCase() + n.nodeValue.slice(m.index + 1); return; }
+    }
+  }
+  function tron(a){ for(var i = a.length - 1; i > 0; i--){ var j = Math.floor(Math.random() * (i + 1)); var t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+  function soLech(a, goc){ return a.filter(function(x, i){ return x !== goc[i]; }).length; }
+  /* xáo sao cho ít nhất một nửa số thẻ lệch chỗ (chỉ đổi 2 thẻ thì gần như đã xếp sẵn) */
+  function tronKhacGoc(goc){
+    if(goc.length < 2) return goc.slice();
+    var can = Math.max(2, Math.ceil(goc.length / 2)), tot = null;
+    for(var k = 0; k < 60; k++){
+      var b = tron(goc.slice()), l = soLech(b, goc);
+      if(l >= can) return b;
+      if(l && (!tot || l > soLech(tot, goc))) tot = b;
+    }
+    return goc.slice(1).concat(goc[0]);
+  }
+  function nhay(e){ e.classList.remove("moi"); void e.offsetWidth; e.classList.add("moi"); }
+  function norm(s){
+    return (s || "").normalize("NFC").toLowerCase().replace(/[.,!?;:"'“”…]/g, "").replace(/\s+/g, " ").trim();
+  }
+  function daXong(u){ return u.el.classList.contains("done"); }
+  /* nút phải bấm hai lần mới chạy (xoá điểm, xoá ghi chép): chống chạm nhầm trên điện thoại */
+  function haiLan(b, chuHoi, fn){
+    var goc = null, hen = null;
+    function tra(){ if(goc != null){ b.innerHTML = goc; goc = null; } b.classList.remove("xac-nhan"); clearTimeout(hen); }
+    b.addEventListener("click", function(){
+      if(goc == null){ goc = b.innerHTML; b.textContent = chuHoi; b.classList.add("xac-nhan"); hen = setTimeout(tra, 4000); return; }
+      tra(); fn();
+    });
+  }
+  /* thanh công cụ: gom chip + nút gợi ý vào một dải riêng (điện thoại: dải này cuộn ngang, điểm luôn thấy) */
+  (function(){
+    var w = document.querySelector(".toolbar .wrap"); if(!w) return;
+    var dai = tao("div", "chips"), cac = $$(".toolbar .chip, .toolbar .tbtn");
+    if(!cac.length) return;
+    w.insertBefore(dai, cac[0]); cac.forEach(function(e){ dai.appendChild(e); });
+  })();
+
+  /* ================= lưu tiến độ trên máy (localStorage) ================= */
+  var KHOA = "nv6:" + location.pathname;
+  var kho = {};
+  try{ kho = JSON.parse(localStorage.getItem(KHOA) || "{}") || {}; }catch(e){ kho = {}; }
+  kho.ghi = kho.ghi || {}; kho.cx = kho.cx || {}; kho.sao = kho.sao || {}; kho.nhap = kho.nhap || {};
+  function ghiKho(){ if(window.T6Chieu && T6Chieu.dangChieu()) return;   /* đang chiếu trên máy GV: không lưu bài của lớp */
+    try{ localStorage.setItem(KHOA, JSON.stringify(kho)); }catch(e){} }
+
+  /* ================= thông báo nhỏ ================= */
+  var dangNap = false;
+  var toastEl = tao("div", "toast"); toastEl.setAttribute("role", "status"); toastEl.setAttribute("aria-live", "polite");
+  document.body.appendChild(toastEl);
+  var toastHen = null;
+  function bao(msg){
+    if(dangNap) return;
+    toastEl.textContent = msg; toastEl.classList.add("hien");
+    clearTimeout(toastHen); toastHen = setTimeout(function(){ toastEl.classList.remove("hien"); }, 2800);
+  }
+
+  /* ================= sổ các khối tự chấm ================= */
+  var units = [];
+  function feedback(root, good, html){
+    var fb = root.querySelector(".fb");
+    if(!fb){ fb = tao("div", "fb"); root.appendChild(fb); }
+    fb.className = "fb show " + (good ? "good" : "bad");
+    fb.innerHTML = html;
+  }
+  /* CHẾ ĐỘ CHIẾU (cuối trang): GV chưa bấm 👁 → chưa chấm, chỉ báo "đã ghi nhận"; GV bấm thì fn chạy (chấm thật) */
+  function giuCham(root, fn, chon){
+    if(!(window.T6Chieu && T6Chieu.giu(root, fn, chon))) return false;
+    var fb = root.querySelector(".fb");
+    if(!fb){ fb = tao("div", "fb"); root.appendChild(fb); }
+    fb.className = "fb show cho"; fb.textContent = "✔ Đã ghi nhận — chờ thầy / cô bấm 👁 Hiện kết quả";
+    return true;
+  }
+  function whyText(root){ var w = root.querySelector(".why"); return w ? w.innerHTML : ""; }
+  /* lời báo khi làm sai: câu chung + lời nhắc riêng của khối (data-sai, KHÔNG chứa đáp án) */
+  function baoSai(root, trangThai, khuyen, conMot){
+    var rieng = (root.getAttribute("data-sai") || "").trim();
+    feedback(root, false, (conMot ? "Gần rồi! " : "") + trangThai + " " + (rieng ? "💡 " + rieng : khuyen));
+  }
+  /* layNhap / datNhap (tuỳ khối): bài ĐANG LÀM DỞ (chưa bấm Kiểm tra) cũng lưu, tải lại trang không mất */
+  function dangKy(root, loai, giai, veLai, layNhap, datNhap){
+    root.setAttribute("data-cham", loai);
+    units.push({el: root, loai: loai, solve: giai, nhap: layNhap, datNhap: datNhap, reset: function(){
+      root.classList.remove("done", "vua-xong");
+      var fb = root.querySelector(".fb"); if(fb){ fb.className = "fb"; fb.innerHTML = ""; }
+      veLai();
+    }});
+  }
+  function luuNhap(root){
+    if(dangNap) return;
+    for(var i = 0; i < units.length; i++){
+      var u = units[i];
+      if(u.el !== root) continue;
+      var s = (!daXong(u) && u.nhap) ? u.nhap() : null;
+      if(s == null) delete kho.nhap[i]; else kho.nhap[i] = s;
+      kho.ky = kyHieu(); ghiKho(); return;
+    }
+  }
+  /* chữ kí thứ tự các khối: sửa bài làm đổi chỗ khối thì bỏ bài làm dở cũ (tránh nạp nhầm khối) */
+  function kyHieu(){ return units.map(function(u){ return u.loai.charAt(0); }).join(""); }
+  function xong(root){
+    root.classList.add("done");
+    feedback(root, true, "Đúng rồi. " + whyText(root));
+    if(dangNap) return;
+    root.classList.remove("vua-xong"); void root.offsetWidth; root.classList.add("vua-xong");
+    luu(); updateScore(); capNhatChang(true);
+  }
+  function luu(){
+    kho.tong = units.length; kho.done = [];
+    units.forEach(function(u, i){ if(daXong(u)){ kho.done.push(i); delete kho.nhap[i]; } });
+    ghiKho();
+  }
+  function updateScore(){
+    var ok = units.filter(daXong).length, total = units.length;
+    var txt = ok + "/" + total + " đúng";
+    document.getElementById("scoreTop").textContent = txt;
+    document.getElementById("scoreEnd").textContent = txt;
+    document.getElementById("bar").style.width = (total ? (100 * ok / total) : 0) + "%";
+  }
+
+  /* ---- 1. trắc nghiệm và điền từ (div.q) ---- */
+  $$(".q").forEach(function(q){
+    var ans = q.getAttribute("data-ans") || "";
+    if(q.classList.contains("fill")){
+      var input = q.querySelector("input");
+      var btn = q.querySelector("[data-check]");
+      var accepted = ans.split("|").map(norm);
+      var check = function(){
+        if(q.classList.contains("done")) return;
+        var v = norm(input.value);
+        if(!v){ feedback(q, false, "Em chưa gõ gì cả."); return; }
+        if(giuCham(q, check)) return;
+        if(accepted.indexOf(v) >= 0){ input.readOnly = true; xong(q); }
+        else baoSai(q, "Chưa đúng.", "Em mở lại văn bản, tìm đúng câu đó rồi thử lại nhé.");
+      };
+      btn.addEventListener("click", check);
+      input.addEventListener("keydown", function(e){ if(e.key === "Enter"){ check(); } });
+      input.addEventListener("input", function(){ luuNhap(q); });
+      dangKy(q, "dien", function(){ input.value = ans.split("|")[0]; input.readOnly = true; xong(q); },
+        function(){ input.value = ""; input.readOnly = false; },
+        function(){ return input.value.trim() ? input.value : null; },
+        function(s){ if(typeof s === "string") input.value = s; });
+    } else {
+      var opts = $$(".opt", q);
+      opts.forEach(function(o){
+        o.addEventListener("click", function(){
+          if(q.classList.contains("done")) return;
+          if(giuCham(q, function(){ o.click(); }, o)) return;
+          if(o.getAttribute("data-v") === ans){ o.classList.add("right"); xong(q); }
+          else {
+            o.classList.add("wrong");
+            baoSai(q, "Chưa đúng.", "Em xem lại cách làm ở trên rồi chọn lại nhé.");
+          }
+        });
+      });
+      dangKy(q, "chon", function(){
+        opts.forEach(function(o){ o.classList.remove("wrong"); if(o.getAttribute("data-v") === ans) o.classList.add("right"); });
+        xong(q);
+      }, function(){ opts.forEach(function(o){ o.classList.remove("right", "wrong"); }); });
+    }
+  });
+
+  /* nút Kiểm tra + dòng hướng dẫn cho các khối mới */
+  /* thieu() (tuỳ chọn): lời nhắc "còn chưa làm hết" — báo ngay cả khi đang chiếu (không phải lời chấm) */
+  function nutKiemTra(root, fn, thieu){
+    var b = nut("btn", "Kiểm tra"); b.setAttribute("data-kiem", "");
+    var w = root.querySelector(".why");
+    root.insertBefore(b, w || null);
+    b.addEventListener("click", function(){
+      if(root.classList.contains("done")) return;
+      var t = thieu && thieu();
+      if(t){ feedback(root, false, t); return; }
+      if(giuCham(root, fn)) return;
+      fn();
+    });
+    return b;
+  }
+  function huongDan(root, truoc, chu){ root.insertBefore(tao("p", "hd", chu), truoc); }
+
+  /* ---- 2. ghép cặp [data-ghep] ---- */
+  $$("[data-ghep]").forEach(function(root){
+    var cots = $$(".cot", root);
+    if(cots.length !== 2) return;
+    var L = $$("[data-cap]", cots[0]), R = $$("[data-cap]", cots[1]);
+    var khung = tao("div", "cots");
+    root.insertBefore(khung, cots[0]); khung.appendChild(cots[0]); khung.appendChild(cots[1]);
+    function capCua(b){ return b.getAttribute("data-cap"); }
+    var tot = R.slice();
+    for(var k = 0; k < 30; k++){
+      tot = tron(R.slice());
+      var trung = tot.filter(function(r, i){ return L[i] && capCua(L[i]) === capCua(r); }).length;
+      if(R.length < 2 || trung < Math.max(1, Math.floor(R.length / 3))) break;
+    }
+    tot.forEach(function(r){ cots[1].appendChild(r); });
+    huongDan(root, khung, "Bấm một ô bên trái, rồi bấm ô bên phải hợp với nó. Bấm lại một ô đã ghép để gỡ ra. Ghép hết rồi bấm Kiểm tra.");
+    var cap = [], chon = null;
+    function ve(){
+      L.concat(R).forEach(function(b){
+        b.removeAttribute("data-so"); b.removeAttribute("data-mau");
+        b.classList.toggle("chon", b === chon); b.setAttribute("aria-pressed", b === chon ? "true" : "false");
+      });
+      cap.forEach(function(p, i){ p.forEach(function(b){ b.setAttribute("data-so", i + 1); b.setAttribute("data-mau", i % 6); }); });
+    }
+    function go(b){ cap = cap.filter(function(p){ return p[0] !== b && p[1] !== b; }); }
+    L.concat(R).forEach(function(b){
+      if(b.tagName === "BUTTON") b.type = "button";
+      b.addEventListener("click", function(){
+        if(root.classList.contains("done")) return;
+        var trai = L.indexOf(b) >= 0;
+        if(chon && (L.indexOf(chon) >= 0) !== trai){
+          var l = trai ? b : chon, r = trai ? chon : b;
+          go(l); go(r); cap.push([l, r]); chon = null;
+        } else if(chon === b){ chon = null; }
+        else { go(b); chon = b; }
+        ve(); luuNhap(root);
+      });
+    });
+    nutKiemTra(root, function(){
+      if(cap.length < L.length){ feedback(root, false, "Em còn " + (L.length - cap.length) + " ô bên trái chưa ghép."); return; }
+      var sai = cap.filter(function(p){ return capCua(p[0]) !== capCua(p[1]); }).length;
+      if(!sai) xong(root);
+      else baoSai(root, "Có " + sai + " cặp chưa đúng.", "Em đọc lại từng cặp, gỡ cặp mình còn phân vân rồi ghép lại nhé.", sai === 1);
+    }, function(){ return cap.length < L.length ? "Em còn " + (L.length - cap.length) + " ô bên trái chưa ghép." : ""; });
+    dangKy(root, "ghep", function(){
+      cap = L.map(function(l){ return [l, R.filter(function(r){ return capCua(r) === capCua(l); })[0]]; });
+      chon = null; ve(); xong(root);
+    }, function(){ cap = []; chon = null; ve(); },
+    function(){ return cap.length ? cap.map(function(p){ return [L.indexOf(p[0]), R.indexOf(p[1])]; }) : null; },
+    function(s){
+      if(!Array.isArray(s)) return;
+      cap = s.map(function(x){ return [L[x[0]], R[x[1]]]; }).filter(function(p){ return p[0] && p[1]; }); chon = null; ve();
+    });
+    ve();
+  });
+
+  /* ---- 3. sắp xếp thứ tự [data-xep] ---- */
+  $$("[data-xep]").forEach(function(root){
+    var ds = root.querySelector("ol, ul");
+    if(!ds) return;
+    var items = $$("li", ds).filter(function(li){ return li.parentNode === ds; });
+    items.forEach(function(li, k){
+      li.setAttribute("data-i", k);
+      var nd = tao("span", "nd"); while(li.firstChild) nd.appendChild(li.firstChild);
+      var dk = tao("span", "dk");
+      var len = nut("", "▲"), xuong = nut("", "▼");
+      len.setAttribute("aria-label", "Đưa lên trên"); xuong.setAttribute("aria-label", "Đưa xuống dưới");
+      dk.appendChild(len); dk.appendChild(xuong); li.appendChild(nd); li.appendChild(dk);
+      len.addEventListener("click", function(){
+        if(root.classList.contains("done")) return;
+        var p = li.previousElementSibling; if(p){ ds.insertBefore(li, p); nhay(li); len.focus(); luuNhap(root); }
+      });
+      xuong.addEventListener("click", function(){
+        if(root.classList.contains("done")) return;
+        var n = li.nextElementSibling; if(n){ ds.insertBefore(n, li); nhay(li); xuong.focus(); luuNhap(root); }
+      });
+    });
+    function tronLai(){ tronKhacGoc(items).forEach(function(li){ ds.appendChild(li); }); }
+    function hienTai(){ return $$("li", ds).filter(function(li){ return li.parentNode === ds; }); }
+    tronLai();
+    huongDan(root, ds, "Bấm ▲ ▼ để đưa từng thẻ lên hoặc xuống cho đúng thứ tự, rồi bấm Kiểm tra.");
+    nutKiemTra(root, function(){
+      var hien = $$("li", ds).filter(function(li){ return li.parentNode === ds; });
+      var sai = hien.filter(function(li, pos){ return +li.getAttribute("data-i") !== pos; }).length;
+      if(!sai) xong(root);
+      else baoSai(root, "Chưa đúng thứ tự — còn " + sai + " thẻ đứng chưa đúng chỗ.", "Em đọc lại, xem việc nào xảy ra trước rồi đổi chỗ nhé.", sai <= 2);
+    });
+    dangKy(root, "xep", function(){ items.forEach(function(li){ ds.appendChild(li); }); xong(root); }, tronLai,
+      function(){ return hienTai().map(function(li){ return +li.getAttribute("data-i"); }); },
+      function(s){
+        if(!Array.isArray(s) || s.length !== items.length || s.slice().sort(function(a, b){ return a - b; }).some(function(x, k){ return x !== k; })) return;
+        s.forEach(function(k){ ds.appendChild(items[k]); });
+      });
+  });
+
+  /* ---- 4. phân loại vào nhóm [data-nhom] ---- */
+  $$("[data-nhom]").forEach(function(root){
+    var nhom = (root.getAttribute("data-nhom") || "").split("|").map(function(s){
+      var i = s.indexOf(":"); return {k: s.slice(0, i).trim(), ten: s.slice(i + 1).trim()};
+    }).filter(function(g){ return g.k; });
+    var goc = $$("[data-vao]", root);
+    var the = goc.map(function(s){
+      var b = nut("the-nhom", s.innerHTML); b.setAttribute("data-vao", s.getAttribute("data-vao"));
+      if(root.hasAttribute("data-hoa")) hoaChuDau(b);
+      s.parentNode.removeChild(s); return b;
+    });
+    $$(".nguon", root).forEach(function(n){ n.parentNode.removeChild(n); });
+    var chon = null;
+    function boChon(){ if(chon){ chon.classList.remove("chon"); chon.setAttribute("aria-pressed", "false"); } chon = null; root.classList.remove("co-chon"); }
+    function dat(o){
+      if(root.classList.contains("done") || !chon) return;
+      var b = chon; boChon(); o.appendChild(b); nhay(b); b.focus(); luuNhap(root);
+    }
+    function oNhan(ten, lop){
+      var khung = tao("div", lop), dau = nut("ngan-dau", ten), o = tao("div", "nhom-o");
+      khung.appendChild(dau); khung.appendChild(o);
+      dau.addEventListener("click", function(){ dat(o); });
+      khung.addEventListener("click", function(e){ if(e.target === khung || e.target === o) dat(o); });
+      return {khung: khung, o: o};
+    }
+    var khay = oNhan("🧺 Thẻ chưa xếp (bấm vào đây để trả thẻ về)", "khay-o");
+    var ngans = tao("div", "ngans"), ngan = {};
+    nhom.forEach(function(g){ var x = oNhan(g.ten, "ngan"); x.o.setAttribute("data-k", g.k); ngan[g.k] = x.o; ngans.appendChild(x.khung); });
+    var w = root.querySelector(".why");
+    root.insertBefore(khay.khung, w || null); root.insertBefore(ngans, w || null);
+    huongDan(root, khay.khung, "Bấm một thẻ để nhấc lên, rồi bấm vào tên nhóm em muốn đặt thẻ vào. Xếp hết rồi bấm Kiểm tra.");
+    the.forEach(function(b){
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function(){
+        if(root.classList.contains("done")) return;
+        if(chon === b){ boChon(); return; }
+        boChon(); chon = b; b.classList.add("chon"); b.setAttribute("aria-pressed", "true"); root.classList.add("co-chon");
+      });
+    });
+    function veLai(){ boChon(); tron(the.slice()).forEach(function(b){ khay.o.appendChild(b); }); }
+    veLai();
+    nutKiemTra(root, function(){
+      var con = khay.o.children.length;
+      if(con){ feedback(root, false, "Còn " + con + " thẻ chưa xếp vào nhóm nào."); return; }
+      var sai = the.filter(function(b){ return b.parentNode.getAttribute("data-k") !== b.getAttribute("data-vao"); }).length;
+      if(!sai){ boChon(); xong(root); }
+      else baoSai(root, "Có " + sai + " thẻ đặt chưa đúng nhóm.", "Em xem lại cách nhận biết ở trên rồi chuyển thẻ nhé.", sai === 1);
+    }, function(){ var con = khay.o.children.length; return con ? "Còn " + con + " thẻ chưa xếp vào nhóm nào." : ""; });
+    dangKy(root, "nhom", function(){
+      boChon(); the.forEach(function(b){ var o = ngan[b.getAttribute("data-vao")]; if(o) o.appendChild(b); }); xong(root);
+    }, veLai,
+    function(){ var s = the.map(function(b){ return b.parentNode.getAttribute("data-k") || ""; }); return s.join("") ? s : null; },
+    function(s){ if(Array.isArray(s)) s.forEach(function(k, i){ if(the[i] && ngan[k]) ngan[k].appendChild(the[i]); }); });
+  });
+
+  /* ---- 5. tô sáng trong đoạn trích [data-tosang] ----
+     data-tosang rỗng  = một nhãn: bấm để tô / bỏ; cụm đúng mang data-dung.
+     data-tosang="k:Tên|…" = NHIỀU NHÃN: mỗi lần bấm đổi sang nhãn kế tiếp rồi về "chưa gán";
+     cụm đúng mang data-dung="k"; cụm không có data-dung là cụm nhiễu (phải để trống). */
+  /* dấu câu liền sau (hoặc ngoặc mở liền trước) một span.t inline-block: bọc chung vào span.t-dinh
+     (nowrap) để dấu không rơi xuống đầu dòng sau. Chỉ ở .doan thường — .theo-cau là chữ inline, tự đúng. */
+  function dinhDauCau(t){
+    if(!t.parentNode || t.closest(".theo-cau") || t.parentNode.classList.contains("t-dinh")) return;
+    var sau = t.nextSibling, truoc = t.previousSibling;
+    var mS = sau && sau.nodeType === 3 && /^[.,;:!?…)\]”’»"]+/.exec(sau.nodeValue);
+    var mT = truoc && truoc.nodeType === 3 && /[“‘(«\["]+$/.exec(truoc.nodeValue);
+    if(!mS && !mT) return;
+    var bo = tao("span", mT ? "t-dinh co-mo" : "t-dinh"); t.parentNode.insertBefore(bo, t);
+    if(mT){ truoc.nodeValue = truoc.nodeValue.slice(0, truoc.nodeValue.length - mT[0].length); bo.appendChild(document.createTextNode(mT[0])); }
+    bo.appendChild(t);
+    if(mS){ sau.nodeValue = sau.nodeValue.slice(mS[0].length); bo.appendChild(document.createTextNode(mS[0])); }
+  }
+  $$("[data-tosang]").forEach(function(root){
+    var ts = $$(".t", root);
+    ts.forEach(dinhDauCau);
+    var but = "";          /* bút nhãn đang chọn (nhiều nhãn); rỗng = bấm vòng */
+    var nhan = (root.getAttribute("data-tosang") || "").split("|").map(function(x){
+      var i = x.indexOf(":"); return i > 0 ? {k: x.slice(0, i).trim(), ten: x.slice(i + 1).trim()} : null;
+    }).filter(function(g){ return g && g.k; });
+    var nhieu = nhan.length >= 2;
+    function viTri(k){ for(var i = 0; i < nhan.length; i++){ if(nhan[i].k === k) return i; } return -1; }
+    function canCo(t){ return nhieu ? (t.getAttribute("data-dung") || "") : (t.hasAttribute("data-dung") ? "1" : ""); }
+    function dangCo(t){ return t.getAttribute("data-chon") || ""; }
+    function dat(t, k){
+      k = k || ""; t.setAttribute("data-chon", k); t.classList.toggle("chon", !!k);
+      t.setAttribute("aria-pressed", k ? "true" : "false");
+      if(nhieu){
+        var i = viTri(k);
+        if(i >= 0){ t.setAttribute("data-mau", i); t.setAttribute("data-ten", nhan[i].ten); }
+        else { t.removeAttribute("data-mau"); t.removeAttribute("data-ten"); }
+        t.setAttribute("aria-label", t.textContent.trim() + (i >= 0 ? " — " + nhan[i].ten : " — chưa gán nhãn"));
+      }
+    }
+    ts.forEach(function(t){
+      t.setAttribute("role", "button"); t.setAttribute("tabindex", "0"); dat(t, "");
+      var bam = function(){
+        if(root.classList.contains("done")) return;
+        if(!nhieu) dat(t, dangCo(t) ? "" : "1");
+        else if(but) dat(t, dangCo(t) === but ? "" : but);
+        else { var i = viTri(dangCo(t)); dat(t, i + 1 < nhan.length ? nhan[i + 1].k : ""); }
+        luuNhap(root);
+      };
+      t.addEventListener("click", bam);
+      t.addEventListener("keydown", function(e){ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); bam(); } });
+    });
+    var doan = root.querySelector(".doan") || (ts[0] && ts[0].parentNode);
+    if(doan && doan.parentNode === root){
+      if(nhieu){
+        var cg = tao("p", "chu-giai"); cg.setAttribute("role", "group"); cg.setAttribute("aria-label", "Bút nhãn");
+        var cacBut = nhan.map(function(g, i){
+          var x = nut("", "🖌️ " + g.ten); x.setAttribute("data-mau", i); x.setAttribute("data-but", g.k); x.setAttribute("aria-pressed", "false");
+          x.addEventListener("click", function(){
+            if(root.classList.contains("done")) return;
+            but = (but === g.k) ? "" : g.k;
+            cacBut.forEach(function(y){ y.setAttribute("aria-pressed", y.getAttribute("data-but") === but ? "true" : "false"); });
+          });
+          cg.appendChild(x); return x;
+        });
+        root.insertBefore(cg, doan);
+        huongDan(root, cg, "Bấm vào từ có gạch chấm: mỗi lần bấm đổi nhãn (" + nhan.map(function(g){ return g.ten; }).join(" → ") + " → bỏ). Nhanh hơn: chọn một bút 🖌️ rồi bấm các từ. Gán xong bấm Kiểm tra.");
+      } else huongDan(root, doan, "Bấm vào từ, cụm từ có gạch chấm để tô sáng; bấm lần nữa để bỏ. Chọn xong bấm Kiểm tra.");
+    }
+    nutKiemTra(root, function(){
+      var thua = ts.filter(function(t){ return dangCo(t) && !canCo(t); }).length;
+      var thieu = ts.filter(function(t){ return !dangCo(t) && canCo(t); }).length;
+      var lech = ts.filter(function(t){ return dangCo(t) && canCo(t) && dangCo(t) !== canCo(t); }).length;
+      if(!thua && !thieu && !lech){ xong(root); return; }
+      var y = [];
+      if(lech) y.push(lech + " chỗ gán chưa đúng nhãn");
+      if(thua) y.push("em đang " + (nhieu ? "gán nhãn" : "tô") + " thừa " + thua + " chỗ");
+      if(thieu) y.push("còn " + thieu + " chỗ em chưa " + (nhieu ? "gán nhãn" : "tô"));
+      baoSai(root, "Chưa đúng: " + y.join(", ") + ".", "Em đọc lại yêu cầu và đoạn trích rồi thử lại nhé.", thua + thieu + lech === 1);
+    });
+    dangKy(root, "tosang", function(){ ts.forEach(function(t){ dat(t, canCo(t)); }); xong(root); },
+      function(){ ts.forEach(function(t){ dat(t, ""); }); },
+      function(){ var s = ts.map(dangCo); return s.join("") ? s : null; },
+      function(s){ if(Array.isArray(s)) s.forEach(function(k, i){ if(ts[i]) dat(ts[i], nhieu ? (viTri(k) >= 0 ? k : "") : (k ? "1" : "")); }); });
+  });
+
+  /* ---- 6. thẻ lật (không chấm) ---- */
+  $$(".thelat .the").forEach(function(b){
+    b.setAttribute("aria-pressed", "false");
+    b.addEventListener("click", function(){
+      var on = !b.classList.contains("lat");
+      b.classList.toggle("lat", on); b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  });
+
+  /* ---- 7a. máy soát luật lục bát (.ghichep[data-luc-bat]) — KHÔNG chấm ----
+     Theo hộp 📌 Thơ lục bát (Bài 4): dòng sáu 6 tiếng, dòng tám 8 tiếng; tiếng 4 trắc, tiếng 6, 8 bằng;
+     dòng tám: tiếng 6 huyền thì tiếng 8 ngang và ngược lại. Máy chỉ đếm tiếng và đọc dấu thanh (chắc chắn);
+     VẦN thì máy KHÔNG phán (dễ sai) — chỉ chỉ ra cặp tiếng phải vần để em đọc to mà nghe. */
+  function thanhCua(w){
+    var d = w.normalize("NFD");
+    if(/[̣́̉̃]/.test(d)) return "T";
+    return /̀/.test(d) ? "huyền" : "ngang";
+  }
+  function soatLucBat(txt, lb){
+    lb.innerHTML = "";
+    var dongs = (txt || "").split("\n").map(function(x){ return x.trim(); }).filter(Boolean);
+    function tach(x){ return x.split(/\s+/).map(function(w){ return w.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ""); }).filter(Boolean); }
+    if(dongs.length && tach(dongs[0]).length <= 4) dongs.shift();          /* dòng đầu ngắn = nhan đề */
+    if(!dongs.length) return;
+    lb.appendChild(tao("p", "lb-dau", "🔍 Máy đếm giúp em (không chấm điểm): số tiếng, thanh của tiếng 4, 6, 8. Vần thì em đọc to lên mà nghe."));
+    var truoc = null;
+    dongs.forEach(function(x, j){
+      var tg = tach(x), can = j % 2 ? 8 : 6, p = tao("p", "lb-dong"), ghi = [];
+      var dau = tao("b"); dau.textContent = "Dòng " + (j + 1) + " (dòng " + (can === 6 ? "sáu" : "tám") + "): " + tg.length + " tiếng " + (tg.length === can ? "✓" : "— cần " + can + " tiếng");
+      p.appendChild(dau);
+      tg.forEach(function(w, i){
+        var s = tao("span", "lb-tieng"); s.textContent = w; var vt = i + 1;
+        if((vt === 4 || vt === 6 || vt === 8) && vt <= can){
+          var th = thanhCua(w), dung = vt === 4 ? th === "T" : th !== "T";
+          s.setAttribute("data-vt", vt + (th === "T" ? " T" : " B")); s.classList.add(dung ? "dat" : "lech");
+          if(!dung) ghi.push("tiếng " + vt + " (" + w + ") cần thanh " + (vt === 4 ? "trắc" : "bằng"));
+        }
+        p.appendChild(s); p.appendChild(document.createTextNode(" "));
+      });
+      if(can === 8 && tg.length >= 8){
+        var t6 = thanhCua(tg[5]), t8 = thanhCua(tg[7]);
+        if(t6 !== "T" && t6 === t8) ghi.push("tiếng 6 và tiếng 8 cùng thanh " + t6 + " — luật: một huyền, một ngang");
+      }
+      if(truoc && truoc.length >= 6 && tg.length >= 6){
+        /* dòng tám: tiếng cuối dòng sáu ↔ tiếng 6; dòng sáu tiếp theo: tiếng cuối dòng tám ↔ tiếng cuối */
+        var a = truoc[truoc.length - 1], b = tg[can === 8 ? 5 : tg.length - 1];
+        ghi.push("vần: " + a + " – " + b + " (đọc to: nghe có cùng vần không?)");
+      }
+      ghi.forEach(function(g){ p.appendChild(tao("span", "lb-ghi")).textContent = "• " + g; });
+      lb.appendChild(p); truoc = tg;
+    });
+  }
+
+  /* ---- 7. ghi chép của em: dự đoán, nhật kí cảm xúc (không chấm) ---- */
+  var xemLai = {}, xoaGhi = [];
+  function veXemLai(k){ (xemLai[k] || []).forEach(function(f){ f(); }); }
+  $$("[data-luu]").forEach(function(root){
+    var k = root.getAttribute("data-luu");
+    var ta = root.querySelector("textarea");
+    if(!ta){ ta = tao("textarea"); ta.rows = 3; root.appendChild(ta); }
+    if(!ta.getAttribute("aria-label")){ var h = root.querySelector(".hoi"); ta.setAttribute("aria-label", h ? h.textContent.trim() : "Ô ghi chép của em"); }
+    if(!ta.placeholder) ta.placeholder = "Em gõ vào đây…";
+    ta.value = kho.ghi[k] || "";
+    var cx = null;
+    if(root.hasAttribute("data-cam-xuc")){
+      var ds = (root.getAttribute("data-cam-xuc") || "😊 Vui|🥺 Thương|😮 Bất ngờ|🤔 Suy nghĩ|🥰 Xúc động|❓ Muốn hỏi thêm").split("|");
+      cx = tao("div", "camxuc"); cx.setAttribute("role", "group"); cx.setAttribute("aria-label", "Chọn cảm xúc của em");
+      ds.forEach(function(s){
+        s = s.trim(); if(!s) return;
+        var b = nut("", s); b.setAttribute("data-cx", s);
+        b.addEventListener("click", function(){ kho.cx[k] = (kho.cx[k] === s) ? "" : s; veCx(); ghiKho(); tt(); veXemLai(k); });
+        cx.appendChild(b);
+      });
+      root.insertBefore(cx, ta);
+    }
+    function veCx(){ if(cx) $$("button", cx).forEach(function(x){ x.setAttribute("aria-pressed", x.getAttribute("data-cx") === kho.cx[k] ? "true" : "false"); }); }
+    var lb = root.hasAttribute("data-luc-bat") ? tao("div", "lb-soat") : null;
+    if(lb){ lb.setAttribute("aria-live", "polite"); ta.parentNode.insertBefore(lb, ta.nextSibling); }
+    var dong = tao("div", "ghi-dong"), trangThai = tao("span", "luu-tt"), xoa = nut("btn nho", "Xoá ghi chép");
+    dong.appendChild(trangThai); dong.appendChild(xoa); root.appendChild(dong);
+    function tt(){ trangThai.textContent = (ta.value.trim() || kho.cx[k]) ? "✓ Đã lưu trên máy này" : "Không chấm điểm — chữ em gõ tự lưu trên máy này."; }
+    function veLb(){ if(lb) soatLucBat(ta.value, lb); }
+    ta.addEventListener("input", function(){ kho.ghi[k] = ta.value; ghiKho(); tt(); veXemLai(k); veLb(); });
+    function xoaO(){ ta.value = ""; kho.ghi[k] = ""; kho.cx[k] = ""; veCx(); tt(); veXemLai(k); veLb(); }
+    xoaGhi.push(xoaO);
+    haiLan(xoa, "Bấm lần nữa để xoá", function(){ xoaO(); ghiKho(); });
+    veCx(); tt(); veLb();
+  });
+  /* ---- 7b. bảng điền theo ô (.bangdien[data-bang]) — KHÔNG chấm: mỗi [data-o] (td của bảng, hoặc li của
+     ol.sodo) một ô gõ, lưu từng ô; td[data-tick] = ô tự đánh giá bấm đánh dấu (bảng kiểm). Bảng >= 3 cột ô
+     (hoặc data-xoay) ở màn hẹp: mỗi hàng thành một thẻ dọc (CSS .xoay), nhãn cột ghi trong data-nhan. ---- */
+  $$(".bangdien[data-bang]").forEach(function(root){
+    var k = root.getAttribute("data-bang"), cac = [], tick = [];
+    function nhanCot(td){
+      var tr = td.parentNode, bang = td.closest("table"), cot = Array.prototype.indexOf.call(tr.children, td);
+      var hang = tr.children[0], dau = bang && bang.rows[0] && bang.rows[0] !== tr ? bang.rows[0].children[cot] : null;
+      return [hang !== td && hang ? hang.textContent.trim() : "", dau ? dau.textContent.trim() : ""];
+    }
+    $$("table", root).forEach(function(bang){
+      var soO = Math.max.apply(null, [0].concat($$("tr", bang).map(function(tr){ return $$(":scope > [data-o]", tr).length; })));
+      if(soO >= 3 || root.hasAttribute("data-xoay")){
+        root.classList.add("xoay");
+        var r0 = bang.rows[0];
+        if(r0 && !r0.querySelector("td")){ r0.classList.add("dau-bang");
+          $$("td", bang).forEach(function(td){ var n = nhanCot(td)[1]; if(n) td.setAttribute("data-nhan", n); }); }
+      }
+    });
+    $$("[data-o]", root).forEach(function(o, i){
+      var ta = o.querySelector("textarea");
+      if(!ta){ ta = tao("textarea"); ta.rows = 2; o.appendChild(ta); }
+      var nh = o.tagName === "TD" ? nhanCot(o) : [((o.querySelector("b,strong") || o).textContent || "").trim().slice(0, 60)];
+      ta.setAttribute("aria-label", nh.filter(Boolean).join(" — ") || "Ô em điền");
+      var ki = k + ":" + i;
+      ta.value = kho.ghi[ki] || "";
+      ta.addEventListener("input", function(){ kho.ghi[ki] = ta.value; ghiKho(); tt(); });
+      cac.push({ta: ta, k: ki});
+    });
+    $$("[data-tick]", root).forEach(function(o, i){
+      var ki = k + ":v" + i, chu = o.getAttribute("data-tick") || "Đạt", b = nut("tick");
+      b.setAttribute("aria-label", nhanCot(o).concat([chu]).filter(Boolean).join(" — "));
+      function ve(){ var on = kho.ghi[ki] === "1"; b.setAttribute("aria-pressed", on ? "true" : "false"); b.textContent = (on ? "✓ " : "○ ") + chu; }
+      b.addEventListener("click", function(){ kho.ghi[ki] = kho.ghi[ki] === "1" ? "" : "1"; ghiKho(); ve(); tt(); });
+      o.appendChild(b); ve();
+      tick.push({ve: ve, k: ki});
+    });
+    var dong = tao("div", "ghi-dong"), trangThai = tao("span", "luu-tt"), xoa = nut("btn nho", "Xoá bảng");
+    dong.appendChild(trangThai); dong.appendChild(xoa); root.appendChild(dong);
+    function tt(){ trangThai.textContent = cac.some(function(c){ return c.ta.value.trim(); }) || tick.some(function(c){ return kho.ghi[c.k] === "1"; }) ? "✓ Đã lưu trên máy này" : cac.length ? "Không chấm điểm — chữ em gõ vào từng ô tự lưu trên máy này." : "Không chấm điểm — em tự đánh dấu, máy này tự lưu."; }
+    function xoaBang(){ cac.forEach(function(c){ c.ta.value = ""; kho.ghi[c.k] = ""; }); tick.forEach(function(c){ kho.ghi[c.k] = ""; c.ve(); }); tt(); }
+    xoaGhi.push(xoaBang);
+    haiLan(xoa, "Bấm lần nữa để xoá cả bảng", function(){ xoaBang(); ghiKho(); });
+    tt();
+  });
+  /* ---- 7c. bảng rộng hơn khung (.tablewrap cuộn ngang): dòng nhắc "vuốt ngang" ngay trên bảng ---- */
+  var vuot = $$(".tablewrap").map(function(w){
+    var p = tao("p", "vuot-ngang", "↔ Bảng rộng hơn màn hình — em vuốt ngang để xem hết các cột."); p.hidden = true;
+    w.parentNode.insertBefore(p, w); return {w: w, p: p};
+  });
+  function doVuot(){ vuot.forEach(function(v){ v.p.hidden = !(v.w.clientWidth && v.w.scrollWidth > v.w.clientWidth + 2); }); }
+  window.addEventListener("resize", doVuot);
+  document.addEventListener("click", function(){ setTimeout(doVuot, 30); });     /* bảng trong gợi ý vừa mở */
+  $$("[data-xem-lai]").forEach(function(root){
+    var k = root.getAttribute("data-xem-lai");
+    var b = nut("btn", root.getAttribute("data-nhan") || "🔮 Mở lại điều em đã ghi lúc trước");
+    var noi = tao("div", "noi");
+    root.appendChild(b); root.appendChild(noi);
+    function ve(){
+      noi.innerHTML = "";
+      var t = (kho.ghi[k] || "").trim(), c = kho.cx[k] || "";
+      if(!t && !c){ noi.appendChild(tao("p", "muted small", "Em chưa ghi gì ở ô đó. Không sao — em thử nhớ lại lúc đầu mình nghĩ thế nào nhé.")); return; }
+      if(c){ var p = tao("p"); p.textContent = "Cảm xúc em đã chọn: " + c; noi.appendChild(p); }
+      if(t){ var q = tao("div", "box quote"); q.textContent = t; noi.appendChild(q); }
+    }
+    (xemLai[k] = xemLai[k] || []).push(ve); ve();
+    b.addEventListener("click", function(){ root.classList.toggle("mo"); ve(); });
+  });
+
+  /* ---- 8. dừng lại nghĩ: nút đếm ngược ---- */
+  $$(".dung[data-giay]").forEach(function(root){
+    var s = parseInt(root.getAttribute("data-giay"), 10) || 30;
+    var b = nut("btn", "⏳ Cho em " + s + " giây suy nghĩ"); root.appendChild(b);
+    var chay = null;
+    b.addEventListener("click", function(){
+      if(chay) return;
+      var con = s; b.disabled = true; b.textContent = "⏳ Còn " + con + " giây… em nghĩ đi nhé";
+      chay = setInterval(function(){
+        con--;
+        if(con <= 0){ clearInterval(chay); chay = null; b.disabled = false; b.textContent = "✍️ Hết giờ! Ghi ý của em vào vở nhé (bấm để nghĩ thêm)"; }
+        else b.textContent = "⏳ Còn " + con + " giây… em nghĩ đi nhé";
+      }, 1000);
+    });
+  });
+
+  /* ================= hành trình các chặng ================= */
+  var map = document.getElementById("hanhTrinh");
+  /* số chặng = số ở đầu h2 của section ("0. Giới thiệu…" → chặng 0), để bản đồ, dòng cuối chặng
+     và tiêu đề mục dùng CÙNG một số; h2 không có số thì đếm từ 1 */
+  function soCua(sec, idx){ var h = sec.querySelector("h2"), m = h && /^\s*(\d+)\s*\./.exec(h.textContent); return m ? +m[1] : idx + 1; }
+  var changs = $$("section[data-chang]").map(function(sec, idx){
+    var raw = sec.getAttribute("data-chang"), i = raw.indexOf("|");
+    var c = {sec: sec, id: sec.id, so: soCua(sec, idx),
+      icon: i >= 0 ? raw.slice(0, i).trim() : "⭐", ten: i >= 0 ? raw.slice(i + 1).trim() : raw.trim()};
+    c.units = units.filter(function(u){ return sec.contains(u.el); });
+    c.chip = document.querySelector('.chip[href="#' + sec.id + '"]');
+    var cuoi = tao("div", "chang-cuoi"); c.cuoi = cuoi; c.txt = tao("span", "cc-chu"); cuoi.appendChild(c.txt);
+    if(!c.units.length){
+      c.nutXong = nut("btn", "✅ Em đã học xong chặng này");
+      c.nutXong.addEventListener("click", function(){ kho.sao[c.id] = 1; ghiKho(); capNhatChang(true); });
+      cuoi.appendChild(c.nutXong);
+    }
+    sec.appendChild(cuoi);
+    return c;
+  });
+  changs.forEach(function(c, idx){
+    var sau = changs[idx + 1];
+    if(sau && sau.id){ var a = tao("a"); a.textContent = "Sang chặng " + sau.so + ": " + sau.icon + " " + sau.ten + " →"; a.href = "#" + sau.id; c.cuoi.appendChild(a); }
+  });
+  var dem = null, huy = null, huyCuoi = null, saoTop = null;
+  if(map && changs.length){
+    var dau = tao("div", "ht-dau");
+    dau.appendChild(tao("span", "ht-ten")).textContent = map.getAttribute("data-ten") || "🗺️ Hành trình của em";
+    dem = dau.appendChild(tao("span", "ht-dem"));
+    map.appendChild(dau);
+    var duong = tao("div", "ht-duong");
+    changs.forEach(function(c){
+      var a = tao("a", "tram"); a.href = "#" + c.id;
+      a.appendChild(tao("span", "o")).textContent = c.icon;
+      a.appendChild(tao("span", "sao", "⭐")).setAttribute("aria-hidden", "true");
+      a.appendChild(tao("span", "ten")).textContent = c.so + ". " + c.ten;
+      duong.appendChild(a); c.tram = a;
+    });
+    map.appendChild(duong);
+    /* chia trạm đều các hàng (12 trạm ở 1280 px: 6 + 6, không để một trạm lẻ loi ở hàng dưới);
+       trạm đầu mỗi hàng không vẽ đường nối cụt từ mép trái */
+    var chiaHang = function(){
+      var w = duong.clientWidth, n = changs.length;
+      if(!w) return;
+      var toiDa = Math.max(1, Math.floor(w / 76)), moi = Math.ceil(n / Math.ceil(n / toiDa));
+      changs.forEach(function(c, i){
+        c.tram.style.flex = "0 0 " + (100 / moi - 0.01) + "%"; c.tram.style.maxWidth = "none";
+        c.tram.classList.toggle("dau-hang", i > 0 && i % moi === 0);
+      });
+    };
+    chiaHang(); window.addEventListener("resize", chiaHang);
+    huy = map.appendChild(tao("div", "huy-hieu"));
+    huy.textContent = (map.getAttribute("data-huy-hieu") || "🏅 Huy hiệu hoàn thành bài học") + " — em đã đi hết hành trình!";
+    map.appendChild(tao("p", "ht-chu", "Mỗi chặng xong em được một ⭐. Tiến độ tự lưu trên máy này; muốn làm lại thì bấm nút <i>Làm lại từ đầu</i> ở cuối trang."));
+    var pr = document.querySelector(".progress");
+    if(pr){ saoTop = tao("span", ""); saoTop.id = "saoTop"; pr.appendChild(saoTop); }
+    /* huy hiệu ngay tại cuối trang (chỗ em vừa làm xong), kèm lời khen theo chủ điểm: data-loi-khen */
+    var se = document.getElementById("scoreEnd"), khoiDiem = se && se.parentNode;
+    if(khoiDiem){
+      huyCuoi = tao("div", "huy-hieu huy-hieu-cuoi");
+      huyCuoi.textContent = map.getAttribute("data-huy-hieu") || "🏅 Huy hiệu hoàn thành bài học";
+      var lk = (map.getAttribute("data-loi-khen") || "").trim();
+      if(lk) huyCuoi.appendChild(tao("span", "khen")).textContent = lk;
+      khoiDiem.parentNode.insertBefore(huyCuoi, khoiDiem);
+    }
+  }
+  function capNhatChang(coBao){
+    if(!changs.length) return;
+    var truoc = changs.filter(function(c){ return kho.sao[c.id]; }).length;
+    changs.forEach(function(c){
+      if(c.units.length && c.units.every(daXong) && !kho.sao[c.id]){
+        kho.sao[c.id] = 1; ghiKho();
+        if(coBao) bao("⭐ Em hoàn thành chặng " + c.so + ": " + c.ten + "!");
+      }
+      var x = !!kho.sao[c.id], lam = c.units.filter(daXong).length;
+      if(c.tram){ c.tram.classList.toggle("xong", x); c.tram.setAttribute("aria-label", "Chặng " + c.so + ": " + c.ten + (x ? " — đã xong" : "")); }
+      if(c.chip) c.chip.classList.toggle("xong", x);
+      c.cuoi.classList.toggle("xong", x);
+      c.txt.textContent = x ? "⭐ Em đã hoàn thành chặng " + c.so + " — " + c.ten + "!"
+        : (c.units.length ? "🎯 Chặng " + c.so + ": em đã làm đúng " + lam + "/" + c.units.length + " câu tự chấm. Làm đúng hết để nhận ⭐."
+                          : "🎯 Chặng " + c.so + ": đọc kĩ, trả lời vào vở, rồi bấm nút bên cạnh để nhận ⭐.");
+      if(c.nutXong) c.nutXong.hidden = x;
+    });
+    var n = changs.filter(function(c){ return kho.sao[c.id]; }).length;
+    if(dem) dem.textContent = "⭐ " + n + "/" + changs.length + " chặng";
+    if(saoTop) saoTop.textContent = "⭐ " + n + "/" + changs.length;
+    if(huy) huy.classList.toggle("hien", n === changs.length);
+    if(huyCuoi) huyCuoi.classList.toggle("hien", n === changs.length);
+    if(coBao && n === changs.length && truoc < n && map) setTimeout(function(){ bao(map.getAttribute("data-huy-hieu") || "🏅 Em đã đi hết hành trình!"); }, 1200);
+  }
+
+  /* ================= nạp lại tiến độ, làm lại ================= */
+  function napLai(){
+    if(kho.tong !== units.length){ kho.done = []; if(kho.tong != null) kho.sao = {}; return; }
+    dangNap = true;
+    (kho.done || []).forEach(function(i){ var u = units[i]; if(u && !daXong(u)) u.solve(); });
+    dangNap = false;
+  }
+  function napNhap(){
+    if(kho.ky !== kyHieu()){ kho.nhap = {}; return; }
+    dangNap = true;
+    Object.keys(kho.nhap).forEach(function(i){ var u = units[+i]; if(u && !daXong(u) && u.datNhap){ try{ u.datNhap(kho.nhap[i]); }catch(e){} } });
+    dangNap = false;
+  }
+  /* xoá giao diện (mở lại trang / Làm lại): mọi khối về chưa làm, thẻ lật úp lại, ô xem lại đóng */
+  function xoaGiaoDien(){
+    units.forEach(function(u){ u.reset(); });
+    $$(".thelat .the.lat").forEach(function(b){ b.classList.remove("lat"); b.setAttribute("aria-pressed", "false"); });
+    $$(".xemlai.mo").forEach(function(x){ x.classList.remove("mo"); });
+    updateScore();
+  }
+  /* nút Làm lại: tách khỏi dòng điểm (xuống dòng riêng, căn phải) và phải bấm hai lần */
+  (function(){
+    var rs = document.getElementById("resetQuiz");
+    var cha = rs.parentNode;
+    if(cha && !cha.classList.contains("dong-lam-lai")){
+      var dong = tao("p", "dong-lam-lai"); cha.parentNode.insertBefore(dong, cha.nextSibling); dong.appendChild(rs);
+    }
+    haiLan(rs, "Bấm lần nữa để xoá hết điểm và sao", function(){
+      xoaGiaoDien(); kho.done = []; kho.sao = {}; kho.nhap = {}; kho.tong = units.length; ghiKho(); capNhatChang(false);
+      bao("Đã làm lại từ đầu. Cố lên nhé! 💪");
+    });
+    /* xoá mọi ghi chép (khi đưa máy cho bạn khác dùng) — cũng phải bấm hai lần */
+    if(xoaGhi.length){
+      var xg = nut("btn", "Xoá mọi ghi chép của em"); xg.id = "xoaGhiHet";
+      rs.parentNode.appendChild(document.createTextNode(" ")); rs.parentNode.appendChild(xg);
+      haiLan(xg, "Bấm lần nữa để xoá mọi ghi chép", function(){
+        xoaGhi.forEach(function(f){ f(); }); kho.ghi = {}; kho.cx = {}; ghiKho();
+        bao("Đã xoá mọi ghi chép trên máy này.");
+      });
+    }
+  })();
+
+  /* ================= nút Hiện/Ẩn gợi ý ================= */
+  var toggles = $$("[data-toggle]");
+  function setOpen(btn, open){
+    var box = document.getElementById(btn.getAttribute("data-toggle"));
+    if(!box) return;
+    box.classList.toggle("open", open);
+    var base = btn.getAttribute("data-label") || btn.textContent.replace(/^(Hiện|Ẩn) /, "");
+    btn.setAttribute("data-label", base);
+    btn.textContent = (open ? "Ẩn " : "Hiện ") + base;
+  }
+  toggles.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var box = document.getElementById(btn.getAttribute("data-toggle"));
+      setOpen(btn, !(box && box.classList.contains("open")));
+    });
+  });
+  document.getElementById("openAll").addEventListener("click", function(){ toggles.forEach(function(b){ setOpen(b, true); }); });
+  document.getElementById("closeAll").addEventListener("click", function(){ toggles.forEach(function(b){ setOpen(b, false); }); });
+
+  /* ================= chip của mục đang đọc (scrollspy) ================= */
+  var chipDangDoc = (function(){
+    var bar = document.querySelector(".toolbar"), dai = document.querySelector(".toolbar .chips");
+    var muc = $$(".toolbar .chip").map(function(c){
+      var h = c.getAttribute("href") || ""; return {chip: c, sec: h.charAt(0) === "#" ? document.getElementById(h.slice(1)) : null};
+    }).filter(function(m){ return m.sec; });
+    var dang = null, hen = 0, ghim = null;
+    function tim(){
+      hen = 0;
+      if(!muc.length) return null;
+      /* ngưỡng = đáy thanh công cụ hoặc scroll-padding-top (chỗ neo #sN dừng lại), lấy cái lớn hơn */
+      var de = document.documentElement, spt = parseFloat(getComputedStyle(de).scrollPaddingTop) || 0;
+      var day = Math.max(bar ? bar.getBoundingClientRect().bottom : 0, spt) + 16, cur = null;
+      /* vừa bấm chip / trạm / "Sang chặng": giữ mục ấy khi nó còn trên màn hình (mục cuối trang ngắn không lên tới đỉnh được) */
+      if(ghim){ var rg = ghim.sec.getBoundingClientRect(); if(rg.bottom > day && rg.top < window.innerHeight) cur = ghim; else ghim = null; }
+      if(!cur){
+        muc.forEach(function(m){ if(m.sec.getBoundingClientRect().top <= day) cur = m; });
+        if(window.innerHeight + window.scrollY >= de.scrollHeight - 2) cur = muc[muc.length - 1];   /* cuối trang */
+      }
+      if(cur !== dang){
+        if(dang){ dang.chip.classList.remove("dang"); dang.chip.removeAttribute("aria-current"); }
+        dang = cur;
+        if(cur){
+          cur.chip.classList.add("dang"); cur.chip.setAttribute("aria-current", "true");
+          if(dai && dai.scrollWidth > dai.clientWidth + 1){          /* điện thoại: kéo dải chip tới chip này */
+            var rc = cur.chip.getBoundingClientRect(), rd = dai.getBoundingClientRect();
+            if(rc.left < rd.left || rc.right > rd.right) dai.scrollLeft += rc.left - rd.left - (rd.width - rc.width) / 2;
+          }
+        }
+      }
+      return cur ? cur.sec.id : null;
+    }
+    document.addEventListener("click", function(e){
+      var a = e.target.closest && e.target.closest('a[href^="#"]'); if(!a) return;
+      var id = a.getAttribute("href").slice(1);
+      ghim = muc.filter(function(m){ return m.sec.id === id; })[0] || null;
+      if(!hen) hen = requestAnimationFrame(tim);
+    });
+    ["wheel", "touchstart", "keydown"].forEach(function(t){ window.addEventListener(t, function(){ ghim = null; }, {passive: true}); });
+    window.addEventListener("scroll", function(){ if(!hen) hen = requestAnimationFrame(tim); }, {passive: true});
+    window.addEventListener("resize", function(){ if(!hen) hen = requestAnimationFrame(tim); });
+    return tim;
+  })();
+
+  napLai(); napNhap(); updateScore(); capNhatChang(false); chipDangDoc();
+
+  /* cửa cho script kiểm thử (thu_tu_cham.py, chup_anh_trang.py) — học sinh không dùng */
+  doVuot();
+  window.NV6 = {
+    units: units, khoa: KHOA, kho: function(){ return kho; },
+    xoaGiaoDien: xoaGiaoDien, chipDangDoc: chipDangDoc, doVuot: doVuot,
+    napLai: function(){ napLai(); napNhap(); updateScore(); capNhatChang(false); },
+    giaiHet: function(){
+      dangNap = true; units.forEach(function(u){ if(!daXong(u)) u.solve(); }); dangNap = false;
+      changs.forEach(function(c){ kho.sao[c.id] = 1; }); luu(); updateScore(); capNhatChang(false);
+    }
+  };
+})();
+
+/* ================= CHẾ ĐỘ CHIẾU — DÙNG CHUNG, KHÔNG SỬA CHO TỪNG BÀI =================
+     GV chiếu MỘT phần lên máy chiếu, phủ kín màn hình. Trang chiếu = .act, .ex, [data-chieu] ngoài cùng.
+     Khối được CHUYỂN (không sao chép) vào #tc-san → bài đang làm dở, hình động giữ nguyên; thoát là trả về chỗ cũ.
+     Khi chiếu: câu trắc nghiệm / nút Kiểm tra CHƯA chấm — engine gửi hàm chấm vào
+     T6Chieu.giu(); GV bấm 👁 thì mới chấm lựa chọn cuối cùng. Tiến độ và chữ em gõ không lưu vào máy GV.
+     Widget khám phá (MIEN) không bị giữ: phản hồi của chúng là bài học, không phải lời chấm. */
+(function(){
+  "use strict";
+  var $  = function(s,r){ return (r||document).querySelector(s); };
+  var $$ = function(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+  var CHON = '.quiz,[data-nhom],[data-ghep],[data-xep],[data-tosang],.thelat,[data-chieu]';   /* ô ghi chép riêng của em: không chiếu */
+  var MIEN = '.thelat,.ghichep,[data-chieu-cham="ngay"]';
+  var CHAM = '[data-cham]';
+  var KHOA = 't6-chieu:' + location.pathname;
+  var ZMAX = 1.9, ZMIN = 1, RONG = 980, NGHI = 3000;
+  var TRANG = $$(CHON).filter(function(n){ return !(n.parentElement && n.parentElement.closest(CHON)); });
+  var dang = null, cho = null, zHT = 1, zTay = 0, keo = false, tuThoatFS = false, HANG = {}, LO = {};
+
+  /* khối chấm có thể CHÍNH LÀ trang chiếu (Ngữ văn: .nhom, .xep… vừa là khối vừa là trang) */
+  function coCham(n){ return (n.matches(CHAM) ? [n] : []).concat($$(CHAM, n)).some(function(w){ return !w.closest(MIEN); }); }
+  function dangGiu(node){
+    if(!dang || !node || !node.closest || !san.classList.contains('tc-giu')) return false;
+    if(!san.contains(node) || node.closest(MIEN)) return false;
+    return !(node.matches('[data-act]') && !coCham(node));
+  }
+  function hoan(node, fn){
+    if(!dangGiu(node)) return false;
+    (HANG[dang._tcId] = HANG[dang._tcId] || []).push(fn);
+    return true;
+  }
+  function chayHang(id){
+    var q = HANG[id] || []; HANG[id] = [];
+    q.forEach(function(fn){ try{ fn(); }catch(e){ if(window.console) console.error(e); } });
+  }
+  /* chấm HOÃN: mỗi widget giữ MỘT hàm chấm (lần bấm sau thay lần trước) → GV bấm 👁 thì chấm lựa chọn cuối cùng */
+  function giu(host, fn, chon){
+    if(!dangGiu(host)) return false;
+    host._tcCho = fn;
+    var q = HANG[dang._tcId] = HANG[dang._tcId] || [];
+    if(!host._tcChay || q.indexOf(host._tcChay) < 0){
+      host._tcChay = function(){
+        var f = host._tcCho; host._tcCho = null;
+        $$('.tc-chon', host).forEach(function(x){ x.classList.remove('tc-chon'); });
+        if(f) f();
+      };
+      q.push(host._tcChay);
+    }
+    if(chon){ $$('.tc-chon', host).forEach(function(x){ x.classList.remove('tc-chon'); }); chon.classList.add('tc-chon'); }
+    return true;
+  }
+  window.T6Chieu = { hoan: hoan, dangGiu: dangGiu, giu: giu, dangChieu: function(){ return !!dang; } };
+  if(!TRANG.length) return;
+
+  /* ---------- tên + mã từng trang (mã dùng cho #chieu=<mã> và nhớ chỗ khi tải lại) ---------- */
+  var daDung = {};
+  TRANG.forEach(function(n, i){
+    var id = n.getAttribute('data-chieu') || n.getAttribute('data-act'), so = $('.no', n);
+    if(!id && n.classList.contains('ex') && so) id = 'bt-' + so.textContent.replace(/\D+/g, '-').replace(/^-|-$/g, '');
+    if(!id || daDung[id]) id = 'trang-' + (i + 1);
+    daDung[id] = 1; n._tcId = id;
+  });
+  function tenTrang(n){
+    var t = n.getAttribute('data-chieu-ten'), h = $('h4', n) || $('h3', n) || $('.label', n) || $('.hoi', n) || $('.stem', n), so = $('.no', n);
+    if(!t) t = h ? h.textContent : (so ? 'Bài ' + so.textContent.replace(/\.\s*$/, '') : '');
+    return t.replace(/\s+/g, ' ').trim();
+  }
+
+  /* ---------- sân chiếu ---------- */
+  var san = document.createElement('div');
+  san.id = 'tc-san'; san.hidden = true;
+  san.setAttribute('role', 'dialog'); san.setAttribute('aria-modal', 'true'); san.setAttribute('aria-label', 'Chế độ chiếu');
+  san.innerHTML =
+    '<div class="tc-khung" tabindex="-1"><div class="tc-noi"><div class="tc-de"></div></div></div>' +
+    '<button type="button" class="tc-giay" hidden title="Bấm để tắt đồng hồ"></button>' +
+    '<div class="tc-bao" hidden></div><div class="tc-den" hidden></div>' +
+    '<div class="tc-hen" hidden><b>Cho cả lớp suy nghĩ:</b> <button type="button" data-p="0.5">30 giây</button>' +
+      '<button type="button" data-p="1">1 phút</button><button type="button" data-p="2">2 phút</button>' +
+      '<button type="button" data-p="3">3 phút</button><button type="button" data-p="5">5 phút</button>' +
+      '<button type="button" data-p="0">Tắt</button></div>' +
+    '<div class="tc-thanh" role="toolbar" aria-label="Điều khiển trình chiếu">' +
+      '<button type="button" data-l="truoc" title="Phần trước (phím ← hoặc PageUp)">◀</button>' +
+      '<span class="tc-so"></span>' +
+      '<button type="button" data-l="sau" title="Phần sau (phím → hoặc PageDown)">▶</button>' +
+      '<span class="tc-ten"></span><span class="tc-vach"></span>' +
+      '<button type="button" data-l="ketqua" aria-pressed="false" title="Máy chỉ công bố đúng / sai khi thầy cô bấm nút này">👁 Hiện kết quả</button>' +
+      '<button type="button" data-l="goiy" aria-pressed="false" title="Mở / đóng gợi ý của phần này">💡 Gợi ý</button>' +
+      '<button type="button" data-l="doichieu" aria-pressed="false" title="Mở / đóng phần đối chiếu (lời giải) của phần này">📖 Đối chiếu</button>' +
+      '<button type="button" data-l="lamlai" title="Cho em khác lên làm: tải lại trang, quay về đúng phần này (các phần khác cũng về ban đầu)">↺ Làm lại</button>' +
+      '<button type="button" data-l="cham" aria-pressed="false" title="Phát âm thanh chậm lại (như nút Chậm trên thanh công cụ)">🐢 Chậm</button>' +
+      '<span class="tc-vach"></span>' +
+      '<button type="button" data-l="gio" title="Hẹn giờ cho cả lớp suy nghĩ">⏱</button>' +
+      '<button type="button" data-l="nho" title="Thu nhỏ">A−</button>' +
+      '<button type="button" data-l="to" title="Phóng to">A+</button>' +
+      '<button type="button" data-l="toan" title="Phủ kín màn hình / thu về cửa sổ (phím F)">⛶</button>' +
+      '<button type="button" data-l="thoat" title="Thoát chế độ chiếu (phím Esc)">✕ Thoát</button>' +
+    '</div>';
+  document.body.appendChild(san);
+  var khung = $('.tc-khung', san), noi = $('.tc-noi', san), de = $('.tc-de', san);
+  var giay = $('.tc-giay', san), bao_ = $('.tc-bao', san), den = $('.tc-den', san), hen = $('.tc-hen', san);
+  var nut = {}; $$('[data-l]', san).forEach(function(b){ nut[b.getAttribute('data-l')] = b; });
+
+  /* ---------- nút mở trên trang: ⛶ Chiếu ở góc mỗi phần + ⛶ Trình chiếu trên thanh công cụ ---------- */
+  TRANG.forEach(function(n){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'tc-mo'; b.textContent = '⛶ Chiếu';
+    b.title = 'Chiếu riêng phần này lên màn hình, phủ kín màn hình (phím F)';
+    b.addEventListener('click', function(){ vao(n, true); });
+    /* Khối là LƯỚI / hàng FLEX (vd. .thelat của Ngữ văn: display:grid): nút chèn vào trong sẽ thành MỘT Ô của lưới
+       (ô to bằng thẻ, bo tròn thành hình tròn — lỗi 25/9) → đặt nút trên một hàng riêng NGAY TRƯỚC khối.
+       Khối thường (block): nút nổi ở góc phải, bên trong khối. */
+    if(/^(inline-)?(grid|flex)$|^table/.test(getComputedStyle(n).display)){
+      var h = document.createElement('div'); h.className = 'tc-mo-hang'; h.appendChild(b);
+      n.parentNode.insertBefore(h, n);
+    } else n.insertBefore(b, n.firstChild);
+    n._tcNut = b;
+  });
+  function hien(n){ return n === dang || n.getClientRects().length > 0; }
+  function trangGan(){
+    var tb = $('.toolbar'), tren = tb ? tb.getBoundingClientRect().bottom + 20 : 20;
+    return TRANG.filter(hien).filter(function(n){ return n.getBoundingClientRect().bottom > tren; })[0] || TRANG.filter(hien)[0];
+  }
+  var tbw = $('.toolbar .wrap');
+  if(tbw){
+    var bt = document.createElement('button');
+    bt.type = 'button'; bt.className = 'tbtn tc-tb'; bt.textContent = '⛶ Trình chiếu';
+    bt.title = 'Chiếu từng phần của bài lên máy chiếu, bắt đầu từ phần đang xem (phím F)';
+    bt.addEventListener('click', function(){ vao(trangGan(), true); });
+    var ref = $('[data-motion]', tbw);
+    if(ref && ref.parentNode === tbw) tbw.insertBefore(bt, ref); else tbw.appendChild(bt);
+  }
+
+  /* ---------- vào / chuyển / thoát ---------- */
+  function vao(n, phuKin){
+    if(!n || n === dang) return;
+    var moi = !dang;
+    if(dang) traVe();
+    else { document.body.classList.add('tc-dang'); san.hidden = false; }
+    cho = document.createElement('div'); cho.className = 'tc-cho'; cho.style.height = n.offsetHeight + 'px';
+    n.parentNode.insertBefore(cho, n);
+    noi.appendChild(n); n.classList.add('tc-trang'); dang = n;
+    de.innerHTML = '';
+    var sd = n.getAttribute('data-chieu-de');
+    if(sd) $$(sd).forEach(function(x){
+      var c = x.cloneNode(true); c.removeAttribute('id');
+      $$('[id]', c).forEach(function(y){ y.removeAttribute('id'); });
+      de.appendChild(c);
+    });
+    san.classList.toggle('tc-giu', coCham(n) && !LO[n._tcId]);
+    hen.hidden = true; den.hidden = true; zTay = 0;
+    capNhat(); khung.scrollTop = 0; vuaKhung(false);
+    try{ sessionStorage.setItem(KHOA, JSON.stringify({ id: n._tcId, t: Date.now() })); }catch(e){}
+    if(phuKin) vaoToan();
+    else if(moi && !laToan()) bao('Bấm ⛶ (hoặc phím F) để phủ kín màn hình', 6000);
+    thucDay();
+    try{ khung.focus({ preventScroll: true }); }catch(e){}
+  }
+  function traVe(){
+    if(!dang) return;
+    cho.parentNode.insertBefore(dang, cho); cho.remove(); cho = null;
+    dang.classList.remove('tc-trang'); dang = null;
+  }
+  function thoat(){
+    if(!dang) return;
+    var n = dang;
+    /* ra trang thường: việc đang hoãn thì chạy luôn (như khi tự học) — chạy TRƯỚC khi rời sân để không lưu vào máy GV */
+    san.classList.remove('tc-giu');
+    Object.keys(HANG).forEach(chayHang);
+    traVe();
+    san.hidden = true; san.classList.remove('tc-nghi'); document.body.classList.remove('tc-dang');
+    datGio(0);
+    try{ sessionStorage.removeItem(KHOA); }catch(e){}
+    if(laToan()){ tuThoatFS = true; thoatToan(); }
+    n.scrollIntoView({ block: 'center' });
+    var b = n._tcNut; if(b) try{ b.focus({ preventScroll: true }); }catch(e){}
+  }
+  function buoc(d){
+    if(!dang) return;
+    for(var j = TRANG.indexOf(dang) + d; j >= 0 && j < TRANG.length; j += d)
+      if(hien(TRANG[j])){ vao(TRANG[j]); return; }
+    bao(d > 0 ? 'Đây là phần cuối của bài' : 'Đây là phần đầu của bài', 1600);
+  }
+
+  /* ---------- phủ kín màn hình ---------- */
+  function laToan(){ return !!(document.fullscreenElement || document.webkitFullscreenElement); }
+  function vaoToan(){
+    if(laToan()) return;
+    var f = san.requestFullscreen || san.webkitRequestFullscreen;
+    if(!f){ bao('Trình duyệt này không tự phủ kín được — nhấn phím F11', 6000); return; }
+    try{
+      var p = f.call(san);
+      if(p && p.catch) p.catch(function(){ bao('Trình duyệt không cho phủ kín — nhấn phím F11', 6000); });
+    }catch(e){}
+  }
+  function thoatToan(){ var f = document.exitFullscreen || document.webkitExitFullscreen; if(f) try{ var p = f.call(document); if(p && p.catch) p.catch(function(){}); }catch(e){} }
+  function doiToan(){ if(laToan()){ tuThoatFS = true; thoatToan(); } else vaoToan(); }
+  function khiDoiToan(){
+    /* Esc của trình duyệt thoát phủ kín = thoát chế độ chiếu; nút ⛶ / phím F chỉ thu về cửa sổ */
+    if(!laToan() && dang && !tuThoatFS) thoat();
+    tuThoatFS = false;
+    setTimeout(function(){ if(dang) vuaKhung(false); }, 80);
+  }
+  document.addEventListener('fullscreenchange', khiDoiToan);
+  document.addEventListener('webkitfullscreenchange', khiDoiToan);
+
+  /* ---------- tự phóng vừa màn hình: to nhất mà không phải cuộn (không nhỏ hơn cỡ chữ gốc) ---------- */
+  var tySvg = 0.6;   /* hình SVG cao tối đa = tySvg × chiều cao màn */
+  function datZ(z){
+    zHT = z; noi.style.zoom = z;
+    noi.style.width = Math.min(RONG, Math.floor((khung.clientWidth - 56) / z)) + 'px';
+    noi.style.setProperty('--tc-svg', Math.round((khung.clientHeight - 24) * tySvg / z) + 'px');
+  }
+  function tran(){ return khung.scrollHeight > khung.clientHeight + 2; }
+  function vuaKhung(chiNho){
+    if(!dang) return;
+    if(zTay){ datZ(zTay); return; }
+    var z = chiNho ? zHT : ZMAX;
+    if(!chiNho) tySvg = 0.6;
+    datZ(z);
+    while(tran() && z > ZMIN + 1e-3){ z = Math.max(ZMIN, Math.round((z - 0.05) * 100) / 100); datZ(z); }
+    /* chữ đã về cỡ gốc mà vẫn tràn → thu hình lại (chữ nhỏ hơn thì cuối lớp không đọc được) */
+    while(tran() && tySvg > 0.3 + 1e-3){ tySvg = Math.round((tySvg - 0.05) * 100) / 100; datZ(z); }
+  }
+  /* nội dung dài ra (mở đối chiếu, hiện phản hồi) → thu nhỏ cho vừa; không tự phóng to lại giữa chừng (đỡ giật) */
+  var tMo = null;
+  new MutationObserver(function(ds){
+    if(!dang || !ds.some(function(r){ return r.target !== noi; })) return;
+    clearTimeout(tMo);
+    tMo = setTimeout(function(){ if(!keo && !zTay && zHT > ZMIN + 1e-3 && tran()) vuaKhung(true); }, 150);
+  }).observe(noi, { subtree: true, childList: true, attributes: true, attributeFilter: ['class', 'hidden'] });
+  var tCo = null;
+  window.addEventListener('resize', function(){ clearTimeout(tCo); tCo = setTimeout(function(){ vuaKhung(false); }, 120); });
+
+  /* ---------- thanh điều khiển ---------- */
+  function capNhat(){
+    var ds = TRANG.filter(hien), i = ds.indexOf(dang), id = dang._tcId;
+    $('.tc-so', san).textContent = (i + 1) + ' / ' + ds.length;
+    var ten = tenTrang(dang), o = $('.tc-ten', san); o.textContent = ten; o.title = ten;
+    nut.truoc.disabled = i <= 0; nut.sau.disabled = i >= ds.length - 1;
+    nut.ketqua.hidden = !coCham(dang);
+    nut.ketqua.setAttribute('aria-pressed', LO[id] ? 'true' : 'false');
+    nut.ketqua.textContent = LO[id] ? '🙈 Ẩn kết quả' : '👁 Hiện kết quả';
+    var hs = $$('.hint', dang), rs = $$('.reveal', dang);
+    nut.goiy.hidden = !hs.length;
+    nut.goiy.setAttribute('aria-pressed', hs.length && hs.every(function(h){ return h.classList.contains('open'); }) ? 'true' : 'false');
+    nut.doichieu.hidden = !rs.length;
+    nut.lamlai.hidden = !$('button:not(.tc-mo),input,textarea,select,[tabindex]', dang);
+    nut.doichieu.setAttribute('aria-pressed', rs.length && rs.every(moRa) ? 'true' : 'false');
+  }
+  function moRa(r){ return r.classList.contains('open') && !r.closest('.hide'); }
+  function nutCua(attr, t){
+    return t.id ? $$('[' + attr + '],[data-toggle]', dang).filter(function(b){
+      var v = b.getAttribute(attr) || b.getAttribute('data-toggle'); return v === '#' + t.id || v === t.id;
+    })[0] : null;
+  }
+  function doiKetQua(){
+    var id = dang._tcId; LO[id] = !LO[id];
+    san.classList.toggle('tc-giu', !LO[id]);
+    if(LO[id]) chayHang(id);
+    capNhat();
+  }
+  function doiGoiY(){
+    var hs = $$('.hint', dang), mo = !hs.every(function(h){ return h.classList.contains('open'); });
+    hs.forEach(function(h){
+      if(h.classList.contains('open') === mo) return;
+      var b = nutCua('data-hint', h); if(b) b.click(); else h.classList.toggle('open', mo);
+    });
+    capNhat();
+  }
+  function doiDoiChieu(){
+    var rs = $$('.reveal', dang), mo = !rs.every(moRa);
+    rs.forEach(function(r){
+      /* GV chủ động mở: bỏ cả lớp .hide đang bọc nút đối chiếu (khung chờ data-mo-sau) */
+      if(mo) for(var p = r; p && p !== dang; p = p.parentElement) p.classList.remove('hide');
+      if(r.classList.contains('open') === mo) return;
+      var b = nutCua('data-reveal', r); if(b) b.click(); else r.classList.toggle('open', mo);
+    });
+    capNhat();
+  }
+  var tLai = null;
+  function lamLai(){
+    /* bấm hai lần mới làm lại — bấm nhầm một lần không mất bài của cả lớp */
+    if(!nut.lamlai.classList.contains('tc-hoi')){
+      nut.lamlai.classList.add('tc-hoi'); nut.lamlai.textContent = '↺ Bấm lần nữa để làm lại';
+      clearTimeout(tLai);
+      tLai = setTimeout(function(){ nut.lamlai.classList.remove('tc-hoi'); nut.lamlai.textContent = '↺ Làm lại'; }, 3000);
+      return;
+    }
+    try{ sessionStorage.setItem(KHOA, JSON.stringify({ id: dang._tcId, t: Date.now(), lai: 1 })); }catch(e){}
+    location.reload();
+  }
+  function coChu(d){ zTay = Math.max(0.6, Math.min(3, Math.round((zHT + d) * 100) / 100)); datZ(zTay); }
+  nut.truoc.addEventListener('click', function(){ buoc(-1); });
+  nut.sau.addEventListener('click', function(){ buoc(1); });
+  nut.ketqua.addEventListener('click', doiKetQua);
+  nut.goiy.addEventListener('click', doiGoiY);
+  nut.doichieu.addEventListener('click', doiDoiChieu);
+  nut.lamlai.addEventListener('click', lamLai);
+  nut.gio.addEventListener('click', function(){ hen.hidden = !hen.hidden; });
+  nut.nho.addEventListener('click', function(){ coChu(-0.1); });
+  nut.to.addEventListener('click', function(){ coChu(0.1); });
+  nut.toan.addEventListener('click', doiToan);
+  nut.thoat.addEventListener('click', thoat);
+  /* tốc độ đọc: bấm hộ nút Chậm / Thường của thanh công cụ trang */
+  var bSlow = document.getElementById('spd-slow'), bNorm = document.getElementById('spd-norm');
+  nut.cham.hidden = !(bSlow && bNorm);
+  nut.cham.addEventListener('click', function(){
+    var cham = !bSlow.classList.contains('on'); (cham ? bSlow : bNorm).click();
+    nut.cham.setAttribute('aria-pressed', cham ? 'true' : 'false');
+  });
+  /* bấm trong khối (nút đối chiếu / gợi ý của chính bài) → trạng thái nút trên thanh theo kịp */
+  khung.addEventListener('click', function(){ if(dang) setTimeout(capNhat, 0); });
+
+  /* ---------- đồng hồ ---------- */
+  var tGio = null, het = 0;
+  function datGio(phut){
+    clearTimeout(tGio); tGio = null; giay.hidden = true; giay.classList.remove('het');
+    if(!phut) return;
+    het = Date.now() + phut * 60000; giay.hidden = false;
+    (function tick(){
+      var con = Math.max(0, Math.ceil((het - Date.now()) / 1000));
+      giay.textContent = '⏱ ' + Math.floor(con / 60) + ':' + ('0' + con % 60).slice(-2);
+      if(!con){ giay.textContent = '⏰ Hết giờ!'; giay.classList.add('het'); tGio = setTimeout(function(){ datGio(0); }, 10000); return; }
+      tGio = setTimeout(tick, 250);
+    })();
+  }
+  $$('[data-p]', hen).forEach(function(b){
+    b.addEventListener('click', function(){ datGio(+b.getAttribute('data-p')); hen.hidden = true; });
+  });
+  giay.addEventListener('click', function(){ datGio(0); });
+
+  /* ---------- thông báo nhỏ, màn đen, tự ẩn thanh khi để yên chuột ---------- */
+  var tBao = null;
+  function bao(s, ms){
+    bao_.textContent = s; bao_.hidden = false;
+    clearTimeout(tBao); tBao = setTimeout(function(){ bao_.hidden = true; }, ms || 2500);
+  }
+  den.addEventListener('click', function(){ den.hidden = true; });
+  var tNghi = null;
+  function thucDay(){
+    san.classList.remove('tc-nghi'); clearTimeout(tNghi);
+    tNghi = setTimeout(function(){ if(dang && hen.hidden && !keo) san.classList.add('tc-nghi'); }, NGHI);
+  }
+  san.addEventListener('pointermove', thucDay);
+  san.addEventListener('pointerdown', function(){ keo = true; thucDay(); });
+  document.addEventListener('pointerup', function(){ if(keo){ keo = false; thucDay(); } });
+  document.addEventListener('pointercancel', function(){ keo = false; });
+
+  /* ---------- phím: bút trình chiếu gửi PageUp/PageDown, "." hoặc B (màn đen), F5 / Esc ---------- */
+  document.addEventListener('keydown', function(e){
+    if(e.ctrlKey || e.metaKey || e.altKey) return;
+    var t = e.target, go = t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName)), k = e.key;
+    if(!dang){
+      if(!go && (k === 'f' || k === 'F')){ var n = trangGan(); if(n){ e.preventDefault(); vao(n, true); } }
+      return;
+    }
+    thucDay();
+    if(!den.hidden){ e.preventDefault(); den.hidden = true; return; }
+    if(k === 'Escape'){ e.preventDefault(); if(!hen.hidden) hen.hidden = true; else thoat(); return; }
+    if(k === 'F5'){ e.preventDefault(); vaoToan(); return; }   /* bút trình chiếu: F5 = "bắt đầu chiếu", không tải lại trang */
+    if(go) return;
+    if(k === 'ArrowRight' || k === 'PageDown'){ e.preventDefault(); buoc(1); }
+    else if(k === 'ArrowLeft' || k === 'PageUp'){ e.preventDefault(); buoc(-1); }
+    else if(k === 'f' || k === 'F'){ e.preventDefault(); doiToan(); }
+    else if(k === 'b' || k === 'B' || k === '.'){ e.preventDefault(); den.hidden = false; }
+  });
+
+  /* ---------- mở lại đúng phần đang chiếu (sau ↺ Làm lại, lỡ tay F5) hoặc theo đường dẫn #chieu=<mã> ---------- */
+  function timTrang(id){ return TRANG.filter(function(n){ return n._tcId === id; })[0]; }
+  window.addEventListener('load', function(){
+    var m = /[#&]chieu=([^&]+)/.exec(location.hash), id = m ? decodeURIComponent(m[1]) : '', lai = false;
+    if(!id){
+      try{
+        var s = JSON.parse(sessionStorage.getItem(KHOA) || 'null');
+        if(s && Date.now() - s.t < 4 * 3600e3){ id = s.id; lai = !!s.lai; }
+      }catch(e){}
+    }
+    var n = id && timTrang(id);
+    if(!n) return;
+    vao(n, false);
+    if(lai) bao('Đã làm lại phần này — bấm ⛶ (hoặc phím F) để phủ kín màn hình', 6000);
+  });
+})();
+</script>
+</body>
+</html>

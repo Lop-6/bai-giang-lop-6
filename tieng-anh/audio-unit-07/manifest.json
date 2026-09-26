@@ -1,0 +1,746 @@
+{
+  "voc-animated-film": {
+    "file": "voc-animated-film.mp3",
+    "kieu": "don",
+    "text": "animated film",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2b0df49310e8fb07"
+  },
+  "voc-cartoon": {
+    "file": "voc-cartoon.mp3",
+    "kieu": "don",
+    "text": "cartoon",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1a3763be157c6255"
+  },
+  "voc-channel": {
+    "file": "voc-channel.mp3",
+    "kieu": "don",
+    "text": "channel",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "48b1967d4a8d3923"
+  },
+  "voc-character": {
+    "file": "voc-character.mp3",
+    "kieu": "don",
+    "text": "character",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e2e65356f5d72a61"
+  },
+  "voc-clever": {
+    "file": "voc-clever.mp3",
+    "kieu": "don",
+    "text": "clever",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7dd38dd5f162d081"
+  },
+  "voc-clip": {
+    "file": "voc-clip.mp3",
+    "kieu": "don",
+    "text": "clip",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "45e2a047a4d31551"
+  },
+  "voc-comedy": {
+    "file": "voc-comedy.mp3",
+    "kieu": "don",
+    "text": "comedy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb4fbac8754ba375"
+  },
+  "voc-compete": {
+    "file": "voc-compete.mp3",
+    "kieu": "don",
+    "text": "compete",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "59899583ac3ed9e0"
+  },
+  "voc-cute": {
+    "file": "voc-cute.mp3",
+    "kieu": "don",
+    "text": "cute",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b7d9ec800bd8e0b3"
+  },
+  "voc-dolphin": {
+    "file": "voc-dolphin.mp3",
+    "kieu": "don",
+    "text": "dolphin",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "823f9838b9a6dd3e"
+  },
+  "voc-educate": {
+    "file": "voc-educate.mp3",
+    "kieu": "don",
+    "text": "educate",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e65522709a881797"
+  },
+  "voc-educational": {
+    "file": "voc-educational.mp3",
+    "kieu": "don",
+    "text": "educational",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "10eea5d712ff4b5c"
+  },
+  "voc-funny": {
+    "file": "voc-funny.mp3",
+    "kieu": "don",
+    "text": "funny",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1502d721e52c7edd"
+  },
+  "voc-tv-guide": {
+    "file": "voc-tv-guide.mp3",
+    "kieu": "don",
+    "text": "TV guide",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b7156f3ed5dfea36"
+  },
+  "voc-live": {
+    "file": "voc-live.mp3",
+    "kieu": "don",
+    "text": "live",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3ef269e0f66284bc"
+  },
+  "voc-programme": {
+    "file": "voc-programme.mp3",
+    "kieu": "don",
+    "text": "programme",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f8ce753f89f635b7"
+  },
+  "voc-talent-show": {
+    "file": "voc-talent-show.mp3",
+    "kieu": "don",
+    "text": "talent show",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2e787c79a1dedb01"
+  },
+  "voc-viewer": {
+    "file": "voc-viewer.mp3",
+    "kieu": "don",
+    "text": "viewer",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bdecabaf44259521"
+  },
+  "thing-game-show": {
+    "file": "thing-game-show.mp3",
+    "kieu": "don",
+    "text": "game show",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "18ba4b01e5e1be5e"
+  },
+  "thing-boring": {
+    "file": "thing-boring.mp3",
+    "kieu": "don",
+    "text": "boring",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "603a577aced1bd14"
+  },
+  "pr-theatre": {
+    "file": "pr-theatre.mp3",
+    "kieu": "don",
+    "text": "theatre",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "beae544fd114493b"
+  },
+  "pr-earth": {
+    "file": "pr-earth.mp3",
+    "kieu": "don",
+    "text": "earth",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "91b04feaa7f4b957"
+  },
+  "pr-anything": {
+    "file": "pr-anything.mp3",
+    "kieu": "don",
+    "text": "anything",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5b62e5cdf5a4e6d0"
+  },
+  "pr-both": {
+    "file": "pr-both.mp3",
+    "kieu": "don",
+    "text": "both",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2ae8406ab08dfb91"
+  },
+  "pr-through": {
+    "file": "pr-through.mp3",
+    "kieu": "don",
+    "text": "through",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1f98bf845a98f68e"
+  },
+  "pr-there": {
+    "file": "pr-there.mp3",
+    "kieu": "don",
+    "text": "there",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5a31ad126fbe108c"
+  },
+  "pr-them": {
+    "file": "pr-them.mp3",
+    "kieu": "don",
+    "text": "them",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "97b5d7ad7257bff9"
+  },
+  "pr-neither": {
+    "file": "pr-neither.mp3",
+    "kieu": "don",
+    "text": "neither",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "284af08f55e6ce93"
+  },
+  "pr-weather": {
+    "file": "pr-weather.mp3",
+    "kieu": "don",
+    "text": "weather",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7d55312a74c0ee57"
+  },
+  "pr-than": {
+    "file": "pr-than.mp3",
+    "kieu": "don",
+    "text": "than",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2240cb4231d505d1"
+  },
+  "pr-thursday": {
+    "file": "pr-thursday.mp3",
+    "kieu": "don",
+    "text": "Thursday",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c2da328fe31c47a7"
+  },
+  "pr-brother": {
+    "file": "pr-brother.mp3",
+    "kieu": "don",
+    "text": "brother",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "19491e532488cb3f"
+  },
+  "pr-tom": {
+    "file": "pr-tom.mp3",
+    "kieu": "don",
+    "text": "Tom",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "26bc697e313d4dab"
+  },
+  "pr-think": {
+    "file": "pr-think.mp3",
+    "kieu": "don",
+    "text": "think",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fce089f95575e38e"
+  },
+  "prs-1": {
+    "file": "prs-1.mp3",
+    "kieu": "don",
+    "text": "They are thinking about the weather there.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "668b2bf2c5599911"
+  },
+  "prs-2": {
+    "file": "prs-2.mp3",
+    "kieu": "don",
+    "text": "The new theatre opens on Thursday the third.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87cee9c7438c229a"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "ten",
+    "text": "What are you watching, Hung?",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Hung",
+        "doc": "Hùng",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "c083b10b6cb88933"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "don",
+    "text": "The Voice Kids.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "9f739010da48afef"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "don",
+    "text": "That music talent show is very interesting.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "3246fa7727eb452a"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "ten",
+    "text": "It is. What programme do you often watch, Phong?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "a20de0e719fd6aaf"
+  },
+  "gs-04b": {
+    "file": "gs-04b.mp3",
+    "kieu": "ten",
+    "text": "What programme do you often watch, Phong?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "0dbb39bd3465a13b"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "don",
+    "text": "Films. I like animated films like The Lion King.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "24a26d414b94cfc8"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "don",
+    "text": "I love them, too. They're wonderful.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "09f043ba943d738f"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "don",
+    "text": "I often watch them with my little brother, but he prefers cartoons.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "39107b53268a1390"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "Tom and Jerry?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "4ede0a86013631fe"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "don",
+    "text": "Ha … ha … Yes, he loves Jerry the mouse.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "33ccbf60775c8b6d"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "don",
+    "text": "Jerry's a clever character. Do you know any English programmes for children?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "99b313d4c6c172b6"
+  },
+  "gs-10b": {
+    "file": "gs-10b.mp3",
+    "kieu": "don",
+    "text": "Do you know any English programmes for children?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "f891fbb00f946388"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "don",
+    "text": "Yes. I watch English in a Minute on VTV7. This channel has many educational programmes.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "7f4763346d69d1a7"
+  },
+  "gs-12": {
+    "file": "gs-12.mp3",
+    "kieu": "don",
+    "text": "Great. I'll watch it, too.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "fe08f9f689b85956"
+  },
+  "sp-gs5": {
+    "file": "sp-gs5.mp3",
+    "kieu": "ten",
+    "text": "In our group, Mai likes sports programmes on TV.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Mai",
+        "doc": "Mai",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "4eab08da0022f357"
+  },
+  "ten-phong": {
+    "file": "ten-phong.mp3",
+    "kieu": "don",
+    "text": "Phong",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
+  },
+  "ten-hung": {
+    "file": "ten-hung.mp3",
+    "kieu": "don",
+    "text": "Hùng",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "bb0b8254b2f87f5e"
+  },
+  "ten-mai": {
+    "file": "ten-mai.mp3",
+    "kieu": "don",
+    "text": "Mai",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "0aef0243b233b0bb"
+  },
+  "ten-cuc-phuong": {
+    "file": "ten-cuc-phuong.mp3",
+    "kieu": "don",
+    "text": "Cúc Phương",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "cb8f416465616c33"
+  },
+  "ten-van-ho": {
+    "file": "ten-van-ho.mp3",
+    "kieu": "don",
+    "text": "Vân Hồ",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "5567b8e225fe684a"
+  },
+  "gr-01": {
+    "file": "gr-01.mp3",
+    "kieu": "don",
+    "text": "Each question word is used for a specific piece of information.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e8e752d6eb31090a"
+  },
+  "gr-02": {
+    "file": "gr-02.mp3",
+    "kieu": "don",
+    "text": "We use a conjunction to combine two clauses into a compound sentence.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bc70f6d35336f944"
+  },
+  "gr-03": {
+    "file": "gr-03.mp3",
+    "kieu": "don",
+    "text": "I like watching cartoons, but my brother likes watching sports.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "caf5c942beb1a9c8"
+  },
+  "gr-04": {
+    "file": "gr-04.mp3",
+    "kieu": "don",
+    "text": "I enjoy sports, so I spend a lot of time outdoors.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4e294c93ad4b6a10"
+  },
+  "gr-05": {
+    "file": "gr-05.mp3",
+    "kieu": "don",
+    "text": "I'm helping decorate the house, and my brother is busy cooking.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d144e88a7c6076aa"
+  },
+  "gr-c1": {
+    "file": "gr-c1.mp3",
+    "kieu": "ten",
+    "text": "Hi, Phong. What are you doing tomorrow?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "141ec8fc8319f3a8"
+  },
+  "gr-c2": {
+    "file": "gr-c2.mp3",
+    "kieu": "don",
+    "text": "I'm going to a book exhibition.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "e8bf4706348221b4"
+  },
+  "gr-c3": {
+    "file": "gr-c3.mp3",
+    "kieu": "don",
+    "text": "Where is it?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7585d9d55c647e37"
+  },
+  "gr-c4": {
+    "file": "gr-c4.mp3",
+    "kieu": "ten",
+    "text": "It's in Van Ho  street.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Van Ho",
+        "doc": "Vân Hồ",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "6aee062a01461e61"
+  },
+  "gr-c5": {
+    "file": "gr-c5.mp3",
+    "kieu": "don",
+    "text": "How long is it on?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c0252a721aecb315"
+  },
+  "gr-c6": {
+    "file": "gr-c6.mp3",
+    "kieu": "don",
+    "text": "From the fourth to the seventh January.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "39a79f3ea630c385"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "don",
+    "text": "What's your favourite TV programme?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c9ddda60287b89f7"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "The animal programme.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "a52fc922965b512e"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "don",
+    "text": "Why do you like it?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "956b7d047eca41cc"
+  },
+  "com-04": {
+    "file": "com-04.mp3",
+    "kieu": "don",
+    "text": "Because I can see the animals in their real life.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "b45c30e6bf13d060"
+  },
+  "read-lets-learn": {
+    "file": "read-lets-learn.mp3",
+    "kieu": "don",
+    "text": "Let's Learn is an educational TV programme. It makes learning fun. Children love it. It has cute characters and fun songs. People in eighty countries watch it today. Both children and their parents like it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "478858a1f7b02abc"
+  },
+  "read-hello-fatty": {
+    "file": "read-hello-fatty.mp3",
+    "kieu": "don",
+    "text": "Hello Fatty is a popular TV cartoon. It's about a clever fox called Fatty and his friend. Together they go to different places. Children around the world enjoy this programme. It's funny and educational.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "afd59ff07da33aa9"
+  },
+  "sp-c5": {
+    "file": "sp-c5.mp3",
+    "kieu": "don",
+    "text": "I like Let's Learn because it has cute characters and fun songs.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f4e9ec9d9d099667"
+  },
+  "read-t1": {
+    "file": "read-t1.mp3",
+    "kieu": "ten",
+    "text": "Cuc Phuong Forest",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Cuc Phuong",
+        "doc": "Cúc Phương",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "e3fcc0b17ba11004"
+  },
+  "read-t2": {
+    "file": "read-t2.mp3",
+    "kieu": "don",
+    "text": "The Fox Teacher",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b9173860415ea6cb"
+  },
+  "read-t3": {
+    "file": "read-t3.mp3",
+    "kieu": "don",
+    "text": "The Pig Race",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fed666ec04670c79"
+  },
+  "read-t4": {
+    "file": "read-t4.mp3",
+    "kieu": "don",
+    "text": "Children are Always Right",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2ce57787f99357f6"
+  },
+  "read-t5": {
+    "file": "read-t5.mp3",
+    "kieu": "don",
+    "text": "The Dolphins",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "462b927ae2c4a70b"
+  },
+  "read-d1": {
+    "file": "read-d1.mp3",
+    "kieu": "don",
+    "text": "Watch the colourful world of plants, flowers, and animals in their real life.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f418656805961700"
+  },
+  "read-d2": {
+    "file": "read-d2.mp3",
+    "kieu": "don",
+    "text": "Have a lot of fun with a fox teacher and his students on their first day at school.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5b00dfc0eeb7ae95"
+  },
+  "read-d3": {
+    "file": "read-d3.mp3",
+    "kieu": "don",
+    "text": "Watch the cute pigs compete in the most exciting races. Who wins?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e7d93470aa0bb085"
+  },
+  "read-d4": {
+    "file": "read-d4.mp3",
+    "kieu": "don",
+    "text": "Join this game show today and try to answer interesting questions about pets.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ae2f13636cdd5644"
+  },
+  "read-d5": {
+    "file": "read-d5.mp3",
+    "kieu": "don",
+    "text": "Watch funny and interesting clips of intelligent dolphins in their natural life - the sea.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2ac7ab2474bb6a4e"
+  },
+  "sp-01": {
+    "file": "sp-01.mp3",
+    "kieu": "ten",
+    "text": "I think the best programme for Phong is the game show Children are Always Right.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "034bcca5da165355"
+  },
+  "sp-02": {
+    "file": "sp-02.mp3",
+    "kieu": "don",
+    "text": "I agree. He wants to know more about pets.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "06b5e5be28c9b255"
+  }
+}

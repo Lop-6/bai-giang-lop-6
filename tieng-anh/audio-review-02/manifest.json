@@ -1,0 +1,658 @@
+{
+  "voc-island": {
+    "file": "voc-island.mp3",
+    "kieu": "don",
+    "text": "island",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bd2bbcd635e23f76"
+  },
+  "voc-fireworks": {
+    "file": "voc-fireworks.mp3",
+    "kieu": "don",
+    "text": "fireworks",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4d84e216aef00c26"
+  },
+  "voc-art-gallery": {
+    "file": "voc-art-gallery.mp3",
+    "kieu": "don",
+    "text": "art gallery",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "04b459b94ff7ef1b"
+  },
+  "voc-rock": {
+    "file": "voc-rock.mp3",
+    "kieu": "don",
+    "text": "rock",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d8fd3a829225a8b9"
+  },
+  "voc-decorate": {
+    "file": "voc-decorate.mp3",
+    "kieu": "don",
+    "text": "decorate",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87fe19a4908b2765"
+  },
+  "voc-square": {
+    "file": "voc-square.mp3",
+    "kieu": "don",
+    "text": "square",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ede9f5cdf1ae76e6"
+  },
+  "voc-relatives": {
+    "file": "voc-relatives.mp3",
+    "kieu": "don",
+    "text": "relatives",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "97ba0b8d33317a99"
+  },
+  "voc-railway-station": {
+    "file": "voc-railway-station.mp3",
+    "kieu": "don",
+    "text": "railway station",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d0643b9baeadb6d7"
+  },
+  "voc-sleeping-bag": {
+    "file": "voc-sleeping-bag.mp3",
+    "kieu": "don",
+    "text": "sleeping bag",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0d325c5724d7c628"
+  },
+  "pr-pretty": {
+    "file": "pr-pretty.mp3",
+    "kieu": "don",
+    "text": "pretty",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3379f06e04af6737"
+  },
+  "pr-village": {
+    "file": "pr-village.mp3",
+    "kieu": "don",
+    "text": "village",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dcd1f770bfefac25"
+  },
+  "pr-clean": {
+    "file": "pr-clean.mp3",
+    "kieu": "don",
+    "text": "clean",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2e61f726411b60d1"
+  },
+  "pr-trees": {
+    "file": "pr-trees.mp3",
+    "kieu": "don",
+    "text": "trees",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c072711f2365c8d2"
+  },
+  "pr-mountain": {
+    "file": "pr-mountain.mp3",
+    "kieu": "don",
+    "text": "mountain",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8270feb162a1ba4d"
+  },
+  "pr-plaster": {
+    "file": "pr-plaster.mp3",
+    "kieu": "don",
+    "text": "plaster",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a355b5d58bec4d0d"
+  },
+  "pr-guide": {
+    "file": "pr-guide.mp3",
+    "kieu": "don",
+    "text": "guide",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6c830b3b1846a1b7"
+  },
+  "pr-spring": {
+    "file": "pr-spring.mp3",
+    "kieu": "don",
+    "text": "spring",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5a71b06dcf82a9c3"
+  },
+  "pr-rice": {
+    "file": "pr-rice.mp3",
+    "kieu": "don",
+    "text": "rice",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "65e98052f406befc"
+  },
+  "pr-shopping": {
+    "file": "pr-shopping.mp3",
+    "kieu": "don",
+    "text": "shopping",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8cf48c52d641f77a"
+  },
+  "pr-shy": {
+    "file": "pr-shy.mp3",
+    "kieu": "don",
+    "text": "shy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "aeb4ec0c383ade40"
+  },
+  "pr-river": {
+    "file": "pr-river.mp3",
+    "kieu": "don",
+    "text": "river",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c9f692ad9cf4e157"
+  },
+  "pr-keep": {
+    "file": "pr-keep.mp3",
+    "kieu": "don",
+    "text": "keep",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "88844d0b68009b8b"
+  },
+  "pr-fish": {
+    "file": "pr-fish.mp3",
+    "kieu": "don",
+    "text": "fish",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4cf03d57c8d5d7c3"
+  },
+  "pr-visit": {
+    "file": "pr-visit.mp3",
+    "kieu": "don",
+    "text": "visit",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "89bddfcd3135d4b5"
+  },
+  "pr-beach": {
+    "file": "pr-beach.mp3",
+    "kieu": "don",
+    "text": "beach",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7b33b1bd8f85c8cc"
+  },
+  "pr-green": {
+    "file": "pr-green.mp3",
+    "kieu": "don",
+    "text": "green",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e3cb05a28afca1cd"
+  },
+  "pr-little": {
+    "file": "pr-little.mp3",
+    "kieu": "don",
+    "text": "little",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "68552c8e7141c93a"
+  },
+  "pr-sleep": {
+    "file": "pr-sleep.mp3",
+    "kieu": "don",
+    "text": "sleep",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6c46210f45e25a20"
+  },
+  "pr-holiday": {
+    "file": "pr-holiday.mp3",
+    "kieu": "don",
+    "text": "holiday",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1d147f08ea4ed057"
+  },
+  "pr-shine": {
+    "file": "pr-shine.mp3",
+    "kieu": "don",
+    "text": "shine",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5ba620a0e6bf1365"
+  },
+  "pr-boat": {
+    "file": "pr-boat.mp3",
+    "kieu": "don",
+    "text": "boat",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c022b66e3a9f00e4"
+  },
+  "pr-smile": {
+    "file": "pr-smile.mp3",
+    "kieu": "don",
+    "text": "smile",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bb02e2a7640eec7e"
+  },
+  "prs-she-sells": {
+    "file": "prs-she-sells.mp3",
+    "kieu": "don",
+    "text": "She sells peach flowers.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1bf05039d9941887"
+  },
+  "adj-busy": {
+    "file": "adj-busy.mp3",
+    "kieu": "don",
+    "text": "busy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4bb5c9f81164384e"
+  },
+  "adj-convenient": {
+    "file": "adj-convenient.mp3",
+    "kieu": "don",
+    "text": "convenient",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87bca6f184c2f4ac"
+  },
+  "adj-beautiful": {
+    "file": "adj-beautiful.mp3",
+    "kieu": "don",
+    "text": "beautiful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "649aebc9f6876650"
+  },
+  "voc-mountain-range": {
+    "file": "voc-mountain-range.mp3",
+    "kieu": "don",
+    "text": "mountain range",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "971436b3855477fe"
+  },
+  "voc-cave": {
+    "file": "voc-cave.mp3",
+    "kieu": "don",
+    "text": "cave",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "df7dcbc3e383de3e"
+  },
+  "voc-peach-flowers": {
+    "file": "voc-peach-flowers.mp3",
+    "kieu": "don",
+    "text": "peach flowers",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "18ac8d7e141bbf8b"
+  },
+  "voc-special-food": {
+    "file": "voc-special-food.mp3",
+    "kieu": "don",
+    "text": "special food",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "827add7dea733254"
+  },
+  "voc-plaster": {
+    "file": "voc-plaster.mp3",
+    "kieu": "don",
+    "text": "plaster",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a355b5d58bec4d0d"
+  },
+  "voc-suncream": {
+    "file": "voc-suncream.mp3",
+    "kieu": "don",
+    "text": "suncream",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "92bd4c2e5fd2f115"
+  },
+  "voc-landscape": {
+    "file": "voc-landscape.mp3",
+    "kieu": "don",
+    "text": "landscape",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6372b90b22a653b4"
+  },
+  "voc-man-made": {
+    "file": "voc-man-made.mp3",
+    "kieu": "don",
+    "text": "man-made",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1daa19c07ea8921d"
+  },
+  "voc-family-gathering": {
+    "file": "voc-family-gathering.mp3",
+    "kieu": "don",
+    "text": "family gathering",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "40b04bbf3a05d8de"
+  },
+  "voc-relative": {
+    "file": "voc-relative.mp3",
+    "kieu": "don",
+    "text": "relative",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4608b42587ff7af1"
+  },
+  "adj-narrow": {
+    "file": "adj-narrow.mp3",
+    "kieu": "don",
+    "text": "narrow",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "40546307613d3dca"
+  },
+  "adj-dirty": {
+    "file": "adj-dirty.mp3",
+    "kieu": "don",
+    "text": "dirty",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b5496df4269adc67"
+  },
+  "adj-early": {
+    "file": "adj-early.mp3",
+    "kieu": "don",
+    "text": "early",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ab5e8c7d6d0a18cd"
+  },
+  "adj-difficult": {
+    "file": "adj-difficult.mp3",
+    "kieu": "don",
+    "text": "difficult",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "088d333f5a2b6262"
+  },
+  "adj-old": {
+    "file": "adj-old.mp3",
+    "kieu": "don",
+    "text": "old",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ddba55b2ac499782"
+  },
+  "gr-u4-1": {
+    "file": "gr-u4-1.mp3",
+    "kieu": "don",
+    "text": "We can use comparative adjectives to compare two people or things.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb208e8f687f681a"
+  },
+  "gr-u4-2": {
+    "file": "gr-u4-2.mp3",
+    "kieu": "don",
+    "text": "Tom is taller than Mary.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fd6b54064b835d9f"
+  },
+  "gr-u4-3": {
+    "file": "gr-u4-3.mp3",
+    "kieu": "don",
+    "text": "A house in a city is normally more expensive than a house in the countryside.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a7f8578a34b8dd5f"
+  },
+  "gr-u5-1": {
+    "file": "gr-u5-1.mp3",
+    "kieu": "don",
+    "text": "Countable nouns are for the people and things we can count using numbers.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "22ecb5dc7d6190c5"
+  },
+  "gr-u5-2": {
+    "file": "gr-u5-2.mp3",
+    "kieu": "don",
+    "text": "Countable nouns can be singular: a rock, an island, or plural: rocks, islands.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "09fb9b0ec87183fa"
+  },
+  "gr-u5-3": {
+    "file": "gr-u5-3.mp3",
+    "kieu": "don",
+    "text": "Uncountable nouns are for the things that we cannot count with numbers.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0d163819030cf4ed"
+  },
+  "gr-u5-4": {
+    "file": "gr-u5-4.mp3",
+    "kieu": "don",
+    "text": "They usually do not have a plural form: cream, chocolate.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3f94aee2085f6b90"
+  },
+  "gr-u5-5": {
+    "file": "gr-u5-5.mp3",
+    "kieu": "don",
+    "text": "We use some, many, a few with countable nouns.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8de0e1b77b1fb6a3"
+  },
+  "gr-u5-6": {
+    "file": "gr-u5-6.mp3",
+    "kieu": "don",
+    "text": "We use some, much, a little with uncountable nouns.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e3c786be4bc6c6a6"
+  },
+  "gr-u6-3": {
+    "file": "gr-u6-3.mp3",
+    "kieu": "don",
+    "text": "My mother bought some fruits.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cfd91f1e119972f9"
+  },
+  "gr-u6-4": {
+    "file": "gr-u6-4.mp3",
+    "kieu": "don",
+    "text": "I need some milk for the cake.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "20e73f825b321111"
+  },
+  "gr-u6-5": {
+    "file": "gr-u6-5.mp3",
+    "kieu": "don",
+    "text": "I can't answer any questions.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "db293c8142723feb"
+  },
+  "gr-u6-6": {
+    "file": "gr-u6-6.mp3",
+    "kieu": "don",
+    "text": "Do you have any sugar?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "065b31d0d15bb0ba"
+  },
+  "gr-u5-7": {
+    "file": "gr-u5-7.mp3",
+    "kieu": "don",
+    "text": "We use must to say that something is very necessary or very important.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e865b9d5c5d08d6c"
+  },
+  "gr-u5-8": {
+    "file": "gr-u5-8.mp3",
+    "kieu": "don",
+    "text": "We use mustn't to say that doing something is not allowed.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "edf28e214b6c5f81"
+  },
+  "gr-u6-1": {
+    "file": "gr-u6-1.mp3",
+    "kieu": "don",
+    "text": "We use should for things that are good to do.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d531d5accb0d7a73"
+  },
+  "gr-u6-2": {
+    "file": "gr-u6-2.mp3",
+    "kieu": "don",
+    "text": "We use shouldn't for things that are not good to do.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5312ae957b2e5207"
+  },
+  "rd-souvenirs": {
+    "file": "rd-souvenirs.mp3",
+    "kieu": "don",
+    "text": "souvenirs",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7956cb835e8a6c40"
+  },
+  "rd-boating": {
+    "file": "rd-boating.mp3",
+    "kieu": "don",
+    "text": "boating",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7135173fc13cb9af"
+  },
+  "rd-visitors": {
+    "file": "rd-visitors.mp3",
+    "kieu": "don",
+    "text": "visitors",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "90ba9f3bf3ecee65"
+  },
+  "rd-attract": {
+    "file": "rd-attract.mp3",
+    "kieu": "don",
+    "text": "attract",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f862a9e1f058c389"
+  },
+  "rd-outdoor": {
+    "file": "rd-outdoor.mp3",
+    "kieu": "don",
+    "text": "outdoor",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f51c60c2ae5db7be"
+  },
+  "read-p1": {
+    "file": "read-p1.mp3",
+    "kieu": "don",
+    "text": "There are many parks in this country. You can visit them, and enjoy beautiful plants and flowers, or do outdoor activities: cycling or boating. You can also go to the zoo to see animals in real life.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a4f7df809c7e267e"
+  },
+  "read-p2": {
+    "file": "read-p2.mp3",
+    "kieu": "don",
+    "text": "Go to places like Chinatown and Little India to learn about the people and cultures of China and India. There you can see how they live, try their food, and buy souvenirs. There are festivals too. They attract a lot of visitors.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fe1f446ffd5b70d0"
+  },
+  "read-p3": {
+    "file": "read-p3.mp3",
+    "kieu": "don",
+    "text": "Families looking for exciting activities for both children and adults should go to Sentosa. There are so many things for you to see and to do there, so you will never get bored.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a81b242b82df8707"
+  },
+  "sp-a1": {
+    "file": "sp-a1.mp3",
+    "kieu": "don",
+    "text": "Which place do you want to visit?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fbf24270692b5ea4"
+  },
+  "sp-b1": {
+    "file": "sp-b1.mp3",
+    "kieu": "don",
+    "text": "The zoo.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "9dee5f5f9c9e1b2a"
+  },
+  "sp-a2": {
+    "file": "sp-a2.mp3",
+    "kieu": "don",
+    "text": "Why do you want to visit it?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5b3fd53a6f24d839"
+  },
+  "sp-b2": {
+    "file": "sp-b2.mp3",
+    "kieu": "don",
+    "text": "I want to see the animals.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "d01add835bad08cf"
+  },
+  "ten-mai": {
+    "file": "ten-mai.mp3",
+    "kieu": "don",
+    "text": "Mai",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "0aef0243b233b0bb"
+  },
+  "pr-sea": {
+    "file": "pr-sea.mp3",
+    "kieu": "don",
+    "text": "sea",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e8ab871a0e4746cc"
+  }
+}

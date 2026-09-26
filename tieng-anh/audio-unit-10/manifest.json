@@ -1,0 +1,959 @@
+{
+  "ten-phong": {
+    "file": "ten-phong.mp3",
+    "kieu": "don",
+    "text": "Phong",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
+  },
+  "ten-nam": {
+    "file": "ten-nam.mp3",
+    "kieu": "don",
+    "text": "Nam",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f4be55c18d730e8e"
+  },
+  "voc-appliance": {
+    "file": "voc-appliance.mp3",
+    "kieu": "don",
+    "text": "appliance",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3bcae3dd6152d807"
+  },
+  "voc-cottage": {
+    "file": "voc-cottage.mp3",
+    "kieu": "don",
+    "text": "cottage",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "92b69ef06319a1a1"
+  },
+  "voc-dishwasher": {
+    "file": "voc-dishwasher.mp3",
+    "kieu": "don",
+    "text": "dishwasher",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "57c91a702eb6d34c"
+  },
+  "voc-dry": {
+    "file": "voc-dry.mp3",
+    "kieu": "don",
+    "text": "dry",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6a0e2d2754ec2ba5"
+  },
+  "voc-electric-cooker": {
+    "file": "voc-electric-cooker.mp3",
+    "kieu": "don",
+    "text": "electric cooker",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e0f0397fd2945dc9"
+  },
+  "voc-helicopter": {
+    "file": "voc-helicopter.mp3",
+    "kieu": "don",
+    "text": "helicopter",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0f51479f4f59cf41"
+  },
+  "voc-hi-tech": {
+    "file": "voc-hi-tech.mp3",
+    "kieu": "don",
+    "text": "hi-tech",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d1294fcf5a31cf37"
+  },
+  "voc-housework": {
+    "file": "voc-housework.mp3",
+    "kieu": "don",
+    "text": "housework",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bbd18abd1996166b"
+  },
+  "voc-location": {
+    "file": "voc-location.mp3",
+    "kieu": "don",
+    "text": "location",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "13d5b0a14005f3ff"
+  },
+  "voc-look-after": {
+    "file": "voc-look-after.mp3",
+    "kieu": "don",
+    "text": "look after",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c06ccd7800245731"
+  },
+  "voc-ocean": {
+    "file": "voc-ocean.mp3",
+    "kieu": "don",
+    "text": "ocean",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "59fee94ed71c3cc3"
+  },
+  "voc-outside": {
+    "file": "voc-outside.mp3",
+    "kieu": "don",
+    "text": "outside",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "732aef0af9ab9d6c"
+  },
+  "voc-solar-energy": {
+    "file": "voc-solar-energy.mp3",
+    "kieu": "don",
+    "text": "solar energy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "762807089a698d6a"
+  },
+  "voc-space": {
+    "file": "voc-space.mp3",
+    "kieu": "don",
+    "text": "space",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6646bdbac41a3b78"
+  },
+  "voc-super": {
+    "file": "voc-super.mp3",
+    "kieu": "don",
+    "text": "super",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "86ab3a3071fb53bb"
+  },
+  "voc-type": {
+    "file": "voc-type.mp3",
+    "kieu": "don",
+    "text": "type",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7aca059349bf1ba5"
+  },
+  "voc-ufo": {
+    "file": "voc-ufo.mp3",
+    "kieu": "don",
+    "text": "UFO",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f53933a9d1908c38"
+  },
+  "voc-washing-machine": {
+    "file": "voc-washing-machine.mp3",
+    "kieu": "don",
+    "text": "washing machine",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "80c3c236a27e0423"
+  },
+  "voc-wireless": {
+    "file": "voc-wireless.mp3",
+    "kieu": "don",
+    "text": "wireless",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a70e01d65b382734"
+  },
+  "thing-palace": {
+    "file": "thing-palace.mp3",
+    "kieu": "don",
+    "text": "palace",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "beeb33ce99538314"
+  },
+  "thing-hi-tech-house": {
+    "file": "thing-hi-tech-house.mp3",
+    "kieu": "don",
+    "text": "hi-tech house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "55ee0d7c384e8fe3"
+  },
+  "thing-town-house": {
+    "file": "thing-town-house.mp3",
+    "kieu": "don",
+    "text": "town house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "678f6ca7773bab01"
+  },
+  "thing-country-house": {
+    "file": "thing-country-house.mp3",
+    "kieu": "don",
+    "text": "country house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f629a7d3be9ce652"
+  },
+  "thing-flat": {
+    "file": "thing-flat.mp3",
+    "kieu": "don",
+    "text": "flat",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7843459619098e10"
+  },
+  "thing-wireless-tv": {
+    "file": "thing-wireless-tv.mp3",
+    "kieu": "don",
+    "text": "wireless TV",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d770eea4c65fa7cd"
+  },
+  "thing-fridge": {
+    "file": "thing-fridge.mp3",
+    "kieu": "don",
+    "text": "fridge",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f2d9bc5228ce5787"
+  },
+  "thing-electric-fan": {
+    "file": "thing-electric-fan.mp3",
+    "kieu": "don",
+    "text": "electric fan",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ff6460c254aea312"
+  },
+  "thing-computer": {
+    "file": "thing-computer.mp3",
+    "kieu": "don",
+    "text": "computer",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0998ee1d82dc87dc"
+  },
+  "thing-smart-clock": {
+    "file": "thing-smart-clock.mp3",
+    "kieu": "don",
+    "text": "smart clock",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "22c16a626f7940bc"
+  },
+  "gs-01": {
+    "file": "gs-01.mp3",
+    "kieu": "ten",
+    "text": "What are you doing, Phong?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-NamMinhNeural"
+      }
+    ],
+    "bam": "b1209bec8e06282c"
+  },
+  "gs-02": {
+    "file": "gs-02.mp3",
+    "kieu": "don",
+    "text": "I'm painting a picture of my house.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "578ce2a415e1e72f"
+  },
+  "gs-03": {
+    "file": "gs-03.mp3",
+    "kieu": "don",
+    "text": "Your house! That's a UFO.",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "e53e876906a55d2b"
+  },
+  "gs-04": {
+    "file": "gs-04.mp3",
+    "kieu": "don",
+    "text": "It looks like a UFO but it's my house in the future.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "b466866c65646134"
+  },
+  "gs-05": {
+    "file": "gs-05.mp3",
+    "kieu": "don",
+    "text": "Where will it be?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "01460c9ce60f36ec"
+  },
+  "gs-06": {
+    "file": "gs-06.mp3",
+    "kieu": "don",
+    "text": "It'll be in the mountains.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "1e8d139b24b47aba"
+  },
+  "gs-07": {
+    "file": "gs-07.mp3",
+    "kieu": "don",
+    "text": "What will it be like?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "db281fb6b2416d6d"
+  },
+  "gs-08": {
+    "file": "gs-08.mp3",
+    "kieu": "don",
+    "text": "It'll be a large house. It'll have twenty rooms.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "25b373fef7b03fb7"
+  },
+  "gs-09": {
+    "file": "gs-09.mp3",
+    "kieu": "don",
+    "text": "Twenty rooms!",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "347aab065b2f5fb1"
+  },
+  "gs-10": {
+    "file": "gs-10.mp3",
+    "kieu": "don",
+    "text": "Yes, and it'll have solar energy.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "c0ddaac672e7df72"
+  },
+  "gs-11": {
+    "file": "gs-11.mp3",
+    "kieu": "don",
+    "text": "Fantastic! Which room will you like best?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "a7c35bb7e696f08c"
+  },
+  "gs-12": {
+    "file": "gs-12.mp3",
+    "kieu": "don",
+    "text": "My bedroom, of course.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "ed50091338136a27"
+  },
+  "gs-13": {
+    "file": "gs-13.mp3",
+    "kieu": "don",
+    "text": "What appliances might the house have?",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "a1581fdf910261c5"
+  },
+  "gs-14": {
+    "file": "gs-14.mp3",
+    "kieu": "don",
+    "text": "My house might have some smart TVs and ten robots.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "abfca4caa943b253"
+  },
+  "gs-15": {
+    "file": "gs-15.mp3",
+    "kieu": "don",
+    "text": "Sounds great! And how much will …",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "c5f37c472541f621"
+  },
+  "g5-01": {
+    "file": "g5-01.mp3",
+    "kieu": "don",
+    "text": "Outside my window I can see the beach and the water. Where's my house?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a268e8d3817efcca"
+  },
+  "g5-02": {
+    "file": "g5-02.mp3",
+    "kieu": "don",
+    "text": "It's by the sea.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "dc307fd0046c7912"
+  },
+  "g5-03": {
+    "file": "g5-03.mp3",
+    "kieu": "don",
+    "text": "Correct!",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f8f332e71ad32f48"
+  },
+  "act-01": {
+    "file": "act-01.mp3",
+    "kieu": "don",
+    "text": "What can an electric cooker help us to do?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5345e8dd104db97e"
+  },
+  "act-02": {
+    "file": "act-02.mp3",
+    "kieu": "don",
+    "text": "It can help us to cook rice.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "e4c4255b46a1f66a"
+  },
+  "pr-picture": {
+    "file": "pr-picture.mp3",
+    "kieu": "don",
+    "text": "picture",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "72846000afdbcf71"
+  },
+  "pr-robot": {
+    "file": "pr-robot.mp3",
+    "kieu": "don",
+    "text": "robot",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c658806c14539eb6"
+  },
+  "pr-bedroom": {
+    "file": "pr-bedroom.mp3",
+    "kieu": "don",
+    "text": "bedroom",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3127ec8086cc0f58"
+  },
+  "pr-kitchen": {
+    "file": "pr-kitchen.mp3",
+    "kieu": "don",
+    "text": "kitchen",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8e0510314587bb92"
+  },
+  "pr-village": {
+    "file": "pr-village.mp3",
+    "kieu": "don",
+    "text": "village",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dcd1f770bfefac25"
+  },
+  "pr-mountains": {
+    "file": "pr-mountains.mp3",
+    "kieu": "don",
+    "text": "mountains",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4d7cd014fb12fa14"
+  },
+  "pr-garden": {
+    "file": "pr-garden.mp3",
+    "kieu": "don",
+    "text": "garden",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "56b206d757333e9f"
+  },
+  "pr-sunday": {
+    "file": "pr-sunday.mp3",
+    "kieu": "don",
+    "text": "Sunday",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1ce7f3cc2ae64b67"
+  },
+  "pr-future": {
+    "file": "pr-future.mp3",
+    "kieu": "don",
+    "text": "future",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "97bda227432593db"
+  },
+  "pr-island": {
+    "file": "pr-island.mp3",
+    "kieu": "don",
+    "text": "island",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bd2bbcd635e23f76"
+  },
+  "pr-today": {
+    "file": "pr-today.mp3",
+    "kieu": "don",
+    "text": "today",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "261e2b0e50088697"
+  },
+  "pr-tonight": {
+    "file": "pr-tonight.mp3",
+    "kieu": "don",
+    "text": "tonight",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8f704e5777291458"
+  },
+  "pr-again": {
+    "file": "pr-again.mp3",
+    "kieu": "don",
+    "text": "again",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "33a061a936c1b432"
+  },
+  "pr-receive": {
+    "file": "pr-receive.mp3",
+    "kieu": "don",
+    "text": "receive",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a53b48b9dd20a163"
+  },
+  "pr-flowers": {
+    "file": "pr-flowers.mp3",
+    "kieu": "don",
+    "text": "flowers",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "916d0eab05242aee"
+  },
+  "pr-until": {
+    "file": "pr-until.mp3",
+    "kieu": "don",
+    "text": "until",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8f9489a9ffbb8d8b"
+  },
+  "pr-because": {
+    "file": "pr-because.mp3",
+    "kieu": "don",
+    "text": "because",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4757cb06aff39853"
+  },
+  "pr-dinner": {
+    "file": "pr-dinner.mp3",
+    "kieu": "don",
+    "text": "dinner",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "64d6ba66d37ede7d"
+  },
+  "pr-monday": {
+    "file": "pr-monday.mp3",
+    "kieu": "don",
+    "text": "Monday",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "96a8e5a0aa221a28"
+  },
+  "pr-hotel": {
+    "file": "pr-hotel.mp3",
+    "kieu": "don",
+    "text": "hotel",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6a93598597f9396a"
+  },
+  "prs-1": {
+    "file": "prs-1.mp3",
+    "kieu": "don",
+    "text": "The picture is on the wall of the bedroom.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f736d95fc2f37451"
+  },
+  "prs-2": {
+    "file": "prs-2.mp3",
+    "kieu": "don",
+    "text": "The robot helps me to do the housework.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "88210005c8bfedb9"
+  },
+  "prs-3": {
+    "file": "prs-3.mp3",
+    "kieu": "don",
+    "text": "There's a very big kitchen in the palace.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0c28d9a619ee1248"
+  },
+  "prs-4": {
+    "file": "prs-4.mp3",
+    "kieu": "don",
+    "text": "Their village is in the mountains.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5f0cf3f80665f8ea"
+  },
+  "gr-01": {
+    "file": "gr-01.mp3",
+    "kieu": "don",
+    "text": "We use the future simple to talk about an action that happens in the future.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e5e2ec618df1b2fa"
+  },
+  "gr-02": {
+    "file": "gr-02.mp3",
+    "kieu": "don",
+    "text": "My father will travel on the Moon in a super car in the future.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4890e4e7a53483f8"
+  },
+  "gr-03": {
+    "file": "gr-03.mp3",
+    "kieu": "don",
+    "text": "We'll live in that cottage next year.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f11a5dd3bcba601a"
+  },
+  "gr-04": {
+    "file": "gr-04.mp3",
+    "kieu": "don",
+    "text": "We won't live in that cottage anytime soon.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8fe17dad40d95bfa"
+  },
+  "gr-05": {
+    "file": "gr-05.mp3",
+    "kieu": "don",
+    "text": "Will they live on the Moon?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1a5a2e762ffc1f49"
+  },
+  "gr-06": {
+    "file": "gr-06.mp3",
+    "kieu": "don",
+    "text": "Yes, they will.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e3334f30f11b3a3e"
+  },
+  "gr-07": {
+    "file": "gr-07.mp3",
+    "kieu": "don",
+    "text": "No, they won't.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "974acfd67d89b75b"
+  },
+  "gr-08": {
+    "file": "gr-08.mp3",
+    "kieu": "don",
+    "text": "We use might + V to talk about actions that are possible in the future (we are not sure if they will happen or not).",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7cd05cdd3c2d403e"
+  },
+  "gr-09": {
+    "file": "gr-09.mp3",
+    "kieu": "don",
+    "text": "We might live in a UFO.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9f84c7ed9480ae8d"
+  },
+  "gr-10": {
+    "file": "gr-10.mp3",
+    "kieu": "don",
+    "text": "They might not travel in cars.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0f451dc43ea473e9"
+  },
+  "gr-11": {
+    "file": "gr-11.mp3",
+    "kieu": "don",
+    "text": "I might have a smartphone to surf the internet.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "186ce62738cc871e"
+  },
+  "poem-jenny": {
+    "file": "poem-jenny.mp3",
+    "kieu": "don",
+    "text": "In the future. We might live with robots. They might clean our houses. They might wash our clothes. They might not talk to us.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1995d1bbe6093834"
+  },
+  "poem-henry": {
+    "file": "poem-henry.mp3",
+    "kieu": "don",
+    "text": "In the future. We might go on holiday to the Moon. We might stay there for a long time. We might have a great time. We might come home soon.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "3a343927b1984a91"
+  },
+  "com-01": {
+    "file": "com-01.mp3",
+    "kieu": "don",
+    "text": "John! Hello!",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "38677d50199f8533"
+  },
+  "com-02": {
+    "file": "com-02.mp3",
+    "kieu": "don",
+    "text": "Oh, hi, David. Wow! Is that your computer? It looks great!",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "ddfeb393995a9e48"
+  },
+  "com-02a": {
+    "file": "com-02a.mp3",
+    "kieu": "don",
+    "text": "Wow! Is that your computer? It looks great!",
+    "voice": "en-GB-ThomasNeural",
+    "rate": "+0%",
+    "bam": "b39d5e5a21b775de"
+  },
+  "com-03": {
+    "file": "com-03.mp3",
+    "kieu": "don",
+    "text": "Yes, it's my new computer. My parents gave it to me for my birthday.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "09e8ab8b76cd92c3"
+  },
+  "com-04": {
+    "file": "com-04.mp3",
+    "kieu": "ten",
+    "text": "Hi, Nam. Will you live in a hi-tech house in the future?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Nam",
+        "doc": "Nam",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "e950286577f4a6c0"
+  },
+  "com-05": {
+    "file": "com-05.mp3",
+    "kieu": "don",
+    "text": "Yes, I will.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "7c160c0ed30e98ab"
+  },
+  "com-06": {
+    "file": "com-06.mp3",
+    "kieu": "don",
+    "text": "Will your house be in space?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9bb67aee5c301258"
+  },
+  "com-07": {
+    "file": "com-07.mp3",
+    "kieu": "don",
+    "text": "Oh, no. It won't.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "58588b51e14b22c5"
+  },
+  "com-08": {
+    "file": "com-08.mp3",
+    "kieu": "don",
+    "text": "So where will it be?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9707741b3121732a"
+  },
+  "com-09": {
+    "file": "com-09.mp3",
+    "kieu": "don",
+    "text": "I'm not sure. It might be by the sea.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "060b457b658c7bb0"
+  },
+  "com-10": {
+    "file": "com-10.mp3",
+    "kieu": "ten",
+    "text": "In the future, Nam will live in a hi-tech house.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Nam",
+        "doc": "Nam",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "4325f692ebb26f81"
+  },
+  "com-11": {
+    "file": "com-11.mp3",
+    "kieu": "don",
+    "text": "It won't be in space. It might be by the sea.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4d16acc783c661c9"
+  },
+  "com-12": {
+    "file": "com-12.mp3",
+    "kieu": "don",
+    "text": "He might have a robot to help him with his housework.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dd0fe57380394026"
+  },
+  "read-01": {
+    "file": "read-01.mp3",
+    "kieu": "don",
+    "text": "My future house will be on an island. It will be surrounded by tall trees and the blue sea. There will be a swimming pool in front of the house. There will be a helicopter on the roof. I can fly to school in it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b31fbc835ee0f1aa"
+  },
+  "read-02": {
+    "file": "read-02.mp3",
+    "kieu": "don",
+    "text": "There will be some robots in the house. They will help me to clean the floors, cook meals, wash clothes and water the flowers. They will also help me to feed the dogs and cats.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "090a3442c29a3a6c"
+  },
+  "read-03": {
+    "file": "read-03.mp3",
+    "kieu": "don",
+    "text": "There will be a super smart TV. It will help me to send and receive emails, and contact my friends on other planets. It will also help me to buy food from the supermarket.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d60d8c86d2897d54"
+  },
+  "sp-01": {
+    "file": "sp-01.mp3",
+    "kieu": "don",
+    "text": "What type of future house do you think it will be?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "00fd68d0287eabf3"
+  },
+  "sp-02": {
+    "file": "sp-02.mp3",
+    "kieu": "don",
+    "text": "It'll be a palace.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "059ec3bded03a39c"
+  },
+  "sp-03": {
+    "file": "sp-03.mp3",
+    "kieu": "don",
+    "text": "My future house will be a palace.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "24d752e71e1487b4"
+  },
+  "sp-04": {
+    "file": "sp-04.mp3",
+    "kieu": "don",
+    "text": "It'll be on the Moon.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4a08f7b3e8f7a796"
+  },
+  "sp-05": {
+    "file": "sp-05.mp3",
+    "kieu": "don",
+    "text": "There'll be a super smart TV in the house.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a04fb4707dab8f6c"
+  },
+  "sp-06": {
+    "file": "sp-06.mp3",
+    "kieu": "don",
+    "text": "It'll help me to talk to my friends on other planets.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3499bca25f6b02df"
+  },
+  "w-01": {
+    "file": "w-01.mp3",
+    "kieu": "don",
+    "text": "What type of dream house is it?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "602171a26eefd352"
+  },
+  "w-02": {
+    "file": "w-02.mp3",
+    "kieu": "don",
+    "text": "It's a palace.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "6bc4a9ab1d0c1891"
+  },
+  "w-03": {
+    "file": "w-03.mp3",
+    "kieu": "don",
+    "text": "Where is it?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7585d9d55c647e37"
+  },
+  "w-04": {
+    "file": "w-04.mp3",
+    "kieu": "don",
+    "text": "It's in the mountains.",
+    "voice": "en-GB-RyanNeural",
+    "rate": "+0%",
+    "bam": "77869f94d5179bad"
+  },
+  "w-05a": {
+    "file": "w-05a.mp3",
+    "kieu": "don",
+    "text": "My dream house is a big palace.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "49c8ceb2b39db57a"
+  },
+  "w-05b": {
+    "file": "w-05b.mp3",
+    "kieu": "don",
+    "text": "It is in the mountains.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0b4e0dee83560951"
+  },
+  "pj-01": {
+    "file": "pj-01.mp3",
+    "kieu": "don",
+    "text": "I'll have a robot. It'll help me to water the flowers in the garden.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e93fb05da21a603c"
+  }
+}

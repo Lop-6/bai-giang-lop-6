@@ -1,0 +1,665 @@
+{
+  "voc-channel": {
+    "file": "voc-channel.mp3",
+    "kieu": "don",
+    "text": "channel",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "48b1967d4a8d3923"
+  },
+  "voc-comedy": {
+    "file": "voc-comedy.mp3",
+    "kieu": "don",
+    "text": "comedy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb4fbac8754ba375"
+  },
+  "voc-goggles": {
+    "file": "voc-goggles.mp3",
+    "kieu": "don",
+    "text": "goggles",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1668bc9e24cb1a2b"
+  },
+  "voc-marathon": {
+    "file": "voc-marathon.mp3",
+    "kieu": "don",
+    "text": "marathon",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "526982c0a33abdae"
+  },
+  "voc-gym": {
+    "file": "voc-gym.mp3",
+    "kieu": "don",
+    "text": "gym",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "67935e4f398f52e6"
+  },
+  "voc-palace": {
+    "file": "voc-palace.mp3",
+    "kieu": "don",
+    "text": "palace",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "beeb33ce99538314"
+  },
+  "voc-stall": {
+    "file": "voc-stall.mp3",
+    "kieu": "don",
+    "text": "stall",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f809fbe9859f17bd"
+  },
+  "voc-street-food": {
+    "file": "voc-street-food.mp3",
+    "kieu": "don",
+    "text": "street food",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "945a88a991a4fc36"
+  },
+  "voc-talent-show": {
+    "file": "voc-talent-show.mp3",
+    "kieu": "don",
+    "text": "talent show",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2e787c79a1dedb01"
+  },
+  "voc-tv-guide": {
+    "file": "voc-tv-guide.mp3",
+    "kieu": "don",
+    "text": "TV guide",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b7156f3ed5dfea36"
+  },
+  "voc-animated-film": {
+    "file": "voc-animated-film.mp3",
+    "kieu": "don",
+    "text": "animated film",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2b0df49310e8fb07"
+  },
+  "voc-aerobics": {
+    "file": "voc-aerobics.mp3",
+    "kieu": "don",
+    "text": "aerobics",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "667aa385c4534db4"
+  },
+  "voc-tournament": {
+    "file": "voc-tournament.mp3",
+    "kieu": "don",
+    "text": "tournament",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1b4cd844832ba8ac"
+  },
+  "voc-floating-market": {
+    "file": "voc-floating-market.mp3",
+    "kieu": "don",
+    "text": "floating market",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "715ebad36e08a44e"
+  },
+  "voc-crowded": {
+    "file": "voc-crowded.mp3",
+    "kieu": "don",
+    "text": "crowded",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c84a33f8daeeb9e9"
+  },
+  "adj-clever": {
+    "file": "adj-clever.mp3",
+    "kieu": "don",
+    "text": "clever",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7dd38dd5f162d081"
+  },
+  "adj-funny": {
+    "file": "adj-funny.mp3",
+    "kieu": "don",
+    "text": "funny",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1502d721e52c7edd"
+  },
+  "adj-sporty": {
+    "file": "adj-sporty.mp3",
+    "kieu": "don",
+    "text": "sporty",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b24cd8c78d8ad156"
+  },
+  "adj-fit": {
+    "file": "adj-fit.mp3",
+    "kieu": "don",
+    "text": "fit",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "909c053787794ccd"
+  },
+  "adj-fantastic": {
+    "file": "adj-fantastic.mp3",
+    "kieu": "don",
+    "text": "fantastic",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "14e8d358a9482532"
+  },
+  "adj-helpful": {
+    "file": "adj-helpful.mp3",
+    "kieu": "don",
+    "text": "helpful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3f1254f64a7e7ca9"
+  },
+  "sp-badminton": {
+    "file": "sp-badminton.mp3",
+    "kieu": "don",
+    "text": "badminton",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b1f51e5df49c2d2c"
+  },
+  "sp-basketball": {
+    "file": "sp-basketball.mp3",
+    "kieu": "don",
+    "text": "basketball",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "32284af7df1f7709"
+  },
+  "sp-judo": {
+    "file": "sp-judo.mp3",
+    "kieu": "don",
+    "text": "judo",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "472e988b163ca225"
+  },
+  "sp-exercise": {
+    "file": "sp-exercise.mp3",
+    "kieu": "don",
+    "text": "exercise",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0f31e9ddb9004809"
+  },
+  "sp-cycling": {
+    "file": "sp-cycling.mp3",
+    "kieu": "don",
+    "text": "cycling",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a36437914f3f23dc"
+  },
+  "sp-running": {
+    "file": "sp-running.mp3",
+    "kieu": "don",
+    "text": "running",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5843e8a7457b50ec"
+  },
+  "pr-theatre": {
+    "file": "pr-theatre.mp3",
+    "kieu": "don",
+    "text": "theatre",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "beae544fd114493b"
+  },
+  "pr-anything": {
+    "file": "pr-anything.mp3",
+    "kieu": "don",
+    "text": "anything",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5b62e5cdf5a4e6d0"
+  },
+  "pr-there": {
+    "file": "pr-there.mp3",
+    "kieu": "don",
+    "text": "there",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5a31ad126fbe108c"
+  },
+  "pr-weather": {
+    "file": "pr-weather.mp3",
+    "kieu": "don",
+    "text": "weather",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7d55312a74c0ee57"
+  },
+  "pr-exercise": {
+    "file": "pr-exercise.mp3",
+    "kieu": "don",
+    "text": "exercise",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0f31e9ddb9004809"
+  },
+  "pr-contest": {
+    "file": "pr-contest.mp3",
+    "kieu": "don",
+    "text": "contest",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "14a6b027f3bf4fad"
+  },
+  "pr-match": {
+    "file": "pr-match.mp3",
+    "kieu": "don",
+    "text": "match",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2767354be6a0f1db"
+  },
+  "pr-active": {
+    "file": "pr-active.mp3",
+    "kieu": "don",
+    "text": "active",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a676abbd79a5b669"
+  },
+  "pr-cold": {
+    "file": "pr-cold.mp3",
+    "kieu": "don",
+    "text": "cold",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a6990f7d8ce8ad81"
+  },
+  "pr-boat": {
+    "file": "pr-boat.mp3",
+    "kieu": "don",
+    "text": "boat",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c022b66e3a9f00e4"
+  },
+  "pr-around": {
+    "file": "pr-around.mp3",
+    "kieu": "don",
+    "text": "around",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a2aaa566eac85649"
+  },
+  "pr-house": {
+    "file": "pr-house.mp3",
+    "kieu": "don",
+    "text": "house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5e75533da82a0cbb"
+  },
+  "pr-window": {
+    "file": "pr-window.mp3",
+    "kieu": "don",
+    "text": "window",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1930e38ed9089c87"
+  },
+  "pr-show": {
+    "file": "pr-show.mp3",
+    "kieu": "don",
+    "text": "show",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8caae31810e6ce36"
+  },
+  "pr-yellow": {
+    "file": "pr-yellow.mp3",
+    "kieu": "don",
+    "text": "yellow",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a9ae4f370ad33bf7"
+  },
+  "pr-know": {
+    "file": "pr-know.mp3",
+    "kieu": "don",
+    "text": "know",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "35c9c55745a25656"
+  },
+  "pr-now": {
+    "file": "pr-now.mp3",
+    "kieu": "don",
+    "text": "now",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cedb10f8ed0f700a"
+  },
+  "pr-down": {
+    "file": "pr-down.mp3",
+    "kieu": "don",
+    "text": "down",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2f70f404b5c760af"
+  },
+  "pr-brown": {
+    "file": "pr-brown.mp3",
+    "kieu": "don",
+    "text": "brown",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "af481571f197032d"
+  },
+  "pr-flower": {
+    "file": "pr-flower.mp3",
+    "kieu": "don",
+    "text": "flower",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b5264fd1d05669ec"
+  },
+  "pr-mother": {
+    "file": "pr-mother.mp3",
+    "kieu": "don",
+    "text": "mother",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b60118f9fa090d63"
+  },
+  "pr-friend": {
+    "file": "pr-friend.mp3",
+    "kieu": "don",
+    "text": "friend",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f7ac98fc99db11ed"
+  },
+  "pr-month": {
+    "file": "pr-month.mp3",
+    "kieu": "don",
+    "text": "month",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c2ce94f45e33b057"
+  },
+  "pr-happy": {
+    "file": "pr-happy.mp3",
+    "kieu": "don",
+    "text": "happy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "34d0562bdee6cfcf"
+  },
+  "pr-mountain": {
+    "file": "pr-mountain.mp3",
+    "kieu": "don",
+    "text": "mountain",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8270feb162a1ba4d"
+  },
+  "prs-weather": {
+    "file": "prs-weather.mp3",
+    "kieu": "don",
+    "text": "They are thinking about the weather there.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "668b2bf2c5599911"
+  },
+  "gr-u7-1": {
+    "file": "gr-u7-1.mp3",
+    "kieu": "don",
+    "text": "Each question word is used for a specific piece of information.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e8e752d6eb31090a"
+  },
+  "gr-u7-2": {
+    "file": "gr-u7-2.mp3",
+    "kieu": "don",
+    "text": "We use a conjunction to combine two clauses into a compound sentence.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bc70f6d35336f944"
+  },
+  "gr-u7-3": {
+    "file": "gr-u7-3.mp3",
+    "kieu": "don",
+    "text": "I like watching cartoons, but my brother likes watching sports.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "caf5c942beb1a9c8"
+  },
+  "gr-u7-4": {
+    "file": "gr-u7-4.mp3",
+    "kieu": "don",
+    "text": "I enjoy sports, so I spend a lot of time outdoors.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4e294c93ad4b6a10"
+  },
+  "gr-u7-5": {
+    "file": "gr-u7-5.mp3",
+    "kieu": "don",
+    "text": "I'm helping decorate the house, and my brother is busy cooking.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d144e88a7c6076aa"
+  },
+  "gr-u8-1": {
+    "file": "gr-u8-1.mp3",
+    "kieu": "don",
+    "text": "We use the past simple to talk about something that happened in the past.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "53f7000329604ff2"
+  },
+  "gr-u8-3": {
+    "file": "gr-u8-3.mp3",
+    "kieu": "don",
+    "text": "We use imperatives to tell someone to do something, or to give a direct order.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "91f71a7b61db8b49"
+  },
+  "gr-u8-4": {
+    "file": "gr-u8-4.mp3",
+    "kieu": "don",
+    "text": "It's a chewing gum.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7892ffc284b955ab"
+  },
+  "gr-u8-5": {
+    "file": "gr-u8-5.mp3",
+    "kieu": "don",
+    "text": "Chew it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1c6b272a808e18b8"
+  },
+  "gr-u8-6": {
+    "file": "gr-u8-6.mp3",
+    "kieu": "don",
+    "text": "Don't swallow it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c545322c27ceaeb3"
+  },
+  "gr-u9-1": {
+    "file": "gr-u9-1.mp3",
+    "kieu": "don",
+    "text": "A possessive adjective is used only when there's a noun following it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e21837472108691c"
+  },
+  "gr-u9-2": {
+    "file": "gr-u9-2.mp3",
+    "kieu": "don",
+    "text": "I have a pen.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b2430d7cfea575b0"
+  },
+  "gr-u9-3": {
+    "file": "gr-u9-3.mp3",
+    "kieu": "don",
+    "text": "This is my pen.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2aec089b2f283a47"
+  },
+  "gr-u9-4": {
+    "file": "gr-u9-4.mp3",
+    "kieu": "don",
+    "text": "A possessive pronoun is used alone, without a noun following it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f305a16c4755dcfd"
+  },
+  "gr-u9-5": {
+    "file": "gr-u9-5.mp3",
+    "kieu": "don",
+    "text": "This book is my book, not your book.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "70cd30b8518b9385"
+  },
+  "gr-u9-6": {
+    "file": "gr-u9-6.mp3",
+    "kieu": "don",
+    "text": "This book is mine, not yours.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0a2919e45aef6d79"
+  },
+  "gr-u8-2": {
+    "file": "gr-u8-2.mp3",
+    "kieu": "ten",
+    "text": "I played badminton with Phong yesterday.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "ca7e20d3279f9cbd"
+  },
+  "rd-competitors": {
+    "file": "rd-competitors.mp3",
+    "kieu": "don",
+    "text": "competitors",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f62dfbd3aac43070"
+  },
+  "rd-catch": {
+    "file": "rd-catch.mp3",
+    "kieu": "don",
+    "text": "catch",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e9c1d97d2da64704"
+  },
+  "rd-hill": {
+    "file": "rd-hill.mp3",
+    "kieu": "don",
+    "text": "hill",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "72d240091c12786d"
+  },
+  "rd-push": {
+    "file": "rd-push.mp3",
+    "kieu": "don",
+    "text": "push",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "899e38a90dd4d4ce"
+  },
+  "rd-lock": {
+    "file": "rd-lock.mp3",
+    "kieu": "don",
+    "text": "lock",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "806c1a3599eb59ed"
+  },
+  "read-p1": {
+    "file": "read-p1.mp3",
+    "kieu": "don",
+    "text": "It's a simple sport. Competitors roll a big round piece of cheese from the top of a hill. Competitors run after it and try to catch it. Very few people can catch it because it goes very fast, about 112 km an hour.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "18191210e0caad77"
+  },
+  "read-p2": {
+    "file": "read-p2.mp3",
+    "kieu": "don",
+    "text": "It's a popular sport for children. This game started in Derbyshire in the North of England. Two children lock their toes together and try to push the other's foot to the ground. It's similar to arm wrestling.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "00e39c30b5a8e4b7"
+  },
+  "sp-q1": {
+    "file": "sp-q1.mp3",
+    "kieu": "don",
+    "text": "What city would you like to visit?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "554e088cf7fede69"
+  },
+  "sp-q2": {
+    "file": "sp-q2.mp3",
+    "kieu": "don",
+    "text": "What sports do you like playing?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0e7df47b9d9aaed1"
+  },
+  "sp-q3": {
+    "file": "sp-q3.mp3",
+    "kieu": "don",
+    "text": "What TV programme do you like watching?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c757b66d906085af"
+  },
+  "ten-hoi-an": {
+    "file": "ten-hoi-an.mp3",
+    "kieu": "don",
+    "text": "Hội An",
+    "voice": "vi-VN-HoaiMyNeural",
+    "rate": "+0%",
+    "bam": "632dc647b17dc694"
+  },
+  "ten-phong": {
+    "file": "ten-phong.mp3",
+    "kieu": "don",
+    "text": "Phong",
+    "voice": "vi-VN-NamMinhNeural",
+    "rate": "+0%",
+    "bam": "f142844e56b76625"
+  }
+}

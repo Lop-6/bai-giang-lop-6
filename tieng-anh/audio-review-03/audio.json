@@ -1,0 +1,432 @@
+{
+ "voices": {
+  "F": "en-GB-SoniaNeural",
+  "M": "en-GB-RyanNeural",
+  "F2": "en-GB-LibbyNeural",
+  "M2": "en-GB-ThomasNeural",
+  "VF": "vi-VN-HoaiMyNeural",
+  "VM": "vi-VN-NamMinhNeural"
+ },
+ "giong_ten": {
+  "F": "VF",
+  "F2": "VF",
+  "M": "VM",
+  "M2": "VM"
+ },
+ "vai": {},
+ "items": [
+  {
+   "slug": "voc-channel",
+   "text": "channel",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-comedy",
+   "text": "comedy",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-goggles",
+   "text": "goggles",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-marathon",
+   "text": "marathon",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-gym",
+   "text": "gym",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-palace",
+   "text": "palace",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-stall",
+   "text": "stall",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-street-food",
+   "text": "street food",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-talent-show",
+   "text": "talent show",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-tv-guide",
+   "text": "TV guide",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-animated-film",
+   "text": "animated film",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-aerobics",
+   "text": "aerobics",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-tournament",
+   "text": "tournament",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-floating-market",
+   "text": "floating market",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-crowded",
+   "text": "crowded",
+   "voice": "F"
+  },
+  {
+   "slug": "adj-clever",
+   "text": "clever",
+   "voice": "F"
+  },
+  {
+   "slug": "adj-funny",
+   "text": "funny",
+   "voice": "F"
+  },
+  {
+   "slug": "adj-sporty",
+   "text": "sporty",
+   "voice": "F"
+  },
+  {
+   "slug": "adj-fit",
+   "text": "fit",
+   "voice": "F"
+  },
+  {
+   "slug": "adj-fantastic",
+   "text": "fantastic",
+   "voice": "F"
+  },
+  {
+   "slug": "adj-helpful",
+   "text": "helpful",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-badminton",
+   "text": "badminton",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-basketball",
+   "text": "basketball",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-judo",
+   "text": "judo",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-exercise",
+   "text": "exercise",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-cycling",
+   "text": "cycling",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-running",
+   "text": "running",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-theatre",
+   "text": "theatre",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-anything",
+   "text": "anything",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-there",
+   "text": "there",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-weather",
+   "text": "weather",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-exercise",
+   "text": "exercise",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-contest",
+   "text": "contest",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-match",
+   "text": "match",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-active",
+   "text": "active",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-cold",
+   "text": "cold",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-boat",
+   "text": "boat",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-around",
+   "text": "around",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-house",
+   "text": "house",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-window",
+   "text": "window",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-show",
+   "text": "show",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-yellow",
+   "text": "yellow",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-know",
+   "text": "know",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-now",
+   "text": "now",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-down",
+   "text": "down",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-brown",
+   "text": "brown",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-flower",
+   "text": "flower",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-mother",
+   "text": "mother",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-friend",
+   "text": "friend",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-month",
+   "text": "month",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-happy",
+   "text": "happy",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-mountain",
+   "text": "mountain",
+   "voice": "F"
+  },
+  {
+   "slug": "prs-weather",
+   "text": "They are thinking about the weather there.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-1",
+   "text": "Each question word is used for a specific piece of information.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-2",
+   "text": "We use a conjunction to combine two clauses into a compound sentence.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-3",
+   "text": "I like watching cartoons, but my brother likes watching sports.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-4",
+   "text": "I enjoy sports, so I spend a lot of time outdoors.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-5",
+   "text": "I'm helping decorate the house, and my brother is busy cooking.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-1",
+   "text": "We use the past simple to talk about something that happened in the past.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-3",
+   "text": "We use imperatives to tell someone to do something, or to give a direct order.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-4",
+   "text": "It's a chewing gum.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-5",
+   "text": "Chew it.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-6",
+   "text": "Don't swallow it.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-1",
+   "text": "A possessive adjective is used only when there's a noun following it.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-2",
+   "text": "I have a pen.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-3",
+   "text": "This is my pen.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-4",
+   "text": "A possessive pronoun is used alone, without a noun following it.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-5",
+   "text": "This book is my book, not your book.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-6",
+   "text": "This book is mine, not yours.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-2",
+   "text": "I played badminton with Phong yesterday.",
+   "voice": "F",
+   "ten_viet": [
+    "Phong"
+   ]
+  },
+  {
+   "slug": "rd-competitors",
+   "text": "competitors",
+   "voice": "F"
+  },
+  {
+   "slug": "rd-catch",
+   "text": "catch",
+   "voice": "F"
+  },
+  {
+   "slug": "rd-hill",
+   "text": "hill",
+   "voice": "F"
+  },
+  {
+   "slug": "rd-push",
+   "text": "push",
+   "voice": "F"
+  },
+  {
+   "slug": "rd-lock",
+   "text": "lock",
+   "voice": "F"
+  },
+  {
+   "slug": "read-p1",
+   "text": "It's a simple sport. Competitors roll a big round piece of cheese from the top of a hill. Competitors run after it and try to catch it. Very few people can catch it because it goes very fast, about 112 km an hour.",
+   "voice": "F"
+  },
+  {
+   "slug": "read-p2",
+   "text": "It's a popular sport for children. This game started in Derbyshire in the North of England. Two children lock their toes together and try to push the other's foot to the ground. It's similar to arm wrestling.",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-q1",
+   "text": "What city would you like to visit?",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-q2",
+   "text": "What sports do you like playing?",
+   "voice": "F"
+  },
+  {
+   "slug": "sp-q3",
+   "text": "What TV programme do you like watching?",
+   "voice": "F"
+  },
+  {
+   "slug": "ten-hoi-an",
+   "text": "Hội An",
+   "voice": "VF"
+  },
+  {
+   "slug": "ten-phong",
+   "text": "Phong",
+   "voice": "VM"
+  }
+ ]
+}

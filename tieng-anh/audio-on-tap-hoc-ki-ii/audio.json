@@ -1,0 +1,382 @@
+{
+ "voices": {
+  "F": "en-GB-SoniaNeural",
+  "M": "en-GB-RyanNeural",
+  "F2": "en-GB-LibbyNeural",
+  "M2": "en-GB-ThomasNeural",
+  "VF": "vi-VN-HoaiMyNeural",
+  "VM": "vi-VN-NamMinhNeural"
+ },
+ "giong_ten": {
+  "F": "VF",
+  "F2": "VF",
+  "M": "VM",
+  "M2": "VM"
+ },
+ "vai": {},
+ "items": [
+  {
+   "slug": "voc-channel",
+   "text": "channel",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-charity",
+   "text": "charity",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-palace",
+   "text": "palace",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-goggles",
+   "text": "goggles",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-washing-machine",
+   "text": "washing machine",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-space-station",
+   "text": "space station",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-tournament",
+   "text": "tournament",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-recycling-bin",
+   "text": "recycling bin",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-stall",
+   "text": "stall",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-cartoon",
+   "text": "cartoon",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-comedy",
+   "text": "comedy",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-theatre",
+   "text": "theatre",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-there",
+   "text": "there",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-aerobics",
+   "text": "aerobics",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-racket",
+   "text": "racket",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-chess",
+   "text": "chess",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-match",
+   "text": "match",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-tower",
+   "text": "tower",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-street-food",
+   "text": "street food",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-snow",
+   "text": "snow",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-around",
+   "text": "around",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-cottage",
+   "text": "cottage",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-appliance",
+   "text": "appliance",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-kitchen",
+   "text": "kitchen",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-reusable",
+   "text": "reusable",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-container",
+   "text": "container",
+   "voice": "F"
+  },
+  {
+   "slug": "prs-happy-walk",
+   "text": "We are happy to walk to school.",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-height",
+   "text": "height",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-planet",
+   "text": "planet",
+   "voice": "F"
+  },
+  {
+   "slug": "prs-water-plants",
+   "text": "I often water plants after school.",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-anything",
+   "text": "anything",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-racket",
+   "text": "racket",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-cold",
+   "text": "cold",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-palace",
+   "text": "palace",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-tonight",
+   "text": "tonight",
+   "voice": "F"
+  },
+  {
+   "slug": "prs-theatre-thursday",
+   "text": "The new theatre opens on Thursday the third.",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-viewer",
+   "text": "viewer",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-equipment",
+   "text": "equipment",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-postcard",
+   "text": "postcard",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-location",
+   "text": "location",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-exchange",
+   "text": "exchange",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-weight",
+   "text": "weight",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-1",
+   "text": "Each question word is used for a specific piece of information.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-2",
+   "text": "We use a conjunction to combine two clauses into a compound sentence.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-3",
+   "text": "I like watching cartoons, but my brother likes watching sports.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-4",
+   "text": "I enjoy sports, so I spend a lot of time outdoors.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u7-5",
+   "text": "I'm helping decorate the house, and my brother is busy cooking.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-1",
+   "text": "We use the past simple to talk about something that happened in the past.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-2",
+   "text": "I played badminton with Phong yesterday.",
+   "voice": "F",
+   "ten_viet": [
+    "Phong"
+   ]
+  },
+  {
+   "slug": "gr-u8-3",
+   "text": "We use imperatives to tell someone to do something, or to give a direct order.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-4",
+   "text": "Chew it.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u8-5",
+   "text": "Don't swallow it.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-1",
+   "text": "A possessive adjective is used only when there's a noun following it.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-2",
+   "text": "This is my pen.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-3",
+   "text": "A possessive pronoun is used alone, without a noun following it.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u9-4",
+   "text": "This book is mine, not yours.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u10-1",
+   "text": "We use the future simple to talk about an action that happens in the future.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u10-2",
+   "text": "We'll live in that cottage next year.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u10-3",
+   "text": "We won't live in that cottage anytime soon.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u10-4",
+   "text": "We use might + V to talk about actions that are possible in the future (we are not sure if they will happen or not).",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u10-5",
+   "text": "We might live in a UFO.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u11-1",
+   "text": "An ant is a tiny animal.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u11-2",
+   "text": "I'm a student.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u11-3",
+   "text": "I have an eraser.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u11-4",
+   "text": "The bike in front of her house is nice.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u11-5",
+   "text": "The air is dirty.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u11-6",
+   "text": "First conditional sentences describe things which are possible and likely to happen in the present or the future.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u11-7",
+   "text": "If you use less paper, you will save a lot of trees.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u12-1",
+   "text": "We use superlative adjectives to compare three or more people or things.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u12-2",
+   "text": "Tom is the tallest in his class.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u12-3",
+   "text": "This is the biggest of the three bags.",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-bedroom",
+   "text": "bedroom",
+   "voice": "F"
+  }
+ ]
+}

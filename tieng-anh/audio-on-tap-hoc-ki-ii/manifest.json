@@ -1,0 +1,585 @@
+{
+  "voc-channel": {
+    "file": "voc-channel.mp3",
+    "kieu": "don",
+    "text": "channel",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "48b1967d4a8d3923"
+  },
+  "voc-charity": {
+    "file": "voc-charity.mp3",
+    "kieu": "don",
+    "text": "charity",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bd7f7162b54c9513"
+  },
+  "voc-palace": {
+    "file": "voc-palace.mp3",
+    "kieu": "don",
+    "text": "palace",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "beeb33ce99538314"
+  },
+  "voc-goggles": {
+    "file": "voc-goggles.mp3",
+    "kieu": "don",
+    "text": "goggles",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1668bc9e24cb1a2b"
+  },
+  "voc-washing-machine": {
+    "file": "voc-washing-machine.mp3",
+    "kieu": "don",
+    "text": "washing machine",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "80c3c236a27e0423"
+  },
+  "voc-space-station": {
+    "file": "voc-space-station.mp3",
+    "kieu": "don",
+    "text": "space station",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d47f78e761c7101a"
+  },
+  "voc-tournament": {
+    "file": "voc-tournament.mp3",
+    "kieu": "don",
+    "text": "tournament",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1b4cd844832ba8ac"
+  },
+  "voc-recycling-bin": {
+    "file": "voc-recycling-bin.mp3",
+    "kieu": "don",
+    "text": "recycling bin",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "67e33736ac06a0b0"
+  },
+  "voc-stall": {
+    "file": "voc-stall.mp3",
+    "kieu": "don",
+    "text": "stall",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f809fbe9859f17bd"
+  },
+  "voc-cartoon": {
+    "file": "voc-cartoon.mp3",
+    "kieu": "don",
+    "text": "cartoon",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1a3763be157c6255"
+  },
+  "voc-comedy": {
+    "file": "voc-comedy.mp3",
+    "kieu": "don",
+    "text": "comedy",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb4fbac8754ba375"
+  },
+  "pr-theatre": {
+    "file": "pr-theatre.mp3",
+    "kieu": "don",
+    "text": "theatre",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "beae544fd114493b"
+  },
+  "pr-there": {
+    "file": "pr-there.mp3",
+    "kieu": "don",
+    "text": "there",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5a31ad126fbe108c"
+  },
+  "voc-aerobics": {
+    "file": "voc-aerobics.mp3",
+    "kieu": "don",
+    "text": "aerobics",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "667aa385c4534db4"
+  },
+  "voc-racket": {
+    "file": "voc-racket.mp3",
+    "kieu": "don",
+    "text": "racket",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e61671730a00e36a"
+  },
+  "pr-chess": {
+    "file": "pr-chess.mp3",
+    "kieu": "don",
+    "text": "chess",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "476f4401b1fe6c41"
+  },
+  "pr-match": {
+    "file": "pr-match.mp3",
+    "kieu": "don",
+    "text": "match",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2767354be6a0f1db"
+  },
+  "voc-tower": {
+    "file": "voc-tower.mp3",
+    "kieu": "don",
+    "text": "tower",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0cabd4ff68ef3e94"
+  },
+  "voc-street-food": {
+    "file": "voc-street-food.mp3",
+    "kieu": "don",
+    "text": "street food",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "945a88a991a4fc36"
+  },
+  "pr-snow": {
+    "file": "pr-snow.mp3",
+    "kieu": "don",
+    "text": "snow",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4e2752a99f04faf5"
+  },
+  "pr-around": {
+    "file": "pr-around.mp3",
+    "kieu": "don",
+    "text": "around",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a2aaa566eac85649"
+  },
+  "voc-cottage": {
+    "file": "voc-cottage.mp3",
+    "kieu": "don",
+    "text": "cottage",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "92b69ef06319a1a1"
+  },
+  "voc-appliance": {
+    "file": "voc-appliance.mp3",
+    "kieu": "don",
+    "text": "appliance",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3bcae3dd6152d807"
+  },
+  "pr-kitchen": {
+    "file": "pr-kitchen.mp3",
+    "kieu": "don",
+    "text": "kitchen",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8e0510314587bb92"
+  },
+  "voc-reusable": {
+    "file": "voc-reusable.mp3",
+    "kieu": "don",
+    "text": "reusable",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ba75940fa76a7ff3"
+  },
+  "voc-container": {
+    "file": "voc-container.mp3",
+    "kieu": "don",
+    "text": "container",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e352d7663d96d31c"
+  },
+  "prs-happy-walk": {
+    "file": "prs-happy-walk.mp3",
+    "kieu": "don",
+    "text": "We are happy to walk to school.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb915e9986608ffd"
+  },
+  "voc-height": {
+    "file": "voc-height.mp3",
+    "kieu": "don",
+    "text": "height",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "dfc8dadc7a283741"
+  },
+  "voc-planet": {
+    "file": "voc-planet.mp3",
+    "kieu": "don",
+    "text": "planet",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "aa56374ca7f61711"
+  },
+  "prs-water-plants": {
+    "file": "prs-water-plants.mp3",
+    "kieu": "don",
+    "text": "I often water plants after school.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5331b7fe3878ffb6"
+  },
+  "pr-anything": {
+    "file": "pr-anything.mp3",
+    "kieu": "don",
+    "text": "anything",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5b62e5cdf5a4e6d0"
+  },
+  "pr-racket": {
+    "file": "pr-racket.mp3",
+    "kieu": "don",
+    "text": "racket",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e61671730a00e36a"
+  },
+  "pr-cold": {
+    "file": "pr-cold.mp3",
+    "kieu": "don",
+    "text": "cold",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a6990f7d8ce8ad81"
+  },
+  "pr-palace": {
+    "file": "pr-palace.mp3",
+    "kieu": "don",
+    "text": "palace",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "beeb33ce99538314"
+  },
+  "pr-tonight": {
+    "file": "pr-tonight.mp3",
+    "kieu": "don",
+    "text": "tonight",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8f704e5777291458"
+  },
+  "prs-theatre-thursday": {
+    "file": "prs-theatre-thursday.mp3",
+    "kieu": "don",
+    "text": "The new theatre opens on Thursday the third.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87cee9c7438c229a"
+  },
+  "voc-viewer": {
+    "file": "voc-viewer.mp3",
+    "kieu": "don",
+    "text": "viewer",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bdecabaf44259521"
+  },
+  "voc-equipment": {
+    "file": "voc-equipment.mp3",
+    "kieu": "don",
+    "text": "equipment",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e57c47cec24993ad"
+  },
+  "voc-postcard": {
+    "file": "voc-postcard.mp3",
+    "kieu": "don",
+    "text": "postcard",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4f6ff40f7866a22b"
+  },
+  "voc-location": {
+    "file": "voc-location.mp3",
+    "kieu": "don",
+    "text": "location",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "13d5b0a14005f3ff"
+  },
+  "voc-exchange": {
+    "file": "voc-exchange.mp3",
+    "kieu": "don",
+    "text": "exchange",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9c4ccc6b472dadd0"
+  },
+  "voc-weight": {
+    "file": "voc-weight.mp3",
+    "kieu": "don",
+    "text": "weight",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d75f718e9c7fd164"
+  },
+  "gr-u7-1": {
+    "file": "gr-u7-1.mp3",
+    "kieu": "don",
+    "text": "Each question word is used for a specific piece of information.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e8e752d6eb31090a"
+  },
+  "gr-u7-2": {
+    "file": "gr-u7-2.mp3",
+    "kieu": "don",
+    "text": "We use a conjunction to combine two clauses into a compound sentence.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bc70f6d35336f944"
+  },
+  "gr-u7-3": {
+    "file": "gr-u7-3.mp3",
+    "kieu": "don",
+    "text": "I like watching cartoons, but my brother likes watching sports.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "caf5c942beb1a9c8"
+  },
+  "gr-u7-4": {
+    "file": "gr-u7-4.mp3",
+    "kieu": "don",
+    "text": "I enjoy sports, so I spend a lot of time outdoors.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4e294c93ad4b6a10"
+  },
+  "gr-u7-5": {
+    "file": "gr-u7-5.mp3",
+    "kieu": "don",
+    "text": "I'm helping decorate the house, and my brother is busy cooking.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d144e88a7c6076aa"
+  },
+  "gr-u8-1": {
+    "file": "gr-u8-1.mp3",
+    "kieu": "don",
+    "text": "We use the past simple to talk about something that happened in the past.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "53f7000329604ff2"
+  },
+  "gr-u8-2": {
+    "file": "gr-u8-2.mp3",
+    "kieu": "ten",
+    "text": "I played badminton with Phong yesterday.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "ten_viet": [
+      {
+        "tu": "Phong",
+        "doc": "Phong",
+        "voice": "vi-VN-HoaiMyNeural"
+      }
+    ],
+    "bam": "ca7e20d3279f9cbd"
+  },
+  "gr-u8-3": {
+    "file": "gr-u8-3.mp3",
+    "kieu": "don",
+    "text": "We use imperatives to tell someone to do something, or to give a direct order.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "91f71a7b61db8b49"
+  },
+  "gr-u8-4": {
+    "file": "gr-u8-4.mp3",
+    "kieu": "don",
+    "text": "Chew it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1c6b272a808e18b8"
+  },
+  "gr-u8-5": {
+    "file": "gr-u8-5.mp3",
+    "kieu": "don",
+    "text": "Don't swallow it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c545322c27ceaeb3"
+  },
+  "gr-u9-1": {
+    "file": "gr-u9-1.mp3",
+    "kieu": "don",
+    "text": "A possessive adjective is used only when there's a noun following it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e21837472108691c"
+  },
+  "gr-u9-2": {
+    "file": "gr-u9-2.mp3",
+    "kieu": "don",
+    "text": "This is my pen.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "2aec089b2f283a47"
+  },
+  "gr-u9-3": {
+    "file": "gr-u9-3.mp3",
+    "kieu": "don",
+    "text": "A possessive pronoun is used alone, without a noun following it.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f305a16c4755dcfd"
+  },
+  "gr-u9-4": {
+    "file": "gr-u9-4.mp3",
+    "kieu": "don",
+    "text": "This book is mine, not yours.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0a2919e45aef6d79"
+  },
+  "gr-u10-1": {
+    "file": "gr-u10-1.mp3",
+    "kieu": "don",
+    "text": "We use the future simple to talk about an action that happens in the future.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e5e2ec618df1b2fa"
+  },
+  "gr-u10-2": {
+    "file": "gr-u10-2.mp3",
+    "kieu": "don",
+    "text": "We'll live in that cottage next year.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f11a5dd3bcba601a"
+  },
+  "gr-u10-3": {
+    "file": "gr-u10-3.mp3",
+    "kieu": "don",
+    "text": "We won't live in that cottage anytime soon.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8fe17dad40d95bfa"
+  },
+  "gr-u10-4": {
+    "file": "gr-u10-4.mp3",
+    "kieu": "don",
+    "text": "We use might + V to talk about actions that are possible in the future (we are not sure if they will happen or not).",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7cd05cdd3c2d403e"
+  },
+  "gr-u10-5": {
+    "file": "gr-u10-5.mp3",
+    "kieu": "don",
+    "text": "We might live in a UFO.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9f84c7ed9480ae8d"
+  },
+  "gr-u11-1": {
+    "file": "gr-u11-1.mp3",
+    "kieu": "don",
+    "text": "An ant is a tiny animal.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c235cd5a14ce87e8"
+  },
+  "gr-u11-2": {
+    "file": "gr-u11-2.mp3",
+    "kieu": "don",
+    "text": "I'm a student.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8ed976bd1dd8c8f8"
+  },
+  "gr-u11-3": {
+    "file": "gr-u11-3.mp3",
+    "kieu": "don",
+    "text": "I have an eraser.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "29b11f454b827497"
+  },
+  "gr-u11-4": {
+    "file": "gr-u11-4.mp3",
+    "kieu": "don",
+    "text": "The bike in front of her house is nice.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7ebacdd1e276fe50"
+  },
+  "gr-u11-5": {
+    "file": "gr-u11-5.mp3",
+    "kieu": "don",
+    "text": "The air is dirty.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0cc140fc6e9b5560"
+  },
+  "gr-u11-6": {
+    "file": "gr-u11-6.mp3",
+    "kieu": "don",
+    "text": "First conditional sentences describe things which are possible and likely to happen in the present or the future.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a0e686bf9ad40201"
+  },
+  "gr-u11-7": {
+    "file": "gr-u11-7.mp3",
+    "kieu": "don",
+    "text": "If you use less paper, you will save a lot of trees.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "006f545145cdf838"
+  },
+  "gr-u12-1": {
+    "file": "gr-u12-1.mp3",
+    "kieu": "don",
+    "text": "We use superlative adjectives to compare three or more people or things.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "00b3ba12fabdafb3"
+  },
+  "gr-u12-2": {
+    "file": "gr-u12-2.mp3",
+    "kieu": "don",
+    "text": "Tom is the tallest in his class.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a19ffc8f7dd6177c"
+  },
+  "gr-u12-3": {
+    "file": "gr-u12-3.mp3",
+    "kieu": "don",
+    "text": "This is the biggest of the three bags.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bd12e3b9aab6ed43"
+  },
+  "pr-bedroom": {
+    "file": "pr-bedroom.mp3",
+    "kieu": "don",
+    "text": "bedroom",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3127ec8086cc0f58"
+  }
+}

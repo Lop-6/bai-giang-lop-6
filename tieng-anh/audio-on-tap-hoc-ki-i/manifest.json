@@ -1,0 +1,586 @@
+{
+  "voc-calculator": {
+    "file": "voc-calculator.mp3",
+    "kieu": "don",
+    "text": "calculator",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87eb5637a9b405a5"
+  },
+  "voc-temple": {
+    "file": "voc-temple.mp3",
+    "kieu": "don",
+    "text": "temple",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8a0a5cc03bf236e3"
+  },
+  "voc-slim": {
+    "file": "voc-slim.mp3",
+    "kieu": "don",
+    "text": "slim",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5d4c1c41007f9a5d"
+  },
+  "voc-wardrobe": {
+    "file": "voc-wardrobe.mp3",
+    "kieu": "don",
+    "text": "wardrobe",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b20f11adcbc92c63"
+  },
+  "voc-landscape": {
+    "file": "voc-landscape.mp3",
+    "kieu": "don",
+    "text": "landscape",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6372b90b22a653b4"
+  },
+  "voc-railway-station": {
+    "file": "voc-railway-station.mp3",
+    "kieu": "don",
+    "text": "railway station",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d0643b9baeadb6d7"
+  },
+  "voc-dishwasher": {
+    "file": "voc-dishwasher.mp3",
+    "kieu": "don",
+    "text": "dishwasher",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "57c91a702eb6d34c"
+  },
+  "voc-shoulder": {
+    "file": "voc-shoulder.mp3",
+    "kieu": "don",
+    "text": "shoulder",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9897e6e01bfbc762"
+  },
+  "voc-mountain-range": {
+    "file": "voc-mountain-range.mp3",
+    "kieu": "don",
+    "text": "mountain range",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "971436b3855477fe"
+  },
+  "voc-classmate": {
+    "file": "voc-classmate.mp3",
+    "kieu": "don",
+    "text": "classmate",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5dbd04c7e24cf71d"
+  },
+  "voc-swimming-pool": {
+    "file": "voc-swimming-pool.mp3",
+    "kieu": "don",
+    "text": "swimming pool",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "409ac5a3cf75f30d"
+  },
+  "pr-smart": {
+    "file": "pr-smart.mp3",
+    "kieu": "don",
+    "text": "smart",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9f423e03db114d9b"
+  },
+  "pr-subject": {
+    "file": "pr-subject.mp3",
+    "kieu": "don",
+    "text": "subject",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "161d63efbaeeecef"
+  },
+  "voc-town-house": {
+    "file": "voc-town-house.mp3",
+    "kieu": "don",
+    "text": "town house",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "678f6ca7773bab01"
+  },
+  "voc-chest-of-drawers": {
+    "file": "voc-chest-of-drawers.mp3",
+    "kieu": "don",
+    "text": "chest of drawers",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ff42f57993c23df7"
+  },
+  "pr-lamps": {
+    "file": "pr-lamps.mp3",
+    "kieu": "don",
+    "text": "lamps",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bfde35d1f938a752"
+  },
+  "pr-sofas": {
+    "file": "pr-sofas.mp3",
+    "kieu": "don",
+    "text": "sofas",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "bf2c6324241f0b36"
+  },
+  "voc-hard-working": {
+    "file": "voc-hard-working.mp3",
+    "kieu": "don",
+    "text": "hard-working",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "174d732204e00778"
+  },
+  "voc-appearance": {
+    "file": "voc-appearance.mp3",
+    "kieu": "don",
+    "text": "appearance",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5c8d3165863dfb6f"
+  },
+  "pr-biscuits": {
+    "file": "pr-biscuits.mp3",
+    "kieu": "don",
+    "text": "biscuits",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8a4440a40a4286ac"
+  },
+  "pr-picnic": {
+    "file": "pr-picnic.mp3",
+    "kieu": "don",
+    "text": "picnic",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a5a9aa87e0f68eb7"
+  },
+  "voc-art-gallery": {
+    "file": "voc-art-gallery.mp3",
+    "kieu": "don",
+    "text": "art gallery",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "04b459b94ff7ef1b"
+  },
+  "voc-square": {
+    "file": "voc-square.mp3",
+    "kieu": "don",
+    "text": "square",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ede9f5cdf1ae76e6"
+  },
+  "pr-pretty": {
+    "file": "pr-pretty.mp3",
+    "kieu": "don",
+    "text": "pretty",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "3379f06e04af6737"
+  },
+  "pr-cheap": {
+    "file": "pr-cheap.mp3",
+    "kieu": "don",
+    "text": "cheap",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0057ecdfd6cea4d8"
+  },
+  "voc-natural-wonder": {
+    "file": "voc-natural-wonder.mp3",
+    "kieu": "don",
+    "text": "natural wonder",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "6453106c458f4835"
+  },
+  "voc-rock": {
+    "file": "voc-rock.mp3",
+    "kieu": "don",
+    "text": "rock",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d8fd3a829225a8b9"
+  },
+  "pr-mountain": {
+    "file": "pr-mountain.mp3",
+    "kieu": "don",
+    "text": "mountain",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8270feb162a1ba4d"
+  },
+  "pr-wonder": {
+    "file": "pr-wonder.mp3",
+    "kieu": "don",
+    "text": "wonder",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "1f05cdd18e60470f"
+  },
+  "voc-family-gathering": {
+    "file": "voc-family-gathering.mp3",
+    "kieu": "don",
+    "text": "family gathering",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "40b04bbf3a05d8de"
+  },
+  "voc-decorate": {
+    "file": "voc-decorate.mp3",
+    "kieu": "don",
+    "text": "decorate",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "87fe19a4908b2765"
+  },
+  "pr-rice": {
+    "file": "pr-rice.mp3",
+    "kieu": "don",
+    "text": "rice",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "65e98052f406befc"
+  },
+  "pr-shopping": {
+    "file": "pr-shopping.mp3",
+    "kieu": "don",
+    "text": "shopping",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8cf48c52d641f77a"
+  },
+  "pr-monday": {
+    "file": "pr-monday.mp3",
+    "kieu": "don",
+    "text": "Monday",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "96a8e5a0aa221a28"
+  },
+  "pr-kitchens": {
+    "file": "pr-kitchens.mp3",
+    "kieu": "don",
+    "text": "kitchens",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d60c01ca3786ce56"
+  },
+  "pr-bringing": {
+    "file": "pr-bringing.mp3",
+    "kieu": "don",
+    "text": "bringing",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "ca5efd586fb3c9bd"
+  },
+  "pr-peaceful": {
+    "file": "pr-peaceful.mp3",
+    "kieu": "don",
+    "text": "peaceful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "f432d5c9221a42a7"
+  },
+  "pr-wish": {
+    "file": "pr-wish.mp3",
+    "kieu": "don",
+    "text": "wish",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8c65464867ac73c9"
+  },
+  "prs-village-pretty": {
+    "file": "prs-village-pretty.mp3",
+    "kieu": "don",
+    "text": "My village is very pretty.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4f5b1f4ff6362904"
+  },
+  "voc-cooker": {
+    "file": "voc-cooker.mp3",
+    "kieu": "don",
+    "text": "cooker",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "344526201a344088"
+  },
+  "voc-suburb": {
+    "file": "voc-suburb.mp3",
+    "kieu": "don",
+    "text": "suburb",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "badb7236bd9a1b01"
+  },
+  "voc-backpack": {
+    "file": "voc-backpack.mp3",
+    "kieu": "don",
+    "text": "backpack",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0d77123eb65ce9ae"
+  },
+  "voc-relative": {
+    "file": "voc-relative.mp3",
+    "kieu": "don",
+    "text": "relative",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "4608b42587ff7af1"
+  },
+  "voc-boarding-school": {
+    "file": "voc-boarding-school.mp3",
+    "kieu": "don",
+    "text": "boarding school",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fc93db18a493b0df"
+  },
+  "voc-careful": {
+    "file": "voc-careful.mp3",
+    "kieu": "don",
+    "text": "careful",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "da21f46bb2a02676"
+  },
+  "gr-u1-1": {
+    "file": "gr-u1-1.mp3",
+    "kieu": "don",
+    "text": "We use the present simple to talk about actions or events that often happen, or are fixed.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "9489977445211044"
+  },
+  "gr-u1-2": {
+    "file": "gr-u1-2.mp3",
+    "kieu": "don",
+    "text": "The present simple verbs with he / she / it need an s / es.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "087c3126b528e1c6"
+  },
+  "gr-u1-3": {
+    "file": "gr-u1-3.mp3",
+    "kieu": "don",
+    "text": "We usually place the adverb of frequency before the main verb.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0c825f48838c7ac6"
+  },
+  "gr-u1-4": {
+    "file": "gr-u1-4.mp3",
+    "kieu": "don",
+    "text": "Tom usually takes the bus to school.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "c23d1d7b57f1cda8"
+  },
+  "gr-u3-1": {
+    "file": "gr-u3-1.mp3",
+    "kieu": "don",
+    "text": "When something often happens or is fixed, we use the present simple.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "eb880ad1c7f62948"
+  },
+  "gr-u3-2": {
+    "file": "gr-u3-2.mp3",
+    "kieu": "don",
+    "text": "When something is happening now, we use the present continuous.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5d045fabddc26a98"
+  },
+  "gr-u2-1": {
+    "file": "gr-u2-1.mp3",
+    "kieu": "don",
+    "text": "We use 's after a proper name.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "0ca33dacf7cdb810"
+  },
+  "gr-u2-2": {
+    "file": "gr-u2-2.mp3",
+    "kieu": "don",
+    "text": "This is Elena's room.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "b96f14682df45001"
+  },
+  "gr-u2-3": {
+    "file": "gr-u2-3.mp3",
+    "kieu": "don",
+    "text": "We use 's after a singular noun.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "021f2e18143e14e8"
+  },
+  "gr-u2-4": {
+    "file": "gr-u2-4.mp3",
+    "kieu": "don",
+    "text": "This is my mum's book.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "7b4e12eb32c95e4e"
+  },
+  "gr-u2-5": {
+    "file": "gr-u2-5.mp3",
+    "kieu": "don",
+    "text": "Prepositions of place describe where people or things are.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8501c9b8a461ba21"
+  },
+  "gr-u2-6": {
+    "file": "gr-u2-6.mp3",
+    "kieu": "don",
+    "text": "in, on, next to, behind",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "46247b41b09fac22"
+  },
+  "gr-u2-7": {
+    "file": "gr-u2-7.mp3",
+    "kieu": "don",
+    "text": "in front of, under, between",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "61f556dc52582e5c"
+  },
+  "gr-u4-1": {
+    "file": "gr-u4-1.mp3",
+    "kieu": "don",
+    "text": "We can use comparative adjectives to compare two people or things.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cb208e8f687f681a"
+  },
+  "gr-u4-2": {
+    "file": "gr-u4-2.mp3",
+    "kieu": "don",
+    "text": "Tom is taller than Mary.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "fd6b54064b835d9f"
+  },
+  "gr-u4-3": {
+    "file": "gr-u4-3.mp3",
+    "kieu": "don",
+    "text": "A house in a city is normally more expensive than a house in the countryside.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "a7f8578a34b8dd5f"
+  },
+  "gr-u5-1": {
+    "file": "gr-u5-1.mp3",
+    "kieu": "don",
+    "text": "We use some, many, a few with countable nouns.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "8de0e1b77b1fb6a3"
+  },
+  "gr-u5-2": {
+    "file": "gr-u5-2.mp3",
+    "kieu": "don",
+    "text": "We use some, much, a little with uncountable nouns.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e3c786be4bc6c6a6"
+  },
+  "gr-u6-1": {
+    "file": "gr-u6-1.mp3",
+    "kieu": "don",
+    "text": "My mother bought some fruits.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "cfd91f1e119972f9"
+  },
+  "gr-u6-2": {
+    "file": "gr-u6-2.mp3",
+    "kieu": "don",
+    "text": "I need some milk for the cake.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "20e73f825b321111"
+  },
+  "gr-u6-3": {
+    "file": "gr-u6-3.mp3",
+    "kieu": "don",
+    "text": "I can't answer any questions.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "db293c8142723feb"
+  },
+  "gr-u6-4": {
+    "file": "gr-u6-4.mp3",
+    "kieu": "don",
+    "text": "Do you have any sugar?",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "065b31d0d15bb0ba"
+  },
+  "gr-u5-3": {
+    "file": "gr-u5-3.mp3",
+    "kieu": "don",
+    "text": "We use must to say that something is very necessary or very important.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "e865b9d5c5d08d6c"
+  },
+  "gr-u5-4": {
+    "file": "gr-u5-4.mp3",
+    "kieu": "don",
+    "text": "We use mustn't to say that doing something is not allowed.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "edf28e214b6c5f81"
+  },
+  "gr-u6-5": {
+    "file": "gr-u6-5.mp3",
+    "kieu": "don",
+    "text": "We use should for things that are good to do.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "d531d5accb0d7a73"
+  },
+  "gr-u6-6": {
+    "file": "gr-u6-6.mp3",
+    "kieu": "don",
+    "text": "We use shouldn't for things that are not good to do.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5312ae957b2e5207"
+  },
+  "rd-love-school": {
+    "file": "rd-love-school.mp3",
+    "kieu": "don",
+    "text": "I love my school because it is a good school.",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "44e099980307aeac"
+  },
+  "pr-carton": {
+    "file": "pr-carton.mp3",
+    "kieu": "don",
+    "text": "carton",
+    "voice": "en-GB-SoniaNeural",
+    "rate": "+0%",
+    "bam": "5c078459760d176a"
+  }
+}

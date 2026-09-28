@@ -1,0 +1,384 @@
+{
+ "voices": {
+  "F": "en-GB-SoniaNeural",
+  "M": "en-GB-RyanNeural",
+  "F2": "en-GB-LibbyNeural",
+  "M2": "en-GB-ThomasNeural",
+  "VF": "vi-VN-HoaiMyNeural",
+  "VM": "vi-VN-NamMinhNeural"
+ },
+ "giong_ten": {
+  "F": "VF",
+  "F2": "VF",
+  "M": "VM",
+  "M2": "VM"
+ },
+ "vai": {},
+ "items": [
+  {
+   "slug": "voc-calculator",
+   "text": "calculator",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-temple",
+   "text": "temple",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-slim",
+   "text": "slim",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-wardrobe",
+   "text": "wardrobe",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-landscape",
+   "text": "landscape",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-railway-station",
+   "text": "railway station",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-dishwasher",
+   "text": "dishwasher",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-shoulder",
+   "text": "shoulder",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-mountain-range",
+   "text": "mountain range",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-classmate",
+   "text": "classmate",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-swimming-pool",
+   "text": "swimming pool",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-smart",
+   "text": "smart",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-subject",
+   "text": "subject",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-town-house",
+   "text": "town house",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-chest-of-drawers",
+   "text": "chest of drawers",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-lamps",
+   "text": "lamps",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-sofas",
+   "text": "sofas",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-hard-working",
+   "text": "hard-working",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-appearance",
+   "text": "appearance",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-biscuits",
+   "text": "biscuits",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-picnic",
+   "text": "picnic",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-art-gallery",
+   "text": "art gallery",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-square",
+   "text": "square",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-pretty",
+   "text": "pretty",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-cheap",
+   "text": "cheap",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-natural-wonder",
+   "text": "natural wonder",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-rock",
+   "text": "rock",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-mountain",
+   "text": "mountain",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-wonder",
+   "text": "wonder",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-family-gathering",
+   "text": "family gathering",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-decorate",
+   "text": "decorate",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-rice",
+   "text": "rice",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-shopping",
+   "text": "shopping",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-monday",
+   "text": "Monday",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-kitchens",
+   "text": "kitchens",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-bringing",
+   "text": "bringing",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-peaceful",
+   "text": "peaceful",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-wish",
+   "text": "wish",
+   "voice": "F"
+  },
+  {
+   "slug": "prs-village-pretty",
+   "text": "My village is very pretty.",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-cooker",
+   "text": "cooker",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-suburb",
+   "text": "suburb",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-backpack",
+   "text": "backpack",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-relative",
+   "text": "relative",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-boarding-school",
+   "text": "boarding school",
+   "voice": "F"
+  },
+  {
+   "slug": "voc-careful",
+   "text": "careful",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u1-1",
+   "text": "We use the present simple to talk about actions or events that often happen, or are fixed.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u1-2",
+   "text": "The present simple verbs with he / she / it need an s / es.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u1-3",
+   "text": "We usually place the adverb of frequency before the main verb.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u1-4",
+   "text": "Tom usually takes the bus to school.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u3-1",
+   "text": "When something often happens or is fixed, we use the present simple.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u3-2",
+   "text": "When something is happening now, we use the present continuous.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u2-1",
+   "text": "We use 's after a proper name.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u2-2",
+   "text": "This is Elena's room.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u2-3",
+   "text": "We use 's after a singular noun.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u2-4",
+   "text": "This is my mum's book.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u2-5",
+   "text": "Prepositions of place describe where people or things are.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u2-6",
+   "text": "in, on, next to, behind",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u2-7",
+   "text": "in front of, under, between",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u4-1",
+   "text": "We can use comparative adjectives to compare two people or things.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u4-2",
+   "text": "Tom is taller than Mary.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u4-3",
+   "text": "A house in a city is normally more expensive than a house in the countryside.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u5-1",
+   "text": "We use some, many, a few with countable nouns.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u5-2",
+   "text": "We use some, much, a little with uncountable nouns.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u6-1",
+   "text": "My mother bought some fruits.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u6-2",
+   "text": "I need some milk for the cake.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u6-3",
+   "text": "I can't answer any questions.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u6-4",
+   "text": "Do you have any sugar?",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u5-3",
+   "text": "We use must to say that something is very necessary or very important.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u5-4",
+   "text": "We use mustn't to say that doing something is not allowed.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u6-5",
+   "text": "We use should for things that are good to do.",
+   "voice": "F"
+  },
+  {
+   "slug": "gr-u6-6",
+   "text": "We use shouldn't for things that are not good to do.",
+   "voice": "F"
+  },
+  {
+   "slug": "rd-love-school",
+   "text": "I love my school because it is a good school.",
+   "voice": "F"
+  },
+  {
+   "slug": "pr-carton",
+   "text": "carton",
+   "voice": "F"
+  }
+ ]
+}

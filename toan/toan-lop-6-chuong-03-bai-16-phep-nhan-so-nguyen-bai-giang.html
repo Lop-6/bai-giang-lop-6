@@ -1202,11 +1202,28 @@
     .b16-bang .fillbox.gon input[type=text]{width:46px}
   }
 </style>
+<!-- dh-mon-css:dau -->
+<style id="dh-mon-css">
+  .dh-mon{display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:0 0 12px; font-size:14px; line-height:1.3}
+  .dh-mon a{color:#fff; text-decoration:none; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.4);
+    padding:5px 12px; border-radius:999px; font-weight:600}
+  .dh-mon a:hover, .dh-mon a:focus-visible{background:rgba(255,255,255,.32)}
+  .dh-mon span{opacity:.75}
+  .dh-mon-nut{display:inline-flex; align-items:center; gap:4px; flex:none; padding:2px 10px; border-radius:999px;
+    font-size:13px; line-height:1.5; font-weight:600; text-decoration:none; background:#1f2f57; color:#fff; border:1px solid #1f2f57}
+  .dh-mon-nut:hover, .dh-mon-nut:focus-visible{background:#33498a}
+  @media (max-width:600px){ .dh-mon-nut{display:none} }
+  @media print{ .dh-mon, .dh-mon-nut{display:none !important} }
+</style>
+<!-- dh-mon-css:cuoi -->
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
+    <!-- dh-mon:dau (do deploy/dong_bo_bai_giang.py chèn, đừng sửa tay) -->
+    <nav class="dh-mon" aria-label="Điều hướng giữa các bài"><a href="../index.html">🏠 Trang chính</a><span aria-hidden="true">›</span><a href="index.html">🔢 Toán 6 · Danh sách bài</a></nav>
+    <!-- dh-mon:cuoi -->
     <h1 data-nhieu-hd="SGK có 10 chỗ hỏi (HĐ1, HĐ2, Luyện tập 1, Vận dụng 1, HĐ3 + HĐ4, Luyện tập 2, Thử thách nhỏ, Câu hỏi, Luyện tập 3 ❶, Luyện tập 3 ❷) + 4 dạng mới của bài tập 3.34, 3.35b/3.37, 3.36, 3.38 + Mở đầu + Tự kiểm tra">BÀI 16. PHÉP NHÂN SỐ NGUYÊN</h1>
     <p class="sub">Toán 6 · Chương III. Số nguyên · Kết nối tri thức với cuộc sống</p>
     <span class="badge">Bài giảng tương tác</span>
@@ -1217,6 +1234,7 @@
 
 <nav class="toolbar">
   <div class="wrap">
+    <!-- dh-mon-tb:dau --><a class="dh-mon-nut" href="index.html" title="Về danh sách bài Toán 6">📚 Các bài</a><!-- dh-mon-tb:cuoi -->
     <a class="chip" href="#mo-dau">Mở đầu</a>
     <a class="chip" href="#khac-dau">1. Khác dấu</a>
     <a class="chip" href="#cung-dau">2. Cùng dấu</a>
